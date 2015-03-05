@@ -170,13 +170,18 @@ header.site-header {
     border-top: 3px solid #fff;
   }
   a.site-title {
+    display: block;
+    width: 32px;
+    height: 56px;
     text-indent: -9999px;
     background: url('{{site.baseurl}}/images/mongodb-leaf-128x128.png') 0 10px no-repeat;
     background-size: 32px 32px;
   }
 }
-.container {
-  width: 970px;
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
 }
 .hero-unit {
   background: $green2;
