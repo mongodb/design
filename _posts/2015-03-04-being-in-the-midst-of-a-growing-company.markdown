@@ -1,12 +1,14 @@
 ---
 layout: post
-section: Idendity
+section: Identity
 title:  "Being in the Midst of a Growing Company"
 image: stock-image-1.jpg
 date:   2015-03-04 16:00:00
 categories: general
 summary: Along with the launch of the new MongoDB.com website, changes in our visual branding were made. Elements that failed to communicate to the audience that we are a tech company were taken down. That includes all brown color shades, PT Sans (the typeface), trees, branches, and all nature-related graphics.
 ---
+
+![Alt text]({{ site.baseurl }}/images/stock-image-1.jpg)
 
 Along with the launch of the new MongoDB.com website, changes in our visual branding were made. Elements that failed to communicate to the audience that we are a tech company were taken down. That includes all brown color shades, PT Sans (the typeface), trees, branches, and all nature-related graphics.
 

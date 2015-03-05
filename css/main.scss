@@ -197,6 +197,18 @@ a:hover {
   width: 20%;
   margin-top: 24px;
   border-top: 6px solid $gray1;
+  color: $gray1;
+
+  .post-section {
+    // float: right;
+  }
+  .post-date {
+    font-size: 20px
+  }
+  .in-label {
+    font-family: 'Georgia', serif;
+    color: $gray5;
+  }
 }
 .post-summary {
   float: right;
@@ -229,11 +241,21 @@ a:hover {
   text-decoration: none;
 }
 
+.post-header {
+  .post-meta {
+    float: none;
+  }
+}
 .post p {
   font-family: Georgia, serif;
   font-size: 16px;
   line-height: 24px;
   margin-bottom: 24px;
+
+  img {
+    max-width: 300px;
+    float: right;
+  }
 }
 
 footer.site-footer {
