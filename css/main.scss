@@ -199,11 +199,9 @@ a:hover {
   border-top: 6px solid $gray1;
   color: $gray1;
 
-  .post-section {
-    // float: right;
-  }
   .post-date {
-    font-size: 20px
+    font-size: 18px;
+    font-weight: bold;
   }
   .in-label {
     font-family: 'Georgia', serif;
