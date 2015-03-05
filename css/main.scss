@@ -83,7 +83,7 @@ header.site-header {
   }
   a.site-title {
     text-indent: -9999px;
-    background: url('/images/mongodb-leaf-128x128.png') 0 10px no-repeat;
+    background: url('{{site.baseurl}}/images/mongodb-leaf-128x128.png') 0 10px no-repeat;
     background-size: 32px 32px;
   }
 }
