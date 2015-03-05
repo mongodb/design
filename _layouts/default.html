@@ -4,20 +4,20 @@
   {% include head.html %}
 
   <body>
+    <div class="page-wrapper">
+      {% include header.html %}
 
-    {% include header.html %}
-
-    <div class="hero-unit">
+      <div class="hero-unit">
+        <div class="container">
+          <h1>MongoDB <br>Design</h1>
+        </div>
+      </div>
+      
       <div class="container">
-        <h1>MongoDB <br>Design</h1>
+        {{ content }}
       </div>
     </div>
-    <div class="container">
-      {{ content }}
-    </div>
-
     {% include footer.html %}
-
   </body>
 
 </html>

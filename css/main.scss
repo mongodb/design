@@ -142,6 +142,22 @@ $gray8: #f5f6f7;
 ;
 
 // MongoDB Design Site Styles
+html, body {
+  height: 100%;
+}
+// sticky footer stuff
+.page-wrapper {
+  min-height: 100%;
+  margin-bottom: -300px; 
+}
+.page-wrapper:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrapper:after {
+  height: 300px; 
+}
+
 header.site-header {
   .container::after {
     content: '';
@@ -239,6 +255,9 @@ a:hover {
   text-decoration: none;
 }
 
+.post {
+  margin: 50px 0;
+}
 .post-header {
   .post-meta {
     float: none;
