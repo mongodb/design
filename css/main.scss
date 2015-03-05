@@ -27,6 +27,25 @@ $content-width:    800px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
+// MongoDB Color Palette
+$green0: #365221;
+$green1: #507b32;
+$green2: #6ba442;
+$green3: #89b668;
+$green4: #a6c88e;
+$green5: #c4dbb3;
+
+$gray0: #313030;
+$gray1: #494747;
+$gray2: #615f5f;
+$gray3: #807f7f;
+$gray4: #a09f9e;
+$gray5: #bfbfbe;
+
+/* UI Grays */
+$gray6: #dee0e3;
+$gray7: #ebebed;
+$gray8: #f5f6f7;
 
 
 // Using media queries with like this:
@@ -37,17 +56,115 @@ $on-laptop:        800px;
 //     }
 // }
 @mixin media-query($device) {
-    @media screen and (max-width: $device) {
-        @content;
-    }
+  @media screen and (max-width: $device) {
+    @content;
+  }
 }
 
 
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
-        "base",
-        "layout",
-        "syntax-highlighting"
+    "layout",
+    "syntax-highlighting"
 ;
 
+// MongoDB Design Site Styles
+header.site-header {
+  .container::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+  }
+  hr {
+    border-top: 3px solid #fff;
+  }
+  a.site-title {
+    text-indent: -9999px;
+    background: url('/images/mongodb-leaf-128x128.png') 0 10px no-repeat;
+    background-size: 32px 32px;
+  }
+}
+.container {
+  width: 970px;
+}
+.hero-unit {
+  background: $green2;
+  color: #fff;
+  margin-top: -59px;
+  padding-top: 128px;
+  height: 300px;
+
+  h1 {
+    font-weight: bold;
+    font-size: 94px;
+    letter-spacing: -5px;
+    line-height: 74px;
+  }
+}
+h1.post-title {
+  font-family: 'Akzidenz Cnd', Helvetica, Arial, sans-serif;
+  font-size: 64px;
+  text-transform: uppercase;
+}
+
+a {
+  color: $green2;
+}
+a:hover {
+  color: $green2;
+}
+
+.post-list {
+  margin-top: 50px;
+}
+.post-meta {
+  float: left;
+  width: 20%;
+  margin-top: 24px;
+  border-top: 6px solid $gray1;
+}
+.post-summary {
+  float: right;
+  width: 75%;
+
+  h2 {
+    line-height: 48px;
+  }
+  p {
+    font-size: 18px;
+    line-height: 32px;
+    font-family: 'Georgia', serif;
+  }
+  p.with-image {
+    width: 45%;
+    float: left;
+  }
+  .post-image {
+    width: 50%;
+    float: right;
+  }
+}
+.post-link {
+  color: $gray1;
+  font-family: 'Akzidenz Cnd', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 48px;
+}
+.post-link:hover {
+  text-decoration: none;
+}
+
+.post p {
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 24px;
+}
+
+footer.site-footer {
+  background: $gray1;
+  color: #fff;
+}
