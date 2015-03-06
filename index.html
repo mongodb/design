@@ -10,7 +10,7 @@ layout: default
   <ul class="post-list">
     {% for post in site.posts %}
       <li class="clearfix">
-        <div class="post-meta">
+        <div class="post-meta {% if post.image %}with-image{% endif %}">
           <div class="post-date">{{ post.date | date: "%b %-d, %Y" }}</div>
           <div class="post-section">
             <em class="in-label">in</em>
@@ -19,13 +19,9 @@ layout: default
         </div>
 
         <div class="post-summary">
+          {% if post.image %}<div class="img-mask"><img class="post-image" src="{{ site.baseurl }}/images/{{ post.image }}"></div>{% endif %}
           <h2><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
-          {% if post.image %}
-            <p class="with-image">{{ post.summary }}</p>
-            <img class="post-image" src="{{ site.baseurl }}/images/{{ post.image }}">
-          {% else %}
-            <p>{{ post.summary }}</p>
-          {% endif %}
+          <p>{{ post.summary }}</p>
         </div>
       </li>
     {% endfor %}

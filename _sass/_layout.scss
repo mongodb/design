@@ -24,14 +24,12 @@
 
 .site-nav {
     float: right;
-    line-height: 56px;
 
     .menu-icon {
         display: none;
     }
 
     .page-link {
-        color: #fff;
         line-height: $base-line-height;
 
         // Gaps between nav items, but not on the first one
@@ -132,11 +130,6 @@
 .post-meta {
     font-size: $small-font-size;
     color: $grey-color;
-}
-
-.post-link {
-    display: block;
-    font-size: 24px;
 }
 
 
