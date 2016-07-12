@@ -1,2 +1,2 @@
 # design
-A repository for design thinking at MongoDB
+A repository for design resources at MongoDB
