@@ -1,0 +1,26 @@
+.elementGroup {
+	padding: 0 0 2em 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.elementGroup .element {
+	display: inline-block;
+	padding-right: 1em;
+}
+
+.elementGroup h2 {
+	font-size: 1.8em;
+	font-weight: normal;
+}
+
+.elementGroup p {
+	margin-bottom: 1.25em;
+}
+
+pre {
+  margin: 3em 0 1em !important;
+}
+
+pre code {
+	font-size: 1em !important;
+}

@@ -1,0 +1,9 @@
+.wrap {
+  text-align: left;
+}
+
+.heading {
+  font-size: rem(24);
+  line-height: 2;
+  cursor: default;
+}
