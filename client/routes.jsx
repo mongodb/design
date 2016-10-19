@@ -9,7 +9,7 @@ import BrandDesignSystem from './components/brand-design-system/index.jsx';
 import BrandWelcome from './components/brand-design-system/welcome/index.jsx';
 import BrandTypography from './components/brand-design-system/typography/index.jsx';
 import BrandColors from './components/brand-design-system/colors/index.jsx';
-import BrandIconography from './components/brand-design-system/iconography/index.jsx';
+import BrandLogo from './components/brand-design-system/logo/index.jsx';
 
 import UIDesignSystem from './components/ui-design-system/index.jsx';
 import UIWelcome from './components/ui-design-system/welcome/index.jsx';
@@ -25,7 +25,7 @@ const routes = (
         <IndexRoute component={BrandWelcome} />
         <Route path="/brand-design-system/typography" component={BrandTypography} />
         <Route path="/brand-design-system/colors" component={BrandColors} />
-        <Route path="/brand-design-system/iconography" component={BrandIconography} />
+        <Route path="/brand-design-system/logo" component={BrandLogo} />
     </Route>
     <Route path="/ui-design-system" component={UIDesignSystem}>
         <IndexRoute component={UIWelcome} />

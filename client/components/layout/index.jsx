@@ -30,6 +30,7 @@ const Layout = ({ children }) => (
         <Link to="/brand-design-system">Brand &amp; Identity</Link>
         <Link to="/ui-design-system">UI Design System</Link>
         <Link to="/">Tools &amp; Resources</Link>
+        <Link to="http://mongodb.com/careers">Careers</Link>
       </div>
     </div>
     {children}

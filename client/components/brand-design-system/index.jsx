@@ -11,9 +11,9 @@ const BrandDesignSystem = ({ children }) => (
     <nav className={sidebar}>
     	<ul>
     		<Link to='/brand-design-system/'><li>Welcome</li></Link>
+            <Link to='/brand-design-system/logo'><li>Logo</li></Link>
     		<Link to='/brand-design-system/typography'><li>Typography</li></Link>
     		<Link to='/brand-design-system/colors'><li>Colors</li></Link>
-    		<Link to='/brand-design-system/iconography'><li>Iconography</li></Link>
     	</ul>
     </nav>
     <div className={content}>{children}</div>
