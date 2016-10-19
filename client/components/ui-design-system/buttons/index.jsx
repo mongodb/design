@@ -5,7 +5,7 @@
 import React from 'react';
 import { wrap, heading, elementGroup, element } from './style.css';
 
-const DSButtons = () => (
+const UIButtons = () => (
   <div className={wrap}>
     <h1 className={heading}>Buttons</h1>
     <div>
@@ -36,4 +36,4 @@ const DSButtons = () => (
   </div>
 );
 
-export default DSButtons;
+export default UIButtons;

@@ -1,15 +1,15 @@
 // ==================================================
-// DesignSystem - DSColors
+// DesignSystem - DSWelcome
 // ==================================================
 
 import React from 'react';
 import { wrap, heading } from './style.css';
 
-const DSColors = () => (
+const UIWelcome = () => (
   <div className={wrap}>
-    <h1 className={heading}>Colors</h1>
+    <h1 className={heading}>Welcome (UI)</h1>
     <div></div>
   </div>
 );
 
-export default DSColors;
+export default UIWelcome;

@@ -5,22 +5,34 @@ import Layout from './components/layout/index.jsx';
 import NotFound from './components/not_found.jsx';
 import Resources from './components/resources/index.jsx';
 
-import DesignSystem from './components/design-system/index.jsx';
-import DSWelcome from './components/design-system/welcome/index.jsx';
-import DSTypography from './components/design-system/typography/index.jsx';
-import DSColors from './components/design-system/colors/index.jsx';
-import DSButtons from './components/design-system/buttons/index.jsx';
-import DSForms from './components/design-system/forms/index.jsx';
+import BrandDesignSystem from './components/brand-design-system/index.jsx';
+import BrandWelcome from './components/brand-design-system/welcome/index.jsx';
+import BrandTypography from './components/brand-design-system/typography/index.jsx';
+import BrandColors from './components/brand-design-system/colors/index.jsx';
+import BrandIconography from './components/brand-design-system/iconography/index.jsx';
+
+import UIDesignSystem from './components/ui-design-system/index.jsx';
+import UIWelcome from './components/ui-design-system/welcome/index.jsx';
+import UITypography from './components/ui-design-system/typography/index.jsx';
+import UIColors from './components/ui-design-system/colors/index.jsx';
+import UIButtons from './components/ui-design-system/buttons/index.jsx';
+import UIForms from './components/ui-design-system/forms/index.jsx';
 
 const routes = (
   <Route path="/" component={Layout}>
     <IndexRoute component={Resources} />
-    <Route path="/design-system" component={DesignSystem}>
-    	<IndexRoute component={DSWelcome} />
-    	<Route path="/design-system/typography" component={DSTypography} />
-    	<Route path="/design-system/colors" component={DSColors} />
-    	<Route path="/design-system/buttons" component={DSButtons} />
-    	<Route path="/design-system/forms" component={DSForms} />
+    <Route path="/brand-design-system" component={BrandDesignSystem}>
+        <IndexRoute component={BrandWelcome} />
+        <Route path="/brand-design-system/typography" component={BrandTypography} />
+        <Route path="/brand-design-system/colors" component={BrandColors} />
+        <Route path="/brand-design-system/iconography" component={BrandIconography} />
+    </Route>
+    <Route path="/ui-design-system" component={UIDesignSystem}>
+        <IndexRoute component={UIWelcome} />
+        <Route path="/ui-design-system/typography" component={UITypography} />
+        <Route path="/ui-design-system/colors" component={UIColors} />
+        <Route path="/ui-design-system/buttons" component={UIButtons} />
+        <Route path="/ui-design-system/forms" component={UIForms} />
     </Route>
     <Route path="*" component={NotFound} />
   </Route>

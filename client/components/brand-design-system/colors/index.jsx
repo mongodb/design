@@ -1,15 +1,15 @@
 // ==================================================
-// DesignSystem - DSForms
+// DesignSystem - DSColors
 // ==================================================
 
 import React from 'react';
 import { wrap, heading } from './style.css';
 
-const DSForms = () => (
+const BrandColors = () => (
   <div className={wrap}>
-    <h1 className={heading}>Forms</h1>
+    <h1 className={heading}>Colors</h1>
     <div></div>
   </div>
 );
 
-export default DSForms;
+export default BrandColors;

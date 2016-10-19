@@ -27,8 +27,9 @@ const Layout = ({ children }) => (
         <h1><Link to="/">MongoDB.design</Link></h1>
       </div>
       <div className={navigation}>
-        <Link to="/">Tools & Resources</Link>
-        <Link to="/design-system">Design System</Link>
+        <Link to="/brand-design-system">Brand &amp; Identity</Link>
+        <Link to="/ui-design-system">UI Design System</Link>
+        <Link to="/">Tools &amp; Resources</Link>
       </div>
     </div>
     {children}

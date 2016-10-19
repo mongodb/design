@@ -1,0 +1,31 @@
+.wrap {
+  text-align: left;
+}
+
+.heading {
+  font-size: rem(24);
+  line-height: 2;
+  cursor: default;
+}
+
+nav.sidebar {
+	position: absolute;
+	left: 2em;
+	top: 10em;
+	text-align: left;
+}
+
+nav.sidebar ul {
+	list-style: none;
+}
+
+nav.sidebar ul li {
+	padding: 0.5em 0;
+}
+
+.content {
+	margin-left: 16em;
+    margin-top: 2em;
+    width: 90%;
+    max-width: 800px;
+}

@@ -6,19 +6,18 @@ import React from 'react';
 import { Link } from 'react-router';
 import { wrap, heading, content, sidebar } from './style.css';
 
-const DesignSystem = ({ children }) => (
+const BrandDesignSystem = ({ children }) => (
   <div className={wrap}>
     <nav className={sidebar}>
     	<ul>
-    		<Link to='/design-system/'><li>Welcome</li></Link>
-    		<Link to='/design-system/typography'><li>Typography</li></Link>
-    		<Link to='/design-system/colors'><li>Colors</li></Link>
-    		<Link to='/design-system/buttons'><li>Buttons</li></Link>
-    		<Link to='/design-system/forms'><li>Forms</li></Link>
+    		<Link to='/brand-design-system/'><li>Welcome</li></Link>
+    		<Link to='/brand-design-system/typography'><li>Typography</li></Link>
+    		<Link to='/brand-design-system/colors'><li>Colors</li></Link>
+    		<Link to='/brand-design-system/iconography'><li>Iconography</li></Link>
     	</ul>
     </nav>
     <div className={content}>{children}</div>
   </div>
 );
 
-export default DesignSystem;
+export default BrandDesignSystem;

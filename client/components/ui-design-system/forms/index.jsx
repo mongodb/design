@@ -1,15 +1,15 @@
 // ==================================================
-// DesignSystem - DSWelcome
+// DesignSystem - DSForms
 // ==================================================
 
 import React from 'react';
 import { wrap, heading } from './style.css';
 
-const DSWelcome = () => (
+const UIForms = () => (
   <div className={wrap}>
-    <h1 className={heading}>Welcome</h1>
+    <h1 className={heading}>Forms</h1>
     <div></div>
   </div>
 );
 
-export default DSWelcome;
+export default UIForms;
