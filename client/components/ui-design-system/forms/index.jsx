@@ -3,11 +3,11 @@
 // ==================================================
 
 import React from 'react';
-import { wrap, heading } from './style.css';
+import '../../../styling/root.less';
 
 const UIForms = () => (
-  <div className={wrap}>
-    <h1 className={heading}>Forms</h1>
+  <div className="wrap">
+    <h1 className="heading">Forms</h1>
     <div></div>
   </div>
 );
