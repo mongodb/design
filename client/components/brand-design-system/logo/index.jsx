@@ -3,11 +3,12 @@
 // ==================================================
 
 import React from 'react';
-import { wrap, heading } from './style.css';
+import '../../../styling/root.less';
+var logoLockup = require('../../../assets/logo-lockup.png');
 
 const BrandLogo = () => (
-    <div className={wrap}>
-        <h1 className={heading}>Logo</h1>
+    <div className="wrap">
+        <h1 className="heading">Logo</h1>
         <div className="row">
             <div className="col-md-6">
                 <h3>Basic Usage Guidelines</h3>
@@ -27,6 +28,7 @@ const BrandLogo = () => (
         <div className="row">
             <div className="col-md-6">
                 <p>Insert images of logo lockups</p>
+                <img src={logoLockup}/>
             </div>
         </div>
     </div>

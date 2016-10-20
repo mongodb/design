@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import '../../../styling/root.css';
+import '../../../styling/root.less';
 
 const UIButtons = () => (
   <div className="wrap">
@@ -30,6 +30,7 @@ const UIButtons = () => (
     		<div className="element"><button className="button button-is-xs">Extra Small</button></div>
     		<div className="element"><button className="button button-is-small">Small Button</button></div>
     		<div className="element"><button className="button">Normal Button</button></div>
+            <div className="element"><button className="button button-is-large">Large Button</button></div>
     	</div>
 
     </div>

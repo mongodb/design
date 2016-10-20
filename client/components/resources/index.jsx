@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import '../../styling/root.css';
+import '../../styling/root.less';
 
 const Resources = () => (
   <div className="wrap">

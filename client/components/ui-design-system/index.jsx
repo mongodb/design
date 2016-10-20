@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import '../../styling/root.css';
+import '../../styling/root.less';
 
 const UIDesignSystem = ({ children }) => (
   <div className="wrap">

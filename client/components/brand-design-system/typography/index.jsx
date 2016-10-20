@@ -3,11 +3,11 @@
 // ==================================================
 
 import React from 'react';
-import { wrap, heading } from './style.css';
+import '../../../styling/root.less';
 
 const BrandTypography = () => (
-  <div className={wrap}>
-    <h1 className={heading}>Typography</h1>
+  <div className="wrap">
+    <h1 className="heading">Typography</h1>
     <div></div>
   </div>
 );

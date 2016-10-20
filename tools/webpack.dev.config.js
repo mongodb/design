@@ -33,13 +33,18 @@ module.exports = {
         loaders: ['babel'],
         exclude: /node_modules/,
       },
+      // {
+      //   test: /\.css$/,
+      //   loaders: [
+      //     'style?sourceMap',
+      //     'css?modules&importLoaders=1&localIdentName=[local]',
+      //     'postcss',
+      //   ],
+      // },
       {
-        test: /\.css$/,
-        loaders: [
-          'style?sourceMap',
-          'css?modules&importLoaders=1&localIdentName=[local]',
-          'postcss',
-        ],
+        test: /\.less$/,
+        exclude: /node_modules/,
+        loader: 'style!css!less'
       },
       {
         test: /\.(png|jpg|gif|ico)$/,

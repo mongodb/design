@@ -1,5 +1,7 @@
-@import 'normalize.css';
-@import 'colors.css';
+// @import 'normalize.css';
+@import (reference) 'palette.less';
+
+
 
 html,
 body {
@@ -49,9 +51,9 @@ textarea {
   border: 0;
   outline: none;
 }
-input:-webkit-autofill: {
-  -webkit-box-shadow: 0 0 0 1000px #fff inset;
-}
+// input:-webkit-autofill: {
+//   -webkit-box-shadow: 0 0 0 1000px #fff inset;
+// }
 textarea {
   resize: none;
 }
@@ -62,29 +64,35 @@ p {
   margin: 0;
 }
 
+.container {
+  position: relative;
+}
+
 .wrap {
   margin: 4em 0 0 8em;
 }
 
 .header {
-  height: 6em;
+  height: 60px;
+  background: @gray8;
 }
 
 .brand {
   position: absolute;
-  top: 2em;
-  left: 2em;
+  left: 0;
+  top: 8px;
 }
 
 .brand h1 {
   font-weight: bold;
-  font-size: 2em;
+  font-size: 24px;
+  line-height: 0;
 }
 
 .navigation {
   position: absolute;
-  right: 6em;
-  top: 3em;
+  right: 0;
+  top: 20px;
 }
 
 .navigation a {

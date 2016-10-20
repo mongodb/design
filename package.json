@@ -48,6 +48,8 @@
     "node": ">=4.4"
   },
   "dependencies": {
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
     "normalize.css": "^4.2.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
