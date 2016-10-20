@@ -10,11 +10,11 @@ const UIDesignSystem = ({ children }) => (
   <div className="wrap">
     <nav className="sidebar">
     	<ul>
-    		<Link to='/ui-design-system/'><li>Welcome</li></Link>
-    		<Link to='/ui-design-system/typography'><li>Typography</li></Link>
-    		<Link to='/ui-design-system/colors'><li>Colors</li></Link>
-    		<Link to='/ui-design-system/buttons'><li>Buttons</li></Link>
-    		<Link to='/ui-design-system/forms'><li>Forms</li></Link>
+    		<li><Link to='/ui-design-system/'>Welcome</Link></li>
+    		<li><Link to='/ui-design-system/typography'>Typography</Link></li>
+    		<li><Link to='/ui-design-system/colors'>Colors</Link></li>
+    		<li><Link to='/ui-design-system/buttons'>Buttons</Link></li>
+    		<li><Link to='/ui-design-system/forms'>Forms</Link></li>
     	</ul>
     </nav>
     <div className="content">{children}</div>

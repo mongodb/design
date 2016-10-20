@@ -80,13 +80,23 @@ p {
 .brand {
   position: absolute;
   left: 0;
-  top: 8px;
+  top: -9px;
 }
 
 .brand h1 {
   font-weight: bold;
-  font-size: 24px;
-  line-height: 0;
+  font-size: 22px;
+  line-height: 18px;
+  letter-spacing: -1px;
+}
+
+.brand h1 a {
+  color: @gray1;
+
+  &:hover {
+    text-decoration: none;
+    color: @gray0;
+  }
 }
 
 .navigation {
@@ -96,13 +106,15 @@ p {
 }
 
 .navigation a {
-  font-size: 0.9em;
-  font-weight: bold;
-  padding: 0 1em;
-}
+  font-size: 13px;
+  font-weight: normal;
+  padding: 0 0 0 20px;
+  color: @gray2;
 
-.navigation a:hover {
-  color: green;
+  &:hover {
+    color: @gray0;
+    text-decoration: none;
+  }
 }
 
 .wrap {
@@ -116,8 +128,8 @@ p {
 
 nav.sidebar {
   position: absolute;
-  left: 2em;
-  top: 10em;
+  left: 0;
+  top: 100px;
   text-align: left;
 }
 
@@ -126,7 +138,23 @@ nav.sidebar ul {
 }
 
 nav.sidebar ul li {
-  padding: 0.5em 0;
+  border-bottom: 1px solid @gray7;
+
+  // &:first-child {
+  //   border-top: 1px solid @gray7;
+  // }
+
+  a {
+    display: block;
+    padding: 10px 0;
+    width: 160px;
+    color: @gray4;
+
+    &:hover {
+      color: @gray2;
+      text-decoration: none;
+    }
+  }
 }
 
 .content {
