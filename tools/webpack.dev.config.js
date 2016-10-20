@@ -37,7 +37,7 @@ module.exports = {
         test: /\.css$/,
         loaders: [
           'style?sourceMap',
-          'css?modules&importLoaders=1&localIdentName=[local]__[hash:base64:5]',
+          'css?modules&importLoaders=1&localIdentName=[local]',
           'postcss',
         ],
       },

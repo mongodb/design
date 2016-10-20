@@ -4,11 +4,11 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import { wrap, heading, content, sidebar } from './style.css';
+import '../../styling/root.css';
 
 const UIDesignSystem = ({ children }) => (
-  <div className={wrap}>
-    <nav className={sidebar}>
+  <div className="wrap">
+    <nav className="sidebar">
     	<ul>
     		<Link to='/ui-design-system/'><li>Welcome</li></Link>
     		<Link to='/ui-design-system/typography'><li>Typography</li></Link>
@@ -17,7 +17,7 @@ const UIDesignSystem = ({ children }) => (
     		<Link to='/ui-design-system/forms'><li>Forms</li></Link>
     	</ul>
     </nav>
-    <div className={content}>{children}</div>
+    <div className="content">{children}</div>
   </div>
 );
 
