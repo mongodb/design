@@ -31,7 +31,7 @@ const Layout = ({ children }) => (
           <Link to="/brand-design-system">Brand &amp; Identity</Link>
           <Link to="/ui-design-system">UI Design System</Link>
           <Link to="/">Tools &amp; Resources</Link>
-          <Link to="http://mongodb.com/careers">Careers</Link>
+          <a href="http://mongodb.com/careers" target="_blank">Careers</a>
         </div>
       </div>
     </div>
