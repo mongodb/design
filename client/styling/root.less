@@ -70,6 +70,7 @@ p {
 
 .wrap {
   margin: 4em 0 0 8em;
+  transition: margin 300ms ease;
 }
 
 .header {
@@ -131,6 +132,7 @@ nav.sidebar {
   left: 0;
   top: 100px;
   text-align: left;
+  transition: left 300ms ease;
 }
 
 nav.sidebar ul {
@@ -180,4 +182,24 @@ nav.sidebar ul li {
 
 .elementGroup p {
   margin-bottom: 1.25em;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+@media (max-width: 650px) {
+    img {
+        margin-bottom: 1.5rem;
+    } 
+}
+
+@media (max-width: 767px) {
+    nav.sidebar {
+      left:-160px;
+    }
+    .wrap {
+      margin-left: 2em;
+    }
 }
