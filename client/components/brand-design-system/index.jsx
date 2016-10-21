@@ -16,9 +16,8 @@ const BrandDesignSystem = ({ children }) => (
         		<li><Link to='/brand-design-system/colors'>Colors</Link></li>
         	</ul>
         </nav>
-    <div className="content #page-content-wrapper">{children}</div>
+    <div className="content">{children}</div>
   </div>
 );
 
 export default BrandDesignSystem;
-
