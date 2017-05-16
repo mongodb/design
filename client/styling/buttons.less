@@ -1,0 +1,208 @@
+/* Global REM Conversion 1rem = 16px */
+
+.button {
+  /* Global applied styles */
+  background: @buttonBackground;
+  background-image: @buttonGradient;
+  border-radius: 3px;
+  border: 1px solid @buttonBorder;
+  box-shadow: @buttonShadowInner;
+  color: @buttonColor;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 9px 12px;
+  transition: all 120ms ease;
+  text-decoration: none;
+  cursor: pointer;
+
+  &-is-xs {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 3px 6px;
+
+    &.button-has-icon {
+      padding-top: 1px;
+    }
+  }
+
+  &-is-small {
+    padding: 5px 8px;
+  }
+
+  &-is-large {
+    font-size: 16px;
+    padding: 13px 20px;
+  }
+
+  &-is-full {
+    display: block;
+    width: 100%;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    color: @buttonDisabled;
+    border-color: @gray5;
+    background: @gray7;
+    box-shadow: none;
+  }
+
+  &:focus, &:hover {
+    &:not([disabled]) {
+      color: @buttonFocusColor;
+      text-decoration: none;
+      border-color: @buttonFocusBorder;
+      background: @buttonFocusBackground;
+      background-image: @buttonHoverGradient;
+      box-shadow: @buttonFocusShadowInner, @buttonShadowOuter;
+      outline: none;
+    }
+  }
+
+  &:active:not([disabled]) {
+    border-color: @buttonFocusBorder;
+    background-image: @buttonFocusGradient;
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.1);
+    outline: none;
+  }
+
+  /* Style variations */
+  &-is-alert-info {
+    background: none;
+    box-shadow: none;
+    color: @alertButtonColor;
+    border-color: @alertButtonColor;
+
+    &:focus, &:hover, &:active {
+      &:not([disabled]) {
+        background: none;
+        color: @alertButtonColor;
+        border-color: @alertButtonColor;
+        box-shadow: none;
+      }
+    }
+  }
+
+  &-is-danger {
+    color: @pw;
+    border: 1px solid @dangerButtonBorder;
+    background-color: @dangerButtonBackground;
+    background-image: @dangerButtonGradient;
+    box-shadow: @dangerButtonShadowInner;
+
+    &:focus, &:hover {
+      &:not([disabled]) {
+        color: @pw;
+        border-color: @dangerButtonFocusBorder;
+        background-color: @dangerButtonFocusBackground;
+        background-image: @dangerButtonHoverGradient;
+        box-shadow: @buttonShadowOuter, @dangerButtonShadowInner;
+      }
+    }
+    &:active:not([disabled]) {
+      background: @dangerButtonActiveGradient;
+      box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &-is-primary {
+    color: @pw;
+    border: 1px solid @primaryButtonBorder;
+    background-color: @primaryButtonBackground;
+    background-image: @primaryButtonGradient;
+    box-shadow: @primaryButtonShadowInner;
+
+    &:focus, &:hover {
+      &:not([disabled]) {
+        color: @pw;
+        border-color: @primaryButtonFocusBorder;
+        background-color: @primaryButtonFocusBackground;
+        background-image: @primaryButtonHoverGradient;
+        box-shadow: @buttonShadowOuter, @primaryButtonShadowInner;
+      }
+    }
+    &:active:not([disabled]) {
+      color: @pw;
+      background-color: @primaryButtonBackground;
+      background-image: @primaryButtonFocusGradient;
+      border-color: @primaryButtonFocusBorder;
+      box-shadow: @primaryButtonActiveShadowInner;
+      outline: none;
+    }
+  }
+
+  &-is-info {
+    color: @infoButtonColor;
+    border: 1px solid @infoButtonColor;
+    background: @infoButtonBackground;
+    box-shadow: none;
+
+    &:focus, &:hover, &:active {
+      &:not([disabled]) {
+        color: @pw;
+        border-color: @primaryButtonBorder;
+        background-color: @primaryButtonFocusBackground;
+        background-image: @primaryButtonGradient;
+        border-color: @infoButtonFocus;
+        box-shadow: @primaryButtonShadowInner;
+    }
+    }
+    &:active:not([disabled]) {
+      color: @pw;
+      background-color: @primaryButtonBackground;
+      background-image: @primaryButtonFocusGradient;
+      border-color: @primaryButtonFocusBorder;
+      box-shadow: @primaryButtonActiveShadowInner;
+      outline: none;
+    }
+  }
+
+  &-is-default-inverse {
+    color: @pw;
+    background: linear-gradient(-180deg, #818487 0%, #464c4f 100%);
+    border-color: #303434;
+    box-shadow: inset 0 -1px 0 0 #303434;
+    &:focus, &:hover {
+      &:not([disabled]) {
+        color: @pw;
+        background: linear-gradient(-180deg, #7c7f82 0%, #41474a 100%);
+        border-color: #303030;
+        box-shadow: inset 0 -1px 0 0 #303434;
+      }
+    }
+    &:active:not([disabled]) {
+      color: @pw;
+      background: linear-gradient(-180deg, #464c4f 0%, #818487 100%);
+      border-color: #303434;
+    }
+  }
+
+
+  &-is-selected {
+    background: @gray7;
+
+    &:focus, &:hover, &:active {
+      &:not([disabled]) {
+        background: @gray6;
+      }
+    }
+  }
+
+  &-is-no-transition {
+    transition: none;
+
+    i {
+      transition: none;
+    }
+  }
+
+  &-has-ellipsis-only {
+    padding: 7px 12px 5px;
+  }
+
+  &-left-icon {
+    padding-right: 5px;
+  }
+}

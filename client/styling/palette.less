@@ -1,3 +1,5 @@
+/* MongoDB Color Palette */
+/* commented colors have been deprecated */
 @green0: #365221;
 @green1: #507b32;
 @green2: #6ba442;
@@ -6,20 +8,12 @@
 @green5: #c4dbb3;
 @green8: #f0f7ec;
 
-/* Logo Green */
-@green9: #589636;
-@green10: #69B241;
-
 @gray0: #303434;
 @gray1: #464c4f;
 @gray2: #626668;
 @gray3: #818487;
 @gray4: #9fa1a2;
 @gray5: #babdbe;
-
-/* Logo Grays */
-@gray6: #484749;
-@gray7: #C1BfBE;
 
 @mongodbslate: #4d5359;
 
@@ -28,39 +22,154 @@
 @gray7: #e8e9e9;
 @gray8: #f4f6f6;
 
-/* MongoDB Brand Colors */
-@charcoal: #212121;
-@magenta: #e24f6a;
-@clementine: #FCA539;
-@blue: #32BDCF;
+/* Other Colors */
+@blue: #43b1e5;
+@selectBlue: #5897fb;
+@red: #ed271c;
+@lightRed: #ffeaea;
+@yellow: @alertOrange;
+@pw: #fff;
+@cautionOrange: @alertOrange;
+@errorBackground: #fdd0d1;
+@validGreen: #f1f2ed;
+@navyBlue: #1d6c92;
 
-.gray0    { background-color: @gray0; }
-.gray1    { background-color: @gray1; }
-.gray2    { background-color: @gray2; }
-.gray3    { background-color: @gray3; }
-.gray4    { background-color: @gray4; }
-.gray5    { background-color: @gray5; }
+/* Syntax Highlighting */
+@stringSyntaxHighlight: steelblue;
+@booleanSyntaxHighlight: purple;
+@objectIdSyntaxHighlight: orangered;
+@integerSyntaxHighlight: #145a32;
+@longSyntaxHighlight: #196f3d;
+@doubleSyntaxHighlight: #1e8449;
+@dateSyntaxHighlight: firebrick;
 
-.gray6    { background-color: @gray6; }
-.gray7    { background-color: @gray7; }
-.gray8    { background-color: @gray8; }
+/* Text Colors */
+/* default text color is @gray1 */
+@linkText: #006cbc;
+@linkOnDark: #2898dd;
+@warningText: #ffb618;
+@successText: #6ca439;
+@mutedText: @gray4;
+@veryMutedText: @gray5;
+@subNavText: #6f6763;
 
-.gray6    { background-color: @gray6; }
-.gray7    { background-color: @gray7; }
+/*Chart Colors*/
+@chart0: #F68A1E;
+@chart1: @blue;
+@chart2: #F38183;
+@chart3: #26A348;
+@chart4: #FBB129;
+@chart5: #92A83B;
+@chart6: #46929A;
+@chart7: #D381B3;
+@chart8: #85CA98;
 
-.mongodbslate {background-color: @mongodbslate;}
+@chartAverage: #d29e29;
+@chartTotal: #6ba442;
 
-.green0    { background-color: @green0; }
-.green1    { background-color: @green1; }
-.green2    { background-color: @green2; }
-.green3    { background-color: @green3; }
-.green4    { background-color: @green4; }
-.green5    { background-color: @green5; }
+@chartRestart: #ef4c65;
+@chartBecamePrimary: #fbb129;
+@chartBecameSecondary: #7f6a4e;
 
-.green9    { background-color: @green9; }
-.green10   { background-color: @green10; }
+@chart7Background: #f4e1ed;
 
-.charcoal   {background-color: @charcoal;}
-.magenta   {background-color: @magenta;}
-.clementine   {background-color: @clementine;}
-.blue   {background-color: @blue;}
+/* Alert Colors */
+@alertOrange: #fbb129;
+@alertOrangeBg: #FFFBF5;
+@alertOrangeBorder: #FEE9C3;
+@alertRed: #ef4c4c;
+@alertRedBg: #FFF6F6;
+@alertRedBorder: #FBCCCC;
+@alertRedDark: darken(@alertRed, 25%);
+@alertBlue: #43b1e5;
+@alertBlueBg: #D9EDF7;
+@alertBlueBorder: #B4DFF3;
+@alertGreen: @green2;
+@alertGreenBg: #F8FBF6;
+@alertGreenBorder: #D5E6C9;
+@alertBlueInputDisabled: #C9DBE4;
+@alertBlueTextDisabled: #5A869C;
+
+/* Semantic Colors */
+
+@inactiveIcon: @gray4;
+
+/* Button Colors */
+@buttonColor: @gray1;
+@buttonBorder: @gray6;
+@buttonBackground: @pw;
+
+
+// Default Button State Styles
+@buttonFocusColor: @gray0;
+@buttonFocusBorder: @gray5;
+@buttonFocusBackground: @pw;
+@buttonShadowOuter: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+@buttonShadowInner: inset 0 -1px 0 0 @gray6;
+@buttonFocusShadowInner: inset 0 -1px 0 0 @gray5;
+@buttonGradient: linear-gradient(-180deg, @pw 0%, lighten(@gray5, 20%));
+@buttonHoverGradient: linear-gradient(-180deg, lighten(@gray5, 50%) 0%, lighten(@gray5, 15%));
+@buttonFocusGradient: linear-gradient(-180deg, lighten(@gray5, 15%) 0%, lighten(@gray5, 50%) 100%);
+
+
+// Default Button on Dark State Styles
+@darkButtonBorder: @gray0;
+
+@darkButtonColor: @pw;
+
+@darkButtonGradient: linear-gradient(-180deg, @gray3 0%, @gray1 100%);
+@darkButtonFocusGradient: linear-gradient(-180deg, darken(@gray3, 2%) 0%, darken(@gray1, 2%) 100%);
+@darkButtonActiveGradient: linear-gradient(-180deg, @gray1 0%, @gray3 100%);
+
+@darkButtonShadowInner: inset 0 -1px 0 0 @gray0;
+
+
+// Disabled Button State Styles
+@buttonDisabled: @gray3;
+
+
+// Primary Button State Styles
+@primaryButtonBorder: darken(@green1, 2%);
+@primaryButtonFocusBorder: darken(@green1, 7%);
+@primaryButtonBorderDisabled: lighten(@green1, 25%);
+
+@primaryButtonBackground: @green2;
+@primaryButtonFocusBackground: darken(@green2, 5%);
+
+@primaryButtonGradient: linear-gradient(-180deg, @green2 0%, lighten(@green1, 2.5%) 100%);
+@primaryButtonHoverGradient: linear-gradient(-180deg, darken(@green2, 2.5%) 0%, darken(@green1, 2.5%) 100%);
+@primaryButtonFocusGradient: linear-gradient(-180deg, darken(@green1, 2.5%) 0%, darken(@green2, 2.5%) 100%);
+
+@primaryButtonShadowInner: inset 0 -1px 0 0 rgba(0,0,0,0.15);
+@primaryButtonFocusShadowInner: inset 0 -1px 0 0 rgba(0,0,0,0.3);
+@primaryButtonActiveShadowInner: inset 0 2px 2px 0 rgba(0,0,0,0.2);
+
+@primaryButtonDisabled: lighten(@green2, 20%);
+
+
+
+@infoButtonColor: @green3;
+@infoButtonBackground: transparent;
+@infoButtonFocus: darken(@green2, 5%);
+@infoButtonDisabled: lighten(@green3, 20%);
+
+@alertButtonBlue: #31708f;
+@alertButtonColor: @alertButtonBlue;
+@alertButtonDisabled: lighten(@alertButtonBlue, 30%);
+
+
+// Danger Button State Styles
+@dangerButtonBorder: #97130c;
+@dangerButtonFocusBorder: darken(@dangerButtonBackground, 10%);
+@dangerButtonBorderDisabled: lighten(@dangerButtonBorder, 45%);
+
+@dangerButtonBackground: #bd180f;
+@dangerButtonFocusBackground: darken(@dangerButtonBackground, 5%);
+
+@dangerButtonGradient: linear-gradient(-180deg, darken(@alertRed, 10%) 0%, darken(@alertRed, 20%) 100%);
+@dangerButtonHoverGradient: linear-gradient(-180deg, darken(@alertRed, 15%) 0%, darken(@alertRed, 25%) 100%);
+@dangerButtonActiveGradient: linear-gradient(-180deg, darken(@alertRed, 20%) 0%, darken(@alertRed, 10%) 100%);
+
+@dangerButtonDisabled: lighten(@dangerButtonBackground, 40%);
+
+@dangerButtonShadowInner: inset 0 -1px 0 0 darken(@alertRed, 25%);

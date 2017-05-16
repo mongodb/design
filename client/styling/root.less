@@ -1,47 +1,31 @@
 // @import 'normalize.css';
-@import 'palette.less';
+@import 'buttons.less';
 @import 'colors.less';
-
-
+@import 'grid.less';
+@import 'palette.less';
+@import 'typography.less';
 
 html,
 body {
   width: 100%;
   height: 100%;
 }
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 1.4;
   color: $darkGray;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
 }
 
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   box-sizing: border-box;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-a:hover {
-  color: inherit;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  padding: 0;
-  margin: 0;
-  font-weight: 400;
-  line-height: 1.2;
 }
 
 input,
@@ -52,92 +36,73 @@ textarea {
   border: 0;
   outline: none;
 }
-// input:-webkit-autofill: {
-//   -webkit-box-shadow: 0 0 0 1000px #fff inset;
-// }
+
 textarea {
   resize: none;
 }
 
-ul,
-p,
-li {
+ul, li {
   padding: 0;
   margin: 0;
-  position:relative;
-  margin-bottom:0.5em;
-  margin-left: 0.5em;
+  position: relative;
+  margin-bottom: 0.5em;
 }
 
 .container {
   position: relative;
+  width: 100%;
 }
 
 .wrap {
-  margin: 4em 0 0 8em;
-  transition: margin 300ms ease;
+  width: 100%;
+}
+
+.content {
+  width: 100%;
+  max-width: 800px;
+  margin: 50px auto 0;
 }
 
 .header {
-  height: 60px;
   background: @gray8;
+  //*//
+  //REPLACE PADDING//
+  //WITH UTILITY CLASS//
+  padding: 1rem 0.75rem;
 }
 
 .brand {
-  position: absolute;
-  left: 0;
-  top: -9px;
+  float: left;
 }
 
 .brand h1 {
-  font-weight: bold;
   font-size: 22px;
-  line-height: 18px;
-  letter-spacing: -1px;
-}
-
-.brand h1 a {
-  color: @gray1;
-
-  &:hover {
-    text-decoration: none;
-    color: @gray0;
-  }
+  font-weight: 600;
+  margin: 0;
 }
 
 .navigation {
-  position: absolute;
-  right: 0;
-  top: 20px;
+  float: right;
 }
 
 .navigation a {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: normal;
-  padding: 0 0 0 20px;
-  color: @gray2;
+  padding: 10px;
+  color: @gray1;
 
   &:hover {
-    color: @gray0;
+    color: @gray4;
     text-decoration: none;
   }
-}
-
-.wrap {
-  text-align: left;
-}
-
-.heading {
-  line-height: 2;
-  cursor: default;
 }
 
 nav.sidebar {
   position: absolute;
-  left: 0;
-  top: 100px;
-  text-align: left;
-  transition: left 300ms ease;
+  top: 50px;
+  width: 200px;
+  left: 1.75rem;
+  font-size: 14px;
 }
 
 nav.sidebar ul {
@@ -145,47 +110,16 @@ nav.sidebar ul {
 }
 
 nav.sidebar ul li {
-  border-bottom: 1px solid @gray7;
-
-  // &:first-child {
-  //   border-top: 1px solid @gray7;
-  // }
-
+  margin-bottom: 0;
   a {
     display: block;
-    padding: 10px 0;
-    width: 160px;
-    color: @gray4;
-
+    padding: 4px 0;
+    color: @gray1;
     &:hover {
-      color: @gray2;
+      color: @blue;
       text-decoration: none;
     }
   }
-}
-
-.content {
-  width: 90%;
-  max-width: 800px;
-}
-
-.elementGroup {
-  padding: 0 0 2em 0;
-  border-bottom: 1px solid #ccc;
-}
-
-.elementGroup .element {
-  display: inline-block;
-  padding-right: 1em;
-}
-
-.elementGroup h2 {
-  font-size: 1.8em;
-  font-weight: normal;
-}
-
-.elementGroup p {
-  margin-bottom: 1.25em;
 }
 
 img {
@@ -194,25 +128,41 @@ img {
   padding: 1em;
 }
 
-@media (max-width: 650px) {
-    img {
-        margin-bottom: 1.5rem;
-    } 
+pre {
+  background-color: @gray8;
+  padding: 15px;
+  border: 1px solid @gray6;
+  border-radius: 3px;
 }
 
-@media (max-width: 767px) {
-    nav.sidebar {
-      left:-160px;
-    }
-    .wrap {
-      margin-left: 2em;
-    }
+.button {
+  margin-right: 5px;
 }
 
-.row-content {
-  margin: 1em 0 0 1em;
+.u-mb-1 {
+  margin-bottom: 1rem;
 }
 
-hr {
-  border-color: @gray8;
+.u-mb-3 {
+  margin-bottom: 3rem;
+}
+
+.grid-item span {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  text-align: center;
+  background-color: @blue;
+  display: block;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.code {
+  display: inline-block;
+  background-color: @gray7;
+  padding: 0 0.325rem;
+  font-size: 14px;
+  font-family: monospace;
+  border-radius: 3px;
+  color: @gray0;
 }

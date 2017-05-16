@@ -16,7 +16,9 @@ import UIWelcome from './components/ui-design-system/welcome/index.jsx';
 import UITypography from './components/ui-design-system/typography/index.jsx';
 import UIColors from './components/ui-design-system/colors/index.jsx';
 import UIButtons from './components/ui-design-system/buttons/index.jsx';
+import UIGrid from './components/ui-design-system/grid/index.jsx';
 import UIForms from './components/ui-design-system/forms/index.jsx';
+import UITables from './components/ui-design-system/tables/index.jsx';
 
 const routes = (
   <Route path="/" component={Layout}>
@@ -32,7 +34,9 @@ const routes = (
         <Route path="/ui-design-system/typography" component={UITypography} />
         <Route path="/ui-design-system/colors" component={UIColors} />
         <Route path="/ui-design-system/buttons" component={UIButtons} />
+        <Route path="/ui-design-system/grid" component={UIGrid} />
         <Route path="/ui-design-system/forms" component={UIForms} />
+        <Route path="/ui-design-system/tables" component={UITables} />
     </Route>
     <Route path="*" component={NotFound} />
   </Route>
