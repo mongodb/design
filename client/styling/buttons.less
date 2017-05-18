@@ -1,7 +1,6 @@
 /* Global REM Conversion 1rem = 16px */
 
 .button {
-  /* Global applied styles */
   background: @buttonBackground;
   background-image: @buttonGradient;
   border-radius: 3px;
@@ -12,7 +11,6 @@
   font-size: 14px;
   font-weight: normal;
   padding: 9px 12px;
-  transition: all 120ms ease;
   text-decoration: none;
   cursor: pointer;
 
@@ -179,7 +177,6 @@
     }
   }
 
-
   &-is-selected {
     background: @gray7;
 
@@ -187,14 +184,6 @@
       &:not([disabled]) {
         background: @gray6;
       }
-    }
-  }
-
-  &-is-no-transition {
-    transition: none;
-
-    i {
-      transition: none;
     }
   }
 

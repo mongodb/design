@@ -7,9 +7,9 @@ import '../../../styling/root.less';
 
 const UIGrid = () => (
   <div className="wrap">
-    <div className="row">
+    <div className="row u-mb-1">
       <div className="columns small-12">
-        <h1 className="heading">Grid</h1>
+        <h1>Grid</h1>
       </div>
     </div>
     <div className="row u-mb-1">

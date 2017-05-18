@@ -1,8 +1,10 @@
 // @import 'normalize.css';
 @import 'buttons.less';
 @import 'colors.less';
+@import 'forms.less';
 @import 'grid.less';
 @import 'palette.less';
+@import 'tables.less';
 @import 'typography.less';
 
 html,
@@ -135,12 +137,12 @@ pre {
   border-radius: 3px;
 }
 
-.button {
-  margin-right: 5px;
-}
-
 .u-mb-1 {
   margin-bottom: 1rem;
+}
+
+.u-mb-2 {
+  margin-bottom: 2rem;
 }
 
 .u-mb-3 {
@@ -159,10 +161,16 @@ pre {
 
 .code {
   display: inline-block;
-  background-color: @gray7;
+  border: 1px solid @gray5;
   padding: 0 0.325rem;
   font-size: 14px;
   font-family: monospace;
   border-radius: 3px;
   color: @gray0;
+}
+
+.button-ui {
+  .button {
+    margin-right: 5px;
+  }
 }

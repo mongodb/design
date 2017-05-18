@@ -6,10 +6,10 @@ import React from 'react';
 import '../../../styling/root.less';
 
 const UIButtons = () => (
-  <div className="wrap">
-    <div className="row">
+  <div className="wrap button-ui">
+    <div className="row u-mb-1">
       <div className="columns small-12">
-        <h1 className="heading">Buttons</h1>
+        <h1>Buttons</h1>
       </div>
     </div>
     <div className="row u-mb-1">

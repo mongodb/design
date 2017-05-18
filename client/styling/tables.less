@@ -1,0 +1,41 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+
+  tr {
+    &:hover {
+      td {
+        background-color: @gray8;
+        .button {
+          opacity: 1;
+        }
+      }
+    }
+    &:last-child {
+      td {
+        border-bottom: none;
+      }
+    }
+  }
+
+  th, td {
+    text-align: left;
+    padding: 10px;
+    &.has-actions {
+      text-align: right;
+      .button {
+        margin-left: 5px;
+        opacity: 0;
+      }
+    }
+  }
+
+  th {
+    border-bottom: 2px solid @gray7;
+  }
+
+  td {
+    border-bottom: 1px solid @gray7;
+  }
+}
