@@ -6,6 +6,7 @@
 @import 'palette.less';
 @import 'tables.less';
 @import 'typography.less';
+@import 'utilities.less';
 
 html,
 body {
@@ -66,7 +67,7 @@ ul, li {
 }
 
 .header {
-  background: @gray8;
+  background: @gray7;
   //*//
   //REPLACE PADDING//
   //WITH UTILITY CLASS//
@@ -81,6 +82,9 @@ ul, li {
   font-size: 22px;
   font-weight: 600;
   margin: 0;
+  a {
+    color: @gray1;
+  }
 }
 
 .navigation {
@@ -94,7 +98,7 @@ ul, li {
   color: @gray1;
 
   &:hover {
-    color: @gray4;
+    color: @linkText;
     text-decoration: none;
   }
 }
@@ -118,7 +122,7 @@ nav.sidebar ul li {
     padding: 4px 0;
     color: @gray1;
     &:hover {
-      color: @blue;
+      color: @linkText;
       text-decoration: none;
     }
   }
@@ -131,29 +135,17 @@ img {
 }
 
 pre {
-  background-color: @gray8;
+  background-color: @gray7;
   padding: 15px;
-  border: 1px solid @gray6;
+  border: 1px solid @gray5;
   border-radius: 3px;
 }
 
-.u-mb-1 {
-  margin-bottom: 1rem;
-}
-
-.u-mb-2 {
-  margin-bottom: 2rem;
-}
-
-.u-mb-3 {
-  margin-bottom: 3rem;
-}
-
 .grid-item span {
-  padding-top: 13px;
-  padding-bottom: 13px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   text-align: center;
-  background-color: @blue;
+  background-color: @selectBlue;
   display: block;
   width: 100%;
   border-radius: 3px;
@@ -167,10 +159,16 @@ pre {
   font-family: monospace;
   border-radius: 3px;
   color: @gray0;
+  background-color: #fff;
 }
 
-.button-ui {
-  .button {
-    margin-right: 5px;
+.color-block {
+  padding: 40px 0;
+  text-align: center;
+  display: block;
+  border-radius: 3px;
+  .code {
+    border: none;
+    padding: 5px 10px;
   }
 }

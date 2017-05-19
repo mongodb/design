@@ -8,26 +8,24 @@
 @green5: #c4dbb3;
 @green8: #f0f7ec;
 
-@gray0: #303434;
-@gray1: #464c4f;
-@gray2: #626668;
-@gray3: #818487;
-@gray4: #9fa1a2;
-@gray5: #babdbe;
-
 @mongodbslate: #4d5359;
 
 /* UI Grays */
-@gray6: #d7dbdb;
-@gray7: #e8e9e9;
-@gray8: #f4f6f6;
+@gray0: #111111;
+@gray1: #303434;
+@gray2: #626668;
+@gray3: #9fa1a2;
+@gray4: #babdbe;
+@gray5: #d7dbdb;
+@gray6: #e8e9e9;
+@gray7: #f4f6f6;
 
 /* Other Colors */
 @blue: #43b1e5;
 @selectBlue: #5897fb;
 @red: #ed271c;
 @lightRed: #ffeaea;
-@yellow: @alertOrange;
+@yellow: #fbb129;
 @pw: #fff;
 @cautionOrange: @alertOrange;
 @errorBackground: #fdd0d1;
@@ -74,7 +72,7 @@
 @chart7Background: #f4e1ed;
 
 /* Alert Colors */
-@alertOrange: #fbb129;
+@alertOrange: @yellow;
 @alertOrangeBg: #FFFBF5;
 @alertOrangeBorder: #FEE9C3;
 @alertRed: #ef4c4c;
@@ -96,20 +94,20 @@
 
 /* Button Colors */
 @buttonColor: @gray1;
-@buttonBorder: @gray6;
+@buttonBorder: @gray5;
 @buttonBackground: @pw;
 
 
 // Default Button State Styles
 @buttonFocusColor: @gray0;
-@buttonFocusBorder: @gray5;
+@buttonFocusBorder: @gray4;
 @buttonFocusBackground: @pw;
 @buttonShadowOuter: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
 @buttonShadowInner: inset 0 -1px 0 0 @gray6;
 @buttonFocusShadowInner: inset 0 -1px 0 0 @gray5;
-@buttonGradient: linear-gradient(-180deg, @pw 0%, lighten(@gray5, 20%));
-@buttonHoverGradient: linear-gradient(-180deg, lighten(@gray5, 50%) 0%, lighten(@gray5, 15%));
-@buttonFocusGradient: linear-gradient(-180deg, lighten(@gray5, 15%) 0%, lighten(@gray5, 50%) 100%);
+@buttonGradient: linear-gradient(-180deg, @pw 0%, lighten(@gray5, 10%));
+@buttonHoverGradient: linear-gradient(-180deg, lighten(@gray5, 15%) 0%, lighten(@gray5, 3%));
+@buttonFocusGradient: linear-gradient(-180deg, lighten(@gray5, 3%) 0%, lighten(@gray5, 15%) 100%);
 
 
 // Default Button on Dark State Styles
@@ -125,7 +123,7 @@
 
 
 // Disabled Button State Styles
-@buttonDisabled: @gray3;
+@buttonDisabled: @gray2;
 
 
 // Primary Button State Styles
@@ -166,10 +164,60 @@
 @dangerButtonBackground: #bd180f;
 @dangerButtonFocusBackground: darken(@dangerButtonBackground, 5%);
 
-@dangerButtonGradient: linear-gradient(-180deg, darken(@alertRed, 10%) 0%, darken(@alertRed, 20%) 100%);
-@dangerButtonHoverGradient: linear-gradient(-180deg, darken(@alertRed, 15%) 0%, darken(@alertRed, 25%) 100%);
-@dangerButtonActiveGradient: linear-gradient(-180deg, darken(@alertRed, 20%) 0%, darken(@alertRed, 10%) 100%);
+@dangerButtonGradient: linear-gradient(-180deg, darken(@alertRed, 0%) 0%, darken(@alertRed, 15%) 100%);
+@dangerButtonHoverGradient: linear-gradient(-180deg, darken(@alertRed, 10%) 0%, darken(@alertRed, 25%) 100%);
+@dangerButtonActiveGradient: linear-gradient(-180deg, darken(@alertRed, 25%) 0%, darken(@alertRed, 10%) 100%);
 
 @dangerButtonDisabled: lighten(@dangerButtonBackground, 40%);
 
 @dangerButtonShadowInner: inset 0 -1px 0 0 darken(@alertRed, 25%);
+
+
+/* Gray Background Colors */
+
+.gray0 {
+	background-color: @gray0;
+}
+.gray1 {
+	background-color: @gray1;
+}
+.gray2 {
+	background-color: @gray2;
+}
+.gray3 {
+	background-color: @gray3;
+}
+.gray4 {
+	background-color: @gray4;
+}
+.gray5 {
+	background-color: @gray5;
+}
+.gray6 {
+	background-color: @gray6;
+}
+.gray7 {
+	background-color: @gray7;
+}
+
+
+/* UI Background Colors */
+
+.blue {
+	background-color: @selectBlue;
+}
+.dark-blue {
+	background-color: @navyBlue;
+}
+.red {
+	background-color: @red;
+}
+.light-red {
+	background-color: @lightRed;
+}
+.green {
+	background-color: @green2;
+}
+.yellow {
+	background-color: @yellow;
+}

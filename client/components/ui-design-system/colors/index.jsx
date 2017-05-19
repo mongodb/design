@@ -7,33 +7,109 @@ import '../../../styling/root.less';
 
 const UIColors = () => (
   <div className="wrap">
-    <h1 className="heading">Colors</h1>
-    <div className="elementGroup">
-      <h2>Standard Grays</h2>
-      <ul className="color-block">
-        <li className="gray0"></li>
-        <li className="gray1"></li>
-        <li className="gray2"></li>
-        <li className="gray3"></li>
-        <li className="gray4"></li>
-        <li className="gray5"></li>
-        <li className="gray6"></li>
-        <li className="gray7"></li>
-        <li className="gray8"></li>
-      </ul>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <h1>Colors</h1>
+      </div>
     </div>
-    <div className="elementGroup">
-      <h2>Greens</h2>
-      <ul className="color-block">
-        <li className="green0"></li>
-        <li className="green2"></li>
-        <li className="green3"></li>
-        <li className="green4"></li>
-        <li className="green5"></li>
-        <li className="green6"></li>
-        <li className="green7"></li>
-        <li className="green8"></li>
-      </ul>
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <h2>UI Colors</h2>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-3">
+        <span className="color-block blue">
+          <span className="code">@blue</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block red">
+          <span className="code">@red</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block green">
+          <span className="code">@green</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block yellow">
+          <span className="code">@yellow</span>
+        </span>
+      </div>
+    </div>
+    <div className="row u-mb-5">    
+      <div className="columns small-3">
+        <span className="color-block dark-blue">
+          <span className="code">@navyBlue</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block light-red">
+          <span className="code">@lightRed</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block gray6">
+          <span className="code">@gray6</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block gray7">
+          <span className="code">@gray7</span>
+        </span>
+      </div>
+    </div>
+
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <h2>Gray Colors</h2>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-3">
+        <span className="color-block gray0">
+          <span className="code">@gray0</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block gray1">
+          <span className="code">@gray1</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block gray2">
+          <span className="code">@gray2</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block gray3">
+          <span className="code">@gray3</span>
+        </span>
+      </div>
+    </div>
+    <div className="row u-mb-5">    
+      <div className="columns small-3">
+        <span className="color-block gray4">
+          <span className="code">@gray4</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block gray5">
+          <span className="code">@gray5</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block gray6">
+          <span className="code">@gray6</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block gray7">
+          <span className="code">@gray7</span>
+        </span>
+      </div>
     </div>
   </div>
 );

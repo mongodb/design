@@ -19,6 +19,7 @@ import UIButtons from './components/ui-design-system/buttons/index.jsx';
 import UIGrid from './components/ui-design-system/grid/index.jsx';
 import UIForms from './components/ui-design-system/forms/index.jsx';
 import UITables from './components/ui-design-system/tables/index.jsx';
+import UIUtilities from './components/ui-design-system/utilities/index.jsx';
 
 const routes = (
   <Route path="/" component={Layout}>
@@ -37,6 +38,7 @@ const routes = (
         <Route path="/ui-design-system/grid" component={UIGrid} />
         <Route path="/ui-design-system/forms" component={UIForms} />
         <Route path="/ui-design-system/tables" component={UITables} />
+        <Route path="/ui-design-system/utilities" component={UIUtilities} />
     </Route>
     <Route path="*" component={NotFound} />
   </Route>
