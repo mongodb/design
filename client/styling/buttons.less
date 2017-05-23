@@ -194,4 +194,19 @@
   &-left-icon {
     padding-right: 5px;
   }
+
+  &-is-text {
+    background: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    &:hover, &:focus {
+      &:not([disabled]) {
+        background: none;
+        box-shadow: none;
+        border: none;
+      }
+    }
+  }
 }

@@ -1,0 +1,35 @@
+.tabs {
+  border-bottom: 3px solid @gray6;
+  list-style: none;
+  font-weight: 600;
+  &:after {
+    content: " ";
+    clear: both;
+    display: block;
+  }
+  &-tab {
+    display: inline-block;
+    float: left;
+    position: relative;
+    top: 3px;
+    margin: 0;
+    &-link {
+      color: @gray3;
+      padding: 0.5rem 1rem;
+      display: block;
+      &:hover {
+        color: @gray1;
+      }
+    }
+    &-is-active {
+      .tabs-tab-link {
+        color: @gray1;
+        border-bottom: 3px solid @green2;
+        &:hover {
+          color: @gray1;
+          border-bottom: 3px solid @green2;          
+        }
+      }
+    }
+  }
+}

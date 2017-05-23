@@ -21,10 +21,10 @@ const UIForms = () => (
 
     <div className="row">
       <div className="columns small-12">
-        <h4>Default Input</h4>
+        <h3>Default Input</h3>
       </div>
     </div>
-    <div className="row u-mb-1">
+    <div className="row u-mb-0">
       <div className="columns small-12">
       	<input type="text" placeholder={'Something'} className="input" />
       </div>
@@ -42,10 +42,10 @@ const UIForms = () => (
 
     <div className="row">
       <div className="columns small-12">
-        <h4>Small Input</h4>
+        <h3>Small Input</h3>
       </div>
     </div>
-    <div className="row u-mb-1">
+    <div className="row u-mb-0">
       <div className="columns small-12">
       	<input type="text" placeholder={'Something'} className="input input-is-small" />
       </div>
@@ -63,10 +63,10 @@ const UIForms = () => (
 
     <div className="row">
       <div className="columns small-12">
-        <h4>Input with Button</h4>
+        <h3>Input with Button</h3>
       </div>
     </div>
-    <div className="row u-mb-1">
+    <div className="row u-mb-0">
       <div className="columns small-10">
       	<input type="text" placeholder={'Something'} className="input" />
       </div>
