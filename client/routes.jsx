@@ -26,7 +26,7 @@ import UIUtilities from './components/ui-design-system/utilities/index.jsx';
 
 const routes = (
   <Route path="/" component={Layout}>
-    <IndexRoute component={Resources} />
+    <IndexRoute component={UIDesignSystem} />
     <Route path="/brand-design-system" component={BrandDesignSystem}>
         <IndexRoute component={BrandWelcome} />
         <Route path="/brand-design-system/typography" component={BrandTypography} />

@@ -23,12 +23,6 @@ const Layout = ({ children }) => (
             <div className="brand columns small-4">
               <h1><Link to="/">MongoDB Design</Link></h1>
             </div>
-            <div className="navigation columns small-8">
-              <Link to="/brand-design-system">Brand &amp; Identity</Link>
-              <Link to="/ui-design-system">UI Design System</Link>
-              <Link to="/">Tools &amp; Resources</Link>
-              <a href="http://mongodb.com/careers" target="_blank">Careers</a>
-            </div>
           </div>
         </div>
       </div>
