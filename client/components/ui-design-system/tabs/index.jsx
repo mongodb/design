@@ -22,16 +22,16 @@ const UITabs = () => (
       <div className="columns small-12">
         <ul className="tabs">
           <li className="tabs-tab tabs-tab-is-active">
-            <a href={"http://foundation.zurb.com/sites/docs/grid.html"} className="tabs-tab-link">Processes</a>
+            <a href={""} className="tabs-tab-link">Processes</a>
           </li>
           <li className="tabs-tab">
-            <a href={"http://foundation.zurb.com/sites/docs/grid.html"} className="tabs-tab-link">Servers</a>
+            <a href={""} className="tabs-tab-link">Servers</a>
           </li>
           <li className="tabs-tab">
-            <a href={"http://foundation.zurb.com/sites/docs/grid.html"} className="tabs-tab-link">Agents</a>
+            <a href={""} className="tabs-tab-link">Agents</a>
           </li>
           <li className="tabs-tab">
-            <a href={"http://foundation.zurb.com/sites/docs/grid.html"} className="tabs-tab-link">Security</a>
+            <a href={""} className="tabs-tab-link">Security</a>
           </li>
         </ul>
       </div>
