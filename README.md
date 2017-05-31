@@ -1,21 +1,4 @@
-# React Static Plate
-
-> Build static sites with React & CSS Modules to host on [Amazon S3](https://aws.amazon.com/s3/), [Github Pages](https://pages.github.com/), [Surge](https://surge.sh/) etc.
-> *React | React Router | Babel 6 | CSS Modules | PostCSS | Webpack*
-
-<img src="https://cloud.githubusercontent.com/assets/9054585/17802667/d4ecfaac-661b-11e6-87f4-82dbae105371.jpg" alt="" width="600"/>
-
-### Features
-
-- ES6+.
-- Hot Reloading.
-- ESLint rules based on Airbnb's Javascript Styleguide.
-- Every route is completely rendered into a `.html` page with `renderToString`.
-- Deferred script loading, so the browser can render the html without waiting for the js bundle first.
-- Hash is added to every asset's filename, so you can cache all assets forever.
-- Title, Meta and other SEO tags with [react-helmet](https://github.com/nfl/react-helmet).
-- SEO friendly, no JavaScript required to view a page.
-- Generates sitemap.xml
+# MongoDB Design Systems
 
 ### Getting Started
 

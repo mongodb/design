@@ -1,7 +1,7 @@
 {
-  "name": "react-static-plate",
+  "name": "@mongodbdesign/mdbdesignsystem",
   "version": "0.2.0",
-  "description": "Build static sites with React to host on Amazon S3, Github Pages, Surge et cetera",
+  "description": "MongoDB shared UI components and assets. Documentation site built with React.",
   "license": "MIT",
   "private": true,
   "scripts": {
