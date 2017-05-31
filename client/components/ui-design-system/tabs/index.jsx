@@ -22,16 +22,16 @@ const UITabs = () => (
       <div className="columns small-12">
         <ul className="tabs">
           <li className="tabs-tab tabs-tab-is-active">
-            <a href={""} className="tabs-tab-link">Processes</a>
+            <a className="tabs-tab-link" href={"http://mongodb.com"}>Processes</a>
           </li>
           <li className="tabs-tab">
-            <a href={""} className="tabs-tab-link">Servers</a>
+            <a className="tabs-tab-link" href={"http://mongodb.com"}>Servers</a>
           </li>
           <li className="tabs-tab">
-            <a href={""} className="tabs-tab-link">Agents</a>
+            <a className="tabs-tab-link" href={"http://mongodb.com"}>Agents</a>
           </li>
           <li className="tabs-tab">
-            <a href={""} className="tabs-tab-link">Security</a>
+            <a className="tabs-tab-link" href={"http://mongodb.com"}>Security</a>
           </li>
         </ul>
       </div>
@@ -40,7 +40,20 @@ const UITabs = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="bubble-label bubble-label-gray">3 Shards</div>' }</div>
+            <div>{ '<ul className="tabs">' }</div>
+            <div>{ '  <li className="tabs-tab tabs-tab-is-active">' }</div>
+            <div>{ '    <a className="tabs-tab-link">Processes</a> href={"http://mongodb.com"}' }</div>
+            <div>{ '  </li>' }</div>
+            <div>{ '  <li className="tabs-tab">' }</div>
+            <div>{ '    <a className="tabs-tab-link">Servers</a> href={"http://mongodb.com"}' }</div>
+            <div>{ '  </li>' }</div>
+            <div>{ '  <li className="tabs-tab">' }</div>
+            <div>{ '    <a className="tabs-tab-link">Agents</a> href={"http://mongodb.com"}' }</div>
+            <div>{ '  </li>' }</div>
+            <div>{ '  <li className="tabs-tab">' }</div>
+            <div>{ '    <a className="tabs-tab-link">Security</a> href={"http://mongodb.com"}' }</div>
+            <div>{ '  </li>' }</div>
+            <div>{ '</ul>' }</div>
           </code>
         </pre>
       </div>

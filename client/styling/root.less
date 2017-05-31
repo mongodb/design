@@ -1,7 +1,7 @@
 // @import 'normalize.css';
-@import 'banners.less';
 @import 'bubble.less';
 @import 'buttons.less';
+@import 'banners.less';
 @import 'colors.less';
 @import 'forms.less';
 @import 'grid.less';
@@ -177,4 +177,39 @@ pre {
     border: none;
     padding: 5px 10px;
   }
+}
+
+.temp-icon {
+  height: 24px;
+  width: 24px;
+  background-color: @gray5;
+  display: block;
+  position: absolute;
+  left: 24px;
+  top: 22px;
+  border-radius: 3px;
+}
+
+.temp-progress-bar {
+  height: 7px;
+  width: 100%;
+  background-color: @gray6;
+  position: relative;
+  padding: 0 2rem;
+  border-radius: 100px;
+  span {
+    height: 7px;
+    width: 33%;
+    background-color: @selectBlue;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 100px;
+  }
+}
+
+.loader-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: @selectBlue;
 }
