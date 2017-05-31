@@ -3,7 +3,6 @@
   "version": "0.2.0",
   "description": "MongoDB shared UI components and assets. Documentation site built with React.",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "start:dev": "babel-node ./tools/dev_server.js",
     "start": "npm run start:dev",
