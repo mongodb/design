@@ -1,6 +1,6 @@
 {
   "name": "@mongodbdesign/mdbdesignsystem",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "MongoDB shared UI components and assets. Documentation site built with React.",
   "license": "MIT",
   "scripts": {
@@ -100,9 +100,9 @@
     "webpack-hot-middleware": "^2.12.2",
     "webpack-isomorphic-tools": "^2.5.7"
   },
-  "author": "Yannik Schweinzer",
+  "author": "MongoDB Design",
   "repository": {
     "type": "git",
-    "url": "https://github.com/webyak/react-static-plate"
+    "url": "https://github.com/leafygreen/design"
   }
 }
