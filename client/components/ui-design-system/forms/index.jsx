@@ -93,7 +93,7 @@ const UIForms = () => (
       </div>
     </div>
     <div className="row u-mb-0">
-      <div className="columns small-10">
+      <div className="columns small-12">
         <div className="clearfix">
           <label className="rich-radio rich-radio-is-medium rich-radio-is-checked">
             <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" checked="" />
@@ -108,6 +108,28 @@ const UIForms = () => (
             <div className="rich-radio-main-text">A Radio Option</div>
           </label>
         </div>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <pre>
+          <code className="language-html hljs xml" data-lang="html">
+            <div>{ '<div className="clearfix">' }</div>
+            <div>{ '  <label className="rich-radio rich-radio-is-medium rich-radio-is-checked">' }</div>
+            <div>{ '    <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" checked="" />' }</div>
+            <div>{ '    <div className="rich-radio-main-text">A Selected Radio Option</div>' }</div>
+            <div>{ '  </label>' }</div>
+            <div>{ '  <label className="rich-radio rich-radio-is-medium">' }</div>
+            <div>{ '    <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" />' }</div>
+            <div>{ '    <div className="rich-radio-main-text">A Radio Option</div>' }</div>
+            <div>{ '  </label>' }</div>
+            <div>{ '  <label className="rich-radio rich-radio-is-medium">' }</div>
+            <div>{ '    <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" />' }</div>
+            <div>{ '    <div className="rich-radio-main-text">A Radio Option</div>' }</div>
+            <div>{ '  </label>' }</div>
+            <div>{ '</div>' }</div>
+          </code>
+        </pre>
       </div>
     </div>
 
