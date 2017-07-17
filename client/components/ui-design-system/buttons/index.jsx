@@ -20,25 +20,42 @@ const UIButtons = () => (
     </div>
     <div className="row u-mb-2">
       <div className="columns small-12">
+        <h3>Base Styles</h3>
         <button className="button u-mr-2">Default Button</button>
         <button className="button button-is-primary u-mr-2">Primary Button</button>
+        <button className="button button-is-info u-mr-2">Info Button</button>
         <button className="button button-is-danger u-mr-2">Destructive Button</button>
         <button className="button" disabled>Disabled Button</button>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-2">
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
             <div>{ '<button className="button">Default Button</button>' }</div>
             <div>{ '<button className="button button-is-primary">Primary Button</button>' }</div>
+            <div>{'<button className="button button-is-info">Info Button</button>'}</div>
             <div>{ '<button className="button button-is-danger">Destructive Button</button>' }</div>
             <div>{ '<button className="button" disabled>Disabled Button</button>' }</div>
           </code>
         </pre>
       </div>
     </div>
-
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <h3>Dark Background</h3>
+        <button className="button button-is-default-inverse u-mr-2">Darker Button</button>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <pre>
+          <code className="language-html hljs xml" data-lang="html">
+            <div>{ '<button className="button button-is-default-inverse">Darker Button</button>' }</div>
+          </code>
+        </pre>
+      </div>
+    </div>
     <div className="row u-mb-2">
       <div className="columns small-12">
         <h2>Button Sizes</h2>
