@@ -1,0 +1,18 @@
+/**
+ * A mixin to avoid floating. Instead, it uses a container whose font-size
+ * is set to zero to avoid extra spacing from whitespace, and whose interior
+ * elements are inline-block so that they flow like text. Use vertical-align
+ * to change how they align with one another.
+ */
+
+.horizontal-flow() {
+    font-size: 0;
+}
+
+.horizontal-flow-block() {
+    display: inline-block;
+}
+
+.horizontal-flow-flex() {
+    display: inline-flex;
+}
