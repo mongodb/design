@@ -26,7 +26,7 @@ const UIForms = () => (
     </div>
     <div className="row u-mb-0">
       <div className="columns small-12">
-      	<input type="text" placeholder={'Something'} className="input" />
+        <input type="text" placeholder={'Something'} className="input" />
       </div>
     </div>
 
@@ -47,7 +47,7 @@ const UIForms = () => (
     </div>
     <div className="row u-mb-0">
       <div className="columns small-12">
-      	<input type="text" placeholder={'Something'} className="input input-is-small" />
+        <input type="text" placeholder={'Something'} className="input input-is-small" />
       </div>
     </div>
 
@@ -68,10 +68,10 @@ const UIForms = () => (
     </div>
     <div className="row u-mb-0">
       <div className="columns small-10">
-      	<input type="text" placeholder={'Something'} className="input" />
+        <input type="text" placeholder={'Something'} className="input" />
       </div>
       <div className="columns small-2">
-      	<button className="button button-is-primary button-is-full">Submit Form</button>
+        <button className="button button-is-primary button-is-full">Submit Form</button>
       </div>
     </div>
 
@@ -83,6 +83,31 @@ const UIForms = () => (
             <div>{ '<button className="button button-is-primary button-is-full">Submit Form</button>' }</div>
           </code>
         </pre>
+      </div>
+    </div>
+
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <h2>Rich Form Controls</h2>
+        <p>Occasionally a form calls for more than a simple radio button or checkbox. These rich form controls pack that extra punch.</p>
+      </div>
+    </div>
+    <div className="row u-mb-0">
+      <div className="columns small-10">
+        <div className="clearfix">
+          <label className="rich-radio rich-radio-is-medium rich-radio-is-checked">
+            <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" checked="" />
+            <div className="rich-radio-main-text">A Selected Radio Option</div>
+          </label>
+          <label className="rich-radio rich-radio-is-medium">
+            <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" />
+            <div className="rich-radio-main-text">A Radio Option</div>
+          </label>
+          <label className="rich-radio rich-radio-is-medium">
+            <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" />
+            <div className="rich-radio-main-text">A Radio Option</div>
+          </label>
+        </div>
       </div>
     </div>
 
