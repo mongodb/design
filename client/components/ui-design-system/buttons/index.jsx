@@ -44,6 +44,7 @@ const UIButtons = () => (
     <div className="row u-mb-2">
       <div className="columns small-12">
         <h3>Dark Background</h3>
+        <p>Use the darker button when placed on a dark background.</p>
         <button className="button button-is-default-inverse u-mr-2">Darker Button</button>
       </div>
     </div>

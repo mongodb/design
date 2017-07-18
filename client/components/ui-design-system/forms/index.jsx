@@ -91,7 +91,7 @@ const UIForms = () => (
         <h3>Input States</h3>
       </div>
     </div>
-    <div className="row u-mb-0 input-container">
+    <div className="row u-mb-0 input-with-message">
       <div className="columns small-12">
         <h4>Input Success</h4>
         <input type="text" placeholder={'Something'} className="input input-is-success"/>
@@ -103,15 +103,16 @@ const UIForms = () => (
         <pre>
           <code className="language-html hljs xml" data-lang="html">
             <div>{ '<input type="text" placeholder={"Something"} className="input input-is-success" />' }</div>
+            <div>{'<div className="success-label">Success</div>'}</div>
           </code>
         </pre>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row u-mb-0 input-with-message">
       <div className="columns small-12">
        <h4>Input Error</h4>
         <input type="text" placeholder={'Something'} className="input input-has-error"/>
-        <p className="input-error">Contextual alert message goes here</p>
+        <p className="error-message">Contextual alert message goes here</p>
       </div>
     </div>
     <div className="row u-mb-3">
@@ -119,6 +120,7 @@ const UIForms = () => (
         <pre>
           <code className="language-html hljs xml" data-lang="html">
             <div>{ '<input type="text" placeholder={"Something"} className="input input-has-error" />' }</div>
+            <div>{ '<p className="error-message">Contextual alert message goes here</p>'}</div>
           </code>
         </pre>
       </div>
