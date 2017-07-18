@@ -4,13 +4,53 @@
   font-size: 14px;
   border-radius: 3px;
   width: 100%;
-  
+
   &:focus {
     border-color: @linkText;
     box-shadow: 0 2px 3px rgba(0, 108, 188, 0.2);
   }
-  
+
   &-is-small {
     padding: 5px 8px;
+  }
+
+  &-is-success {
+    border: 1px solid @alertGreen;
+    box-shadow: 0 2px 3px rgba(107, 164, 66, 0.2);
+
+    &:focus {
+      border-color: @alertGreen;
+      box-shadow: 0 2px 3px rgba(107, 164, 66, 0.2);
+    }
+  }
+
+  &-has-error {
+    border: 1px solid @alertRed;
+    box-shadow: 0 2px 3px rgba(239, 76, 76, 0.2);
+
+    &:focus {
+      border-color: @alertRed;
+      box-shadow: 0 2px 3px rgba(239, 76, 76, 0.2);
+    }
+  }
+}
+.input-with-message {
+  position: relative;
+
+  .success-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: @successText;
+    text-transform: uppercase;
+    position: absolute;
+    right: 24px;
+    top: 30%;
+  }
+
+  .error-message {
+    font-size: 14px;
+    color: @alertRed;
+    display: block;
+    margin: 0;
   }
 }

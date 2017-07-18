@@ -86,6 +86,54 @@ const UIForms = () => (
       </div>
     </div>
 
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <h3>Input States</h3>
+      </div>
+    </div>
+    <div className="row u-mb-0">
+      <div className="columns small-12">
+        <h4>Input Success</h4>
+        <div className="input-with-message">
+          <input type="text" placeholder={'Something'} className="input input-is-success"/>
+          <div className="success-label">Success</div>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <pre>
+          <code className="language-html hljs xml" data-lang="html">
+            <div>{ '<div className="input-with-message">' }</div>
+            <div>{ '<input type="text" placeholder={"Something"} className="input input-is-success" />' }</div>
+            <div>{'<div className="success-label">Success</div>'}</div>
+            <div>{ '</div>' }</div>
+          </code>
+        </pre>
+      </div>
+    </div>
+    <div className="row u-mb-0">
+      <div className="columns small-12">
+       <h4>Input Error</h4>
+        <div className="input-with-message">
+          <input type="text" placeholder={'Something'} className="input input-has-error"/>
+          <p className="error-message">Contextual alert message goes here</p>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <pre>
+          <code className="language-html hljs xml" data-lang="html">
+            <div>{ '<div className="input-with-message">' }</div>
+            <div>{ '<input type="text" placeholder={"Something"} className="input input-has-error" />' }</div>
+            <div>{ '<p className="error-message">Contextual alert message goes here</p>'}</div>
+            <div>{ '</div>' }</div>
+          </code>
+        </pre>
+      </div>
+    </div>
+ 
     <div className="row u-mb-3">
       <div className="columns small-12">
         <h2>Rich Form Controls</h2>
