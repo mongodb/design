@@ -2,10 +2,6 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  color: inherit;
-}
-
 h1,
 h2,
 h3,
@@ -54,9 +50,22 @@ h4 {
 
 .link {
   color: @linkText;
-  text-decoration: none;
   
   &:hover {
     text-decoration: underline;
+  }
+
+  &-is-underlined {
+    text-decoration: underline;
+  }
+
+  &-on-dark {
+    color: @linkOnDark;
+  }
+
+  &-is-disabled {
+    opacity: 0.4;
+    text-decoration: none;
+    pointer-events: none;
   }
 }
