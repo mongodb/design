@@ -86,7 +86,7 @@ const UIForms = () => (
       </div>
     </div>
 
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h3>Input States</h3>
       </div>
