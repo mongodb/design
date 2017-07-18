@@ -50,24 +50,22 @@ h4 {
 
 .link {
   color: @linkText;
+
   &:hover {
     text-decoration: underline;
   }
+
   &-is-underlined {
     text-decoration: underline;
   }
+
   &-on-dark {
     color: @linkOnDark;
   }
+
   &-is-disabled {
-    opacity: 0.4;
-    text-decoration: none;
-    cursor: not-allowed;
-  }
-  &-is-not-allowed {
     opacity: 0.4;
     text-decoration: none;
     pointer-events: none;
   }
-
 }

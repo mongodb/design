@@ -104,8 +104,10 @@ const UIForms = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
+            <div>{ '<div className="input-with-message">' }</div>
             <div>{ '<input type="text" placeholder={"Something"} className="input input-is-success" />' }</div>
             <div>{'<div className="success-label">Success</div>'}</div>
+            <div>{ '</div>' }</div>
           </code>
         </pre>
       </div>
@@ -123,8 +125,10 @@ const UIForms = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
+            <div>{ '<div className="input-with-message">' }</div>
             <div>{ '<input type="text" placeholder={"Something"} className="input input-has-error" />' }</div>
             <div>{ '<p className="error-message">Contextual alert message goes here</p>'}</div>
+            <div>{ '</div>' }</div>
           </code>
         </pre>
       </div>
