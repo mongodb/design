@@ -29,7 +29,6 @@ const UIForms = () => (
         <input type="text" placeholder={'Something'} className="input" />
       </div>
     </div>
-
     <div className="row u-mb-3">
       <div className="columns small-12">
         <pre>
@@ -50,7 +49,6 @@ const UIForms = () => (
         <input type="text" placeholder={'Something'} className="input input-is-small" />
       </div>
     </div>
-
     <div className="row u-mb-3">
       <div className="columns small-12">
         <pre>
@@ -74,7 +72,6 @@ const UIForms = () => (
         <button className="button button-is-primary button-is-full">Submit Form</button>
       </div>
     </div>
-
     <div className="row u-mb-3">
       <div className="columns small-12">
         <pre>
