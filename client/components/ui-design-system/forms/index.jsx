@@ -91,11 +91,13 @@ const UIForms = () => (
         <h3>Input States</h3>
       </div>
     </div>
-    <div className="row u-mb-0 input-with-message">
+    <div className="row u-mb-0">
       <div className="columns small-12">
         <h4>Input Success</h4>
-        <input type="text" placeholder={'Something'} className="input input-is-success"/>
-        <div className="success-label">Success</div>
+        <div className="input-with-message">
+          <input type="text" placeholder={'Something'} className="input input-is-success"/>
+          <div className="success-label">Success</div>
+        </div>
       </div>
     </div>
     <div className="row u-mb-2">
@@ -108,11 +110,13 @@ const UIForms = () => (
         </pre>
       </div>
     </div>
-    <div className="row u-mb-0 input-with-message">
+    <div className="row u-mb-0">
       <div className="columns small-12">
        <h4>Input Error</h4>
-        <input type="text" placeholder={'Something'} className="input input-has-error"/>
-        <p className="error-message">Contextual alert message goes here</p>
+        <div className="input-with-message">
+          <input type="text" placeholder={'Something'} className="input input-has-error"/>
+          <p className="error-message">Contextual alert message goes here</p>
+        </div>
       </div>
     </div>
     <div className="row u-mb-3">

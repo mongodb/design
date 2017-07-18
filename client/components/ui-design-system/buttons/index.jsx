@@ -128,6 +128,35 @@ const UIButtons = () => (
       </div>
     </div>
 
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <h2>Links</h2>
+      </div>
+    </div>
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <h3>Base Styles</h3>
+          <a className="link">This is a normal styled link</a><br></br>
+          <a className="link link-is-underlined">This link is always underlined, even when not hovering</a><br></br>
+          <a className="link link-on-dark">This link is brighter, to be used against a blue background</a><br></br>
+          <a className="link link-is-disabled">This link is disabled, which prevents click and hover events like tooltips</a><br></br>
+          <a className="link link-is-not-allowed">This link is styled as disabled, but allows click and hover events like tooltips </a>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <pre>
+          <code className="language-html hljs xml" data-lang="html">
+            <div>{ '<a className="link">This is a normal styled link</a>' }</div>
+            <div>{ '<a className="link-is-underlined">This link is always underlined, even when not hovering</a>' }</div>
+            <div>{ '<a className="link-on-dark">This link is brighter, to be used against a blue background</a>' }</div>
+            <div>{ '<a className="link link-is-disabled">This link is disabled, which prevents click and hover events like tooltips</a><' }</div>
+            <div>{ '<a className="link link-is-not-allowed">This link is styled as disabled, but allows click and hover events like tooltips </a>' }</div>
+
+          </code>
+        </pre>
+      </div>
+    </div>
 
   </div>
 );
