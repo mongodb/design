@@ -137,6 +137,11 @@ const UIForms = () => (
         <p>Occasionally a form calls for more than a simple radio button or checkbox. These rich form controls pack that extra punch.</p>
       </div>
     </div>
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Implicit Rich Radio</h3>
+      </div>
+    </div>
     <div className="row u-mb-0">
       <div className="columns small-12">
         <div className="clearfix">
@@ -159,18 +164,118 @@ const UIForms = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="clearfix">' }</div>
-            <div>{ '  <label className="rich-radio rich-radio-is-medium rich-radio-is-checked">' }</div>
-            <div>{ '    <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" checked="" />' }</div>
-            <div>{ '    <div className="rich-radio-main-text">A Selected Radio Option</div>' }</div>
+            <div>{ '<div class="clearfix">' }</div>
+            <div>{ '  <label class="rich-radio rich-radio-is-medium rich-radio-is-checked">' }</div>
+            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" checked>' }</div>
+            <div>{ '    <div class="rich-radio-main-text">A Selected Radio Option</div>' }</div>
             <div>{ '  </label>' }</div>
-            <div>{ '  <label className="rich-radio rich-radio-is-medium">' }</div>
-            <div>{ '    <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" />' }</div>
-            <div>{ '    <div className="rich-radio-main-text">A Radio Option</div>' }</div>
+            <div>{ '  <label class="rich-radio rich-radio-is-medium">' }</div>
+            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="">' }</div>
+            <div>{ '    <div class="rich-radio-main-text">A Radio Option</div>' }</div>
             <div>{ '  </label>' }</div>
-            <div>{ '  <label className="rich-radio rich-radio-is-medium">' }</div>
-            <div>{ '    <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" />' }</div>
-            <div>{ '    <div className="rich-radio-main-text">A Radio Option</div>' }</div>
+            <div>{ '  <label class="rich-radio rich-radio-is-medium">' }</div>
+            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="">' }</div>
+            <div>{ '    <div class="rich-radio-main-text">A Radio Option</div>' }</div>
+            <div>{ '  </label>' }</div>
+            <div>{ '</div>' }</div>
+          </code>
+        </pre>
+      </div>
+    </div>
+
+    <div className="row">
+      <div className="columns small-12">
+        <h3>With Select Buttons</h3>
+      </div>
+    </div>
+    <div className="row u-mb-0">
+      <div className="columns small-12">
+        <div className="clearfix">
+          <label className="rich-radio rich-radio-is-medium rich-radio-is-checked">
+            <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" checked />
+            <button className="button button-is-primary">Select</button>
+          </label>
+          <label className="rich-radio rich-radio-is-medium">
+            <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" />
+            <button className="button button-is-info">Select</button>
+          </label>
+          <label className="rich-radio rich-radio-is-medium">
+            <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" />
+            <button className="button button-is-info">Select</button>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <pre>
+          <code className="language-html hljs xml" data-lang="html">
+            <div>{ '<div class="clearfix">' }</div>
+            <div>{ '  <label class="rich-radio rich-radio-is-medium rich-radio-is-checked">' }</div>
+            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" checked>' }</div>
+            <div>{ '    <button class="button button-is-primary">Select</button>' }</div>
+            <div>{ '  </label>' }</div>
+            <div>{ '  <label class="rich-radio rich-radio-is-medium">' }</div>
+            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="">' }</div>
+            <div>{ '    <button class="button button-is-info">Select</button>' }</div>
+            <div>{ '  </label>' }</div>
+            <div>{ '  <label class="rich-radio rich-radio-is-medium">' }</div>
+            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="">' }</div>
+            <div>{ '    <button class="button button-is-info">Select</button>' }</div>
+            <div>{ '  </label>' }</div>
+            <div>{ '</div>' }</div>
+          </code>
+        </pre>
+      </div>
+    </div>
+
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Large Rich Radio</h3>
+      </div>
+    </div>
+    <div className="row u-mb-0">
+      <div className="columns small-12">
+        <div className="clearfix">
+          <label className="rich-radio rich-radio-is-large rich-radio-is-checked">
+            <input className="rich-radio-radio-button" type="radio" name="region" value="" checked />
+            <div className="rich-radio-main-text">A Selected Radio Option</div>
+          </label>
+          <label className="rich-radio rich-radio-is-large">
+            <input className="rich-radio-radio-button" type="radio" name="region" value="" />
+            <div className="rich-radio-main-text">A Radio Option</div>
+          </label>
+          <label className="rich-radio rich-radio-is-large">
+            <input className="rich-radio-radio-button" type="radio" name="region" value="" />
+            <div className="rich-radio-main-text">A Radio Option</div>
+          </label>
+          <label className="rich-radio rich-radio-is-large">
+            <input className="rich-radio-radio-button" type="radio" name="region" value="" />
+            <div className="rich-radio-main-text">A Radio Option</div>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <pre>
+          <code className="language-html hljs xml" data-lang="html">
+            <div>{ '<div class="clearfix">' }</div>
+            <div>{ '  <label class="rich-radio rich-radio-is-large rich-radio-is-checked">' }</div>
+            <div>{ '    <input class="rich-radio-radio-button" type="radio" name="region" value="" checked>' }</div>
+            <div>{ '    <div class="rich-radio-main-text">A Selected Radio Option</div>' }</div>
+            <div>{ '  </label>' }</div>
+            <div>{ '  <label class="rich-radio rich-radio-is-large">' }</div>
+            <div>{ '    <input class="rich-radio-radio-button" type="radio" name="region" value="">' }</div>
+            <div>{ '    <div class="rich-radio-main-text">A Radio Option</div>' }</div>
+            <div>{ '  </label>' }</div>
+            <div>{ '  <label class="rich-radio rich-radio-is-large">' }</div>
+            <div>{ '    <input class="rich-radio-radio-button" type="radio" name="region" value="">' }</div>
+            <div>{ '    <div class="rich-radio-main-text">A Radio Option</div>' }</div>
+            <div>{ '  </label>' }</div>
+            <div>{ '  <label class="rich-radio rich-radio-is-large">' }</div>
+            <div>{ '    <input class="rich-radio-radio-button" type="radio" name="region" value="">' }</div>
+            <div>{ '    <div class="rich-radio-main-text">A Radio Option</div>' }</div>
             <div>{ '  </label>' }</div>
             <div>{ '</div>' }</div>
           </code>
