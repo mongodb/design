@@ -20,6 +20,7 @@ import UIButtons from './components/ui-design-system/buttons/index.jsx';
 import UIBubbles from './components/ui-design-system/bubbles/index.jsx';
 import UIGrid from './components/ui-design-system/grid/index.jsx';
 import UIForms from './components/ui-design-system/forms/index.jsx';
+import UIModal from './components/ui-design-system/modal/index.jsx';
 import UITabs from './components/ui-design-system/tabs/index.jsx';
 import UITables from './components/ui-design-system/tables/index.jsx';
 import UIUtilities from './components/ui-design-system/utilities/index.jsx';
@@ -42,6 +43,7 @@ const routes = (
         <Route path="/ui-design-system/buttons" component={UIButtons} />
         <Route path="/ui-design-system/grid" component={UIGrid} />
         <Route path="/ui-design-system/forms" component={UIForms} />
+        <Route path="/ui-design-system/modal" component={UIModal} />
         <Route path="/ui-design-system/tabs" component={UITabs} />
         <Route path="/ui-design-system/tables" component={UITables} />
         <Route path="/ui-design-system/utilities" component={UIUtilities} />
