@@ -1,52 +1,52 @@
 .modal {
-    min-width: inherit;
-    max-width: inherit;
-    padding: 30px;
-    align-self: flex-start;
-    color: @gray1;
+  min-width: inherit;
+  max-width: inherit;
+  padding: 30px;
+  align-self: flex-start;
+  color: @gray1;
+  position: relative;
+  background-color: @pw;
+  border: 1px solid @gray6;
+  border-radius: 3px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+  &-is-closed {
+    font-size: 38px;
+    font-weight: 200;
+    color: @gray5;
+    background-color: transparent;
+    border: 0;
     position: relative;
-    background-color: @pw;
-    border: 1px solid @gray6;
-    border-radius: 3px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    float: right;
+    top: -22px;
+    right: -10px;
+    margin-top: -2px;
+    cursor: pointer;
 
-    &-with-close {
-        font-size: 38px;
-        font-weight: 200;
-        color: @gray5;
-        background-color: transparent;
-        border: 0;
-        position: relative;
-        float: right;
-        top: -22px;
-        right: -10px;
-        margin-top: -2px;
-        cursor: pointer;
-
-        &:hover {
-            opacity: 0.4;
-        }
+    &:hover {
+      opacity: 0.4;
     }
+  }
 
-    &-has-header {
-        margin: 0;
-        padding-bottom: 4px;
+  &-header {
+    margin: 0;
+    padding-bottom: 4px;
+  }
+
+  &-body {
+    padding: 20px 0;
+    border-top: 1px solid @gray7;
+    border-bottom: 1px solid @gray7;
+  }
+
+  &-footer {
+    margin-top: 26px;
+    text-align: right;
+    display: block;
+
+    &-has-actions {
+      display: flex;
+      justify-content: space-between;
     }
-
-    &-has-body {
-        padding: 20px 0;
-        border-top: 1px solid @gray7;
-        border-bottom: 1px solid @gray7;
-    }
-
-    &-has-footer {
-        margin-top: 26px;
-        text-align: right;
-        display: block;
-
-        &-with-actions {
-            display: flex;
-            justify-content: space-between;
-        }
-    }
+  }
 }
