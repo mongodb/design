@@ -76,7 +76,7 @@ const UICode = () => (
     <div className="row u-mb-2">
       <div className="columns small-12">
         <div className="copy-command copy-command-is-full-width">
-          <span className="copy-command-text copy-command-text-is-full-width">by default these are not full width wont</span>
+          <span className="copy-command-text copy-command-text-is-full-width">but you can force them to be</span>
           <button className="copy-command-button">
             <i className="fa fa-files-o"></i> Copy
           </button>
@@ -106,7 +106,13 @@ const UICode = () => (
 
     <div className="row u-mb-2">
       <div className="columns small-12">
-        <div className="codeblock">TEST
+        <div className="codeblock">
+          <code>
+            <div>{ 'const exampleCodeblock = {' }</div>
+            <div>{ '  description: \'this is a codeblock that preserves whitespace\',' }</div>
+            <div>{ '  overflow: \'this is also scrollable horizontally, so it won\'t break onto the next line even if it\'s really long, it just keeps scrolling and scrolling and scrolling...\'' }</div>
+            <div>{ '};' }</div>
+          </code>
         </div>
       </div>
     </div>
@@ -115,6 +121,12 @@ const UICode = () => (
         <pre>
           <code className="language-html hljs xml" data-lang="html">
             <div>{ '<div className="codeblock">' }</div>
+            <div>{ '  <code>' }</div>
+            <div>{ '    <div>{ \'const exampleCodeblock = {\' }</div>' }</div>
+            <div>{ '      <div>{ \'  description: \'this is a codeblock that preserves whitespace\',\' }</div>' }</div>
+            <div>{ '      <div>{ \'  overflow: \'this is also scrollable horizontally, so it won\'t break onto the next line even if it\'s really long, it just keeps scrolling and scrolling and scrolling...\'\' }</div>' }</div>
+            <div>{ '    <div>{ \'};\' }</div>' }</div>
+            <div>{ '  </code>' }</div>
             <div>{ '</div>' }</div>
           </code>
         </pre>
