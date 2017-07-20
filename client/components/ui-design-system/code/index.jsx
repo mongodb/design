@@ -76,7 +76,7 @@ const UICode = () => (
     <div className="row u-mb-2">
       <div className="columns small-12">
         <div className="copy-command copy-command-is-full-width">
-          <span className="copy-command-text copy-command-text-is-full-width">by default these are not full width</span>
+          <span className="copy-command-text copy-command-text-is-full-width">by default these are not full width wont</span>
           <button className="copy-command-button">
             <i className="fa fa-files-o"></i> Copy
           </button>
@@ -106,7 +106,8 @@ const UICode = () => (
 
     <div className="row u-mb-2">
       <div className="columns small-12">
-        <div className="codeblock">blah</div>
+        <div className="codeblock">TEST
+        </div>
       </div>
     </div>
     <div className="row u-mb-3">
