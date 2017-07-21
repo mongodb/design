@@ -12,6 +12,11 @@ const UILists = () => (
         <h1>Lists</h1>
       </div>
     </div>
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <h2>List Styles</h2>
+      </div>
+    </div>
     <div className="row">
       <div className="columns small-12">
         <h3>Checklist</h3>
@@ -112,6 +117,11 @@ const UILists = () => (
       </div>
     </div>
 
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <h2>Progress Indicators</h2>
+      </div>
+    </div>
     <div className="row">
       <div className="columns small-12">
         <h3>Number Circles</h3>
@@ -159,9 +169,14 @@ const UILists = () => (
       </div>
     </div>
 
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <h2>Pagination States</h2>
+      </div>
+    </div>
     <div className="row">
       <div className="columns small-12">
-        <h3>Pagination Controls</h3>
+        <h3>Controls Enabled</h3>
         <div className="paginator">
           <span className="paginator-control paginator-control-is-left">
             <button className="paginator-button paginator-button-is-previous">
@@ -173,21 +188,6 @@ const UILists = () => (
           </span>
           <span className="paginator-control paginator-control-is-right">Next
             <button className="paginator-button paginator-button-is-next">
-              <i className="fa fa-angle-right"></i>
-            </button>
-          </span>
-        </div>
-        <div className="paginator paginator-is-borderless">
-          <span className="paginator-control paginator-control-is-left paginator-control-is-disabled">
-            <button className="paginator-button paginator-button-is-previous" disabled="">
-              <i className="fa fa-angle-left"></i>
-            </button> Previous
-          </span>
-          <span className="paginator-text">
-            <strong>0-0 results (both controls disabled, borderless example)</strong>
-          </span>
-          <span className="paginator-control paginator-control-is-right paginator-control-is-disabled">Next
-            <button className="paginator-button paginator-button-is-next" disabled="">
               <i className="fa fa-angle-right"></i>
             </button>
           </span>
@@ -213,9 +213,38 @@ const UILists = () => (
             <div>{ '    </button>' }</div>
             <div>{ '  </span>' }</div>
             <div>{ '</div>' }</div>
+          </code>
+        </pre>
+      </div>
+    </div>
+
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Controls Disabled</h3>
+        <div className="paginator paginator-is-borderless">
+          <span className="paginator-control paginator-control-is-left paginator-control-is-disabled">
+            <button className="paginator-button paginator-button-is-previous" disabled>
+              <i className="fa fa-angle-left"></i>
+            </button> Previous
+          </span>
+          <span className="paginator-text">
+            <strong>0-0 results (both controls disabled, borderless example)</strong>
+          </span>
+          <span className="paginator-control paginator-control-is-right paginator-control-is-disabled" >Next
+            <button className="paginator-button paginator-button-is-next" disabled>
+              <i className="fa fa-angle-right"></i>
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <pre>
+          <code className="language-html hljs xml" data-lang="html">
             <div>{ '<div className="paginator paginator-is-borderless">' }</div>
             <div>{ '  <span className="paginator-control paginator-control-is-left paginator-control-is-disabled">' }</div>
-            <div>{ '    <button className="paginator-button paginator-button-is-previous" disabled="">' }</div>
+            <div>{ '    <button className="paginator-button paginator-button-is-previous" disabled>' }</div>
             <div>{ '      <i className="fa fa-angle-left"></i>' }</div>
             <div>{ '    </button> Previous' }</div>
             <div>{ '  </span>' }</div>
@@ -223,7 +252,7 @@ const UILists = () => (
             <div>{ '    <strong>0-0 results (both controls disabled, borderless example)</strong>' }</div>
             <div>{ '  </span>' }</div>
             <div>{ '  <span className="paginator-control paginator-control-is-right paginator-control-is-disabled">Next' }</div>
-            <div>{ '    <button className="paginator-button paginator-button-is-next" disabled="">' }</div>
+            <div>{ '    <button className="paginator-button paginator-button-is-next" disabled>' }</div>
             <div>{ '      <i className="fa fa-angle-right"></i>' }</div>
             <div>{ '    </button>' }</div>
             <div>{ '  </span>' }</div>
