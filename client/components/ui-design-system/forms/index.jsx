@@ -283,6 +283,92 @@ const UIForms = () => (
       </div>
     </div>
 
+    <div className="row">
+      <div className="columns small-12">
+        <h3>In Columns with Rich Content</h3>
+      </div>
+    </div>
+    <div className="row u-mb-0">
+      <div className="columns small-12">
+        <div className="row">
+          <div className="columns medium-6">
+            <div className="rich-radio">
+              <div className="rich-radio-title">Option Name</div>
+              <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+              <section>
+                <ul className="checklist">
+                  <li className="checklist-item">feature one</li>
+                  <li className="checklist-item">feature one</li>
+                  <li className="checklist-item">feature one</li>
+                </ul>
+              </section>
+              <button type="button" className="button button-is-primary button-is-full">
+                Select
+              </button>
+            </div>
+          </div>
+          <div className="columns medium-6">
+            <div className="rich-radio">
+              <div className="rich-radio-title">Option Name</div>
+              <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+              <section>
+                <ul className="checklist">
+                  <li className="checklist-item">feature one</li>
+                  <li className="checklist-item">feature one</li>
+                  <li className="checklist-item">feature one</li>
+                </ul>
+              </section>
+              <button type="button" className="button button-is-primary button-is-full">
+                Select
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <pre>
+          <code className="language-html hljs xml" data-lang="html">
+            <div>{ '<div className="row">' }</div>
+            <div>{ '  <div className="columns medium-6">' }</div>
+            <div>{ '    <div className="rich-radio">' }</div>
+            <div>{ '      <div className="rich-radio-title">Option Name</div>' }</div>
+            <div>{ '      <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>' }</div>
+            <div>{ '      <section>' }</div>
+            <div>{ '        <ul className="checklist">' }</div>
+            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
+            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
+            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
+            <div>{ '        </ul>' }</div>
+            <div>{ '      </section>' }</div>
+            <div>{ '      <button type="button" className="button button-is-primary button-is-full">' }</div>
+            <div>{ '        Select' }</div>
+            <div>{ '      </button>' }</div>
+            <div>{ '    </div>' }</div>
+            <div>{ '  </div>' }</div>
+            <div>{ '  <div className="columns medium-6">' }</div>
+            <div>{ '    <div className="rich-radio">' }</div>
+            <div>{ '      <div className="rich-radio-title">Option Name</div>' }</div>
+            <div>{ '      <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>' }</div>
+            <div>{ '      <section>' }</div>
+            <div>{ '        <ul className="checklist">' }</div>
+            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
+            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
+            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
+            <div>{ '        </ul>' }</div>
+            <div>{ '      </section>' }</div>
+            <div>{ '      <button type="button" className="button button-is-primary button-is-full">' }</div>
+            <div>{ '        Select' }</div>
+            <div>{ '      </button>' }</div>
+            <div>{ '    </div>' }</div>
+            <div>{ '  </div>' }</div>
+            <div>{ '</div>' }</div>
+          </code>
+        </pre>
+      </div>
+    </div>
+
   </div>
 );
 
