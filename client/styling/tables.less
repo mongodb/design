@@ -1,12 +1,13 @@
-table {
+.table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
 
-  tr {
+  &-row {
     &:hover {
       td {
         background-color: @gray7;
+
         .button {
           opacity: 1;
         }
@@ -19,13 +20,14 @@ table {
       }
     }
 
-    &.is-dark {
+    &-is-dark {
       background-color: @gray1;
       color: @pw;
 
       &:hover {
         td {
           background-color: @gray4;
+
           .button {
             opacity: 1;
           }
@@ -34,10 +36,10 @@ table {
     }
   }
 
-  th, td {
+  &-header, &-cell {
     text-align: left;
 
-    &.has-actions {
+    &-has-actions {
       text-align: right;
       .button {
         opacity: 0;
@@ -45,21 +47,21 @@ table {
     }
   }
 
-  th {
+  &-header {
     border-bottom: 2px solid @gray6;
     padding: 5px 10px;
 
-    &.is-dark {
+    &-is-dark {
       border-bottom: 2px solid @gray0;
       background-color: @gray1;      
     }
   }
 
-  td {
+  &-cell {
     border-bottom: 1px solid @gray6;
     padding: 10px;
 
-    &.is-dark {
+    &-is-dark {
       border-bottom: 1px solid @gray0;
       background-color: @gray1;      
     }
