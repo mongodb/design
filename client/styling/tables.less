@@ -12,15 +12,31 @@ table {
         }
       }
     }
+
     &:last-child {
       td {
         border-bottom: none;
+      }
+    }
+
+    &.is-dark {
+      background-color: @gray1;
+      color: @pw;
+
+      &:hover {
+        td {
+          background-color: @gray4;
+          .button {
+            opacity: 1;
+          }
+        }
       }
     }
   }
 
   th, td {
     text-align: left;
+
     &.has-actions {
       text-align: right;
       .button {
@@ -32,10 +48,22 @@ table {
   th {
     border-bottom: 2px solid @gray6;
     padding: 5px 10px;
+
+    &.is-dark {
+      border-bottom: 2px solid @gray0;
+      background-color: @gray1;      
+    }
   }
 
   td {
     border-bottom: 1px solid @gray6;
     padding: 10px;
+
+    &.is-dark {
+      border-bottom: 1px solid @gray0;
+      background-color: @gray1;      
+    }
   }
 }
+
+
