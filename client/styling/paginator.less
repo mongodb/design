@@ -1,0 +1,57 @@
+.paginator {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+    border-bottom: 2px solid @gray7;
+    border-top: 2px solid @gray7;
+
+    &-is-borderless {
+        border: 0;
+    }
+
+    &-control {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        color: @gray2;
+
+        &-is-disabled {
+            color: @gray4;
+        }
+    }
+
+    &-button {
+        background-color: @primaryButtonBackground;
+        border: 1px solid @primaryButtonBackground;
+        border-radius: 3px;
+        font-size: 20px;
+        color: @pw;
+
+        &:focus, &:hover, &:active {
+            &:not([disabled]) {
+                border-color: @primaryButtonFocusBorder;
+                background-color: @primaryButtonFocusBackground;
+            }
+        }
+
+        &:disabled {
+            background-color: @buttonBackground;
+            border: 1px solid @buttonBorder;
+            color: @buttonDisabled;
+        }
+
+        &-is-previous {
+            padding: 0px 12px 0px 10px;
+            margin-right: 10px;
+        }
+
+        &-is-next {
+            padding: 0px 10px 0px 12px;
+            margin-left: 10px;
+        }
+    }
+}
