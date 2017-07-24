@@ -1,0 +1,50 @@
+.copy-command {
+    // flexbox gets the button to fill vertical space-- requires silly hacks otherwise
+    display: -ms-flexbox;
+    display: flex;
+
+    &-text {
+        background: @gray7;
+        border-left: 3px solid @gray5;
+        display: inline-block;
+        padding: 10px 15px;
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 12px;
+        line-height: 35px;
+        overflow: scroll;
+        white-space: nowrap;
+    }
+
+    &-button {
+        flex: 0 0 100px;
+        display: inline-block;
+        background-color: @pw;
+        border: 1px solid @gray6;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+
+        &:active {
+            box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    &-is-full-width {
+        flex-basis: 100%;
+    }
+
+    &-is-spaced {
+        margin-bottom: 10px;
+    }
+}
+
+.codeblock {
+    white-space: pre;
+    overflow: scroll;
+    padding: 10px;
+    background: @gray7;
+    border-left: 3px solid @gray5;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.65;
+}
