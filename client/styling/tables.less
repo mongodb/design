@@ -5,7 +5,7 @@
 
   &-row {
     &:hover {
-      td {
+      .table-column {
         background-color: @gray7;
 
         .button {
@@ -15,7 +15,7 @@
     }
 
     &:last-child {
-      td {
+      .table-column {
         border-bottom: none;
       }
     }
@@ -25,7 +25,7 @@
       color: @pw;
 
       &:hover {
-        td {
+        .table-column {
           background-color: @gray4;
 
           .button {
@@ -41,6 +41,7 @@
 
     &-has-actions {
       text-align: right;
+
       .button {
         opacity: 0;
       }

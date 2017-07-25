@@ -38,30 +38,30 @@ const UITables = () => (
           </thead>
           <tbody>
             <tr className="table-row">
-              <td className="table-cell"><a href={""} className="link">free-shard-0</a></td>
-              <td className="table-cell">1 min ago</td>
-              <td className="table-cell">3.4.4</td>
-              <td className="table-cell table-cell-has-actions">
+              <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>
+              <td className="table-column table-cell">1 min ago</td>
+              <td className="table-column table-cell">3.4.4</td>
+              <td className="table-column table-cell table-cell-has-actions">
                 <button className="button button-is-xs u-mr-1">data</button>
                 <button className="button button-is-xs u-mr-1">metrics</button>
                 <button className="button button-is-xs">modify</button>
               </td>
             </tr>
             <tr className="table-row">
-              <td className="table-cell"><a href={""} className="link">free-shard-0</a></td>
-              <td className="table-cell">1 min ago</td>
-              <td className="table-cell">3.4.4</td>
-              <td className="table-cell table-cell-has-actions">
+              <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>
+              <td className="table-column table-cell">1 min ago</td>
+              <td className="table-column table-cell">3.4.4</td>
+              <td className="table-column table-cell table-cell-has-actions">
                 <button className="button button-is-xs u-mr-1">data</button>
                 <button className="button button-is-xs u-mr-1">metrics</button>
                 <button className="button button-is-xs">modify</button>
               </td>
             </tr>
             <tr className="table-row">
-              <td className="table-cell"><a href={""} className="link">free-shard-0</a></td>
-              <td className="table-cell">1 min ago</td>
-              <td className="table-cell">3.4.4</td>
-              <td className="table-cell table-cell-has-actions">
+              <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>
+              <td className="table-column table-cell">1 min ago</td>
+              <td className="table-column table-cell">3.4.4</td>
+              <td className="table-column table-cell table-cell-has-actions">
                 <button className="button button-is-xs u-mr-1">data</button>
                 <button className="button button-is-xs u-mr-1">metrics</button>
                 <button className="button button-is-xs">modify</button>
@@ -86,30 +86,30 @@ const UITables = () => (
             <div>{ '  </thead>' }</div>
             <div>{ '  <tbody>' }</div>
             <div>{ '    <tr className="table-row">' }</div>
-            <div>{ '      <td className="table-cell"><a href={""} className="link">free-shard-0</a></td>' }</div>
-            <div>{ '      <td className="table-cell">1 min ago</td>' }</div>
-            <div>{ '      <td className="table-cell">3.4.4</td>' }</div>
-            <div>{ '      <td className="table-cell table-cell-has-actions">' }</div>
+            <div>{ '      <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>' }</div>
+            <div>{ '      <td className="table-column table-cell">1 min ago</td>' }</div>
+            <div>{ '      <td className="table-column table-cell">3.4.4</td>' }</div>
+            <div>{ '      <td className="table-column table-cell table-cell-has-actions">' }</div>
             <div>{ '        <button className="button button-is-xs u-mr-1">data</button>' }</div>
             <div>{ '        <button className="button button-is-xs u-mr-1">metrics</button>' }</div>
             <div>{ '        <button className="button button-is-xs">modify</button>' }</div>
             <div>{ '      </td>' }</div>
             <div>{ '    </tr>' }</div>
             <div>{ '    <tr className="table-row">' }</div>
-            <div>{ '      <td className="table-cell"><a href={""} className="link">free-shard-0</a></td>' }</div>
-            <div>{ '      <td className="table-cell">1 min ago</td>' }</div>
-            <div>{ '      <td className="table-cell">3.4.4</td>' }</div>
-            <div>{ '      <td className="table-cell table-cell-has-actions">' }</div>
+            <div>{ '      <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>' }</div>
+            <div>{ '      <td className="table-column table-cell">1 min ago</td>' }</div>
+            <div>{ '      <td className="table-column table-cell">3.4.4</td>' }</div>
+            <div>{ '      <td className="table-column table-cell table-cell-has-actions">' }</div>
             <div>{ '        <button className="button button-is-xs u-mr-1">data</button>' }</div>
             <div>{ '        <button className="button button-is-xs u-mr-1">metrics</button>' }</div>
             <div>{ '        <button className="button button-is-xs">modify</button>' }</div>
             <div>{ '      </td>' }</div>
             <div>{ '    </tr>' }</div>
             <div>{ '    <tr className="table-row">' }</div>
-            <div>{ '      <td className="table-cell"><a href={""} className="link">free-shard-0</a></td>' }</div>
-            <div>{ '      <td className="table-cell">1 min ago</td>' }</div>
-            <div>{ '      <td className="table-cell">3.4.4</td>' }</div>
-            <div>{ '      <td className="table-cell table-cell-has-actions">' }</div>
+            <div>{ '      <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>' }</div>
+            <div>{ '      <td className="table-column table-cell">1 min ago</td>' }</div>
+            <div>{ '      <td className="table-column table-cell">3.4.4</td>' }</div>
+            <div>{ '      <td className="table-column table-cell table-cell-has-actions">' }</div>
             <div>{ '        <button className="button button-is-xs u-mr-1">data</button>' }</div>
             <div>{ '        <button className="button button-is-xs u-mr-1">metrics</button>' }</div>
             <div>{ '        <button className="button button-is-xs">modify</button>' }</div>
@@ -141,30 +141,30 @@ const UITables = () => (
           </thead>
           <tbody>
             <tr className="table-row table-row-is-dark">
-              <td className="table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>
-              <td className="table-cell table-cell-is-dark">1 min ago</td>
-              <td className="table-cell table-cell-is-dark">3.4.4</td>
-              <td className="table-cell table-cell-is-dark table-cell-has-actions">
+              <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>
+              <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+              <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
+              <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
                 <button className="button button-is-xs u-mr-1">data</button>
                 <button className="button button-is-xs u-mr-1">metrics</button>
                 <button className="button button-is-xs">modify</button>
               </td>
             </tr>
             <tr className="table-row table-row-is-dark">
-              <td className="table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>
-              <td className="table-cell table-cell-is-dark">1 min ago</td>
-              <td className="table-cell table-cell-is-dark">3.4.4</td>
-              <td className="table-cell table-cell-is-dark table-cell-has-actions">
+              <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>
+              <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+              <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
+              <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
                 <button className="button button-is-xs u-mr-1">data</button>
                 <button className="button button-is-xs u-mr-1">metrics</button>
                 <button className="button button-is-xs">modify</button>
               </td>
             </tr>
             <tr className="table-row table-row-is-dark">
-              <td className="table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>
-              <td className="table-cell table-cell-is-dark">1 min ago</td>
-              <td className="table-cell table-cell-is-dark">3.4.4</td>
-              <td className="table-cell table-cell-is-dark table-cell-has-actions">
+              <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>
+              <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+              <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
+              <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
                 <button className="button button-is-xs u-mr-1">data</button>
                 <button className="button button-is-xs u-mr-1">metrics</button>
                 <button className="button button-is-xs">modify</button>
@@ -189,30 +189,30 @@ const UITables = () => (
             <div>{ '  </thead>' }</div>
             <div>{ '  <tbody>' }</div>
             <div>{ '    <tr className="table-row table-row-is-dark">' }</div>
-            <div>{ '      <td className="table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>' }</div>
-            <div>{ '      <td className="table-cell table-cell-is-dark">1 min ago</td>' }</div>
-            <div>{ '      <td className="table-cell table-cell-is-dark">3.4.4</td>' }</div>
-            <div>{ '      <td className="table-cell table-cell-is-dark table-cell-has-actions">' }</div>
+            <div>{ '      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>' }</div>
+            <div>{ '      <td className="table-column table-cell table-cell-is-dark">1 min ago</td>' }</div>
+            <div>{ '      <td className="table-column table-cell table-cell-is-dark">3.4.4</td>' }</div>
+            <div>{ '      <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">' }</div>
             <div>{ '        <button className="button button-is-xs u-mr-1">data</button>' }</div>
             <div>{ '        <button className="button button-is-xs u-mr-1">metrics</button>' }</div>
             <div>{ '        <button className="button button-is-xs">modify</button>' }</div>
             <div>{ '      </td>' }</div>
             <div>{ '    </tr>' }</div>
             <div>{ '    <tr className="table-row table-row-is-dark">' }</div>
-            <div>{ '      <td className="table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>' }</div>
-            <div>{ '      <td className="table-cell table-cell-is-dark">1 min ago</td>' }</div>
-            <div>{ '      <td className="table-cell table-cell-is-dark">3.4.4</td>' }</div>
-            <div>{ '      <td className="table-cell table-cell-is-dark table-cell-has-actions">' }</div>
+            <div>{ '      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>' }</div>
+            <div>{ '      <td className="table-column table-cell table-cell-is-dark">1 min ago</td>' }</div>
+            <div>{ '      <td className="table-column table-cell table-cell-is-dark">3.4.4</td>' }</div>
+            <div>{ '      <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">' }</div>
             <div>{ '        <button className="button button-is-xs u-mr-1">data</button>' }</div>
             <div>{ '        <button className="button button-is-xs u-mr-1">metrics</button>' }</div>
             <div>{ '        <button className="button button-is-xs">modify</button>' }</div>
             <div>{ '      </td>' }</div>
             <div>{ '    </tr>' }</div>
             <div>{ '    <tr className="table-row table-row-is-dark">' }</div>
-            <div>{ '      <td className="table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>' }</div>
-            <div>{ '      <td className="table-cell table-cell-is-dark">1 min ago</td>' }</div>
-            <div>{ '      <td className="table-cell table-cell-is-dark">3.4.4</td>' }</div>
-            <div>{ '      <td className="table-cell table-cell-is-dark table-cell-has-actions">' }</div>
+            <div>{ '      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>' }</div>
+            <div>{ '      <td className="table-column table-cell table-cell-is-dark">1 min ago</td>' }</div>
+            <div>{ '      <td className="table-column table-cell table-cell-is-dark">3.4.4</td>' }</div>
+            <div>{ '      <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">' }</div>
             <div>{ '        <button className="button button-is-xs u-mr-1">data</button>' }</div>
             <div>{ '        <button className="button button-is-xs u-mr-1">metrics</button>' }</div>
             <div>{ '        <button className="button button-is-xs">modify</button>' }</div>
