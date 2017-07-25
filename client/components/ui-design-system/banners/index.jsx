@@ -38,11 +38,11 @@ const UIBanners = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="banner banner-is-callout">' }</div>
+            <div>{ '<div class="banner banner-is-callout">' }</div>
             <div>{ '  <p>Looking for a way to be webscale?</p>' }</div>
-            <div>{ '  <div className="banner-button-group">' }</div>
-            <div>{ '    <button className="button button-is-primary button-is-small u-mr-2">Learn How</button>' }</div>
-            <div>{ '    <button className="button button-is-small">Close</button>' }</div>
+            <div>{ '  <div class="banner-button-group">' }</div>
+            <div>{ '    <button class="button button-is-primary button-is-small u-mr-2">Learn How</button>' }</div>
+            <div>{ '    <button class="button button-is-small">Close</button>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '</div>' }</div>
           </code>
@@ -82,11 +82,11 @@ const UIBanners = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="banner banner-is-callout">' }</div>
+            <div>{ '<div class="banner banner-is-callout">' }</div>
             <div>{ '  <p>Looking for a way to be webscale?</p>' }</div>
-            <div>{ '  <div className="banner-button-group">' }</div>
-            <div>{ '    <button className="button button-is-primary button-is-small u-mr-2">Learn How</button>' }</div>
-            <div>{ '    <button className="button button-is-small">Close</button>' }</div>
+            <div>{ '  <div class="banner-button-group">' }</div>
+            <div>{ '    <button class="button button-is-primary button-is-small u-mr-2">Learn How</button>' }</div>
+            <div>{ '    <button class="button button-is-small">Close</button>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '</div>' }</div>
           </code>
@@ -120,11 +120,11 @@ const UIBanners = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="banner banner-is-draft">' }</div>
+            <div>{ '<div class="banner banner-is-draft">' }</div>
             <div>{ '  <p>Information explaining the draft banner notification.</p>' }</div>
-            <div>{ '  <div className="u-float-right">' }</div>
-            <div>{ '    <button className="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
-            <div>{ '    <button className="button button-is-xs">Learn More</button>' }</div>
+            <div>{ '  <div class="u-float-right">' }</div>
+            <div>{ '    <button class="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
+            <div>{ '    <button class="button button-is-xs">Learn More</button>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '</div>' }</div>
           </code>
@@ -151,11 +151,11 @@ const UIBanners = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="banner banner-is-in-progress">' }</div>
+            <div>{ '<div class="banner banner-is-in-progress">' }</div>
             <div>{ '  <p>Information explaining the in progress banner notification.</p>' }</div>
-            <div>{ '  <div className="u-float-right">' }</div>
-            <div>{ '    <button className="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
-            <div>{ '    <button className="button button-is-xs">Learn More</button>' }</div>
+            <div>{ '  <div class="u-float-right">' }</div>
+            <div>{ '    <button class="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
+            <div>{ '    <button class="button button-is-xs">Learn More</button>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '</div>' }</div>
           </code>
@@ -182,11 +182,11 @@ const UIBanners = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="banner banner-is-alert">' }</div>
+            <div>{ '<div class="banner banner-is-alert">' }</div>
             <div>{ '  <p>Information explaining the alert banner notification.</p>' }</div>
-            <div>{ '  <div className="u-float-right">' }</div>
-            <div>{ '    <button className="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
-            <div>{ '    <button className="button button-is-xs">Learn More</button>' }</div>
+            <div>{ '  <div class="u-float-right">' }</div>
+            <div>{ '    <button class="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
+            <div>{ '    <button class="button button-is-xs">Learn More</button>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '</div>' }</div>
           </code>
@@ -213,11 +213,11 @@ const UIBanners = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="banner banner-is-success">' }</div>
+            <div>{ '<div class="banner banner-is-success">' }</div>
             <div>{ '  <p>Information explaining the success banner notification.</p>' }</div>
-            <div>{ '  <div className="u-float-right">' }</div>
-            <div>{ '    <button className="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
-            <div>{ '    <button className="button button-is-xs">Learn More</button>' }</div>
+            <div>{ '  <div class="u-float-right">' }</div>
+            <div>{ '    <button class="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
+            <div>{ '    <button class="button button-is-xs">Learn More</button>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '</div>' }</div>
           </code>
@@ -254,11 +254,11 @@ const UIBanners = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="banner banner-is-draft">' }</div>
+            <div>{ '<div class="banner banner-is-draft">' }</div>
             <div>{ '  <p>Information explaining the draft banner notification.</p>' }</div>
-            <div>{ '  <div className="u-float-right">' }</div>
-            <div>{ '    <button className="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
-            <div>{ '    <button className="button button-is-xs">Learn More</button>' }</div>
+            <div>{ '  <div class="u-float-right">' }</div>
+            <div>{ '    <button class="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
+            <div>{ '    <button class="button button-is-xs">Learn More</button>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '</div>' }</div>
           </code>
@@ -288,11 +288,11 @@ const UIBanners = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="banner banner-is-draft">' }</div>
+            <div>{ '<div class="banner banner-is-draft">' }</div>
             <div>{ '  <p>Information explaining the draft banner notification.</p>' }</div>
-            <div>{ '  <div className="u-float-right">' }</div>
-            <div>{ '    <button className="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
-            <div>{ '    <button className="button button-is-xs">Learn More</button>' }</div>
+            <div>{ '  <div class="u-float-right">' }</div>
+            <div>{ '    <button class="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
+            <div>{ '    <button class="button button-is-xs">Learn More</button>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '</div>' }</div>
           </code>
@@ -324,11 +324,11 @@ const UIBanners = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="banner banner-is-draft">' }</div>
+            <div>{ '<div class="banner banner-is-draft">' }</div>
             <div>{ '  <p>Information explaining the draft banner notification.</p>' }</div>
-            <div>{ '  <div className="u-float-right">' }</div>
-            <div>{ '    <button className="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
-            <div>{ '    <button className="button button-is-xs">Learn More</button>' }</div>
+            <div>{ '  <div class="u-float-right">' }</div>
+            <div>{ '    <button class="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
+            <div>{ '    <button class="button button-is-xs">Learn More</button>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '</div>' }</div>
           </code>
@@ -358,11 +358,11 @@ const UIBanners = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="banner banner-is-draft">' }</div>
+            <div>{ '<div class="banner banner-is-draft">' }</div>
             <div>{ '  <p>Information explaining the draft banner notification.</p>' }</div>
-            <div>{ '  <div className="u-float-right">' }</div>
-            <div>{ '    <button className="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
-            <div>{ '    <button className="button button-is-xs">Learn More</button>' }</div>
+            <div>{ '  <div class="u-float-right">' }</div>
+            <div>{ '    <button class="button button-is-text button-is-xs u-mr-3">Close</button>' }</div>
+            <div>{ '    <button class="button button-is-xs">Learn More</button>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '</div>' }</div>
           </code>

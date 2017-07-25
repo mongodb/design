@@ -29,8 +29,8 @@ const UIBubbles = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="bubble-label bubble-label-gray">3 Shards</div>' }</div>
-            <div>{ '<div className="bubble-label bubble-label-lighter-gray">5 Nodes</div>' }</div>
+            <div>{ '<div class="bubble-label bubble-label-gray">3 Shards</div>' }</div>
+            <div>{ '<div class="bubble-label bubble-label-lighter-gray">5 Nodes</div>' }</div>
           </code>
         </pre>
       </div>
@@ -45,7 +45,7 @@ const UIBubbles = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="bubble-label bubble-label-blue">NEW!</div>' }</div>
+            <div>{ '<div class="bubble-label bubble-label-blue">NEW!</div>' }</div>
           </code>
         </pre>
       </div>

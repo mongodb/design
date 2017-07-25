@@ -33,7 +33,7 @@ const UIForms = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<input type="text" placeholder={"Something"} className="input" />' }</div>
+            <div>{ '<input type="text" placeholder={"Something"} class="input" />' }</div>
           </code>
         </pre>
       </div>
@@ -53,7 +53,7 @@ const UIForms = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<input type="text" placeholder={"Something"} className="input input-is-small" />' }</div>
+            <div>{ '<input type="text" placeholder={"Something"} class="input input-is-small" />' }</div>
           </code>
         </pre>
       </div>
@@ -76,8 +76,8 @@ const UIForms = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<input type="text" placeholder={"Something"} className="input" />' }</div>
-            <div>{ '<button className="button button-is-primary button-is-full">Submit Form</button>' }</div>
+            <div>{ '<input type="text" placeholder={"Something"} class="input" />' }</div>
+            <div>{ '<button class="button button-is-primary button-is-full">Submit Form</button>' }</div>
           </code>
         </pre>
       </div>
@@ -101,9 +101,9 @@ const UIForms = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="input-with-message">' }</div>
-            <div>{ '  <input type="text" placeholder={"Something"} className="input input-is-success" />' }</div>
-            <div>{ '  <div className="success-label">Success</div>'}</div>
+            <div>{ '<div class="input-with-message">' }</div>
+            <div>{ '  <input type="text" placeholder={"Something"} class="input input-is-success" />' }</div>
+            <div>{ '  <div class="success-label">Success</div>'}</div>
             <div>{ '</div>' }</div>
           </code>
         </pre>
@@ -122,9 +122,9 @@ const UIForms = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="input-with-message">' }</div>
-            <div>{ '  <input type="text" placeholder={"Something"} className="input input-has-error" />' }</div>
-            <div>{ '  <p className="error-message">Contextual alert message goes here</p>'}</div>
+            <div>{ '<div class="input-with-message">' }</div>
+            <div>{ '  <input type="text" placeholder={"Something"} class="input input-has-error" />' }</div>
+            <div>{ '  <p class="error-message">Contextual alert message goes here</p>'}</div>
             <div>{ '</div>' }</div>
           </code>
         </pre>
@@ -330,35 +330,35 @@ const UIForms = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="row">' }</div>
-            <div>{ '  <div className="columns medium-6">' }</div>
-            <div>{ '    <div className="rich-radio">' }</div>
-            <div>{ '      <div className="rich-radio-title">Option Name</div>' }</div>
+            <div>{ '<div class="row">' }</div>
+            <div>{ '  <div class="columns medium-6">' }</div>
+            <div>{ '    <div class="rich-radio">' }</div>
+            <div>{ '      <div class="rich-radio-title">Option Name</div>' }</div>
             <div>{ '      <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>' }</div>
             <div>{ '      <section>' }</div>
-            <div>{ '        <ul className="checklist">' }</div>
-            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
-            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
-            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
+            <div>{ '        <ul class="checklist">' }</div>
+            <div>{ '          <li class="checklist-item">feature one</li>' }</div>
+            <div>{ '          <li class="checklist-item">feature one</li>' }</div>
+            <div>{ '          <li class="checklist-item">feature one</li>' }</div>
             <div>{ '        </ul>' }</div>
             <div>{ '      </section>' }</div>
-            <div>{ '      <button type="button" className="button button-is-primary button-is-full">' }</div>
+            <div>{ '      <button type="button" class="button button-is-primary button-is-full">' }</div>
             <div>{ '        Select' }</div>
             <div>{ '      </button>' }</div>
             <div>{ '    </div>' }</div>
             <div>{ '  </div>' }</div>
-            <div>{ '  <div className="columns medium-6">' }</div>
-            <div>{ '    <div className="rich-radio">' }</div>
-            <div>{ '      <div className="rich-radio-title">Option Name</div>' }</div>
+            <div>{ '  <div class="columns medium-6">' }</div>
+            <div>{ '    <div class="rich-radio">' }</div>
+            <div>{ '      <div class="rich-radio-title">Option Name</div>' }</div>
             <div>{ '      <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>' }</div>
             <div>{ '      <section>' }</div>
-            <div>{ '        <ul className="checklist">' }</div>
-            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
-            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
-            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
+            <div>{ '        <ul class="checklist">' }</div>
+            <div>{ '          <li class="checklist-item">feature one</li>' }</div>
+            <div>{ '          <li class="checklist-item">feature one</li>' }</div>
+            <div>{ '          <li class="checklist-item">feature one</li>' }</div>
             <div>{ '        </ul>' }</div>
             <div>{ '      </section>' }</div>
-            <div>{ '      <button type="button" className="button button-is-primary button-is-full">' }</div>
+            <div>{ '      <button type="button" class="button button-is-primary button-is-full">' }</div>
             <div>{ '        Select' }</div>
             <div>{ '      </button>' }</div>
             <div>{ '    </div>' }</div>

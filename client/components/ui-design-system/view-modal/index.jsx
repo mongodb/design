@@ -44,23 +44,23 @@ const UIViewModal = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="view-modal-content view-modal-content-is-small" tabIndex="-1">' }</div>
-            <div>{ '  <button type="button" className="view-modal-close modal-close" data-dismiss="modal" aria-hidden="true">×</button>' }</div>
-            <div>{ '  <div className="view-modal-header">' }</div>
-            <div>{ '    <h3 className="view-modal-header-title">Your Title Here</h3>' }</div>
+            <div>{ '<div class="view-modal-content view-modal-content-is-small" tabIndex="-1">' }</div>
+            <div>{ '  <button type="button" class="view-modal-close modal-close" data-dismiss="modal" aria-hidden="true">×</button>' }</div>
+            <div>{ '  <div class="view-modal-header">' }</div>
+            <div>{ '    <h3 class="view-modal-header-title">Your Title Here</h3>' }</div>
             <div>{ '  </div>' }</div>
-            <div>{ '  <div className="view-modal-body view-modal-body-has-padding">' }</div>
-            <div>{ '    <div className="view-modal-content view-modal-content-is-small" tabIndex="-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua' }</div>
+            <div>{ '  <div class="view-modal-body view-modal-body-has-padding">' }</div>
+            <div>{ '    <div class="view-modal-content view-modal-content-is-small" tabIndex="-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua' }</div>
             <div>{ '  </div>' }</div>
-            <div>{ '  <div className="view-modal-footer">' }</div>
-            <div>{ '    <div className="view-modal-actions">' }</div>
-            <div>{ '    <div className="view-modal-content view-modal-content-is-small" tabIndex="-1">' }</div>
+            <div>{ '  <div class="view-modal-footer">' }</div>
+            <div>{ '    <div class="view-modal-actions">' }</div>
+            <div>{ '    <div class="view-modal-content view-modal-content-is-small" tabIndex="-1">' }</div>
             <div>{ '      <div>' }</div>
-            <div>{ '        <button className="button">Optional Secondary Action</button>' }</div>
+            <div>{ '        <button class="button">Optional Secondary Action</button>' }</div>
             <div>{ '      </div>' }</div>
             <div>{ '      <div>' }</div>
-            <div>{ '        <button className="button u-mr-2">Cancel</button>' }</div>
-            <div>{ '        <button className="button button-is-primary">Confirm</button>' }</div>
+            <div>{ '        <button class="button u-mr-2">Cancel</button>' }</div>
+            <div>{ '        <button class="button button-is-primary">Confirm</button>' }</div>
             <div>{ '      </div>' }</div>
             <div>{ '    </div>' }</div>
             <div>{ '  </div>' }</div>

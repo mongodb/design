@@ -30,10 +30,10 @@ const UIButtons = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<button className="button">Default Button</button>' }</div>
-            <div>{ '<button className="button button-is-primary">Primary Button</button>' }</div>
-            <div>{ '<button className="button button-is-danger">Destructive Button</button>' }</div>
-            <div>{ '<button className="button" disabled>Disabled Button</button>' }</div>
+            <div>{ '<button class="button">Default Button</button>' }</div>
+            <div>{ '<button class="button button-is-primary">Primary Button</button>' }</div>
+            <div>{ '<button class="button button-is-danger">Destructive Button</button>' }</div>
+            <div>{ '<button class="button" disabled>Disabled Button</button>' }</div>
           </code>
         </pre>
       </div>
@@ -50,7 +50,7 @@ const UIButtons = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<button className="button button-is-default-inverse">Darker Button</button>' }</div>
+            <div>{ '<button class="button button-is-default-inverse">Darker Button</button>' }</div>
           </code>
         </pre>
       </div>
@@ -68,9 +68,9 @@ const UIButtons = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<button className="button button-has-ellipsis-only u-mr-2"></button>' }</div>
-            <div>{ '<button className="button button-has-ellipsis-only button-is-small u-mr-2"></button>' }</div>
-            <div>{ '<button className="button button-has-ellipsis-only button-is-xs u-mr-2"></button>' }</div>
+            <div>{ '<button class="button button-has-ellipsis-only u-mr-2"></button>' }</div>
+            <div>{ '<button class="button button-has-ellipsis-only button-is-small u-mr-2"></button>' }</div>
+            <div>{ '<button class="button button-has-ellipsis-only button-is-xs u-mr-2"></button>' }</div>
           </code>
         </pre>
       </div>
@@ -99,12 +99,12 @@ const UIButtons = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<button className="button button-is-xs">Extra Small</button>' }</div>
-            <div>{ '<button className="button button-is-small">Small Button</button>' }</div>
-            <div>{ '<button className="button">Normal Button</button>' }</div>
-            <div>{ '<button className="button button-is-large">Large Button</button>' }</div>
+            <div>{ '<button class="button button-is-xs">Extra Small</button>' }</div>
+            <div>{ '<button class="button button-is-small">Small Button</button>' }</div>
+            <div>{ '<button class="button">Normal Button</button>' }</div>
+            <div>{ '<button class="button button-is-large">Large Button</button>' }</div>
             <div>{ ' ' }</div>
-            <div>{ '<button className="button button-is-full">Full Width Button</button>' }</div>
+            <div>{ '<button class="button button-is-full">Full Width Button</button>' }</div>
           </code>
         </pre>
       </div>
@@ -165,10 +165,10 @@ const UIButtons = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<a className="link">This is a normal styled link</a>' }</div>
-            <div>{ '<a className="link link-is-underlined">This link is always underlined, even when not hovering</a>' }</div>
-            <div>{ '<a className="link link-on-dark">This link is brighter, to be used against a blue background</a>' }</div>
-            <div>{ '<a className="link link-is-disabled">This link is disabled, which prevents click and hover events like tooltips</a>' }</div>
+            <div>{ '<a class="link">This is a normal styled link</a>' }</div>
+            <div>{ '<a class="link link-is-underlined">This link is always underlined, even when not hovering</a>' }</div>
+            <div>{ '<a class="link link-on-dark">This link is brighter, to be used against a blue background</a>' }</div>
+            <div>{ '<a class="link link-is-disabled">This link is disabled, which prevents click and hover events like tooltips</a>' }</div>
           </code>
         </pre>
       </div>
