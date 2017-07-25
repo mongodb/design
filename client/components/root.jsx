@@ -5,7 +5,7 @@
 // ==================================================
 
 import React from 'react';
-import { Router, browserHistory, applyRouterMiddleware } from 'react-router';
+import { Router, hashHistory, applyRouterMiddleware } from 'react-router';
 import { useScroll } from 'react-router-scroll';
 
 import routes from '../routes.jsx';
@@ -13,7 +13,7 @@ import routes from '../routes.jsx';
 const Root = () => (
   <Router
     routes={routes}
-    history={browserHistory}
+    history={hashHistory}
     render={applyRouterMiddleware(useScroll())}
   />
 );

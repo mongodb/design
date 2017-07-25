@@ -24,6 +24,7 @@ import UIForms from './components/ui-design-system/forms/index.jsx';
 import UITabs from './components/ui-design-system/tabs/index.jsx';
 import UITables from './components/ui-design-system/tables/index.jsx';
 import UIUtilities from './components/ui-design-system/utilities/index.jsx';
+import UIViewModal from './components/ui-design-system/view-modal/index.jsx';
 
 const routes = (
   <Route path="/" component={Layout}>
@@ -47,6 +48,7 @@ const routes = (
         <Route path="/ui-design-system/tabs" component={UITabs} />
         <Route path="/ui-design-system/tables" component={UITables} />
         <Route path="/ui-design-system/utilities" component={UIUtilities} />
+        <Route path="/ui-design-system/view-modal" component={UIViewModal} />
     </Route>
     <Route path="*" component={NotFound} />
   </Route>

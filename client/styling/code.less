@@ -1,43 +1,50 @@
-.snippet{
-	display: flex;
-	font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
-	font-size: 13px;
-	background-color: @gray8;
-	color: @gray2;
-	border-left: 4px solid @gray6;
-	line-height: 35px;
+.copy-command {
+    // flexbox gets the button to fill vertical space-- requires silly hacks otherwise
+    display: -ms-flexbox;
+    display: flex;
 
-	&-is-single {
-		display: inline-block;
-		padding: 10px;
-		white-space: nowrap;
-		overflow: scroll;
-	}
+    &-text {
+        background: @gray7;
+        border-left: 3px solid @gray5;
+        display: inline-block;
+        padding: 10px 15px;
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 12px;
+        line-height: 35px;
+        overflow: scroll;
+        white-space: nowrap;
+    }
 
-	&-has-multiple {
-		padding: 10px;
-		white-space: pre;
-		overflow: scroll;
-	}
+    &-button {
+        flex: 0 0 100px;
+        display: inline-block;
+        background-color: @pw;
+        border: 1px solid @gray6;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
 
-	&-has-button {
-		background-color: @pw;
-		color: @gray2;
-		border: 1px solid @gray6;
-		font-size: 13px;
-		font-weight: 700;
-		text-transform: uppercase;
-		flex: 0 0 100px;
-		display: inline-block;
-		cursor: pointer;
-		
-		&:hover {
-			border: 1px solid @gray5;
-		}
+        &:active {
+            box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.1);
+        }
+    }
 
-		&:focus {
-			border: 1px solid @gray4;
-			outline: 0;
-		}
-	}
+    &-is-full-width {
+        flex-basis: 100%;
+    }
+
+    &-is-spaced {
+        margin-bottom: 10px;
+    }
+}
+
+.codeblock {
+    white-space: pre;
+    overflow: scroll;
+    padding: 10px;
+    background: @gray7;
+    border-left: 3px solid @gray5;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.65;
 }
