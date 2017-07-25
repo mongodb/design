@@ -9,17 +9,7 @@
 .nested-list {
     list-style: none;
     padding: 0;
-
-    &-link {
-        text-decoration: none;
-        color: @gray1;
-        cursor: pointer;
-        display: inline-block;
-        width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
+    .nested-list-link();
 
     &-item {
         &-is-collapsed {
