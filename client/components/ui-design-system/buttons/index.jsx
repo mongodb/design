@@ -26,7 +26,7 @@ const UIButtons = () => (
         <button className="button" disabled>Disabled Button</button>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
@@ -55,7 +55,27 @@ const UIButtons = () => (
         </pre>
       </div>
     </div>
-        
+
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <h3>With Ellipsis Icons</h3>
+        <button className="button button-has-ellipsis-only u-mr-2"></button>
+        <button className="button button-has-ellipsis-only button-is-small u-mr-2"></button>
+        <button className="button button-has-ellipsis-only button-is-xs u-mr-2"></button>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <pre>
+          <code className="language-html hljs xml" data-lang="html">
+            <div>{ '<button className="button button-has-ellipsis-only u-mr-2"></button>' }</div>
+            <div>{ '<button className="button button-has-ellipsis-only button-is-small u-mr-2"></button>' }</div>
+            <div>{ '<button className="button button-has-ellipsis-only button-is-xs u-mr-2"></button>' }</div>
+          </code>
+        </pre>
+      </div>
+    </div>
+
     <div className="row u-mb-2">
       <div className="columns small-12">
         <h2>Button Sizes</h2>
