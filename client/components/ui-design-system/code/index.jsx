@@ -37,10 +37,10 @@ const UICode = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="copy-command">' }</div>
-            <div>{ '  <span className="copy-command-text">this is a command that you can copy. it will break onto the next line even if it is really long, the overflow will keep scrolling horizontally.</span>' }</div>
-            <div>{ '  <button className="copy-command-button">' }</div>
-            <div>{ '    <i className="fa fa-files-o"></i> Copy' }</div>
+            <div>{ '<div class="copy-command">' }</div>
+            <div>{ '  <span class="copy-command-text">this is a command that you can copy. it will break onto the next line even if it is really long, the overflow will keep scrolling horizontally.</span>' }</div>
+            <div>{ '  <button class="copy-command-button">' }</div>
+            <div>{ '    <i class="fa fa-files-o"></i> Copy' }</div>
             <div>{ '  </button>' }</div>
             <div>{ '</div>' }</div>
           </code>
@@ -62,10 +62,10 @@ const UICode = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="copy-command">' }</div>
-            <div>{ '  <span className="copy-command-text">by default these are not full width</span>' }</div>
-            <div>{ '  <button className="copy-command-button">' }</div>
-            <div>{ '    <i className="fa fa-files-o"></i> Copy' }</div>
+            <div>{ '<div class="copy-command">' }</div>
+            <div>{ '  <span class="copy-command-text">by default these are not full width</span>' }</div>
+            <div>{ '  <button class="copy-command-button">' }</div>
+            <div>{ '    <i class="fa fa-files-o"></i> Copy' }</div>
             <div>{ '  </button>' }</div>
             <div>{ '</div>' }</div>
           </code>
@@ -87,10 +87,10 @@ const UICode = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="copy-command copy-command-is-full-width">' }</div>
-            <div>{ '  <span className="copy-command-text copy-command-text-is-full-width">but you can force them to be</span>' }</div>
-            <div>{ '  <button className="copy-command-button">' }</div>
-            <div>{ '    <i className="fa fa-files-o"></i> Copy' }</div>
+            <div>{ '<div class="copy-command copy-command-is-full-width">' }</div>
+            <div>{ '  <span class="copy-command-text copy-command-text-is-full-width">but you can force them to be</span>' }</div>
+            <div>{ '  <button class="copy-command-button">' }</div>
+            <div>{ '    <i class="fa fa-files-o"></i> Copy' }</div>
             <div>{ '  </button>' }</div>
             <div>{ '</div>' }</div>
           </code>
@@ -120,7 +120,7 @@ const UICode = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="codeblock">' }</div>
+            <div>{ '<div class="codeblock">' }</div>
             <div>{ '  <code>' }</div>
             <div>{ '    <div>{ \'const exampleCodeblock = {\' }</div>' }</div>
             <div>{ '      <div>{ \'  description: \'this is a codeblock that preserves whitespace\',\' }</div>' }</div>
@@ -214,59 +214,59 @@ const UICode = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="json-view-object">' }</div>
+            <div>{ '<div class="json-view-object">' }</div>
             <div>{ '  <div>' }</div>
-            <div>{ '    <span className="json-view-key">_id:</span>' }</div>
+            <div>{ '    <span class="json-view-key">_id:</span>' }</div>
             <div>{ '    <span>ObjectID(\'2340808293cc4750a928x223\')</span>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '  <div>' }</div>
-            <div>{ '    <span className="json-view-key">address:</span>' }</div>
+            <div>{ '    <span class="json-view-key">address:</span>' }</div>
             <div>{ '    <span>Object</span>' }</div>
-            <div>{ '    <div className="json-view-object">' }</div>
+            <div>{ '    <div class="json-view-object">' }</div>
             <div>{ '      <div>' }</div>
-            <div>{ '        <span className="json-view-key">street:</span>' }</div>
+            <div>{ '        <span class="json-view-key">street:</span>' }</div>
             <div>{ '        <span>"1839 Nostrand Ave"</span>' }</div>
             <div>{ '      </div>' }</div>
             <div>{ '      <div>' }</div>
-            <div>{ '        <span className="json-view-key">zip:</span>' }</div>
+            <div>{ '        <span class="json-view-key">zip:</span>' }</div>
             <div>{ '        <span>"11226"</span>' }</div>
             <div>{ '      </div>' }</div>
             <div>{ '    </div>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '  <div>' }</div>
-            <div>{ '    <span className="json-view-key">borough:</span>' }</div>
+            <div>{ '    <span class="json-view-key">borough:</span>' }</div>
             <div>{ '    <span>"Brooklyn"</span>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '  <div>' }</div>
-            <div>{ '    <span className="json-view-key">cuisine:</span>' }</div>
+            <div>{ '    <span class="json-view-key">cuisine:</span>' }</div>
             <div>{ '    <span>"Ice Cream, Gelato, Yogurt, Ices"</span>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '  <div>' }</div>
-            <div>{ '    <span className="json-view-key">grades:</span>' }</div>
+            <div>{ '    <span class="json-view-key">grades:</span>' }</div>
             <div>{ '    <span>Array[4]</span>' }</div>
-            <div>{ '    <div className="json-view-object">' }</div>
+            <div>{ '    <div class="json-view-object">' }</div>
             <div>{ '      <div>' }</div>
-            <div>{ '        <span className="json-view-key">0:</span>' }</div>
+            <div>{ '        <span class="json-view-key">0:</span>' }</div>
             <div>{ '        <span>"92"</span>' }</div>
             <div>{ '      </div>' }</div>
             <div>{ '      <div>' }</div>
-            <div>{ '        <span className="json-view-key">1:</span>' }</div>
+            <div>{ '        <span class="json-view-key">1:</span>' }</div>
             <div>{ '        <span>"79"</span>' }</div>
             <div>{ '      </div>' }</div>
             <div>{ '      <div>' }</div>
-            <div>{ '        <span className="json-view-key">2:</span>' }</div>
+            <div>{ '        <span class="json-view-key">2:</span>' }</div>
             <div>{ '        <span>"88"</span>' }</div>
             <div>{ '      </div>' }</div>
             <div>{ '      <div>' }</div>
-            <div>{ '        <span className="json-view-key">3:</span>' }</div>
+            <div>{ '        <span class="json-view-key">3:</span>' }</div>
             <div>{ '        <span>Object</span>' }</div>
-            <div>{ '        <div className="json-view-object">' }</div>
+            <div>{ '        <div class="json-view-object">' }</div>
             <div>{ '          <div>' }</div>
-            <div>{ '            <span className="json-view-key">service:</span>' }</div>
+            <div>{ '            <span class="json-view-key">service:</span>' }</div>
             <div>{ '            <span>"80"</span>' }</div>
             <div>{ '          </div>' }</div>
             <div>{ '          <div>' }</div>
-            <div>{ '            <span className="json-view-key">food:</span>' }</div>
+            <div>{ '            <span class="json-view-key">food:</span>' }</div>
             <div>{ '            <span>"95"</span>' }</div>
             <div>{ '          </div>' }</div>
             <div>{ '        </div>' }</div>
@@ -274,11 +274,11 @@ const UICode = () => (
             <div>{ '    </div>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '  <div>' }</div>
-            <div>{ '    <span className="json-view-key">name:</span>' }</div>
+            <div>{ '    <span class="json-view-key">name:</span>' }</div>
             <div>{ '    <span>"Taste The Tropics Ice Cream"</span>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '  <div>' }</div>
-            <div>{ '    <span className="json-view-key">restaurant_id:</span>' }</div>
+            <div>{ '    <span class="json-view-key">restaurant_id:</span>' }</div>
             <div>{ '    <span>"40356731"</span>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '</div>' }</div>
