@@ -188,7 +188,16 @@
   }
 
   &-has-ellipsis-only {
-    padding: 7px 12px 5px;
+
+    &:before {
+      content: "\E224";
+      font-family: "MMS Icons";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1;
+      transition: all 0.2 ease;
+    }
   }
 
   &-left-icon {
