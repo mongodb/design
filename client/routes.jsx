@@ -14,6 +14,7 @@ import BrandLogo from './components/brand-design-system/logo/index.jsx';
 import UIDesignSystem from './components/ui-design-system/index.jsx';
 import UIWelcome from './components/ui-design-system/welcome/index.jsx';
 import UITypography from './components/ui-design-system/typography/index.jsx';
+import UICode from './components/ui-design-system/code/index.jsx';
 import UIColors from './components/ui-design-system/colors/index.jsx';
 import UIBanners from './components/ui-design-system/banners/index.jsx';
 import UIButtons from './components/ui-design-system/buttons/index.jsx';
@@ -37,6 +38,7 @@ const routes = (
     <Route path="/ui-design-system" component={UIDesignSystem}>
         <IndexRoute component={UIWelcome} />
         <Route path="/ui-design-system/typography" component={UITypography} />
+        <Route path="/ui-design-system/code" component={UICode} />
         <Route path="/ui-design-system/colors" component={UIColors} />
         <Route path="/ui-design-system/banners" component={UIBanners} />
         <Route path="/ui-design-system/bubbles" component={UIBubbles} />
