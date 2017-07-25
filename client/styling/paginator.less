@@ -45,13 +45,23 @@
         }
 
         &-is-previous {
-            padding: 0px 12px 0px 10px;
+            padding: 0px 12px 2px 12px;
             margin-right: 10px;
+
+            &::before {
+                content: "\F104";
+                font-family: FontAwesome;
+            }
         }
 
         &-is-next {
-            padding: 0px 10px 0px 12px;
+            padding: 0px 12px 2px 12px;
             margin-left: 10px;
+
+            &::before {
+                content: "\F105";
+                font-family: FontAwesome;
+            }
         }
     }
 }

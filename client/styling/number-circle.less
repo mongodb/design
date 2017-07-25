@@ -19,7 +19,14 @@
         color: white;
         border-color: @green1;
         background: @green1;
+
+        &::before {
+            content: "\F00c";
+            font-family: FontAwesome;
+            font-weight: 100;
+        }
     }
+
     &-is-pending {
         color: @gray5;
         border-color: @gray5;

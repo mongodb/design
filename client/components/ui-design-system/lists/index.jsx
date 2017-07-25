@@ -45,7 +45,7 @@ const UILists = () => (
       <div className="columns small-12">
         <h3>Nested List</h3>
         <ul className="nested-list">
-          <li><a className="nested-list-parent-link" href=""><i className="mms-icon-database nested-list-icon"></i> books</a>
+          <li><a className="nested-list-parent-link" href="">books</a>
             <ul className="nested-list-child-container">
               <li><a className="nested-list-child-link" href="">authors</a></li>
               <li><a className="nested-list-child-link" href="">agents</a></li>
@@ -53,7 +53,7 @@ const UILists = () => (
               <li><a className="nested-list-child-link" href="">bookstores</a></li>
             </ul>
           </li>
-          <li><a className="nested-list-parent-link" href=""><i className="mms-icon-database nested-list-icon"></i> cinema</a>
+          <li><a className="nested-list-parent-link" href="">cinema</a>
             <ul className="nested-list-child-container">
               <li><a className="nested-list-child-link" href="">films</a></li>
               <li><a className="nested-list-child-link" href="">actors</a></li>
@@ -64,7 +64,7 @@ const UILists = () => (
               <li><a className="nested-list-child-link" href="">theaters</a></li>
             </ul>
           </li>
-          <li><a className="nested-list-parent-link" href=""><i className="mms-icon-database nested-list-icon"></i> music</a>
+          <li><a className="nested-list-parent-link" href="">music</a>
             <ul className="nested-list-child-container">
               <li><a className="nested-list-child-link" href="">bands</a></li>
               <li><a className="nested-list-child-link" href="">singers</a></li>
@@ -82,7 +82,7 @@ const UILists = () => (
         <pre>
           <code className="language-html hljs xml" data-lang="html">
             <div>{ '<ul className="nested-list">' }</div>
-            <div>{ '  <li><a className="nested-list-parent-link" href=""><i className="mms-icon-database nested-list-icon"></i> books</a>' }</div>
+            <div>{ '  <li><a className="nested-list-parent-link" href="">books' }</div>
             <div>{ '    <ul className="nested-list-child-container">' }</div>
             <div>{ '      <li><a className="nested-list-child-link" href="">authors</a></li>' }</div>
             <div>{ '      <li><a className="nested-list-child-link" href="">agents</a></li>' }</div>
@@ -90,7 +90,7 @@ const UILists = () => (
             <div>{ '      <li><a className="nested-list-child-link" href="">bookstores</a></li>' }</div>
             <div>{ '    </ul>' }</div>
             <div>{ '  </li>' }</div>
-            <div>{ '  <li><a className="nested-list-parent-link" href=""><i className="mms-icon-database nested-list-icon"></i> cinema</a>' }</div>
+            <div>{ '  <li><a className="nested-list-parent-link" href="">cinema' }</div>
             <div>{ '    <ul className="nested-list-child-container">' }</div>
             <div>{ '      <li><a className="nested-list-child-link" href="">films</a></li>' }</div>
             <div>{ '      <li><a className="nested-list-child-link" href="">actors</a></li>' }</div>
@@ -101,7 +101,7 @@ const UILists = () => (
             <div>{ '      <li><a className="nested-list-child-link" href="">theaters</a></li>' }</div>
             <div>{ '    </ul>' }</div>
             <div>{ '  </li>' }</div>
-            <div>{ '  <li><a className="nested-list-parent-link" href=""><i className="mms-icon-database nested-list-icon"></i> music</a>' }</div>
+            <div>{ '  <li><a className="nested-list-parent-link" href="">music' }</div>
             <div>{ '    <ul className="nested-list-child-container">' }</div>
             <div>{ '      <li><a className="nested-list-child-link" href="">bands</a></li>' }</div>
             <div>{ '      <li><a className="nested-list-child-link" href="">singers</a></li>' }</div>
@@ -128,7 +128,7 @@ const UILists = () => (
         <p>For showing wizard progress.</p>
         <span className="number-circle u-mr-2">1</span>
         <span className="number-circle number-circle-is-current u-mr-2">2</span>
-        <span className="number-circle number-circle-is-complete u-mr-2">✓</span>
+        <span className="number-circle number-circle-is-complete u-mr-2"></span>
         <span className="number-circle number-circle-is-pending u-mr-2">4</span>
       </div>
     </div>
@@ -138,7 +138,7 @@ const UILists = () => (
           <code className="language-html hljs xml" data-lang="html">
             <div>{ '<span className="number-circle u-mr-2">1</span>' }</div>
             <div>{ '<span className="number-circle number-circle-is-current u-mr-2">2</span>' }</div>
-            <div>{ '<span className="number-circle number-circle-is-complete u-mr-2">✓</span>' }</div>
+            <div>{ '<span className="number-circle number-circle-is-complete u-mr-2"></span>' }</div>
             <div>{ '<span className="number-circle number-circle-is-pending u-mr-2">4</span>' }</div>
           </code>
         </pre>
@@ -180,7 +180,6 @@ const UILists = () => (
         <div className="paginator">
           <span className="paginator-control paginator-control-is-left">
             <button className="paginator-button paginator-button-is-previous">
-              <i className="fa fa-angle-left"></i>
             </button> Previous
           </span>
           <span className="paginator-text">
@@ -188,7 +187,6 @@ const UILists = () => (
           </span>
           <span className="paginator-control paginator-control-is-right">Next
             <button className="paginator-button paginator-button-is-next">
-              <i className="fa fa-angle-right"></i>
             </button>
           </span>
         </div>
@@ -201,7 +199,6 @@ const UILists = () => (
             <div>{ '<div className="paginator">' }</div>
             <div>{ '  <span className="paginator-control paginator-control-is-left">' }</div>
             <div>{ '    <button className="paginator-button paginator-button-is-previous">' }</div>
-            <div>{ '      <i className="fa fa-angle-left"></i>' }</div>
             <div>{ '    </button> Previous' }</div>
             <div>{ '  </span>' }</div>
             <div>{ '  <span className="paginator-text">' }</div>
@@ -209,7 +206,6 @@ const UILists = () => (
             <div>{ '  </span>' }</div>
             <div>{ '  <span className="paginator-control paginator-control-is-right">Next' }</div>
             <div>{ '    <button className="paginator-button paginator-button-is-next">' }</div>
-            <div>{ '      <i className="fa fa-angle-right"></i>' }</div>
             <div>{ '    </button>' }</div>
             <div>{ '  </span>' }</div>
             <div>{ '</div>' }</div>
@@ -224,7 +220,6 @@ const UILists = () => (
         <div className="paginator paginator-is-borderless">
           <span className="paginator-control paginator-control-is-left paginator-control-is-disabled">
             <button className="paginator-button paginator-button-is-previous" disabled>
-              <i className="fa fa-angle-left"></i>
             </button> Previous
           </span>
           <span className="paginator-text">
@@ -232,7 +227,6 @@ const UILists = () => (
           </span>
           <span className="paginator-control paginator-control-is-right paginator-control-is-disabled" >Next
             <button className="paginator-button paginator-button-is-next" disabled>
-              <i className="fa fa-angle-right"></i>
             </button>
           </span>
         </div>
@@ -245,7 +239,6 @@ const UILists = () => (
             <div>{ '<div className="paginator paginator-is-borderless">' }</div>
             <div>{ '  <span className="paginator-control paginator-control-is-left paginator-control-is-disabled">' }</div>
             <div>{ '    <button className="paginator-button paginator-button-is-previous" disabled>' }</div>
-            <div>{ '      <i className="fa fa-angle-left"></i>' }</div>
             <div>{ '    </button> Previous' }</div>
             <div>{ '  </span>' }</div>
             <div>{ '  <span className="paginator-text">' }</div>
@@ -253,7 +246,6 @@ const UILists = () => (
             <div>{ '  </span>' }</div>
             <div>{ '  <span className="paginator-control paginator-control-is-right paginator-control-is-disabled">Next' }</div>
             <div>{ '    <button className="paginator-button paginator-button-is-next" disabled>' }</div>
-            <div>{ '      <i className="fa fa-angle-right"></i>' }</div>
             <div>{ '    </button>' }</div>
             <div>{ '  </span>' }</div>
             <div>{ '</div>' }</div>
