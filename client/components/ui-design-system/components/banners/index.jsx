@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import '../../../styling/root.less';
+import '../../../../styling/root.less';
 
 const UIBanners = () => (
   <div className="wrap button-ui">
