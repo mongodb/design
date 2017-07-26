@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import '../../../styling/root.less';
+import '../../../../styling/root.less';
 
 const UICode = () => (
   <div className="wrap">
@@ -196,7 +196,7 @@ const UICode = () => (
                     <span>"95"</span>
                   </div>
                 </div>
-              </div> 
+              </div>
             </div>
           </div>
           <div>

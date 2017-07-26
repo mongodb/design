@@ -13,18 +13,24 @@ import BrandLogo from './components/brand-design-system/logo/index.jsx';
 
 import UIDesignSystem from './components/ui-design-system/index.jsx';
 import UIWelcome from './components/ui-design-system/welcome/index.jsx';
-import UITypography from './components/ui-design-system/typography/index.jsx';
-import UICode from './components/ui-design-system/code/index.jsx';
-import UIColors from './components/ui-design-system/colors/index.jsx';
-import UIBanners from './components/ui-design-system/banners/index.jsx';
-import UIButtons from './components/ui-design-system/buttons/index.jsx';
-import UIBubbles from './components/ui-design-system/bubbles/index.jsx';
-import UIGrid from './components/ui-design-system/grid/index.jsx';
-import UIForms from './components/ui-design-system/forms/index.jsx';
-import UITabs from './components/ui-design-system/tabs/index.jsx';
-import UITables from './components/ui-design-system/tables/index.jsx';
-import UIUtilities from './components/ui-design-system/utilities/index.jsx';
-import UIViewModal from './components/ui-design-system/view-modal/index.jsx';
+//Base Styles
+import UIColors from './components/ui-design-system/base-styles/colors/index.jsx';
+import UIIcons from './components/ui-design-system/base-styles/icons/index.jsx';
+import UITypography from './components/ui-design-system/base-styles/typography/index.jsx';
+//Components
+import UICode from './components/ui-design-system/components/code/index.jsx';
+import UIBanners from './components/ui-design-system/components/banners/index.jsx';
+import UIButtons from './components/ui-design-system/components/buttons/index.jsx';
+import UIBubbles from './components/ui-design-system/components/bubbles/index.jsx';
+import UIForms from './components/ui-design-system/components/forms/index.jsx';
+import UITabs from './components/ui-design-system/components/tabs/index.jsx';
+import UITables from './components/ui-design-system/components/tables/index.jsx';
+import UIUtilities from './components/ui-design-system/components/utilities/index.jsx';
+import UIViewModal from './components/ui-design-system/components/view-modal/index.jsx';
+//Patterns
+import UIModify from './components/ui-design-system/patterns/modify/index.jsx';
+//Layouts
+import UIGrid from './components/ui-design-system/layouts/grid/index.jsx';
 
 const routes = (
   <Route path="/" component={Layout}>
@@ -37,18 +43,24 @@ const routes = (
     </Route>
     <Route path="/ui-design-system" component={UIDesignSystem}>
         <IndexRoute component={UIWelcome} />
-        <Route path="/ui-design-system/typography" component={UITypography} />
-        <Route path="/ui-design-system/code" component={UICode} />
-        <Route path="/ui-design-system/colors" component={UIColors} />
-        <Route path="/ui-design-system/banners" component={UIBanners} />
-        <Route path="/ui-design-system/bubbles" component={UIBubbles} />
-        <Route path="/ui-design-system/buttons" component={UIButtons} />
-        <Route path="/ui-design-system/grid" component={UIGrid} />
-        <Route path="/ui-design-system/forms" component={UIForms} />
-        <Route path="/ui-design-system/tabs" component={UITabs} />
-        <Route path="/ui-design-system/tables" component={UITables} />
-        <Route path="/ui-design-system/utilities" component={UIUtilities} />
-        <Route path="/ui-design-system/view-modal" component={UIViewModal} />
+        //Base Styles
+        <Route path="/ui-design-system/base-styles/colors" component={UIColors} />
+        <Route path="/ui-design-system/base-styles/icons" component={UIIcons} />
+        <Route path="/ui-design-system/base-styles/typography" component={UITypography} />
+        //Components
+        <Route path="/ui-design-system/components/code" component={UICode} />
+        <Route path="/ui-design-system/components/banners" component={UIBanners} />
+        <Route path="/ui-design-system/components/bubbles" component={UIBubbles} />
+        <Route path="/ui-design-system/components/buttons" component={UIButtons} />
+        <Route path="/ui-design-system/components/forms" component={UIForms} />
+        <Route path="/ui-design-system/components/tabs" component={UITabs} />
+        <Route path="/ui-design-system/components/tables" component={UITables} />
+        <Route path="/ui-design-system/components/utilities" component={UIUtilities} />
+        <Route path="/ui-design-system/components/view-modal" component={UIViewModal} />
+        //Patterns
+        <Route path="/ui-design-system/patterns/modify" component={UIModify} />
+        //Layouts
+        <Route path="/ui-design-system/layouts/grid" component={UIGrid} />
     </Route>
     <Route path="*" component={NotFound} />
   </Route>
