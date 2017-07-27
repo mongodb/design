@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import '../../../styling/root.less';
+import '../../../../styling/root.less';
 
 const UITabs = () => (
   <div className="wrap button-ui">
@@ -40,18 +40,18 @@ const UITabs = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<ul className="tabs">' }</div>
-            <div>{ '  <li className="tabs-tab tabs-tab-is-active">' }</div>
-            <div>{ '    <a className="tabs-tab-link">Processes</a> href={"http://mongodb.com"}' }</div>
+            <div>{ '<ul class="tabs">' }</div>
+            <div>{ '  <li class="tabs-tab tabs-tab-is-active">' }</div>
+            <div>{ '    <a class="tabs-tab-link">Processes</a> href={"http://mongodb.com"}' }</div>
             <div>{ '  </li>' }</div>
-            <div>{ '  <li className="tabs-tab">' }</div>
-            <div>{ '    <a className="tabs-tab-link">Servers</a> href={"http://mongodb.com"}' }</div>
+            <div>{ '  <li class="tabs-tab">' }</div>
+            <div>{ '    <a class="tabs-tab-link">Servers</a> href={"http://mongodb.com"}' }</div>
             <div>{ '  </li>' }</div>
-            <div>{ '  <li className="tabs-tab">' }</div>
-            <div>{ '    <a className="tabs-tab-link">Agents</a> href={"http://mongodb.com"}' }</div>
+            <div>{ '  <li class="tabs-tab">' }</div>
+            <div>{ '    <a class="tabs-tab-link">Agents</a> href={"http://mongodb.com"}' }</div>
             <div>{ '  </li>' }</div>
-            <div>{ '  <li className="tabs-tab">' }</div>
-            <div>{ '    <a className="tabs-tab-link">Security</a> href={"http://mongodb.com"}' }</div>
+            <div>{ '  <li class="tabs-tab">' }</div>
+            <div>{ '    <a class="tabs-tab-link">Security</a> href={"http://mongodb.com"}' }</div>
             <div>{ '  </li>' }</div>
             <div>{ '</ul>' }</div>
           </code>

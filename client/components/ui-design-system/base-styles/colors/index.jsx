@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import '../../../styling/root.less';
+import '../../../../styling/root.less';
 
 const UIColors = () => (
   <div className="wrap">
@@ -39,7 +39,7 @@ const UIColors = () => (
         </span>
       </div>
     </div>
-    <div className="row u-mb-5">    
+    <div className="row u-mb-5">
       <div className="columns small-3">
         <span className="color-block dark-blue">
           <span className="code">@navyBlue</span>
@@ -89,7 +89,7 @@ const UIColors = () => (
         </span>
       </div>
     </div>
-    <div className="row u-mb-5">    
+    <div className="row u-mb-5">
       <div className="columns small-3">
         <span className="color-block gray4">
           <span className="code">@gray4</span>

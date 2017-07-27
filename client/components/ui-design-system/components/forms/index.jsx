@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import '../../../styling/root.less';
+import '../../../../styling/root.less';
 
 const UIForms = () => (
   <div className="wrap">
@@ -33,7 +33,7 @@ const UIForms = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<input type="text" placeholder={"Something"} className="input" />' }</div>
+            <div>{ '<input type="text" placeholder={"Something"} class="input" />' }</div>
           </code>
         </pre>
       </div>
@@ -53,7 +53,7 @@ const UIForms = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<input type="text" placeholder={"Something"} className="input input-is-small" />' }</div>
+            <div>{ '<input type="text" placeholder={"Something"} class="input input-is-small" />' }</div>
           </code>
         </pre>
       </div>
@@ -76,8 +76,8 @@ const UIForms = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<input type="text" placeholder={"Something"} className="input" />' }</div>
-            <div>{ '<button className="button button-is-primary button-is-full">Submit Form</button>' }</div>
+            <div>{ '<input type="text" placeholder={"Something"} class="input" />' }</div>
+            <div>{ '<button class="button button-is-primary button-is-full">Submit Form</button>' }</div>
           </code>
         </pre>
       </div>
@@ -101,9 +101,9 @@ const UIForms = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="input-with-message">' }</div>
-            <div>{ '  <input type="text" placeholder={"Something"} className="input input-is-success" />' }</div>
-            <div>{ '  <div className="success-label">Success</div>'}</div>
+            <div>{ '<div class="input-with-message">' }</div>
+            <div>{ '  <input type="text" placeholder={"Something"} class="input input-is-success" />' }</div>
+            <div>{ '  <div class="success-label">Success</div>'}</div>
             <div>{ '</div>' }</div>
           </code>
         </pre>
@@ -122,9 +122,9 @@ const UIForms = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="input-with-message">' }</div>
-            <div>{ '  <input type="text" placeholder={"Something"} className="input input-has-error" />' }</div>
-            <div>{ '  <p className="error-message">Contextual alert message goes here</p>'}</div>
+            <div>{ '<div class="input-with-message">' }</div>
+            <div>{ '  <input type="text" placeholder={"Something"} class="input input-has-error" />' }</div>
+            <div>{ '  <p class="error-message">Contextual alert message goes here</p>'}</div>
             <div>{ '</div>' }</div>
           </code>
         </pre>
@@ -359,7 +359,6 @@ const UIForms = () => (
         </pre>
       </div>
     </div>
-
 
     <div className="row">
       <div className="columns small-12">
