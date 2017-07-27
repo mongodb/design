@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 import '../../styling/root.less';
 
 const UIDesignSystem = ({ children }) => (
-  <div className="wrap">
+<div className="wrap">
     <nav className="sidebar">
         <ul>
             <li><h4>Base Styles</h4>
@@ -43,7 +43,7 @@ const UIDesignSystem = ({ children }) => (
     	</ul>
     </nav>
     <div className="content">{children}</div>
-  </div>
+</div>
 );
 
 export default UIDesignSystem;

@@ -43,19 +43,24 @@ const routes = (
     </Route>
     <Route path="/ui-design-system" component={UIDesignSystem}>
         <IndexRoute component={UIWelcome} />
-        <Route path="/ui-design-system/typography" component={UITypography} />
-        <Route path="/ui-design-system/code" component={UICode} />
-        <Route path="/ui-design-system/colors" component={UIColors} />
-        <Route path="/ui-design-system/banners" component={UIBanners} />
-        <Route path="/ui-design-system/bubbles" component={UIBubbles} />
-        <Route path="/ui-design-system/buttons" component={UIButtons} />
-        <Route path="/ui-design-system/grid" component={UIGrid} />
-        <Route path="/ui-design-system/forms" component={UIForms} />
-        <Route path="/ui-design-system/tabs" component={UITabs} />
-        <Route path="/ui-design-system/tables" component={UITables} />
-        <Route path="/ui-design-system/utilities" component={UIUtilities} />
-        <Route path="/ui-design-system/view-modal" component={UIViewModal} />
-        <Route path="/ui-design-system/lists" component={UILists} />
+        //Base Styles
+        <Route path="/ui-design-system/base-styles/colors" component={UIColors} />
+        <Route path="/ui-design-system/base-styles/icons" component={UIIcons} />
+        <Route path="/ui-design-system/base-styles/typography" component={UITypography} />
+        //Components
+        <Route path="/ui-design-system/components/code" component={UICode} />
+        <Route path="/ui-design-system/components/banners" component={UIBanners} />
+        <Route path="/ui-design-system/components/bubbles" component={UIBubbles} />
+        <Route path="/ui-design-system/components/buttons" component={UIButtons} />
+        <Route path="/ui-design-system/components/forms" component={UIForms} />
+        <Route path="/ui-design-system/components/tabs" component={UITabs} />
+        <Route path="/ui-design-system/components/tables" component={UITables} />
+        <Route path="/ui-design-system/components/utilities" component={UIUtilities} />
+        <Route path="/ui-design-system/components/view-modal" component={UIViewModal} />
+        //Patterns
+        <Route path="/ui-design-system/patterns/modify" component={UIModify} />
+        //Layouts
+        <Route path="/ui-design-system/layouts/grid" component={UIGrid} />
     </Route>
     <Route path="*" component={NotFound} />
   </Route>
