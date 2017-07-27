@@ -13,19 +13,24 @@ import BrandLogo from './components/brand-design-system/logo/index.jsx';
 
 import UIDesignSystem from './components/ui-design-system/index.jsx';
 import UIWelcome from './components/ui-design-system/welcome/index.jsx';
-import UITypography from './components/ui-design-system/typography/index.jsx';
-import UICode from './components/ui-design-system/code/index.jsx';
-import UIColors from './components/ui-design-system/colors/index.jsx';
-import UIBanners from './components/ui-design-system/banners/index.jsx';
-import UIButtons from './components/ui-design-system/buttons/index.jsx';
-import UIBubbles from './components/ui-design-system/bubbles/index.jsx';
-import UIGrid from './components/ui-design-system/grid/index.jsx';
-import UIForms from './components/ui-design-system/forms/index.jsx';
-import UITabs from './components/ui-design-system/tabs/index.jsx';
-import UITables from './components/ui-design-system/tables/index.jsx';
-import UIUtilities from './components/ui-design-system/utilities/index.jsx';
-import UIViewModal from './components/ui-design-system/view-modal/index.jsx';
-import UILists from './components/ui-design-system/lists/index.jsx';
+//Base Styles
+import UIColors from './components/ui-design-system/base-styles/colors/index.jsx';
+import UIIcons from './components/ui-design-system/base-styles/icons/index.jsx';
+import UITypography from './components/ui-design-system/base-styles/typography/index.jsx';
+//Components
+import UICode from './components/ui-design-system/components/code/index.jsx';
+import UIBanners from './components/ui-design-system/components/banners/index.jsx';
+import UIButtons from './components/ui-design-system/components/buttons/index.jsx';
+import UIBubbles from './components/ui-design-system/components/bubbles/index.jsx';
+import UIForms from './components/ui-design-system/components/forms/index.jsx';
+import UITabs from './components/ui-design-system/components/tabs/index.jsx';
+import UITables from './components/ui-design-system/components/tables/index.jsx';
+import UIUtilities from './components/ui-design-system/components/utilities/index.jsx';
+import UIViewModal from './components/ui-design-system/components/view-modal/index.jsx';
+//Patterns
+import UIModify from './components/ui-design-system/patterns/modify/index.jsx';
+//Layouts
+import UIGrid from './components/ui-design-system/layouts/grid/index.jsx';
 
 const routes = (
   <Route path="/" component={Layout}>
