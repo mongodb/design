@@ -283,46 +283,43 @@ const UIForms = () => (
       </div>
     </div>
 
+
     <div className="row">
       <div className="columns small-12">
         <h3>In Columns with Rich Content</h3>
       </div>
     </div>
-    <div className="row u-mb-0">
-      <div className="columns small-12">
-        <div className="row">
-          <div className="columns medium-6">
-            <div className="rich-radio">
-              <div className="rich-radio-title">Option Name</div>
-              <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>
-              <section>
-                <ul className="checklist">
-                  <li className="checklist-item">feature one</li>
-                  <li className="checklist-item">feature one</li>
-                  <li className="checklist-item">feature one</li>
-                </ul>
-              </section>
-              <button type="button" className="button button-is-primary button-is-full">
-                Select
-              </button>
-            </div>
-          </div>
-          <div className="columns medium-6">
-            <div className="rich-radio">
-              <div className="rich-radio-title">Option Name</div>
-              <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>
-              <section>
-                <ul className="checklist">
-                  <li className="checklist-item">feature one</li>
-                  <li className="checklist-item">feature one</li>
-                  <li className="checklist-item">feature one</li>
-                </ul>
-              </section>
-              <button type="button" className="button button-is-primary button-is-full">
-                Select
-              </button>
-            </div>
-          </div>
+    <div className="row">
+      <div className="columns medium-6">
+        <div className="rich-radio">
+          <div className="rich-radio-title">Option Name</div>
+          <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+          <section>
+            <ul className="checklist">
+              <li className="checklist-item">feature one</li>
+              <li className="checklist-item">feature one</li>
+              <li className="checklist-item">feature one</li>
+            </ul>
+          </section>
+          <button type="button" className="button button-is-primary button-is-full">
+            Select
+          </button>
+        </div>
+      </div>
+      <div className="columns medium-6">
+        <div className="rich-radio">
+          <div className="rich-radio-title">Option Name</div>
+          <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+          <section>
+            <ul className="checklist">
+              <li className="checklist-item">feature one</li>
+              <li className="checklist-item">feature one</li>
+              <li className="checklist-item">feature one</li>
+            </ul>
+          </section>
+          <button type="button" className="button button-is-primary button-is-full">
+            Select
+          </button>
         </div>
       </div>
     </div>
@@ -330,39 +327,178 @@ const UIForms = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="row">' }</div>
-            <div>{ '  <div className="columns medium-6">' }</div>
-            <div>{ '    <div className="rich-radio">' }</div>
-            <div>{ '      <div className="rich-radio-title">Option Name</div>' }</div>
-            <div>{ '      <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>' }</div>
-            <div>{ '      <section>' }</div>
-            <div>{ '        <ul className="checklist">' }</div>
-            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
-            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
-            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
-            <div>{ '        </ul>' }</div>
-            <div>{ '      </section>' }</div>
-            <div>{ '      <button type="button" className="button button-is-primary button-is-full">' }</div>
-            <div>{ '        Select' }</div>
-            <div>{ '      </button>' }</div>
+            <div>{ '<div class="rich-radio">' }</div>
+            <div>{ '  <div class="rich-radio-title">Option Name</div>' }</div>
+            <div>{ '  <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>' }</div>
+            <div>{ '  <section>' }</div>
+            <div>{ '    <ul class="checklist">' }</div>
+            <div>{ '      <li class="checklist-item">feature one</li>' }</div>
+            <div>{ '      <li class="checklist-item">feature one</li>' }</div>
+            <div>{ '      <li class="checklist-item">feature one</li>' }</div>
+            <div>{ '    </ul>' }</div>
+            <div>{ '  </section>' }</div>
+            <div>{ '  <button type="button" class="button button-is-primary button-is-full">' }</div>
+            <div>{ '    Select' }</div>
+            <div>{ '  </button>' }</div>
+            <div>{ '</div>' }</div>
+            <div>{ '<div class="rich-radio">' }</div>
+            <div>{ '  <div class="rich-radio-title">Option Name</div>' }</div>
+            <div>{ '  <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>' }</div>
+            <div>{ '  <section>' }</div>
+            <div>{ '    <ul class="checklist">' }</div>
+            <div>{ '      <li class="checklist-item">feature one</li>' }</div>
+            <div>{ '      <li class="checklist-item">feature one</li>' }</div>
+            <div>{ '      <li class="checklist-item">feature one</li>' }</div>
+            <div>{ '    </ul>' }</div>
+            <div>{ '  </section>' }</div>
+            <div>{ '  <button type="button" class="button button-is-primary button-is-full">' }</div>
+            <div>{ '    Select' }</div>
+            <div>{ '  </button>' }</div>
+            <div>{ '</div>' }</div>
+          </code>
+        </pre>
+      </div>
+    </div>
+
+
+    <div className="row">
+      <div className="columns small-12">
+        <h3>With Illustrations</h3>
+      </div>
+    </div>
+    <div className="row u-mb-0">
+      <div className="columns small-12">
+        <div className="clearfix">
+          <label className="rich-radio rich-radio-is-medium rich-radio-is-checked">
+            <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="3" checked />
+            <div className="rich-radio-illustration-container">
+              <div>
+                <svg className="rich-radio-illustration">
+                  <g transform="translate(6, 14)">
+                    <rect width="25" height="25" transform="translate(0, 10), scale(1, .6), rotate(45, 12, 12)" className="rich-radio-illustration-item"></rect>
+                    <rect width="25" height="25" transform="translate(0, 5), scale(1, .6), rotate(45, 12, 12)" className="rich-radio-illustration-item"></rect>
+                    <rect width="25" height="25" transform="scale(1, .6), rotate(45, 12, 12)" className="rich-radio-illustration-item"></rect>
+                  </g>
+                </svg>
+              </div>
+              <div>
+                <div className="rich-radio-illustration-title">Option Name</div>
+                <div className="rich-radio-illustration-description">Option Description</div>
+              </div>
+            </div>
+          </label>
+
+          <label className="rich-radio rich-radio-is-medium">
+            <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="5" />
+            <div className="rich-radio-illustration-container">
+              <div>
+                <svg className="rich-radio-illustration">
+                  <g transform="translate(6, 9)">
+                    <rect width="25" height="25" transform="translate(0, 20), scale(1, .6), rotate(45, 12, 12)" className="rich-radio-illustration-item"></rect>
+                    <rect width="25" height="25" transform="translate(0, 15), scale(1, .6), rotate(45, 12, 12)" className="rich-radio-illustration-item"></rect>
+                    <rect width="25" height="25" transform="translate(0, 10), scale(1, .6), rotate(45, 12, 12)" className="rich-radio-illustration-item"></rect>
+                    <rect width="25" height="25" transform="translate(0, 5), scale(1, .6), rotate(45, 12, 12)" className="rich-radio-illustration-item"></rect>
+                    <rect width="25" height="25" transform="scale(1, .6), rotate(45, 12, 12)" className="rich-radio-illustration-item"></rect>
+                  </g>
+                </svg>
+              </div>
+              <div>
+                <div className="rich-radio-illustration-title">Option Name</div>
+                <div className="rich-radio-illustration-description">Option Description</div>
+              </div>
+            </div>
+          </label>
+
+          <label className="rich-radio rich-radio-is-medium">
+            <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="7" />
+            <div className="rich-radio-illustration-container">
+              <div>
+                <svg className="rich-radio-illustration">
+                  <g transform="translate(6, 3)">
+                    <rect width="25" height="25" transform="translate(0, 30), scale(1, .6), rotate(45, 12, 12)" className="rich-radio-illustration-item"></rect>
+                    <rect width="25" height="25" transform="translate(0, 25), scale(1, .6), rotate(45, 12, 12)" className="rich-radio-illustration-item"></rect>
+                    <rect width="25" height="25" transform="translate(0, 20), scale(1, .6), rotate(45, 12, 12)" className="rich-radio-illustration-item"></rect>
+                    <rect width="25" height="25" transform="translate(0, 15), scale(1, .6), rotate(45, 12, 12)" className="rich-radio-illustration-item"></rect>
+                    <rect width="25" height="25" transform="translate(0, 10), scale(1, .6), rotate(45, 12, 12)" className="rich-radio-illustration-item"></rect>
+                    <rect width="25" height="25" transform="translate(0, 5), scale(1, .6), rotate(45, 12, 12)" className="rich-radio-illustration-item"></rect>
+                    <rect width="25" height="25" transform="scale(1, .6), rotate(45, 12, 12)" className="rich-radio-illustration-item"></rect>
+                  </g>
+                </svg>
+              </div>
+              <div>
+                <div className="rich-radio-illustration-title">Option Name</div>
+                <div className="rich-radio-illustration-description">Option Description</div>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <pre>
+          <code className="language-html hljs xml" data-lang="html">
+            <div>{ '<div class="clearfix">' }</div>
+            <div>{ '  <label class="rich-radio rich-radio-is-medium rich-radio-is-checked">' }</div>
+            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="3" checked>' }</div>
+            <div>{ '    <div class="rich-radio-illustration-container">' }</div>
+            <div>{ '      <div>' }</div>
+            <div>{ '        <svg class="rich-radio-illustration">' }</div>
+            <div>{ '          <g transform="translate(6, 14)">' }</div>
+            <div>{ '            <rect width="25" height="25" transform="translate(0, 10), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
+            <div>{ '            <rect width="25" height="25" transform="translate(0, 5), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
+            <div>{ '            <rect width="25" height="25" transform="scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
+            <div>{ '          </g>' }</div>
+            <div>{ '        </svg>' }</div>
+            <div>{ '      </div>' }</div>
+            <div>{ '      <div>' }</div>
+            <div>{ '        <div class="rich-radio-illustration-title">Option Name</div>' }</div>
+            <div>{ '        <div class="rich-radio-illustration-description">Option Description</div>' }</div>
+            <div>{ '      </div>' }</div>
             <div>{ '    </div>' }</div>
-            <div>{ '  </div>' }</div>
-            <div>{ '  <div className="columns medium-6">' }</div>
-            <div>{ '    <div className="rich-radio">' }</div>
-            <div>{ '      <div className="rich-radio-title">Option Name</div>' }</div>
-            <div>{ '      <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>' }</div>
-            <div>{ '      <section>' }</div>
-            <div>{ '        <ul className="checklist">' }</div>
-            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
-            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
-            <div>{ '          <li className="checklist-item">feature one</li>' }</div>
-            <div>{ '        </ul>' }</div>
-            <div>{ '      </section>' }</div>
-            <div>{ '      <button type="button" className="button button-is-primary button-is-full">' }</div>
-            <div>{ '        Select' }</div>
-            <div>{ '      </button>' }</div>
+            <div>{ '  </label>' }</div>
+            <div>{ '  <label class="rich-radio rich-radio-is-medium">' }</div>
+            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="5">' }</div>
+            <div>{ '    <div class="rich-radio-illustration-container">' }</div>
+            <div>{ '      <div>' }</div>
+            <div>{ '        <svg class="rich-radio-illustration">' }</div>
+            <div>{ '          <g transform="translate(6, 9)">' }</div>
+            <div>{ '            <rect width="25" height="25" transform="translate(0, 20), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
+            <div>{ '            <rect width="25" height="25" transform="translate(0, 15), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
+            <div>{ '            <rect width="25" height="25" transform="translate(0, 10), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
+            <div>{ '            <rect width="25" height="25" transform="translate(0, 5), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
+            <div>{ '            <rect width="25" height="25" transform="scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
+            <div>{ '          </g>' }</div>
+            <div>{ '        </svg>' }</div>
+            <div>{ '      </div>' }</div>
+            <div>{ '      <div>' }</div>
+            <div>{ '        <div class="rich-radio-illustration-title">Option Name</div>' }</div>
+            <div>{ '        <div class="rich-radio-illustration-description">Option Description</div>' }</div>
+            <div>{ '      </div>' }</div>
             <div>{ '    </div>' }</div>
-            <div>{ '  </div>' }</div>
+            <div>{ '  </label>' }</div>
+            <div>{ '  <label class="rich-radio rich-radio-is-medium">' }</div>
+            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="7">' }</div>
+            <div>{ '    <div class="rich-radio-illustration-container">' }</div>
+            <div>{ '      <div>' }</div>
+            <div>{ '        <svg class="rich-radio-illustration">' }</div>
+            <div>{ '          <g transform="translate(6, 3)">' }</div>
+            <div>{ '            <rect width="25" height="25" transform="translate(0, 30), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
+            <div>{ '            <rect width="25" height="25" transform="translate(0, 25), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
+            <div>{ '            <rect width="25" height="25" transform="translate(0, 20), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
+            <div>{ '            <rect width="25" height="25" transform="translate(0, 15), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
+            <div>{ '            <rect width="25" height="25" transform="translate(0, 10), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
+            <div>{ '            <rect width="25" height="25" transform="translate(0, 5), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
+            <div>{ '            <rect width="25" height="25" transform="scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
+            <div>{ '          </g>' }</div>
+            <div>{ '        </svg>' }</div>
+            <div>{ '      </div>' }</div>
+            <div>{ '      <div>' }</div>
+            <div>{ '        <div class="rich-radio-illustration-title">Option Name</div>' }</div>
+            <div>{ '        <div class="rich-radio-illustration-description">Option Description</div>' }</div>
+            <div>{ '      </div>' }</div>
+            <div>{ '    </div>' }</div>
+            <div>{ '  </label>' }</div>
             <div>{ '</div>' }</div>
           </code>
         </pre>
