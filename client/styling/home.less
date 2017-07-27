@@ -1,0 +1,53 @@
+.hero {
+  height: 100vh;
+  width: 100%;
+
+  &-container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.home {
+  &-header {
+    font-size: 48px;
+    font-weight: 800;
+  }
+
+  &-subheader {
+    font-size: 14px;
+    font-weight: 800;
+    color: @green2;
+  }
+
+  &-sub-subheader {
+    font-size: 30px;
+    font-weight: 800;
+  }
+
+  &-link {
+    color: @gray0;
+    padding-bottom: 10px;
+    border-bottom: 3px solid @green5;
+
+    &:hover {
+      text-decoration: none;
+      color: @gray3;
+    }
+  }
+
+  &-img {
+    height: 300px;
+    width: 330px;
+    background-color: @gray5;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 6px;
+    padding: 0;
+
+    &-right {
+      float: right;
+    }
+  }
+
+}
