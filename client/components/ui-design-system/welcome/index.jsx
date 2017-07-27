@@ -7,7 +7,7 @@ import '../../../styling/root.less';
 
 const UIWelcome = () => (
   <div className="wrap">
-  	<div className="row u-mb-9">
+  	<div className="row">
     	<div className="columns small-5">
     		<div className="hero">
     			<div className="hero-container">
@@ -50,6 +50,17 @@ const UIWelcome = () => (
 		  	<h1 className="home-sub-subheader">Something we value as a design team.</h1>
 		  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in finibus nisl. Cras lectus purus, placerat sit amet urna interdum, vestibulum facilisis quam.</p>
 	  	</div>
+  	</div>
+
+  	<div className="row u-mb-9">
+    	<div className="columns small-5">
+		  	<h2 className="home-subheader">Value #4</h2>
+		  	<h1 className="home-sub-subheader">Something we value as a design team.</h1>
+		  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in finibus nisl. Cras lectus purus, placerat sit amet urna interdum, vestibulum facilisis quam.</p>
+	  	</div>
+	  	<div className="columns small-7">
+		  	<img className="home-img home-img-right"></img>
+		</div>
   	</div>
 
 
