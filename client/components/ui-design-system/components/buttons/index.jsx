@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import '../../../styling/root.less';
+import '../../../../styling/root.less';
 
 const UIButtons = () => (
   <div className="wrap button-ui">
@@ -38,7 +38,7 @@ const UIButtons = () => (
         </pre>
       </div>
     </div>
-    
+
     <div className="row u-mb-2">
       <div className="columns small-12">
         <h3>Dark Background</h3>
