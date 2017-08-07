@@ -1,0 +1,34 @@
+.number-circle {
+    display: inline-block;
+    border-radius: 50%;
+    background: black;
+    color: white;
+    text-align: center;
+
+    border: 2px solid black;
+    width: 21px;
+    height: 21px;
+    font-size: 12px;
+    font-weight: bold;
+
+    &-is-current {
+        color: white;
+        background: black;
+    }
+    &-is-complete {
+        color: white;
+        border-color: @green1;
+        background: @green1;
+
+        &::before {
+            content: "\F00c";
+            font-family: FontAwesome;
+            font-weight: 100;
+        }
+    }
+
+    &-is-pending {
+        color: @gray5;
+        border-color: @gray5;
+    }
+}
