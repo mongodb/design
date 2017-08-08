@@ -21,7 +21,7 @@ const Layout = ({ children }) => (
         <div className="columns small-12">
           <div className="row">
             <div className="brand columns small-4">
-              <h1><Link to="/ui-design-system/">MongoDB Design</Link></h1>
+                <Link to='/ui-design-system/' className="brand-logo"></Link>
             </div>
           </div>
         </div>

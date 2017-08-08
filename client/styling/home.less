@@ -9,45 +9,72 @@
   }
 }
 
-.home {
-  &-header {
-    font-size: 48px;
-    font-weight: 800;
-  }
+.hero h1 {
+  font-size: 48px;
+  font-weight: 300;
+}
 
-  &-subheader {
-    font-size: 14px;
-    font-weight: 800;
-    color: @green2;
-  }
+.hero h2 {
+  font-size: 30px;
+  font-weight: 700;
+}
 
-  &-sub-subheader {
-    font-size: 30px;
-    font-weight: 800;
-  }
+.hero h3 {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.4em;
+}
 
-  &-link {
-    color: @gray0;
-    padding-bottom: 10px;
-    border-bottom: 3px solid @green5;
+.hero h4 {
+  font-size: 16px;
+  font-weight: 400;
+  color: @green2;
+}
 
-    &:hover {
-      text-decoration: none;
-      color: @gray3;
+.hero p {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.hero button {
+  padding: 1.25em 3em;
+  font-weight: 700;
+  color: @mongodbgreen;
+  border-color: @mongodbgreen;
+}
+
+/*
+    background-image: url(/client/assets/hero-background.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+*/
+
+.footer {
+  height: 100%;
+  width: 100%;
+  background-color: @gray8;
+  padding: 10em 0;
+  text-align: center;
+
+  &-social {
+
+    &-github {
+      background-image: url(/client/assets/github.png);
+      background-size: 100% 100%;
+      height: 40px;
+      width: 40px;
+      margin: 0;
+      display: inline-block;
+      outline: none;
+    }
+
+    &-dribbble {
+      background-image: url(/client/assets/dribbble.png);
+      background-size: 100% 100%;
+      height: 40px;
+      width: 40px;
+      margin: 0;
+      display: inline-block;
     }
   }
-
-  &-img {
-    height: 300px;
-    width: 330px;
-    background-color: @gray5;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    border-radius: 6px;
-    padding: 0;
-
-    &-right {
-      float: right;
-    }
-  }
-
 }

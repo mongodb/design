@@ -82,26 +82,29 @@ ul, li {
 }
 
 .header {
-  background: @gray8;
+  background: @pw;
   //*//
   //REPLACE PADDING//
   //WITH UTILITY CLASS//
-  padding: 1rem 0.75rem;
+  padding: 1.5rem 1rem;
   position: fixed;
   z-index: 1;
   width: 100%;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.10);
+  opacity: 0.9;
 }
 
 .brand {
   float: left;
-}
+  height: 30px;
 
-.brand h1 {
-  font-size: 22px;
-  font-weight: 600;
-  margin: 0;
-  a {
-    color: @gray0;
+  &-logo {
+    background-image: url(/client/assets/logo.png);
+    height: 30px;
+    width: 85px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
   }
 }
 
