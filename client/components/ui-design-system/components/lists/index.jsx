@@ -3,7 +3,8 @@
 // ==================================================
 
 import React from 'react';
-import '../../../styling/root.less';
+import '../../../../styling/root.less';
+
 
 const UILists = () => (
   <div className="wrap">
