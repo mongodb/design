@@ -42,8 +42,10 @@ const routes = (
         <Route path="/brand-design-system/colors" component={BrandColors} />
         <Route path="/brand-design-system/logo" component={BrandLogo} />
     </Route>
-    <Route path="/ui-design-system" component={UIDesignSystem}>
+    <Route path="/ui-design-system" component={UIWelcome}>
         <IndexRoute component={UIWelcome} />
+    </Route>
+    <Route path="/ui-design-system" component={UIDesignSystem}>
         //Base Styles
         <Route path="/ui-design-system/base-styles/colors" component={UIColors} />
         <Route path="/ui-design-system/base-styles/icons" component={UIIcons} />
