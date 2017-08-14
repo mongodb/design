@@ -10,7 +10,9 @@ const UIWelcome = () => (
 	  	<div className="row">
 	    	<div className="columns">
 	    		<div className="hero">
-	    			<div className="hero-container small-7">
+	    			<div className="hero-image">
+	    			</div>
+	    			<div className="hero-container small-5 u-ml-9">
 					  	<h1 className="u-mb-5"><strong>MongoDB</strong> Design</h1>
 					  	<h3 className="u-mb-8">Two teams, one vision… consectetur adipiscing elit. 
 					  	Sed hendrerit consectetur mauris vel mollis. Donec id 
@@ -58,10 +60,10 @@ const UIWelcome = () => (
 
 	  	<div className="row">
 	    	<div className="columns">
-		  		<div className="footer u-align-center u-pv-9">
+		  		<div className="footer u-align-center">
 			        <div className="social u-mv-9">
-				        <a href="https://github.com/leafygreen/design" target="_blank"><img className="footer-social-github u-mh-3" alt="github" /></a>
-				        <a href="https://dribbble.com/MongoDB" target="_blank"><img className="footer-social-dribbble u-mh-3" alt="dribbble" /></a>
+				        <a href="https://github.com/leafygreen/design" target="_blank" className="footer-social-github u-mh-3"></a>
+				        <a href="https://dribbble.com/MongoDB" target="_blank" className="footer-social-dribbble u-mh-3"></a>
 				    </div>
 			  		<p>Made with 💚 by MongoDB.</p>
 			  		<p>Probably some other legal/copyright stuff would go here, too.</p>
