@@ -133,6 +133,48 @@ const UIForms = () => (
 
     <div className="row u-mb-3">
       <div className="columns small-12">
+        <h3>Obscurable Input</h3>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns">
+        <div className="input obscurable-input">
+          <input name="example" className="input obscurable-input-form" type="password" readonly="" value="passwordpasswordpassword" />
+          <span name="toggleVisibility" className="obscurable-input-toggle">Show</span>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns">
+        <div className="input obscurable-input">
+          <input name="example" className="obscurable-input-form" type="text" readonly="" value="This is a obscurable input for viewing things like passwords and keys" />
+          <span name="toggleVisibility" className="obscurable-input-toggle">Hide</span>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-0">
+      <div className="columns">
+        <div className="input obscurable-input">
+          <input name="example" className="obscurable-input-form" type="text" readonly="" value="It fits the full width of its container" />
+          <span name="toggleVisibility" className="obscurable-input-toggle">Hide</span>
+        </div>
+      </div>
+    </div>
+
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <pre>
+          <code className="language-html hljs xml" data-lang="html">
+            <div>{ '<input type="text" placeholder={"Something"} class="input" />' }</div>
+            <div>{ '<button class="button button-is-primary button-is-full">Submit Form</button>' }</div>
+          </code>
+        </pre>
+      </div>
+    </div>
+
+
+    <div className="row u-mb-3">
+      <div className="columns small-12">
         <h2>Rich Form Controls</h2>
         <p>Occasionally a form calls for more than a simple radio button or checkbox. These rich form controls pack that extra punch.</p>
       </div>
