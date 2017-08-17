@@ -92,7 +92,7 @@ const UIForms = () => (
       <div className="columns small-12">
         <h4>Input Success</h4>
         <div className="input-with-message">
-          <input type="text" placeholder={'Something'} className="input input-is-success"/>
+          <input type="text" placeholder={'Something'} className="input input-is-success input-has-form-control"/>
           <div className="success-label">Success</div>
         </div>
       </div>
@@ -102,7 +102,7 @@ const UIForms = () => (
         <pre>
           <code className="language-html hljs xml" data-lang="html">
             <div>{ '<div class="input-with-message">' }</div>
-            <div>{ '  <input type="text" placeholder={"Something"} class="input input-is-success" />' }</div>
+            <div>{ '  <input type="text" placeholder={"Something"} class="input input-is-success input-has-form-control" />' }</div>
             <div>{ '  <div class="success-label">Success</div>'}</div>
             <div>{ '</div>' }</div>
           </code>
@@ -131,46 +131,47 @@ const UIForms = () => (
       </div>
     </div>
 
-    <div className="row u-mb-3">
+
+
+    <div className="row">
       <div className="columns small-12">
         <h3>Obscurable Input</h3>
       </div>
     </div>
     <div className="row u-mb-3">
-      <div className="columns">
-        <div className="input obscurable-input">
-          <input name="example" className="input obscurable-input-form" type="password" readonly="" value="passwordpasswordpassword" />
-          <span name="toggleVisibility" className="obscurable-input-toggle">Show</span>
-        </div>
-      </div>
-    </div>
-    <div className="row u-mb-3">
-      <div className="columns">
-        <div className="input obscurable-input">
-          <input name="example" className="obscurable-input-form" type="text" readonly="" value="This is a obscurable input for viewing things like passwords and keys" />
-          <span name="toggleVisibility" className="obscurable-input-toggle">Hide</span>
+      <div className="columns small-12">
+        <div className="input-with-message">
+          <input type="password" readonly="" placeholder={'This is an obscurable input for viewing things like passwords'} className="input input-has-form-control" />
+          <div className="toggle">Show</div>
         </div>
       </div>
     </div>
     <div className="row u-mb-0">
-      <div className="columns">
-        <div className="input obscurable-input">
-          <input name="example" className="obscurable-input-form" type="text" readonly="" value="It fits the full width of its container" />
-          <span name="toggleVisibility" className="obscurable-input-toggle">Hide</span>
+      <div className="columns small-12">
+        <div className="input-with-message">
+          <input type="text" readonly="" placeholder={'This is an input for viewing things like keys'} className="input input-has-form-control" />
+          <div className="toggle">Hide</div>
         </div>
       </div>
     </div>
-
-    <div className="row u-mb-3">
+    <div className="row u-mb-5">
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<input type="text" placeholder={"Something"} class="input" />' }</div>
-            <div>{ '<button class="button button-is-primary button-is-full">Submit Form</button>' }</div>
+            <div>{ '<div className="input-with-message">' }</div>
+            <div>{ '  <input type="password" readonly="" placeholder={"This is an obscurable input for viewing things like passwords"} className="input input-has-form-control" />' }</div>
+            <div>{ '  <div className="toggle">Show</div>'}</div>
+            <div>{ '</div>' }</div>
+            <div>{ '<div className="input-with-message">' }</div>
+            <div>{ '  <input type="text" readonly="" placeholder={"This is an input for viewing things like keys"} className="input input-has-form-control" />' }</div>
+            <div>{ '  <div className="toggle">Hide</div>'}</div>
+            <div>{ '</div>' }</div>
           </code>
         </pre>
       </div>
     </div>
+
+
 
 
     <div className="row u-mb-3">
