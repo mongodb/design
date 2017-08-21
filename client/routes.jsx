@@ -5,6 +5,8 @@ import Layout from './components/layout/index.jsx';
 import NotFound from './components/not_found.jsx';
 import Resources from './components/resources/index.jsx';
 
+import DesignSystem from './components/index.jsx';
+
 import BrandDesignSystem from './components/brand-design-system/index.jsx';
 import BrandWelcome from './components/brand-design-system/welcome/index.jsx';
 import BrandTypography from './components/brand-design-system/typography/index.jsx';
@@ -36,16 +38,17 @@ import UIGrid from './components/ui-design-system/layouts/grid/index.jsx';
 const routes = (
   <Route path="/" component={Layout}>
     <IndexRoute component={UIDesignSystem} />
-    <Route path="/brand-design-system" component={BrandDesignSystem}>
+        <Route path="/brand-design-system" component={BrandDesignSystem}>
         <IndexRoute component={BrandWelcome} />
-        <Route path="/brand-design-system/typography" component={BrandTypography} />
-        <Route path="/brand-design-system/colors" component={BrandColors} />
-        <Route path="/brand-design-system/logo" component={BrandLogo} />
-    </Route>
-    <Route path="/ui-design-system" component={UIWelcome}>
-        <IndexRoute component={UIWelcome} />
-    </Route>
-    <Route path="/ui-design-system" component={UIDesignSystem}>
+            <Route path="/brand-design-system/typography" component={BrandTypography} />
+            <Route path="/brand-design-system/colors" component={BrandColors} />
+            <Route path="/brand-design-system/logo" component={BrandLogo} />
+        </Route>
+        <Route path="/ui-design-system" component={DesignSystem}>
+            <IndexRoute component={DesignSystem} />
+        </Route>
+        <Route path="/ui-design-system" component={UIDesignSystem}>
+        <Route path="/ui-design-system/welcome" component={UIWelcome} />
         //Base Styles
         <Route path="/ui-design-system/base-styles/colors" component={UIColors} />
         <Route path="/ui-design-system/base-styles/icons" component={UIIcons} />
