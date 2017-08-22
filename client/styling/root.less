@@ -21,6 +21,7 @@
 @import 'step-indicator.less';
 @import 'paginator.less';
 @import 'home.less';
+@import 'navigation.less';
 
 
 html,
@@ -108,53 +109,6 @@ ul, li {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     display: inline-block;
-  }
-}
-
-.navigation {
-  float: right;
-}
-
-.navigation a {
-  font-size: 16px;
-  font-weight: normal;
-  padding: 0 0 0 40px;
-  color: @gray0;
-
-  &:hover {
-    color: @linkText;
-    text-decoration: none;
-  }
-}
-
-nav.navigation ul li {
-  display: inline;
-  top: 0.25em;
-}
-
-nav.sidebar {
-  position: fixed;
-  top: 100px;
-  width: 200px;
-  left: 1.75rem;
-  font-size: 14px;
-}
-
-nav.sidebar ul {
-  list-style: none;
-  padding-bottom: 24px;
-}
-
-nav.sidebar ul li {
-  margin-bottom: 0;
-  a {
-    display: block;
-    padding: 4px 0;
-    color: @gray0;
-    &:hover {
-      color: @linkText;
-      text-decoration: none;
-    }
   }
 }
 

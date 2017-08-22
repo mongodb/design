@@ -1,0 +1,48 @@
+.navigation {
+  float: right;
+
+  a {
+    font-size: 16px;
+    font-weight: normal;
+    padding: 0 0 0 40px;
+    color: @gray0;
+
+    &:hover {
+      color: @linkText;
+      text-decoration: none;
+    }
+  }
+
+  ul li {
+    display: inline;
+    top: 0.25em;
+  }
+
+  &-sidebar {
+    position: fixed;
+    top: 100px;
+    width: 200px;
+    left: 1.75rem;
+    font-size: 14px;
+
+    ul {
+      list-style: none;
+      padding-bottom: 24px;
+    }
+
+    ul li {
+      margin-bottom: 0;
+
+      a {
+        display: block;
+        padding: 4px 0;
+        color: @gray0;
+
+        &:hover {
+          color: @linkText;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

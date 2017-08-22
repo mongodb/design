@@ -8,7 +8,7 @@ import '../../styling/root.less';
 
 const BrandDesignSystem = ({ children }) => (
   <div className="wrap">
-    <nav className="sidebar">
+    <nav className="navigation-sidebar">
      	<ul>
         <li><h4>Brand Design</h4>
           <ul>
