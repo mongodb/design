@@ -3,10 +3,8 @@
 // ==================================================
 
 import React from 'react';
-import '../styling/root.less';
+import UIDesignSystem from './ui-design-system/index.jsx';
 
-const NotFound = () => (
-    <div>404</div>
-);
+const NotFound = () => UIDesignSystem({ children: (<div>404</div>)});
 
 export default NotFound;
