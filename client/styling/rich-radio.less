@@ -13,247 +13,252 @@
 @small-width: 175px;
 
 .rich-radio {
-  .transition(border-color 300ms ease-out);
-  display: block;
-  float: left;
-  box-sizing: content-box;
-  padding: @internal-spacing;
-  border: @default-border-size solid @gray5;
-  border-radius: @border-radius;
-  margin-top: @border-difference;
-  margin-left: @border-difference;
-  margin-right: (@external-spacing + @border-difference);
-  margin-bottom: (@external-spacing + @border-difference);
-  font-weight: normal;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-
-  &:hover {
-    border-color: @gray3;
-    .transition(border-color 150ms ease-out);
-
-    .rich-radio-illustration-is-image {
-      filter: none;
-    }
-  }
-
-  &-instance-size {
-    padding: 0;
-  }
-
-  &-is-disabled {
-    border: 1px solid @gray6;
-    color: @gray5;
-    box-shadow: none;
-    cursor: default;
-
-    &:hover {
-      border: 1px solid @gray6;
-    }
-
-    &-not-allowed:hover {
-      cursor: not-allowed;
-    }
-  }
-
-  &-is-checked {
-    border-radius: @border-radius-checked;
-    border: @selected-border-size solid @green2;
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: @external-spacing;
-    margin-bottom: @external-spacing;
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
-
-    &:hover {
-      border-color: @green2;
-    }
-
-    & .rich-radio-illustration-item {
-      fill: @gray2;
-    }
-
-    &.rich-radio-is-disabled:hover {
-      border: @selected-border-size solid @green2;
-    }
-  }
-
-  &-is-large {
-    width: (@large-width - 2 * @selected-border-size - 2 * @internal-spacing);
-    min-height: 120px;
-  }
-
-  &-is-medium {
-    width: (@medium-width - 2 * @selected-border-size - 2 * @internal-spacing);
-  }
-
-  &-is-small {
-    width: (@small-width - 2 * @selected-border-size - 2 * @internal-spacing);
-    padding: @internal-spacing - 5 @internal-spacing;
-  }
-
-  &-is-full {
-    width: calc(~'100%' - (@selected-border-size * 2 + @internal-spacing * 2)); // Don't account for margin because we want 100%
-  }
-
-  // Specificity override for margins from thirdparty css on input[type="radio"]
-  input[type="radio"]&-radio-button,
-  &-radio-button {
-    margin-right: @internal-spacing;
-
-    &-is-hidden {
-      display: none;
-    }
-  }
-
-  &-main-text {
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-  }
-
-  &-label {
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 5px;
-  }
-
-  &-link {
-    &-title {
-      font-weight: 600;
-    }
-
-    &-description {
-      font-size: 12px;
-    }
-
-    &:hover,
-    &:focus {
-      text-decoration: none;
-    }
-  }
-
-  &-illustration-container {
-    display: flex;
-    align-items: center;
-  }
-
-  &-illustration {
-    width: 35px;
-    height: 52px;
-    margin-right: @internal-spacing;
-
-    &-is-image {
-      width: 35px;
-      height: auto;
-      margin-right: 8px;
-      filter: @gray6;
-      filter: grayscale(100%);
-    }
-  }
-
-  &-illustration-item {
-    fill: @gray6;
-    stroke-width: 1px;
-    stroke: @pw;
-  }
-
-  &-illustration-title {
-    font-size: 14px;
-    font-weight: bold;
-  }
-
-  &-illustration-description {
+    .transition(border-color 300ms ease-out);
+    display: block;
+    float: left;
+    box-sizing: content-box;
+    padding: @internal-spacing;
+    border: @default-border-size solid @gray5;
+    border-radius: @border-radius;
+    margin-top: @border-difference;
+    margin-left: @border-difference;
+    margin-right: (@external-spacing + @border-difference);
+    margin-bottom: (@external-spacing + @border-difference);
     font-weight: normal;
-    font-size: 12px;
-    font-style: italic;
-    color: @mutedText;
-  }
-
-  &-toggle-group {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  &-toggle {
-    margin: 0;
-    border-radius: 0;
-    min-width: 205px;
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
-    box-sizing: border-box;
-    height: 65px;
-    align-items: center;
-    flex-direction: column;
-    transition: all 0.2s ease;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
 
     &:hover {
-      border-color: @gray5;
+        border-color: @gray3;
+        .transition(border-color 150ms ease-out);
+
+        .rich-radio-illustration-is-image {
+            filter: none;
+        }
     }
 
-    &-title {
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    &-subtitle {
-      font-weight: 100;
-      font-size: 11px;
-      font-style: italic;
-      color: @gray3;
-    }
-
-    &-group {
-      &-title {
-        font-size: 12px;
-        text-transform: uppercase;
-        font-weight: 600;
-        margin-bottom: 20px;
-      }
+    &-instance-size {
+        padding: 0;
     }
 
     &-is-disabled {
-      cursor: default;
-      background: @gray8;
-      border-color: @gray7;
-      color: @gray5;
-
-      &:hover {
-        background: @gray8;
-        border-color: @gray7;
-
-      }
-
-      .rich-radio-toggle-subtitle {
+        border: 1px solid @gray6;
         color: @gray5;
-      }
-    }
+        box-shadow: none;
+        cursor: default;
 
-    &-is-first {
-      border-right: 1px solid transparent;
-      border-radius: 3px 0px 0px 3px;
-
-      &.rich-radio-toggle-is-disabled {
         &:hover {
-          border-right: 1px solid transparent;
+            border: 1px solid @gray6;
         }
-      }
-    }
 
-    &-is-last {
-      border-left: 1px solid transparent;
-      border-radius: 0px 3px 3px 0px;
+        &-not-allowed:hover {
+            cursor: not-allowed;
+        }
     }
 
     &-is-checked {
-      border: 1px solid @green2;
-      background: rgba(196, 219, 179, 0.3);
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) inset;
+        border-radius: @border-radius-checked;
+        border: @selected-border-size solid @green2;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: @external-spacing;
+        margin-bottom: @external-spacing;
+        box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
 
-      &:hover {
-        border-color: @green2;
-      }
+        &:hover {
+            border-color: @green2;
+        }
+
+        & .rich-radio-illustration-item {
+            fill: @gray2;
+        }
+
+        &.rich-radio-is-disabled:hover {
+            border: @selected-border-size solid @green2;
+        }
     }
-  }
+
+    &-is-large {
+        width: (@large-width - 2 * @selected-border-size - 2 * @internal-spacing);
+        min-height: 120px;
+    }
+
+    &-is-medium {
+        width: (@medium-width - 2 * @selected-border-size - 2 * @internal-spacing);
+    }
+
+    &-is-small {
+        width: (@small-width - 2 * @selected-border-size - 2 * @internal-spacing);
+        padding: @internal-spacing - 5 @internal-spacing;
+    }
+
+    &-is-full {
+        width: calc(~'100%' - (@selected-border-size * 2 + @internal-spacing * 2)); // Don't account for margin because we want 100%
+    }
+
+    // Specificity override for margins from thirdparty css on input[type="radio"]
+    input[type="radio"]&-radio-button,
+    &-radio-button {
+        margin-right: @internal-spacing;
+
+        &-is-hidden {
+            display: none;
+        }
+    }
+
+    &-main-text {
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    &-label {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 5px;
+    }
+
+    &-link {
+        &-title {
+            font-weight: 600;
+        }
+
+        &-description {
+            font-size: 12px;
+        }
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
+    }
+
+    &-illustration-container {
+        display: flex;
+        align-items: center;
+    }
+
+    &-illustration {
+        width: 35px;
+        height: 52px;
+        margin-right: @internal-spacing;
+
+        &-is-image {
+            width: 35px;
+            height: auto;
+            margin-right: 8px;
+            filter: @gray6;
+            filter: grayscale(100%);
+        }
+    }
+
+    &-illustration-item {
+        fill: @gray6;
+        stroke-width: 1px;
+        stroke: @pw;
+    }
+
+    &-illustration-title {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    &-illustration-description {
+        font-weight: normal;
+        font-size: 12px;
+        font-style: italic;
+        color: @mutedText;
+    }
+
+    &-toggle-group {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &-toggle {
+        margin: 0;
+        border-radius: 0;
+        min-width: 205px;
+        display: flex;
+        justify-content: center;
+        flex-grow: 1;
+        box-sizing: border-box;
+        height: 65px;
+        align-items: center;
+        flex-direction: column;
+        transition: all 0.2s ease;
+
+        &:hover {
+            border-color: @gray5;
+        }
+
+        &-title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        &-subtitle {
+            font-weight: 100;
+            font-size: 11px;
+            font-style: italic;
+            color: @gray3;
+        }
+
+        &-group {
+
+            &-title {
+                font-size: 12px;
+                text-transform: uppercase;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+        }
+
+        &-is-disabled {
+            cursor: default;
+            background: @gray8;
+            border-color: @gray7;
+            color: @gray5;
+
+            &:hover {
+                background: @gray8;
+                border-color: @gray7;
+
+            }
+
+            .rich-radio-toggle-subtitle {
+                color: @gray5;
+            }
+        }
+
+        &-is-first {
+            border-right: 1px solid transparent;
+            border-radius: 3px 0px 0px 3px;
+
+            &.rich-radio-toggle-is-disabled {
+
+                &:hover {
+                    border-right: 1px solid transparent;
+                }
+            }
+        }
+
+        &-is-last {
+            border-left: 1px solid transparent;
+            border-radius: 0px 3px 3px 0px;
+        }
+
+        &-is-checked {
+            border: 1px solid @green2;
+            background: rgba(196, 219, 179, 0.3);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) inset;
+
+            &:hover {
+                border-color: @green2;
+            }
+
+        }
+
+    }
+
 }

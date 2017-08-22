@@ -21,7 +21,7 @@ const Layout = ({ children }) => (
         <div className="columns small-12">
           <div className="row">
             <div className="brand columns small-4">
-              <Link to='/ui-design-system/' className="brand-logo"></Link>
+                <Link to='/ui-design-system/' className="brand-logo"></Link>
             </div>
               <nav className="navigation columns small-8">
                 <ul className="navigation">

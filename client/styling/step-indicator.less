@@ -1,81 +1,81 @@
 .step-indicator {
-  display: flex;
+    display: flex;
 
-  border-top: 1px solid @gray7;
-  border-bottom: 1px solid @gray7;
+    border-top: 1px solid @gray7;
+    border-bottom: 1px solid @gray7;
 
-  margin: 0;
-  padding: 16px 0;
+    margin: 0;
+    padding: 16px 0;
 
-  counter-reset: step-counter;
+    counter-reset: step-counter;
 
-  &-has-different-counter {
-    counter-reset: step-counter 3;
-  }
-
-  &-is-vertical {
-    flex-direction: column;
-    padding: 0;
-    border: none;
-  }
-
-  &-step {
-    font-size: 14px;
-    width: 175px;
-    margin-left: 40px;
-    display: inline;
-    position: relative;
-
-    &-child {
-      padding-top: 15px;
-    }
-
-    &::before {
-      content: counter(step-counter);
-      counter-increment: step-counter;
-
-      position: absolute;
-      font-size: 13px;
-      font-weight: bold;
-      top: 1px;
-      left: -30px;
-      color: @pw;
-      background-color: @gray1;
-      width: 22px;
-      height: 21px;
-      border-radius: 12px;
-      text-align: center;
-      padding-top: 1px;
-    }
-
-    &-is-inactive {
-      color: @gray6;
-
-      &::before {
-          background-color: @gray6;
-      }
-    }
-
-    &-is-complete {
-      color: @gray6;
-
-      &::before {
-        content: "\F00c";
-        font-family: FontAwesome;
-        background-color: @green2;
-        font-size: 14px;
-        font-weight: 100;
-      }
+    &-has-different-counter {
+        counter-reset: step-counter 3;
     }
 
     &-is-vertical {
-      width: inherit;
-      margin-bottom: 10px;
+        flex-direction: column;
+        padding: 0;
+        border: none;
     }
 
-    &-is-vertical-long {
-      width: inherit;
-      margin-bottom: 35px;
+    &-step {
+        font-size: 14px;
+        width: 175px;
+        margin-left: 40px;
+        display: inline;
+        position: relative;
+
+        &-child {
+            padding-top: 15px;
+        }
+
+        &::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+
+            position: absolute;
+            font-size: 13px;
+            font-weight: bold;
+            top: 1px;
+            left: -30px;
+            color: @pw;
+            background-color: @gray1;
+            width: 22px;
+            height: 21px;
+            border-radius: 12px;
+            text-align: center;
+            padding-top: 1px;
+        }
+
+        &-is-inactive {
+            color: @gray6;
+
+            &::before {
+                background-color: @gray6;
+            }
+        }
+
+        &-is-complete {
+            color: @gray6;
+
+            &::before {
+                content: "\F00c";
+                font-family: FontAwesome;
+                background-color: @green2;
+                font-size: 14px;
+                font-weight: 100;
+            }
+        }
+
+        &-is-vertical {
+            width: inherit;
+            margin-bottom: 10px;
+        }
+
+        &-is-vertical-long {
+            width: inherit;
+            margin-bottom: 35px;
+        }
     }
-  }
 }
