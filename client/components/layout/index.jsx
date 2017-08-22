@@ -23,6 +23,14 @@ const Layout = ({ children }) => (
             <div className="brand columns small-4">
                 <Link to='/ui-design-system/' className="brand-logo"></Link>
             </div>
+              <nav className="navigation columns small-8">
+                <ul className="navigation">
+                  <li><Link to='/brand-design-system' className="link">Brand Experience</Link></li>
+                  <li><Link to='/ui-design-system/welcome' className="link">Product Design</Link></li>
+                  <li><Link to='/resources' className="link">Resources</Link></li>
+                  <li><Link to='*' className="link">Blog</Link></li>
+                  </ul>
+              </nav>
           </div>
         </div>
       </div>

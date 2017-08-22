@@ -10,6 +10,11 @@ const UIDesignSystem = ({ children }) => (
 <div className="wrap">
     <nav className="sidebar">
         <ul>
+            <li><h4>Product Design</h4>
+              <ul>
+                <li><Link to='/ui-design-system/welcome' className="link">Welcome</Link></li>
+              </ul>
+            </li>
             <li><h4>Base Styles</h4>
               <ul>
                   <li><Link to='/ui-design-system/base-styles/colors' className="link">Colors</Link></li>
