@@ -33,6 +33,11 @@
       box-shadow: 0 2px 3px rgba(239, 76, 76, 0.2);
     }
   }
+
+  &-form-control {
+    padding-right: 90px;
+  }
+
 }
 .input-with-message {
   position: relative;
@@ -43,8 +48,10 @@
     color: @successText;
     text-transform: uppercase;
     position: absolute;
-    right: 24px;
+    right: 16px;
     top: 30%;
+    margin-left: 100px;
+    z-index: 1;
   }
 
   .error-message {
@@ -52,5 +59,20 @@
     color: @alertRed;
     display: block;
     margin: 0;
+  }
+
+  &-toggle {
+    font-size: 12px;
+    font-weight: 600;
+    color: @gray4;
+    text-transform: uppercase;
+    position: absolute;
+    cursor: pointer;
+    right: 16px;
+    top: 30%;
+
+    &:hover {
+      opacity: 0.6;
+    }
   }
 }

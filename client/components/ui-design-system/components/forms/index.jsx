@@ -92,7 +92,7 @@ const UIForms = () => (
       <div className="columns small-12">
         <h4>Input Success</h4>
         <div className="input-with-message">
-          <input type="text" placeholder={'Something'} className="input input-is-success"/>
+          <input type="text" placeholder={'Something'} className="input input-is-success input-form-control"/>
           <div className="success-label">Success</div>
         </div>
       </div>
@@ -102,7 +102,7 @@ const UIForms = () => (
         <pre>
           <code className="language-html hljs xml" data-lang="html">
             <div>{ '<div class="input-with-message">' }</div>
-            <div>{ '  <input type="text" placeholder={"Something"} class="input input-is-success" />' }</div>
+            <div>{ '  <input type="text" placeholder={"Something"} class="input input-is-success input-form-control" />' }</div>
             <div>{ '  <div class="success-label">Success</div>'}</div>
             <div>{ '</div>' }</div>
           </code>
@@ -125,6 +125,44 @@ const UIForms = () => (
             <div>{ '<div class="input-with-message">' }</div>
             <div>{ '  <input type="text" placeholder={"Something"} class="input input-has-error" />' }</div>
             <div>{ '  <p class="error-message">Contextual alert message goes here</p>'}</div>
+            <div>{ '</div>' }</div>
+          </code>
+        </pre>
+      </div>
+    </div>
+
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Obscurable Input</h3>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <div className="input-with-message">
+          <input type="password" readonly="" placeholder={'This is an obscurable input for viewing things like passwords'} className="input input-form-control" />
+          <div className="input-with-message-toggle">Show</div>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-0">
+      <div className="columns small-12">
+        <div className="input-with-message">
+          <input type="text" readonly="" placeholder={'This is an input for viewing things like keys'} className="input input-form-control" />
+          <div className="input-with-message-toggle">Hide</div>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-5">
+      <div className="columns small-12">
+        <pre>
+          <code className="language-html hljs xml" data-lang="html">
+            <div>{ '<div className="input-with-message">' }</div>
+            <div>{ '  <input type="password" readonly="" placeholder={"This is an obscurable input for viewing things like passwords"} className="input input-form-control" />' }</div>
+            <div>{ '  <div className="input-with-message-toggle">Show</div>'}</div>
+            <div>{ '</div>' }</div>
+            <div>{ '<div className="input-with-message">' }</div>
+            <div>{ '  <input type="text" readonly="" placeholder={"This is an input for viewing things like keys"} className="input input-form-control" />' }</div>
+            <div>{ '  <div className="input-with-message-toggle">Hide</div>'}</div>
             <div>{ '</div>' }</div>
           </code>
         </pre>
