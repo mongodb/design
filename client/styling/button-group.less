@@ -1,29 +1,30 @@
 @import "mixins/horizontal-flow.less";
 
 .button-group {
-    display: inline-block;
-    .horizontal-flow();
+  display: inline-block;
 
-    .button-group-button {
-        border-radius: 0px;
-        font-weight: bold;
+  .horizontal-flow();
 
-        .horizontal-flow-block();
+  .button-group-button {
+    border-radius: 0px;
+    font-weight: bold;
 
-        &:first-child {
-            border-radius: 3px 0px 0px 3px;
-        }
+    .horizontal-flow-block();
 
-        &:last-child {
-            border-radius: 0px 3px 3px 0px;
-        }
-
-        &:only-child {
-            border-radius: 3px;
-        }
-
-        &:not(:first-child) {
-            margin-left: -1px;
-        }
+    &:first-child {
+      border-radius: 3px 0px 0px 3px;
     }
+
+    &:last-child {
+      border-radius: 0px 3px 3px 0px;
+    }
+
+    &:only-child {
+      border-radius: 3px;
+    }
+
+    &:not(:first-child) {
+      margin-left: -1px;
+    }
+  }
 }

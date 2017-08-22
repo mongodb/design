@@ -15,290 +15,288 @@
 @keyframes breadcrumbfadein { from { left: 40px; opacity: 0; } to { left: 16px; opacity: 1; } }
 
 .view-modal {
+  &-header {
+    margin: 0;
 
-    &-header {
-        margin: 0;
+    &-has-back {
+      padding-top: 15px;
+    }
+  }
 
-        &-has-back {
-            padding-top: 15px;
-        }
+  &-header-title {
+    margin: 0;
+
+    &-is-large {
+      font-size: 30px;
+    }
+  }
+
+  &-row {
+    display: flex;
+    margin: 15px 0;
+
+    &-item {
+      min-width: 80px;
+      margin-right: 5px;
+    }
+  }
+
+  &-back {
+    background-color: transparent;
+    border: none;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;
+    position: absolute;
+    top: 70px;
+    color: @gray5;
+    opacity: 0;
+    animation-name: breadcrumbfadein;
+    animation-duration: 250ms;
+    animation-delay: 500ms;
+    animation-fill-mode: forwards;
+
+    &-is-high {
+      top: 18px;
+      left: 16px;
+      color: @linkText;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
-    &-header-title {
-        margin: 0;
+    &:hover {
+      color: @linkText;
+    }
+  }
 
-        &-is-large {
-            font-size: 30px;
-        }
+  &-paragraph {
+    font-size: 14px;
+    line-height: 20px;
+
+    &-is-centered {
+      text-align: center;
     }
 
-    &-row {
-        display: flex;
-        margin: 15px 0;
-
-        &-item {
-            min-width: 80px;
-            margin-right: 5px;
-        }
+    &-is-secondary {
+      color: @gray4;
     }
 
-    &-back {
-        background-color: transparent;
-        border: none;
-        text-transform: uppercase;
-        font-size: 11px;
-        font-weight: bold;
-        position: absolute;
-        top: 70px;
-        color: @gray5;
-        opacity: 0;
-        animation-name: breadcrumbfadein;
-        animation-duration: 250ms;
-        animation-delay: 500ms;
-        animation-fill-mode: forwards;
-
-        &-is-high {
-            top: 18px;
-            left: 16px;
-            color: @linkText;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-
-        &:hover {
-            color: @linkText;
-        }
+    &-is-error {
+      color: @alertRed;
     }
 
-    &-paragraph {
-        font-size: 14px;
-        line-height: 20px;
-
-        &-is-centered {
-            text-align: center;
-        }
-
-        &-is-secondary {
-            color: @gray4;
-        }
-
-        &-is-error {
-            color: @alertRed;
-        }
-
-        &-is-warning {
-            color: @warningText;
-        }
-
-        &-is-small {
-            font-size: 13px;
-        }
-
-        &-is-xlarge {
-            font-size: 36px;
-        }
-
-        &-is-padded {
-            padding: 30px 0 10px 0;
-        }
-
-        &-is-padded-deep {
-            padding: 10px 25px 10px 25px;
-        }
+    &-is-warning {
+      color: @warningText;
     }
 
-    &-close {
-        font-size: 28px;
-        font-weight: 200;
-        color: @gray1;
-        position: relative;
-        top: -18px;
-        right: -10px;
-        margin-top: -2px;
-        padding: 0;
-        cursor: pointer;
-        background: 0 0;
-        border: 0;
-        float: right;
-        line-height: 1;
-        opacity: 0.4;
-
-        &:hover {
-            opacity: 0.8;
-        }
+    &-is-small {
+      font-size: 13px;
     }
 
-    &-overlay {
-        background-color: #000;
-        opacity: .5;
-
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 1050;
+    &-is-xlarge {
+      font-size: 36px;
     }
 
-    &-layout {
-        animation: fade-in 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
-        -webkit-animation: fade-in 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 1051;
-
-        overflow-y: scroll;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    &-is-padded {
+      padding: 30px 0 10px 0;
     }
 
-    &-content {
-        margin: @modalVerticalMargin @modalSideMargin;
-        max-width: @modalMaxWidth;
-        min-width: @modalMinWidth;
-        padding: @modalDefaultPadding;
-        align-self: flex-start;
-        color: @gray1;
-        position: relative;
-        background-color: #fff;
-        background-clip: padding-box;
-        border: 1px solid rgba(0, 0, 0, .1);
-        border-radius: 3px;
-        outline: 0;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+    &-is-padded-deep {
+      padding: 10px 25px 10px 25px;
+    }
+  }
 
-        &-is-bordered {
-            .view-modal-body {
-                border-top: 1px solid @gray7;
-                border-bottom: 1px solid @gray7;
-                padding: 18px 0;
-            }
-        }
+  &-close {
+    font-size: 28px;
+    font-weight: 200;
+    color: @gray1;
+    position: relative;
+    top: -18px;
+    right: -10px;
+    margin-top: -2px;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    float: right;
+    line-height: 1;
+    opacity: 0.4;
 
-        &-is-xs {
-            min-width: inherit;
-            max-width: inherit;
-            width: @modalXsWidth;
-        }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 
-        &-is-small {
-            min-width: inherit;
-            max-width: inherit;
-            width: @modalSmallWidth;
-        }
+  &-overlay {
+    background-color: #000;
+    opacity: .5;
 
-        &-is-medium {
-            min-width: inherit;
-            max-width: inherit;
-            width: @modalMediumWidth;
-        }
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+  }
 
-        &-is-large {
-            min-width: inherit;
-            max-width: inherit;
-            width: @modalLargeWidth;
-        }
+  &-layout {
+    animation: fade-in 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
+    -webkit-animation: fade-in 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1051;
 
-        &-is-xlarge {
-            min-width: inherit;
-            max-width: inherit;
-            width: @modalMaxWidth;
-        }
+    overflow-y: scroll;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-        &-is-edit-ranges-modal {
-            min-width: inherit;
-            max-width: inherit;
-            width: 825px;
-        }
+  &-content {
+    margin: @modalVerticalMargin @modalSideMargin;
+    max-width: @modalMaxWidth;
+    min-width: @modalMinWidth;
+    padding: @modalDefaultPadding;
+    align-self: flex-start;
+    color: @gray1;
+    position: relative;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 3px;
+    outline: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+
+    &-is-bordered {
+      .view-modal-body {
+        border-top: 1px solid @gray7;
+        border-bottom: 1px solid @gray7;
+        padding: 18px 0;
+      }
     }
 
-    &-body {
-
-        &-alert {
-            padding: 0 15px;
-        }
-
-        &-has-padding {
-            padding: 20px 0;
-            border-top: 1px solid @gray6;
-            border-bottom: 1px solid @gray6;
-            margin: 20px 0;
-        }
+    &-is-xs {
+      min-width: inherit;
+      max-width: inherit;
+      width: @modalXsWidth;
     }
 
-    &-input-row {
-        display: flex;
-        justify-content: center;
-        align-items: baseline;
-
-        &-is-left-aligned {
-            justify-content: flex-start;
-        }
-
-        &-is-vertically-centered {
-            align-items: center;
-        }
+    &-is-small {
+      min-width: inherit;
+      max-width: inherit;
+      width: @modalSmallWidth;
     }
 
-    &-input-row-spaced-element {
-        margin-right: 5px;
+    &-is-medium {
+      min-width: inherit;
+      max-width: inherit;
+      width: @modalMediumWidth;
     }
 
-    &-label {
-        width: 25%;
+    &-is-large {
+      min-width: inherit;
+      max-width: inherit;
+      width: @modalLargeWidth;
     }
 
-    &-input {
+    &-is-xlarge {
+      min-width: inherit;
+      max-width: inherit;
+      width: @modalMaxWidth;
+    }
+
+    &-is-edit-ranges-modal {
+      min-width: inherit;
+      max-width: inherit;
+      width: 825px;
+    }
+  }
+
+  &-body {
+    &-alert {
+      padding: 0 15px;
+    }
+
+    &-has-padding {
+      padding: 20px 0;
+      border-top: 1px solid @gray6;
+      border-bottom: 1px solid @gray6;
+      margin: 20px 0;
+    }
+  }
+
+  &-input-row {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+
+    &-is-left-aligned {
+      justify-content: flex-start;
+    }
+
+    &-is-vertically-centered {
+      align-items: center;
+    }
+  }
+
+  &-input-row-spaced-element {
+    margin-right: 5px;
+  }
+
+  &-label {
+    width: 25%;
+  }
+
+  &-input {
+    margin-left: 15px;
+
+    &-error-message {
+      color: @alertRedDark;
+      font-style: italic;
+      font-size: 14px;
+      font-weight: 100;
+      margin-left: 15px;
+      margin-top: 10px;
+    }
+
+    &-has-error {
+      border-color: @alertRedDark;
+    }
+
+    &-container {
+      display: flex;
+      flex-direction: column;
+
+      &-is-wide {
+        width: 290px;
+      }
+
+      &-has-left-margin {
         margin-left: 15px;
+      }
 
-        &-error-message {
-            color: @alertRedDark;
-            font-style: italic;
-            font-size: 14px;
-            font-weight: 100;
-            margin-left: 15px;
-            margin-top: 10px;
-        }
-
-        &-has-error {
-            border-color: @alertRedDark;
-        }
-
-        &-container {
-            display: flex;
-            flex-direction: column;
-
-            &-is-wide {
-                width: 290px;
-            }
-
-            &-has-left-margin {
-                margin-left: 15px;
-            }
-
-            &-is-right-aligned {
-                align-items: flex-end;
-            }
-        }
+      &-is-right-aligned {
+        align-items: flex-end;
+      }
     }
+  }
 
-    &-open {
-        overflow: hidden;
-    }
+  &-open {
+    overflow: hidden;
+  }
 
-    &-footer {
-        margin-top: @modalVerticalMargin;
-        text-align: right;
-    }
+  &-footer {
+    margin-top: @modalVerticalMargin;
+    text-align: right;
+  }
 
-    &-actions {
-        display: flex;
-        justify-content: space-between;
-    }
+  &-actions {
+    display: flex;
+    justify-content: space-between;
+  }
 }
