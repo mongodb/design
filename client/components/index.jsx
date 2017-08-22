@@ -24,7 +24,6 @@ const DesignSystem = () => (
 			  	</div>
 		  	</div>
 	  	</div>
-	  	
 {/*
 	  	<div className="row u-ma-9">
 	    	<div className="columns">

@@ -68,6 +68,8 @@ const routes = (
         <Route path="/ui-design-system/patterns/modify" component={UIModify} />
         //Layouts
         <Route path="/ui-design-system/layouts/grid" component={UIGrid} />
+        //Misc
+        <Route path="/resources" component={Resources} />
     </Route>
     <Route path="*" component={NotFound} />
   </Route>
