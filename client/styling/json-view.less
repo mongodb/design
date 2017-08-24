@@ -1,108 +1,108 @@
 .json-view {
-    &-container {
-        margin-top: 20px;
-        margin-bottom: 20px;
+  &-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  &-object {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 11px;
+    margin-left: 20px;
+    font-weight: 400;
+    word-break: break-all;
+
+    &-is-collapsible {
+      cursor: pointer;
+
+      &:before {
+        content: "\25B6";
+        position: absolute;
+        margin-left: -10px;
+        margin-top: -1px;
+      }
     }
 
-    &-object {
-        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-        font-size: 11px;
-        margin-left: 20px;
-        font-weight: 400;
-        word-break: break-all;
-
-        &-is-collapsible {
-            cursor: pointer;
-
-            &:before {
-                content: "\25B6";
-                position: absolute;
-                margin-left: -10px;
-                margin-top: -1px;
-            }
-        }
-
-        &-is-open {
-            &:before {
-                transform: rotate(90deg);
-                margin-top: 0;
-            }
-        }
-
-        &-is-collapsed {
-            display: none;
-        }
+    &-is-open {
+      &:before {
+        transform: rotate(90deg);
+        margin-top: 0;
+      }
     }
 
-    &-key {
-        font-weight: 600;
+    &-is-collapsed {
+      display: none;
+    }
+  }
+
+  &-key {
+      font-weight: 600;
+  }
+
+  &-rule {
+      margin: 20px;
+  }
+
+  &-value {
+    &-is-null {
+        color: @gray4;
     }
 
-    &-rule {
-        margin: 20px;
+    &-is-array {
+        color: @gray4;
     }
 
-    &-value {
-        &-is-null {
-            color: @gray4;
-        }
-
-        &-is-array {
-            color: @gray4;
-        }
-
-        &-is-object {
-            color: @gray4;
-        }
-
-        &-is-string {
-            color: @stringSyntaxHighlight;
-            white-space: pre-line;
-            word-break: break-all;
-
-            &:before {
-                content: "\"";
-            }
-
-            &:after {
-                content: "\"";
-            }
-        }
-
-        &-is-object-id {
-            color: @objectIdSyntaxHighlight;
-
-            &::before {
-                content: "ObjectID('";
-            }
-
-            &::after {
-                content: "')";
-            }
-        }
-
-        &-is-boolean {
-            color: @booleanSyntaxHighlight;
-        }
-
-        &-is-integer {
-            color: @integerSyntaxHighlight;
-        }
-
-        &-is-long {
-            color: @longSyntaxHighlight;
-        }
-
-        &-is-double {
-            color: @doubleSyntaxHighlight;
-        }
-
-        &-is-date {
-            color: @dateSyntaxHighlight;
-        }
-
-        &-is-undefined {
-            color: @gray4;
-        }
+    &-is-object {
+        color: @gray4;
     }
+
+    &-is-string {
+      color: @stringSyntaxHighlight;
+      white-space: pre-line;
+      word-break: break-all;
+
+      &:before {
+        content: "\"";
+      }
+
+      &:after {
+        content: "\"";
+      }
+    }
+
+    &-is-object-id {
+      color: @objectIdSyntaxHighlight;
+
+      &::before {
+        content: "ObjectID('";
+      }
+
+      &::after {
+        content: "')";
+      }
+    }
+
+    &-is-boolean {
+      color: @booleanSyntaxHighlight;
+    }
+
+    &-is-integer {
+      color: @integerSyntaxHighlight;
+    }
+
+    &-is-long {
+      color: @longSyntaxHighlight;
+    }
+
+    &-is-double {
+      color: @doubleSyntaxHighlight;
+    }
+
+    &-is-date {
+      color: @dateSyntaxHighlight;
+    }
+
+    &-is-undefined {
+      color: @gray4;
+    }
+  }
 }

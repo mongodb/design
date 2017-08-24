@@ -5,7 +5,6 @@
 import React from 'react';
 import '../../../../styling/root.less';
 
-
 const UILists = () => (
   <div className="wrap">
     <div className="row u-mb-3">
