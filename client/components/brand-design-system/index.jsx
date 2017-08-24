@@ -9,7 +9,7 @@ import '../../styling/root.less';
 const BrandDesignSystem = ({ children }) => (
   <div className="wrap">
     <nav className="sidebar">
-     	<ul>
+      <ul>
         <li><h4>Brand Design</h4>
           <ul>
             <li><Link to='/brand-design-system/'>Welcome</Link></li>
@@ -22,7 +22,7 @@ const BrandDesignSystem = ({ children }) => (
             <li><Link to='/brand-design-system/colors'>Colors</Link></li>
           </ul>
         </li>
-    	</ul>
+      </ul>
     </nav>
     <div className="content">{children}</div>
   </div>
