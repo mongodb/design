@@ -1,34 +1,35 @@
 .number-circle {
-    display: inline-block;
-    border-radius: 50%;
-    background: black;
+  display: inline-block;
+  border-radius: 50%;
+  background: black;
+  color: white;
+  text-align: center;
+
+  border: 2px solid black;
+  width: 21px;
+  height: 21px;
+  font-size: 12px;
+  font-weight: bold;
+
+  &-is-current {
     color: white;
-    text-align: center;
+    background: black;
+  }
 
-    border: 2px solid black;
-    width: 21px;
-    height: 21px;
-    font-size: 12px;
-    font-weight: bold;
+  &-is-complete {
+    color: white;
+    border-color: @green1;
+    background: @green1;
 
-    &-is-current {
-        color: white;
-        background: black;
+    &::before {
+      content: "\F00c";
+      font-family: FontAwesome;
+      font-weight: 100;
     }
-    &-is-complete {
-        color: white;
-        border-color: @green1;
-        background: @green1;
+  }
 
-        &::before {
-            content: "\F00c";
-            font-family: FontAwesome;
-            font-weight: 100;
-        }
-    }
-
-    &-is-pending {
-        color: @gray5;
-        border-color: @gray5;
-    }
+  &-is-pending {
+    color: @gray5;
+    border-color: @gray5;
+  }
 }

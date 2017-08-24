@@ -38,38 +38,38 @@ import UIGrid from './components/ui-design-system/layouts/grid/index.jsx';
 const routes = (
   <Route path="/" component={Layout}>
     <IndexRoute component={UIDesignSystem} />
-        <Route path="/brand-design-system" component={BrandDesignSystem}>
-        <IndexRoute component={BrandWelcome} />
-            <Route path="/brand-design-system/typography" component={BrandTypography} />
-            <Route path="/brand-design-system/colors" component={BrandColors} />
-            <Route path="/brand-design-system/logo" component={BrandLogo} />
-        </Route>
-        <Route path="/ui-design-system" component={DesignSystem}>
-            <IndexRoute component={DesignSystem} />
-        </Route>
-        <Route path="/ui-design-system" component={UIDesignSystem}>
-        <Route path="/ui-design-system/welcome" component={UIWelcome} />
-        //Base Styles
-        <Route path="/ui-design-system/base-styles/colors" component={UIColors} />
-        <Route path="/ui-design-system/base-styles/icons" component={UIIcons} />
-        <Route path="/ui-design-system/base-styles/typography" component={UITypography} />
-        //Components
-        <Route path="/ui-design-system/components/code" component={UICode} />
-        <Route path="/ui-design-system/components/banners" component={UIBanners} />
-        <Route path="/ui-design-system/components/bubbles" component={UIBubbles} />
-        <Route path="/ui-design-system/components/buttons" component={UIButtons} />
-        <Route path="/ui-design-system/components/forms" component={UIForms} />
-        <Route path="/ui-design-system/components/lists" component={UILists} />
-        <Route path="/ui-design-system/components/tabs" component={UITabs} />
-        <Route path="/ui-design-system/components/tables" component={UITables} />
-        <Route path="/ui-design-system/components/utilities" component={UIUtilities} />
-        <Route path="/ui-design-system/components/view-modal" component={UIViewModal} />
-        //Patterns
-        <Route path="/ui-design-system/patterns/modify" component={UIModify} />
-        //Layouts
-        <Route path="/ui-design-system/layouts/grid" component={UIGrid} />
-        //Misc
-        <Route path="/resources" component={Resources} />
+      <Route path="/brand-design-system" component={BrandDesignSystem}>
+      <IndexRoute component={BrandWelcome} />
+        <Route path="/brand-design-system/typography" component={BrandTypography} />
+        <Route path="/brand-design-system/colors" component={BrandColors} />
+        <Route path="/brand-design-system/logo" component={BrandLogo} />
+      </Route>
+      <Route path="/ui-design-system" component={DesignSystem}>
+        <IndexRoute component={DesignSystem} />
+      </Route>
+      <Route path="/ui-design-system" component={UIDesignSystem}>
+      <Route path="/ui-design-system/welcome" component={UIWelcome} />
+      //Base Styles
+      <Route path="/ui-design-system/base-styles/colors" component={UIColors} />
+      <Route path="/ui-design-system/base-styles/icons" component={UIIcons} />
+      <Route path="/ui-design-system/base-styles/typography" component={UITypography} />
+      //Components
+      <Route path="/ui-design-system/components/code" component={UICode} />
+      <Route path="/ui-design-system/components/banners" component={UIBanners} />
+      <Route path="/ui-design-system/components/bubbles" component={UIBubbles} />
+      <Route path="/ui-design-system/components/buttons" component={UIButtons} />
+      <Route path="/ui-design-system/components/forms" component={UIForms} />
+      <Route path="/ui-design-system/components/lists" component={UILists} />
+      <Route path="/ui-design-system/components/tabs" component={UITabs} />
+      <Route path="/ui-design-system/components/tables" component={UITables} />
+      <Route path="/ui-design-system/components/utilities" component={UIUtilities} />
+      <Route path="/ui-design-system/components/view-modal" component={UIViewModal} />
+      //Patterns
+      <Route path="/ui-design-system/patterns/modify" component={UIModify} />
+      //Layouts
+      <Route path="/ui-design-system/layouts/grid" component={UIGrid} />
+      //Misc
+      <Route path="/resources" component={Resources} />
     </Route>
     <Route path="*" component={NotFound} />
   </Route>

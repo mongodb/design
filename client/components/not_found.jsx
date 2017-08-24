@@ -7,7 +7,7 @@ import React from 'react';
 // const NotFound = () => UIDesignSystem({ children: (<div>404</div>)});
 
 const NotFound = () => (
-	<div>404</div>
+  <div>404</div>
 );
 
 export default NotFound;
