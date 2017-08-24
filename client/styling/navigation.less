@@ -1,0 +1,45 @@
+.navigation {
+  font-size: 16px;
+  font-weight: normal;
+  color: @gray0;
+  float: right;
+
+  &:hover {
+    color: @linkText;
+    text-decoration: none;
+  }
+
+  &-is-horizontal {
+    display: inline;
+  
+    &-parent, &-child {
+      margin-bottom: 0;
+      padding: 0 0 0 40px;
+      list-style: none;
+    }
+  }
+
+  &-is-vertical {
+    position: fixed;
+    top: 100px;
+    width: 200px;
+    left: 1.75rem;
+    font-size: 14px;
+
+    &-parent {
+      padding-bottom: 24px;
+      list-style: none;
+    }
+  }
+
+  &-link {
+    // display: block;
+    padding: 4px 0;
+    color: @gray0;
+
+    &:hover {
+      color: @linkText;
+      text-decoration: none;
+      }
+    }
+}

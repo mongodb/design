@@ -18,7 +18,6 @@ const UIViewModal = () => (
         <p>The View Modal is a BEM component for the viewAsModal mixin. If you need functionality out of the header or footer that is not supported by the mixin, consider placing the functionality in the body instead and using the markup below:</p>
       </div>
     </div>
-
     <div className="view-modal-content view-modal-content-is-small" tabIndex="-1">
       <button type="button" className="view-modal-close modal-close" data-dismiss="modal" aria-hidden="true">×</button>
       <div className="view-modal-header">
@@ -39,7 +38,6 @@ const UIViewModal = () => (
         </div>
       </div>
     </div>
-
     <div className="row u-mb-3">
       <div className="columns small-12">
         <pre>

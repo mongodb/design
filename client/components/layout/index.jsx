@@ -21,14 +21,14 @@ const Layout = ({ children }) => (
         <div className="columns small-12">
           <div className="row">
             <div className="brand columns small-4">
-              <Link to='/ui-design-system/' className="brand-logo"></Link>
+                <Link to='/ui-design-system/' className="brand-logo"></Link>
             </div>
               <nav className="navigation columns small-8">
-                <ul className="navigation">
-                  <li><Link to='/brand-design-system' className="link">Brand Experience</Link></li>
-                  <li><Link to='/ui-design-system/welcome' className="link">Product Design</Link></li>
-                  <li><Link to='/resources' className="link">Resources</Link></li>
-                  <li><Link to='*' className="link">Blog</Link></li>
+                <ul className="navigation navigation-is-horizontal navigation-is-horizontal-parent">
+                  <li className="navigation-is-horizontal navigation-is-horizontal-child"><Link to='/brand-design-system' className="navigation-link">Brand Experience</Link></li>
+                  <li className="navigation-is-horizontal navigation-is-horizontal-child"><Link to='/ui-design-system/welcome' className="navigation-link">Product Design</Link></li>
+                  <li className="navigation-is-horizontal navigation-is-horizontal-child"><Link to='/resources' className="navigation-link">Resources</Link></li>
+                  <li className="navigation-is-horizontal navigation-is-horizontal-child"><Link to='*' className="navigation-link">Blog</Link></li>
                   </ul>
               </nav>
           </div>

@@ -11,14 +11,15 @@ const DesignSystem = () => (
     <div className="row">
       <div className="columns">
         <div className="hero">
-          <div className="hero-image"></div>
-            <div className="hero-container small-5 u-ml-9">
-              <h1 className="u-mb-5"><strong>MongoDB</strong> Design</h1>
-              <h3 className="u-mb-6">Two teams, one vision… consectetur adipiscing elit. 
-              Sed hendrerit consectetur mauris vel mollis. Donec id 
-              posuere arcu, eu mattis erat. Vivamus eleifend justo et tristique.</h3>
-              <Link to='/brand-design-system' className="button button-is-info u-mr-6 button-mktg">Brand Guidelines</Link>
-              <Link to='/ui-design-system/welcome' className="button button-is-info button-mktg">Design System</Link>
+          <div className="hero-image">
+          </div>
+          <div className="hero-container small-5 u-ml-9">
+            <h1 className="u-mb-5"><strong>MongoDB</strong> Design</h1>
+            <h3 className="u-mb-6">Two teams, one vision… consectetur adipiscing elit. 
+            Sed hendrerit consectetur mauris vel mollis. Donec id 
+            posuere arcu, eu mattis erat. Vivamus eleifend justo et tristique.</h3>
+            <Link to='/brand-design-system' className="button button-is-info u-mr-6 button-mktg">Brand Guidelines</Link>
+            <Link to='/ui-design-system/welcome' className="button button-is-info button-mktg">Design System</Link>
           </div>'
         </div>
       </div>
