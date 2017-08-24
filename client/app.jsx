@@ -3,10 +3,10 @@ import Root from './components/root.jsx'
 
 class App extends Component {
  render() {
-  return (
-   <Root />
-  );
- }
+    return (
+      <Root />
+    );
+  }
 }
 
 export default App
