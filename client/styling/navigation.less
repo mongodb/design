@@ -1,48 +1,45 @@
 .navigation {
+  font-size: 16px;
+  font-weight: normal;
+  color: @gray0;
   float: right;
 
-  a {
-    font-size: 16px;
-    font-weight: normal;
-    padding: 0 0 0 40px;
-    color: @gray0;
+  &:hover {
+    color: @linkText;
+    text-decoration: none;
+  }
 
-    &:hover {
-      color: @linkText;
-      text-decoration: none;
+  &-is-horizontal {
+    display: inline;
+  
+    &-parent, &-child {
+      margin-bottom: 0;
+      padding: 0 0 0 40px;
+      list-style: none;
     }
   }
 
-  ul li {
-    display: inline;
-    top: 0.25em;
-  }
-
-  &-sidebar {
+  &-is-vertical {
     position: fixed;
     top: 100px;
     width: 200px;
     left: 1.75rem;
     font-size: 14px;
 
-    ul {
-      list-style: none;
+    &-parent {
       padding-bottom: 24px;
-    }
-
-    ul li {
-      margin-bottom: 0;
-
-      a {
-        display: block;
-        padding: 4px 0;
-        color: @gray0;
-
-        &:hover {
-          color: @linkText;
-          text-decoration: none;
-        }
-      }
+      list-style: none;
     }
   }
+
+  &-link {
+    // display: block;
+    padding: 4px 0;
+    color: @gray0;
+
+    &:hover {
+      color: @linkText;
+      text-decoration: none;
+      }
+    }
 }
