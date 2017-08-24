@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Root from './components/root.jsx'
 
 class App extends Component {
- render() {
+  render() {
     return (
       <Root />
     );
