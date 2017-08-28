@@ -230,7 +230,7 @@ const UITables = () => (
         <h2>Summary Table</h2>
       </div>
     </div>
-    <div className="row u-mb-3">
+    <div className="row u-mb-0">
       <div className="columns">
 		    <div className="summary-table summary-table-is-rounded">
 			    <div className="summary-table-header">Cluster Overview</div>
