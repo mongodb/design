@@ -36,7 +36,7 @@ import UIModify from './components/ui-design-system/patterns/modify/index.jsx';
 import UIGrid from './components/ui-design-system/layouts/grid/index.jsx';
 
 const routes = (
-  <Route path="/" component={Layout}>
+  <Route path="/ui-design-system" component={Layout}>
     <IndexRoute component={UIDesignSystem} />
       <Route path="/brand-design-system" component={BrandDesignSystem}>
       <IndexRoute component={BrandWelcome} />
@@ -44,10 +44,10 @@ const routes = (
         <Route path="/brand-design-system/colors" component={BrandColors} />
         <Route path="/brand-design-system/logo" component={BrandLogo} />
       </Route>
-      <Route path="/ui-design-system" component={DesignSystem}>
+      <Route path="/" component={DesignSystem}>
         <IndexRoute component={DesignSystem} />
       </Route>
-      <Route path="/ui-design-system" component={UIDesignSystem}>
+      <Route path="/" component={UIDesignSystem}>
       <Route path="/ui-design-system/welcome" component={UIWelcome} />
       //Base Styles
       <Route path="/ui-design-system/base-styles/colors" component={UIColors} />
