@@ -36,14 +36,10 @@ const UIDesignSystem = ({ children }) => (
         <li><Link to='/ui-design-system/components/utilities' className="navigation-link">Utilities</Link></li>
        </ul>
       </li>
-      <li><h4>Patterns</h4>
+      <li><h4>Guidelines</h4>
         <ul className="navigation-is-vertical-parent">
-         <li><Link to='/ui-design-system/patterns/modify' className="navigation-link">Modify</Link></li>
-        </ul>
-      </li>
-      <li><h4>Layouts</h4>
-        <ul className="navigation-is-vertical-parent">
-         <li><Link to='/ui-design-system/layouts/grid' className="navigation-link">Grid</Link></li>
+         <li><Link to='/ui-design-system/guidelines/grid' className="navigation-link">Grid</Link></li>
+         <li><Link to='/ui-design-system/guidelines/modify' className="navigation-link">Modify</Link></li>
         </ul>
       </li>
    </ul>

@@ -30,10 +30,9 @@ import UITabs from './components/ui-design-system/components/tabs/index.jsx';
 import UITables from './components/ui-design-system/components/tables/index.jsx';
 import UIUtilities from './components/ui-design-system/components/utilities/index.jsx';
 import UIViewModal from './components/ui-design-system/components/view-modal/index.jsx';
-//Patterns
-import UIModify from './components/ui-design-system/patterns/modify/index.jsx';
-//Layouts
-import UIGrid from './components/ui-design-system/layouts/grid/index.jsx';
+//Guidelines
+import UIGrid from './components/ui-design-system/guidelines/grid/index.jsx';
+import UIModify from './components/ui-design-system/guidelines/modify/index.jsx';
 
 const routes = (
   <Route path="/ui-design-system" component={Layout}>
@@ -64,10 +63,9 @@ const routes = (
       <Route path="/ui-design-system/components/tables" component={UITables} />
       <Route path="/ui-design-system/components/utilities" component={UIUtilities} />
       <Route path="/ui-design-system/components/view-modal" component={UIViewModal} />
-      //Patterns
-      <Route path="/ui-design-system/patterns/modify" component={UIModify} />
-      //Layouts
-      <Route path="/ui-design-system/layouts/grid" component={UIGrid} />
+      //Guidelines
+      <Route path="/ui-design-system/guidelines/grid" component={UIGrid} />
+      <Route path="/ui-design-system/guidelines/modify" component={UIModify} />
       //Misc
       <Route path="/resources" component={Resources} />
     </Route>
