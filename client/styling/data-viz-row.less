@@ -1,0 +1,78 @@
+@statsWidth: 369px;
+@cellPadding: 15px;
+
+.data-viz-row {
+  margin-bottom: 20px;
+  position: relative;
+  background-color: @gray1;
+  padding-top: 12px;
+
+  &-is-for-charts {
+    background-color: @gray0;
+    padding-top: 0px;
+
+    .data-viz-row-cell:before {
+      border-color: darken(@gray0, 2%);
+    }
+  }
+
+  &-is-for-scatterplot {
+    background-color: @gray0;
+    padding-bottom: 12px;
+
+    .data-viz-row-cell:before {
+      border-color: darken(@gray0, 2%);
+    }
+  }
+
+  &-cell {
+    height: 100%;
+    vertical-align: top;
+    padding-left: @cellPadding;
+    padding-right: @cellPadding;
+
+    &:before {
+      position: absolute;
+      top: 24px;
+      bottom: 24px;
+      margin-left: -@cellPadding;
+      content: ' ';
+      border-left: 1px solid @gray0;
+    }
+
+    &-is-first:before {
+      display: none;
+    }
+
+    /* Assumes a 2 column layout with 1 chart and 1 stats */
+    &-is-for-stats {
+      display: inline-block;
+      padding: 12px;
+      width: @statsWidth;
+    }
+
+    /* Assumes a 2 column layout with 1 chart and 1 stats */
+    &-is-for-charts {
+      display: inline-block;
+      width: calc(~"100% - " @statsWidth);
+      overflow: hidden;
+    }
+  }
+
+  &-title {
+    color: @pw;
+    font-size: 18px;
+
+    &-has-less-margin {
+      margin: 8px 0 5px;
+    }
+  }
+
+  &-is-rounded {
+    border-radius: 3px;
+  }
+
+  &-has-no-margin {
+    margin: 0;
+  }
+}
