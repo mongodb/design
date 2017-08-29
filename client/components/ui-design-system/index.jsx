@@ -29,6 +29,7 @@ const UIDesignSystem = ({ children }) => (
         <li><Link to='/ui-design-system/components/buttons' className="navigation-link">Buttons</Link></li>
         <li><Link to='/ui-design-system/components/code' className="navigation-link">Code</Link></li>
         <li><Link to='/ui-design-system/components/forms' className="navigation-link">Forms</Link></li>
+        <li><Link to='/ui-design-system/components/layouts' className="navigation-link">Layouts</Link></li>
         <li><Link to='/ui-design-system/components/lists' className="navigation-link">Lists</Link></li>
         <li><Link to='/ui-design-system/components/view-modal' className="navigation-link">Modals</Link></li>
         <li><Link to='/ui-design-system/components/tabs' className="navigation-link">Tabs</Link></li>
