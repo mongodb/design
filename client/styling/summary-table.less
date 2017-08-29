@@ -1,8 +1,8 @@
 @changedFontColor: @blue;
 @defaultSpacing: 15px;
 @smallFontSize: 13px;
-@normalFontSize: 16px;
-@largeFontSize: 24px;
+@mediumFontSize: 16px;
+@largeFontSize: 26px;
 @thinFontWeight: 300;
 @thickFontWeight: 600;
 
@@ -21,7 +21,7 @@
 
   &-header {
     padding: 2px;
-    font-size: @normalFontSize;
+    font-size: @mediumFontSize;
     font-weight: @thickFontWeight;
   }
 
@@ -56,7 +56,7 @@
     }
 
     &-value {
-      font-size: @normalFontSize;
+      font-size: @mediumFontSize;
       font-weight: @thinFontWeight;
       margin: 0;
 
@@ -81,12 +81,8 @@
       align-items: center;
       padding: 2px;
 
-      &-has-top-padding {
-        padding-top: 10px;
-      }
-
       &-subscript {
-        font-size: @normalFontSize;
+        font-size: @mediumFontSize;
         font-weight: @thinFontWeight;
         width: 30px;
         display: inline-block;

@@ -288,7 +288,7 @@ const UITables = () => (
               $387.62<span className="summary-table-list-row-subscript">/mo</span>
             </dd>
           </div>
-          <div className="summary-table-list-row summary-table-list-row-has-top-padding">
+          <div className="summary-table-list-row summary-table-list-row">
             <span>
               <img className="summary-table-list-row-money-icon" src="/../client/assets/icon-moneytime.svg" />
             </span>
@@ -360,7 +360,7 @@ const UITables = () => (
             <div>{ '      $387.62<span class="summary-table-list-row-subscript">/mo</span>' }</div>
             <div>{ '    </dd>' }</div>
             <div>{ '  </div>' }</div>
-            <div>{ '  <div class="summary-table-list-row summary-table-list-row-has-top-padding">' }</div>
+            <div>{ '  <div class="summary-table-list-row summary-table-list-row">' }</div>
             <div>{ '    <span>' }</div>
             <div>{ '      <img class="summary-table-list-row-money-icon" src="/../client/assets/icon-moneytime.svg" />' }</div>
             <div>{ '    </span>' }</div>
