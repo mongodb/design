@@ -4,17 +4,11 @@
 
 import React from 'react';
 import '../../../../styling/root.less';
-var modPattern1 = require('../../../../assets/mod-pattern-1.png');
-var modPattern2 = require('../../../../assets/mod-pattern-2.png');
-var modPattern3 = require('../../../../assets/mod-pattern-3.png');
-var modPattern4 = require('../../../../assets/mod-pattern-4.png');
-var modPattern5 = require('../../../../assets/mod-pattern-5.gif');
-var modPattern500 = require('../../../../assets/mod-pattern-5-00.png');
-var modPattern501 = require('../../../../assets/mod-pattern-5-01.png');
-var modPattern502 = require('../../../../assets/mod-pattern-5-02.png');
-var modPattern503 = require('../../../../assets/mod-pattern-5-03.png');
-var modPattern504 = require('../../../../assets/mod-pattern-5-04.png');
-var modPattern505 = require('../../../../assets/mod-pattern-5-05.png');
+var modPattern1 = require('../../../../assets/mod-patterns-1.gif');
+var modPattern2 = require('../../../../assets/mod-patterns-2.gif');
+var modPattern3 = require('../../../../assets/mod-patterns-3.gif');
+var modPattern4 = require('../../../../assets/mod-patterns-4.gif');
+var modPattern5 = require('../../../../assets/mod-patterns-5.gif');
 
 const UIModify = () => (
   <div className="wrap">
@@ -83,10 +77,10 @@ const UIModify = () => (
       <h5>Description of pattern:</h5>
       <ol>
         <li>User initiates modification layer from presentation layer, which unwinds and displays complexity underlying a component’s presentation</li>
-        <li>Edit inline elements, display each’s edited state</li>
-        <li>Synchronously display its parent container’s edited state</li>
+        <li>Modify inline elements, display each’s modified state</li>
+        <li>Synchronously display its parent container’s modified state</li>
         <li>Commit modifications to the child elements via controls on the modification layer’s parent container</li>
-        <li>Display modification success on presentation layer</li>
+        <li>Display modification progress and success on presentation layer</li>
       </ol>
 
       <h3>Modification Pattern 5</h3>
@@ -103,10 +97,10 @@ const UIModify = () => (
           <p>User initiates modification layer from presentation layer, which unwinds and displays complexity underlying a component’s presentation</p>
         </li>
         <li>
-          <p>Edit inline elements, display each’s edited state</p>
+          <p>Modify inline elements, display each’s modified state</p>
         </li>
         <li>
-          <p>Synchronously display its parent container’s edited state</p>
+          <p>Synchronously display its parent container’s modified state</p>
         </li>
         <li>
           <p>User initiates confirmation layer (from presentation or modification layer), which unwinds and displays complexity underlying as line-items</p>
@@ -115,7 +109,7 @@ const UIModify = () => (
           <p>Commit modifications to the child elements via controls on the confirmation layer</p>
         </li>
         <li>
-          <p>Display modification success on presentation layer</p>
+          <p>Display modification progress and success on presentation layer</p>
         </li>
       </ol>
   </div>
