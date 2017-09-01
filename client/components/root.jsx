@@ -11,7 +11,7 @@ import { useScroll } from 'react-router-scroll';
 import routes from '../routes.jsx';
 
 require('../styling/root.less');
-require('../../node_modules/font-awesome/less/font-awesome.less');
+require('../../node_modules/font-awesome/css/font-awesome.css');
 
 const Root = () => (
   <Router

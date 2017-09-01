@@ -196,12 +196,19 @@ pre {
   color: @selectBlue;
 }
 
+@font-face {
+  font-family: 'MMS Icons';
+  src: url('../assets/font/MMSIcons-Regular.eot');
+  font-weight: normal;
+  font-style: normal;
+}
+
 i[class^="mms-icon-"],
 i[class^="mms-icon-"] i {
   font-family: "MMS Icons";
   font-style: normal;
   font-weight: normal;
-  font-size: inherit;
+  font-size: 16px;
   line-height: 1;
   -moz-osx-font-smoothing: grayscale;
   font-weight: normal;
@@ -212,3 +219,5 @@ i[class^="mms-icon-"] i {
        -o-transition: all 200ms ease;
           transition: all 200ms ease;
 }
+
+i.mms-icon-continuous:before { content: "\E219" }
