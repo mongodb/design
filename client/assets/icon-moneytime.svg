@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 20.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 33 26" style="enable-background:new 0 0 33 26;" xml:space="preserve">
+<style type="text/css">
+  .st0{fill:none;stroke:#ADB0B1;stroke-linecap:round;}
+  .st1{fill:none;stroke:#A6C88E;stroke-width:1.5;stroke-linecap:round;}
+</style>
+<title>icon_moneytime</title>
+<desc>Created with Sketch.</desc>
+<g id="Build-Form-Details">
+  <g id="B01" transform="translate(-898.000000, -611.000000)">
+    <g id="Modal" transform="translate(33.000000, 32.000000)">
+      <g id="Fixed-Sidebar---m1.small" transform="translate(773.000000, 139.000000)">
+        <g id="Configuation-Details">
+          <g id="icon_moneytime" transform="translate(93.000000, 441.000000)">
+            <ellipse id="Oval" class="st0" cx="15" cy="2" rx="6" ry="2"/>
+            <path id="Oval_1_" class="st0" d="M9,2.2l0.1,3c0,0,1.3,1.7,5.9,1.7l0,0c3.3,0,6-0.9,6-2V2.4"/>
+            <path id="Oval_2_" class="st0" d="M9.1,5.1V8c0,0,2,2.3,5.9,2l0,0c3.3,0,6-0.9,6-2V4.9"/>
+            <path id="Oval_3_" class="st0" d="M14,18.9c0.5,0.1,0.9,0.1,1.6,0.1c0.8,0,0.9,0,1.6-0.1"/>
+            <path id="Oval_4_" class="st0" d="M14,15.9c0.3,0.1,1,0.1,1.5,0.1c0.8,0,1,0,1.7-0.1"/>
+            <ellipse id="Oval_5_" class="st0" cx="6" cy="13" rx="6" ry="2"/>
+            <path id="Oval_6_" class="st0" d="M0,13l0.1,3c0,0,1.2,2.2,5.9,2l0,0c3.3,0,6-0.9,6-2v-3.1"/>
+            <path id="Oval_7_" class="st0" d="M0.1,15.9V19c0,0,1.3,2.2,5.9,2l0,0c3.3,0,6-0.9,6-2v-3.1"/>
+            <path id="Oval_8_" class="st0" d="M0.1,18.9v3.3c0,0,0.6,1.8,5.9,1.8l0,0c3.3,0,6-0.9,6-2v-3.1"/>
+            <path id="Oval_9_" class="st0" d="M9.1,7.9v2 M13.4,12.9c0.5,0.1,1.8,0.2,3.1,0.1c1-0.1,2.1-0.4,2.6-0.5 M21,10.5V9.6V7.9"/>
+            <circle id="Oval-2" class="st1" cx="25" cy="17" r="6"/>
+            <polyline id="Line" class="st1" points="24.5,14.5 24.5,17 26.7,19             "/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</g>
+</svg>
