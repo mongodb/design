@@ -1,0 +1,186 @@
+@largeFontSize: 26px;
+@mediumFontSize: 16px;
+@modifyButtonHeight: 29px;
+@expandRowMinHeight: 47px;
+@padding: 9px;
+
+.properties-table {
+  margin: 0px;
+
+  &-is-dark {
+    .properties-table-row, .properties-table-left-half {
+      border-color: darken(@gray0, 2%);
+    }
+  }
+
+  &-row {
+    border-bottom: 1px solid @gray0;
+    padding-top: @padding;
+    padding-bottom: @padding;
+    line-height: 0;
+    position: relative;
+
+    &-is-bottomless {
+      border-bottom: 0px;
+    }
+
+    &-is-last {
+      padding-bottom: 22px;
+    }
+  }
+
+  &-right-half, &-left-half {
+    display: inline-block;
+    width: calc(50% - 1px);
+  }
+
+  &-has-changed {
+    &:after {
+      content: '';
+      display: block;
+      height: 100%;
+      bottom: 9px;
+      right: 15px;
+      background: @gray8;
+      opacity: 0.05;
+      position: absolute;
+      top: 0;
+      left: -15px;
+    }
+
+    &.properties-table-left-half {
+      &:after {
+        width: 146px;
+      }
+    }
+
+    &.properties-table-right-half {
+      &:after {
+        width: 152px;
+        left: 132px;
+      }
+    }
+
+    &.properties-table-row-is-last {
+      &:after {
+        width: 300px;
+      }
+    }
+
+    .properties-table-description {
+      color: @gray1;
+    }
+  }
+
+  &-left-half {
+    border-right: 1px solid @gray0;
+    padding-right: @padding;
+
+    &-is-padded {
+      padding-left: @padding;
+    }
+  }
+
+  &-right-half {
+    padding-left: @padding;
+  }
+
+  &-sub-header {
+    color: @gray3;
+    font-size: @mediumFontSize;
+    font-weight: normal;
+    padding: @padding;
+    line-height: @expandRowMinHeight;
+  }
+
+  &-title {
+    color: @gray3;
+    font-size: 13px;
+    font-weight: normal;
+    text-transform: capitalize;
+    margin: 9px 0 0;
+
+    &-is-uppercase {
+      text-transform: uppercase;
+    }
+  }
+
+  &-note {
+    font-size: 11px;
+    color: white;
+    font-style: italic;
+    font-weight: 400;
+    padding-bottom: @padding;
+    // max-width: 250px;
+    line-height: 15px;
+  }
+
+  &-description {
+    color: @pw;
+    font-weight: normal;
+    font-size: @mediumFontSize;
+    line-height: @largeFontSize;
+    word-break: break-all;
+    margin: 9px 0 0;
+
+    &-is-truncated {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &-is-large {
+      font-size: @largeFontSize;
+      font-weight: 300;
+      margin: 12px 0 0;
+    }
+  }
+
+  &-expander-row {
+    margin-top: @padding;
+    padding: @padding;
+    position: relative;
+    line-height: @modifyButtonHeight;
+    height: @expandRowMinHeight;
+  }
+
+  &-expander {
+    cursor: pointer;
+    color: @pw;
+    display: inline-block;
+  }
+
+  &-modify-wrench {
+    position: absolute;
+    display: inline-block;
+    top: @padding;
+    bottom: @padding;
+    right: @padding;
+  }
+
+  &-link {
+    color: @gray3;
+    text-decoration: underline;
+
+    &:hover, &:focus {
+      color: @gray3;
+    }
+
+    // CSS hack to achieve different color underline than text
+    &-wrapper {
+      color: @pw;
+    }
+  }
+
+  &-footer {
+    margin: 20px 0;
+  }
+
+  &-button {
+    &-is-row {
+      display: block;
+      padding: 20px;
+    }
+  }
+}
+

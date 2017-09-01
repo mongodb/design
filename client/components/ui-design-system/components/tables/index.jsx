@@ -224,6 +224,132 @@ const UITables = () => (
         </pre>
       </div>
     </div>
+
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <h2>Properties Table</h2>
+      </div>
+    </div>
+    <div className="row u-mb-0">
+      <div className="columns">
+        <div className="data-viz-row data-viz-row-is-rounded">
+          <header className="data-viz-row-cell data-viz-row-title">Cluster Details</header>
+          <dl className="properties-table data-viz-row-cell data-viz-row-cell-is-first">
+            <div className="properties-table-row">
+              <div className="properties-table-note">
+                *Note: All new clusters are on WiredTiger and MongoDB 3.2.
+              </div>
+            </div>
+            <div className="properties-table-row">
+              <div className="properties-table-left-half">
+                <dt className="properties-table-title">vCPU</dt>
+                <dd className="properties-table-description">2</dd>
+              </div>
+              <div className="properties-table-right-half ">
+                <dt className="properties-table-title">RAM</dt>
+                <dd className="properties-table-description">8 GB</dd>
+              </div>
+            </div>
+            <div className="properties-table-row">
+              <div className="properties-table-left-half">
+                <dt className="properties-table-title">Disk Storage</dt>
+                <dd className="properties-table-description">40 GB</dd>
+              </div>
+              <div className="properties-table-right-half">
+                <dt className="properties-table-title">Disk Speed</dt>
+                <dd className="properties-table-description">120</dd>
+              </div>
+            </div>
+            <div className="properties-table-row">
+              <div className="properties-table-left-half">
+                <dt className="properties-table-title">Shards</dt>
+                <dd className="properties-table-description">1</dd>
+              </div>
+              <div className="properties-table-right-half">
+                <dt className="properties-table-title">Replication Factor</dt>
+                <dd className="properties-table-description">3</dd>
+              </div>
+            </div>
+            <div className="properties-table-row">
+              <div className="properties-table-left-half">
+                <dt className="properties-table-title">Backup</dt>
+                <dd className="properties-table-description">Disabled</dd>
+              </div>
+              <div className="properties-table-right-half">
+                <dt className="properties-table-title">Region</dt>
+                <dd className="properties-table-description">N. Virginia</dd>
+              </div>
+            </div>
+            <div className="properties-table-row properties-table-row-is-last">
+              <dt className="properties-table-title">Estimate</dt>
+              <dd className="properties-table-description properties-table-description-is-large">$399.00/month</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-5">
+      <div className="columns small-12">
+        <pre>
+          <code className="language-html hljs xml" data-lang="html">
+            <div>{ '<div class="data-viz-row data-viz-row-is-rounded">' }</div>
+            <div>{ '  <header class="data-viz-row-cell data-viz-row-title">Cluster Details</header>' }</div>
+            <div>{ '  <dl class="properties-table data-viz-row-cell data-viz-row-cell-is-first">' }</div>
+            <div>{ '    <div class="properties-table-row">' }</div>
+            <div>{ '      <div class="properties-table-note">' }</div>
+            <div>{ '        *Note: All new clusters are on WiredTiger and MongoDB 3.2.' }</div>
+            <div>{ '      </div>' }</div>
+            <div>{ '    </div>' }</div>
+            <div>{ '    <div class="properties-table-row">' }</div>
+            <div>{ '      <div class="properties-table-left-half">' }</div>
+            <div>{ '        <dt class="properties-table-title">vCPU</dt>' }</div>
+            <div>{ '        <dd class="properties-table-description">2</dd>' }</div>
+            <div>{ '      </div>' }</div>
+            <div>{ '      <div class="properties-table-right-half ">' }</div>
+            <div>{ '        <dt class="properties-table-title">RAM</dt>' }</div>
+            <div>{ '        <dd class="properties-table-description">8 GB</dd>' }</div>
+            <div>{ '      </div>' }</div>
+            <div>{ '    </div>' }</div>
+            <div>{ '    <div class="properties-table-row">' }</div>
+            <div>{ '      <div class="properties-table-left-half">' }</div>
+            <div>{ '        <dt class="properties-table-title">Disk Storage</dt>' }</div>
+            <div>{ '        <dd class="properties-table-description">40 GB</dd>' }</div>
+            <div>{ '      </div>' }</div>
+            <div>{ '      <div class="properties-table-right-half">' }</div>
+            <div>{ '        <dt class="properties-table-title">Disk Speed</dt>' }</div>
+            <div>{ '        <dd class="properties-table-description">120</dd>' }</div>
+            <div>{ '      </div>' }</div>
+            <div>{ '    </div>' }</div>
+            <div>{ '    <div class="properties-table-row">' }</div>
+            <div>{ '      <div class="properties-table-left-half">' }</div>
+            <div>{ '        <dt class="properties-table-title">Shards</dt>' }</div>
+            <div>{ '        <dd class="properties-table-description">1</dd>' }</div>
+            <div>{ '      </div>' }</div>
+            <div>{ '      <div class="properties-table-right-half">' }</div>
+            <div>{ '        <dt class="properties-table-title">Replication Factor</dt>' }</div>
+            <div>{ '        <dd class="properties-table-description">3</dd>' }</div>
+            <div>{ '      </div>' }</div>
+            <div>{ '    </div>' }</div>
+            <div>{ '    <div class="properties-table-row">' }</div>
+            <div>{ '      <div class="properties-table-left-half">' }</div>
+            <div>{ '        <dt class="properties-table-title">Backup</dt>' }</div>
+            <div>{ '        <dd class="properties-table-description">Disabled</dd>' }</div>
+            <div>{ '      </div>' }</div>
+            <div>{ '      <div class="properties-table-right-half">' }</div>
+            <div>{ '        <dt class="properties-table-title">Region</dt>' }</div>
+            <div>{ '        <dd class="properties-table-description">N. Virginia</dd>' }</div>
+            <div>{ '      </div>' }</div>
+            <div>{ '    </div>' }</div>
+            <div>{ '    <div class="properties-table-row properties-table-row-is-last">' }</div>
+            <div>{ '      <dt class="properties-table-title">Estimate</dt>' }</div>
+            <div>{ '      <dd class="properties-table-description properties-table-description-is-large">$399.00/month</dd>' }</div>
+            <div>{ '    </div>' }</div>
+            <div>{ '  </dl>' }</div>
+          </code>
+        </pre>
+      </div>
+    </div>
+
     <div className="row u-mb-2">
       <div className="columns small-12">
         <h2>Summary Table</h2>
@@ -373,6 +499,7 @@ const UITables = () => (
         </pre>
       </div>
     </div>
+
   </div>
 );
 
