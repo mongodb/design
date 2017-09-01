@@ -3,7 +3,6 @@
 // ==================================================
 
 import React from 'react';
-import '../../../../styling/root.less';
 
 const UILayouts = () => (
   <div className="wrap">
