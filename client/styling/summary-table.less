@@ -1,0 +1,156 @@
+@changedFontColor: @blue;
+@defaultSpacing: 15px;
+@smallFontSize: 13px;
+@mediumFontSize: 16px;
+@largeFontSize: 26px;
+@thinFontWeight: 300;
+@thickFontWeight: 600;
+
+.summary-table {
+  position: relative;
+  background-color: @gray8;
+  color: @gray1;
+  border: 1px solid @gray7;
+  padding: @defaultSpacing;
+  width: 300px;
+  margin-bottom: @defaultSpacing;
+
+  &-is-rounded {
+    border-radius: 3px;
+  }
+
+  &-header {
+    padding: 2px;
+    font-size: @mediumFontSize;
+    font-weight: @thickFontWeight;
+  }
+
+  &-row {
+    border-top: 1px solid @gray7;
+    padding: 6px 0 6px;
+    display: flex;
+
+    &-half {
+      width: 50%;
+      padding: 2px;
+      flex-grow: 1;
+
+      &-is-left {
+        border-right: 1px solid @gray7;
+      }
+
+      &-is-right {
+        padding-left: @defaultSpacing;
+      }
+    }
+
+    &-full {
+      font-size: 25px;
+      flex-grow: 1;
+    }
+
+    &-title {
+      font-size: @smallFontSize;
+      color: @gray5;
+      font-weight: @thickFontWeight;
+    }
+
+    &-value {
+      font-size: @mediumFontSize;
+      font-weight: @thinFontWeight;
+      margin: 0;
+
+      &-has-changed {
+        color: @changedFontColor;
+      }
+    }
+
+    &-is-first {
+      margin-top: @defaultSpacing;
+    }
+
+    &-is-last {
+      border-bottom: 1px solid @gray7;
+      margin-bottom: @defaultSpacing;
+    }
+  }
+
+  &-list {
+    &-row {
+      display: flex;
+      align-items: center;
+      padding: 2px;
+
+      &-subscript {
+        font-size: @mediumFontSize;
+        font-weight: @thinFontWeight;
+        width: 30px;
+        display: inline-block;
+        text-align: left;
+
+        &-is-wide {
+          width: 60px;
+        }
+      }
+
+      &-title {
+        font-size: @smallFontSize;
+        color: @gray5;
+        font-weight: @thickFontWeight;
+        flex-grow: 1;
+      }
+
+      &-value {
+        flex-grow: 1;
+        text-align: right;
+        font-size: @largeFontSize;
+
+        &-has-changed {
+          color: @changedFontColor;
+        }
+      }
+
+      &-money-icon {
+        width: 72px;
+        height: 64px;
+        padding: 0;
+      }
+
+      &-description {
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 11px;
+        color: @gray3;
+
+        &-unindented {
+          margin-left: 0px;
+        }
+      }
+    }
+
+    &-pointer-group {
+      cursor: pointer;
+    }
+  }
+
+  /* there is literally nowhere painless to put this */
+  &-affix-container.affix {
+    top: 10px;
+    transform: translateZ(0); // workaround for bug in Chrome v54
+  }
+
+  &-alert {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 0;
+  }
+
+  // Enable scrolling on the container for small
+  // screens
+  @media(max-height: 760px) {
+    &-affix-container.affix {
+      height: 96vh;
+      overflow-y: scroll
+    }
+  }
+}
