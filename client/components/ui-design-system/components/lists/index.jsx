@@ -45,16 +45,16 @@ const UILists = () => (
       <div className="columns small-12">
         <h3>Nested List</h3>
         <ul className="nested-list">
-          <li><a className="nested-list-parent-link" href="">books</a>
-            <ul className="nested-list-child-container">
+          <li><a className="nested-list-parent-link" href=""><i className="mms-icon-database nested-list-icon"></i>books</a>
+            <ul>
               <li><a className="nested-list-child-link" href="">authors</a></li>
               <li><a className="nested-list-child-link" href="">agents</a></li>
               <li><a className="nested-list-child-link" href="">publishers</a></li>
               <li><a className="nested-list-child-link" href="">bookstores</a></li>
             </ul>
           </li>
-          <li><a className="nested-list-parent-link" href="">cinema</a>
-            <ul className="nested-list-child-container">
+          <li><a className="nested-list-parent-link" href=""><i className="mms-icon-database nested-list-icon"></i>cinema</a>
+            <ul>
               <li><a className="nested-list-child-link" href="">films</a></li>
               <li><a className="nested-list-child-link" href="">actors</a></li>
               <li><a className="nested-list-child-link" href="">directors</a></li>
@@ -64,8 +64,8 @@ const UILists = () => (
               <li><a className="nested-list-child-link" href="">theaters</a></li>
             </ul>
           </li>
-          <li><a className="nested-list-parent-link" href="">music</a>
-            <ul className="nested-list-child-container">
+          <li><a className="nested-list-parent-link" href=""><i className="mms-icon-database nested-list-icon"></i>music</a>
+            <ul>
               <li><a className="nested-list-child-link" href="">bands</a></li>
               <li><a className="nested-list-child-link" href="">singers</a></li>
               <li><a className="nested-list-child-link" href="">songwriters</a></li>
@@ -82,16 +82,16 @@ const UILists = () => (
         <pre>
           <code className="language-html hljs xml" data-lang="html">
             <div>{ '<ul class="nested-list">' }</div>
-            <div>{ '  <li><a class="nested-list-parent-link" href="">books' }</div>
-            <div>{ '    <ul class="nested-list-child-container">' }</div>
+            <div>{ '  <li><a class="nested-list-parent-link" href=""><i class="mms-icon-database nested-list-icon"></i>books' }</div>
+            <div>{ '    <ul>' }</div>
             <div>{ '      <li><a class="nested-list-child-link" href="">authors</a></li>' }</div>
             <div>{ '      <li><a class="nested-list-child-link" href="">agents</a></li>' }</div>
             <div>{ '      <li><a class="nested-list-child-link" href="">publishers</a></li>' }</div>
             <div>{ '      <li><a class="nested-list-child-link" href="">bookstores</a></li>' }</div>
             <div>{ '    </ul>' }</div>
             <div>{ '  </li>' }</div>
-            <div>{ '  <li><a class="nested-list-parent-link" href="">cinema' }</div>
-            <div>{ '    <ul class="nested-list-child-container">' }</div>
+            <div>{ '  <li><a class="nested-list-parent-link" href=""><i class="mms-icon-database nested-list-icon"></i>cinema' }</div>
+            <div>{ '    <ul>' }</div>
             <div>{ '      <li><a class="nested-list-child-link" href="">films</a></li>' }</div>
             <div>{ '      <li><a class="nested-list-child-link" href="">actors</a></li>' }</div>
             <div>{ '      <li><a class="nested-list-child-link" href="">directors</a></li>' }</div>
@@ -101,8 +101,8 @@ const UILists = () => (
             <div>{ '      <li><a class="nested-list-child-link" href="">theaters</a></li>' }</div>
             <div>{ '    </ul>' }</div>
             <div>{ '  </li>' }</div>
-            <div>{ '  <li><a class="nested-list-parent-link" href="">music' }</div>
-            <div>{ '    <ul class="nested-list-child-container">' }</div>
+            <div>{ '  <li><a class="nested-list-parent-link" href=""><i class="mms-icon-database nested-list-icon"></i>music' }</div>
+            <div>{ '    <ul>' }</div>
             <div>{ '      <li><a class="nested-list-child-link" href="">bands</a></li>' }</div>
             <div>{ '      <li><a class="nested-list-child-link" href="">singers</a></li>' }</div>
             <div>{ '      <li><a class="nested-list-child-link" href="">songwriters</a></li>' }</div>
