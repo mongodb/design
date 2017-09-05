@@ -3,7 +3,6 @@
 // ==================================================
 
 import React from 'react';
-import '../styling/root.less';
 import { Link } from 'react-router';
 
 const DesignSystem = () => (
