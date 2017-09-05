@@ -1,0 +1,134 @@
+@emptyViewDefaultMargin: 20px;
+
+.empty-view {
+  animation: emptyViewEnters 750ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  text-align: center;
+  border: 1px solid @gray6;
+  border-radius: 3px;
+  padding: 50px calc(~"50% - 400px") 50px;
+
+  &-margin {
+    margin: 35px 0;
+  }
+
+  &-is-dashed {
+    border-style: dashed;
+    border-radius: 5px;
+  }
+
+  &-has-no-border {
+    border: none;
+  }
+
+  &-graphic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
+
+  &-icon {
+    font-size: 64px;
+    color: @gray6;
+
+    &-is-rotating {
+      animation: rotating-icon 4000ms linear infinite;
+      display: inline-block;
+    }
+  }
+
+  &-shadow {
+    height: 8px;
+    width: 160px;
+    margin-top: 30px;
+    fill: @alertGreenBorder;
+    opacity: .55;
+
+    &-is-error {
+      fill: @gray6;
+    }
+  }
+
+  &-text {
+    color: @gray6;
+    font-weight: normal;
+    font-size: 28px;
+    margin: 8px 0;
+
+    &-wrap {
+      width: 475px;
+      margin: auto;
+    }
+
+    &-is-error {
+      color: @alertRedDark;
+    }
+
+    &-is-dark {
+      color: inherit;
+    }
+
+    &-is-heading {
+      font-size: 36px;
+      color: inherit;
+    }
+
+    &-is-sub-heading {
+      font-size: 18px;
+      color: inherit;
+    }
+
+    &-is-secondary {
+      font-size: 18px;
+    }
+
+    &-is-tertiary {
+      font-size: 14px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 515px;
+    }
+
+    &-is-green {
+      color: @green4;
+    }
+
+    &-has-bottom-margin {
+      margin-bottom: @emptyViewDefaultMargin;
+    }
+
+    &-has-top-margin {
+      margin-top: @emptyViewDefaultMargin;
+    }
+  }
+
+  &-has-margins {
+    margin: 25px;
+  }
+
+  &-has-wide-margins {
+    margin-top: 25px;
+  }
+
+  &-has-dashed-border {
+    border-style: dashed;
+  }
+}
+
+@keyframes emptyViewEnters {
+  0% {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes rotating-icon {
+  0%   { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
