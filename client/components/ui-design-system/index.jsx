@@ -21,7 +21,7 @@ const UIDesignSystem = ({ children }) => (
          <li><Link to='/ui-design-system/base-styles/typography' className="navigation-link">Typography</Link></li>
        </ul>
       </li>
-      <li><h4>Components</h4>
+      <li><h4>Core</h4>
        <ul className="navigation-is-vertical-parent">
         <li><Link to='/ui-design-system/components/banners' className="navigation-link">Banners</Link></li>
         <li><Link to='/ui-design-system/components/bubbles' className="navigation-link">Bubbles</Link></li>
@@ -34,6 +34,11 @@ const UIDesignSystem = ({ children }) => (
         <li><Link to='/ui-design-system/components/tabs' className="navigation-link">Tabs</Link></li>
         <li><Link to='/ui-design-system/components/tables' className="navigation-link">Tables</Link></li>
         <li><Link to='/ui-design-system/components/utilities' className="navigation-link">Utilities</Link></li>
+       </ul>
+      </li>
+      <li><h4>Compass</h4>
+       <ul className="navigation-is-vertical-parent">
+        <li><Link to='/ui-design-system/compass-components/query-history' className="navigation-link">Query History</Link></li>
        </ul>
       </li>
       <li><h4>Guidelines</h4>
