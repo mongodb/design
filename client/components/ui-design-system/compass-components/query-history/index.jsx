@@ -25,7 +25,7 @@ const UIQueryHistoryCard = () => (
     <div className="row u-mb-2">
       <div className="columns small-6">
         <div className="query-history-recent-query">
-          <div className="btn-group">
+          <div className="button-group">
             <button title="Favorite Query" className="button button-is-small query-history-button query-history-button-favorite">
               <span aria-hidden="true" className="fa fa-star-o"></span>
             </button>
@@ -78,7 +78,7 @@ const UIQueryHistoryCard = () => (
       </div>
       <div className="columns small-6">
         <div className="query-history-favorite-query">
-          <div className="btn-group">
+          <div className="button-group">
             <button title="Copy Query to Clipboard" className="button button-is-small query-history-button query-history-button-copy">
               <span aria-hidden="true" className="fa fa-clipboard"></span>            
             </button>
@@ -128,7 +128,7 @@ const UIQueryHistoryCard = () => (
         <pre>
           <code className="language-html hljs xml" data-lang="html">
             <div>{ '<div class="query-history-favorite-query">' }</div>
-            <div>{ '<div class="btn-group">' }</div>
+            <div>{ '<div class="button-group-button">' }</div>
             <div>{ '  <button class="button button-is-small query-history-button query-history-button-copy">' }</div>
             <div>{ '    <span aria-hidden="true" class="fa fa-clipboard"></span>' }</div>
             <div>{ '  </button>' }</div>
