@@ -3,7 +3,6 @@
 // ==================================================
 
 import React from 'react';
-import '../../../../styling/root.less';
 
 const UIViewModal = () => (
   <div className="wrap">
