@@ -25,13 +25,13 @@ const UIQueryHistoryCard = () => (
         <div className="query-history-recent-query">
           <div className="btn-group">
             <button title="Favorite Query" className="button button-is-small query-history-button query-history-button-favorite">
-              X
+              <span aria-hidden="true" className="fa fa-star-o"></span>
             </button>
             <button title="Copy Query to Clipboard" className="button button-is-small query-history-button query-history-button-copy">
-              X
+              <span aria-hidden="true" className="fa fa-clipboard"></span>            
             </button>
             <button title="Delete Query from Favorites List" className="button button-is-small query-history-button">
-              X
+              <span aria-hidden="true" className="fa fa-trash"></span>            
             </button>
           </div>
           <div className="query-history-card">
@@ -73,10 +73,10 @@ const UIQueryHistoryCard = () => (
         <div className="query-history-favorite-query">
           <div className="btn-group">
             <button title="Copy Query to Clipboard" className="button button-is-small query-history-button query-history-button-copy">
-              X
+              <span aria-hidden="true" className="fa fa-clipboard"></span>            
             </button>
             <button title="Delete Query from Favorites List" className="button button-is-small query-history-button">
-              X
+              <span aria-hidden="true" className="fa fa-trash"></span>            
             </button>
           </div>
           <div className="query-history-card">
