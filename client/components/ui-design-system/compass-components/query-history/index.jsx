@@ -17,9 +17,9 @@ const UIQueryHistoryCard = () => (
     <div className="row u-mb-2">
       <div className="columns small-12">
         <h2>Query Cards</h2>
-        <p>In Compass, users can view queries they have either favorited or previously used in the following cards. 
+        <p>In Compass, users can view queries that they have either favorited or previously used in the following cards. 
         The cards separate each query option <i>(e.g. Filter or Limit)</i> into separate code snippets.
-        We use <a href="https://github.com/mongodb-js/codemirror-mongodb">codemirror</a> to pretty print and color coat the queries to heighten legibility</p> 
+        We use <a href="https://github.com/mongodb-js/codemirror-mongodb">codemirror</a> to pretty print and color coat the queries to heighten legibility.</p> 
       </div>
     </div>
     <div className="row u-mb-2">
