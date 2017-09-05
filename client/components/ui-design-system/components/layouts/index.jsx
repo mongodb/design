@@ -91,7 +91,7 @@ const UILayouts = () => (
       <div className="columns small-12">
         <div className="empty-view empty-view-has-no-border">
           <div className="empty-view-graphic">
-            <i className="fa fa-exclamation-triangle empty-view-icon"></i>
+            <i className="fa fa-4x fa-exclamation-triangle empty-view-icon"></i>
             <svg className="empty-view-shadow empty-view-shadow-is-error">
               <ellipse cx="50%" cy="50%" rx="50%" ry="50%"></ellipse>
             </svg>
@@ -111,7 +111,7 @@ const UILayouts = () => (
           <code className="language-html hljs xml" data-lang="html">
             <div>{ '<div class="empty-view empty-view-has-no-border">' }</div>
             <div>{ '  <div class="empty-view-graphic">' }</div>
-            <div>{ '    <i class="fa fa-exclamation-triangle empty-view-icon"></i>' }</div>
+            <div>{ '    <i class="fa fa-4x fa-exclamation-triangle empty-view-icon"></i>' }</div>
             <div>{ '    <svg class="empty-view-shadow empty-view-shadow-is-error">' }</div>
             <div>{ '      <ellipse cx="50%" cy="50%" rx="50%" ry="50%"></ellipse>' }</div>
             <div>{ '    </svg>' }</div>
