@@ -67,11 +67,155 @@ const UITabs = () => (
 
     <div className="row">
       <div className="sectionBox">
+        <div className="sectionTitle"><h2>Section With Tabs</h2>
+          <div className="u-float-right">
+              <button className="button button-is-small button-is-primary u-mr-2">Primary Action</button>
+              <button className="button">
+                <i className="mms-icon-ellipsis"></i>
+              </button>
+            </div>
+        </div>
+
+      <ul className="row tabs">
+        <li className="tabs-tab">
+          <a className="tabs-tab-link" href={"http://mongodb.com"}>Tab</a>
+        </li>
+        <li className="tabs-tab tabs-tab-is-active">
+          <a className="tabs-tab-link" href={"http://mongodb.com"}>Active Tab</a>
+        </li>
+        <li className="tabs-tab">
+          <a className="tabs-tab-link" href={"http://mongodb.com"}>Beta Tab</a>
+          <div className="betaLabel">BETA</div>
+        </li>
+        <li className='tabs-tab more'>
+          <a className="tabs-tab-link section-header-more dropdown-toggle" data-toggle="dropdown" aria-expanded="true"  href={"http://mongodb.com"}>
+             More <i className="fa fa-caret-down section-header-more-icon"></i></a>
+        </li>
+      </ul>
+
+      <ul className="row tabs subtab">
+        <li className="tabs-tab">
+          <a className="tabs-tab-link" href={"http://mongodb.com"}>Subtab</a>
+        </li>
+        <li className="tabs-tab">
+          <a className="tabs-tab-link active" href={"http://mongodb.com"}>Active Subtab</a>
+        </li>
+        <li className="tabs-tab">
+          <a className="tabs-tab-link" href={"http://mongodb.com"}>Last Subtab</a>
+        </li>
+      </ul>
+
+      <div className="section-controls">
+          <span className="section-controls-filter-is-xs">
+              <label className="section-controls-label button-is-xs">Filter:</label>
+          </span>
+          <input name="section-controls-checkbox-label" className="box" type="checkbox"/> <div className="foobar">Foo</div>
+          <input name="section-controls-checkbox-label" className="box" type="checkbox"/> <div className="foobar">Bar</div>
+
+          <label className="section-controls-label button-is-xs">Toggle:</label>
+          <div className="button-group">
+              <button className="button-group-button button button-is-xs button-is-selected">Option 1</button>
+              <button className="button-group-button button button-is-xs">Option 2</button>
+          </div>
+
+          <div className="section-controls">
+            <label className="section-controls-label button-is-xs">I'm stackable:</label>
+            <a className="button button-is-xs">Example Control <i className="fa fa-caret-down"></i></a>
+          </div>
+
+          <div className="section-banner button-is-xs">
+            <span className="section-banner-item">Collection:
+              <span className="section-banner-keyword"> guns_n_roses</span>
+            </span>
+            <span className="section-banner-item">Documents: 111,111</span>
+            <span className="section-banner-item">Total Datasize: 882.03 MB</span>
+          </div>
+
+      </div>
+      </div>
+    </div>
+
+    <pre>
+    <code>
+      <div>{ '<div class="section-header section-header-has-tabs section-header-has-breadcrumbs">' }</div>
+      <div>{ '    <div class="section-header-title">' }</div>
+      <div>{ '        <span class="section-header-title-text">Section with Tabs</span>' }</div>
+      <div>{ '        <span class="section-header-title-actions">' }</div>
+      <div>{ '            <div class="dropdown section-header-title-actions-dropdown">' }</div>
+      <div>{ '                <button class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">' }</div>
+      <div>{ '                    Primary Action <i class="fa fa-caret-down"></i>' }</div>
+      <div>{ '                </button>' }</div>
+      <div>{ '                <ul class="dropdown-menu">' }</div>
+      <div>{ '                  <li><a>Option</a></li>' }</div>
+      <div>{ '                  <li><a>Option</a></li>' }</div>
+      <div>{ '                </ul>' }</div>
+      <div>{ '            </div>' }</div>
+      <div>{ '' }</div>
+      <div>{ '            <div class="dropdown section-header-title-actions-dropdown">' }</div>
+      <div>{ '                <button class="button button-has-icon" data-toggle="dropdown">' }</div>
+      <div>{ '                    <i class="mms-icon-ellipsis"></i>' }</div>
+      <div>{ '                </button>' }</div>
+      <div>{ '                <ul class="dropdown-menu">' }</div>
+      <div>{ '                  <li><a>Option</a></li>' }</div>
+      <div>{ '                  <li><a>Option</a></li>' }</div>
+      <div>{ '                </ul>' }</div>
+      <div>{ '            </div>' }</div>
+      <div>{ '        </span>' }</div>
+      <div>{ '    </div>' }</div>
+      <div>{ '    <ul class="section-header-tabs">' }</div>
+      <div>{ '        <li class="section-header-tab section-header-tab-is-left"><a href="#" class="section-header-tab-link">Tab</a></li>' }</div>
+      <div>{ '        <li class="section-header-tab section-header-tab-is-active"><a href="#" class="section-header-tab-link">Active Tab</a></li>' }</div>
+      <div>{ '        <li class="section-header-tab section-header-tab-is-right section-header-tab-is-beta"><a href="#" class="section-header-tab-link">Beta Tab</a></li>' }</div>
+      <div>{ '        <li>' }</div>
+      <div>{ '            <button class="section-header-more dropdown-toggle" data-toggle="dropdown" aria-expanded="true">' }</div>
+      <div>{ '                More <i class="fa fa-caret-down section-header-more-icon"></i>' }</div>
+      <div>{ '            </button>' }</div>
+      <div>{ '        </li>' }</div>
+      <div>{ '    </ul>' }</div>
+      <div>{ '</div>' }</div>
+      <div>{ '<ul class="section-subtabs">' }</div>
+      <div>{ '    <li class="section-subtabs-tab"><a class="section-subtabs-tab-link">Subtab</a></li>' }</div>
+      <div>{ '    <li class="section-subtabs-tab section-subtabs-tab-is-active"><a class="section-subtabs-tab-link">Active Subtab</a></li>' }</div>
+      <div>{ '    <li class="section-subtabs-tab section-subtabs-tab-is-last"><a class="section-subtabs-tab-link">Last Subtab</a></li>' }</div>
+      <div>{ '</ul>' }</div>
+      <div>{ '<div class="section-controls">' }</div>
+      <div>{ '    <span class="section-controls-filter">' }</div>
+      <div>{ '        <label class="section-controls-label">Filter: </label>' }</div>
+      <div>{ '        <label class="section-controls-checkbox-label">' }</div>
+      <div>{ '        </label>' }</div>
+      <div>{ '        <label class="section-controls-checkbox-label">' }</div>
+      <div>{ '            <input type="checkbox"> Bar' }</div>
+      <div>{ '        </label>' }</div>
+      <div>{ '    </span>' }</div>
+      <div>{ '' }</div>
+      <div>{ '    <label class="section-controls-label">Toggle:</label>' }</div>
+      <div>{ '    <div class="button-group">' }</div>
+      <div>{ '        <button class="button-group-button button button-is-xs button-is-selected">Option 1</button>' }</div>
+      <div>{ '        <button class="button-group-button button button-is-xs">Option 2</button>' }</div>
+      <div>{ '    </div>' }</div>
+      <div>{ '</div>' }</div>
+      <div>{ '<div class="section-controls">' }</div>
+      <div>{ "    <label class='section-controls-label'>I'm stackable:</label> "}</div>
+      <div>{ '    <a class="button button-is-xs">Example Control <i class="fa fa-caret-down"></i></a>' }</div>
+      <div>{ '</div>' }</div>
+      <div>{ '<div class="section-banner">' }</div>
+      <div>{ '    <span class="section-banner-item">Collection:' }</div>
+      <div>{ '        <span class="section-banner-keyword">guns_n_roses</span>' }</div>
+      <div>{ '    </span>' }</div>
+      <div>{ '    <span class="section-banner-item">Documents: 111,111</span>' }</div>
+      <div>{ '    <span class="section-banner-item">Total Datasize: 882.03 MB</span>' }</div>
+      <div>{ '</div>' }</div>
+    </code>
+    </pre>
+
+
+    <div className="row">
+      <div className="sectionBox">
           <div className="sectionTitle">
             <h2>Section Without Tabs</h2>
             <div className="u-float-right">
               <button className="button button-is-small button-is-primary u-mr-2">Primary Action</button>
-              <button className="button button-has-ellipsis-only button-is-small u-mr-2">
+              <button className="button">
                 <i className="mms-icon-ellipsis"></i>
               </button>
             </div>
@@ -97,12 +241,17 @@ const UITabs = () => (
 
     <div className="row">
       <div className="sectionBox">
-        <div className="alert"><i className="fa fa-exclamation-triangle section-warnings-icon"></i>This is a warning</div>
+      <div className="section-warnings">
+        <div className="alert alert-warning section-warnings-alert" role="alert">
+            <i className="fa fa-exclamation-triangle section-warnings-icon"></i> This is a warning
+        </div>
+      </div>
+
         <div className="sectionTitle">
           <h2>Section With Banner</h2>
             <div className="u-float-right">
               <button className="button button-is-small button-is-primary u-mr-2">Primary Action</button>
-                <button className="button button-has-ellipsis-only button-is-small u-mr-2">
+                <button className="button" data-toggle="dropdown">
                   <i className="mms-icon-ellipsis"></i>
               </button>
             </div>
@@ -118,8 +267,9 @@ const UITabs = () => (
           <li className="tabs-tab">
             <a className="tabs-tab-link" href={"http://mongodb.com"}>Tab</a>
           </li>
-          <li className="tabs-tab">
-            <a className="tabs-tab-link" href={"http://mongodb.com"}>More</a>
+          <li className='tabs-tab more'>
+            <a className="tabs-tab-link section-header-more dropdown-toggle" data-toggle="dropdown" aria-expanded="true"  href={"http://mongodb.com"}>
+                More <i className="fa fa-caret-down section-header-more-icon"></i></a>
           </li>
         </ul>
       </div>
