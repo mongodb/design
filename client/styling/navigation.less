@@ -28,11 +28,15 @@
     height: 100%;
     overflow-y: scroll;
     padding-left: 1.75rem;
-    font-size: 14px;
+    font-size: 12px;
 
-    &-parent {
+    &-container {
       list-style: none;
       padding: 0;
+    }
+
+    &-parent {
+      margin-bottom: 24px;
     }
 
     &-child {
@@ -104,15 +108,21 @@
       width: 100%;
       border-bottom: 1px solid #d7dbdb;
 
-      &-parent {
-        height: 0;
+      &-container {
+        max-height: 0;
         margin: 0;
         padding: 15px 0 0 0;
-        overflow-y: hidden;
-        transition: height 0.25s ease-in;
+        overflow: hidden;
+        transition: max-height 0.25s ease-in;
 
         &-is-open {
-          height: 620px; 
+          max-height: 200vh; 
+        }
+      }
+
+      &-parent {
+        h4 {
+          margin: 0 0 10px 0;
         }
       }
     }
