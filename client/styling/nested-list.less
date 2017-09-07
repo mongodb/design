@@ -10,82 +10,18 @@
   list-style: none;
   padding: 0;
 
-  .nested-list-link();
-  &-item {
-    &-is-collapsed {
-      .nested-list-collapse-icon {
-        transform: rotate(180deg);
-      }
-
-      .nested-list-child {
-        height: 0;
-      }
-    }
-  }
-
   &-icon {
     color: @gray5;
     margin-right: 5px;
-  }
-
-  &-collapse-icon {
-    display: inline-block;
-    margin: 0 10px 0 auto;
-    transform: rotate(270deg);
-    cursor: pointer;
-    color: @gray5;
-    z-index: 2; // allows the collapse icon to be clicked when overlapping with the parent link
-  }
-
-  &-parent {
-    display: flex;
-    align-items: center;
-
-    &:hover, &:focus {
-      background: @gray7;
-    }
   }
 
   &-parent-link {
     .nested-list-link();
     padding: 8px;
 
-    &::before {
-      content: "\E308";
-      font-family: "MMS Icons";
-      color: @gray5;
-      margin-right: 5px;
-    }
-
     &, &:hover, &:focus {
       text-decoration: none;
       color: @gray1;
-    }
-
-    &-is-selected {
-      font-weight: bold;
-
-      &, &:hover, &:focus {
-        color: @green2;
-      }
-    }
-  }
-
-  &-child {
-    overflow: hidden;
-    list-style: none;
-    background: @gray8;
-    padding: 0;
-    margin: 0 6px;
-  }
-
-  &-child-entry {
-    &:first-child {
-      padding-top: 5px;
-    }
-
-    &:last-child {
-      padding-bottom: 5px;
     }
   }
 
@@ -96,14 +32,6 @@
     &:hover, &:focus {
       text-decoration: none;
       color: @gray2;
-    }
-
-    &-is-selected {
-      background-color: @green2;
-
-      &, &:active, &:hover, &:focus {
-        color: @pw;
-      }
     }
   }
 }
