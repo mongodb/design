@@ -167,7 +167,7 @@ const UILayouts = () => (
           <ul className="section-header-tabs">
             <li className="section-header-tab section-header-tab-is-left"><a href="#" className="section-header-tab-link">Tab</a></li>
             <li className="section-header-tab section-header-tab-is-active"><a href="#" className="section-header-tab-link">Active Tab</a></li>
-            <li className="section-header-tab section-header-tab-is-right section-header-tab-is-beta"><a href="#" class="section-header-tab-link">Beta Tab</a></li>
+            <li className="section-header-tab section-header-tab-is-right section-header-tab-is-beta"><a href="#" className="section-header-tab-link">Beta Tab</a></li>
             <li>
               <button className="section-header-more dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                 More <i className="fa fa-caret-down section-header-more-icon"></i>
@@ -184,10 +184,12 @@ const UILayouts = () => (
           <span className="section-controls-filter">
             <label className="section-controls-label">Filter: </label>
             <label className="section-controls-checkbox-label">
-              <input type="checkbox">Foo</input>
+              Foo
+              <input type="checkbox"></input>
             </label>
             <label className="section-controls-checkbox-label">
-              <input type="checkbox">Bar</input>
+              Bar
+              <input type="checkbox"></input>
             </label>
           </span>
           <label className="section-controls-label">Toggle:</label>
@@ -207,14 +209,8 @@ const UILayouts = () => (
           <span className="section-banner-item">Documents: 111,111</span>
           <span className="section-banner-item">Total Datasize: 882.03 MB</span>
         </div>
+      </div>
     </div>
-  </div>
-
-
-
-
-
-
   </div>
 
 );
