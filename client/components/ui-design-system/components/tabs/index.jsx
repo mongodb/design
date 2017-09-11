@@ -66,8 +66,8 @@ const UITabs = () => (
     </div>
 
     <div className="row">
-      <div className="sectionBox">
-        <div className="sectionTitle"><h2>Section With Tabs</h2>
+      <div className="section-header">
+        <div className="section-header-title"><h2>Section With Tabs</h2>
           <div className="u-float-right">
               <button className="button button-is-small button-is-primary u-mr-2">Primary Action</button>
               <button className="button">
@@ -85,9 +85,9 @@ const UITabs = () => (
         </li>
         <li className="tabs-tab">
           <a className="tabs-tab-link" href={"http://mongodb.com"}>Beta Tab</a>
-          <div className="betaLabel">BETA</div>
+          <div className="tabs-tab-is-betatab">BETA</div>
         </li>
-        <li className='tabs-tab more'>
+        <li className='tabs-tab-more'>
           <a className="tabs-tab-link section-header-more dropdown-toggle" data-toggle="dropdown" aria-expanded="true"  href={"http://mongodb.com"}>
              More <i className="fa fa-caret-down section-header-more-icon"></i></a>
         </li>
@@ -98,7 +98,7 @@ const UITabs = () => (
           <a className="tabs-tab-link" href={"http://mongodb.com"}>Subtab</a>
         </li>
         <li className="tabs-tab">
-          <a className="tabs-tab-link active" href={"http://mongodb.com"}>Active Subtab</a>
+          <a className="tabs-tab-link subtab-active" href={"http://mongodb.com"}>Active Subtab</a>
         </li>
         <li className="tabs-tab">
           <a className="tabs-tab-link" href={"http://mongodb.com"}>Last Subtab</a>
@@ -210,8 +210,8 @@ const UITabs = () => (
 
 
     <div className="row">
-      <div className="sectionBox">
-          <div className="sectionTitle">
+      <div className="section-header">
+          <div className="section-header-title">
             <h2>Section Without Tabs</h2>
             <div className="u-float-right">
               <button className="button button-is-small button-is-primary u-mr-2">Primary Action</button>
@@ -240,14 +240,14 @@ const UITabs = () => (
     </pre>
 
     <div className="row">
-      <div className="sectionBox">
+      <div className="section-header">
       <div className="section-warnings">
         <div className="alert alert-warning section-warnings-alert" role="alert">
             <i className="fa fa-exclamation-triangle section-warnings-icon"></i> This is a warning
         </div>
       </div>
 
-        <div className="sectionTitle">
+        <div className="section-header-title">
           <h2>Section With Banner</h2>
             <div className="u-float-right">
               <button className="button button-is-small button-is-primary u-mr-2">Primary Action</button>
@@ -267,7 +267,7 @@ const UITabs = () => (
           <li className="tabs-tab">
             <a className="tabs-tab-link" href={"http://mongodb.com"}>Tab</a>
           </li>
-          <li className='tabs-tab more'>
+          <li className='tabs-tab-more'>
             <a className="tabs-tab-link section-header-more dropdown-toggle" data-toggle="dropdown" aria-expanded="true"  href={"http://mongodb.com"}>
                 More <i className="fa fa-caret-down section-header-more-icon"></i></a>
           </li>
