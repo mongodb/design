@@ -1,0 +1,322 @@
+@controlFontSize: 12px;
+
+.section-controls {
+    display: flex;
+    align-items: center;
+    margin: 5px 0 0 0;
+    height: 32px;
+
+    &-is-justified {
+        justify-content: space-between;
+    }
+
+    &-is-end-justified {
+        justify-content: flex-end;
+    }
+
+    &-label {
+        align-self: center;
+        text-transform: uppercase;
+        color: @gray4;
+        font-size: 10px;
+        font-weight: bold;
+        padding-right: 9px;
+        margin-bottom: 0px;
+
+        &-is-strong {
+            font-size: 12px;
+            color: black;
+        }
+
+        &-is-accented {
+            color: #000;
+            font-style: normal; // disable browser italic for var
+        }
+
+        &-group {
+            display: flex;
+        }
+    }
+
+    &-button {
+        margin-left: 12px;
+    }
+
+    &-right-button {
+        margin-left: auto;
+    }
+
+    &-checkbox-label {
+        margin: 0;
+        font-size: 13px;
+        padding-right: 10px;
+        font-weight: normal;
+        text-transform: none;
+        color: @gray1;
+    }
+
+    &-item {
+        margin-right: 24px;
+    }
+
+    &-filter {
+        display: inline-flex;
+        align-items: center;
+
+        // IE flexbox hack
+        span {
+            display: inline-flex;
+        }
+    }
+
+    &-calendar-button {
+        width: 90px;
+        text-align: left;
+        margin-right: 6px;
+    }
+
+    // specificity overrides for 3rd-party stylings
+    &-select2 {
+        display: inline-block;
+        margin-right: 8px;
+
+        &-is-fixed-width {
+            .select2-dropdown-open {
+                // position in front of mask (z-index 9998), to allow scrolling when open
+                z-index: 9999;
+            }
+
+            .select2-container .select2-selection--multiple {
+                min-height: inherit;
+                height: 22px;
+                border-color: @gray6;
+            }
+
+            .select2-container--open.select2-container--focus .select2-selection--multiple {
+                border-color: @selectBlue;
+            }
+
+            .select2-container .select2-selection--multiple .select2-selection__rendered {
+                // leave room for users to trigger the search field
+                padding-right: 100px;
+                max-width: 30vw;
+                overflow-x: visible;
+                white-space: nowrap;
+            }
+
+            .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+                .select2-selection__choice, .select2-search--inline {
+                    float: none;
+                    display: inline-block;
+                }
+            }
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+            min-height: 20px;
+            background: @pw;
+
+            .select2-selection__choice {
+                font-size: @controlFontSize;
+                margin: 1px;
+
+                .select2-selection__choice__remove {
+                    height: 16px;
+                    top: 2px;
+                    left: 2px;
+
+                    &:after {
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .select2-search--inline {
+                height: 20px;
+                width: 100px;
+
+                input {
+                    font-size: @controlFontSize;
+                    padding: 4px 0px 0px 4px;
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    &-refresh {
+        display: inline-flex;
+        margin-right: 24px;
+        vertical-align: top;
+
+        &-has-no-margin {
+            margin: 0;
+        }
+    }
+
+    // only use this style for backgrid-filter containers
+    &-search {
+        display: inline-flex;
+        padding-left: 24px;
+
+        // These non-BEM overrides are needed to adjust the default backgrid-filter styles
+        .backgrid-filter {
+            display: inline;
+            z-index: 1; // Ensures that backgrid magnifying icon doesn't render above dropdown
+            height: 22px;
+
+            span.search {
+                top: auto;
+                margin: 0;
+            }
+
+            input[type="search"] {
+                height: 12px;
+                border: 1px solid @gray6;
+                padding-left: 25px;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+                -webkit-border-radius: 0;
+                -moz-border-radius: 0;
+                border-radius: 0;
+                -webkit-transition: all 250ms ease;
+                transition: all 250ms ease;
+
+                &:focus {
+                    background: @gray8;
+                }
+            }
+        }
+    }
+
+    &-search-input {
+        box-sizing: content-box;
+        height: 12px;
+        border: 1px solid @gray6;
+        padding: 4px 18px 4px 24px;
+        box-shadow: none;
+        border-radius: 0;
+        transition: all 250ms ease;
+
+        &:focus {
+            background: @gray8;
+        }
+    }
+
+    &-search-form {
+        position: relative;
+    }
+
+    &-search-icon {
+        position: absolute;
+        left: 6px;
+        top: 3px;
+        font-weight: bold;
+        color: @gray1;
+    }
+    &-search-reset,
+    &-search-reset:focus:not([disabled]),
+    &-search-reset:hover:not([disabled]) {
+        position: absolute;
+        right: 0;
+        top: 0px;
+        background: transparent;
+        border: none;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    &-container {
+        padding: 22px 15px 22px 24px;
+    }
+
+    &-search-container {
+        padding-left: 6px;
+        border: 1px solid @gray5;
+        border-radius: 3px;
+        width: 282px;
+        margin-left: 14px;
+    }
+
+    &-timestamp {
+        display: inline-block;
+        color: @gray0;
+        background-color: @gray7;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 22px;
+        border-radius: 3px;
+        padding-left: 18px;
+        padding-right: 18px;
+        margin-left: 14px;
+
+        &-is-disabled {
+            color: @gray3;
+        }
+    }
+
+    &-icon {
+        line-height: 20px; // explicit LH for IE10/11
+    }
+
+    &-fa-search {
+        color: @gray4;
+        padding-right: 2px;
+    }
+
+    &-text-filter {
+        border: none;
+        width: 250px;
+    }
+
+    &-filter-label {
+        padding-right: 14px;
+        margin-bottom: 1px;
+    }
+
+    &-dropdown {
+        border-color: @gray5;
+        font-weight: bold;
+        font-size: 13px;
+        margin-right: 10px;
+        width: 95px;
+    }
+
+    &-dropdown-namespace-select {
+        border-color: @gray5;
+        font-weight: bold;
+        font-size: 13px;
+        margin-right: 10px;
+        width: 175px;
+    }
+
+    &-dropdown-chart-select {
+        border-color: @gray5;
+        font-weight: bold;
+        font-size: 13px;
+        margin-right: 10px;
+        width: 195px;
+    }
+
+    &-inline-item {
+        display: inline-block;
+    }
+
+    &-flex-container {
+        display: flex;
+    }
+
+    &-is-padded {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    &-chart {
+        flex-wrap: wrap;
+
+        @media (max-width: 1279px) {
+            height: 64px;
+        }
+    }
+}
