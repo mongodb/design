@@ -128,6 +128,93 @@ const UILayouts = () => (
       </div>
     </div>
 
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <h2>Common Navigation</h2>
+      </div>
+    </div>
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <h3>Section with Tabs</h3>
+      </div>
+    </div>
+    <div className="row u-mb-0">
+      <div className="columns">
+        <div className="section-header section-header-has-tabs section-header-has-breadcrumbs">
+          <div className="section-header-title">
+            <span className="section-header-title-text">Section with Tabs</span>
+            <span className="section-header-title-actions">
+              <div className="dropdown section-header-title-actions-dropdown">
+                <button className="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                  Primary Action <i className="fa fa-caret-down"></i>
+                </button>
+                <ul className="dropdown-menu">
+                  <li><a>Option</a></li>
+                  <li><a>Option</a></li>
+                </ul>
+              </div>
+              <div className="dropdown section-header-title-actions-dropdown">
+                <button className="button button-has-icon" data-toggle="dropdown">
+                  <i className="mms-icon-ellipsis"></i>
+                </button>
+                <ul className="dropdown-menu">
+                  <li><a>Option</a></li>
+                  <li><a>Option</a></li>
+                </ul>
+              </div>
+            </span>
+          </div>
+          <ul className="section-header-tabs">
+            <li className="section-header-tab section-header-tab-is-left"><a href="#" className="section-header-tab-link">Tab</a></li>
+            <li className="section-header-tab section-header-tab-is-active"><a href="#" className="section-header-tab-link">Active Tab</a></li>
+            <li className="section-header-tab section-header-tab-is-right section-header-tab-is-beta"><a href="#" class="section-header-tab-link">Beta Tab</a></li>
+            <li>
+              <button className="section-header-more dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                More <i className="fa fa-caret-down section-header-more-icon"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <ul className="section-subtabs">
+          <li className="section-subtabs-tab"><a className="section-subtabs-tab-link">Subtab</a></li>
+          <li className="section-subtabs-tab section-subtabs-tab-is-active"><a className="section-subtabs-tab-link">Active Subtab</a></li>
+          <li className="section-subtabs-tab section-subtabs-tab-is-last"><a className="section-subtabs-tab-link">Last Subtab</a></li>
+        </ul>
+        <div className="section-controls">
+          <span className="section-controls-filter">
+            <label className="section-controls-label">Filter: </label>
+            <label className="section-controls-checkbox-label">
+              <input type="checkbox">Foo</input>
+            </label>
+            <label className="section-controls-checkbox-label">
+              <input type="checkbox">Bar</input>
+            </label>
+          </span>
+          <label className="section-controls-label">Toggle:</label>
+          <div className="button-group">
+            <button className="button-group-button button button-is-xs button-is-selected">Option 1</button>
+            <button className="button-group-button button button-is-xs">Option 2</button>
+          </div>
+        </div>
+        <div className="section-controls">
+          <label className="section-controls-label">I'm stackable:</label>
+          <a className="button button-is-xs">Example Control <i className="fa fa-caret-down"></i></a>
+        </div>
+        <div className="section-banner">
+          <span className="section-banner-item">Collection:
+            <span className="section-banner-keyword">guns_n_roses</span>
+          </span>
+          <span className="section-banner-item">Documents: 111,111</span>
+          <span className="section-banner-item">Total Datasize: 882.03 MB</span>
+        </div>
+    </div>
+  </div>
+
+
+
+
+
+
   </div>
 
 );

@@ -11,9 +11,11 @@
 
   &-is-horizontal {
     display: inline;
-  
+
+
+
     &-parent, &-child {
-      margin-bottom: 0;
+      margin: 2px 0 0 0;
       padding: 0 0 0 40px;
       list-style: none;
     }
@@ -21,7 +23,7 @@
 
   &-is-vertical {
     position: fixed;
-    padding-top: 100px;
+    top: 100px;
     width: 200px;
     height: 100%;
     overflow-y: scroll;
@@ -29,14 +31,18 @@
     font-size: 14px;
 
     &-parent {
+      padding-left: 0;
       padding-bottom: 24px;
       list-style: none;
+    }
+
+    &-child {
+      margin-bottom: 0.4em;
     }
   }
 
   &-link {
-    // display: block;
-    padding: 4px 0;
+    position: relative;
     color: @gray0;
 
     &:hover {
