@@ -128,6 +128,8 @@ const UILayouts = () => (
       </div>
     </div>
 
+    {/*
+
     <div className="row u-mb-3">
       <div className="columns small-12">
         <h2>Common Navigation</h2>
@@ -211,6 +213,7 @@ const UILayouts = () => (
         </div>
       </div>
     </div>
+    */}
   </div>
 
 );
