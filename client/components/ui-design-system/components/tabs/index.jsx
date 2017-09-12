@@ -67,7 +67,7 @@ const UITabs = () => (
 
     <div className="row">
       <div className="section-header">
-        <div className="section-header-title"><h2>Section With Tabs</h2>
+        <div className="section-header-title"><div className="section-header-title-text">Section With Tabs</div>
           <div className="u-float-right">
               <button className="button button-is-small button-is-primary u-mr-2">Primary Action</button>
               <button className="button">
@@ -93,7 +93,7 @@ const UITabs = () => (
         </li>
       </ul>
 
-      <ul className="row tabs subtab">
+      <ul className="row tabs section-subtabs">
         <li className="tabs-tab">
           <a className="tabs-tab-link" href={"http://mongodb.com"}>Subtab</a>
         </li>
@@ -107,19 +107,19 @@ const UITabs = () => (
 
       <div className="section-controls">
           <span className="section-controls-filter-is-xs">
-              <label className="section-controls-label button-is-xs">Filter:</label>
+              <label className="section-controls-label button-is-xs"><div className="section-controls-label-text">Filter:</div></label>
           </span>
-          <input name="section-controls-checkbox-label" className="box" type="checkbox"/> <div className="foobar">Foo</div>
-          <input name="section-controls-checkbox-label" className="box" type="checkbox"/> <div className="foobar">Bar</div>
+          <input name="section-controls-checkbox-label" className="section-controls-box" type="checkbox"/> <div className="section-controls-foobar">Foo</div>
+          <input name="section-controls-checkbox-label" className="section-controls-box" type="checkbox"/> <div className="section-controls-foobar">Bar</div>
 
-          <label className="section-controls-label button-is-xs">Toggle:</label>
+          <label className="section-controls-label button-is-xs"><div className="section-controls-label-text">Toggle:</div></label>
           <div className="button-group">
               <button className="button-group-button button button-is-xs button-is-selected">Option 1</button>
               <button className="button-group-button button button-is-xs">Option 2</button>
           </div>
 
           <div className="section-controls">
-            <label className="section-controls-label button-is-xs">I'm stackable:</label>
+            <label className="section-controls-label button-is-xs"><div className="section-controls-label-text">I'm stackable:</div></label>
             <a className="button button-is-xs">Example Control <i className="fa fa-caret-down"></i></a>
           </div>
 
@@ -212,7 +212,7 @@ const UITabs = () => (
     <div className="row">
       <div className="section-header">
           <div className="section-header-title">
-            <h2>Section Without Tabs</h2>
+            <div className="section-header-title-text">Section Without Tabs</div>
             <div className="u-float-right">
               <button className="button button-is-small button-is-primary u-mr-2">Primary Action</button>
               <button className="button">
@@ -248,7 +248,7 @@ const UITabs = () => (
       </div>
 
         <div className="section-header-title">
-          <h2>Section With Banner</h2>
+          <div className="section-header-title-text">Section With Banner</div>
             <div className="u-float-right">
               <button className="button button-is-small button-is-primary u-mr-2">Primary Action</button>
                 <button className="button" data-toggle="dropdown">
