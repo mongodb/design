@@ -116,7 +116,7 @@ const UIColors = () => (
 
     <div className="row u-mb-2">
       <div className="columns small-12">
-        <h2>UI Colors</h2>
+        <h2>Other Colors</h2>
       </div>
     </div>
     <div className="row u-mb-3">
@@ -143,13 +143,13 @@ const UIColors = () => (
     </div>
     <div className="row u-mb-5">
       <div className="columns small-3">
-        <span className="color-block error-background">
-          <span className="code">@errorBackground</span>
+        <span className="color-block light-red">
+          <span className="code">@lightRed</span>
         </span>
       </div>
       <div className="columns small-3">
-        <span className="color-block light-red">
-          <span className="code">@lightRed</span>
+        <span className="color-block lighter-red">
+          <span className="code">@lighterRed</span>
         </span>
       </div>
       <div className="columns small-3">
@@ -163,6 +163,7 @@ const UIColors = () => (
         </span>
       </div>
     </div>
+
   </div>
 );
 
