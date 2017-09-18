@@ -1,5 +1,5 @@
 /* MongoDB Color Palette */
-/* commented colors have been deprecated */
+/* UI Greens */
 @green0: #365221;
 @green1: #507b32;
 @green2: #6ba442;
@@ -7,8 +7,6 @@
 @green4: #a6c88e;
 @green5: #c4dbb3;
 @green8: #f0f7ec;
-
-@mongodbslate: #4d5359;
 @mongodbgreen: #69B241;
 
 /* UI Grays */
@@ -18,25 +16,21 @@
 @gray3: #818487;
 @gray4: #9fa1a2;
 @gray5: #babdbe;
-
-@mongodbslate: #4d5359;
-
-/* UI Grays */
 @gray6: #d7dbdb;
 @gray7: #e8e9e9;
 @gray8: #f4f6f6;
+@mongodbslate: #4d5359;
 
 /* Other Colors */
-@blue: #43b1e5;
 @selectBlue: #5897fb;
+@navyBlue: #1d6c92;
+@blue: #43b1e5;
 @red: #ed271c;
 @lightRed: #ffeaea;
+@errorBackground: #fdd0d1;
 @yellow: #fbb129;
 @pw: #fff;
-@cautionOrange: @alertOrange;
-@errorBackground: #fdd0d1;
-@validGreen: #f1f2ed;
-@navyBlue: #1d6c92;
+
 
 /* Syntax Highlighting */
 @stringSyntaxHighlight: steelblue;
@@ -95,14 +89,12 @@
 @alertBlueTextDisabled: #5A869C;
 
 /* Semantic Colors */
-
 @inactiveIcon: @gray4;
 
 /* Button Colors */
 @buttonColor: @gray0;
 @buttonBorder: @gray6;
 @buttonBackground: @pw;
-
 
 // Default Button State Styles
 @buttonFocusColor: @gray0;
@@ -115,7 +107,6 @@
 @buttonHoverGradient: linear-gradient(-180deg, lighten(@gray6, 15%) 0%, lighten(@gray6, 3%));
 @buttonFocusGradient: linear-gradient(-180deg, lighten(@gray6, 3%) 0%, lighten(@gray6, 15%) 100%);
 
-
 // Default Button on Dark State Styles
 @darkButtonBorder: @gray0;
 
@@ -127,10 +118,8 @@
 
 @darkButtonShadowInner: inset 0 -1px 0 0 @gray0;
 
-
 // Disabled Button State Styles
 @buttonDisabled: @gray2;
-
 
 // Primary Button State Styles
 @primaryButtonBorder: darken(@green1, 2%);
@@ -150,8 +139,6 @@
 
 @primaryButtonDisabled: lighten(@green2, 20%);
 
-
-
 @infoButtonColor: @green3;
 @infoButtonBackground: transparent;
 @infoButtonFocus: darken(@green2, 5%);
@@ -160,7 +147,6 @@
 @alertButtonBlue: #31708f;
 @alertButtonColor: @alertButtonBlue;
 @alertButtonDisabled: lighten(@alertButtonBlue, 30%);
-
 
 // Danger Button State Styles
 @dangerButtonBorder: #97130c;
@@ -177,53 +163,3 @@
 @dangerButtonDisabled: lighten(@dangerButtonBackground, 40%);
 
 @dangerButtonShadowInner: inset 0 -1px 0 0 darken(@alertRed, 25%);
-
-
-/* Gray Background Colors */
-
-.gray0 {
-  background-color: @gray0;
-}
-.gray1 {
-  background-color: @gray1;
-}
-.gray2 {
-  background-color: @gray2;
-}
-.gray3 {
-  background-color: @gray3;
-}
-.gray4 {
-  background-color: @gray4;
-}
-.gray5 {
-  background-color: @gray5;
-}
-.gray6 {
-  background-color: @gray6;
-}
-.gray7 {
-  background-color: @gray7;
-}
-
-
-/* UI Background Colors */
-
-.blue {
-  background-color: @selectBlue;
-}
-.dark-blue {
-  background-color: @navyBlue;
-}
-.red {
-  background-color: @red;
-}
-.light-red {
-  background-color: @lightRed;
-}
-.green {
-  background-color: @green2;
-}
-.yellow {
-  background-color: @yellow;
-}
