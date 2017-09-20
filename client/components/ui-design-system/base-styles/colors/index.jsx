@@ -55,6 +55,11 @@ const UIColors = () => (
           <span className="code">@green8</span>
         </span>
       </div>
+      <div className="columns small-3">
+        <span className="color-block mongodbgreen">
+          <span className="code">@mongodbgreen</span>
+        </span>
+      </div>
     </div>
 
     <div className="row u-mb-2">
@@ -112,6 +117,11 @@ const UIColors = () => (
           <span className="code">@gray8</span>
         </span>
       </div>
+      <div className="columns small-3">
+        <span className="color-block mongodbslate">
+          <span className="code">@mongodbslate</span>
+        </span>
+      </div>
     </div>
 
     <div className="row u-mb-2">
@@ -160,6 +170,96 @@ const UIColors = () => (
       <div className="columns small-3">
         <span className="color-block white">
           <span className="code">@pw</span>
+        </span>
+      </div>
+    </div>
+
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <h2>Text Colors</h2>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-3">
+        <span className="color-block link-text">
+          <span className="code">@linkText</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block link-on-dark">
+          <span className="code">@linkOnDark</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block error-text">
+          <span className="code">@errorText</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block warning-text">
+          <span className="code">@warningText</span>
+        </span>
+      </div>
+    </div>
+    <div className="row u-mb-5">
+      <div className="columns small-3">
+        <span className="color-block success-text">
+          <span className="code">@successText</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block muted-text">
+          <span className="code">@mutedText</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block very-muted-text">
+          <span className="code">@veryMutedText</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block sub-nav-text">
+          <span className="code">@subNavText</span>
+        </span>
+      </div>
+    </div>
+
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <h2>Alert Colors</h2>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-3">
+        <span className="color-block alert-orange">
+          <span className="code">@alertOrange</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block alert-red">
+          <span className="code">@alertRed</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block alert-blue">
+          <span className="code">@alertBlue</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block alert-green">
+          <span className="code">@alertGreen</span>
+        </span>
+      </div>
+    </div>
+    <div className="row u-mb-5">
+      <div className="columns small-3">
+        <span className="color-block alert-blue-input-disabled">
+          <span className="code">@alertBlueInputDisabled</span>
+        </span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block alert-blue-text-disabled">
+          <span className="code">@alertBlueTextDisabled</span>
         </span>
       </div>
     </div>
