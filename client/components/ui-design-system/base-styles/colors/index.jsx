@@ -14,7 +14,7 @@ const UIColors = () => (
 
     <div className="row u-mb-2">
       <div className="columns small-12">
-        <h2>Green Colors</h2>
+        <h2>UI Greens</h2>
       </div>
     </div>
     <div className="row u-mb-3">
@@ -59,7 +59,7 @@ const UIColors = () => (
 
     <div className="row u-mb-2">
       <div className="columns small-12">
-        <h2>Gray Colors</h2>
+        <h2>UI Grays</h2>
       </div>
     </div>
     <div className="row u-mb-3">
@@ -116,101 +116,51 @@ const UIColors = () => (
 
     <div className="row u-mb-2">
       <div className="columns small-12">
-        <h2>Other Colors</h2>
-      </div>
-    </div>
-    <div className="row u-mb-3">
-      <div className="columns small-3">
-        <span className="color-block select-blue">
-          <span className="code">@selectBlue</span>
-        </span>
-      </div>
-      <div className="columns small-3">
-        <span className="color-block navy-blue">
-          <span className="code">@navyBlue</span>
-        </span>
-      </div>
-      <div className="columns small-3">
-        <span className="color-block blue">
-          <span className="code">@blue</span>
-        </span>
-      </div>
-      <div className="columns small-3">
-        <span className="color-block red">
-          <span className="code">@red</span>
-        </span>
-      </div>
-    </div>
-    <div className="row u-mb-5">
-      <div className="columns small-3">
-        <span className="color-block light-red">
-          <span className="code">@lightRed</span>
-        </span>
-      </div>
-      <div className="columns small-3">
-        <span className="color-block lighter-red">
-          <span className="code">@lighterRed</span>
-        </span>
-      </div>
-      <div className="columns small-3">
-        <span className="color-block yellow">
-          <span className="code">@yellow</span>
-        </span>
-      </div>
-      <div className="columns small-3">
-        <span className="color-block white">
-          <span className="code">@pw</span>
-        </span>
-      </div>
-    </div>
-
-    <div className="row u-mb-2">
-      <div className="columns small-12">
         <h2>Text Colors</h2>
       </div>
     </div>
     <div className="row u-mb-3">
       <div className="columns small-3">
-        <span className="color-block link-text">
-          <span className="code">@linkText</span>
-        </span>
+        <span className="color-block warning-text"></span>
+        <span className="code code-left">@warningText</span>
+        <span className="code code-hex">#fbb129</span>
       </div>
       <div className="columns small-3">
-        <span className="color-block link-on-dark">
-          <span className="code">@linkOnDark</span>
-        </span>
+        <span className="color-block link-text"></span>
+        <span className="code code-left">@linkText</span>
+        <span className="code code-hex">#006cbc</span>
       </div>
       <div className="columns small-3">
-        <span className="color-block error-text">
-          <span className="code">@errorText</span>
-        </span>
+        <span className="color-block link-on-dark"></span>
+        <span className="code code-left">@linkOnDark</span>
+        <span className="code code-hex">#2898dd</span>
       </div>
       <div className="columns small-3">
-        <span className="color-block warning-text">
-          <span className="code">@warningText</span>
-        </span>
+        <span className="color-block error-text"></span>
+        <span className="code code-left">@errorText</span>
+        <span className="code code-hex">#ef4c4c</span>
       </div>
     </div>
     <div className="row u-mb-5">
       <div className="columns small-3">
-        <span className="color-block success-text">
-          <span className="code">@successText</span>
-        </span>
+        <span className="color-block success-text"></span>
+        <span className="code code-left">@successText</span>
+        <span className="code code-hex">#69B241</span>
       </div>
       <div className="columns small-3">
-        <span className="color-block muted-text">
-          <span className="code">@mutedText</span>
-        </span>
+        <span className="color-block muted-text"></span>
+        <span className="code code-left">@mutedText</span>
+        <span className="code code-hex">#9fa1a2</span>
       </div>
       <div className="columns small-3">
-        <span className="color-block very-muted-text">
-          <span className="code">@veryMutedText</span>
-        </span>
+        <span className="color-block very-muted-text"></span>
+        <span className="code code-left">@veryMutedText</span>
+        <span className="code code-hex">#babdbe</span>
       </div>
       <div className="columns small-3">
-        <span className="color-block sub-nav-text">
-          <span className="code">@subNavText</span>
-        </span>
+        <span className="color-block sub-nav-text"></span>
+        <span className="code code-left">@subNavText</span>
+        <span className="code code-hex">#6f6763</span>
       </div>
     </div>
 
@@ -221,36 +171,36 @@ const UIColors = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-3">
-        <span className="color-block alert-orange">
-          <span className="code">@alertOrange</span>
-        </span>
+        <span className="color-block alert-orange"></span>
+        <span className="code code-left">@alertOrange</span>
+        <span className="code code-hex">#fbb129</span>
       </div>
       <div className="columns small-3">
-        <span className="color-block alert-red">
-          <span className="code">@alertRed</span>
-        </span>
+        <span className="color-block alert-blue"></span>
+        <span className="code code-left">@alertBlue</span>
+        <span className="code code-hex">#43b1e5</span>
       </div>
       <div className="columns small-3">
-        <span className="color-block alert-blue">
-          <span className="code">@alertBlue</span>
-        </span>
+        <span className="color-block alert-red"></span>
+        <span className="code code-left">@alertRed</span>
+        <span className="code code-hex">#ef4c4c</span>
       </div>
       <div className="columns small-3">
-        <span className="color-block alert-green">
-          <span className="code">@alertGreen</span>
-        </span>
+        <span className="color-block alert-green"></span>
+        <span className="code code-left">@alertGreen</span>
+        <span className="code code-hex">#69B241</span>
       </div>
     </div>
     <div className="row u-mb-5">
       <div className="columns small-3">
-        <span className="color-block alert-blue-input-disabled">
-          <span className="code">@alertBlueInputDisabled</span>
-        </span>
+        <span className="color-block alert-blue-input-disabled"></span>
+        <span className="code code-left">@alertBlueInputDisabled</span>
+        <span className="code code-hex">#C9DBE4</span>
       </div>
       <div className="columns small-3">
-        <span className="color-block alert-blue-text-disabled">
-          <span className="code">@alertBlueTextDisabled</span>
-        </span>
+        <span className="color-block alert-blue-text-disabled"></span>
+        <span className="code code-left">@alertBlueTextDisabled</span>
+        <span className="code code-hex">#5A869C</span>
       </div>
     </div>
 
