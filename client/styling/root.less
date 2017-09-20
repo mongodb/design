@@ -146,13 +146,25 @@ pre {
 
 .code {
   display: inline-block;
-  border: 1px solid @gray5;
-  padding: 0 0.325rem;
+  margin: 0.325rem 0;
   font-size: 14px;
   font-family: monospace;
   border-radius: 3px;
   color: @gray0;
-  background-color: #fff;
+  background-color: @pw;
+
+  &-left {
+    float: left;
+    // padding: 0 0.325rem;
+    // border: 1px solid @gray5;
+  }
+
+  &-hex {
+    border: none;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: @gray3;
+    float: right;
+  }
 }
 
 .color-block {
