@@ -116,56 +116,6 @@ const UIColors = () => (
 
     <div className="row u-mb-2">
       <div className="columns small-12">
-        <h2>Text Colors</h2>
-      </div>
-    </div>
-    <div className="row u-mb-3">
-      <div className="columns small-3">
-        <span className="color-block warning-text"></span>
-        <span className="code code-left">@warningText</span>
-        <span className="code code-hex">#fbb129</span>
-      </div>
-      <div className="columns small-3">
-        <span className="color-block link-text"></span>
-        <span className="code code-left">@linkText</span>
-        <span className="code code-hex">#006cbc</span>
-      </div>
-      <div className="columns small-3">
-        <span className="color-block link-on-dark"></span>
-        <span className="code code-left">@linkOnDark</span>
-        <span className="code code-hex">#2898dd</span>
-      </div>
-      <div className="columns small-3">
-        <span className="color-block error-text"></span>
-        <span className="code code-left">@errorText</span>
-        <span className="code code-hex">#ef4c4c</span>
-      </div>
-    </div>
-    <div className="row u-mb-5">
-      <div className="columns small-3">
-        <span className="color-block success-text"></span>
-        <span className="code code-left">@successText</span>
-        <span className="code code-hex">#69B241</span>
-      </div>
-      <div className="columns small-3">
-        <span className="color-block muted-text"></span>
-        <span className="code code-left">@mutedText</span>
-        <span className="code code-hex">#9fa1a2</span>
-      </div>
-      <div className="columns small-3">
-        <span className="color-block very-muted-text"></span>
-        <span className="code code-left">@veryMutedText</span>
-        <span className="code code-hex">#babdbe</span>
-      </div>
-      <div className="columns small-3">
-        <span className="color-block sub-nav-text"></span>
-        <span className="code code-left">@subNavText</span>
-        <span className="code code-hex">#6f6763</span>
-      </div>
-    </div>
-
-    <div className="row u-mb-2">
-      <div className="columns small-12">
         <h2>Alert Colors</h2>
       </div>
     </div>
@@ -201,6 +151,56 @@ const UIColors = () => (
         <span className="color-block alert-blue-text-disabled"></span>
         <span className="code code-left">@alertBlueTextDisabled</span>
         <span className="code code-hex">#5A869C</span>
+      </div>
+    </div>
+
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <h2>Text Colors</h2>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-3">
+        <span className="color-block link-text"></span>
+        <span className="code code-left">@linkText</span>
+        <span className="code code-hex">#006cbc</span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block link-text-on-dark"></span>
+        <span className="code code-left">@linkOnDark</span>
+        <span className="code code-hex">#2898dd</span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block warning-text"></span>
+        <span className="code code-left">@warningText</span>
+        <span className="code code-hex">#fbb129</span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block error-text"></span>
+        <span className="code code-left">@errorText</span>
+        <span className="code code-hex">#ef4c4c</span>
+      </div>
+    </div>
+    <div className="row u-mb-5">
+      <div className="columns small-3">
+        <span className="color-block success-text"></span>
+        <span className="code code-left">@successText</span>
+        <span className="code code-hex">#69B241</span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block muted-text"></span>
+        <span className="code code-left">@mutedText</span>
+        <span className="code code-hex">#9fa1a2</span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block very-muted-text"></span>
+        <span className="code code-left">@veryMutedText</span>
+        <span className="code code-hex">#babdbe</span>
+      </div>
+      <div className="columns small-3">
+        <span className="color-block sub-nav-text"></span>
+        <span className="code code-left">@subNavText</span>
+        <span className="code code-hex">#6f6763</span>
       </div>
     </div>
 
