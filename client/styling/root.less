@@ -145,7 +145,7 @@ pre {
 }
 
 .code {
-  display: block;
+  display: inline-block;
   padding: 0 0.325rem;
   font-size: 14px;
   font-family: monospace;
@@ -153,14 +153,15 @@ pre {
   border: 1px solid @gray6;
 
   &-left {
+    display: block;
     color: steelblue;
     border: none;
-    padding: none;
     margin: 0.3rem 0;
     padding: none;
   }
 
   &-hex {
+    display: block;
     color: @gray1;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     border: none;
