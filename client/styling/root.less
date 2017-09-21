@@ -144,6 +144,7 @@ pre {
   border-radius: 3px;
 }
 
+
 .code {
   display: inline-block;
   padding: 0 0.325rem;
@@ -151,33 +152,24 @@ pre {
   font-family: monospace;
   border-radius: 3px;
   border: 1px solid @gray6;
+}
 
-  &-left {
+.color-chip {
+  &-swatch {
+    padding: 40px 0;
+    text-align: center;
     display: block;
-    color: steelblue;
+    border-radius: 3px;
+  }
+
+  &-code {
+    .code {}
     border: none;
-    margin: 0.3rem 0;
-    padding: none;
+    padding: 0;
   }
 
   &-hex {
-    display: block;
-    color: @gray1;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    border: none;
-    margin: 0.3rem 0;
-    padding: none;
-  }
-}
-
-.color-block {
-  padding: 40px 0;
-  text-align: center;
-  display: block;
-  border-radius: 3px;
-  .code {
-    border: none;
-    padding: 5px 10px;
+    font-size: 14px;
   }
 }
 
