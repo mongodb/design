@@ -52,10 +52,10 @@ class Layout extends React.Component {
                   <nav className="navigation columns small-8">
                     <button className="navigation-hamburger-button fa fa-bars" onClick={this.toggleHamburgerMenu.bind(this)} onBlur={this.closeHamburgerMenu.bind(this)}></button>
                     <ul className={this.getClassName(parent_class)} onClick={this.closeHamburgerMenu.bind(this)}>
-                      <li className="navigation-is-horizontal-child"><Link to='/brand-design-system' className="navigation-link">Brand Experience</Link></li>
-                      <li className="navigation-is-horizontal-child"><Link to='/ui-design-system/welcome' className="navigation-link">Product Design</Link></li>
-                      <li className="navigation-is-horizontal-child"><Link to='/resources' className="navigation-link">Resources</Link></li>
-                      <li className="navigation-is-horizontal-child"><Link to='*' className="navigation-link">Blog</Link></li>
+                      <li className="navigation-is-horizontal-child"><Link to='/brand-design-system' className="navigation-link" activeClassName="navigation-link-active">Brand Experience</Link></li>
+                      <li className="navigation-is-horizontal-child"><Link to='/ui-design-system/welcome' className="navigation-link" activeClassName="navigation-link-active">Product Design</Link></li>
+                      <li className="navigation-is-horizontal-child"><Link to='/resources' className="navigation-link" activeClassName="navigation-link-active">Resources</Link></li>
+                      <li className="navigation-is-horizontal-child"><Link to='*' className="navigation-link" activeClassName="navigation-link-active">Blog</Link></li>
                     </ul>
                   </nav>
               </div>

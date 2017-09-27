@@ -94,13 +94,19 @@ ul, li {
 }
 
 .header {
-  background: @pw;
-  padding: 20px 1rem;
   position: fixed;
   z-index: 1;
   width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  background: @pw;
+  padding: 0 20px;
   box-shadow: 0 2px 7px rgba(0,0,0,0.10);
-  //fopacity: 0.9;
+
+  .row {
+    align-items: center;
+  }
 }
 
 .brand {
