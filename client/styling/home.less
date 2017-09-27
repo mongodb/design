@@ -87,17 +87,38 @@
 
 @media (max-width: 736px)  { 
   .hero {
+    background: none;
+
     &-container { 
       top: 50px;
       margin: 0 auto;
-      width: 90%;
+      width: 100%;
+      text-align: center;
+
+
+      h1 {
+        font-size: 30px;
+      }
 
       h3 { 
-        font-size: 16px;
+        font-size: 20px;
       }
     }
   }
-  .button-mktg {
-    padding: .5em 1em;
+
+  .button {
+    width: 280px;
+    height: 60px;
+    text-align: center;
+    font-weight: normal;
+    margin: 0 0 20px 0;
+  }
+
+  .footer {
+    padding: 50px 20px;
+
+    &-social {
+      padding: 0 0 30px 0;
+    }
   }
 }
