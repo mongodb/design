@@ -12,6 +12,7 @@ const UIDesignSystem = ({ children }) => (
       <li><h4>Product Design</h4>
         <ul className="navigation-is-vertical-parent">
           <li className="navigation-is-vertical-child"><Link to='/ui-design-system/welcome' className="navigation-link">Welcome</Link></li>
+          <li className="navigation-is-vertical-child"><Link to='/ui-design-system/principles' className="navigation-link">Design Principles</Link></li>
         </ul>
       </li>
       <li><h4>Base Styles</h4>

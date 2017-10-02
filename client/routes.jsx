@@ -15,6 +15,7 @@ import BrandLogo from './components/brand-design-system/logo/index.jsx';
 
 import UIDesignSystem from './components/ui-design-system/index.jsx';
 import UIWelcome from './components/ui-design-system/welcome/index.jsx';
+import UIPrinciples from './components/ui-design-system/welcome/principles.jsx';
 //Base Styles
 import UIColors from './components/ui-design-system/base-styles/colors/index.jsx';
 import UIIcons from './components/ui-design-system/base-styles/icons/index.jsx';
@@ -53,6 +54,7 @@ const routes = (
       </Route>
       <Route path="/" component={UIDesignSystem}>
       <Route path="/ui-design-system/welcome" component={UIWelcome} />
+      <Route path="/ui-design-system/principles" component={UIPrinciples} />
       //Base Styles
       <Route path="/ui-design-system/base-styles/colors" component={UIColors} />
       <Route path="/ui-design-system/base-styles/icons" component={UIIcons} />
