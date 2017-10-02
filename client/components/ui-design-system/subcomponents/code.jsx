@@ -1,7 +1,9 @@
 const React = require('react');
 const PropTypes = require('prop-types');
 const Prism = require('prismjs');
-//import 'prismjs/themes/prism.css';
+import 'prismjs/themes/prism.css';
+import '../../../styling/mongodb-prism.less';
+
 
 class Code extends React.Component {
 
