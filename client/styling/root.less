@@ -33,6 +33,7 @@
 @import 'section-banner.less';
 @import 'section-subtabs.less';
 @import 'section-controls.less';
+@import 'colors.less';
 
 html,
 body {
@@ -143,25 +144,38 @@ pre {
   border-radius: 3px;
 }
 
+
 .code {
   display: inline-block;
-  border: 1px solid @gray5;
   padding: 0 0.325rem;
   font-size: 14px;
   font-family: monospace;
   border-radius: 3px;
-  color: @gray0;
-  background-color: #fff;
+  border: 1px solid @gray6;
 }
 
-.color-block {
-  padding: 40px 0;
-  text-align: center;
-  display: block;
-  border-radius: 3px;
-  .code {
+.color-chip {
+  &-swatch {
+    padding: 40px 0;
+    text-align: center;
+    display: block;
+    border-radius: 3px;
+    margin-bottom: 0.5rem;
+  }
+
+  &-code {
     border: none;
-    padding: 5px 10px;
+    padding: 0;
+    margin-bottom: 0.25rem;
+  }
+
+  &-label {
+    margin-top: 1rem;
+  }
+
+  &-hex {
+    font-size: 14px;
+    margin: 0;
   }
 }
 
