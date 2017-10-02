@@ -36,7 +36,7 @@ class BrandDesignSystem extends React.Component {
         <nav className="navigation-is-vertical">
           <button className="navigation-mobile-menu-button button button-extra-small" onClick={this.toggleMobileMenu.bind(this)} onBlur={this.closeMobileMenu.bind(this)}>Component Navigation</button>
           <ul className={this.getClassName(container_class)} onClick={this.closeMobileMenu.bind(this)}>
-            <li className="navigation-is-vertical-parent"><h4>Brand Design</h4>
+            <li className="navigation-is-vertical-parent"><h1><b>Brand</b> Design</h1>
               <ul className="navigation-is-vertical-child">
                 <li><Link to='/brand-design-system/' className="navigation-link">Welcome</Link></li>
               </ul>

@@ -23,12 +23,11 @@
   }
 
   &-is-vertical {
-    padding-top: 90px;
-    position: fixed;
+    position: absolute;
     width: 200px;
     height: 100%;
-    overflow-y: scroll;
-    padding-left: 1.75rem;
+    padding-left: 50px;
+    padding-top: 90px;
     font-size: 12px;
 
     &-container {
@@ -40,9 +39,16 @@
       margin-bottom: 24px;
     }
 
-    &-child {
-      list-style: none;
+    h4, &-child {
+      font-family: AkzidenzGroteskStd-Light;
       padding: 0; 
+      list-style: none;
+      font-size: 16px;
+      line-height: 40px;
+    }
+
+    &-child {
+      margin-left: 20px;
     }
   }
 
@@ -51,7 +57,7 @@
     color: @gray0;
 
     &:hover {
-      color: @linkText;
+      color: @mongodbgreen;
       text-decoration: none;
     }
 
