@@ -129,14 +129,14 @@ class UICode extends React.Component {
           <div className="columns small-12">
             <pre>
               <code className="language-html hljs xml" data-lang="html">
-                <div>{ '<div class="codeblock">' }</div>
-                <div>{ '  <code>' }</div>
-                <div>{ '    <div>{ \'const exampleCodeblock = {\' }</div>' }</div>
-                <div>{ '      <div>{ \'  description: \'this is a codeblock that preserves whitespace\',\' }</div>' }</div>
-                <div>{ '      <div>{ \'  overflow: \'this is also scrollable horizontally, so it won\'t break onto the next line even if it\'s really long, it just keeps scrolling and scrolling and scrolling...\'\' }</div>' }</div>
-                <div>{ '    <div>{ \'};\' }</div>' }</div>
-                <div>{ '  </code>' }</div>
-                <div>{ '</div>' }</div>
+{`<div class="codeblock">
+  <code>
+    <div>{ 'const exampleCodeblock = {' }</div>
+      <div>{ '  description: 'this is a codeblock that preserves whitespace',' }</div>
+      <div>{ '  overflow: 'this is also scrollable horizontally, so it won't break onto the next line even if it's really long, it just keeps scrolling and scrolling and scrolling...'' }</div>
+    <div>{ '};' }</div>
+  </code>
+</div>`}
               </code>
             </pre>
           </div>
@@ -223,74 +223,74 @@ class UICode extends React.Component {
           <div className="columns small-12">
             <pre>
               <code className="language-html hljs xml" data-lang="html">
-                <div>{ '<div class="json-view-object">' }</div>
-                <div>{ '  <div>' }</div>
-                <div>{ '    <span class="json-view-key">_id:</span>' }</div>
-                <div>{ '    <span>ObjectID(\'2340808293cc4750a928x223\')</span>' }</div>
-                <div>{ '  </div>' }</div>
-                <div>{ '  <div>' }</div>
-                <div>{ '    <span class="json-view-key">address:</span>' }</div>
-                <div>{ '    <span>Object</span>' }</div>
-                <div>{ '    <div class="json-view-object">' }</div>
-                <div>{ '      <div>' }</div>
-                <div>{ '        <span class="json-view-key">street:</span>' }</div>
-                <div>{ '        <span>"1839 Nostrand Ave"</span>' }</div>
-                <div>{ '      </div>' }</div>
-                <div>{ '      <div>' }</div>
-                <div>{ '        <span class="json-view-key">zip:</span>' }</div>
-                <div>{ '        <span>"11226"</span>' }</div>
-                <div>{ '      </div>' }</div>
-                <div>{ '    </div>' }</div>
-                <div>{ '  </div>' }</div>
-                <div>{ '  <div>' }</div>
-                <div>{ '    <span class="json-view-key">borough:</span>' }</div>
-                <div>{ '    <span>"Brooklyn"</span>' }</div>
-                <div>{ '  </div>' }</div>
-                <div>{ '  <div>' }</div>
-                <div>{ '    <span class="json-view-key">cuisine:</span>' }</div>
-                <div>{ '    <span>"Ice Cream, Gelato, Yogurt, Ices"</span>' }</div>
-                <div>{ '  </div>' }</div>
-                <div>{ '  <div>' }</div>
-                <div>{ '    <span class="json-view-key">grades:</span>' }</div>
-                <div>{ '    <span>Array[4]</span>' }</div>
-                <div>{ '    <div class="json-view-object">' }</div>
-                <div>{ '      <div>' }</div>
-                <div>{ '        <span class="json-view-key">0:</span>' }</div>
-                <div>{ '        <span>"92"</span>' }</div>
-                <div>{ '      </div>' }</div>
-                <div>{ '      <div>' }</div>
-                <div>{ '        <span class="json-view-key">1:</span>' }</div>
-                <div>{ '        <span>"79"</span>' }</div>
-                <div>{ '      </div>' }</div>
-                <div>{ '      <div>' }</div>
-                <div>{ '        <span class="json-view-key">2:</span>' }</div>
-                <div>{ '        <span>"88"</span>' }</div>
-                <div>{ '      </div>' }</div>
-                <div>{ '      <div>' }</div>
-                <div>{ '        <span class="json-view-key">3:</span>' }</div>
-                <div>{ '        <span>Object</span>' }</div>
-                <div>{ '        <div class="json-view-object">' }</div>
-                <div>{ '          <div>' }</div>
-                <div>{ '            <span class="json-view-key">service:</span>' }</div>
-                <div>{ '            <span>"80"</span>' }</div>
-                <div>{ '          </div>' }</div>
-                <div>{ '          <div>' }</div>
-                <div>{ '            <span class="json-view-key">food:</span>' }</div>
-                <div>{ '            <span>"95"</span>' }</div>
-                <div>{ '          </div>' }</div>
-                <div>{ '        </div>' }</div>
-                <div>{ '      </div>' }</div>
-                <div>{ '    </div>' }</div>
-                <div>{ '  </div>' }</div>
-                <div>{ '  <div>' }</div>
-                <div>{ '    <span class="json-view-key">name:</span>' }</div>
-                <div>{ '    <span>"Taste The Tropics Ice Cream"</span>' }</div>
-                <div>{ '  </div>' }</div>
-                <div>{ '  <div>' }</div>
-                <div>{ '    <span class="json-view-key">restaurant_id:</span>' }</div>
-                <div>{ '    <span>"40356731"</span>' }</div>
-                <div>{ '  </div>' }</div>
-                <div>{ '</div>' }</div>
+{`<div class="json-view-object">
+   <div>
+      <span class="json-view-key">_id:</span>
+      <span>ObjectID(\'2340808293cc4750a928x223\')</span>
+   </div>
+   <div>
+      <span class="json-view-key">address:</span>
+      <span>Object</span>
+      <div class="json-view-object">
+         <div>
+            <span class="json-view-key">street:</span>
+            <span>"1839 Nostrand Ave"</span>
+         </div>
+         <div>
+            <span class="json-view-key">zip:</span>
+            <span>"11226"</span>
+         </div>
+      </div>
+   </div>
+   <div>
+      <span class="json-view-key">borough:</span>
+      <span>"Brooklyn"</span>
+   </div>
+   <div>
+      <span class="json-view-key">cuisine:</span>
+      <span>"Ice Cream, Gelato, Yogurt, Ices"</span>
+   </div>
+   <div>
+      <span class="json-view-key">grades:</span>
+      <span>Array[4]</span>
+      <div class="json-view-object">
+         <div>
+            <span class="json-view-key">0:</span>
+            <span>"92"</span>
+         </div>
+         <div>
+            <span class="json-view-key">1:</span>
+            <span>"79"</span>
+         </div>
+         <div>
+            <span class="json-view-key">2:</span>
+            <span>"88"</span>
+         </div>
+         <div>
+            <span class="json-view-key">3:</span>
+            <span>Object</span>
+            <div class="json-view-object">
+               <div>
+                  <span class="json-view-key">service:</span>
+                  <span>"80"</span>
+               </div>
+               <div>
+                  <span class="json-view-key">food:</span>
+                  <span>"95"</span>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div>
+      <span class="json-view-key">name:</span>
+      <span>"Taste The Tropics Ice Cream"</span>
+   </div>
+   <div>
+      <span class="json-view-key">restaurant_id:</span>
+      <span>"40356731"</span>
+   </div>
+</div> `}
               </code>
             </pre>
           </div>
