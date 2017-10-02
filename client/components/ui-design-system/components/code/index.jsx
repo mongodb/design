@@ -1,20 +1,12 @@
-// ==================================================
+// ========================== ========================
 // DesignSystem - DSColors
 // ==================================================
 
 import React from 'react';
 import { Link } from 'react-router';
-import Prism from 'prismjs';
-import 'prismjs/themes/prism.css';
+import Code from '../../subcomponents/code';
 
-class UICode extends React.Component { 
-
-  componentDidMount() {
-    Prism.highlightAll();
-  }
-
-  render() {
-    return (
+const UICode = () => (
       <div className="wrap">
         <div className="row u-mb-3">
           <div className="columns small-12">
@@ -44,16 +36,15 @@ class UICode extends React.Component {
         </div>
         <div className="row u-mb-3">
           <div className="columns small-12">
-            <pre>
-              <code className="language-html hljs xml" data-lang="html">
-{`<div class="copy-command">
-  <span class="copy-command-text">this is a command that you can copy. it will break onto the next line even if it is really long, the overflow will keep scrolling horizontally.</span>
-  <button class="copy-command-button">
-    <i class="fa fa-files-o"></i> Copy
+            <Code
+              language='language-html'
+              text={`<div className="copy-command">
+  <span className="copy-command-text">this is a command that you can copy. it will not break onto the next line even if it is really long, the overflow will keep scrolling horizontally.</span>
+  <button className="copy-command-button">
+    <i className="fa fa-files-o"></i> Copy
   </button>
-</div>` }
-              </code>
-            </pre>
+</div>`}> 
+            </Code>
           </div>
         </div>
 
@@ -69,16 +60,15 @@ class UICode extends React.Component {
         </div>
         <div className="row u-mb-3">
           <div className="columns small-12">
-            <pre>
-              <code className="language-html hljs xml" data-lang="html">
-{`<div class="copy-command">
-  <button class="copy-command-button">
-  <span class="copy-command-text">by default these are not full width</span>
-    <i class="fa fa-files-o"></i> Copy
+            <Code
+              language='language-html'
+              text={`<div className="copy-command">
+  <span className="copy-command-text">by default these are not full width</span>
+  <button className="copy-command-button">
+    <i className="fa fa-files-o"></i> Copy
   </button>
-</div>` }
-              </code>
-            </pre>
+</div>`}> 
+            </Code>
           </div>
         </div>
 
@@ -94,16 +84,15 @@ class UICode extends React.Component {
         </div>
         <div className="row u-mb-3">
           <div className="columns small-12">
-            <pre>
-              <code className="language-html hljs xml" data-lang="html">
-  {`<div class="copy-command copy-command-is-full-width">
-    <span class="copy-command-text copy-command-text-is-full-width">but you can force them to be</span>
-    <button class="copy-command-button">
-      <i class="fa fa-files-o"></i> Copy
-    </button>
-  </div>` }
-              </code>
-            </pre>
+            <Code
+              language='language-html'
+              text={`<div className="copy-command copy-command-is-full-width">
+  <span className="copy-command-text copy-command-text-is-full-width">but you can force them to be</span>
+  <button className="copy-command-button">
+    <i className="fa fa-files-o"></i> Copy
+  </button>
+</div>`}> 
+            </Code>
           </div>
         </div>
 
@@ -127,18 +116,17 @@ class UICode extends React.Component {
         </div>
         <div className="row u-mb-3">
           <div className="columns small-12">
-            <pre>
-              <code className="language-html hljs xml" data-lang="html">
-{`<div class="codeblock">
+            <Code
+              language='language-html'
+              text={`<div class="codeblock">
   <code>
     <div>{ 'const exampleCodeblock = {' }</div>
       <div>{ '  description: 'this is a codeblock that preserves whitespace',' }</div>
       <div>{ '  overflow: 'this is also scrollable horizontally, so it won't break onto the next line even if it's really long, it just keeps scrolling and scrolling and scrolling...'' }</div>
     <div>{ '};' }</div>
   </code>
-</div>`}
-              </code>
-            </pre>
+</div>`}> 
+            </Code>
           </div>
         </div>
 
@@ -221,9 +209,9 @@ class UICode extends React.Component {
         </div>
         <div className="row u-mb-3">
           <div className="columns small-12">
-            <pre>
-              <code className="language-html hljs xml" data-lang="html">
-{`<div class="json-view-object">
+            <Code
+              language='language-html'
+              text={`<div class="json-view-object">
    <div>
       <span class="json-view-key">_id:</span>
       <span>ObjectID(\'2340808293cc4750a928x223\')</span>
@@ -290,14 +278,11 @@ class UICode extends React.Component {
       <span class="json-view-key">restaurant_id:</span>
       <span>"40356731"</span>
    </div>
-</div> `}
-              </code>
-            </pre>
+</div> `}> 
+           </Code>
           </div>
         </div>
       </div>
-    );
-  }
-}
+);
 
 export default UICode;
