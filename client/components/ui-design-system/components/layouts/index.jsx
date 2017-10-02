@@ -49,7 +49,7 @@ const UILayouts = () => (
     </div>
     <div className="row u-mb-0">
       <div className="columns small-12">
-        <div className="empty-view empty-view-has-no-border">
+        <div className="empty-view">
           <div className="empty-view-graphic">
             <i className="mms-icon-continuous empty-view-icon empty-view-icon-is-rotating"></i>
             <svg className="empty-view-shadow">
@@ -66,7 +66,7 @@ const UILayouts = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="empty-view empty-view-has-no-border">' }</div>
+            <div>{ '<div class="empty-view">' }</div>
             <div>{ '  <div class="empty-view-graphic">' }</div>
             <div>{ '    <i class="mms-icon-continuous empty-view-icon empty-view-icon-is-rotating"></i>' }</div>
             <div>{ '    <svg class="empty-view-shadow">' }</div>
@@ -89,7 +89,7 @@ const UILayouts = () => (
     </div>
     <div className="row u-mb-0">
       <div className="columns small-12">
-        <div className="empty-view empty-view-has-no-border">
+        <div className="empty-view">
           <div className="empty-view-graphic">
             <i className="fa fa-4x fa-exclamation-triangle empty-view-icon"></i>
             <svg className="empty-view-shadow empty-view-shadow-is-error">
@@ -109,7 +109,7 @@ const UILayouts = () => (
       <div className="columns small-12">
         <pre>
           <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="empty-view empty-view-has-no-border">' }</div>
+            <div>{ '<div class="empty-view">' }</div>
             <div>{ '  <div class="empty-view-graphic">' }</div>
             <div>{ '    <i class="fa fa-4x fa-exclamation-triangle empty-view-icon"></i>' }</div>
             <div>{ '    <svg class="empty-view-shadow empty-view-shadow-is-error">' }</div>
