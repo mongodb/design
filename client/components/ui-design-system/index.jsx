@@ -8,7 +8,8 @@ import { Link } from 'react-router';
 const UIDesignSystem = ({ children }) => (
 <div className="wrap">
   <nav className="navigation-sidebar">
-    <ul className="navigation navigation-is-vertical navigation-is-vertical-parent">
+    <button className="navigation-sidebar-button button button-extra-small"> Component Navigation </button>
+    <ul className="navigation-is-vertical navigation-is-vertical-parent">
       <li><h4>Product Design</h4>
         <ul className="navigation-is-vertical-parent">
           <li className="navigation-is-vertical-child"><Link to='/ui-design-system/welcome' className="navigation-link">Welcome</Link></li>

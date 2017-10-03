@@ -24,12 +24,13 @@ const Layout = ({ children }) => (
                 <Link to='/' className="brand-logo"></Link>
             </div>
               <nav className="navigation columns small-8">
-                <ul className="navigation navigation-is-horizontal navigation-is-horizontal-parent">
-                  <li className="navigation-is-horizontal navigation-is-horizontal-child"><Link to='/brand-design-system' className="navigation-link">Brand Experience</Link></li>
-                  <li className="navigation-is-horizontal navigation-is-horizontal-child"><Link to='/ui-design-system/welcome' className="navigation-link">Product Design</Link></li>
-                  <li className="navigation-is-horizontal navigation-is-horizontal-child"><Link to='/resources' className="navigation-link">Resources</Link></li>
-                  <li className="navigation-is-horizontal navigation-is-horizontal-child"><Link to='*' className="navigation-link">Blog</Link></li>
-                  </ul>
+                <button className="fa fa-bars"></button>
+                <ul className="navigation-is-horizontal-parent">
+                  <li className="navigation-is-horizontal-child"><Link to='/brand-design-system' className="navigation-link">Brand Experience</Link></li>
+                  <li className="navigation-is-horizontal-child"><Link to='/ui-design-system/welcome' className="navigation-link">Product Design</Link></li>
+                  <li className="navigation-is-horizontal-child"><Link to='/resources' className="navigation-link">Resources</Link></li>
+                  <li className="navigation-is-horizontal-child"><Link to='*' className="navigation-link">Blog</Link></li>
+                </ul>
               </nav>
           </div>
         </div>
