@@ -30,9 +30,9 @@ const UIButtons = () => (
       <div className="columns small-12">
         <Code
           language='language-html'
-          text={`<button class="button u-mr-2">Default Button</button>
-<button class="button button-is-primary u-mr-2">Primary Button</button>
-<button class="button button-is-danger u-mr-2">Destructive Button</button>
+          text={`<button class="button">Default Button</button>
+<button class="button button-is-primary">Primary Button</button>
+<button class="button button-is-danger">Destructive Button</button>
 <button class="button" disabled>Disabled Button</button>`}> 
         </Code>
       </div>
@@ -67,9 +67,9 @@ const UIButtons = () => (
       <div className="columns small-12">
         <Code
           language='language-html'
-          text={`<button class="button button-has-ellipsis-only u-mr-2"></button>
-<button class="button button-has-ellipsis-only button-is-small u-mr-2"></button>
-<button class="button button-has-ellipsis-only button-is-xs u-mr-2"></button>`}> 
+          text={`<button class="button button-has-ellipsis-only"></button>
+<button class="button button-has-ellipsis-only button-is-small"></button>
+<button class="button button-has-ellipsis-only button-is-xs"></button>`}> 
         </Code>
       </div>
     </div>
@@ -97,10 +97,10 @@ const UIButtons = () => (
       <div className="columns small-12">
         <Code
           language='language-html'
-          text={`<button class="button button-is-xs u-mr-2">Extra Small</button>
-<button class="button button-is-small u-mr-2">Small Button</button>
-<button class="button u-mr-2">Normal Button</button>
-<button class="button button-is-large u-mr-2">Large Button</button>`}> 
+          text={`<button class="button button-is-xs">Extra Small</button>
+<button class="button button-is-small">Small Button</button>
+<button class="button">Normal Button</button>
+<button class="button button-is-large">Large Button</button>`}> 
         </Code>
       </div>
     </div>
@@ -128,7 +128,7 @@ const UIButtons = () => (
       <div className="columns small-12">
         <Code
           language='language-html'
-          text={`<div class="button-group u-mr-2">
+          text={`<div class="button-group">
   <button class="button-group-button button button-is-xs">First</button>
   <button class="button-group-button button button-is-xs">Last</button>
 </div>
