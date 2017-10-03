@@ -12,13 +12,10 @@
     text-decoration: none;
   }
 
-  &-is-horizontal {
-    display: inline;
-
-
-
+  &-is-horizontal {  
     &-parent, &-child {
-      margin: 2px 0 0 0;
+      display: flex;
+      margin-bottom: 0;
       padding: 0 0 0 40px;
       list-style: none;
     }
@@ -57,8 +54,8 @@
     }
   }
 
-  .fa {
-    display: none;
+  &-hamburger-button {
+    display: none!important;
     float: right;
     margin: 0;
   }
@@ -68,25 +65,26 @@
   .navigation {
     &-is-horizontal {
       &-parent {
+        display: none;
         position: absolute;
         right: 10px;
-        top: 50px;
-        display: none;
+        top: 60px;
         flex-direction: column;
         justify-content: center;
         width: 200px;
         height: 120px;
         background: white;
-        padding: 0;
+        padding: 15px;
         border: 4px;
         box-shadow: 0 2px 10px 0 rgba(0,0,0,0.10);
-      }
-    }
-    .fa {
-      display: block;
 
-      &:focus + .navigation-is-horizontal-parent { 
-        display: flex!important;
+        &-is-expanded {
+          display: flex!important;
+        }
+      }
+      &-child {
+        padding: 0px;
+        line-height: 16px;
       }
     }
 
@@ -109,6 +107,14 @@
           height: 700px; 
         }
       }
+    }
+
+    &-link {
+      width: 100%;
+    }
+
+    &-hamburger-button {
+      display: block!important;
     }
   }
 }
