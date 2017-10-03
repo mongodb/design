@@ -3,6 +3,7 @@
 // ==================================================
 
 import React from 'react';
+import Code from '../../subcomponents/code';
 
 const UIBubbles = () => (
   <div className="wrap button-ui">
@@ -26,12 +27,11 @@ const UIBubbles = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="bubble-label bubble-label-gray">3 Shards</div>' }</div>
-            <div>{ '<div class="bubble-label bubble-label-lighter-gray">5 Nodes</div>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<div class="bubble-label bubble-label-gray">3 Shards</div>
+<div class="bubble-label bubble-label-lighter-gray">5 Nodes</div>`}> 
+        </Code>
       </div>
     </div>
     <div className="row">
@@ -42,11 +42,10 @@ const UIBubbles = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="bubble-label bubble-label-blue">NEW!</div>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<div class="bubble-label bubble-label-blue">NEW!</div>`}> 
+        </Code>
       </div>
     </div>
 
