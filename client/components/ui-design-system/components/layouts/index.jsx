@@ -3,6 +3,7 @@
 // ==================================================
 
 import React from 'react';
+import Code from '../../subcomponents/code';
 
 const UILayouts = () => (
   <div className="wrap">
@@ -31,14 +32,13 @@ const UILayouts = () => (
     </div>
     <div className="row u-mb-5">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="empty-view">' }</div>
-            <div>{ '  <div class="empty-view-text">Enter your empty view placeholder text here.</div>' }</div>
-            <div>{ '  <button class="button button-is-primary button-is-large">Do something</button>' }</div>
-            <div>{ '</div>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<div class="empty-view">
+  <div class="empty-view-text">Enter your empty view placeholder text here.</div>
+  <button class="button button-is-primary button-is-large">Do something</button>
+</div>`}> 
+        </Code>
       </div>
     </div>
 
@@ -64,21 +64,20 @@ const UILayouts = () => (
     </div>
     <div className="row u-mb-5">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="empty-view">' }</div>
-            <div>{ '  <div class="empty-view-graphic">' }</div>
-            <div>{ '    <i class="mms-icon-continuous empty-view-icon empty-view-icon-is-rotating"></i>' }</div>
-            <div>{ '    <svg class="empty-view-shadow">' }</div>
-            <div>{ '      <ellipse cx="50%" cy="50%" rx="50%" ry="50%"></ellipse>' }</div>
-            <div>{ '    </svg>' }</div>
-            <div>{ '  </div>' }</div>
-            <div>{ '  <div class="empty-view-text">' }</div>
-            <div>{ '    Retrieving list of databases and collections...' }</div>
-            <div>{ '  </div>' }</div>
-            <div>{ '</div>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<div class="empty-view">
+  <div class="empty-view-graphic">
+    <i class="mms-icon-continuous empty-view-icon empty-view-icon-is-rotating"></i>
+    <svg class="empty-view-shadow">
+      <ellipse cx="50%" cy="50%" rx="50%" ry="50%"></ellipse>
+    </svg>
+  </div>
+  <div class="empty-view-text">
+    Retrieving list of databases and collections...
+  </div>
+</div>`}> 
+        </Code>
       </div>
     </div>
 
@@ -107,24 +106,23 @@ const UILayouts = () => (
     </div>
     <div className="row u-mb-5">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="empty-view">' }</div>
-            <div>{ '  <div class="empty-view-graphic">' }</div>
-            <div>{ '    <i class="fa fa-4x fa-exclamation-triangle empty-view-icon"></i>' }</div>
-            <div>{ '    <svg class="empty-view-shadow empty-view-shadow-is-error">' }</div>
-            <div>{ '      <ellipse cx="50%" cy="50%" rx="50%" ry="50%"></ellipse>' }</div>
-            <div>{ '    </svg>' }</div>
-            <div>{ '  </div>' }</div>
-            <div>{ '  <div class="empty-view-text empty-view-text-is-error">' }</div>
-            <div>{ '    Write something about what they did wrong here.' }</div>
-            <div>{ '  </div>' }</div>
-            <div>{ '  <button class="button button-is-large button-is-default">' }</div>
-            <div>{ '    Do Something Else' }</div>
-            <div>{ '  </button>' }</div>
-            <div>{ '</div>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<div class="empty-view">
+  <div class="empty-view-graphic">
+    <i class="fa fa-4x fa-exclamation-triangle empty-view-icon"></i>
+    <svg class="empty-view-shadow empty-view-shadow-is-error">
+      <ellipse cx="50%" cy="50%" rx="50%" ry="50%"></ellipse>
+    </svg>
+  </div>
+  <div class="empty-view-text empty-view-text-is-error">
+    Write something about what they did wrong here.
+  </div>
+  <button class="button button-is-large button-is-default">
+    Do Something Else
+  </button>
+</div>`}> 
+        </Code>
       </div>
     </div>
 
