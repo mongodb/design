@@ -160,7 +160,7 @@ const UIBanners = () => (
       <div className="columns small-12">
         <Code
           language='language-html'
-          text={`div class="banner banner-is-in-progress">
+          text={`<div class="banner banner-is-in-progress">
   <p>Information explaining the in progress banner notification.</p>
   <div class="u-float-right">
     <button class="button button-is-text button-is-xs u-mr-3">Close</button>
