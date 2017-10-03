@@ -38,10 +38,10 @@ const UICode = () => (
           <div className="columns small-12">
             <Code
               language='language-html'
-              text={`<div className="copy-command">
-  <span className="copy-command-text">this is a command that you can copy. it will not break onto the next line even if it is really long, the overflow will keep scrolling horizontally.</span>
-  <button className="copy-command-button">
-    <i className="fa fa-files-o"></i> Copy
+              text={`<div class="copy-command">
+  <span class="copy-command-text">this is a command that you can copy. it will not break onto the next line even if it is really long, the overflow will keep scrolling horizontally.</span>
+  <button class="copy-command-button">
+    <i class="fa fa-files-o"></i> Copy
   </button>
 </div>`}> 
             </Code>
@@ -62,10 +62,10 @@ const UICode = () => (
           <div className="columns small-12">
             <Code
               language='language-html'
-              text={`<div className="copy-command">
-  <span className="copy-command-text">by default these are not full width</span>
-  <button className="copy-command-button">
-    <i className="fa fa-files-o"></i> Copy
+              text={`<div class="copy-command">
+  <span class="copy-command-text">by default these are not full width</span>
+  <button class="copy-command-button">
+    <i class="fa fa-files-o"></i> Copy
   </button>
 </div>`}> 
             </Code>
@@ -86,10 +86,10 @@ const UICode = () => (
           <div className="columns small-12">
             <Code
               language='language-html'
-              text={`<div className="copy-command copy-command-is-full-width">
-  <span className="copy-command-text copy-command-text-is-full-width">but you can force them to be</span>
-  <button className="copy-command-button">
-    <i className="fa fa-files-o"></i> Copy
+              text={`<div class="copy-command copy-command-is-full-width">
+  <span class="copy-command-text copy-command-text-is-full-width">but you can force them to be</span>
+  <button class="copy-command-button">
+    <i class="fa fa-files-o"></i> Copy
   </button>
 </div>`}> 
             </Code>
