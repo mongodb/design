@@ -21,26 +21,31 @@
     }
   }
 
-  &-sidebar {
+  &-is-vertical {
     padding-top: 100px;
     position: fixed;
     width: 200px;
     height: 100%;
     overflow-y: scroll;
     padding-left: 1.75rem;
-  }
-
-  &-is-vertical {
     font-size: 14px;
 
     &-parent {
+<<<<<<< HEAD
       padding-left: 0;
       padding-bottom: 24px;
+=======
+>>>>>>> More edits
       list-style: none;
     }
 
     &-child {
+<<<<<<< HEAD
       margin-bottom: 0.4em;
+=======
+      list-style: none;
+      padding-bottom: 12px; 
+>>>>>>> More edits
     }
   }
 
@@ -54,10 +59,21 @@
     }
   }
 
+  &-mobile-menu-button {
+    display: none;
+  }
+
   &-hamburger-button {
     display: none!important;
     float: right;
     margin: 0;
+    border: none;
+    background: none;
+    outline: 0;
+
+    &:focus {
+      color: @linkText;
+    }
   }
 }
 
@@ -78,7 +94,7 @@
         border: 4px;
         box-shadow: 0 2px 10px 0 rgba(0,0,0,0.10);
 
-        &-is-expanded {
+        &-is-open {
           display: flex!important;
         }
       }
@@ -89,22 +105,21 @@
     }
 
     &-is-vertical {
-      height: 0;
-      padding: 0;
-      margin-top: 24px;
-      overflow-y: hidden;
-      transition: height 0.25s ease-in;
-    }
-
-    &-sidebar {
+      padding-top: 90px;
       position: relative;
       background-color: whitesmoke;
       width: 100%;
       border-bottom: 1px solid #d7dbdb;
 
-      &-button {
-        &:focus + .navigation-is-vertical {
-          height: 700px; 
+      &-parent {
+        height: 0;
+        margin: 0;
+        padding: 15px 0 0 0;
+        overflow-y: hidden;
+        transition: height 0.25s ease-in;
+
+        &-is-open {
+          height: 620px; 
         }
       }
     }
@@ -115,6 +130,10 @@
 
     &-hamburger-button {
       display: block!important;
+    }
+
+    &-mobile-menu-button {
+      display: block;
     }
   }
 }

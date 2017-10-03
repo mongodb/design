@@ -1,22 +1,17 @@
 .hero {
+  display: flex;
+  align-items: center;
   height: 100vh;
   width: 100%;
-
-  &-image {
-    background-image: url(/client/assets/hero-background.png);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    float: right;
-    width: 83.25vh;
-    height: 100vh;
-  }
+  padding: 5%;
+  background-image: url(/client/assets/hero-background.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 83.25vh 100vh;
 
   &-container {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    width: 50%;
   }
-
 }
 
 .hero h1, .featured h1 {
@@ -76,17 +71,26 @@
   }
 }
 
-.button-mktg {
-  padding: 1.25em 3em;
-  font-weight: 700;
-  color: @mongodbgreen;
-  border-color: @mongodbgreen;
+.button {
+  &-container {
+    margin-top: 36px;
+  }
+
+  &-mktg {
+    padding: 1.25em 3em;
+    margin: 0 20px 20px 0;
+    font-weight: 700;
+    color: @mongodbgreen;
+    border-color: @mongodbgreen;
+  }
 }
 
 @media (max-width: 736px)  { 
   .hero {
     &-container { 
       top: 50px;
+      margin: 0 auto;
+      width: 90%;
 
       h3 { 
         font-size: 16px;
@@ -94,6 +98,6 @@
     }
   }
   .button-mktg {
-    padding: 0;
+    padding: .5em 1em;
   }
 }

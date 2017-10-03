@@ -18,16 +18,16 @@ class Layout extends React.Component {
 
   getClassName(parent_class) {
     if (this.state.open) {
-      return `${parent_class} ${parent_class}-is-expanded`;
+      return `${parent_class} ${parent_class}-is-open`;
     }
     return parent_class;
   }
 
-  openMobileMenu() {
-    this.setState({ open: true });
+  toggleHamburgerMenu() {
+    this.setState({ open: !this.state.open });
   }
 
-  closeMobileMenu() {
+  closeHamburgerMenu() {
     this.setState({ open: false });
   }
 
@@ -50,8 +50,8 @@ class Layout extends React.Component {
                     <Link to='/' className="brand-logo"></Link>
                 </div>
                   <nav className="navigation columns small-8">
-                    <button className="navigation-hamburger-button fa fa-bars" onClick={this.openMobileMenu.bind(this)} onBlur={this.closeMobileMenu.bind(this)}></button>
-                    <ul className={this.getClassName(parent_class)} onClick={this.closeMobileMenu.bind(this)}>
+                    <button className="navigation-hamburger-button fa fa-bars" onClick={this.toggleHamburgerMenu.bind(this)} onBlur={this.closeHamburgerMenu.bind(this)}></button>
+                    <ul className={this.getClassName(parent_class)} onClick={this.closeHamburgerMenu.bind(this)}>
                       <li className="navigation-is-horizontal-child"><Link to='/brand-design-system' className="navigation-link">Brand Experience</Link></li>
                       <li className="navigation-is-horizontal-child"><Link to='/ui-design-system/welcome' className="navigation-link">Product Design</Link></li>
                       <li className="navigation-is-horizontal-child"><Link to='/resources' className="navigation-link">Resources</Link></li>
