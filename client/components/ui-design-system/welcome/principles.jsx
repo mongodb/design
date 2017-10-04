@@ -21,7 +21,7 @@ const UIPrinciples = () => (
 
       <h3>Integrity</h3>
       <p>Information communicated to the user is accurate and thorough. Complete transparency instills 
-      confidence and trust, trust in the resilience and safety of the product, which is crucial for managing 
+      confidence and trust in the resilience and safety of the product, which is crucial for managing 
       mission critical infrastructure. Esoteric technical details are dialed back in primary views but are 
       always accessible to users who seek them.</p>
 
