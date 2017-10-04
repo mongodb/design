@@ -41,6 +41,7 @@ class UIDesignSystem extends React.Component {
                 <h1><b>Product</b> Design</h1>
               </Link>
             </li>
+            <li className="navigation-is-vertical-child"><Link to='/ui-design-system/principles' className="navigation-link">Design Principles</Link></li>
             <li className="navigation-is-vertical-parent"><h4>Base Styles</h4>
              <ul className="navigation-is-vertical-child">
                <li><Link to='/ui-design-system/base-styles/colors' className="navigation-link">Colors</Link></li>
