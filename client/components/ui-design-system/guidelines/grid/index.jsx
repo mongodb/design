@@ -3,6 +3,7 @@
 // ==================================================
 
 import React from 'react';
+import Code from '../../subcomponents/code';
 
 const UIGrid = () => (
   <div className="wrap">
@@ -93,22 +94,21 @@ const UIGrid = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-    		<pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="columns small-12 medium-6 large-1">Content Here</div>' }</div>
-            <div>{ '<div class="columns small-12 medium-6 large-2">Content Here</div>' }</div>
-            <div>{ '<div class="columns small-12 medium-6 large-3">Content Here</div>' }</div>
-            <div>{ '<div class="columns small-12 medium-6 large-4">Content Here</div>' }</div>
-            <div>{ '<div class="columns small-12 medium-6 large-5">Content Here</div>' }</div>
-            <div>{ '<div class="columns small-12 medium-6 large-6">Content Here</div>' }</div>
-            <div>{ '<div class="columns small-12 medium-6 large-7">Content Here</div>' }</div>
-            <div>{ '<div class="columns small-12 medium-6 large-8">Content Here</div>' }</div>
-            <div>{ '<div class="columns small-12 medium-6 large-9">Content Here</div>' }</div>
-            <div>{ '<div class="columns small-12 medium-6 large-10">Content Here</div>' }</div>
-            <div>{ '<div class="columns small-12 medium-6 large-11">Content Here</div>' }</div>
-            <div>{ '<div class="columns small-12 medium-6 large-12">Content Here</div>' }</div>
-          </code>
-    		</pre>
+        <Code
+          language='language-html'
+          text={`<div class="columns small-12 medium-6 large-1">Content Here</div>
+<div class="columns small-12 medium-6 large-2">Content Here</div>
+<div class="columns small-12 medium-6 large-3">Content Here</div>
+<div class="columns small-12 medium-6 large-4">Content Here</div>
+<div class="columns small-12 medium-6 large-5">Content Here</div>
+<div class="columns small-12 medium-6 large-6">Content Here</div>
+<div class="columns small-12 medium-6 large-7">Content Here</div>
+<div class="columns small-12 medium-6 large-8">Content Here</div>
+<div class="columns small-12 medium-6 large-9">Content Here</div>
+<div class="columns small-12 medium-6 large-10">Content Here</div>
+<div class="columns small-12 medium-6 large-11">Content Here</div>
+<div class="columns small-12 medium-6 large-12">Content Here</div>`}> 
+        </Code>
       </div>
     </div>
   </div>
