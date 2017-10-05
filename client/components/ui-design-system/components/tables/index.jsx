@@ -38,7 +38,7 @@ const UITables = () => (
           </thead>
           <tbody>
             <tr className="table-row">
-              <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>
+              <td className="table-column table-cell"><a className="link">free-shard-0</a></td>
               <td className="table-column table-cell">1 min ago</td>
               <td className="table-column table-cell">3.4.4</td>
               <td className="table-column table-cell table-cell-has-actions">
@@ -48,7 +48,7 @@ const UITables = () => (
               </td>
             </tr>
             <tr className="table-row">
-              <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>
+              <td className="table-column table-cell"><a className="link">free-shard-0</a></td>
               <td className="table-column table-cell">1 min ago</td>
               <td className="table-column table-cell">3.4.4</td>
               <td className="table-column table-cell table-cell-has-actions">
@@ -58,7 +58,7 @@ const UITables = () => (
               </td>
             </tr>
             <tr className="table-row">
-              <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>
+              <td className="table-column table-cell"><a className="link">free-shard-0</a></td>
               <td className="table-column table-cell">1 min ago</td>
               <td className="table-column table-cell">3.4.4</td>
               <td className="table-column table-cell table-cell-has-actions">
