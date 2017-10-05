@@ -43,9 +43,9 @@ class BrandDesignSystem extends React.Component {
             </li>
             <li className="navigation-is-vertical-parent"><h4>Base Styles</h4>
               <ul className="navigation-is-vertical-child">
-                <li><Link to='/brand-design-system/logo' className="navigation-link">Logo</Link></li>
-                <li><Link to='/brand-design-system/typography' className="navigation-link">Typography</Link></li>
-                <li><Link to='/brand-design-system/colors' className="navigation-link">Colors</Link></li>
+                <li><Link to='/brand-design-system/logo' className="navigation-link" activeClassName="navigation-link-active">Logo</Link></li>
+                <li><Link to='/brand-design-system/typography' className="navigation-link" activeClassName="navigation-link-active">Typography</Link></li>
+                <li><Link to='/brand-design-system/colors' className="navigation-link" activeClassName="navigation-link-active">Colors</Link></li>
               </ul>
             </li>
         	</ul>
