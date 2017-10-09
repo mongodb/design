@@ -22,16 +22,16 @@ const UITabs = () => (
       <div className="columns small-12">
         <ul className="tabs">
           <li className="tabs-tab tabs-tab-is-active">
-            <a className="tabs-tab-link" href={"http://mongodb.com"}>Processes</a>
+            <a className="tabs-tab-link">Processes</a>
           </li>
           <li className="tabs-tab">
-            <a className="tabs-tab-link" href={"http://mongodb.com"}>Servers</a>
+            <a className="tabs-tab-link">Servers</a>
           </li>
           <li className="tabs-tab">
-            <a className="tabs-tab-link" href={"http://mongodb.com"}>Agents</a>
+            <a className="tabs-tab-link">Agents</a>
           </li>
           <li className="tabs-tab">
-            <a className="tabs-tab-link" href={"http://mongodb.com"}>Security</a>
+            <a className="tabs-tab-link">Security</a>
           </li>
         </ul>
       </div>
@@ -42,16 +42,16 @@ const UITabs = () => (
             language='language-html'
             text={`<ul class="tabs">
   <li class="tabs-tab tabs-tab-is-active">
-    <a class="tabs-tab-link">Processes</a> href={"http://mongodb.com"}
+    <a class="tabs-tab-link">Processes</a> 
   </li>
   <li class="tabs-tab">
-    <a class="tabs-tab-link">Servers</a> href={"http://mongodb.com"}
+    <a class="tabs-tab-link">Servers</a> 
   </li>
   <li class="tabs-tab">
-    <a class="tabs-tab-link">Agents</a> href={"http://mongodb.com"}
+    <a class="tabs-tab-link">Agents</a>
   </li>
   <li class="tabs-tab">
-    <a class="tabs-tab-link">Security</a> href={"http://mongodb.com"}
+    <a class="tabs-tab-link">Security</a>
   </li>
 </ul>`}> 
         </Code>
