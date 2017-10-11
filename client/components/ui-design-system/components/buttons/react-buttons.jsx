@@ -6,6 +6,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
 import Button from '../../react-components/Button.js';
+import Checkbox from '../../react-components/Checkbox.js';
 
 const UIButtonsReact = () => (
   <div className="wrap button-ui">
@@ -37,6 +38,35 @@ const UIButtonsReact = () => (
         <Button
           label="Default Button"
           className="button-is-default"
+        />
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Options</h3>
+      </div>
+    </div>
+    <div className="row u-mb-2">
+      <div className="columns small-6">
+        <h4>Type</h4>
+        <label className="checkbox">
+          <input className="checkbox-control" type="radio" name="button-state" id="type-default" checked /> Default
+        </label>
+        <label className="checkbox">
+          <input className="checkbox-control" type="radio" name="button-state" id="type-primary" /> Primary
+        </label>
+        <label className="checkbox">
+          <input className="checkbox-control" type="radio" name="button-state" id="type-outline" /> Outline
+        </label>
+        <label className="checkbox">
+          <input className="checkbox-control" type="radio" name="button-state" id="type-danger" /> Danger
+        </label>
+      </div>
+      <div className="columns small-6">
+        <h4>State</h4>
+        <Checkbox 
+          label="Disabled"
+          checked="true"
         />
       </div>
     </div>
