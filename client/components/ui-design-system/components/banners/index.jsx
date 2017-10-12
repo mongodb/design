@@ -40,7 +40,7 @@ const UIBanners = () => (
             <div>{ '<div class="banner banner-is-callout">' }</div>
             <div>{ '  <p>Looking for a way to be webscale?</p>' }</div>
             <div>{ '  <div class="banner-button-group">' }</div>
-            <div>{ '    <button class="button button-is-primary button-is-small u-mr-2">Learn How</button>' }</div>
+            <div>{ '    <button class="button button-is-primary u-mr-2">Learn How</button>' }</div>
             <div>{ '    <button class="button button-is-small">Close</button>' }</div>
             <div>{ '  </div>' }</div>
             <div>{ '</div>' }</div>
