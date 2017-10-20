@@ -42,10 +42,10 @@ const UIBanners = () => (
     <p>Looking for a way to be webscale?</p>
     <div class="u-float-right">
       <button class="button button-is-small u-mr-2">Close</button>
-      <button class="button button-is-primary button-is-small">Learn How</button>
+      <button class="button button-is-primary">Learn How</button>
     </div>
   </div>
-</div>`}> 
+</div>`}>
           </Code>
         </div>
       </div>
@@ -99,7 +99,7 @@ const UIBanners = () => (
     <button class="button button-is-small u-mr-2">Close</button>
     <button class="button button-is-primary button-is-small">Learn How</button>
   </div>
-</div>`}> 
+</div>`}>
           </Code>
       </div>
     </div>
@@ -136,7 +136,7 @@ const UIBanners = () => (
     <button class="button button-is-text button-is-xs u-mr-3">Close</button>
     <button class="button button-is-xs">Learn More</button>
   </div>
-</div>`}> 
+</div>`}>
         </Code>
       </div>
     </div>
@@ -166,7 +166,7 @@ const UIBanners = () => (
     <button class="button button-is-text button-is-xs u-mr-3">Close</button>
     <button class="button button-is-xs">Learn More</button>
   </div>
-</div>`}> 
+</div>`}>
         </Code>
       </div>
     </div>
@@ -196,7 +196,7 @@ const UIBanners = () => (
     <button class="button button-is-text button-is-xs u-mr-3">Close</button>
     <button class="button button-is-xs">Learn More</button>
   </div>
-</div>`}> 
+</div>`}>
         </Code>
       </div>
     </div>
@@ -226,7 +226,7 @@ const UIBanners = () => (
     <button class="button button-is-text button-is-xs u-mr-3">Close</button>
     <button class="button button-is-xs">Learn More</button>
   </div>
-</div>`}> 
+</div>`}>
         </Code>
       </div>
     </div>
@@ -268,7 +268,7 @@ const UIBanners = () => (
     <button class="button button-is-text button-is-xs u-mr-3 growl-button-primary">UPDATE NOW</button>
     <button class="button button-is-text button-is-xs growl-button-secondary">DO IT LATER</button>
   </div>
-</div>`}> 
+</div>`}>
         </Code>
       </div>
     </div>
@@ -303,7 +303,7 @@ const UIBanners = () => (
     <button class="button button-is-text button-is-xs u-mr-3 growl-button-primary">VIEW CLUSTER</button>
     <button class="button button-is-text button-is-xs growl-button-secondary">OK, THANKS</button>
   </div>
-</div>`}> 
+</div>`}>
         </Code>
       </div>
     </div>
@@ -342,7 +342,7 @@ const UIBanners = () => (
     </div>
     <div class="columns small-3 loader-text">33%</div>
   </div>
-</div>`}> 
+</div>`}>
         </Code>
       </div>
     </div>
@@ -377,7 +377,7 @@ const UIBanners = () => (
     <button class="button button-is-text button-is-xs u-mr-3 growl-button-primary">READ UPDATE</button>
     <button class="button button-is-text button-is-xs growl-button-secondary">DO IT LATER</button>
   </div>
-</div>`}> 
+</div>`}>
         </Code>
       </div>
     </div>
