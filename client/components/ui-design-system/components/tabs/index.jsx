@@ -3,6 +3,7 @@
 // ==================================================
 
 import React from 'react';
+import Code from '../../subcomponents/code';
 
 const UITabs = () => (
   <div className="wrap button-ui">
@@ -21,40 +22,39 @@ const UITabs = () => (
       <div className="columns small-12">
         <ul className="tabs">
           <li className="tabs-tab tabs-tab-is-active">
-            <a className="tabs-tab-link" href={"http://mongodb.com"}>Processes</a>
+            <a className="tabs-tab-link">Processes</a>
           </li>
           <li className="tabs-tab">
-            <a className="tabs-tab-link" href={"http://mongodb.com"}>Servers</a>
+            <a className="tabs-tab-link">Servers</a>
           </li>
           <li className="tabs-tab">
-            <a className="tabs-tab-link" href={"http://mongodb.com"}>Agents</a>
+            <a className="tabs-tab-link">Agents</a>
           </li>
           <li className="tabs-tab">
-            <a className="tabs-tab-link" href={"http://mongodb.com"}>Security</a>
+            <a className="tabs-tab-link">Security</a>
           </li>
         </ul>
       </div>
     </div>
     <div className="row u-mb-5">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<ul class="tabs">' }</div>
-            <div>{ '  <li class="tabs-tab tabs-tab-is-active">' }</div>
-            <div>{ '    <a class="tabs-tab-link">Processes</a> href={"http://mongodb.com"}' }</div>
-            <div>{ '  </li>' }</div>
-            <div>{ '  <li class="tabs-tab">' }</div>
-            <div>{ '    <a class="tabs-tab-link">Servers</a> href={"http://mongodb.com"}' }</div>
-            <div>{ '  </li>' }</div>
-            <div>{ '  <li class="tabs-tab">' }</div>
-            <div>{ '    <a class="tabs-tab-link">Agents</a> href={"http://mongodb.com"}' }</div>
-            <div>{ '  </li>' }</div>
-            <div>{ '  <li class="tabs-tab">' }</div>
-            <div>{ '    <a class="tabs-tab-link">Security</a> href={"http://mongodb.com"}' }</div>
-            <div>{ '  </li>' }</div>
-            <div>{ '</ul>' }</div>
-          </code>
-        </pre>
+        <Code
+            language='language-html'
+            text={`<ul class="tabs">
+  <li class="tabs-tab tabs-tab-is-active">
+    <a class="tabs-tab-link">Processes</a> 
+  </li>
+  <li class="tabs-tab">
+    <a class="tabs-tab-link">Servers</a> 
+  </li>
+  <li class="tabs-tab">
+    <a class="tabs-tab-link">Agents</a>
+  </li>
+  <li class="tabs-tab">
+    <a class="tabs-tab-link">Security</a>
+  </li>
+</ul>`}> 
+        </Code>
       </div>
     </div>
 

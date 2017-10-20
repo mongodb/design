@@ -4,6 +4,7 @@
 
 import React from 'react';
 import '../../../../styling/root.less';
+import Code from '../../subcomponents/code';
 
 const UIQueryHistoryCard = () => (
   <div className="wrap button-ui">
@@ -125,30 +126,29 @@ const UIQueryHistoryCard = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
+        <Code
+          language='language-html'
+          text={`<div class="query-history-favorite-query">
+<div class="button-group-button">
+  <button class="button button-is-small query-history-button query-history-button-copy">
+    <span aria-hidden="true" class="fa fa-clipboard"></span>
+  </button>
+  <button class="button button-is-small query-history-button">
+    <span aria-hidden="true" class="fa fa-trashcan"></span>
+  </button>
+</div">
+  <div class="query-history-card">
+    <div class="query-history-card-title"> Favorite Query Name</div>
+    <ul>
+      <li>
+        <h class="query-history-card-label">Query Option Label</h>
         <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="query-history-favorite-query">' }</div>
-            <div>{ '<div class="button-group-button">' }</div>
-            <div>{ '  <button class="button button-is-small query-history-button query-history-button-copy">' }</div>
-            <div>{ '    <span aria-hidden="true" class="fa fa-clipboard"></span>' }</div>
-            <div>{ '  </button>' }</div>
-            <div>{ '  <button class="button button-is-small query-history-button">' }</div>
-            <div>{ '    <span aria-hidden="true" class="fa fa-trashcan"></span>' }</div>
-            <div>{ '  </button>' }</div>
-            <div>{ '</div">' }</div>
-            <div>{ '  <div class="query-history-card">' }</div>
-            <div>{ '    <div class="query-history-card-title"> Favorite Query Name</div>' }</div>
-            <div>{ '    <ul>' }</div>
-            <div>{ '      <li>' }</div>
-            <div>{ '        <h class="query-history-card-label">Query Option Label</h>'}</div>
-            <div>{ '        <pre>'}</div>
-            <div>{ '          <code> Insert Codemirror Snippet </code>'}</div>
-            <div>{ '        </pre>'}</div>
-            <div>{ '    </ul>' }</div>
-            <div>{ '  </div>' }</div>
-            <div>{ '</div>' }</div>
-          </code>
+          <code> Insert Codemirror Snippet </code>
         </pre>
+    </ul>
+  </div>
+</div>`}> 
+        </Code>
       </div>
     </div>
 
@@ -173,13 +173,12 @@ const UIQueryHistoryCard = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="query-history-zero-state">' }</div>
-            <div>{ '  <div class="query-history-zero-state-title"> Insert Text Here </div>' }</div>
-            <div>{ '</div>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<div class="query-history-zero-state">
+  <div class="query-history-zero-state-title"> Insert Text Here </div>
+</div>`}> 
+        </Code>
       </div>
     </div>
   </div>

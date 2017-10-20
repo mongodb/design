@@ -26,32 +26,6 @@ const BrandLogo = () => (
       <div className="row-content">
         <h3>Logo | Structure</h3>
         <img alt="MongoDB logo lock up" src={logoLockup}/>
-        <ul className="color-block">
-        <span className="palette-label">
-          <li className="green9 li-small"></li>
-          <p>Hex: #123456</p>
-          <p>RGB 88 150 54</p>
-          <p>CMYK 71 20 100 5</p>
-        </span>
-        <span className="palette-label">
-          <li className="green10 li-small"></li>
-          <p>Hex: #123456</p>
-          <p>RGB 88 150 54</p>
-          <p>CMYK 71 20 100 5</p>
-        </span>
-        <span className="palette-label">
-          <li className="gray6 li-small"></li>
-          <p>Hex: #123456</p>
-          <p>RGB 88 150 54</p>
-          <p>CMYK 71 20 100 5</p>
-        </span>
-        <span className="palette-label">
-          <li className="gray7 li-small"></li>
-          <p>Hex: #123456</p>
-          <p>RGB 88 150 54</p>
-          <p>CMYK 71 20 100 5</p>
-        </span>
-        </ul>
       </div>
       <div className="row-content">
         <img alt="MongoDB logo structure" src={logoStructure}/>
