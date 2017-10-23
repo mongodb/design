@@ -12,6 +12,7 @@ class Checkbox extends Component {
         label: PropTypes.string,
         checked: PropTypes.bool,
         disabled: PropTypes.bool,
+        onChange: PropTypes.func.isRequired,
     };
 
     static defaultProps = {
@@ -21,27 +22,16 @@ class Checkbox extends Component {
         label: null,
     };
 
-    state = {
-        checked: false
-    };
-
-    componentDidMount() {
-        this.state.checked = this.props.checked;
-    };
-
     onChange = (e) => {
-        this.setState({checked: e.target.checked});
-        console.log(this.state.checked);
+        this.props.onChange(e.target.checked);
     };
     
     render() {
         const {
-            checked,
-        } = this.state;
-        const {
             name,
             disabled,
             label,
+            checked,
         } = this.props;
 
         return (
@@ -58,5 +48,4 @@ class Checkbox extends Component {
     }
 }
 
-// module.exports = Checkbox;
 export default Checkbox;
