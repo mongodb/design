@@ -3,6 +3,7 @@
 // ==================================================
 
 import React from 'react';
+import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
 
 const UIButtons = () => (
@@ -10,6 +11,18 @@ const UIButtons = () => (
     <div className="row u-mb-3">
       <div className="columns small-12">
         <h1>Buttons</h1>
+      </div>
+    </div>
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <ul className="tabs">
+          <li className="tabs-tab tabs-tab-is-active">
+            <Link to='/ui-design-system/components/buttons' className="tabs-tab-link">CSS</Link>
+          </li>
+          <li className="tabs-tab">
+            <Link to='/ui-design-system/components/buttons/react-buttons' className="tabs-tab-link">React</Link>
+          </li>
+        </ul>
       </div>
     </div>
     <div className="row u-mb-2">

@@ -13,18 +13,19 @@
   },
   "dependencies": {
     "bootstrap-sidebar": "^0.2.2-retry",
+    "classnames": "^2.2.5",
+    "css-loader": "^0.23.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.1.1",
     "lodash": "^4.15.0",
-    "style-loader": "^0.13.1",
-    "css-loader": "^0.23.0",
     "prismjs": "^1.8.1",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-fastclick": "^2.1.2",
     "react-helmet": "^3.1.0",
     "react-router": "^2.6.1",
-    "react-router-scroll": "^0.3.1"
+    "react-router-scroll": "^0.3.1",
+    "style-loader": "^0.13.1"
   },
   "devDependencies": {
     "nwb": "0.18.x",
