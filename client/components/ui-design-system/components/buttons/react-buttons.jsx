@@ -7,6 +7,7 @@ import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
 import Button from '../../react-components/Button.js';
 import Checkbox from '../../react-components/Checkbox.js';
+import { RadioGroup, Radio } from '../../react-components/RadioGroup.js';
 
 class ControlledCheckbox extends React.Component {
   state = {
@@ -26,7 +27,8 @@ class ControlledCheckbox extends React.Component {
 
 class UIButtonsReact extends React.Component {
   state = {
-    controlDisabled: false
+    controlDisabled: false,
+    controlTypeClassName: "button-is-default"
   }
 
   render() {
@@ -59,7 +61,7 @@ class UIButtonsReact extends React.Component {
           <div className="columns small-12">
             <Button
               label="Default Button"
-              className="button-is-default"
+              className={this.state.controlTypeClassName}
               disabled={this.state.controlDisabled}
             />
           </div>
@@ -72,21 +74,27 @@ class UIButtonsReact extends React.Component {
         <div className="row u-mb-2">
           <div className="columns small-6">
             <h4>Type</h4>
-            <label className="checkbox">
-              <input className="checkbox-control" type="radio" name="button-state" id="type-default" checked /> Default
-            </label>
-            <label className="checkbox">
-              <input className="checkbox-control" type="radio" name="button-state" id="type-primary" /> Primary
-            </label>
-            <label className="checkbox">
-              <input className="checkbox-control" type="radio" name="button-state" id="type-outline" /> Outline
-            </label>
-            <label className="checkbox">
-              <input className="checkbox-control" type="radio" name="button-state" id="type-danger" /> Danger
-            </label>
-            <label className="checkbox">
-              <input className="checkbox-control" type="radio" name="button-state" id="type-dark" /> Dark
-            </label>
+
+            <RadioGroup
+              name="button-state"
+              selectedValue={this.state.controlTypeClassName}
+              onChange={controlTypeClassName => this.setState({ controlTypeClassName })}>
+              <label className="checkbox">
+                <Radio value="button-is-default" id="type-default" checked /> Default
+              </label>
+              <label className="checkbox">
+                <Radio value="button-is-primary" id="type-primary" /> Primary
+              </label>
+              <label className="checkbox">
+                <Radio value="button-is-info" id="type-outline" /> Outline
+              </label>
+              <label className="checkbox">
+                <Radio value="button-is-danger" id="type-danger" /> Danger
+              </label>
+              <label className="checkbox">
+                <Radio value="button-is-default-inverse" id="type-dark" /> Dark
+              </label>
+            </RadioGroup>
           </div>
           <div className="columns small-6">
             <h4>State</h4>
@@ -103,9 +111,9 @@ class UIButtonsReact extends React.Component {
             <Code
             language='language-jsx'
             text={`<Button
-              label="Default Button"
-              className="button-is-default"
-            />`}>
+  label="Default Button"
+  className="button-is-default"
+/>`}>
           </Code>
           </div>
         </div>
