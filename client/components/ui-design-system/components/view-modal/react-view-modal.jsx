@@ -7,11 +7,13 @@ import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
 import Button from '../../react-components/Button.js';
 import Modal from '../../react-components/Modal.js';
+import { RadioGroup, Radio } from '../../react-components/RadioGroup.js';
 
 class UIViewModalReact extends React.Component {
 
   state = { 
-    isOpen: false
+    isOpen: false,
+    size: "small"
   };
 
   toggleModal = () => {
@@ -40,47 +42,72 @@ class UIViewModalReact extends React.Component {
             </ul>
           </div>
         </div>
-        <div className="row u-mb-3">
+        <div className="row u-mb-1">
           <div className="columns small-12">
             <h2>View Modal</h2>
             <p>The View Modal is a BEM component for the viewAsModal mixin. If you need functionality out of the header or footer that is not supported by the mixin, consider placing the functionality in the body instead and using the markup below:</p>
           </div>
         </div>
-         <div className="row u-mb-3">
+        <div className="row u-mb-3">
+          <div className="columns small-6">
+            <h4>Size</h4>
+            <RadioGroup
+              name="button-state"
+              selectedValue={this.state.size}
+              onChange={size => this.setState({ size })}>
+              <label className="checkbox">
+                <Radio value="xs" id="type-default" checked /> Extra Small
+              </label>
+              <label className="checkbox">
+                <Radio value="small" id="type-primary" /> Small
+              </label>
+              <label className="checkbox">
+                <Radio value="medium" id="type-outline" /> Medium
+              </label>
+              <label className="checkbox">
+                <Radio value="large" id="type-danger" /> Large
+              </label>
+              <label className="checkbox">
+                <Radio value="xlarge" id="type-dark" /> Extra Large
+              </label>
+            </RadioGroup>
+          </div>
+        </div>
+        <div className="row u-mb-3">
           <div className="columns small-12">
             <Button
               label={this.state.isOpen ? "Close Modal" : "Open Modal"}
               onClick={() => this.toggleModal(this.state.isOpen)}
             />
+            <Modal 
+              open={this.state.isOpen}
+              title="Your Title Here"
+              size={this.state.size}
+              onClose={() => this.toggleModal(this.state.isOpen)}
+              >
+              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+              <Modal.ModalFooter>
+                <Button
+                  label="Cancel"
+                  className="u-mr-2"
+                  onClick={() => this.toggleModal(this.state.isOpen)}
+                />
+                <Button
+                  label="Confirm"
+                  className="button-is-primary"
+                  onClick={() => this.toggleModal(this.state.isOpen)}
+                />
+              </Modal.ModalFooter>
+            </Modal>
           </div>
-        </div>       
-        <Modal 
-          open={this.state.isOpen}
-          title="Your Title Here"
-          size="small"
-          onClose={() => this.toggleModal(this.state.isOpen)}
-          >
-          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-          <Modal.ModalFooter>
-            <Button
-              label="Cancel"
-              className="u-mr-2"
-              onClick={() => this.toggleModal(this.state.isOpen)}
-            />
-            <Button
-              label="Confirm"
-              className="button-is-primary"
-              onClick={() => this.toggleModal(this.state.isOpen)}
-            />
-          </Modal.ModalFooter>
-        </Modal>
+        </div>
         <div className="row u-mb-3">
           <div className="columns small-12">
             <Code 
             language='language-jsx'
             text={`<Modal 
   title="Your Title Here"
-  size="small"
+  size="${this.state.size}"
   >
   <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
   <Modal.ModalFooter>
