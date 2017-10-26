@@ -36,23 +36,6 @@ class UIViewModalReact extends React.Component {
           </div>
         </div>
 
-        <Modal 
-          title="Your Title Here"
-          size="small"
-          >
-          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-          <Modal.ModalFooter>
-            <Button
-              label="Cancel"
-              className="u-mr-2"
-            />
-            <Button
-              label="Confirm"
-              className="button-is-primary"
-            />
-          </Modal.ModalFooter>
-        </Modal>
-
         <div className="view-modal-content view-modal-content-is-small" tabIndex="-1">
           <button type="button" className="view-modal-close modal-close" data-dismiss="modal" aria-hidden="true">×</button>
           <div className="view-modal-header">
@@ -75,8 +58,24 @@ class UIViewModalReact extends React.Component {
         </div>
         <div className="row u-mb-3">
           <div className="columns small-12">
-            <Code
-            > 
+            <Code 
+            language='language-jsx'
+            text={`<Modal 
+  title="Your Title Here"
+  size="small"
+  >
+  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+  <Modal.ModalFooter>
+    <Button
+      label="Cancel"
+      className="u-mr-2"
+    />
+    <Button
+      label="Confirm"
+      className="button-is-primary"
+    />
+  </Modal.ModalFooter>
+</Modal>`}> 
             </Code>
           </div>
         </div>
