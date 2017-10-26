@@ -31,7 +31,7 @@ import UITabs from './components/ui-design-system/components/tabs/index.jsx';
 import UITables from './components/ui-design-system/components/tables/index.jsx';
 import UIUtilities from './components/ui-design-system/components/utilities/index.jsx';
 import UIViewModal from './components/ui-design-system/components/view-modal/index.jsx';
-import UIViewModalReact from './components/ui-design-system/components/buttons/react-view-modal.jsx';
+import UIViewModalReact from './components/ui-design-system/components/view-modal/react-view-modal.jsx';
 //Guidelines
 import UIGrid from './components/ui-design-system/guidelines/grid/index.jsx';
 import UIModify from './components/ui-design-system/guidelines/modify/index.jsx';
@@ -64,7 +64,7 @@ const routes = (
       <Route path="/ui-design-system/components/tables" component={UITables} />
       <Route path="/ui-design-system/components/utilities" component={UIUtilities} />
       <Route path="/ui-design-system/components/view-modal" component={UIViewModal} />
-      <Route path="/ui-design-system/components/buttons/react-view-modal" component={UIViewModalReact} />
+      <Route path="/ui-design-system/components/view-modal/react-view-modal" component={UIViewModalReact} />
       //Guidelines
       <Route path="/ui-design-system/guidelines/grid" component={UIGrid} />
       <Route path="/ui-design-system/guidelines/modify" component={UIModify} />

@@ -3,14 +3,12 @@
 // ==================================================
 
 import React from 'react';
-import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
 import Modal from '../../react-components/Modal.js';
 
 class UIViewModalReact extends React.Component {
   render() {
     return (
-
       <div className="view-modal-content view-modal-content-is-small" tabIndex="-1">
         <button type="button" className="view-modal-close modal-close" data-dismiss="modal" aria-hidden="true">×</button>
         <div className="view-modal-header">
@@ -31,10 +29,8 @@ class UIViewModalReact extends React.Component {
           </div>
         </div>
       </div>
-
-      );
+    );
   }
-
 }
 
 export default UIViewModalReact;
