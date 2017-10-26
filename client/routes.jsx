@@ -7,12 +7,6 @@ import Resources from './components/resources/index.jsx';
 
 import DesignSystem from './components/index.jsx';
 
-import BrandDesignSystem from './components/brand-design-system/index.jsx';
-import BrandWelcome from './components/brand-design-system/welcome/index.jsx';
-import BrandTypography from './components/brand-design-system/typography/index.jsx';
-import BrandColors from './components/brand-design-system/colors/index.jsx';
-import BrandLogo from './components/brand-design-system/logo/index.jsx';
-
 import UIDesignSystem from './components/ui-design-system/index.jsx';
 import UIWelcome from './components/ui-design-system/welcome/index.jsx';
 import UIPrinciples from './components/ui-design-system/welcome/principles.jsx';
@@ -44,12 +38,6 @@ import UIModify from './components/ui-design-system/guidelines/modify/index.jsx'
 const routes = (
   <Route path="/ui-design-system" component={Layout}>
     <IndexRoute component={UIDesignSystem} />
-      <Route path="/brand-design-system" component={BrandDesignSystem}>
-      <IndexRoute component={BrandWelcome} />
-        <Route path="/brand-design-system/typography" component={BrandTypography} />
-        <Route path="/brand-design-system/colors" component={BrandColors} />
-        <Route path="/brand-design-system/logo" component={BrandLogo} />
-      </Route>
       <Route path="/" component={DesignSystem}>
         <IndexRoute component={DesignSystem} />
       </Route>
