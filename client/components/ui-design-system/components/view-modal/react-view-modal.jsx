@@ -5,6 +5,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
+import Button from '../../react-components/Button.js';
 import Modal from '../../react-components/Modal.js';
 
 class UIViewModalReact extends React.Component {
@@ -34,6 +35,24 @@ class UIViewModalReact extends React.Component {
             <p>The View Modal is a BEM component for the viewAsModal mixin. If you need functionality out of the header or footer that is not supported by the mixin, consider placing the functionality in the body instead and using the markup below:</p>
           </div>
         </div>
+
+        <Modal 
+          title="Your Title Here"
+          size="small"
+          >
+          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+          <Modal.ModalFooter>
+            <Button
+              label="Cancel"
+              className="u-mr-2"
+            />
+            <Button
+              label="Confirm"
+              className="button-is-primary"
+            />
+          </Modal.ModalFooter>
+        </Modal>
+
         <div className="view-modal-content view-modal-content-is-small" tabIndex="-1">
           <button type="button" className="view-modal-close modal-close" data-dismiss="modal" aria-hidden="true">×</button>
           <div className="view-modal-header">
