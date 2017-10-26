@@ -37,11 +37,11 @@ class UIDesignSystem extends React.Component {
           <button className="navigation-mobile-menu-button button button-extra-small" onClick={this.toggleMobileMenu.bind(this)} onBlur={this.closeMobileMenu.bind(this)}>Component Navigation</button>
           <ul className={this.getClassName(container_class)} onClick={this.closeMobileMenu.bind(this)}>
             <li className="navigation-is-vertical-parent">
-              <Link to='/ui-design-system/welcome' className="navigation-link">
-                <h1><b>Product</b> Design</h1>
-              </Link>
+              <h4><Link to='/ui-design-system/welcome' className="navigation-link">Welcome</Link></h4>
+              <ul className="navigation-is-vertical-child">
+                <li className="navigation-link"><Link to='/ui-design-system/principles' className="navigation-link" activeClassName="navigation-link-active">Design Principles</Link></li>
+              </ul>
             </li>
-            <li className="navigation-is-vertical-child"><Link to='/ui-design-system/principles' className="navigation-link" activeClassName="navigation-link-active">Design Principles</Link></li>
             <li className="navigation-is-vertical-parent"><h4>Base Styles</h4>
              <ul className="navigation-is-vertical-child">
                <li><Link to='/ui-design-system/base-styles/colors' className="navigation-link" activeClassName="navigation-link-active">Colors</Link></li>
