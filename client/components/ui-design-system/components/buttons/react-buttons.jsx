@@ -67,6 +67,7 @@ class UIButtonsReact extends React.Component {
               label={this.state.controlLabel}
               className={this.state.controlTypeClassName}
               disabled={this.state.controlDisabled}
+              onClick={() => {return null}}
             />
           </div>
         </div>
@@ -84,7 +85,6 @@ class UIButtonsReact extends React.Component {
               onChange={(controlTypeClassName, controlLabel) => {
                 this.setState({ controlTypeClassName });
                 this.setState({ controlLabel: buttonMap.get(controlTypeClassName) });
-                Prism.highlightAll();
               }}
             >
               <label className="checkbox">
