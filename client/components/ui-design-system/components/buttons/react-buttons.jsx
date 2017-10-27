@@ -8,28 +8,32 @@ import Code from '../../subcomponents/code';
 import Button from '../../react-components/Button.js';
 import Checkbox from '../../react-components/Checkbox.js';
 import { RadioGroup, Radio } from '../../react-components/RadioGroup.js';
+const Prism = require('prismjs');
 
-class ControlledCheckbox extends React.Component {
-  state = {
-    checked: false,
-  }
+var buttonPairing = [
+  ['', 'Default Button'],
+  ['button-is-primary', 'Primary Button'],
+  ['button-is-info', 'Outline Button'],
+  ['button-is-danger', 'Danger Button'],
+  ['button-is-default-inverse', 'Dark Button']
+];
+var buttonMap = new Map(buttonPairing);
 
-  render() {
-    return (
-      <Checkbox 
-          label="Disabled"
-          checked={this.state.checked}
-          onChange={checked => this.setState({ checked })}
-      />
-    );
-  }
-}
-
-class UIButtonsReact extends React.Component {
+class UIButtonsReact extends React.Component {  
   state = {
     controlDisabled: false,
-    controlTypeClassName: "button-is-default"
+    controlTypeClassName: "",
+    controlLabel: "Default Button"
   }
+
+  codeSnippetHandler() {
+    const disabled = this.state.controlDisabled ? `,\n  disabled=true` : '';
+    const className = this.state.controlTypeClassName ? ` ${this.state.controlTypeClassName}` : '';
+    return `<Button
+  label="${this.state.controlLabel}",
+  className="button${className}"${disabled}
+/>`
+  } 
 
   render() {
     return (
@@ -60,9 +64,10 @@ class UIButtonsReact extends React.Component {
         <div className="row u-mb-2">
           <div className="columns small-12">
             <Button
-              label="Default Button"
+              label={this.state.controlLabel}
               className={this.state.controlTypeClassName}
               disabled={this.state.controlDisabled}
+              onClick={() => {return null}}
             />
           </div>
         </div>
@@ -74,13 +79,16 @@ class UIButtonsReact extends React.Component {
         <div className="row u-mb-2">
           <div className="columns small-6">
             <h4>Type</h4>
-
             <RadioGroup
               name="button-state"
               selectedValue={this.state.controlTypeClassName}
-              onChange={controlTypeClassName => this.setState({ controlTypeClassName })}>
+              onChange={(controlTypeClassName, controlLabel) => {
+                this.setState({ controlTypeClassName });
+                this.setState({ controlLabel: buttonMap.get(controlTypeClassName) });
+              }}
+            >
               <label className="checkbox">
-                <Radio value="button-is-default" id="type-default" checked /> Default
+                <Radio value="" id="type-default" checked /> Default
               </label>
               <label className="checkbox">
                 <Radio value="button-is-primary" id="type-primary" /> Primary
@@ -98,7 +106,6 @@ class UIButtonsReact extends React.Component {
           </div>
           <div className="columns small-6">
             <h4>State</h4>
-
             <Checkbox 
                 label="Disabled"
                 checked={this.state.controlDisabled}
@@ -109,12 +116,9 @@ class UIButtonsReact extends React.Component {
         <div className="row u-mb-3">
           <div className="columns small-12">
             <Code
-            language='language-jsx'
-            text={`<Button
-  label="Default Button"
-  className="button-is-default"
-/>`}>
-          </Code>
+              language='language-jsx'
+              text={this.codeSnippetHandler()}>
+            </Code>
           </div>
         </div>
       </div>
