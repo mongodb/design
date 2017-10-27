@@ -22,28 +22,28 @@ const UIColors = () => (
         <div className="color-chip">
           <span className="color-chip-swatch green0"></span>
           <span className="color-chip-code code">@green0</span>
-          <p className="color-chip-hex">Hex: #365221</p>
+          <p className="color-chip-hex">Hex: #376E18</p>
         </div>
       </div>
       <div className="columns small-3">
         <div className="color-chip">
           <span className="color-chip-swatch green1"></span>
           <span className="color-chip-code code">@green1</span>
-          <p className="color-chip-hex">Hex: #507b32</p>
+          <p className="color-chip-hex">Hex: #579D31</p>
         </div>
       </div>
       <div className="columns small-3">
         <div className="color-chip">
           <span className="color-chip-swatch green2"></span>
           <span className="color-chip-code code">@green2</span>
-          <p className="color-chip-hex">Hex: #6ba442</p>
+          <p className="color-chip-hex">Hex: #69b241</p>
         </div>
       </div>
       <div className="columns small-3">
         <div className="color-chip">
           <span className="color-chip-swatch green3"></span>
           <span className="color-chip-code code">@green3</span>
-          <p className="color-chip-hex">Hex: #89b668</p>
+          <p className="color-chip-hex">Hex: #87CC61</p>
         </div>
       </div>
     </div>
@@ -52,14 +52,14 @@ const UIColors = () => (
         <div className="color-chip">
           <span className="color-chip-swatch green4"></span>
           <span className="color-chip-code code">@green4</span>
-          <p className="color-chip-hex">Hex: #a6c88e</p>
+          <p className="color-chip-hex">Hex: #A8DF8A</p>
         </div>
       </div>
       <div className="columns small-3">
         <div className="color-chip">
           <span className="color-chip-swatch green5"></span>
           <span className="color-chip-code code">@green5</span>
-          <p className="color-chip-hex">Hex: #c4dbb3</p>
+          <p className="color-chip-hex">Hex: #C2E0B4</p>
         </div>
       </div>
       <div className="columns small-3">
