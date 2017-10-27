@@ -56,19 +56,19 @@ class UIViewModalReact extends React.Component {
               selectedValue={this.state.size}
               onChange={size => this.setState({ size })}>
               <label className="checkbox">
-                <Radio value="xs" id="type-default" checked /> Extra Small
+                <Radio value="xs" checked /> Extra Small
               </label>
               <label className="checkbox">
-                <Radio value="small" id="type-primary" /> Small
+                <Radio value="small" /> Small
               </label>
               <label className="checkbox">
-                <Radio value="medium" id="type-outline" /> Medium
+                <Radio value="medium" /> Medium
               </label>
               <label className="checkbox">
-                <Radio value="large" id="type-danger" /> Large
+                <Radio value="large" /> Large
               </label>
               <label className="checkbox">
-                <Radio value="xlarge" id="type-dark" /> Extra Large
+                <Radio value="xlarge" /> Extra Large
               </label>
             </RadioGroup>
           </div>
