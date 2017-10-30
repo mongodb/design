@@ -48,8 +48,8 @@ class Layout extends React.Component {
                   <nav className="navigation columns small-8">
                     <button className="navigation-hamburger-button fa fa-bars" onClick={this.toggleHamburgerMenu.bind(this)}></button>
                     <ul className={this.getClassName(parent_class)} onClick={this.toggleHamburgerMenu.bind(this)}>
-                      <li className="navigation-is-horizontal-child"><Link to='/ui-design-system/welcome' className="navigation-link" activeClassName="navigation-link-header-active">Design System</Link></li>
-                      <li className="navigation-is-horizontal-child"><Link to='/resources' className="navigation-link" activeClassName="navigation-link-header-active">Resources</Link></li>
+                      <li className="navigation-is-horizontal-child"><Link to='/ui-design-system/welcome' className="navigation-link">Design System</Link></li>
+                      <li className="navigation-is-horizontal-child"><a href='https://www.mongodb.com/careers/departments/engineering' target="_blank" className="navigation-link">Careers</a></li>
                     </ul>
                   </nav>
               </div>
