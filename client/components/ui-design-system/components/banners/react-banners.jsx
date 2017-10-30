@@ -1,13 +1,30 @@
 // ==================================================
-//  DesignSystem - DSBanners
+//  DesignSystem - DSBannersReact
 // ==================================================
 
 import React from 'react';
 import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
+import Alert from '../../react-components/Alert.js';
+import Checkbox from '../../react-components/Checkbox.js';
+import { RadioGroup, Radio } from '../../react-components/RadioGroup.js';
 
-const UIBanners = () => (
-  <div className="wrap button-ui">
+class UIBannersReact extends React.Component {
+  state = {
+    controlLevel: "success"
+  }
+
+  codeSnippetHandler() {
+    const level = this.state.controlLevel ? `,\n  level="success"` : '';
+    return `<Alert
+      level="${this.state.controlLevel}",
+      children="${this.state.controlLevel}"
+    />`
+  } 
+
+  render() {
+    return (
+      <div className="wrap button-ui">
       <div className="row u-mb-3">
         <div className="columns small-12">
           <h1>Banners</h1>
@@ -17,10 +34,10 @@ const UIBanners = () => (
       <div className="row u-mb-2">
         <div className="columns small-12">
           <ul className="tabs">
-            <li className="tabs-tab tabs-tab-is-active">
+            <li className="tabs-tab">
               <Link to='/ui-design-system/components/banners' className="tabs-tab-link">CSS</Link>
             </li>
-            <li className="tabs-tab">
+            <li className="tabs-tab tabs-tab-is-active">
               <Link to='/ui-design-system/components/banners/react-banners' className="tabs-tab-link">React</Link>
             </li>
           </ul>
@@ -29,10 +46,51 @@ const UIBanners = () => (
 
       <div className="row u-mb-3">
         <div className="columns small-12">
+          <h2>Alerts</h2>
+          <p>Our button styles comes in a variety of flavors including default, primary, destructive and disabled.</p>
+        </div>
+      </div>
+
+      <div className="row u-mb-3">
+        <div className="columns small-12">
+          <Alert 
+            level={this.state.controlLevel}
+            dismissable="true"
+            children={this.state.controlLevel}
+          />
+        </div>
+      </div>
+
+      <RadioGroup
+        name="alert-state"
+        selectedValue={this.state.controlLevel}
+        onChange={(controlLevel) => {
+          this.setState({ controlLevel });
+          console.log({controlLevel});
+        }}
+      >
+        <label className="checkbox">
+          <Radio value="success" id="success" checked /> Success
+        </label>
+        <label className="checkbox">
+          <Radio value="warning" id="warning" /> Warning
+        </label>
+        <label className="checkbox">
+          <Radio value="danger" id="danger" /> Danger
+        </label>
+        <label className="checkbox">
+          <Radio value="info" id="info" /> Info
+        </label>
+      </RadioGroup>
+
+
+      <div className="row u-mb-3">
+        <div className="columns small-12">
           <h2>Callout Banners</h2>
           <p>Our button styles comes in a variety of flavors including default, primary, destructive and disabled.</p>
         </div>
       </div>
+
       <div className="row">
         <div className="columns small-12">
           <h3>Standard Callout</h3>
@@ -397,6 +455,7 @@ const UIBanners = () => (
       </div>
     </div>
   </div>
-);
+)}
+}
 
-export default UIBanners;
+export default UIBannersReact;

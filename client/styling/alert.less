@@ -1,0 +1,33 @@
+// Basic alert styles
+
+.bem-alert-component(@color, @border, @bg) {
+    color: darken(@color, 25%);
+    border-color: @border;
+    background: @bg;
+
+    .bem-alert-link {
+        color: darken(@color, 25%);
+    }
+}
+
+.bem-alert {
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+    &-is-success {
+        .bem-alert-component(@alertGreen, @alertGreenBorder, @alertGreenBg);
+    }
+
+    &-is-warning {
+        .bem-alert-component(@alertOrange, @alertOrangeBorder, @alertOrangeBg);
+    }
+
+    &-is-danger {
+        .bem-alert-component(@alertRed, @alertRedBorder, @alertRedBg);
+    }
+
+    &-is-info {
+        .bem-alert-component(@alertBlue, @alertBlueBorder, @alertBlueBg);
+    }
+}
