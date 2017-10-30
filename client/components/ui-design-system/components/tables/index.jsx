@@ -15,8 +15,6 @@ const UITables = () => (
     <div className="row u-mb-3">
       <div className="columns small-12">
         <h2>Standard Table</h2>
-        <p>We use the <a href={"http://foundation.zurb.com/sites/docs/grid.html"} className="link">Foundation grid</a> as our base grid system. It is customizable, flexible and responsive.</p>
-        <p>When setting up your page with the grid, be sure to include the <span className="code">small-#</span>, <span className="code">medium-#</span> and <span className="code">large-#</span> values. These values represent how the grid will adapt to small, medium and large screen formats.</p>
       </div>
     </div>
     <div className="row u-mb-2">

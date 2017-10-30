@@ -15,7 +15,6 @@ const UIBubbles = () => (
     <div className="row u-mb-2">
       <div className="columns small-12">
         <h2>Bubble Labels</h2>
-        <p>The quick brown fox jumped over the log into the enchanted forest. The quick brown fox jumped over the log into the enchanted forest.</p>
       </div>
     </div>
     <div className="row">
