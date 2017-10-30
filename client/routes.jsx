@@ -10,15 +10,19 @@ import DesignSystem from './components/index.jsx';
 import UIDesignSystem from './components/ui-design-system/index.jsx';
 import UIWelcome from './components/ui-design-system/welcome/index.jsx';
 import UIPrinciples from './components/ui-design-system/welcome/principles.jsx';
+
 //Base Styles
+import BaseStylesIndex from './components/ui-design-system/base-styles/index.jsx';
 import UIColors from './components/ui-design-system/base-styles/colors/index.jsx';
 import UIIcons from './components/ui-design-system/base-styles/icons/index.jsx';
 import UITypography from './components/ui-design-system/base-styles/typography/index.jsx';
 
 //Compass Components
+import CompassIndex from './components/ui-design-system/compass-components/index.jsx';
 import UIQueryHistory from './components/ui-design-system/compass-components/query-history/index.jsx';
 
 //Components
+import ComponentsIndex from './components/ui-design-system/components/index.jsx';
 import UICode from './components/ui-design-system/components/code/index.jsx';
 import UIBanners from './components/ui-design-system/components/banners/index.jsx';
 import UIButtons from './components/ui-design-system/components/buttons/index.jsx';
@@ -32,7 +36,9 @@ import UITables from './components/ui-design-system/components/tables/index.jsx'
 import UIUtilities from './components/ui-design-system/components/utilities/index.jsx';
 import UIViewModal from './components/ui-design-system/components/view-modal/index.jsx';
 import UIViewModalReact from './components/ui-design-system/components/view-modal/react-view-modal.jsx';
+
 //Guidelines
+import GuidelinesIndex from './components/ui-design-system/guidelines/index.jsx';
 import UIGrid from './components/ui-design-system/guidelines/grid/index.jsx';
 import UIModify from './components/ui-design-system/guidelines/modify/index.jsx';
 
@@ -45,13 +51,19 @@ const routes = (
       <Route path="/" component={UIDesignSystem}>
       <Route path="/ui-design-system/welcome" component={UIWelcome} />
       <Route path="/ui-design-system/principles" component={UIPrinciples} />
+
       //Base Styles
+      <Route path="/ui-design-system/base-styles" component={BaseStylesIndex} />
       <Route path="/ui-design-system/base-styles/colors" component={UIColors} />
       <Route path="/ui-design-system/base-styles/icons" component={UIIcons} />
       <Route path="/ui-design-system/base-styles/typography" component={UITypography} />
+
       //Compass Components
+      <Route path="/ui-design-system/compass-components" component={CompassIndex} />
       <Route path="/ui-design-system/compass-components/query-history" component={UIQueryHistory} />
+
       //Components
+      <Route path="/ui-design-system/components" component={ComponentsIndex} />
       <Route path="/ui-design-system/components/code" component={UICode} />
       <Route path="/ui-design-system/components/banners" component={UIBanners} />
       <Route path="/ui-design-system/components/bubbles" component={UIBubbles} />
@@ -65,9 +77,12 @@ const routes = (
       <Route path="/ui-design-system/components/utilities" component={UIUtilities} />
       <Route path="/ui-design-system/components/view-modal" component={UIViewModal} />
       <Route path="/ui-design-system/components/view-modal/react-view-modal" component={UIViewModalReact} />
+
       //Guidelines
+      <Route path="/ui-design-system/guidelines" component={GuidelinesIndex} />
       <Route path="/ui-design-system/guidelines/grid" component={UIGrid} />
       <Route path="/ui-design-system/guidelines/modify" component={UIModify} />
+
       //Misc
       <Route path="/ui-design-system/resources" component={Resources} />
     </Route>
