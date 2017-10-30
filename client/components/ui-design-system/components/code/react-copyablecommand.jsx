@@ -2,13 +2,11 @@ import React from 'react';
 import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
 import CopyableCommand from '../../react-components/CopyableCommand.js';
-import Tooltip from '../../react-components/Tooltip.js';
 import Button from '../../react-components/Button.js';
 
 class UICopyableCommandReact extends React.Component {
 
   render() {
-
     return (
       <div className="wrap">
         <div className="row u-mb-3">
@@ -41,9 +39,19 @@ class UICopyableCommandReact extends React.Component {
 
         <div className="row u-mb-2">
           <div className="columns small-12">
-            <CopyableCommand copyableText='DIS SUCKS IM HUNGRY' wrapText>
+            <CopyableCommand 
+              copyableText='this is a command that you can copy. it will not break onto the next line even if it is really long, the overflow will keep scrolling horizontally.' wrapText>
             </CopyableCommand>
-
+          </div>
+        </div>
+        <div className="row u-mb-3">
+          <div className="columns small-12">
+            <Code
+              language='language-html'
+              text={`<CopyableCommand 
+  copyableText='Insert Text Here' wrapText>
+</CopyableCommand>`}> 
+            </Code>
           </div>
         </div>
 

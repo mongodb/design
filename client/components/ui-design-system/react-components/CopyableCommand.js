@@ -8,7 +8,7 @@ const Clipboard = require('clipboard');
 const classNames = require('classnames');
 
 // Components
-const Tooltip = require('../react-components/Tooltip.js');
+const Tooltip = require('../react-components/Tooltip.js').default;
 
 class CopyableCommand extends Component {
     static propTypes = {
