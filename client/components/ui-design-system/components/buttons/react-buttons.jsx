@@ -6,9 +6,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
 import Button from '../../react-components/Button.js';
-import Checkbox from '../../react-components/Checkbox.js';
-import { RadioGroup, Radio } from '../../react-components/RadioGroup.js';
 const Prism = require('prismjs');
+
 
 var buttonPairing = [
   ['', 'Default Button'],
