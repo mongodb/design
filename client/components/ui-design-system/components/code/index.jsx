@@ -15,6 +15,18 @@ const UICode = () => (
         </div>
         <div className="row u-mb-2">
           <div className="columns small-12">
+            <ul className="tabs">
+              <li className="tabs-tab tabs-tab-is-active">
+                <Link to='/ui-design-system/components/code' className="tabs-tab-link">CSS</Link>
+              </li>
+              <li className="tabs-tab">
+                <Link to='/ui-design-system/components/code/react-copyablecommand' className="tabs-tab-link">React</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="row u-mb-2">
+          <div className="columns small-12">
             <h2>Code Styles</h2>
           </div>
         </div>
