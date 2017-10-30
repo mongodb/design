@@ -1,13 +1,30 @@
 // ==================================================
-//  DesignSystem - DSBanners
+//  DesignSystem - DSBannersReact
 // ==================================================
 
 import React from 'react';
 import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
+import Alert from '../../react-components/Alert.js';
+import Checkbox from '../../react-components/Checkbox.js';
+import { RadioGroup, Radio } from '../../react-components/RadioGroup.js';
 
-const UIBanners = () => (
-  <div className="wrap button-ui">
+class UIBannersReact extends React.Component {
+  state = {
+    controlLevel: "success"
+  }
+
+  codeSnippetHandler() {
+    const level = this.state.controlLevel ? `,\n  level="success"` : '';
+    return `<Alert
+      level="${this.state.controlLevel}",
+      children="${this.state.controlLevel}"
+    />`
+  } 
+
+  render() {
+    return (
+      <div className="wrap button-ui">
       <div className="row u-mb-3">
         <div className="columns small-12">
           <h1>Banners</h1>
@@ -17,10 +34,10 @@ const UIBanners = () => (
       <div className="row u-mb-2">
         <div className="columns small-12">
           <ul className="tabs">
-            <li className="tabs-tab tabs-tab-is-active">
+            <li className="tabs-tab">
               <Link to='/ui-design-system/components/banners' className="tabs-tab-link">CSS</Link>
             </li>
-            <li className="tabs-tab">
+            <li className="tabs-tab tabs-tab-is-active">
               <Link to='/ui-design-system/components/banners/react-banners' className="tabs-tab-link">React</Link>
             </li>
           </ul>
@@ -29,10 +46,51 @@ const UIBanners = () => (
 
       <div className="row u-mb-3">
         <div className="columns small-12">
-          <h2>Callout Banners</h2>
-          <p>Used for calling attention to new products, features, and functionality.</p>
+          <h2>Alerts</h2>
+          <p>Our button styles comes in a variety of flavors including default, primary, destructive and disabled.</p>
         </div>
       </div>
+
+      <div className="row u-mb-3">
+        <div className="columns small-12">
+          <Alert 
+            level={this.state.controlLevel}
+            dismissable="true"
+            children={this.state.controlLevel}
+          />
+        </div>
+      </div>
+
+      <RadioGroup
+        name="alert-state"
+        selectedValue={this.state.controlLevel}
+        onChange={(controlLevel) => {
+          this.setState({ controlLevel });
+          console.log({controlLevel});
+        }}
+      >
+        <label className="checkbox">
+          <Radio value="success" id="success" checked /> Success
+        </label>
+        <label className="checkbox">
+          <Radio value="warning" id="warning" /> Warning
+        </label>
+        <label className="checkbox">
+          <Radio value="danger" id="danger" /> Danger
+        </label>
+        <label className="checkbox">
+          <Radio value="info" id="info" /> Info
+        </label>
+      </RadioGroup>
+
+
+      <div className="row u-mb-3">
+        <div className="columns small-12">
+          <h2>Callout Banners</h2>
+          <p>Our button styles comes in a variety of flavors including default, primary, destructive and disabled.</p>
+        </div>
+      </div>
+
       <div className="row">
         <div className="columns small-12">
           <h3>Standard Callout</h3>
@@ -245,7 +303,159 @@ const UIBanners = () => (
         </Code>
       </div>
     </div>
-  </div>
-);
 
-export default UIBanners;
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <h2>Growl Notifications</h2>
+        <p>Our button styles comes in a variety of flavors including default, primary, destructive and disabled.</p>
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Alert Notification</h3>
+        <p>Our alert growl notification style is used for important notices regarding a users cluster or account. This should be used only when the notification is urgent and requires immediate attention.</p>
+      </div>
+    </div>
+    <div className="row u-mv-2">
+      <div className="columns small-12">
+        <div className="growl growl-is-alert">
+          <span className="temp-icon"></span>
+          <h4>Update Automation Agent</h4>
+          <p className="u-text-is-small">Your automation agent requires an important update before you can continue using your cluster.</p>
+          <div className="u-mt-2">
+            <button className="button button-is-text button-is-xs u-mr-3 growl-button-primary">UPDATE NOW</button>
+            <button className="button button-is-text button-is-xs growl-button-secondary">DO IT LATER</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-5">
+      <div className="columns small-12">
+        <Code
+          language='language-html'
+          text={`<div class="growl growl-is-alert">
+  <span class="temp-icon"></span>
+  <h4>Update Automation Agent</h4>
+  <p class="u-text-is-small">Your automation agent requires an important update before you can continue using your cluster.</p>
+  <div class="u-mt-2">
+    <button class="button button-is-text button-is-xs u-mr-3 growl-button-primary">UPDATE NOW</button>
+    <button class="button button-is-text button-is-xs growl-button-secondary">DO IT LATER</button>
+  </div>
+</div>`}>
+        </Code>
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Success Notification</h3>
+        <p>Our alert growl notification style is used for important notices regarding a users cluster or account. This should be used only when the notification is urgent and requires immediate attention.</p>
+      </div>
+    </div>
+    <div className="row u-mv-2">
+      <div className="columns small-12">
+        <div className="growl growl-is-alert">
+          <span className="temp-icon"></span>
+          <h4>Cluster Completed</h4>
+          <p className="u-text-is-small">Your cluster has successfully been completed!</p>
+          <div className="u-mt-2">
+            <button className="button button-is-text button-is-xs u-mr-3 growl-button-primary">VIEW CLUSTER</button>
+            <button className="button button-is-text button-is-xs growl-button-secondary">OK, THANKS</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-5">
+      <div className="columns small-12">
+        <Code
+          language='language-html'
+          text={`<div class="growl growl-is-alert">
+  <span class="temp-icon"></span>
+  <h4>Cluster Completed</h4>
+  <p class="u-text-is-small">Your cluster has successfully been completed!</p>
+  <div class="u-mt-2">
+    <button class="button button-is-text button-is-xs u-mr-3 growl-button-primary">VIEW CLUSTER</button>
+    <button class="button button-is-text button-is-xs growl-button-secondary">OK, THANKS</button>
+  </div>
+</div>`}>
+        </Code>
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <h3>In Progress Notification</h3>
+        <p>Our alert growl notification style is used for important notices regarding a users cluster or account. This should be used only when the notification is urgent and requires immediate attention.</p>
+      </div>
+    </div>
+    <div className="row u-mv-2">
+      <div className="columns small-12">
+        <div className="growl growl-is-alert">
+          <span className="temp-icon"></span>
+          <h4>In Progress...</h4>
+          <p className="u-text-is-small">We’re currently building your new cluster. You’ll be notified as soon as it is completed!</p>
+          <div className="row u-mt-3 u-ph-2">
+            <div className="columns small-9 temp-progress-bar u-mt-1">
+              <span></span>
+            </div>
+            <div className="columns small-3 loader-text">33%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-5">
+      <div className="columns small-12">
+        <Code
+          language='language-html'
+          text={`<div class="growl growl-is-alert">
+  <span class="temp-icon"></span>
+  <h4>In Progress...</h4>
+  <p class="u-text-is-small">We’re currently building your new cluster. You’ll be notified as soon as it is completed!</p>
+  <div class="row u-mt-3 u-ph-2">
+    <div class="columns small-9 temp-progress-bar u-mt-1">
+      <span></span>
+    </div>
+    <div class="columns small-3 loader-text">33%</div>
+  </div>
+</div>`}>
+        </Code>
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Generic Notification</h3>
+        <p>Our alert growl notification style is used for important notices regarding a users cluster or account. This should be used only when the notification is urgent and requires immediate attention.</p>
+      </div>
+    </div>
+    <div className="row u-mv-2">
+      <div className="columns small-12">
+        <div className="growl growl-is-alert">
+          <span className="temp-icon"></span>
+          <h4>Update to Terms of Service</h4>
+          <p className="u-text-is-small">We’ve made important updates to our Terms of Service which may effect you and your account.</p>
+          <div className="u-mt-2">
+            <button className="button button-is-text button-is-xs u-mr-3 growl-button-primary">READ UPDATE</button>
+            <button className="button button-is-text button-is-xs growl-button-secondary">DO IT LATER</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-5">
+      <div className="columns small-12">
+        <Code
+          language='language-html'
+          text={`<div class="growl growl-is-alert">
+  <span class="temp-icon"></span>
+  <h4>Update to Terms of Service</h4>
+  <p class="u-text-is-small">We’ve made important updates to our Terms of Service which may effect you and your account.</p>
+  <div class="u-mt-2">
+    <button class="button button-is-text button-is-xs u-mr-3 growl-button-primary">READ UPDATE</button>
+    <button class="button button-is-text button-is-xs growl-button-secondary">DO IT LATER</button>
+  </div>
+</div>`}>
+        </Code>
+      </div>
+    </div>
+  </div>
+)}
+}
+
+export default UIBannersReact;
