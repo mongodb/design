@@ -3,10 +3,12 @@ import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
 import CopyableCommand from '../../react-components/CopyableCommand.js';
 import Tooltip from '../../react-components/Tooltip.js';
+import Button from '../../react-components/Button.js';
 
 class UICopyableCommandReact extends React.Component {
 
   render() {
+
     return (
       <div className="wrap">
         <div className="row u-mb-3">
@@ -26,6 +28,25 @@ class UICopyableCommandReact extends React.Component {
             </ul>
           </div>
         </div>
+        <div className="row u-mb-2">
+          <div className="columns small-12">
+            <h2>Code Styles</h2>
+          </div>
+        </div>
+        <div className="row u-mb-2">
+          <div className="columns small-12">
+            <h3>Copyable Command</h3>
+          </div>
+        </div>
+
+        <div className="row u-mb-2">
+          <div className="columns small-12">
+            <CopyableCommand copyableText='DIS SUCKS IM HUNGRY' wrapText>
+            </CopyableCommand>
+
+          </div>
+        </div>
+
       </div>
     );
   }
