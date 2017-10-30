@@ -66,7 +66,7 @@ const UIColors = () => (
         <div className="color-chip">
           <span className="color-chip-swatch green8"></span>
           <span className="color-chip-code code">@green8</span>
-          <p className="color-chip-hex">Hex: #F0F7EC</p>
+          <p className="color-chip-hex">Hex: #EFF6EC</p>
         </div>
       </div>
     </div>
