@@ -58,7 +58,7 @@ class UIButtonsReact extends React.Component {
         <div className="row u-mb-2">
           <div className="columns small-12">
             <h2>Button Component</h2>
-            <p>Our button styles comes in a variety of flavors including default, primary, destructive and disabled.</p>
+            <p>Our button component can be configured in a variety of flavors including default, primary, destructive and disabled.</p>
           </div>
         </div>
         <div className="row u-mb-2">

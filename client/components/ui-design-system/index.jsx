@@ -64,7 +64,6 @@ class UIDesignSystem extends React.Component {
                 <li><Link to='/ui-design-system/components/view-modal' className="navigation-link" activeClassName="navigation-link-active">Modals</Link></li>
                 <li><Link to='/ui-design-system/components/tabs' className="navigation-link" activeClassName="navigation-link-active">Tabs</Link></li>
                 <li><Link to='/ui-design-system/components/tables' className="navigation-link" activeClassName="navigation-link-active">Tables</Link></li>
-                <li><Link to='/ui-design-system/components/utilities' className="navigation-link" activeClassName="navigation-link-active">Utilities</Link></li>
               </ul>
             </li>
             <li className="navigation-is-vertical-parent">

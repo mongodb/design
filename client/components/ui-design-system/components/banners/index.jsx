@@ -15,7 +15,7 @@ const UIBanners = () => (
       <div className="row u-mb-3">
         <div className="columns small-12">
           <h2>Callout Banners</h2>
-          <p>Our button styles comes in a variety of flavors including default, primary, destructive and disabled.</p>
+          <p>Used for calling attention to new products, features, and functionality.</p>
         </div>
       </div>
       <div className="row">

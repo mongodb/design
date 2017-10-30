@@ -15,7 +15,7 @@ const UITabs = () => (
     <div className="row u-mb-2">
       <div className="columns small-12">
     		<h2>Default Tabs</h2>
-    		<p>Our button styles comes in a variety of flavors including default, primary, destructive and disabled.</p>
+    		<p>These horizontal tabs are typically used as the primary page-level navigation.</p>
       </div>
     </div>
     <div className="row">
