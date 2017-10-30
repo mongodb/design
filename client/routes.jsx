@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 
 import Layout from './components/layout/index.jsx';
 import NotFound from './components/not_found.jsx';
-import Resources from './components/resources/index.jsx';
+import Resources from './components/ui-design-system/resources/index.jsx';
 
 import DesignSystem from './components/index.jsx';
 
@@ -69,7 +69,7 @@ const routes = (
       <Route path="/ui-design-system/guidelines/grid" component={UIGrid} />
       <Route path="/ui-design-system/guidelines/modify" component={UIModify} />
       //Misc
-      <Route path="/resources" component={Resources} />
+      <Route path="/ui-design-system/resources" component={Resources} />
     </Route>
     <Route path="*" component={NotFound} />
   </Route>

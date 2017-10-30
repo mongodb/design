@@ -37,7 +37,7 @@ class UIDesignSystem extends React.Component {
           <button className="navigation-mobile-menu-button button button-extra-small" onClick={this.toggleMobileMenu.bind(this)} onBlur={this.closeMobileMenu.bind(this)}>Component Navigation</button>
           <ul className={this.getClassName(container_class)} onClick={this.closeMobileMenu.bind(this)}>
             <li className="navigation-is-vertical-parent">
-              <h4><Link to='/ui-design-system/welcome' className="navigation-link">Welcome</Link></h4>
+              <h4><Link to='/ui-design-system/welcome' className="navigation-link" activeClassName="navigation-link-active">Welcome</Link></h4>
               <ul className="navigation-is-vertical-child">
                 <li className="navigation-link"><Link to='/ui-design-system/principles' className="navigation-link" activeClassName="navigation-link-active">Design Principles</Link></li>
               </ul>
@@ -45,8 +45,9 @@ class UIDesignSystem extends React.Component {
             <li className="navigation-is-vertical-parent"><h4>Base Styles</h4>
              <ul className="navigation-is-vertical-child">
                <li><Link to='/ui-design-system/base-styles/colors' className="navigation-link" activeClassName="navigation-link-active">Colors</Link></li>
-               <li><Link to='/ui-design-system/base-styles/icons' className="navigation-link" activeClassName="navigation-link-active">Icons</Link></li>
                <li><Link to='/ui-design-system/base-styles/typography' className="navigation-link" activeClassName="navigation-link-active">Typography</Link></li>
+               <li><Link to='/ui-design-system/guidelines/grid' className="navigation-link" activeClassName="navigation-link-active">Grid</Link></li>
+               <li><Link to='/ui-design-system/base-styles/icons' className="navigation-link" activeClassName="navigation-link-active">Icons</Link></li>
              </ul>
             </li>
             <li className="navigation-is-vertical-parent"><h4>Components</h4>
@@ -71,9 +72,11 @@ class UIDesignSystem extends React.Component {
             </li>
             <li className="navigation-is-vertical-parent"><h4>Guidelines</h4>
               <ul className="navigation-is-vertical-child">
-               <li><Link to='/ui-design-system/guidelines/grid' className="navigation-link" activeClassName="navigation-link-active">Grid</Link></li>
                <li><Link to='/ui-design-system/guidelines/modify' className="navigation-link" activeClassName="navigation-link-active">Modify</Link></li>
               </ul>
+            </li>
+            <li className="navigation-is-vertical-parent">
+              <h4><Link to='/ui-design-system/resources' className="navigation-link" activeClassName="navigation-link-active">Resources</Link></h4>
             </li>
          </ul>
         </nav>
