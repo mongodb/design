@@ -25,8 +25,10 @@
     "react-helmet": "^3.1.0",
     "react-router": "^2.6.1",
     "react-router-scroll": "^0.3.1",
+    "react-tooltip": "3.3.0",
     "style-loader": "^0.13.1",
-    "prop-types": "15.5.10"
+    "prop-types": "15.5.10",
+    "underscore": "1.8.3"
   },
   "devDependencies": {
     "nwb": "0.18.x",
