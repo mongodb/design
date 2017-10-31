@@ -45,15 +45,25 @@ class UILayoutsReact extends React.Component {
         </div>
         <div className="row u-mb-0">
           <div className="columns small-12">
-            <SplashView graphic={this.graphic} headlineText="Enter your empty view placeholder text here.">
-                {this.children}
+            <SplashView 
+              graphic={this.graphic} 
+              headlineText="Enter your empty view placeholder text here.">
+              {this.children}
             </SplashView>
           </div>
         </div>
-
-
-
-
+        <div className="row u-mb-5">
+          <div className="columns small-12">
+            <Code
+              language='language-html'
+              text={`<SplashView 
+  graphic={this.graphic} 
+  headlineText="Enter your empty view placeholder text here.">
+  {this.children}
+</SplashView>`}> 
+            </Code>
+          </div>
+        </div>
         <div className="row u-mb-2">
           <div className="columns small-12">
             <h3>Loading State</h3>
