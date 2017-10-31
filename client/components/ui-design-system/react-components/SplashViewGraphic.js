@@ -13,7 +13,7 @@ function SplashViewGraphic(props) {
     if (isError) {
         return (
             <div className="empty-view-graphic">
-                <i className="fa fa-exclamation-triangle empty-view-icon" />
+                <i className="fa fa-4x fa-exclamation-triangle empty-view-icon" />
                 <svg className="empty-view-shadow empty-view-shadow-is-error">
                     <ellipse cx="50%" cy="50%" rx="50%" ry="50%" />
                 </svg>

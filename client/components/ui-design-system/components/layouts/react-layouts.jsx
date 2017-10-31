@@ -7,13 +7,6 @@ import SplashView from '../../react-components/SplashView.js';
 class UILayoutsReact extends React.Component {
 
   render() {
-    this.graphic = (<div className="graphic-test" />);
-    this.children = (<Button
-      label="Do Something"
-      className="button button-is-primary"
-      onClick={() => {return null}}
-    />);
-
     return (
       <div className="wrap">
         <div className="row u-mb-3">
@@ -46,9 +39,13 @@ class UILayoutsReact extends React.Component {
         <div className="row u-mb-0">
           <div className="columns small-12">
             <SplashView 
-              graphic={this.graphic} 
+              graphic={null} 
               headlineText="Enter your empty view placeholder text here.">
-              {this.children}
+              <Button
+                label="Do Something"
+                className="button button-is-primary button-is-large"
+                onClick={() => {return null}}
+              />
             </SplashView>
           </div>
         </div>
@@ -57,9 +54,12 @@ class UILayoutsReact extends React.Component {
             <Code
               language='language-html'
               text={`<SplashView 
-  graphic={this.graphic} 
+  graphic={null}
   headlineText="Enter your empty view placeholder text here.">
-  {this.children}
+    <Button
+      label="Do Something"
+      className="button button-is-primary button-is-large"
+    />
 </SplashView>`}> 
             </Code>
           </div>
@@ -92,7 +92,7 @@ class UILayoutsReact extends React.Component {
             <SplashView headlineText="Write something about what they did wrong here." isError >            
               <Button
                 label="Do Something Else"
-                className="button"
+                className="button button-is-large"
                 onClick={() => {return null}}
               />
             </SplashView>
@@ -105,7 +105,7 @@ class UILayoutsReact extends React.Component {
               text={`<SplashView headlineText="Write something about what they did wrong here." isError >
   <Button
     label="Do Something Else"
-    className="button"
+    className="button button-is-large"
   />
 </SplashView>`}> 
             </Code>
