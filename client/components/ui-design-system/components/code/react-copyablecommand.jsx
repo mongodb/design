@@ -11,7 +11,7 @@ class UICopyableCommandReact extends React.Component {
       <div className="wrap">
         <div className="row u-mb-3">
           <div className="columns small-12">
-            <h1>Modals</h1>
+            <h1>Code</h1>
           </div>
         </div>
         <div className="row u-mb-2">
