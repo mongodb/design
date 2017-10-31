@@ -27,7 +27,7 @@ class UIButtonsReact extends React.Component {
   }
 
   codeSnippetHandler() {
-    const disabled = this.state.controlDisabled ? `,\n  disabled=true` : '';
+    const disabled = this.state.controlDisabled ? `,\n  disabled={true}` : '';
     const className = this.state.controlTypeClassName ? ` ${this.state.controlTypeClassName}` : '';
     return `<Button
   label="${this.state.controlLabel}",
