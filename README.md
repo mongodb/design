@@ -2,11 +2,13 @@
 
 ### Use
 
-The MongoDB Design System contains the UI building blocks that make up the user experience across all MongoDB products.
+The MongoDB Design System contains the UI building blocks that make up the user experience across all MongoDB products. 
 
 ### Documentation
 
-Build locally or visit [mongodb.design](http://mongodb.design)
+Build locally or visit [mongodb.design](http://mongodb.design) to view component documentation.
+
+[Download Sketch assets](https://github.com/leafygreen/sketchUILibrary)
 
 ### Contribute
 
