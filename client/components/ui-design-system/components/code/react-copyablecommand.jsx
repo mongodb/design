@@ -7,6 +7,7 @@ import Tooltip from '../../react-components/Tooltip.js';
 class UICopyableCommandReact extends React.Component {
 
   render() {
+    document.getElementById("code-link").classList.add("navigation-link-active")
     return (
       <div className="wrap">
         <div className="row u-mb-3">

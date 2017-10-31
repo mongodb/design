@@ -33,9 +33,10 @@ class UIButtonsReact extends React.Component {
   label="${this.state.controlLabel}",
   className="button${className}"${disabled}
 />`
-  } 
+  }
 
   render() {
+    document.getElementById("button-link").classList.add("navigation-link-active")
     return (
       <div className="wrap button-ui">
         <div className="row u-mb-3">

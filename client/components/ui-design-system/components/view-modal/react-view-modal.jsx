@@ -23,6 +23,7 @@ class UIViewModalReact extends React.Component {
   }
 
   render() {
+    document.getElementById("modal-link").classList.add("navigation-link-active");
     return (
       <div className="wrap">
         <div className="row u-mb-3">

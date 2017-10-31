@@ -53,12 +53,12 @@ class UIDesignSystem extends React.Component {
              <ul className="navigation-is-vertical-child">
               <li><Link to='/ui-design-system/components/banners' className="navigation-link" activeClassName="navigation-link-active">Banners</Link></li>
               <li><Link to='/ui-design-system/components/bubbles' className="navigation-link" activeClassName="navigation-link-active">Bubbles</Link></li>
-              <li><Link to='/ui-design-system/components/buttons' className="navigation-link" activeClassName="navigation-link-active">Buttons</Link></li>
-              <li><Link to='/ui-design-system/components/code' className="navigation-link" activeClassName="navigation-link-active">Code</Link></li>
+              <li><Link to='/ui-design-system/components/buttons' id="button-link" className="navigation-link" activeClassName="navigation-link-active">Buttons</Link></li>
+              <li><Link to='/ui-design-system/components/code' id="code-link" className="navigation-link" activeClassName="navigation-link-active">Code</Link></li>
               <li><Link to='/ui-design-system/components/forms' className="navigation-link" activeClassName="navigation-link-active">Forms</Link></li>
               <li><Link to='/ui-design-system/components/layouts' className="navigation-link" activeClassName="navigation-link-active">Layouts</Link></li>
               <li><Link to='/ui-design-system/components/lists' className="navigation-link" activeClassName="navigation-link-active">Lists</Link></li>
-              <li><Link to='/ui-design-system/components/view-modal' className="navigation-link" activeClassName="navigation-link-active">Modals</Link></li>
+              <li><Link to='/ui-design-system/components/view-modal' id="modal-link" className="navigation-link" activeClassName="navigation-link-active">Modals</Link></li>
               <li><Link to='/ui-design-system/components/tabs' className="navigation-link" activeClassName="navigation-link-active">Tabs</Link></li>
               <li><Link to='/ui-design-system/components/tables' className="navigation-link" activeClassName="navigation-link-active">Tables</Link></li>
               <li><Link to='/ui-design-system/components/utilities' className="navigation-link" activeClassName="navigation-link-active">Utilities</Link></li>
