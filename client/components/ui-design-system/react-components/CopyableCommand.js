@@ -8,7 +8,7 @@ const Clipboard = require('clipboard');
 const classNames = require('classnames');
 
 // Components
-const Tooltip = require('js/common/components/Tooltip');
+const Tooltip = require('../react-components/Tooltip.js');
 
 class CopyableCommand extends Component {
     static propTypes = {
@@ -86,4 +86,4 @@ class CopyableCommand extends Component {
     }
 }
 
-module.exports = CopyableCommand;
+export default CopyableCommand;
