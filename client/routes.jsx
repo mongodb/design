@@ -31,6 +31,7 @@ import UICopyableCommandReact from './components/ui-design-system/components/cod
 import UIBubbles from './components/ui-design-system/components/bubbles/index.jsx';
 import UIForms from './components/ui-design-system/components/forms/index.jsx';
 import UILayouts from './components/ui-design-system/components/layouts/index.jsx';
+import UILayoutsReact from './components/ui-design-system/components/layouts/react-layouts.jsx';
 import UILists from './components/ui-design-system/components/lists/index.jsx';
 import UITabs from './components/ui-design-system/components/tabs/index.jsx';
 import UITables from './components/ui-design-system/components/tables/index.jsx';
@@ -74,6 +75,7 @@ const routes = (
       <Route path="/ui-design-system/components/code/react-copyablecommand" component={UICopyableCommandReact} />
       <Route path="/ui-design-system/components/forms" component={UIForms} />
       <Route path="/ui-design-system/components/layouts" component={UILayouts} />
+      <Route path="/ui-design-system/components/layouts/react-layouts" component={UILayoutsReact} />
       <Route path="/ui-design-system/components/lists" component={UILists} />
       <Route path="/ui-design-system/components/tabs" component={UITabs} />
       <Route path="/ui-design-system/components/tables" component={UITables} />
