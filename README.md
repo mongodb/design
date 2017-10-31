@@ -1,8 +1,8 @@
 # MongoDB Design System
 
-### Use
+### What is this?
 
-The MongoDB Design System contains the UI building blocks that make up the user experience across all MongoDB products. 
+The MongoDB Design System contains the UI building blocks that make up the user experience across all MongoDB products.
 
 ### Documentation
 
