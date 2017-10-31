@@ -40,7 +40,7 @@ class UICopyableCommandReact extends React.Component {
         <div className="row u-mb-2">
           <div className="columns small-12">
             <CopyableCommand 
-              copyableText='this is a command that you can copy. it will not break onto the next line even if it is really long, the overflow will keep scrolling horizontally.' wrapText>
+              copyableText='This is a command that you can copy. It will not break onto the next line since the overflow will keep scrolling horizontally.' wrapText>
             </CopyableCommand>
           </div>
         </div>
@@ -49,12 +49,48 @@ class UICopyableCommandReact extends React.Component {
             <Code
               language='language-html'
               text={`<CopyableCommand 
-  copyableText='Insert Text Here' wrapText>
+  copyableText='This is a command that you can copy. It will not break onto the next line since the overflow will keep scrolling horizontally.' wrapText>
 </CopyableCommand>`}> 
             </Code>
           </div>
         </div>
 
+        <div className="row u-mb-2">
+          <div className="columns small-12">
+            <CopyableCommand 
+              copyableText='By default command snippets are not full width.' wrapText>
+            </CopyableCommand>
+          </div>
+        </div>
+        <div className="row u-mb-3">
+          <div className="columns small-12">
+            <Code
+              language='language-html'
+              text={`<CopyableCommand 
+  copyableText='By default command snippets are not full width.' wrapText>
+</CopyableCommand>`}> 
+            </Code>
+          </div>
+        </div>
+
+        <div className="row u-mb-2">
+          <div className="columns small-12">
+            <CopyableCommand 
+              copyableText='However, you can force the snippet to be full width by adding an additional class.' 
+              otherClasses='copy-command-is-full-width' wrapText>
+            </CopyableCommand>
+          </div>
+        </div>
+        <div className="row u-mb-3">
+          <div className="columns small-12">
+            <Code
+              language='language-html'
+              text={`<CopyableCommand 
+  copyableText='However, you can force the snippet to be full width by adding an additional class.' wrapText>
+</CopyableCommand>`}> 
+            </Code>
+          </div>
+        </div>
       </div>
     );
   }

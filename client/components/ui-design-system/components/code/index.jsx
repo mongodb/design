@@ -87,7 +87,7 @@ const UICode = () => (
         <div className="row u-mb-2">
           <div className="columns small-12">
             <div className="copy-command">
-              <span className="copy-command-text copy-command-is-full-width">However, you can force them to be full width by adding an additional class.</span>
+              <span className="copy-command-text copy-command-is-full-width">However, you can force the snippet to be full width by adding an additional class.</span>
               <button className="copy-command-button">
                 <i className="fa fa-files-o"></i> Copy
               </button>
@@ -99,7 +99,7 @@ const UICode = () => (
             <Code
               language='language-html'
               text={`<div class="copy-command">
-  <span class="copy-command-text copy-command-is-full-width">However, you can force them to be full width by adding an additional class.</span>
+  <span class="copy-command-text copy-command-is-full-width">However, you can force the snippet to be full width by adding an additional class.</span>
   <button class="copy-command-button">
     <i class="fa fa-files-o"></i> Copy
   </button>
