@@ -27,6 +27,106 @@ const UIBanners = () => (
         </div>
       </div>
 
+       <div className="row u-mb-3">
+        <div className="columns small-12">
+          <h2>Alerts</h2>
+          <p>Alerts are available in four levels – success, warning, danger, and info – and with or without a dismiss button.</p>
+        </div>
+      </div>
+      <div className="row">
+        <div className="columns small-12">
+          <h3>Success</h3>
+        </div>
+      </div>
+      <div className="row u-mb-3">
+        <div className="columns small-12">
+          <div className="bem-alert bem-alert-is-success">
+              <button type="button" className="bem-alert-close-button" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <div>Well done! You successfully read this important alert message.</div>
+          </div>
+        </div>
+      </div>
+      <div className="row u-mb-5">
+        <div className="columns small-12">
+          <Code
+            language='language-html'
+            text={`<div className="bem-alert bem-alert-is-success">
+    <button type="button" className="bem-alert-close-button" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <div>Well done! You successfully read this important alert message.</div>
+</div>`}>
+          </Code>
+        </div>
+      </div>
+      <div className="row">
+        <div className="columns small-12">
+          <h3>Warning</h3>
+        </div>
+      </div>
+      <div className="row u-mb-3">
+        <div className="columns small-12">
+          <div className="bem-alert bem-alert-is-warning">
+              <div>Warning! Better check yourself before you wreck yourself, you’re not looking good.</div>
+          </div>
+        </div>
+      </div>
+      <div className="row u-mb-5">
+        <div className="columns small-12">
+          <Code
+            language='language-html'
+            text={`<div className="bem-alert bem-alert-is-warning">
+    <div>Warning! Better check yourself before you wreck yourself, you’re not looking good.</div>
+</div>`}>
+          </Code>
+        </div>
+      </div>
+            <div className="row">
+        <div className="columns small-12">
+          <h3>Danger</h3>
+        </div>
+      </div>
+      <div className="row u-mb-3">
+        <div className="columns small-12">
+          <div className="bem-alert bem-alert-is-danger">
+              <div>Danger! Better check yourself, you’re not looking good.</div>
+          </div>
+        </div>
+      </div>
+      <div className="row u-mb-5">
+        <div className="columns small-12">
+          <Code
+            language='language-html'
+            text={`<div className="bem-alert bem-alert-is-danger">
+    <div>Danger! Better check yourself, you’re not looking good.</div>
+</div>`}>
+          </Code>
+        </div>
+      </div>
+            <div className="row">
+        <div className="columns small-12">
+          <h3>Info</h3>
+        </div>
+      </div>
+      <div className="row u-mb-3">
+        <div className="columns small-12">
+          <div className="bem-alert bem-alert-is-info">
+              <div>Heads up! This alert needs your attention, but it’s not super important.</div>
+          </div>
+        </div>
+      </div>
+      <div className="row u-mb-5">
+        <div className="columns small-12">
+          <Code
+            language='language-html'
+            text={`<div className="bem-alert bem-alert-is-info">
+    <div>Heads up! This alert needs your attention, but it’s not super important.</div>
+</div>`}>
+          </Code>
+        </div>
+      </div>
       <div className="row u-mb-3">
         <div className="columns small-12">
           <h2>Callout Banners</h2>

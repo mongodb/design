@@ -11,6 +11,7 @@
 }
 
 .bem-alert {
+    position: relative;
     padding: 15px;
     border: 1px solid transparent;
     border-radius: 5px;
@@ -29,5 +30,26 @@
 
     &-is-info {
         .bem-alert-component(@alertBlue, @alertBlueBorder, @alertBlueBg);
+    }
+
+    &-close-button {
+        -webkit-appearance: none;
+        padding: 0;
+        cursor: pointer;
+        background: 0 0;
+        border: 0;
+        float: right;
+        font-size: 21px;
+        font-weight: 500;
+        line-height: 1;
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+        filter: alpha(opacity=20);
+        opacity: .2;
+
+        &:hover {
+            color: #000;
+            opacity: .5;
+        }
     }
 }
