@@ -1,18 +1,22 @@
 // @import 'normalize.css';
+// Global
+@import 'fonts.less';
+@import 'typography.less';
+@import 'grid.less';
+@import 'palette.less';
+@import 'utilities.less';
+
+// BEM Components
 @import 'bubble.less';
 @import 'buttons.less';
 @import 'button-group.less';
 @import 'banners.less';
 @import 'code.less';
-@import 'colors.less';
+@import 'colors.less'; // to be removed
 @import 'forms.less';
 @import 'rich-radio.less';
-@import 'grid.less';
-@import 'palette.less';
 @import 'tabs.less';
 @import 'tables.less';
-@import 'typography.less';
-@import 'utilities.less';
 @import 'json-view.less';
 @import 'view-modal.less';
 @import 'checklist.less';
@@ -28,6 +32,18 @@
 @import 'summary-table.less';
 @import 'query-history.less';
 @import 'mms-icons.less';
+@import 'section-header.less';
+@import 'section-banner.less';
+@import 'section-controls.less';
+@import 'section-subtabs.less';
+@import 'guidelines-modify.less';
+@import 'checkbox.less';
+
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+}
 
 html,
 body {
@@ -36,20 +52,20 @@ body {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Akzidenz", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 1.4;
-  color: $darkGray;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
+  background-color: #F5F6F7;
 }
 
-* {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  box-sizing: border-box;
+
+input, textarea, select, button {
+  font-family: inherit;
 }
 
 input,
@@ -66,9 +82,6 @@ textarea {
 }
 
 ul, li {
-  padding: 0;
-  margin: 0;
-  position: relative;
   margin-bottom: 0.5em;
 }
 
@@ -80,27 +93,32 @@ ul, li {
 
 .wrap {
   width: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
+  padding: 5px;
 }
 
 .content {
   width: 100%;
   max-width: 800px;
-  margin: 100px auto 0;
+  margin: 102px 0 0 250px;
   overflow-x: hidden;
 }
 
 .header {
-  background: @pw;
-  //*//
-  //REPLACE PADDING//
-  //WITH UTILITY CLASS//
-  padding: 1.5rem 1rem;
   position: fixed;
   z-index: 1;
   width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255, 0.9);
+  padding: 0 20px;
   box-shadow: 0 2px 7px rgba(0,0,0,0.10);
-  opacity: 0.9;
+
+  .row {
+    align-items: center;
+  }
 }
 
 .brand {
@@ -114,19 +132,23 @@ ul, li {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     display: inline-block;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 0.3;
+    }
   }
 }
 
 img {
   display: block;
   max-width: 100%;
-  padding: 1em;
+  padding: 1em 0;
 }
 
 pre {
-  background-color: @gray8;
+  background: @pw;
   padding: 15px;
-  border: 1px solid @gray6;
   border-radius: 3px;
   overflow-x: scroll;
 }
@@ -141,25 +163,65 @@ pre {
   border-radius: 3px;
 }
 
+
 .code {
   display: inline-block;
-  border: 1px solid @gray5;
   padding: 0 0.325rem;
   font-size: 14px;
   font-family: monospace;
   border-radius: 3px;
-  color: @gray0;
-  background-color: #fff;
+  border: 1px solid @gray6;
 }
 
-.color-block {
-  padding: 40px 0;
-  text-align: center;
-  display: block;
-  border-radius: 3px;
-  .code {
+.color-chip {
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.1);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.1);
+  -webkit-box-sizing: border-box;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,.22);
+    -webkit-box-shadow: 0 4px 10px 0 rgba(0,0,0,.2);
+    
+    .color-chip-copy-button {
+      opacity: 1;
+    }
+  }
+
+  &-swatch {
+    padding: 40px 0;
+    text-align: center;
+    display: block;
+  }
+
+  &-container {
+    padding: 5px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  &-code {
     border: none;
-    padding: 5px 10px;
+    display: block;
+    padding: 0;
+  }
+
+  &-label {
+    margin-top: 1rem;
+  }
+
+  &-copy-button {
+    float: right;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+  }
+
+  &-hex {
+    font-size: 14px;
+    margin: 0;
+    text-transform: lowercase;
+    float: left;
   }
 }
 
@@ -196,4 +258,11 @@ pre {
   font-size: 11px;
   font-weight: 600;
   color: @selectBlue;
+}
+
+@media (max-width: 736px)  {
+  .content {
+    margin: 32px auto 0;
+    width: 90%;
+  }
 }

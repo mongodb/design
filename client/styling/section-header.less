@@ -1,0 +1,324 @@
+//@import "../mixins/truncate-text.less";
+
+@sectionHeaderMarginLeft: 24px;
+@tabBorderWidth: 3px;
+@titleFontSize: 26px;
+
+.section-header {
+    // IE10 flexbox hack
+    span {
+        display: inline-block;
+    }
+
+    border: 1px solid @gray8;
+    width: 100%;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    margin: 0 0.5rem;
+    min-height: 150px;
+    padding: 1.3rem;
+    background: @pw;
+
+    &-is-light {
+        background: white;
+    }
+
+    &-has-tabs {
+        height: auto;
+        padding-bottom: 0;
+    }
+
+    &-has-no-tabs {
+        height: auto;
+        padding-bottom: 0;
+    }
+
+    &-has-breadcrumbs {
+        height: auto;
+        padding-top: 0;
+    }
+
+    &-is-tall {
+        padding-top: 0px;
+    }
+
+    &-title {
+        margin: 0;
+        padding-top: 0;
+        flex: 2;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        // For proper ellipsis handling.
+        // https://css-tricks.com/flexbox-truncated-text/#article-header-id-3
+        min-width: 0;
+
+        // for IE fix, auto-prefixer doesn't handle this attr
+        -ms-flex-preferred-size: auto;
+
+        margin: 0;
+        font-size: inherit;
+
+        &-with-bottom-spacing {
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            border-bottom: @tabBorderWidth solid @gray7;
+        }
+
+        &-icon {
+            margin-top: 8px;
+            margin-right: 10px;
+            color: @gray5;
+        }
+
+        i.section-header-title-icon {
+            font-size: @titleFontSize;
+        }
+
+        &-text {
+            font-size: @titleFontSize;
+            font-weight: 700;
+//            .truncate-text();
+        }
+
+        &-actions {
+            margin-left: auto;
+
+            &-dropdown {
+                vertical-align: top;
+                line-height: 28px;
+                margin-right: 12px;
+                display: inline-block;
+                margin-top: 3px;
+
+                &-is-common {
+                    left: -120px;
+                }
+
+                &-is-deployment {
+                    left: -115px;
+                }
+            }
+        }
+    }
+
+    &-warnings {
+      color: #a16a03;
+      background: @alertOrangeBg;
+      width: 100%;
+      height: auto;
+      padding: 15px;
+      border-radius: 4px;
+      border: 1px solid @alertOrangeBorder;
+      margin-bottom: 1rem;
+      font-size: 14px;
+    }
+
+    &-has-warnings {
+        padding-top: 0;
+        height: auto;
+    }
+
+    &-weighted-row {
+        display: flex;
+        align-items: flex-end;
+
+        &-group {
+            flex: 0 0 auto;
+            margin-bottom: 0;
+            padding-left: 40px;
+            min-height: 49px;
+
+            &-is-right {
+                min-height: 0px;
+                text-align: right;
+                padding-right: @sectionHeaderMarginLeft;
+            }
+        }
+
+        &-group-label {
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: @gray5;
+        }
+
+        &-group-value {
+            font-size: 24px;
+        }
+
+        &-group-value-small {
+            font-size: 18px;
+            font-weight: 200;
+        }
+
+        &-group-value-icon {
+            font-size: 14px;
+        }
+    }
+
+    &-tabs {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        list-style: none;
+        padding: 0;
+        margin: 20px 0px 5px 0;
+        border-bottom: @tabBorderWidth solid @gray7;
+    }
+
+    &-tab {
+        display: inline-block;
+        background-color: @pw;
+        color: @gray5;
+        border-bottom: @tabBorderWidth solid @gray7;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 1;
+        text-transform: capitalize;
+        margin-bottom: -@tabBorderWidth;
+
+        &:hover {
+            background-color: @pw;
+        }
+
+        &-alert {
+            line-height: 15px;
+            width: 15px;
+            border-radius: 8px;
+            display: inline-block;
+            font-size: 10px;
+            font-weight: bold;
+            text-align: center;
+            background-color: @red;
+            color: @pw;
+        }
+
+        &-link {
+            padding: 8px 24px 8px @sectionHeaderMarginLeft;
+            display: block;
+            color: inherit;
+            text-decoration: inherit;
+
+            &-is-disabled {
+                pointer-events: none;
+            }
+
+            &:hover, &:focus {
+                color: @gray1;
+                text-decoration: inherit;
+            }
+        }
+
+        &-is-active {
+            background-color: white;
+            border-bottom: @tabBorderWidth solid @green2;
+            color: @gray1;
+        }
+
+        &-is-disabled {
+            cursor: not-allowed;
+            color: @gray5;
+
+            &:hover {
+                background-color: @gray8;
+            }
+        }
+
+        &-is-left {
+            border-radius: 3px 0px 0px 0px;
+        }
+
+        &-is-right {
+            border-radius: 0px 3px 0px 0px;
+        }
+
+        &-is-beta {
+            position: relative;
+
+            &::after{
+                content: 'beta';
+                position: absolute;
+                top: -15px;
+                right: 0;
+                padding: 4px 8px;
+                border-radius: 3px;
+                color: white;
+                background-color: @gray6;
+                font-size: 12px;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    &-more {
+        color: @gray5;
+        background-color: @pw;
+        text-transform: capitalize;
+        padding: 7px 8px 6px 8px;
+        border: 0px;
+        font-weight: bold;
+        font-size: 13px;
+
+        &:hover {
+            background-color: @pw;
+        }
+
+        // Non-BEM adjustment to bootstrap dropdown
+        & + .dropdown-menu {
+            margin-top: -5px;
+            margin-left: 5px;
+        }
+
+        &-icon {
+            font-size: 12px;
+            color: @mutedText;
+        }
+    }
+
+    &-link {
+        color: @gray4;
+        margin-right: 15px;
+
+        &:hover {
+            color: inherit;
+            text-decoration: none; //disable bootstraps colors
+        }
+
+        &-is-active {
+            color: @green2;
+        }
+
+        &-is-warning {
+            color: @red;
+        }
+    }
+
+    &-superscript {
+        font-size: 10px;
+    }
+
+    &-alert-container-is-partial-width {
+        margin-right: 325px;
+    }
+
+    &-bubble-banner-container {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 310px;
+    }
+
+    // Non-BEM adjustment to bootstrap dropdown
+    li.dropdown.open {
+        .section-header-more {
+            background-color: @pw;
+            color: @green2;
+        }
+    }
+}
+

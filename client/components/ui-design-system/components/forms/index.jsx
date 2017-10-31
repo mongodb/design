@@ -3,6 +3,7 @@
 // ==================================================
 
 import React from 'react';
+import Code from '../../subcomponents/code';
 
 const UIForms = () => (
   <div className="wrap">
@@ -30,11 +31,10 @@ const UIForms = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<input type="text" placeholder={"Something"} class="input" />' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<input type="text" placeholder={"Something"} class="input" />`}> 
+        </Code>
       </div>
     </div>
 
@@ -50,11 +50,10 @@ const UIForms = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<input type="text" placeholder={"Something"} class="input input-is-small" />' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<input type="text" placeholder={'Something'} class="input input-is-small" />`}> 
+        </Code>
       </div>
     </div>
 
@@ -73,12 +72,11 @@ const UIForms = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<input type="text" placeholder={"Something"} class="input" />' }</div>
-            <div>{ '<button class="button button-is-primary button-is-full">Submit Form</button>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<input type="text" placeholder={"Something"} class="input" />
+<button class="button button-is-primary button-is-full">Submit Form</button>`}> 
+        </Code>
       </div>
     </div>
 
@@ -98,14 +96,13 @@ const UIForms = () => (
     </div>
     <div className="row u-mb-2">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="input-with-message">' }</div>
-            <div>{ '  <input type="text" placeholder={"Something"} class="input input-is-success input-form-control" />' }</div>
-            <div>{ '  <div class="success-label">Success</div>'}</div>
-            <div>{ '</div>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<div class="input-with-message">
+  <input type="text" placeholder={'Something'} class="input input-is-success input-form-control"/>
+  <div class="success-label">Success</div>
+</div>`}> 
+        </Code>
       </div>
     </div>
     <div className="row u-mb-0">
@@ -119,14 +116,13 @@ const UIForms = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="input-with-message">' }</div>
-            <div>{ '  <input type="text" placeholder={"Something"} class="input input-has-error" />' }</div>
-            <div>{ '  <p class="error-message">Contextual alert message goes here</p>'}</div>
-            <div>{ '</div>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<div class="input-with-message">
+  <input type="text" placeholder={'Something'} class="input input-has-error"/>
+  <p class="error-message">Contextual alert message goes here</p>
+</div>`}> 
+        </Code>
       </div>
     </div>
 
@@ -153,18 +149,17 @@ const UIForms = () => (
     </div>
     <div className="row u-mb-5">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div className="input-with-message">' }</div>
-            <div>{ '  <input type="password" readonly="" placeholder={"This is an obscurable input for viewing things like passwords"} className="input input-form-control" />' }</div>
-            <div>{ '  <div className="input-with-message-toggle">Show</div>'}</div>
-            <div>{ '</div>' }</div>
-            <div>{ '<div className="input-with-message">' }</div>
-            <div>{ '  <input type="text" readonly="" placeholder={"This is an input for viewing things like keys"} className="input input-form-control" />' }</div>
-            <div>{ '  <div className="input-with-message-toggle">Hide</div>'}</div>
-            <div>{ '</div>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<div class="input-with-message">
+  <input type="password" readonly="" placeholder={'This is an obscurable input for viewing things like passwords'} class="input input-form-control" />
+  <div class="input-with-message-toggle">Show</div>
+</div>
+<div class="input-with-message">
+  <input type="text" readonly="" placeholder={'This is an input for viewing things like keys'} class="input input-form-control" />
+  <div class="input-with-message-toggle">Hide</div>
+</div>`}> 
+        </Code>
       </div>
     </div>
 
@@ -199,24 +194,23 @@ const UIForms = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="clearfix">' }</div>
-            <div>{ '  <label class="rich-radio rich-radio-is-medium rich-radio-is-checked">' }</div>
-            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" checked>' }</div>
-            <div>{ '    <div class="rich-radio-main-text">A Selected Radio Option</div>' }</div>
-            <div>{ '  </label>' }</div>
-            <div>{ '  <label class="rich-radio rich-radio-is-medium">' }</div>
-            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="">' }</div>
-            <div>{ '    <div class="rich-radio-main-text">A Radio Option</div>' }</div>
-            <div>{ '  </label>' }</div>
-            <div>{ '  <label class="rich-radio rich-radio-is-medium">' }</div>
-            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="">' }</div>
-            <div>{ '    <div class="rich-radio-main-text">A Radio Option</div>' }</div>
-            <div>{ '  </label>' }</div>
-            <div>{ '</div>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<div class="clearfix">
+  <label class="rich-radio rich-radio-is-medium rich-radio-is-checked">
+    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" checked="" />
+    <div class="rich-radio-main-text">A Selected Radio Option</div>
+  </label>
+  <label class="rich-radio rich-radio-is-medium">
+    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" />
+    <div class="rich-radio-main-text">A Radio Option</div>
+  </label>
+  <label class="rich-radio rich-radio-is-medium">
+    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" />
+    <div class="rich-radio-main-text">A Radio Option</div>
+  </label>
+</div>`}> 
+        </Code>
       </div>
     </div>
 
@@ -245,24 +239,23 @@ const UIForms = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="clearfix">' }</div>
-            <div>{ '  <label class="rich-radio rich-radio-is-medium rich-radio-is-checked">' }</div>
-            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" checked>' }</div>
-            <div>{ '    <button class="button button-is-primary">Select</button>' }</div>
-            <div>{ '  </label>' }</div>
-            <div>{ '  <label class="rich-radio rich-radio-is-medium">' }</div>
-            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="">' }</div>
-            <div>{ '    <button class="button button-is-info">Select</button>' }</div>
-            <div>{ '  </label>' }</div>
-            <div>{ '  <label class="rich-radio rich-radio-is-medium">' }</div>
-            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="">' }</div>
-            <div>{ '    <button class="button button-is-info">Select</button>' }</div>
-            <div>{ '  </label>' }</div>
-            <div>{ '</div>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<div class="clearfix">
+  <label class="rich-radio rich-radio-is-medium rich-radio-is-checked">
+    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" checked />
+    <button class="button button-is-primary">Select</button>
+  </label>
+  <label class="rich-radio rich-radio-is-medium">
+    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" />
+    <button class="button button-is-info">Select</button>
+  </label>
+  <label class="rich-radio rich-radio-is-medium">
+    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" />
+    <button class="button button-is-info">Select</button>
+  </label>
+</div>`}> 
+        </Code>
       </div>
     </div>
 
@@ -295,32 +288,29 @@ const UIForms = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="clearfix">' }</div>
-            <div>{ '  <label class="rich-radio rich-radio-is-large rich-radio-is-checked">' }</div>
-            <div>{ '    <input class="rich-radio-radio-button" type="radio" name="region" value="" checked>' }</div>
-            <div>{ '    <div class="rich-radio-main-text">A Selected Radio Option</div>' }</div>
-            <div>{ '  </label>' }</div>
-            <div>{ '  <label class="rich-radio rich-radio-is-large">' }</div>
-            <div>{ '    <input class="rich-radio-radio-button" type="radio" name="region" value="">' }</div>
-            <div>{ '    <div class="rich-radio-main-text">A Radio Option</div>' }</div>
-            <div>{ '  </label>' }</div>
-            <div>{ '  <label class="rich-radio rich-radio-is-large">' }</div>
-            <div>{ '    <input class="rich-radio-radio-button" type="radio" name="region" value="">' }</div>
-            <div>{ '    <div class="rich-radio-main-text">A Radio Option</div>' }</div>
-            <div>{ '  </label>' }</div>
-            <div>{ '  <label class="rich-radio rich-radio-is-large">' }</div>
-            <div>{ '    <input class="rich-radio-radio-button" type="radio" name="region" value="">' }</div>
-            <div>{ '    <div class="rich-radio-main-text">A Radio Option</div>' }</div>
-            <div>{ '  </label>' }</div>
-            <div>{ '</div>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<div class="clearfix">
+  <label class="rich-radio rich-radio-is-large rich-radio-is-checked">
+    <input class="rich-radio-radio-button" type="radio" name="region" value="" checked />
+    <div class="rich-radio-main-text">A Selected Radio Option</div>
+  </label>
+  <label class="rich-radio rich-radio-is-large">
+    <input class="rich-radio-radio-button" type="radio" name="region" value="" />
+    <div class="rich-radio-main-text">A Radio Option</div>
+  </label>
+  <label class="rich-radio rich-radio-is-large">
+    <input class="rich-radio-radio-button" type="radio" name="region" value="" />
+    <div class="rich-radio-main-text">A Radio Option</div>
+  </label>
+  <label class="rich-radio rich-radio-is-large">
+    <input class="rich-radio-radio-button" type="radio" name="region" value="" />
+    <div class="rich-radio-main-text">A Radio Option</div>
+  </label>
+</div>`}> 
+        </Code>
       </div>
     </div>
-
-
     <div className="row">
       <div className="columns small-12">
         <h3>In Columns with Rich Content</h3>
@@ -362,38 +352,37 @@ const UIForms = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="rich-radio">' }</div>
-            <div>{ '  <div class="rich-radio-title">Option Name</div>' }</div>
-            <div>{ '  <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>' }</div>
-            <div>{ '  <section>' }</div>
-            <div>{ '    <ul class="checklist">' }</div>
-            <div>{ '      <li class="checklist-item">feature one</li>' }</div>
-            <div>{ '      <li class="checklist-item">feature one</li>' }</div>
-            <div>{ '      <li class="checklist-item">feature one</li>' }</div>
-            <div>{ '    </ul>' }</div>
-            <div>{ '  </section>' }</div>
-            <div>{ '  <button type="button" class="button button-is-primary button-is-full">' }</div>
-            <div>{ '    Select' }</div>
-            <div>{ '  </button>' }</div>
-            <div>{ '</div>' }</div>
-            <div>{ '<div class="rich-radio">' }</div>
-            <div>{ '  <div class="rich-radio-title">Option Name</div>' }</div>
-            <div>{ '  <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>' }</div>
-            <div>{ '  <section>' }</div>
-            <div>{ '    <ul class="checklist">' }</div>
-            <div>{ '      <li class="checklist-item">feature one</li>' }</div>
-            <div>{ '      <li class="checklist-item">feature one</li>' }</div>
-            <div>{ '      <li class="checklist-item">feature one</li>' }</div>
-            <div>{ '    </ul>' }</div>
-            <div>{ '  </section>' }</div>
-            <div>{ '  <button type="button" class="button button-is-primary button-is-full">' }</div>
-            <div>{ '    Select' }</div>
-            <div>{ '  </button>' }</div>
-            <div>{ '</div>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<div class="rich-radio">
+  <div class="rich-radio-title">Option Name</div>
+  <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+  <section>
+    <ul class="checklist">
+      <li class="checklist-item">feature one</li>
+      <li class="checklist-item">feature one</li>
+      <li class="checklist-item">feature one</li>
+    </ul>
+  </section>
+  <button type="button" class="button button-is-primary button-is-full">
+    Select
+  </button>
+</div>
+<div class="rich-radio">
+  <div class="rich-radio-title">Option Name</div>
+  <p>Option description lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+  <section>
+    <ul class="checklist">
+      <li class="checklist-item">feature one</li>
+      <li class="checklist-item">feature one</li>
+      <li class="checklist-item">feature one</li>
+    </ul>
+  </section>
+  <button type="button" class="button button-is-primary button-is-full">
+    Select
+  </button>
+</div>`}> 
+        </Code>
       </div>
     </div>
 
@@ -472,72 +461,71 @@ const UIForms = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="clearfix">' }</div>
-            <div>{ '  <label class="rich-radio rich-radio-is-medium rich-radio-is-checked">' }</div>
-            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="3" checked>' }</div>
-            <div>{ '    <div class="rich-radio-illustration-container">' }</div>
-            <div>{ '      <div>' }</div>
-            <div>{ '        <svg class="rich-radio-illustration">' }</div>
-            <div>{ '          <g transform="translate(6, 14)">' }</div>
-            <div>{ '            <rect width="25" height="25" transform="translate(0, 10), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
-            <div>{ '            <rect width="25" height="25" transform="translate(0, 5), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
-            <div>{ '            <rect width="25" height="25" transform="scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
-            <div>{ '          </g>' }</div>
-            <div>{ '        </svg>' }</div>
-            <div>{ '      </div>' }</div>
-            <div>{ '      <div>' }</div>
-            <div>{ '        <div class="rich-radio-illustration-title">Option Name</div>' }</div>
-            <div>{ '        <div class="rich-radio-illustration-description">Option Description</div>' }</div>
-            <div>{ '      </div>' }</div>
-            <div>{ '    </div>' }</div>
-            <div>{ '  </label>' }</div>
-            <div>{ '  <label class="rich-radio rich-radio-is-medium">' }</div>
-            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="5">' }</div>
-            <div>{ '    <div class="rich-radio-illustration-container">' }</div>
-            <div>{ '      <div>' }</div>
-            <div>{ '        <svg class="rich-radio-illustration">' }</div>
-            <div>{ '          <g transform="translate(6, 9)">' }</div>
-            <div>{ '            <rect width="25" height="25" transform="translate(0, 20), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
-            <div>{ '            <rect width="25" height="25" transform="translate(0, 15), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
-            <div>{ '            <rect width="25" height="25" transform="translate(0, 10), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
-            <div>{ '            <rect width="25" height="25" transform="translate(0, 5), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
-            <div>{ '            <rect width="25" height="25" transform="scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
-            <div>{ '          </g>' }</div>
-            <div>{ '        </svg>' }</div>
-            <div>{ '      </div>' }</div>
-            <div>{ '      <div>' }</div>
-            <div>{ '        <div class="rich-radio-illustration-title">Option Name</div>' }</div>
-            <div>{ '        <div class="rich-radio-illustration-description">Option Description</div>' }</div>
-            <div>{ '      </div>' }</div>
-            <div>{ '    </div>' }</div>
-            <div>{ '  </label>' }</div>
-            <div>{ '  <label class="rich-radio rich-radio-is-medium">' }</div>
-            <div>{ '    <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="7">' }</div>
-            <div>{ '    <div class="rich-radio-illustration-container">' }</div>
-            <div>{ '      <div>' }</div>
-            <div>{ '        <svg class="rich-radio-illustration">' }</div>
-            <div>{ '          <g transform="translate(6, 3)">' }</div>
-            <div>{ '            <rect width="25" height="25" transform="translate(0, 30), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
-            <div>{ '            <rect width="25" height="25" transform="translate(0, 25), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
-            <div>{ '            <rect width="25" height="25" transform="translate(0, 20), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
-            <div>{ '            <rect width="25" height="25" transform="translate(0, 15), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
-            <div>{ '            <rect width="25" height="25" transform="translate(0, 10), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
-            <div>{ '            <rect width="25" height="25" transform="translate(0, 5), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
-            <div>{ '            <rect width="25" height="25" transform="scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>' }</div>
-            <div>{ '          </g>' }</div>
-            <div>{ '        </svg>' }</div>
-            <div>{ '      </div>' }</div>
-            <div>{ '      <div>' }</div>
-            <div>{ '        <div class="rich-radio-illustration-title">Option Name</div>' }</div>
-            <div>{ '        <div class="rich-radio-illustration-description">Option Description</div>' }</div>
-            <div>{ '      </div>' }</div>
-            <div>{ '    </div>' }</div>
-            <div>{ '  </label>' }</div>
-            <div>{ '</div>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<div class="clearfix">
+ <label class="rich-radio rich-radio-is-medium rich-radio-is-checked">
+   <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="3" checked>
+   <div class="rich-radio-illustration-container">
+     <div>
+       <svg class="rich-radio-illustration">
+         <g transform="translate(6, 14)">
+           <rect width="25" height="25" transform="translate(0, 10), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>
+           <rect width="25" height="25" transform="translate(0, 5), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>
+           <rect width="25" height="25" transform="scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>
+         </g>
+       </svg>
+     </div>
+     <div>
+       <div class="rich-radio-illustration-title">Option Name</div>
+       <div class="rich-radio-illustration-description">Option Description</div>
+     </div>
+   </div>
+ </label>
+ <label class="rich-radio rich-radio-is-medium">
+   <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="5">
+   <div class="rich-radio-illustration-container">
+     <div>
+       <svg class="rich-radio-illustration">
+         <g transform="translate(6, 9)">
+           <rect width="25" height="25" transform="translate(0, 20), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>
+           <rect width="25" height="25" transform="translate(0, 15), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>
+           <rect width="25" height="25" transform="translate(0, 10), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>
+           <rect width="25" height="25" transform="translate(0, 5), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>
+           <rect width="25" height="25" transform="scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>
+         </g>
+       </svg>
+     </div>
+     <div>
+       <div class="rich-radio-illustration-title">Option Name</div>
+       <div class="rich-radio-illustration-description">Option Description</div>
+     </div>
+   </div>
+ </label>
+ <label class="rich-radio rich-radio-is-medium">
+   <input class="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="7">
+   <div class="rich-radio-illustration-container">
+     <div>
+       <svg class="rich-radio-illustration">
+         <g transform="translate(6, 3)">
+           <rect width="25" height="25" transform="translate(0, 30), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>
+           <rect width="25" height="25" transform="translate(0, 25), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>
+           <rect width="25" height="25" transform="translate(0, 20), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>
+           <rect width="25" height="25" transform="translate(0, 15), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>
+           <rect width="25" height="25" transform="translate(0, 10), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>
+           <rect width="25" height="25" transform="translate(0, 5), scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>
+           <rect width="25" height="25" transform="scale(1, .6), rotate(45, 12, 12)" class="rich-radio-illustration-item"></rect>
+         </g>
+       </svg>
+     </div>
+     <div>
+       <div class="rich-radio-illustration-title">Option Name</div>
+       <div class="rich-radio-illustration-description">Option Description</div>
+     </div>
+   </div>
+ </label>
+<div>`}> 
+        </Code>
       </div>
     </div>
 

@@ -1,0 +1,64 @@
+.section-subtabs {
+    display: flex;
+    list-style: none;
+    padding: 0 0 0 5px;
+    width: 100%;
+    border-bottom: 1px solid @gray6;
+    margin: 0;
+
+    &-is-nested {
+        padding-left: 10px;
+    }
+
+    &-tab {
+        font-size: 14px;
+        font-weight: bold;
+        color: @gray4;
+        margin-bottom: -2px;
+        position: relative;
+
+        &-is-disabled {
+            cursor: not-allowed;
+            opacity: 0.4;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            right: 0px;
+            top: 16px;
+            height: 38%;
+        }
+
+        &-link {
+            color: inherit;
+            text-decoration: inherit;
+            padding: 6px 25px;
+            display: block;
+
+            &-is-disabled {
+                pointer-events: none;
+            }
+
+            &:hover, &:focus {
+                color: @green2;
+                text-decoration: inherit;
+            }
+        }
+
+        &-is-active {
+            color: @green2;
+        }
+
+        &-is-last {
+            &:after {
+                content: none;
+            }
+        }
+    }
+  font-size: 13px;
+
+  &-active {
+    color: @green2;
+  }
+}

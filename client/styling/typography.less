@@ -1,5 +1,6 @@
 a {
   text-decoration: none;
+  color: @linkText;
 }
 
 h1,
@@ -32,25 +33,29 @@ h1 {
 
 h2 {
   font-size: 1.625rem;
-  margin-bottom: 0.65rem;
   font-weight: 600;
+  margin-bottom: 0.85rem;
+  margin-top: 1.7rem;
 }
 
 h3 {
   font-size: 1.25rem;
   font-weight: 500;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.85rem;
+  margin-top: 1.7rem;
 }
 
 h4 {
   font-size: 1rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
+  margin-top: 1rem;
 }
 
 .link {
   color: @linkText;
   text-decoration: none;
+  cursor: pointer;
 
   &:hover {
     text-decoration: underline;
@@ -67,10 +72,6 @@ h4 {
   &-is-disabled {
     opacity: 0.4;
     text-decoration: none;
-    pointer-events: none;
+    cursor: not-allowed;
   }
 }
-
-
-
-

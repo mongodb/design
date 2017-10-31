@@ -3,12 +3,26 @@
 // ==================================================
 
 import React from 'react';
+import { Link } from 'react-router';
+import Code from '../../subcomponents/code';
 
 const UIButtons = () => (
   <div className="wrap button-ui">
     <div className="row u-mb-3">
       <div className="columns small-12">
         <h1>Buttons</h1>
+      </div>
+    </div>
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <ul className="tabs">
+          <li className="tabs-tab tabs-tab-is-active">
+            <Link to='/ui-design-system/components/buttons' className="tabs-tab-link">CSS</Link>
+          </li>
+          <li className="tabs-tab">
+            <Link to='/ui-design-system/components/buttons/react-buttons' className="tabs-tab-link">React</Link>
+          </li>
+        </ul>
       </div>
     </div>
     <div className="row u-mb-2">
@@ -27,14 +41,13 @@ const UIButtons = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<button class="button">Default Button</button>' }</div>
-            <div>{ '<button class="button button-is-primary">Primary Button</button>' }</div>
-            <div>{ '<button class="button button-is-danger">Destructive Button</button>' }</div>
-            <div>{ '<button class="button" disabled>Disabled Button</button>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<button class="button">Default Button</button>
+<button class="button button-is-primary">Primary Button</button>
+<button class="button button-is-danger">Destructive Button</button>
+<button class="button" disabled>Disabled Button</button>`}> 
+        </Code>
       </div>
     </div>
 
@@ -65,13 +78,12 @@ const UIButtons = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<button class="button button-has-ellipsis-only u-mr-2"></button>' }</div>
-            <div>{ '<button class="button button-has-ellipsis-only button-is-small u-mr-2"></button>' }</div>
-            <div>{ '<button class="button button-has-ellipsis-only button-is-xs u-mr-2"></button>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<button class="button button-has-ellipsis-only"></button>
+<button class="button button-has-ellipsis-only button-is-small"></button>
+<button class="button button-has-ellipsis-only button-is-xs"></button>`}> 
+        </Code>
       </div>
     </div>
 
@@ -96,16 +108,13 @@ const UIButtons = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<button class="button button-is-xs">Extra Small</button>' }</div>
-            <div>{ '<button class="button button-is-small">Small Button</button>' }</div>
-            <div>{ '<button class="button">Normal Button</button>' }</div>
-            <div>{ '<button class="button button-is-large">Large Button</button>' }</div>
-            <div>{ ' ' }</div>
-            <div>{ '<button class="button button-is-full">Full Width Button</button>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<button class="button button-is-xs">Extra Small</button>
+<button class="button button-is-small">Small Button</button>
+<button class="button">Normal Button</button>
+<button class="button button-is-large">Large Button</button>`}> 
+        </Code>
       </div>
     </div>
 
@@ -130,19 +139,18 @@ const UIButtons = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<div class="button-group">' }</div>
-            <div>{ '  <button class="button-group-button button button-is-xs">First</button>' }</div>
-            <div>{ '  <button class="button-group-button button button-is-xs">Last</button>' }</div>
-            <div>{ '</div>' }</div>
-            <div>{ '<div class="button-group">' }</div>
-            <div>{ '  <button class="button-group-button button button-is-xs">First</button>' }</div>
-            <div>{ '  <button class="button-group-button button button-is-xs">Middle</button>' }</div>
-            <div>{ '  <button class="button-group-button button button-is-xs">Last</button>' }</div>
-            <div>{ '</div>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<div class="button-group">
+  <button class="button-group-button button button-is-xs">First</button>
+  <button class="button-group-button button button-is-xs">Last</button>
+</div>
+<div class="button-group">
+  <button class="button-group-button button button-is-xs">First</button>
+  <button class="button-group-button button button-is-xs">Middle</button>
+  <button class="button-group-button button button-is-xs">Last</button>
+</div>`}> 
+        </Code>
       </div>
     </div>
 
@@ -162,17 +170,15 @@ const UIButtons = () => (
     </div>
     <div className="row u-mb-3">
       <div className="columns small-12">
-        <pre>
-          <code className="language-html hljs xml" data-lang="html">
-            <div>{ '<a class="link">This is a normal styled link</a>' }</div>
-            <div>{ '<a class="link link-is-underlined">This link is always underlined, even when not hovering</a>' }</div>
-            <div>{ '<a class="link link-on-dark">This link is brighter, to be used against a blue background</a>' }</div>
-            <div>{ '<a class="link link-is-disabled">This link is disabled, which prevents click and hover events like tooltips</a>' }</div>
-          </code>
-        </pre>
+        <Code
+          language='language-html'
+          text={`<a class="link">This is a normal styled link</a><br></br>
+<a class="link link-is-underlined">This link is always underlined, even when not hovering</a><br></br>
+<a class="link link-on-dark">This link is brighter, to be used against a blue background</a><br></br>
+<a class="link link-is-disabled">This link is disabled, which prevents click and hover events like tooltips</a>`}> 
+        </Code>
       </div>
     </div>
-
   </div>
 );
 
