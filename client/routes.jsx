@@ -23,10 +23,11 @@ import UIQueryHistory from './components/ui-design-system/compass-components/que
 
 //Components
 import ComponentsIndex from './components/ui-design-system/components/index.jsx';
-import UICode from './components/ui-design-system/components/code/index.jsx';
 import UIBanners from './components/ui-design-system/components/banners/index.jsx';
 import UIButtons from './components/ui-design-system/components/buttons/index.jsx';
 import UIButtonsReact from './components/ui-design-system/components/buttons/react-buttons.jsx';
+import UICode from './components/ui-design-system/components/code/index.jsx';
+import UICopyableCommandReact from './components/ui-design-system/components/code/react-copyablecommand.jsx';
 import UIBubbles from './components/ui-design-system/components/bubbles/index.jsx';
 import UIForms from './components/ui-design-system/components/forms/index.jsx';
 import UILayouts from './components/ui-design-system/components/layouts/index.jsx';
@@ -64,10 +65,13 @@ const routes = (
       //Components
       <Route path="/ui-design-system/components" component={ComponentsIndex} />
       <Route path="/ui-design-system/components/code" component={UICode} />
+      <Route path="/ui-design-system/components/code/react-copyablecommand" component={UICopyableCommandReact} />
       <Route path="/ui-design-system/components/banners" component={UIBanners} />
       <Route path="/ui-design-system/components/bubbles" component={UIBubbles} />
       <Route path="/ui-design-system/components/buttons" component={UIButtons} />
       <Route path="/ui-design-system/components/buttons/react-buttons" component={UIButtonsReact} />
+      <Route path="/ui-design-system/components/code" component={UICode} />
+      <Route path="/ui-design-system/components/code/react-copyablecommand" component={UICopyableCommandReact} />
       <Route path="/ui-design-system/components/forms" component={UIForms} />
       <Route path="/ui-design-system/components/layouts" component={UILayouts} />
       <Route path="/ui-design-system/components/lists" component={UILists} />
