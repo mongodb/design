@@ -6,6 +6,10 @@ import Button from '../../react-components/Button.js';
 
 class UICopyableCommandReact extends React.Component {
 
+  state = { 
+    otherClasses:'copy-command-is-full-width'
+  };
+
   render() {
     return (
       <div className="wrap">
@@ -36,11 +40,10 @@ class UICopyableCommandReact extends React.Component {
             <h3>Copyable Command</h3>
           </div>
         </div>
-
         <div className="row u-mb-2">
           <div className="columns small-12">
             <CopyableCommand 
-              copyableText='This is a command that you can copy. It will not break onto the next line since the overflow will keep scrolling horizontally.' wrapText>
+              copyableText='This is a command that you can copy. It will not break onto the next line since the overflow will keep scrolling horizontally.'>
             </CopyableCommand>
           </div>
         </div>
@@ -49,7 +52,7 @@ class UICopyableCommandReact extends React.Component {
             <Code
               language='language-html'
               text={`<CopyableCommand 
-  copyableText='This is a command that you can copy. It will not break onto the next line since the overflow will keep scrolling horizontally.' wrapText>
+  copyableText='This is a command that you can copy. It will not break onto the next line since the overflow will keep scrolling horizontally.'>
 </CopyableCommand>`}> 
             </Code>
           </div>
@@ -58,7 +61,7 @@ class UICopyableCommandReact extends React.Component {
         <div className="row u-mb-2">
           <div className="columns small-12">
             <CopyableCommand 
-              copyableText='By default command snippets are not full width.' wrapText>
+              copyableText='By default command snippets are not full width.'>
             </CopyableCommand>
           </div>
         </div>
@@ -67,17 +70,16 @@ class UICopyableCommandReact extends React.Component {
             <Code
               language='language-html'
               text={`<CopyableCommand 
-  copyableText='By default command snippets are not full width.' wrapText>
+  copyableText='By default command snippets are not full width.'>
 </CopyableCommand>`}> 
             </Code>
           </div>
         </div>
-
         <div className="row u-mb-2">
           <div className="columns small-12">
             <CopyableCommand 
               copyableText='However, you can force the snippet to be full width by adding an additional class.' 
-              otherClasses='copy-command-is-full-width' wrapText>
+              fullWidth={true}>
             </CopyableCommand>
           </div>
         </div>
@@ -86,7 +88,8 @@ class UICopyableCommandReact extends React.Component {
             <Code
               language='language-html'
               text={`<CopyableCommand 
-  copyableText='However, you can force the snippet to be full width by adding an additional class.' wrapText>
+  copyableText='However, you can force the snippet to be full width by adding an additional class.' 
+  fullWidth={true}>
 </CopyableCommand>`}> 
             </Code>
           </div>
