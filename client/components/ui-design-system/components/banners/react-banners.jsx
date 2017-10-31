@@ -35,10 +35,6 @@ class UIBannersReact extends React.Component {
   children="${message}",
   dismissible="${dismissible}"
 />`
-    return `<Alert
-      level="${this.state.controlLevel}",
-      children="${this.state.controlLevel}"
-    />`
   } 
 
   render() {
