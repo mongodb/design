@@ -23,7 +23,6 @@ import UIQueryHistory from './components/ui-design-system/compass-components/que
 
 //Components
 import ComponentsIndex from './components/ui-design-system/components/index.jsx';
-import UICode from './components/ui-design-system/components/code/index.jsx';
 import UIBanners from './components/ui-design-system/components/banners/index.jsx';
 import UIButtons from './components/ui-design-system/components/buttons/index.jsx';
 import UIButtonsReact from './components/ui-design-system/components/buttons/react-buttons.jsx';
