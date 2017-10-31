@@ -8,7 +8,7 @@ The MongoDB Design System contains the UI building blocks that make up the user 
 
 Build locally or visit [mongodb.design](http://mongodb.design) to view component documentation.
 
-[Download Sketch assets](https://github.com/leafygreen/sketchUILibrary)
+Sketch template files can be found at [https://github.com/leafygreen/sketchUILibrary](https://github.com/leafygreen/sketchUILibrary)
 
 ### Contribute
 
