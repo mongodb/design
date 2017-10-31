@@ -3,14 +3,17 @@ import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
 import CopyableCommand from '../../react-components/CopyableCommand.js';
 import Button from '../../react-components/Button.js';
+import { RadioGroup, Radio } from '../../react-components/RadioGroup.js';
+import Checkbox from '../../react-components/Checkbox.js';
 
 class UICopyableCommandReact extends React.Component {
 
   state = { 
-    otherClasses:'copy-command-is-full-width'
+    fullWidth: false
   };
 
   render() {
+    const isFullWidth = this.state.fullWidth ? `,\n  fullWidth={true}` : '';
     return (
       <div className="wrap">
         <div className="row u-mb-3">
@@ -43,44 +46,24 @@ class UICopyableCommandReact extends React.Component {
         <div className="row u-mb-2">
           <div className="columns small-12">
             <CopyableCommand 
-              copyableText='This is a command that you can copy. It will not break onto the next line since the overflow will keep scrolling horizontally.'>
+              copyableText='This is a command that you can copy.'
+              fullWidth={this.state.fullWidth}>
             </CopyableCommand>
           </div>
         </div>
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
-            <Code
-              language='language-html'
-              text={`<CopyableCommand 
-  copyableText='This is a command that you can copy. It will not break onto the next line since the overflow will keep scrolling horizontally.'>
-</CopyableCommand>`}> 
-            </Code>
-          </div>
-        </div>
-
-        <div className="row u-mb-2">
-          <div className="columns small-12">
-            <CopyableCommand 
-              copyableText='By default command snippets are not full width.'>
-            </CopyableCommand>
-          </div>
-        </div>
-        <div className="row u-mb-3">
-          <div className="columns small-12">
-            <Code
-              language='language-html'
-              text={`<CopyableCommand 
-  copyableText='By default command snippets are not full width.'>
-</CopyableCommand>`}> 
-            </Code>
+            <h3>Options</h3>
           </div>
         </div>
         <div className="row u-mb-2">
-          <div className="columns small-12">
-            <CopyableCommand 
-              copyableText='However, you can force the snippet to be full width by adding an additional class.' 
-              fullWidth={true}>
-            </CopyableCommand>
+          <div className="columns small-6">
+            <h4>State</h4>
+            <Checkbox 
+                label="Full Width"
+                checked={this.state.fullWidth}
+                onChange={fullWidth => this.setState({ fullWidth })}
+            />
           </div>
         </div>
         <div className="row u-mb-3">
@@ -88,8 +71,7 @@ class UICopyableCommandReact extends React.Component {
             <Code
               language='language-html'
               text={`<CopyableCommand 
-  copyableText='However, you can force the snippet to be full width by adding an additional class.' 
-  fullWidth={true}>
+  copyableText='This is a command that you can copy. It will not break onto the next line since the overflow will keep scrolling horizontally.'>${isFullWidth}
 </CopyableCommand>`}> 
             </Code>
           </div>
