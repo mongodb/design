@@ -16,12 +16,12 @@ class UICopyableCommandReact extends React.Component {
     const isFullWidth = this.state.fullWidth ? `,\n  fullWidth={true}` : '';
     return (
       <div className="wrap">
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
             <h1>Code</h1>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <ul className="tabs">
               <li className="tabs-tab">
@@ -33,17 +33,17 @@ class UICopyableCommandReact extends React.Component {
             </ul>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <h2>Code Styles</h2>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <h3>Copyable Command</h3>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <CopyableCommand 
               copyableText='This is a command that you can copy.'
@@ -56,7 +56,7 @@ class UICopyableCommandReact extends React.Component {
             <h3>Options</h3>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-6">
             <h4>State</h4>
             <Checkbox 

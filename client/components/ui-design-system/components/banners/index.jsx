@@ -7,12 +7,12 @@ import Code from '../../subcomponents/code';
 
 const UIBanners = () => (
   <div className="wrap button-ui">
-      <div className="row u-mb-3">
+      <div className="row">
         <div className="columns small-12">
           <h1>Banners</h1>
         </div>
       </div>
-      <div className="row u-mb-3">
+      <div className="row">
         <div className="columns small-12">
           <h2>Callout Banners</h2>
           <p>Used for calling attention to new products, features, and functionality.</p>
@@ -34,7 +34,7 @@ const UIBanners = () => (
           </div>
         </div>
       </div>
-      <div className="row u-mb-5">
+      <div className="row u-mb-3">
         <div className="columns small-12">
           <Code
             language='language-html'
@@ -49,7 +49,6 @@ const UIBanners = () => (
           </Code>
         </div>
       </div>
-
       <div className="row">
         <div className="columns small-12">
           <h3>Condensed Banner Callout</h3>
@@ -78,7 +77,7 @@ const UIBanners = () => (
           </div>
         </div>
       </div>
-      <div className="row u-mb-5">
+      <div className="row u-mb-3">
         <div className="columns small-12">
           <Code
             language='language-html'
@@ -103,8 +102,7 @@ const UIBanners = () => (
           </Code>
       </div>
     </div>
-
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h2>Status Banners</h2>
         <p>Our button styles comes in a variety of flavors including default, primary, destructive and disabled.</p>
@@ -126,7 +124,7 @@ const UIBanners = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
        <Code
         language='language-html'
@@ -156,7 +154,7 @@ const UIBanners = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
           language='language-html'
@@ -186,7 +184,7 @@ const UIBanners = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
          <Code
           language='language-html'
@@ -216,7 +214,7 @@ const UIBanners = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
        <Code
           language='language-html'

@@ -14,7 +14,7 @@ class UILayoutsReact extends React.Component {
             <h1>Layouts</h1>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <ul className="tabs">
               <li className="tabs-tab">

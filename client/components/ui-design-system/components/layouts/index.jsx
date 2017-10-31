@@ -8,12 +8,12 @@ import Code from '../../subcomponents/code';
 
 const UILayouts = () => (
   <div className="wrap">
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h1>Layouts</h1>
       </div>
     </div>
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <ul className="tabs">
           <li className="tabs-tab tabs-tab-is-active">
@@ -25,17 +25,17 @@ const UILayouts = () => (
         </ul>
       </div>
     </div>
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h2>Zero States</h2>
       </div>
     </div>
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h3>Empty State</h3>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
         <div className="empty-view">
           <div className="empty-view-text">Enter your empty view placeholder text here.</div>
@@ -43,7 +43,7 @@ const UILayouts = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
           language='language-html'
@@ -54,13 +54,12 @@ const UILayouts = () => (
         </Code>
       </div>
     </div>
-
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h3>Loading State</h3>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
         <div className="empty-view">
           <div className="empty-view-graphic">
@@ -75,7 +74,7 @@ const UILayouts = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
           language='language-html'
@@ -93,13 +92,12 @@ const UILayouts = () => (
         </Code>
       </div>
     </div>
-
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h3>Error State</h3>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
         <div className="empty-view">
           <div className="empty-view-graphic">
@@ -117,7 +115,7 @@ const UILayouts = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
           language='language-html'
@@ -138,20 +136,19 @@ const UILayouts = () => (
         </Code>
       </div>
     </div>
-
     {/*
 
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h2>Common Navigation</h2>
       </div>
     </div>
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h3>Section with Tabs</h3>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns">
         <div className="section-header section-header-has-tabs section-header-has-breadcrumbs">
           <div className="section-header-title">

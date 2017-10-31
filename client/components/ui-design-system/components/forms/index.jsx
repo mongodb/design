@@ -7,24 +7,23 @@ import Code from '../../subcomponents/code';
 
 const UIForms = () => (
   <div className="wrap">
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h1>Forms</h1>
       </div>
     </div>
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h2>Inputs</h2>
         <p>Inputs are used throughout the UI for several different purposes. Most frequently, inputs are used within the context of a form. Other uses include searching and filtering.</p>
       </div>
     </div>
-
     <div className="row">
       <div className="columns small-12">
         <h3>Default Input</h3>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
         <input type="text" placeholder={'Something'} className="input" />
       </div>
@@ -37,13 +36,12 @@ const UIForms = () => (
         </Code>
       </div>
     </div>
-
     <div className="row">
       <div className="columns small-12">
         <h3>Small Input</h3>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
         <input type="text" placeholder={'Something'} className="input input-is-small" />
       </div>
@@ -56,13 +54,12 @@ const UIForms = () => (
         </Code>
       </div>
     </div>
-
     <div className="row">
       <div className="columns small-12">
         <h3>Input with Button</h3>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-10">
         <input type="text" placeholder={'Something'} className="input" />
       </div>
@@ -79,13 +76,12 @@ const UIForms = () => (
         </Code>
       </div>
     </div>
-
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h3>Input States</h3>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
         <h4>Input Success</h4>
         <div className="input-with-message">
@@ -94,7 +90,7 @@ const UIForms = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-2">
+    <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
           language='language-html'
@@ -105,7 +101,7 @@ const UIForms = () => (
         </Code>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
        <h4>Input Error</h4>
         <div className="input-with-message">
@@ -125,7 +121,6 @@ const UIForms = () => (
         </Code>
       </div>
     </div>
-
     <div className="row">
       <div className="columns small-12">
         <h3>Obscurable Input</h3>
@@ -139,7 +134,7 @@ const UIForms = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
         <div className="input-with-message">
           <input type="text" readonly="" placeholder={'This is an input for viewing things like keys'} className="input input-form-control" />
@@ -147,7 +142,7 @@ const UIForms = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
           language='language-html'
@@ -162,8 +157,7 @@ const UIForms = () => (
         </Code>
       </div>
     </div>
-
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h2>Rich Form Controls</h2>
         <p>Occasionally a form calls for more than a simple radio button or checkbox. These rich form controls pack that extra punch.</p>
@@ -174,7 +168,7 @@ const UIForms = () => (
         <h3>Implicit Rich Radio</h3>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
         <div className="clearfix">
           <label className="rich-radio rich-radio-is-medium rich-radio-is-checked">
@@ -213,13 +207,12 @@ const UIForms = () => (
         </Code>
       </div>
     </div>
-
     <div className="row">
       <div className="columns small-12">
         <h3>With Select Buttons</h3>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
         <div className="clearfix">
           <label className="rich-radio rich-radio-is-medium rich-radio-is-checked">
@@ -258,13 +251,12 @@ const UIForms = () => (
         </Code>
       </div>
     </div>
-
     <div className="row">
       <div className="columns small-12">
         <h3>Large Rich Radio</h3>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
         <div className="clearfix">
           <label className="rich-radio rich-radio-is-large rich-radio-is-checked">
@@ -385,13 +377,12 @@ const UIForms = () => (
         </Code>
       </div>
     </div>
-
     <div className="row">
       <div className="columns small-12">
         <h3>With Illustrations</h3>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
         <div className="clearfix">
           <label className="rich-radio rich-radio-is-medium rich-radio-is-checked">
@@ -412,7 +403,6 @@ const UIForms = () => (
               </div>
             </div>
           </label>
-
           <label className="rich-radio rich-radio-is-medium">
             <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="5" />
             <div className="rich-radio-illustration-container">
@@ -433,7 +423,6 @@ const UIForms = () => (
               </div>
             </div>
           </label>
-
           <label className="rich-radio rich-radio-is-medium">
             <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="7" />
             <div className="rich-radio-illustration-container">
@@ -528,7 +517,6 @@ const UIForms = () => (
         </Code>
       </div>
     </div>
-
   </div>
 );
 

@@ -7,13 +7,12 @@ import ColorChip from '../../subcomponents/color-chip';
 
 const UIColors = () => (
   <div className="wrap">
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
-        <h1>Colors</h1>
+        <h1>Design Principles</h1>
       </div>
     </div>
-
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h2>UI Greens</h2>
       </div>
@@ -73,8 +72,7 @@ const UIColors = () => (
         />
       </div>
     </div>
-
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h2>UI Grays</h2>
       </div>
@@ -148,8 +146,7 @@ const UIColors = () => (
         />
       </div>
     </div>
-
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h2>Alert Colors</h2>
       </div>
@@ -200,8 +197,7 @@ const UIColors = () => (
         />
       </div>
     </div>
-
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h2>Text Colors</h2>
       </div>
@@ -268,7 +264,6 @@ const UIColors = () => (
         />
       </div>
     </div>
-
   </div>
 );
 

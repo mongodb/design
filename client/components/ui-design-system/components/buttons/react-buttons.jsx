@@ -38,12 +38,12 @@ class UIButtonsReact extends React.Component {
   render() {
     return (
       <div className="wrap button-ui">
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
             <h1>Buttons</h1>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <ul className="tabs">
               <li className="tabs-tab">
@@ -55,13 +55,13 @@ class UIButtonsReact extends React.Component {
             </ul>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <h2>Button Component</h2>
             <p>Our button component can be configured in a variety of flavors including default, primary, destructive and disabled.</p>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <Button
               label={this.state.controlLabel}
@@ -76,7 +76,7 @@ class UIButtonsReact extends React.Component {
             <h3>Options</h3>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-6">
             <h4>Type</h4>
             <RadioGroup
@@ -113,7 +113,7 @@ class UIButtonsReact extends React.Component {
             />
           </div>
         </div>
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
             <Code
               language='language-jsx'
