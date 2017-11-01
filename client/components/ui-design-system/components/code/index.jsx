@@ -8,12 +8,12 @@ import Code from '../../subcomponents/code';
 
 const UICode = () => (
       <div className="wrap">
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
             <h1>Code</h1>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <ul className="tabs">
               <li className="tabs-tab tabs-tab-is-active">
@@ -25,18 +25,17 @@ const UICode = () => (
             </ul>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <h2>Code Styles</h2>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <h3>Copyable Command</h3>
           </div>
         </div>
-
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <div className="copy-command">
               <span className="copy-command-text">This is a command that you can copy. It will not break onto the next line since the overflow will keep scrolling horizontally.</span>
@@ -59,8 +58,7 @@ const UICode = () => (
             </Code>
           </div>
         </div>
-
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <div className="copy-command">
               <span className="copy-command-text">By default command snippets are not full width.</span>
@@ -83,8 +81,7 @@ const UICode = () => (
             </Code>
           </div>
         </div>
-
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <div className="copy-command">
               <span className="copy-command-text copy-command-is-full-width">However, you can force the snippet to be full width by adding an additional class.</span>
@@ -107,14 +104,12 @@ const UICode = () => (
             </Code>
           </div>
         </div>
-
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <h3>Codeblock</h3>
           </div>
         </div>
-
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <div className="codeblock">
               <code>
@@ -141,13 +136,12 @@ const UICode = () => (
             </Code>
           </div>
         </div>
-
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <h3>JSON View</h3>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <div className="json-view-object">
               <div>

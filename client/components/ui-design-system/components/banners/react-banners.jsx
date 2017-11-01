@@ -40,12 +40,12 @@ class UIBannersReact extends React.Component {
   render() {
     return (
       <div className="wrap button-ui">
-      <div className="row u-mb-3">
+      <div className="row">
         <div className="columns small-12">
           <h1>Banners</h1>
         </div>
       </div>
-      <div className="row u-mb-2">
+      <div className="row">
         <div className="columns small-12">
           <ul className="tabs">
             <li className="tabs-tab">
@@ -57,13 +57,13 @@ class UIBannersReact extends React.Component {
           </ul>
         </div>
       </div>
-      <div className="row u-mb-3">
+      <div className="row">
         <div className="columns small-12">
           <h2>Alerts</h2>
           <p>Alerts are available in four levels – success, warning, danger, and info.</p>
         </div>
       </div>
-      <div className="row u-mb-3">
+      <div className="row">
         <div className="columns small-12">
           <Alert 
             level={this.state.controlLevel}
@@ -72,7 +72,7 @@ class UIBannersReact extends React.Component {
           />
         </div>
       </div>
-      <div className="row u-mb-2">
+      <div className="row">
         <div className="columns small-12">
           <h3>Options</h3>
         </div>
@@ -113,7 +113,7 @@ class UIBannersReact extends React.Component {
           />
         </div>
       </div>
-      <div className="row u-mb-3">
+      <div className="row">
         <div className="columns small-12">
           <Code
             language='language-jsx'
@@ -121,7 +121,7 @@ class UIBannersReact extends React.Component {
           </Code>
         </div>
       </div>
-      <div className="row u-mb-3">
+      <div className="row">
         <div className="columns small-12">
           <h3>Available Props</h3>
           <table className="table">

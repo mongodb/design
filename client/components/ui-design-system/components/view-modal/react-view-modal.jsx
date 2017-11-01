@@ -25,12 +25,12 @@ class UIViewModalReact extends React.Component {
   render() {
     return (
       <div className="wrap">
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
             <h1>Modals</h1>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <ul className="tabs">
               <li className="tabs-tab">
@@ -42,14 +42,14 @@ class UIViewModalReact extends React.Component {
             </ul>
           </div>
         </div>
-        <div className="row u-mb-1">
+        <div className="row">
           <div className="columns small-12">
             <h2>View Modal</h2>
             <p>The View Modal is a React component that can be configured to one of five preset sizes.</p>
           </div>
 
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
           <Button
             label={this.state.isOpen ? "Close Modal" : "Open Modal"}
@@ -77,7 +77,7 @@ class UIViewModalReact extends React.Component {
             </Modal.ModalFooter>
           </Modal>
         </div>
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
             <h3>Options</h3>
           </div>
@@ -109,7 +109,7 @@ class UIViewModalReact extends React.Component {
             </RadioGroup>
           </div>
         </div>
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
             <Code 
             language='language-jsx'
@@ -132,7 +132,7 @@ class UIViewModalReact extends React.Component {
             </Code>
           </div>
         </div>
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
             <h3>Available Props</h3>
             <table className="table">

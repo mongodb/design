@@ -38,12 +38,12 @@ class UIButtonsReact extends React.Component {
   render() {
     return (
       <div className="wrap button-ui">
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
             <h1>Buttons</h1>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <ul className="tabs">
               <li className="tabs-tab">
@@ -55,13 +55,13 @@ class UIButtonsReact extends React.Component {
             </ul>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <h2>Button Component</h2>
             <p>Our button component can be configured in a variety of flavors including default, primary, destructive and disabled.</p>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <Button
               label={this.state.controlLabel}
@@ -71,10 +71,12 @@ class UIButtonsReact extends React.Component {
             />
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <h3>Options</h3>
           </div>
+        </div>
+        <div className="row">
           <div className="columns small-6">
             <p><b>Type</b></p>
             <RadioGroup
@@ -115,7 +117,7 @@ class UIButtonsReact extends React.Component {
             />
           </div>
         </div>
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
             <Code
               language='language-jsx'
@@ -123,7 +125,7 @@ class UIButtonsReact extends React.Component {
             </Code>
           </div>
         </div>
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
             <h3>Available Props</h3>
             <table className="table">

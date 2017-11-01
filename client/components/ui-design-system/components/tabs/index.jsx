@@ -7,12 +7,12 @@ import Code from '../../subcomponents/code';
 
 const UITabs = () => (
   <div className="wrap button-ui">
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h1>Tabs</h1>
       </div>
     </div>
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
     		<h2>Default Tabs</h2>
     		<p>These horizontal tabs are typically used as the primary page-level navigation.</p>
@@ -36,7 +36,7 @@ const UITabs = () => (
         </ul>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
             language='language-html'
@@ -57,8 +57,7 @@ const UITabs = () => (
         </Code>
       </div>
     </div>
-
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h3>Common Navigation</h3>
         <p>Section Header, Tabs, Subtabs, Controls and Banner</p>
@@ -75,7 +74,6 @@ const UITabs = () => (
               </button>
             </div>
           </div>
-
         <ul className="section-header-tabs">
           <li className="section-header-tab section-header-tab-is-left">
             <a className="section-header-tab-link" href={"http://mongodb.com"}>Tab</a>
@@ -91,7 +89,6 @@ const UITabs = () => (
                More <i className="fa fa-caret-down section-header-more-icon"></i></a>
           </li>
         </ul>
-
         <ul className="section-subtabs">
           <li className="section-subtabs-tab">
             <a className="section-subtabs-tab-link" href={"http://mongodb.com"}>Subtab</a>
@@ -103,7 +100,6 @@ const UITabs = () => (
             <a className="section-subtabs-tab-link" href={"http://mongodb.com"}>Last Subtab</a>
           </li>
         </ul>
-
         <div className="section-controls">
           <span className="section-controls-filter">
             <label className="section-controls-label">Filter:</label>
@@ -117,12 +113,10 @@ const UITabs = () => (
             <button className="button-group-button button button-is-xs">Option 2</button>
           </div>
         </div>
-
         <div className="section-controls">
           <label className="section-controls-label button-is-xs"><div className="section-controls-label-text">I'm stackable:</div></label>
           <a className="button button-is-xs">Example Control <i className="fa fa-caret-down"></i></a>
         </div>
-
         <div className="section-banner">
           <span className="section-banner-item">Collection:
             <span className="section-banner-keyword"> guns_n_roses</span>
@@ -132,7 +126,6 @@ const UITabs = () => (
         </div>
       </div>
     </div>
-
     <pre>
     <code>
       <div>{ '<div class="section-header section-header-has-tabs section-header-has-breadcrumbs">' }</div>
@@ -205,8 +198,6 @@ const UITabs = () => (
       <div>{ '</div>' }</div>
     </code>
     </pre>
-
-
     <div className="row">
       <div className="section-header">
         <div className="section-header-title">
@@ -220,7 +211,6 @@ const UITabs = () => (
         </div>
       </div>
     </div>
-
     <pre>
     <code className="language-html hljs xml" data-lang="html">
       <div>{ '<div class="section-header">' }</div>
@@ -236,7 +226,6 @@ const UITabs = () => (
       <div>{ '</div>' }</div>
     </code>
     </pre>
-
     <div className="row">
       <div className="section-header">
       <div className="section-header-warnings">
@@ -244,7 +233,6 @@ const UITabs = () => (
           <i className="fa fa-exclamation-triangle section-warnings-icon"></i> This is a warning
         </div>
       </div>
-
       <div className="section-header-title">
         <div className="section-header-title-text">Section With Banner</div>
           <div className="section-header-title-actions">
@@ -254,7 +242,6 @@ const UITabs = () => (
             </button>
           </div>
       </div>
-      
         <ul className="section-header-tabs">
           <li className="section-header-tab section-header-tab-is-left">
             <a className="section-header-tab-link" href={"http://mongodb.com"}>Tab</a>
@@ -272,7 +259,6 @@ const UITabs = () => (
         </ul>
       </div>
     </div>
-
     <pre>
     <code className="language-html hljs xml" data-lang="html">
       <div>{ '<div class="section-header section-header-has-tabs section-header-has-warnings">' }</div>
@@ -303,9 +289,6 @@ const UITabs = () => (
       <div>{ '</div>' }</div>
     </code>
     </pre>
-
-
-
   </div>
 );
 

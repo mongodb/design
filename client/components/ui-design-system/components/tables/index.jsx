@@ -7,23 +7,23 @@ import Code from '../../subcomponents/code';
 
 const UITables = () => (
   <div className="wrap">
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h1>Tables</h1>
       </div>
     </div>
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h2>Standard Table</h2>
       </div>
     </div>
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h3>Light Theme</h3>
         <p>Use on a light background.</p>
       </div>
     </div>
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <table className="table">
           <thead>
@@ -118,14 +118,13 @@ const UITables = () => (
         </Code>
       </div>
     </div>
-
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h3>Dark Theme</h3>
         <p>Use on a dark background.</p>
       </div>
     </div>
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <table className="table">
           <thead>
@@ -171,17 +170,65 @@ const UITables = () => (
         </table>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row">
       <div className="columns small-12">
       </div>
     </div>
-
-    <div className="row u-mb-2">
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <Code
+          language='language-html'
+          text={`<table className="table">
+  <thead>
+    <tr className="table-row table-row-is-dark">
+      <th className="table-header table-header-is-dark">Name</th>
+      <th className="table-header table-header-is-dark">Status</th>
+      <th className="table-header table-header-is-dark">Version</th>
+      <th className="table-header table-header-is-dark table-cell-has-actions">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr className="table-row table-row-is-dark">
+      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-0</a></td>
+      <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+      <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
+      <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
+        <button className="button table-button button-is-xs u-mr-1">data</button>
+        <button className="button table-button button-is-xs u-mr-1">metrics</button>
+        <button className="button table-button button-is-xs">modify</button>
+      </td>
+    </tr>
+    <tr className="table-row table-row-is-dark">
+      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-0</a></td>
+      <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+      <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
+      <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
+        <button className="button table-button button-is-xs u-mr-1">data</button>
+        <button className="button table-button button-is-xs u-mr-1">metrics</button>
+        <button className="button table-button button-is-xs">modify</button>
+      </td>
+    </tr>
+    <tr className="table-row table-row-is-dark">
+      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-0</a></td>
+      <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+      <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
+      <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
+        <button className="button table-button button-is-xs u-mr-1">data</button>
+        <button className="button table-button button-is-xs u-mr-1">metrics</button>
+        <button className="button table-button button-is-xs">modify</button>
+      </td>
+    </tr>
+  </tbody>
+</table>`}> 
+        </Code>
+      </div>
+    </div>
+    <div className="row">
       <div className="columns small-12">
         <h2>Properties Table</h2>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns">
         <div className="data-viz-row data-viz-row-is-rounded">
           <header className="data-viz-row-cell data-viz-row-title">Cluster Details</header>
@@ -239,7 +286,7 @@ const UITables = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
           language='language-html'
@@ -301,12 +348,12 @@ const UITables = () => (
       </div>
     </div>
 
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h2>Summary Table</h2>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns">
         <div className="summary-table summary-table-is-rounded">
           <div className="summary-table-header">Cluster Overview</div>
@@ -376,7 +423,7 @@ const UITables = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns">
         <Code
           language='language-html'
@@ -449,7 +496,6 @@ const UITables = () => (
         </Code>
       </div>
     </div>
-
   </div>
 );
 

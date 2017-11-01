@@ -9,12 +9,12 @@ class UILayoutsReact extends React.Component {
   render() {
     return (
       <div className="wrap">
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
             <h1>Layouts</h1>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <ul className="tabs">
               <li className="tabs-tab">
@@ -26,17 +26,17 @@ class UILayoutsReact extends React.Component {
             </ul>
           </div>
         </div>
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
             <h2>Zero States</h2>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <h3>Empty State</h3>
           </div>
         </div>
-        <div className="row u-mb-0">
+        <div className="row">
           <div className="columns small-12">
             <SplashView 
               graphic={null} 
@@ -49,7 +49,7 @@ class UILayoutsReact extends React.Component {
             </SplashView>
           </div>
         </div>
-        <div className="row u-mb-5">
+        <div className="row u-mb-3">
           <div className="columns small-12">
             <Code
               language='language-html'
@@ -64,17 +64,17 @@ class UILayoutsReact extends React.Component {
             </Code>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <h3>Loading State</h3>
           </div>
         </div>
-        <div className="row u-mb-0">
+        <div className="row">
           <div className="columns small-12">
             <SplashView headlineText="Retrieving list of databases and collections..." isLoading />
           </div>
         </div>
-        <div className="row u-mb-5">
+        <div className="row u-mb-3">
           <div className="columns small-12">
             <Code
               language='language-html'
@@ -82,12 +82,12 @@ class UILayoutsReact extends React.Component {
             </Code>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <h3>Error State</h3>
           </div>
         </div>
-        <div className="row u-mb-0">
+        <div className="row">
           <div className="columns small-12">
             <SplashView headlineText="Write something about what they did wrong here." isError >            
               <Button
@@ -98,7 +98,7 @@ class UILayoutsReact extends React.Component {
             </SplashView>
           </div>
         </div>
-        <div className="row u-mb-5">
+        <div className="row u-mb-3">
           <div className="columns small-12">
             <Code
               language='language-html'

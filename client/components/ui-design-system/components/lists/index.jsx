@@ -7,12 +7,12 @@ import Code from '../../subcomponents/code';
 
 const UILists = () => (
   <div className="wrap">
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h1>Lists</h1>
       </div>
     </div>
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h2>List Styles</h2>
       </div>
@@ -73,7 +73,7 @@ const UILists = () => (
       </div>
     </div>
 
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h2>Progress Indicators</h2>
       </div>
@@ -123,7 +123,7 @@ const UILists = () => (
       </div>
     </div>
 
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h2>Pagination States</h2>
       </div>
