@@ -22,7 +22,7 @@ const UIRichForms = () => (
       <div className="columns small-12">
         <div className="clearfix">
           <label className="rich-radio rich-radio-is-medium rich-radio-is-checked">
-            <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" checked="" />
+            <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" />
             <div className="rich-radio-main-text">A Selected Radio Option</div>
           </label>
           <label className="rich-radio rich-radio-is-medium">
@@ -67,7 +67,7 @@ const UIRichForms = () => (
       <div className="columns small-12">
         <div className="clearfix">
           <label className="rich-radio rich-radio-is-medium rich-radio-is-checked">
-            <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" checked />
+            <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="region" value="" />
             <button className="button button-is-primary">Select</button>
           </label>
           <label className="rich-radio rich-radio-is-medium">
@@ -112,7 +112,7 @@ const UIRichForms = () => (
       <div className="columns small-12">
         <div className="clearfix">
           <label className="rich-radio rich-radio-is-large rich-radio-is-checked">
-            <input className="rich-radio-radio-button" type="radio" name="region" value="" checked />
+            <input className="rich-radio-radio-button" type="radio" name="region" value="" />
             <div className="rich-radio-main-text">A Selected Radio Option</div>
           </label>
           <label className="rich-radio rich-radio-is-large">
@@ -239,7 +239,7 @@ const UIRichForms = () => (
       <div className="columns small-12">
         <div className="clearfix">
           <label className="rich-radio rich-radio-is-medium rich-radio-is-checked">
-            <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="3" checked />
+            <input className="rich-radio-radio-button rich-radio-radio-button-is-hidden" type="radio" name="replicationFactor" value="3" />
             <div className="rich-radio-illustration-container">
               <div>
                 <svg className="rich-radio-illustration">

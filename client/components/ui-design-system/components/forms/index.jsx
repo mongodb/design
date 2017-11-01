@@ -129,7 +129,7 @@ const UIForms = () => (
     <div className="row u-mb-3">
       <div className="columns small-12">
         <div className="input-with-message">
-          <input type="password" readonly="" placeholder={'This is an obscurable input for viewing things like passwords'} className="input input-form-control" />
+          <input type="password" readOnly="" placeholder={'This is an obscurable input for viewing things like passwords'} className="input input-form-control" />
           <div className="input-with-message-toggle">Show</div>
         </div>
       </div>
@@ -137,7 +137,7 @@ const UIForms = () => (
     <div className="row">
       <div className="columns small-12">
         <div className="input-with-message">
-          <input type="text" readonly="" placeholder={'This is an input for viewing things like keys'} className="input input-form-control" />
+          <input type="text" readOnly="" placeholder={'This is an input for viewing things like keys'} className="input input-form-control" />
           <div className="input-with-message-toggle">Hide</div>
         </div>
       </div>
