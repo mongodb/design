@@ -8,7 +8,7 @@ import { Link } from 'react-router';
 const UIWelcome = () => (
   <div className="wrap">
     <div className="row">
-      <div className="columns small-12 u-mb-3">
+      <div className="columns small-12">
         <h1 className="heading">Welcome</h1>
       </div>
       <div className="columns small-12">

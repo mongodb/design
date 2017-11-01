@@ -8,12 +8,12 @@ import Code from '../../subcomponents/code';
 
 const UIViewModal = () => (
   <div className="wrap">
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h1>Modals</h1>
       </div>
     </div>
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <ul className="tabs">
           <li className="tabs-tab tabs-tab-is-active">
@@ -25,7 +25,7 @@ const UIViewModal = () => (
         </ul>
       </div>
     </div>
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h2>View Modal</h2>
         <p>The View Modal is a BEM component for the viewAsModal mixin. If you need functionality out of the header or footer that is not supported by the mixin, consider placing the functionality in the body instead and using the markup below:</p>
