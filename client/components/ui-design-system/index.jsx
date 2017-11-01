@@ -54,9 +54,9 @@ class UIDesignSystem extends React.Component {
             <li className="navigation-is-vertical-parent">
               <h4><Link to='/ui-design-system/components' className="navigation-link" activeClassName="navigation-link-active">Components</Link></h4>
               <ul className="navigation-is-vertical-child">
+                <li><Link to='/ui-design-system/components/buttons' className="navigation-link" activeClassName="navigation-link-active">Buttons</Link></li>
                 <li><Link to='/ui-design-system/components/banners' className="navigation-link" activeClassName="navigation-link-active">Banners</Link></li>
                 <li><Link to='/ui-design-system/components/bubbles' className="navigation-link" activeClassName="navigation-link-active">Bubbles</Link></li>
-                <li><Link to='/ui-design-system/components/buttons' className="navigation-link" activeClassName="navigation-link-active">Buttons</Link></li>
                 <li><Link to='/ui-design-system/components/code' className="navigation-link" activeClassName="navigation-link-active">Code</Link></li>
                 <li><Link to='/ui-design-system/components/forms' className="navigation-link" activeClassName="navigation-link-active">Inputs</Link></li>
                 <li><Link to='/ui-design-system/components/rich-forms' className="navigation-link" activeClassName="navigation-link-active">Rich Inputs</Link></li>
