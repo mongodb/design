@@ -51,14 +51,12 @@ class UICopyableCommandReact extends React.Component {
             </CopyableCommand>
           </div>
         </div>
-        <div className="row">
+        <div className="row u-mb-2">
           <div className="columns small-12">
             <h3>Options</h3>
           </div>
-        </div>
-        <div className="row u-mb-2">
           <div className="columns small-6">
-            <h4>State</h4>
+            <p><b>State</b></p>
             <Checkbox 
                 label="Full Width"
                 checked={this.state.fullWidth}
@@ -74,6 +72,67 @@ class UICopyableCommandReact extends React.Component {
   copyableText='This is a command that you can copy. It will not break onto the next line since the overflow will keep scrolling horizontally.'>${isFullWidth}
 </CopyableCommand>`}> 
             </Code>
+          </div>
+        </div>
+        <div className="row u-mb-3">
+          <div className="columns small-12">
+            <h3>Available Props</h3>
+            <table className="table">
+              <thead>
+                <tr className="table-row">
+                  <th className="table-header">Prop Name</th>
+                  <th className="table-header">Type</th>
+                  <th className="table-header">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">copyableText</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>String, Required</b></p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p>Text rendered as the code snippet</p>
+                  </td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">otherClasses</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>String</b></p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p>Additional CSS class(es) passed to the parent wrapper</p>
+                  </td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">children</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>Node</b></p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p>A collection of child elements of the code snippet</p>
+                  </td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">fullWidth</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>Boolean</b></p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p>Default = <b>false</b></p>
+                    <p>Defines whether the code snippet expands to take the full width of its parent container</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

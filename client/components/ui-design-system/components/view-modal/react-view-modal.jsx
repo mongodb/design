@@ -160,7 +160,7 @@ class UIViewModalReact extends React.Component {
                     <p><b>String</b></p>
                   </td>
                   <td className="table-column table-cell">
-                    <p>The header text of the modal</p>
+                    <p>Header text of the modal</p>
                   </td>
                 </tr>
                 <tr className="table-row">
@@ -171,7 +171,7 @@ class UIViewModalReact extends React.Component {
                     <p><b>Node</b></p>
                   </td>
                   <td className="table-column table-cell">
-                    <p>A collection of child elements of the modal body.</p>
+                    <p>A collection of child elements of the modal body</p>
                   </td>
                 </tr>
                 <tr className="table-row">
