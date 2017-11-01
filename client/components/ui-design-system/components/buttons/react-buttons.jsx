@@ -78,7 +78,7 @@ class UIButtonsReact extends React.Component {
         </div>
         <div className="row u-mb-2">
           <div className="columns small-6">
-            <h4>Type</h4>
+            <p><b>Type</b></p>
             <RadioGroup
               name="button-state"
               selectedValue={this.state.controlTypeClassName}
@@ -105,7 +105,7 @@ class UIButtonsReact extends React.Component {
             </RadioGroup>
           </div>
           <div className="columns small-6">
-            <h4>State</h4>
+            <p><b>State</b></p>
             <Checkbox 
                 label="Disabled"
                 checked={this.state.controlDisabled}
