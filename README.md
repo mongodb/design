@@ -23,4 +23,4 @@ Open [http://localhost:3000](http://localhost:3000). Make changes and submit a p
 
 
 
-<small>*The React versions of all components are still being built as we migrate our application frontends to React.</small>
+<sup><sub>*The React versions of all components are still being built as we migrate our application frontends to React.</sub></sup>
