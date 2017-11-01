@@ -2,7 +2,7 @@
 
 ### What is this?
 
-The MongoDB Design System contains the UI building blocks that make up the user experience across all MongoDB products. These components are free to use in your project. HTML/CSS ([BEM](https://en.bem.info/)) as well as React versions* are included.
+The MongoDB Design System contains the UI building blocks that make up the user experience across all MongoDB products. These components are free to use in your project. HTML/CSS ([BEM](https://en.bem.info/)) as well as React versions are included.
 
 ### Documentation
 
@@ -21,10 +21,3 @@ $ npm start
 
 Open [http://localhost:3000](http://localhost:3000). Make changes and submit a pull request (screenshots appreciated). 
 
-
-
-
-
-
-
-###### *The React versions of all components are still being built as we migrate our application frontends to React.
