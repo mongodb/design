@@ -7,7 +7,7 @@ import Code from '../../subcomponents/code';
 
 const UIRichForms = () => (
   <div className="wrap">
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h1>Rich Inputs</h1>
         <p>Occasionally a form calls for more than a simple radio button or checkbox. These rich form controls pack that extra punch.</p>
@@ -18,7 +18,7 @@ const UIRichForms = () => (
         <h2>Implicit Rich Radio</h2>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
         <div className="clearfix">
           <label className="rich-radio rich-radio-is-medium rich-radio-is-checked">
@@ -63,7 +63,7 @@ const UIRichForms = () => (
         <h2>With Select Buttons</h2>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
         <div className="clearfix">
           <label className="rich-radio rich-radio-is-medium rich-radio-is-checked">
@@ -108,7 +108,7 @@ const UIRichForms = () => (
         <h2>Large Rich Radio</h2>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
         <div className="clearfix">
           <label className="rich-radio rich-radio-is-large rich-radio-is-checked">
@@ -235,7 +235,7 @@ const UIRichForms = () => (
         <h2>With Illustrations</h2>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns small-12">
         <div className="clearfix">
           <label className="rich-radio rich-radio-is-medium rich-radio-is-checked">
