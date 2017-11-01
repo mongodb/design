@@ -6,3 +6,4 @@ build/
 nginx.conf
 npm-debug.log
 webpack-assets.json
+config.js
