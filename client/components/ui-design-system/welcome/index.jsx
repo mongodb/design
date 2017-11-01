@@ -6,6 +6,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const UIWelcome = () => (
+
   <div className="wrap">
     <div className="row">
       <div className="columns small-12">

@@ -86,7 +86,11 @@ class UIViewModalReact extends React.Component {
             <RadioGroup
               name="button-state"
               selectedValue={this.state.size}
-              onChange={size => this.setState({ size })}>
+              onChange={size => 
+                {this.setState({ size });
+                setTimeout(function(){ Prism.highlightAll(); }, 5);
+              }}
+            >
               <label className="checkbox">
                 <Radio value="xs" checked /> Extra Small
               </label>

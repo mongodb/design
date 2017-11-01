@@ -11,7 +11,7 @@ const ComponentsIndex = () => (
       <h1 className="heading">Components</h1>
     </div>
     <div className="columns small-12 u-mb-3">
-      <p>--- Components Intro ---</p>
+      <p>A collection of UI components common to MongoDB Cloud Manager, Atlas, Compass, and University.</p>
     </div>
   </div>
 );

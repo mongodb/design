@@ -52,27 +52,6 @@ const UILists = () => (
               <li><a className="nested-list-child-link" href="">bookstores</a></li>
             </ul>
           </li>
-          <li><a className="nested-list-parent-link" href=""><i className="mms-icon-database nested-list-icon"></i>cinema</a>
-            <ul>
-              <li><a className="nested-list-child-link" href="">films</a></li>
-              <li><a className="nested-list-child-link" href="">actors</a></li>
-              <li><a className="nested-list-child-link" href="">directors</a></li>
-              <li><a className="nested-list-child-link" href="">writers</a></li>
-              <li><a className="nested-list-child-link" href="">agents</a></li>
-              <li><a className="nested-list-child-link" href="">studios</a></li>
-              <li><a className="nested-list-child-link" href="">theaters</a></li>
-            </ul>
-          </li>
-          <li><a className="nested-list-parent-link" href=""><i className="mms-icon-database nested-list-icon"></i>music</a>
-            <ul>
-              <li><a className="nested-list-child-link" href="">bands</a></li>
-              <li><a className="nested-list-child-link" href="">singers</a></li>
-              <li><a className="nested-list-child-link" href="">songwriters</a></li>
-              <li><a className="nested-list-child-link" href="">managers</a></li>
-              <li><a className="nested-list-child-link" href="">studios</a></li>
-              <li><a className="nested-list-child-link" href="">venues</a></li>
-            </ul>
-          </li>
         </ul>
       </div>
     </div>
@@ -87,27 +66,6 @@ const UILists = () => (
       <li><a class="nested-list-child-link" href="">agents</a></li>
       <li><a class="nested-list-child-link" href="">publishers</a></li>
       <li><a class="nested-list-child-link" href="">bookstores</a></li>
-    </ul>
-  </li>
-  <li><a class="nested-list-parent-link" href=""><i class="mms-icon-database nested-list-icon"></i>cinema</a>
-    <ul>
-      <li><a class="nested-list-child-link" href="">films</a></li>
-      <li><a class="nested-list-child-link" href="">actors</a></li>
-      <li><a class="nested-list-child-link" href="">directors</a></li>
-      <li><a class="nested-list-child-link" href="">writers</a></li>
-      <li><a class="nested-list-child-link" href="">agents</a></li>
-      <li><a class="nested-list-child-link" href="">studios</a></li>
-      <li><a class="nested-list-child-link" href="">theaters</a></li>
-    </ul>
-  </li>
-  <li><a class="nested-list-parent-link" href=""><i class="mms-icon-database nested-list-icon"></i>music</a>
-    <ul>
-      <li><a class="nested-list-child-link" href="">bands</a></li>
-      <li><a class="nested-list-child-link" href="">singers</a></li>
-      <li><a class="nested-list-child-link" href="">songwriters</a></li>
-      <li><a class="nested-list-child-link" href="">managers</a></li>
-      <li><a class="nested-list-child-link" href="">studios</a></li>
-      <li><a class="nested-list-child-link" href="">venues</a></li>
     </ul>
   </li>
 </ul>`}> 

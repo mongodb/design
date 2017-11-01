@@ -58,7 +58,8 @@ class UIDesignSystem extends React.Component {
                 <li><Link to='/ui-design-system/components/bubbles' className="navigation-link" activeClassName="navigation-link-active">Bubbles</Link></li>
                 <li><Link to='/ui-design-system/components/buttons' className="navigation-link" activeClassName="navigation-link-active">Buttons</Link></li>
                 <li><Link to='/ui-design-system/components/code' className="navigation-link" activeClassName="navigation-link-active">Code</Link></li>
-                <li><Link to='/ui-design-system/components/forms' className="navigation-link" activeClassName="navigation-link-active">Forms</Link></li>
+                <li><Link to='/ui-design-system/components/forms' className="navigation-link" activeClassName="navigation-link-active">Inputs</Link></li>
+                <li><Link to='/ui-design-system/components/rich-forms' className="navigation-link" activeClassName="navigation-link-active">Rich Inputs</Link></li>
                 <li><Link to='/ui-design-system/components/layouts' className="navigation-link" activeClassName="navigation-link-active">Layouts</Link></li>
                 <li><Link to='/ui-design-system/components/lists' className="navigation-link" activeClassName="navigation-link-active">Lists</Link></li>
                 <li><Link to='/ui-design-system/components/view-modal' className="navigation-link" activeClassName="navigation-link-active">Modals</Link></li>

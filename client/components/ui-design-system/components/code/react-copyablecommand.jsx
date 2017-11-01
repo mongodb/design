@@ -62,7 +62,10 @@ class UICopyableCommandReact extends React.Component {
             <Checkbox 
                 label="Full Width"
                 checked={this.state.fullWidth}
-                onChange={fullWidth => this.setState({ fullWidth })}
+                onChange={fullWidth => 
+                  {this.setState({ fullWidth });
+                  setTimeout(function(){ Prism.highlightAll(); }, 5);
+                }}
             />
           </div>
         </div>
