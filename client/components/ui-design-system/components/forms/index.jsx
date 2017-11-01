@@ -31,7 +31,7 @@ const UIForms = () => (
     <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
-          language='language-html'
+          language='language-jsx'
           text={`<input type="text" placeholder={"Something"} class="input" />`}> 
         </Code>
       </div>
@@ -49,7 +49,7 @@ const UIForms = () => (
     <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
-          language='language-html'
+          language='language-jsx'
           text={`<input type="text" placeholder={'Something'} class="input input-is-small" />`}> 
         </Code>
       </div>
@@ -70,7 +70,7 @@ const UIForms = () => (
     <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
-          language='language-html'
+          language='language-jsx'
           text={`<input type="text" placeholder={"Something"} class="input" />
 <button class="button button-is-primary button-is-full">Submit Form</button>`}> 
         </Code>
@@ -93,7 +93,7 @@ const UIForms = () => (
     <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
-          language='language-html'
+          language='language-jsx'
           text={`<div class="input-with-message">
   <input type="text" placeholder={'Something'} class="input input-is-success input-form-control"/>
   <div class="success-label">Success</div>
@@ -113,7 +113,7 @@ const UIForms = () => (
     <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
-          language='language-html'
+          language='language-jsx'
           text={`<div class="input-with-message">
   <input type="text" placeholder={'Something'} class="input input-has-error"/>
   <p class="error-message">Contextual alert message goes here</p>
@@ -145,7 +145,7 @@ const UIForms = () => (
     <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
-          language='language-html'
+          language='language-jsx'
           text={`<div class="input-with-message">
   <input type="password" readonly="" placeholder={'This is an obscurable input for viewing things like passwords'} class="input input-form-control" />
   <div class="input-with-message-toggle">Show</div>

@@ -62,7 +62,7 @@ class UIViewModalReact extends React.Component {
             size={this.state.size}
             onClose={() => this.toggleModal(this.state.isOpen)}
             >
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
             <Modal.ModalFooter>
               <Button
                 label="Cancel"
