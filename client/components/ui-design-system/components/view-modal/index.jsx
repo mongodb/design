@@ -57,7 +57,7 @@ const UIViewModal = () => (
       <div className="columns small-12">
         <Code
           language='language-html'
-          text={`<div tabIndex="-1" class="view-modal-content view-modal-content-is-small">
+          text={`<div class="view-modal-content view-modal-content-is-small">
   <button type="button" name="close" class="view-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
   <header class="view-modal-header">
     <h3 class="view-modal-header-title">Your Title Here</h3>
