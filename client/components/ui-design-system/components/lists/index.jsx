@@ -13,11 +13,26 @@ const UILists = () => (
         <h1>Lists</h1>
       </div>
     </div>
+
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <ul className="tabs">
+          <li className="tabs-tab tabs-tab-is-active">
+            <Link to='/ui-design-system/components/lists' className="tabs-tab-link">CSS</Link>
+          </li>
+          <li className="tabs-tab">
+            <Link to='/ui-design-system/components/lists/react-lists' className="tabs-tab-link">React</Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
     <div className="row u-mb-2">
       <div className="columns small-12">
         <h2>List Styles</h2>
       </div>
     </div>
+
     <div className="row">
       <div className="columns small-12">
         <h3>Checklist</h3>
@@ -171,18 +186,7 @@ const UILists = () => (
         <h2 id="pagination">Pagination States</h2>
       </div>
     </div>
-    <div className="row u-mb-2">
-      <div className="columns small-12">
-        <ul className="tabs">
-          <li className="tabs-tab tabs-tab-is-active">
-            <Link to='/ui-design-system/components/lists' className="tabs-tab-link">CSS</Link>
-          </li>
-          <li className="tabs-tab">
-            <Link to='/ui-design-system/components/lists/react-lists' className="tabs-tab-link">React</Link>
-          </li>
-        </ul>
-      </div>
-    </div>
+
     <div className="row">
       <div className="columns small-12">
         <h3>Controls Enabled</h3>

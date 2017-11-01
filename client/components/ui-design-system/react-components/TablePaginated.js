@@ -4,7 +4,7 @@ const React = require('react');
 const { Component } = React;
 const PropTypes = require('prop-types');
 const classNames = require('classnames');
-const Table = require('./Table');
+const Table = require('./Table').default;
 
 class TablePaginated extends Component {
     static propTypes = {
