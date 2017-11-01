@@ -11,7 +11,7 @@ const GuidelinesIndex = () => (
       <h1 className="heading">Guidelines</h1>
     </div>
     <div className="columns small-12 u-mb-3">
-      <p>--- Guidelines Intro ---</p>
+      <p>Guidelines on interaction patterns used in our products.</p>
     </div>
   </div>
 );

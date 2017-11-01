@@ -11,7 +11,7 @@ const CompassIndex = () => (
       <h1 className="heading">MongoDB Compass</h1>
     </div>
     <div className="columns small-12 u-mb-3">
-      <p>--- Compass Intro ---</p>
+      <p>A collection of UI components specific to MongoDB Compass.</p>
     </div>
   </div>
 );

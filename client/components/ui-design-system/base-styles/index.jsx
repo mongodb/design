@@ -11,7 +11,7 @@ const BaseStylesIndex = () => (
       <h1 className="heading">Base Styles</h1>
     </div>
     <div className="columns small-12 u-mb-3">
-      <p>--- Base Styles Intro ---</p>
+      <p>Global styles for typography and color, as well as a general-purpose grid system for quickly laying out screens.</p>
     </div>
   </div>
 );
