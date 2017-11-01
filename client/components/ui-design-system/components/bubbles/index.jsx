@@ -14,11 +14,6 @@ const UIBubbles = () => (
     </div>
     <div className="row">
       <div className="columns small-12">
-        <h2>Bubble Labels</h2>
-      </div>
-    </div>
-    <div className="row">
-      <div className="columns small-12">
         <h3>Default Bubble Style</h3>
         <div className="bubble-label bubble-label-gray u-mr-2">3 Shards</div>
         <div className="bubble-label bubble-label-lighter-gray">5 Nodes</div>
