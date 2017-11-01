@@ -83,6 +83,7 @@ class UIButtonsReact extends React.Component {
               onChange={(controlTypeClassName, controlLabel) => {
                 this.setState({ controlTypeClassName });
                 this.setState({ controlLabel: buttonMap.get(controlTypeClassName) });
+                setTimeout(function(){ Prism.highlightAll(); }, 5);
               }}
             >
               <label className="checkbox">
@@ -107,7 +108,10 @@ class UIButtonsReact extends React.Component {
             <Checkbox 
                 label="Disabled"
                 checked={this.state.controlDisabled}
-                onChange={controlDisabled => this.setState({ controlDisabled })}
+                onChange={controlDisabled => {
+                  this.setState({ controlDisabled });
+                  setTimeout(function(){ Prism.highlightAll(); }, 5);
+                }}
             />
           </div>
         </div>

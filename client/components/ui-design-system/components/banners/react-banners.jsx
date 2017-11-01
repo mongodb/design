@@ -84,6 +84,7 @@ class UIBannersReact extends React.Component {
             onChange={(controlLevel) => {
               this.setState({ controlLevel });
               this.setState({ controlMessage: alertMap.get(controlLevel) });
+              setTimeout(function(){ Prism.highlightAll(); }, 5);
             }}
           >
             <label className="checkbox">
@@ -105,7 +106,10 @@ class UIBannersReact extends React.Component {
           <Checkbox 
               label="Dismissible"
               checked={this.state.controlDismissible}
-              onChange={controlDismissible => this.setState({ controlDismissible })}
+              onChange={controlDismissible => 
+                {this.setState({ controlDismissible });
+                setTimeout(function(){ Prism.highlightAll(); }, 10);
+            }}
           />
         </div>
       </div>

@@ -44,10 +44,10 @@ const UIModify = () => (
       <ol>
         <li>
           <p>Modify and commit text instantly</p>
-          <img src={modPattern100} />
-          <img src={modPattern101} />
-          <img src={modPattern102} />
-          <img src={modPattern103} />
+          <img className="guideline-screenshot" src={modPattern100} />
+          <img className="guideline-screenshot" src={modPattern101} />
+          <img className="guideline-screenshot" src={modPattern102} />
+          <img className="guideline-screenshot" src={modPattern103} />
         </li>
       </ol>
       <h4>When you should use modification pattern 1:</h4>
@@ -65,11 +65,11 @@ const UIModify = () => (
         </li>
         <li>
           <p>An additional user action is required to commit modifications as a group (e.g. SAVE changes)</p>
-          <img src={modPattern200} />
+          <img className="guideline-screenshot" src={modPattern200} />
         </li>
         <li>
           <p>warn for unintentional discarding of modifications</p>
-          <img src={modPattern201} />
+          <img className="guideline-screenshot" src={modPattern201} />
         </li>
       </ol>
       <h4>When you should use modification pattern 2:</h4>
@@ -90,19 +90,19 @@ const UIModify = () => (
       <ol>
         <li>
           <p>Modify inline elements, display each’s modified state</p>
-          <img src={modPattern300} />
-          <img src={modPattern301} />
+          <img className="guideline-screenshot" src={modPattern300} />
+          <img className="guideline-screenshot" src={modPattern301} />
         </li>
         <li>
           <p>Synchronously display its parent container’s modified state</p>
         </li>
         <li>
           <p>Commit modifications to the child elements via controls on the parent container</p>
-          <img src={modPattern302} />
+          <img className="guideline-screenshot" src={modPattern302} />
         </li>
         <li>
           <p>Display modification success on presentation layer</p>
-          <img src={modPattern303} />
+          <img className="guideline-screenshot" src={modPattern303} />
         </li>
       </ol>
       <h4>When you should use modification pattern 3:</h4>
@@ -117,23 +117,23 @@ const UIModify = () => (
       <ol>
         <li>
           <p>User initiates modification layer from presentation layer, which unwinds and displays complexity underlying a component’s presentation</p>
-          <img src={modPattern400} />
-          <img src={modPattern401} />
+          <img className="guideline-screenshot" src={modPattern400} />
+          <img className="guideline-screenshot" src={modPattern401} />
         </li>
         <li>
           <p>Modify inline elements, display each’s modified state</p>
-          <img src={modPattern402} />
+          <img className="guideline-screenshot" src={modPattern402} />
         </li>
         <li>
           <p>Synchronously display its parent container’s modified state</p>
         </li>
         <li>
           <p>Commit modifications to the child elements via controls on the modification layer’s parent container</p>
-          <img src={modPattern403} />
+          <img className="guideline-screenshot" src={modPattern403} />
         </li>
         <li>
           <p>Display modification progress and success on presentation layer</p>
-          <img src={modPattern404} />
+          <img className="guideline-screenshot" src={modPattern404} />
         </li>
       </ol>
       <h4>When you should use modification pattern 4:</h4>
@@ -147,27 +147,27 @@ const UIModify = () => (
       <ol>
         <li>
           <p>User initiates modification layer from presentation layer, which unwinds and displays complexity underlying a component’s presentation</p>
-          <img src={modPattern500} />
+          <img className="guideline-screenshot" src={modPattern500} />
         </li>
         <li>
           <p>Modify inline elements, display each’s modified state</p>
-          <img src={modPattern501} />
+          <img className="guideline-screenshot" src={modPattern501} />
         </li>
         <li>
           <p>Synchronously display its parent container’s modified state</p>
-          <img src={modPattern502} />
+          <img className="guideline-screenshot" src={modPattern502} />
         </li>
         <li>
           <p>User initiates confirmation layer (from presentation or modification layer), which unwinds and displays complexity underlying as line-items</p>
-          <img src={modPattern503} />
+          <img className="guideline-screenshot" src={modPattern503} />
         </li>
         <li>
           <p>Commit modifications to the child elements via controls on the confirmation layer</p>
-          <img src={modPattern504} />
+          <img className="guideline-screenshot" src={modPattern504} />
         </li>
         <li>
           <p>Display modification progress and success on presentation layer</p>
-          <img src={modPattern505} />
+          <img className="guideline-screenshot" src={modPattern505} />
         </li>
       </ol>
       <h4>When you should use modification pattern 5:</h4>
