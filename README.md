@@ -1,6 +1,16 @@
-# MongoDB Design Systems
+# MongoDB Design System
 
-### Getting Started
+### What is this?
+
+The MongoDB Design System contains the UI building blocks that make up the user experience across all MongoDB products. These components are free to use in your project. HTML/CSS ([BEM](https://en.bem.info/)) as well as React versions are included.
+
+### Documentation
+
+Build locally or visit [mongodb.design](http://mongodb.design) to view component documentation.
+
+Sketch template files can be found at [github.com/leafygreen/sketchUILibrary](https://github.com/leafygreen/sketchUILibrary).
+
+### Contribute
 
 Fork the repo, install the node modules and run the dev server:
 
@@ -9,24 +19,5 @@ $ npm install
 $ npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) & have fun. 🐒
+Open [http://localhost:3000](http://localhost:3000). Make changes and submit a pull request (screenshots appreciated). 
 
-### Deploy
-
-Set your `website` in `package.json` and generate all the static files with `npm run build`. Then upload the contents of the `build/` folder to your hosting solution of choice. Finish!
-
-You can also check out the production build on your local machine using `http-server`:
-
-```
-$ npm install -g http-server
-$ cd build
-$ http-server
-```
-
-### FAQ
-
-**My site is not working properly on Amazon S3**:<br>
-Make sure you define paths *with* trailing slashes, like `<Route path="about/">`.
-
-**My site is not working properly on Github Pages**:<br>
-Make sure you define paths *without* trailing slashes, like `<Route path="about">`.
