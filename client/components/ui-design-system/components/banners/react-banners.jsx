@@ -45,7 +45,6 @@ class UIBannersReact extends React.Component {
           <h1>Banners</h1>
         </div>
       </div>
-
       <div className="row u-mb-2">
         <div className="columns small-12">
           <ul className="tabs">
@@ -58,14 +57,12 @@ class UIBannersReact extends React.Component {
           </ul>
         </div>
       </div>
-
       <div className="row u-mb-3">
         <div className="columns small-12">
           <h2>Alerts</h2>
           <p>Alerts are available in four levels – success, warning, danger, and info.</p>
         </div>
       </div>
-
       <div className="row u-mb-3">
         <div className="columns small-12">
           <Alert 
@@ -75,10 +72,12 @@ class UIBannersReact extends React.Component {
           />
         </div>
       </div>
-
       <div className="row u-mb-2">
+        <div className="columns small-12">
+          <h3>Options</h3>
+        </div>
         <div className="columns small-6">
-          <h4>Type</h4>
+          <p><b>Type</b></p>
           <RadioGroup
             name="alert-state"
             selectedValue={this.state.controlLevel}
@@ -101,9 +100,8 @@ class UIBannersReact extends React.Component {
             </label>
           </RadioGroup>
         </div>
-
         <div className="columns small-6">
-          <h4>State</h4>
+          <p><b>Type</b></p>
           <Checkbox 
               label="Dismissible"
               checked={this.state.controlDismissible}
@@ -111,13 +109,75 @@ class UIBannersReact extends React.Component {
           />
         </div>
       </div>
-
       <div className="row u-mb-3">
         <div className="columns small-12">
           <Code
             language='language-jsx'
             text={this.codeSnippetHandler()}>
           </Code>
+        </div>
+      </div>
+      <div className="row u-mb-3">
+        <div className="columns small-12">
+          <h3>Available Props</h3>
+          <table className="table">
+            <thead>
+              <tr className="table-row">
+                <th className="table-header">Prop Name</th>
+                <th className="table-header">Type</th>
+                <th className="table-header">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="table-row">
+                <td className="table-column table-cell">
+                  <p className="code">level</p>
+                </td>
+                <td className="table-column table-cell">
+                  <p><b>String, Required</b></p>
+                </td>
+                <td className="table-column table-cell">
+                  <p>Default = <b>info</b></p>
+                  <p>Defines the color state of the banner</p>
+                  <p><b>Must be one of the following:</b> success, warning, danger, info</p>
+                </td>
+              </tr>
+              <tr className="table-row">
+                <td className="table-column table-cell">
+                  <p className="code">dismissible</p>
+                </td>
+                <td className="table-column table-cell">
+                  <p><b>boolean</b></p>
+                </td>
+                <td className="table-column table-cell">
+                  <p>Default = <b>false</b></p>
+                  <p>Defines whether the user can close the banner</p>
+                </td>
+              </tr>
+              <tr className="table-row">
+                <td className="table-column table-cell">
+                  <p className="code">onDismiss</p>
+                </td>
+                <td className="table-column table-cell">
+                  <p><b>Function</b></p>
+                </td> 
+                <td className="table-column table-cell">
+                  <p>Click event handler for the × close button</p>
+                </td>
+              </tr>
+              <tr className="table-row">
+                <td className="table-column table-cell">
+                  <p className="code">children</p>
+                </td>
+                <td className="table-column table-cell">
+                  <p><b>Node</b></p>
+                </td>
+                <td className="table-column table-cell">
+                  <p>A collection of child elements of the banner</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
   </div>
