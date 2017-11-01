@@ -43,7 +43,7 @@ class UILayoutsReact extends React.Component {
               headlineText="Enter your empty view placeholder text here.">
               <Button
                 label="Do Something"
-                className="button button-is-primary button-is-large"
+                className="button-is-primary button-is-large"
                 onClick={() => {return null}}
               />
             </SplashView>
@@ -56,10 +56,10 @@ class UILayoutsReact extends React.Component {
               text={`<SplashView 
   graphic={null}
   headlineText="Enter your empty view placeholder text here.">
-    <Button
-      label="Do Something"
-      className="button button-is-primary button-is-large"
-    />
+  <Button
+    label="Do Something"
+    className="button-is-primary button-is-large"
+  />
 </SplashView>`}> 
             </Code>
           </div>
@@ -92,7 +92,7 @@ class UILayoutsReact extends React.Component {
             <SplashView headlineText="Write something about what they did wrong here." isError >            
               <Button
                 label="Do Something Else"
-                className="button button-is-large"
+                className="button-is-large"
                 onClick={() => {return null}}
               />
             </SplashView>
@@ -105,7 +105,7 @@ class UILayoutsReact extends React.Component {
               text={`<SplashView headlineText="Write something about what they did wrong here." isError >
   <Button
     label="Do Something Else"
-    className="button button-is-large"
+    className="button-is-large"
   />
 </SplashView>`}> 
             </Code>

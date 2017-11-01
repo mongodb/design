@@ -18,7 +18,7 @@ function SplashView(props) {
     } = props;
 
     return (
-        <section className={classNames('empty-view', {
+        <div className={classNames('empty-view', {
             'empty-view-has-no-border': hasNoBorder
         })}
         >
@@ -34,7 +34,7 @@ function SplashView(props) {
                 {headlineText}
             </div>
             {children}
-        </section>
+        </div>
     );
 }
 

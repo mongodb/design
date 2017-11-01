@@ -43,7 +43,7 @@ const UILayouts = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <Code
           language='language-html'
@@ -109,7 +109,7 @@ const UILayouts = () => (
           <div className="empty-view-text empty-view-text-is-error">
             Write something about what they did wrong here.
           </div>
-          <button className="button button-is-large button-is-default">
+          <button className="button button-is-large">
             Do Something Else
           </button>
         </div>
@@ -129,7 +129,7 @@ const UILayouts = () => (
   <div class="empty-view-text empty-view-text-is-error">
     Write something about what they did wrong here.
   </div>
-  <button class="button button-is-large button-is-default">
+  <button class="button button-is-large">
     Do Something Else
   </button>
 </div>`}> 

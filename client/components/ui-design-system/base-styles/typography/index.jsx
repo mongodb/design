@@ -6,7 +6,7 @@ import React from 'react';
 
 const UITypography = () => (
   <div className="wrap">
-    <div className="row u-mb-5">
+    <div className="row">
       <div className="columns small-12">
         <h1>Typography</h1>
       </div>
