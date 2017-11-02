@@ -3,6 +3,7 @@
 // ==================================================
 
 import React from 'react';
+import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
 
 const UITables = () => (
@@ -12,6 +13,19 @@ const UITables = () => (
         <h1>Tables</h1>
       </div>
     </div>
+    <div className="row">
+      <div className="columns small-12">
+        <ul className="tabs">
+          <li className="tabs-tab tabs-tab-is-active">
+            <Link to='/ui-design-system/components/tables' className="tabs-tab-link">CSS</Link>
+          </li>
+          <li className="tabs-tab">
+            <Link to='/ui-design-system/components/tables/react-tables' className="tabs-tab-link">React</Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <div className="row">
       <div className="columns small-12">
         <h2>Standard Table</h2>
@@ -46,8 +60,8 @@ const UITables = () => (
               </td>
             </tr>
             <tr className="table-row">
-              <td className="table-column table-cell"><a className="link">free-shard-0</a></td>
-              <td className="table-column table-cell">1 min ago</td>
+              <td className="table-column table-cell"><a className="link">free-shard-1</a></td>
+              <td className="table-column table-cell">3 min ago</td>
               <td className="table-column table-cell">3.4.4</td>
               <td className="table-column table-cell table-cell-has-actions">
                 <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -56,8 +70,8 @@ const UITables = () => (
               </td>
             </tr>
             <tr className="table-row">
-              <td className="table-column table-cell"><a className="link">free-shard-0</a></td>
-              <td className="table-column table-cell">1 min ago</td>
+              <td className="table-column table-cell"><a className="link">free-shard-2</a></td>
+              <td className="table-column table-cell">5 min ago</td>
               <td className="table-column table-cell">3.4.4</td>
               <td className="table-column table-cell table-cell-has-actions">
                 <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -94,8 +108,8 @@ const UITables = () => (
       </td>
     </tr>
     <tr className="table-row">
-      <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>
-      <td className="table-column table-cell">1 min ago</td>
+      <td className="table-column table-cell"><a href={""} className="link">free-shard-1</a></td>
+      <td className="table-column table-cell">3 min ago</td>
       <td className="table-column table-cell">3.4.4</td>
       <td className="table-column table-cell table-cell-has-actions">
         <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -104,8 +118,8 @@ const UITables = () => (
       </td>
     </tr>
     <tr className="table-row">
-      <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>
-      <td className="table-column table-cell">1 min ago</td>
+      <td className="table-column table-cell"><a href={""} className="link">free-shard-2</a></td>
+      <td className="table-column table-cell">5 min ago</td>
       <td className="table-column table-cell">3.4.4</td>
       <td className="table-column table-cell table-cell-has-actions">
         <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -147,8 +161,8 @@ const UITables = () => (
               </td>
             </tr>
             <tr className="table-row table-row-is-dark">
-              <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>
-              <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+              <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-1</a></td>
+              <td className="table-column table-cell table-cell-is-dark">3 min ago</td>
               <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
               <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
                 <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -157,8 +171,8 @@ const UITables = () => (
               </td>
             </tr>
             <tr className="table-row table-row-is-dark">
-              <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>
-              <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+              <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-2</a></td>
+              <td className="table-column table-cell table-cell-is-dark">5 min ago</td>
               <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
               <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
                 <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -199,8 +213,8 @@ const UITables = () => (
       </td>
     </tr>
     <tr className="table-row table-row-is-dark">
-      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-0</a></td>
-      <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-1</a></td>
+      <td className="table-column table-cell table-cell-is-dark">3 min ago</td>
       <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
       <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
         <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -209,8 +223,8 @@ const UITables = () => (
       </td>
     </tr>
     <tr className="table-row table-row-is-dark">
-      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-0</a></td>
-      <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-2</a></td>
+      <td className="table-column table-cell table-cell-is-dark">5 min ago</td>
       <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
       <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
         <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -220,6 +234,89 @@ const UITables = () => (
     </tr>
   </tbody>
 </table>`}> 
+        </Code>
+      </div>
+    </div>
+   <div className="row">
+      <div className="columns small-12">
+        <h2 id="pagination">Pagination States</h2>
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Controls Enabled</h3>
+        <div className="paginator">
+          <span className="paginator-control paginator-control-is-left">
+            <button className="paginator-button paginator-button-is-previous">
+            </button> Previous
+          </span>
+          <span className="paginator-text">
+            <strong>100-200 results (both controls enabled)</strong>
+          </span>
+          <span className="paginator-control paginator-control-is-right">Next
+            <button className="paginator-button paginator-button-is-next">
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <Code
+          language='language-html'
+          text={`<div class="paginator">
+  <span class="paginator-control paginator-control-is-left">
+    <button class="paginator-button paginator-button-is-previous">
+    </button> Previous
+  </span>
+  <span class="paginator-text">
+    <strong>100-200 results (both controls enabled)</strong>
+  </span>
+  <span class="paginator-control paginator-control-is-right">Next
+    <button class="paginator-button paginator-button-is-next">
+    </button>
+  </span>
+</div>`}> 
+        </Code>
+      </div>
+    </div>
+
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Controls Disabled</h3>
+        <div className="paginator paginator-is-borderless">
+          <span className="paginator-control paginator-control-is-left paginator-control-is-disabled">
+            <button className="paginator-button paginator-button-is-previous" disabled>
+            </button> Previous
+          </span>
+          <span className="paginator-text">
+            <strong>0-0 results (both controls disabled, borderless example)</strong>
+          </span>
+          <span className="paginator-control paginator-control-is-right paginator-control-is-disabled" >Next
+            <button className="paginator-button paginator-button-is-next" disabled>
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <Code
+          language='language-html'
+          text={`<div class="paginator paginator-is-borderless">
+  <span class="paginator-control paginator-control-is-left paginator-control-is-disabled">
+    <button class="paginator-button paginator-button-is-previous" disabled>
+    </button> Previous
+  </span>
+  <span class="paginator-text">
+    <strong>0-0 results (both controls disabled, borderless example)</strong>
+  </span>
+  <span class="paginator-control paginator-control-is-right paginator-control-is-disabled">Next
+    <button class="paginator-button paginator-button-is-next" disabled>
+    </button>
+  </span>
+</div>`}> 
         </Code>
       </div>
     </div>

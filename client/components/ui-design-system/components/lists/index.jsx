@@ -3,6 +3,7 @@
 // ==================================================
 
 import React from 'react';
+import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
 
 const UILists = () => (
@@ -12,11 +13,13 @@ const UILists = () => (
         <h1>Lists</h1>
       </div>
     </div>
+    
     <div className="row">
       <div className="columns small-12">
         <h2>List Styles</h2>
       </div>
     </div>
+
     <div className="row">
       <div className="columns small-12">
         <h3>Checklist</h3>
@@ -119,89 +122,6 @@ const UILists = () => (
   <li class="step-indicator-step">This is your second step</li>
   <li class="step-indicator-step step-indicator-step-is-inactive">This is your third step. Keep them short.</li>
 </ol>`}> 
-        </Code>
-      </div>
-    </div>
-
-    <div className="row">
-      <div className="columns small-12">
-        <h2>Pagination States</h2>
-      </div>
-    </div>
-    <div className="row">
-      <div className="columns small-12">
-        <h3>Controls Enabled</h3>
-        <div className="paginator">
-          <span className="paginator-control paginator-control-is-left">
-            <button className="paginator-button paginator-button-is-previous">
-            </button> Previous
-          </span>
-          <span className="paginator-text">
-            <strong>100-200 results (both controls enabled)</strong>
-          </span>
-          <span className="paginator-control paginator-control-is-right">Next
-            <button className="paginator-button paginator-button-is-next">
-            </button>
-          </span>
-        </div>
-      </div>
-    </div>
-    <div className="row u-mb-3">
-      <div className="columns small-12">
-        <Code
-          language='language-html'
-          text={`<div class="paginator">
-  <span class="paginator-control paginator-control-is-left">
-    <button class="paginator-button paginator-button-is-previous">
-    </button> Previous
-  </span>
-  <span class="paginator-text">
-    <strong>100-200 results (both controls enabled)</strong>
-  </span>
-  <span class="paginator-control paginator-control-is-right">Next
-    <button class="paginator-button paginator-button-is-next">
-    </button>
-  </span>
-</div>`}> 
-        </Code>
-      </div>
-    </div>
-
-    <div className="row">
-      <div className="columns small-12">
-        <h3>Controls Disabled</h3>
-        <div className="paginator paginator-is-borderless">
-          <span className="paginator-control paginator-control-is-left paginator-control-is-disabled">
-            <button className="paginator-button paginator-button-is-previous" disabled>
-            </button> Previous
-          </span>
-          <span className="paginator-text">
-            <strong>0-0 results (both controls disabled, borderless example)</strong>
-          </span>
-          <span className="paginator-control paginator-control-is-right paginator-control-is-disabled" >Next
-            <button className="paginator-button paginator-button-is-next" disabled>
-            </button>
-          </span>
-        </div>
-      </div>
-    </div>
-    <div className="row u-mb-3">
-      <div className="columns small-12">
-        <Code
-          language='language-html'
-          text={`<div class="paginator paginator-is-borderless">
-  <span class="paginator-control paginator-control-is-left paginator-control-is-disabled">
-    <button class="paginator-button paginator-button-is-previous" disabled>
-    </button> Previous
-  </span>
-  <span class="paginator-text">
-    <strong>0-0 results (both controls disabled, borderless example)</strong>
-  </span>
-  <span class="paginator-control paginator-control-is-right paginator-control-is-disabled">Next
-    <button class="paginator-button paginator-button-is-next" disabled>
-    </button>
-  </span>
-</div>`}> 
         </Code>
       </div>
     </div>

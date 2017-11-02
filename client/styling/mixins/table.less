@@ -1,0 +1,40 @@
+/**
+ * Mixin to provide table styling to BEM components
+ */
+
+@header-side-padding: 5px;
+@header-top-bottom-padding: 4px;
+
+.table-mixin() {
+    font-size: 14px;
+    width: 100%;
+}
+
+.table-header-row-mixin() {
+    border-top: solid 2px @gray7;
+    border-bottom: solid 2px @gray7;
+    font-size: 12px;
+    color: @gray1;
+    font-weight: bold;
+}
+
+.table-column-header-mixin() {
+    padding: @header-top-bottom-padding @header-side-padding;
+    position: relative;
+}
+.table-column-header-after-mixin() {
+    content: '';
+    display: block;
+    position: absolute;
+    right: @header-side-padding;
+    top: @header-top-bottom-padding;
+    border-right: 1px solid @gray7;
+    height: calc(~"100% - " (@header-top-bottom-padding * 2)); // prevent less from overriding calc
+}
+
+.table-row-mixin() {
+    border-bottom: solid 1px @gray7;
+}
+.table-cell-mixin() {
+    padding: 10px 20px 10px 5px
+}

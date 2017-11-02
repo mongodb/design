@@ -37,6 +37,7 @@ import UILayoutsReact from './components/ui-design-system/components/layouts/rea
 import UILists from './components/ui-design-system/components/lists/index.jsx';
 import UITabs from './components/ui-design-system/components/tabs/index.jsx';
 import UITables from './components/ui-design-system/components/tables/index.jsx';
+import UITablesReact from './components/ui-design-system/components/tables/react-tables.jsx';
 import UIViewModal from './components/ui-design-system/components/view-modal/index.jsx';
 import UIViewModalReact from './components/ui-design-system/components/view-modal/react-view-modal.jsx';
 
@@ -83,6 +84,7 @@ const routes = (
       <Route path="/ui-design-system/components/lists" component={UILists} />
       <Route path="/ui-design-system/components/tabs" component={UITabs} />
       <Route path="/ui-design-system/components/tables" component={UITables} />
+      <Route path="/ui-design-system/components/tables/react-tables" component={UITablesReact} />
       <Route path="/ui-design-system/components/view-modal" component={UIViewModal} />
       <Route path="/ui-design-system/components/view-modal/react-view-modal" component={UIViewModalReact} />
 
