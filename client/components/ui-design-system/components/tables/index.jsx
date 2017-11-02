@@ -26,7 +26,7 @@ const UITables = () => (
       </div>
     </div>
 
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h2>Standard Table</h2>
       </div>
@@ -60,8 +60,8 @@ const UITables = () => (
               </td>
             </tr>
             <tr className="table-row">
-              <td className="table-column table-cell"><a className="link">free-shard-0</a></td>
-              <td className="table-column table-cell">1 min ago</td>
+              <td className="table-column table-cell"><a className="link">free-shard-1</a></td>
+              <td className="table-column table-cell">3 min ago</td>
               <td className="table-column table-cell">3.4.4</td>
               <td className="table-column table-cell table-cell-has-actions">
                 <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -70,8 +70,8 @@ const UITables = () => (
               </td>
             </tr>
             <tr className="table-row">
-              <td className="table-column table-cell"><a className="link">free-shard-0</a></td>
-              <td className="table-column table-cell">1 min ago</td>
+              <td className="table-column table-cell"><a className="link">free-shard-2</a></td>
+              <td className="table-column table-cell">5 min ago</td>
               <td className="table-column table-cell">3.4.4</td>
               <td className="table-column table-cell table-cell-has-actions">
                 <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -108,8 +108,8 @@ const UITables = () => (
       </td>
     </tr>
     <tr className="table-row">
-      <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>
-      <td className="table-column table-cell">1 min ago</td>
+      <td className="table-column table-cell"><a href={""} className="link">free-shard-1</a></td>
+      <td className="table-column table-cell">3 min ago</td>
       <td className="table-column table-cell">3.4.4</td>
       <td className="table-column table-cell table-cell-has-actions">
         <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -118,8 +118,8 @@ const UITables = () => (
       </td>
     </tr>
     <tr className="table-row">
-      <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>
-      <td className="table-column table-cell">1 min ago</td>
+      <td className="table-column table-cell"><a href={""} className="link">free-shard-2</a></td>
+      <td className="table-column table-cell">5 min ago</td>
       <td className="table-column table-cell">3.4.4</td>
       <td className="table-column table-cell table-cell-has-actions">
         <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -161,8 +161,8 @@ const UITables = () => (
               </td>
             </tr>
             <tr className="table-row table-row-is-dark">
-              <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>
-              <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+              <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-1</a></td>
+              <td className="table-column table-cell table-cell-is-dark">3 min ago</td>
               <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
               <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
                 <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -171,8 +171,8 @@ const UITables = () => (
               </td>
             </tr>
             <tr className="table-row table-row-is-dark">
-              <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>
-              <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+              <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-2</a></td>
+              <td className="table-column table-cell table-cell-is-dark">5 min ago</td>
               <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
               <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
                 <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -213,8 +213,8 @@ const UITables = () => (
       </td>
     </tr>
     <tr className="table-row table-row-is-dark">
-      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-0</a></td>
-      <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-1</a></td>
+      <td className="table-column table-cell table-cell-is-dark">3 min ago</td>
       <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
       <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
         <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -223,8 +223,8 @@ const UITables = () => (
       </td>
     </tr>
     <tr className="table-row table-row-is-dark">
-      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-0</a></td>
-      <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-2</a></td>
+      <td className="table-column table-cell table-cell-is-dark">5 min ago</td>
       <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
       <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
         <button className="button table-button button-is-xs u-mr-1">data</button>
