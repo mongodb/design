@@ -30,23 +30,23 @@ const UITabs = () => (
     <div className="row u-mb-2">
       <div className="columns small-12">
     		<h2>Default Tabs</h2>
-    		<p>Our button styles comes in a variety of flavors including default, primary, destructive and disabled.</p>
+    		<p>We have tabs for any and all kinds of options and situations.</p>
       </div>
     </div>
     <div className="row">
       <div className="columns small-12">
-        <ul className="tabs">
-          <li className="tabs-tab tabs-tab-is-active">
-            <a className="tabs-tab-link">Processes</a>
+        <ul className="section-header-tabs">
+          <li className="section-header-tab section-header-tab-is-active">
+            <a className="section-header-tab-link">Processes</a>
           </li>
-          <li className="tabs-tab">
-            <a className="tabs-tab-link">Servers</a>
+          <li className="section-header-tab">
+            <a className="section-header-tab-link">Servers</a>
           </li>
-          <li className="tabs-tab">
-            <a className="tabs-tab-link">Agents</a>
+          <li className="section-header-tab">
+            <a className="section-header-tab-link">Agents</a>
           </li>
-          <li className="tabs-tab">
-            <a className="tabs-tab-link">Security</a>
+          <li className="section-header-tab">
+            <a className="section-header-tab-link">Security</a>
           </li>
         </ul>
       </div>
