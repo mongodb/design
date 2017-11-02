@@ -35,7 +35,6 @@ import UIRichForms from './components/ui-design-system/components/rich-forms/ind
 import UILayouts from './components/ui-design-system/components/layouts/index.jsx';
 import UILayoutsReact from './components/ui-design-system/components/layouts/react-layouts.jsx';
 import UILists from './components/ui-design-system/components/lists/index.jsx';
-import UIListsReact from './components/ui-design-system/components/lists/react-lists.jsx';
 import UITabs from './components/ui-design-system/components/tabs/index.jsx';
 import UITables from './components/ui-design-system/components/tables/index.jsx';
 import UITablesReact from './components/ui-design-system/components/tables/react-tables.jsx';
@@ -83,7 +82,6 @@ const routes = (
       <Route path="/ui-design-system/components/layouts" component={UILayouts} />
       <Route path="/ui-design-system/components/layouts/react-layouts" component={UILayoutsReact} />
       <Route path="/ui-design-system/components/lists" component={UILists} />
-      <Route path="/ui-design-system/components/lists/react-lists" component={UIListsReact} />
       <Route path="/ui-design-system/components/tabs" component={UITabs} />
       <Route path="/ui-design-system/components/tables" component={UITables} />
       <Route path="/ui-design-system/components/tables/react-tables" component={UITablesReact} />
