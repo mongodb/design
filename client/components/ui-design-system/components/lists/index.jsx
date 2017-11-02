@@ -3,6 +3,7 @@
 // ==================================================
 
 import React from 'react';
+import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
 
 const UILists = () => (
@@ -12,11 +13,13 @@ const UILists = () => (
         <h1>Lists</h1>
       </div>
     </div>
+    
     <div className="row">
       <div className="columns small-12">
         <h2>List Styles</h2>
       </div>
     </div>
+
     <div className="row">
       <div className="columns small-12">
         <h3>Checklist</h3>
@@ -125,9 +128,10 @@ const UILists = () => (
 
     <div className="row">
       <div className="columns small-12">
-        <h2>Pagination States</h2>
+        <h2 id="pagination">Pagination States</h2>
       </div>
     </div>
+
     <div className="row">
       <div className="columns small-12">
         <h3>Controls Enabled</h3>
