@@ -23,11 +23,11 @@
   }
 
   &-is-vertical {
-    position: absolute;
+    position: fixed;
     width: 200px;
     height: 100%;
-    padding-left: 30px;
-    padding-top: 90px;
+    padding: 90px 0 50px 30px;
+    overflow: scroll;
 
     &-container {
       list-style: none;
@@ -35,18 +35,22 @@
     }
 
     &-parent {
-      margin-bottom: 24px;
+      margin-bottom: 12px;
+    }
+
+    h4 {
+      font-weight: bold;
     }
 
     h4, &-child {
       padding: 0; 
       list-style: none;
-      font-size: 16px;
-      line-height: 24px;
+      font-size: 15px;
+      line-height: 18px;
     }
 
     &-child {
-      margin-left: 20px;
+      margin-left: 18px;
     }
   }
 
@@ -130,7 +134,6 @@
     &-is-vertical {
       padding-top: 90px;
       position: relative;
-      background-color: whitesmoke;
       width: 100%;
       border-bottom: 1px solid #d7dbdb;
 

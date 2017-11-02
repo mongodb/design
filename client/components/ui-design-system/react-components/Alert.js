@@ -24,9 +24,10 @@ class Alert extends Component {
     render() {
         const { level, dismissible, onDismiss, children } = this.props;
         return (
-            <div className={'bem-alert bem-alert-is-${level}'}>
+
+            <div className={`bem-alert bem-alert-is-${level}`}>
                 {dismissible && (
-                    <button type="button" className="close" aria-label="Close" onClick={onDismiss}>
+                    <button type="button" className="bem-alert-close-button" aria-label="Close" onClick={onDismiss}>
                         <span aria-hidden="true">&times;</span>
                     </button>
                 )}

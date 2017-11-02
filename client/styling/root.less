@@ -7,6 +7,7 @@
 @import 'utilities.less';
 
 // BEM Components
+@import 'alert.less';
 @import 'bubble.less';
 @import 'buttons.less';
 @import 'button-group.less';
@@ -16,6 +17,8 @@
 @import 'forms.less';
 @import 'rich-radio.less';
 @import 'tabs.less';
+@import 'table.less';
+@import 'plain-table.less';
 @import 'tables.less';
 @import 'json-view.less';
 @import 'view-modal.less';
@@ -95,6 +98,7 @@ ul, li {
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
+  padding: 5px;
 }
 
 .content {
@@ -173,28 +177,54 @@ pre {
 }
 
 .color-chip {
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.1);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.1);
+  -webkit-box-sizing: border-box;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,.22);
+    -webkit-box-shadow: 0 4px 10px 0 rgba(0,0,0,.2);
+    
+    .color-chip-copy-button {
+      opacity: 1;
+    }
+  }
+
   &-swatch {
     padding: 40px 0;
     text-align: center;
     display: block;
-    border-radius: 3px;
-    margin-bottom: 0.5rem;
+  }
+
+  &-container {
+    padding: 5px;
+    display: inline-block;
+    width: 100%;
   }
 
   &-code {
     border: none;
+    display: block;
     padding: 0;
-    margin-bottom: 0.25rem;
   }
 
   &-label {
     margin-top: 1rem;
   }
 
+  &-copy-button {
+    float: right;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+  }
+
   &-hex {
     font-size: 14px;
     margin: 0;
     text-transform: lowercase;
+    float: left;
   }
 }
 
@@ -231,6 +261,15 @@ pre {
   font-size: 11px;
   font-weight: 600;
   color: @selectBlue;
+}
+
+.guideline-screenshot {
+  display: inline-block;
+  max-width: 48%;
+  padding: 0;
+  margin: 0 10px 10px 0;
+  border: 3px solid white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
 @media (max-width: 736px)  {

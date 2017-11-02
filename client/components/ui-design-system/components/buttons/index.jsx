@@ -8,12 +8,12 @@ import Code from '../../subcomponents/code';
 
 const UIButtons = () => (
   <div className="wrap button-ui">
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h1>Buttons</h1>
       </div>
     </div>
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <ul className="tabs">
           <li className="tabs-tab tabs-tab-is-active">
@@ -25,13 +25,13 @@ const UIButtons = () => (
         </ul>
       </div>
     </div>
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h2>Button Styles</h2>
         <p>Our button styles comes in a variety of flavors including default, primary, destructive and disabled.</p>
       </div>
     </div>
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <button className="button u-mr-2">Default Button</button>
         <button className="button button-is-primary u-mr-2">Primary Button</button>
@@ -51,7 +51,7 @@ const UIButtons = () => (
       </div>
     </div>
 
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h3>Dark Background</h3>
         <p>Use the darker button when placed on a dark background.</p>
@@ -68,7 +68,7 @@ const UIButtons = () => (
       </div>
     </div>
 
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h3>With Ellipsis Icons</h3>
         <button className="button button-has-ellipsis-only u-mr-2"></button>
@@ -87,13 +87,13 @@ const UIButtons = () => (
       </div>
     </div>
 
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h2>Button Sizes</h2>
         <p>Our buttons can be displayed as four different sizes.</p>
       </div>
     </div>
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <button className="button button-is-xs u-mr-2">Extra Small</button>
         <button className="button button-is-small u-mr-2">Small Button</button>
@@ -101,7 +101,7 @@ const UIButtons = () => (
         <button className="button button-is-large u-mr-2">Large Button</button>
       </div>
     </div>
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <button className="button button-is-full">Full Width Button</button>
       </div>
@@ -118,13 +118,13 @@ const UIButtons = () => (
       </div>
     </div>
 
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h2>Button Groups</h2>
         <p>Our buttons can be displayed as four different sizes.</p>
       </div>
     </div>
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <div className="button-group u-mr-2">
           <button className="button-group-button button button-is-xs">First</button>
@@ -153,15 +153,13 @@ const UIButtons = () => (
         </Code>
       </div>
     </div>
-
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h2>Links</h2>
       </div>
     </div>
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
-        <h3>Base Styles</h3>
           <a className="link">This is a normal styled link</a><br></br>
           <a className="link link-is-underlined">This link is always underlined, even when not hovering</a><br></br>
           <a className="link link-on-dark">This link is brighter, to be used against a blue background</a><br></br>

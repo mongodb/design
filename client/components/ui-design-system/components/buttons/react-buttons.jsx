@@ -10,6 +10,7 @@ import Checkbox from '../../react-components/Checkbox.js';
 import { RadioGroup, Radio } from '../../react-components/RadioGroup.js';
 const Prism = require('prismjs');
 
+
 var buttonPairing = [
   ['', 'Default Button'],
   ['button-is-primary', 'Primary Button'],
@@ -27,7 +28,7 @@ class UIButtonsReact extends React.Component {
   }
 
   codeSnippetHandler() {
-    const disabled = this.state.controlDisabled ? `,\n  disabled=true` : '';
+    const disabled = this.state.controlDisabled ? `,\n  disabled={true}` : '';
     const className = this.state.controlTypeClassName ? ` ${this.state.controlTypeClassName}` : '';
     return `<Button
   label="${this.state.controlLabel}",
@@ -38,12 +39,12 @@ class UIButtonsReact extends React.Component {
   render() {
     return (
       <div className="wrap button-ui">
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
             <h1>Buttons</h1>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <ul className="tabs">
               <li className="tabs-tab">
@@ -55,13 +56,13 @@ class UIButtonsReact extends React.Component {
             </ul>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <h2>Button Component</h2>
-            <p>Our button styles comes in a variety of flavors including default, primary, destructive and disabled.</p>
+            <p>Our button component can be configured in a variety of flavors including default, primary, destructive and disabled.</p>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-12">
             <Button
               label={this.state.controlLabel}
@@ -76,15 +77,16 @@ class UIButtonsReact extends React.Component {
             <h3>Options</h3>
           </div>
         </div>
-        <div className="row u-mb-2">
+        <div className="row">
           <div className="columns small-6">
-            <h4>Type</h4>
+            <p><b>Type</b></p>
             <RadioGroup
               name="button-state"
               selectedValue={this.state.controlTypeClassName}
               onChange={(controlTypeClassName, controlLabel) => {
                 this.setState({ controlTypeClassName });
                 this.setState({ controlLabel: buttonMap.get(controlTypeClassName) });
+                setTimeout(function(){ Prism.highlightAll(); }, 5);
               }}
             >
               <label className="checkbox">
@@ -105,20 +107,117 @@ class UIButtonsReact extends React.Component {
             </RadioGroup>
           </div>
           <div className="columns small-6">
-            <h4>State</h4>
+            <p><b>state</b></p>
             <Checkbox 
                 label="Disabled"
                 checked={this.state.controlDisabled}
-                onChange={controlDisabled => this.setState({ controlDisabled })}
+                onChange={controlDisabled => {
+                  this.setState({ controlDisabled });
+                  setTimeout(function(){ Prism.highlightAll(); }, 5);
+                }}
             />
           </div>
         </div>
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
             <Code
               language='language-jsx'
               text={this.codeSnippetHandler()}>
             </Code>
+          </div>
+        </div>
+        <div className="row">
+          <div className="columns small-12">
+            <h3>Available Props</h3>
+            <table className="table">
+              <thead>
+                <tr className="table-row">
+                  <th className="table-header">Prop Name</th>
+                  <th className="table-header">Type</th>
+                  <th className="table-header">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">onClick</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>Function, Required</b></p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p>Click event handler</p>
+                  </td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">className</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>String</b></p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p>CSS class(es) passed to the button</p>
+                  </td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">name</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>String</b></p>
+                  </td> 
+                  <td className="table-column table-cell">
+                    <p>Defines the name reference of the button</p>
+                  </td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">label</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>Node</b></p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p>Text rendered in the body of the button</p>
+                  </td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">children</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>Node</b></p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p>A collection of child elements of the button. Can be used in place of the label prop</p>
+                  </td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">value</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>String</b></p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p>Defines the default value of the button</p>
+                  </td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">disabled</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>Boolean</b></p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p>Default = <b>false</b></p>
+                    <p>Defines the disabled state of the button</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

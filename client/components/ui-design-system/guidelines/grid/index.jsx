@@ -7,18 +7,18 @@ import Code from '../../subcomponents/code';
 
 const UIGrid = () => (
   <div className="wrap">
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h1>Grid</h1>
       </div>
     </div>
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h2>Grid 12-Column</h2>
-        <p>We use the <a href={"http://foundation.zurb.com/sites/docs/grid.html"} className="link">Foundation grid</a> as our base grid system. It is customizable, flexible and responsive.</p>
+        <p>A general-purpose 12-column grid is provided via <a href={"http://foundation.zurb.com/sites/docs/grid.html"} className="link">Foundation grid</a> for quickly building features.</p>
       </div>
     </div>
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h3>Usage</h3>
         <p>When setting up your page with the grid, be sure to include the <span className="code">small-#</span>, <span className="code">medium-#</span> and <span className="code">large-#</span> values. These values represent how the grid will adapt to small, medium and large screen formats.</p>

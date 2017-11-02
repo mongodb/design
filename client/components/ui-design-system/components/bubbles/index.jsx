@@ -7,15 +7,9 @@ import Code from '../../subcomponents/code';
 
 const UIBubbles = () => (
   <div className="wrap button-ui">
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h1>Bubbles</h1>
-      </div>
-    </div>
-    <div className="row u-mb-2">
-      <div className="columns small-12">
-        <h2>Bubble Labels</h2>
-        <p>The quick brown fox jumped over the log into the enchanted forest. The quick brown fox jumped over the log into the enchanted forest.</p>
       </div>
     </div>
     <div className="row">

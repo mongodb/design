@@ -3,29 +3,41 @@
 // ==================================================
 
 import React from 'react';
+import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
 
 const UITables = () => (
   <div className="wrap">
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <h1>Tables</h1>
       </div>
     </div>
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
-        <h2>Standard Table</h2>
-        <p>We use the <a href={"http://foundation.zurb.com/sites/docs/grid.html"} className="link">Foundation grid</a> as our base grid system. It is customizable, flexible and responsive.</p>
-        <p>When setting up your page with the grid, be sure to include the <span className="code">small-#</span>, <span className="code">medium-#</span> and <span className="code">large-#</span> values. These values represent how the grid will adapt to small, medium and large screen formats.</p>
+        <ul className="tabs">
+          <li className="tabs-tab tabs-tab-is-active">
+            <Link to='/ui-design-system/components/tables' className="tabs-tab-link">CSS</Link>
+          </li>
+          <li className="tabs-tab">
+            <Link to='/ui-design-system/components/tables/react-tables' className="tabs-tab-link">React</Link>
+          </li>
+        </ul>
       </div>
     </div>
-    <div className="row u-mb-2">
+
+    <div className="row">
+      <div className="columns small-12">
+        <h2>Standard Table</h2>
+      </div>
+    </div>
+    <div className="row">
       <div className="columns small-12">
         <h3>Light Theme</h3>
         <p>Use on a light background.</p>
       </div>
     </div>
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <table className="table">
           <thead>
@@ -48,8 +60,8 @@ const UITables = () => (
               </td>
             </tr>
             <tr className="table-row">
-              <td className="table-column table-cell"><a className="link">free-shard-0</a></td>
-              <td className="table-column table-cell">1 min ago</td>
+              <td className="table-column table-cell"><a className="link">free-shard-1</a></td>
+              <td className="table-column table-cell">3 min ago</td>
               <td className="table-column table-cell">3.4.4</td>
               <td className="table-column table-cell table-cell-has-actions">
                 <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -58,8 +70,8 @@ const UITables = () => (
               </td>
             </tr>
             <tr className="table-row">
-              <td className="table-column table-cell"><a className="link">free-shard-0</a></td>
-              <td className="table-column table-cell">1 min ago</td>
+              <td className="table-column table-cell"><a className="link">free-shard-2</a></td>
+              <td className="table-column table-cell">5 min ago</td>
               <td className="table-column table-cell">3.4.4</td>
               <td className="table-column table-cell table-cell-has-actions">
                 <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -96,8 +108,8 @@ const UITables = () => (
       </td>
     </tr>
     <tr className="table-row">
-      <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>
-      <td className="table-column table-cell">1 min ago</td>
+      <td className="table-column table-cell"><a href={""} className="link">free-shard-1</a></td>
+      <td className="table-column table-cell">3 min ago</td>
       <td className="table-column table-cell">3.4.4</td>
       <td className="table-column table-cell table-cell-has-actions">
         <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -106,8 +118,8 @@ const UITables = () => (
       </td>
     </tr>
     <tr className="table-row">
-      <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>
-      <td className="table-column table-cell">1 min ago</td>
+      <td className="table-column table-cell"><a href={""} className="link">free-shard-2</a></td>
+      <td className="table-column table-cell">5 min ago</td>
       <td className="table-column table-cell">3.4.4</td>
       <td className="table-column table-cell table-cell-has-actions">
         <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -120,14 +132,13 @@ const UITables = () => (
         </Code>
       </div>
     </div>
-
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h3>Dark Theme</h3>
         <p>Use on a dark background.</p>
       </div>
     </div>
-    <div className="row u-mb-3">
+    <div className="row">
       <div className="columns small-12">
         <table className="table">
           <thead>
@@ -150,8 +161,8 @@ const UITables = () => (
               </td>
             </tr>
             <tr className="table-row table-row-is-dark">
-              <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>
-              <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+              <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-1</a></td>
+              <td className="table-column table-cell table-cell-is-dark">3 min ago</td>
               <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
               <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
                 <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -160,8 +171,8 @@ const UITables = () => (
               </td>
             </tr>
             <tr className="table-row table-row-is-dark">
-              <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-0</a></td>
-              <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+              <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link link-on-dark">free-shard-2</a></td>
+              <td className="table-column table-cell table-cell-is-dark">5 min ago</td>
               <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
               <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
                 <button className="button table-button button-is-xs u-mr-1">data</button>
@@ -173,17 +184,148 @@ const UITables = () => (
         </table>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row">
       <div className="columns small-12">
       </div>
     </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <Code
+          language='language-html'
+          text={`<table className="table">
+  <thead>
+    <tr className="table-row table-row-is-dark">
+      <th className="table-header table-header-is-dark">Name</th>
+      <th className="table-header table-header-is-dark">Status</th>
+      <th className="table-header table-header-is-dark">Version</th>
+      <th className="table-header table-header-is-dark table-cell-has-actions">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr className="table-row table-row-is-dark">
+      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-0</a></td>
+      <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
+      <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
+      <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
+        <button className="button table-button button-is-xs u-mr-1">data</button>
+        <button className="button table-button button-is-xs u-mr-1">metrics</button>
+        <button className="button table-button button-is-xs">modify</button>
+      </td>
+    </tr>
+    <tr className="table-row table-row-is-dark">
+      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-1</a></td>
+      <td className="table-column table-cell table-cell-is-dark">3 min ago</td>
+      <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
+      <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
+        <button className="button table-button button-is-xs u-mr-1">data</button>
+        <button className="button table-button button-is-xs u-mr-1">metrics</button>
+        <button className="button table-button button-is-xs">modify</button>
+      </td>
+    </tr>
+    <tr className="table-row table-row-is-dark">
+      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-2</a></td>
+      <td className="table-column table-cell table-cell-is-dark">5 min ago</td>
+      <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
+      <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
+        <button className="button table-button button-is-xs u-mr-1">data</button>
+        <button className="button table-button button-is-xs u-mr-1">metrics</button>
+        <button className="button table-button button-is-xs">modify</button>
+      </td>
+    </tr>
+  </tbody>
+</table>`}> 
+        </Code>
+      </div>
+    </div>
+   <div className="row">
+      <div className="columns small-12">
+        <h2 id="pagination">Pagination States</h2>
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Controls Enabled</h3>
+        <div className="paginator">
+          <span className="paginator-control paginator-control-is-left">
+            <button className="paginator-button paginator-button-is-previous">
+            </button> Previous
+          </span>
+          <span className="paginator-text">
+            <strong>100-200 results (both controls enabled)</strong>
+          </span>
+          <span className="paginator-control paginator-control-is-right">Next
+            <button className="paginator-button paginator-button-is-next">
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <Code
+          language='language-html'
+          text={`<div class="paginator">
+  <span class="paginator-control paginator-control-is-left">
+    <button class="paginator-button paginator-button-is-previous">
+    </button> Previous
+  </span>
+  <span class="paginator-text">
+    <strong>100-200 results (both controls enabled)</strong>
+  </span>
+  <span class="paginator-control paginator-control-is-right">Next
+    <button class="paginator-button paginator-button-is-next">
+    </button>
+  </span>
+</div>`}> 
+        </Code>
+      </div>
+    </div>
 
-    <div className="row u-mb-2">
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Controls Disabled</h3>
+        <div className="paginator paginator-is-borderless">
+          <span className="paginator-control paginator-control-is-left paginator-control-is-disabled">
+            <button className="paginator-button paginator-button-is-previous" disabled>
+            </button> Previous
+          </span>
+          <span className="paginator-text">
+            <strong>0-0 results (both controls disabled, borderless example)</strong>
+          </span>
+          <span className="paginator-control paginator-control-is-right paginator-control-is-disabled" >Next
+            <button className="paginator-button paginator-button-is-next" disabled>
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <Code
+          language='language-html'
+          text={`<div class="paginator paginator-is-borderless">
+  <span class="paginator-control paginator-control-is-left paginator-control-is-disabled">
+    <button class="paginator-button paginator-button-is-previous" disabled>
+    </button> Previous
+  </span>
+  <span class="paginator-text">
+    <strong>0-0 results (both controls disabled, borderless example)</strong>
+  </span>
+  <span class="paginator-control paginator-control-is-right paginator-control-is-disabled">Next
+    <button class="paginator-button paginator-button-is-next" disabled>
+    </button>
+  </span>
+</div>`}> 
+        </Code>
+      </div>
+    </div>
+    <div className="row">
       <div className="columns small-12">
         <h2>Properties Table</h2>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns">
         <div className="data-viz-row data-viz-row-is-rounded">
           <header className="data-viz-row-cell data-viz-row-title">Cluster Details</header>
@@ -241,7 +383,7 @@ const UITables = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
           language='language-html'
@@ -303,12 +445,12 @@ const UITables = () => (
       </div>
     </div>
 
-    <div className="row u-mb-2">
+    <div className="row">
       <div className="columns small-12">
         <h2>Summary Table</h2>
       </div>
     </div>
-    <div className="row u-mb-0">
+    <div className="row">
       <div className="columns">
         <div className="summary-table summary-table-is-rounded">
           <div className="summary-table-header">Cluster Overview</div>
@@ -378,7 +520,7 @@ const UITables = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns">
         <Code
           language='language-html'
@@ -451,7 +593,6 @@ const UITables = () => (
         </Code>
       </div>
     </div>
-
   </div>
 );
 

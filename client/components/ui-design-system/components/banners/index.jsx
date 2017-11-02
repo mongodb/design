@@ -3,108 +3,129 @@
 // ==================================================
 
 import React from 'react';
+import { Link } from 'react-router';
 import Code from '../../subcomponents/code';
 
 const UIBanners = () => (
   <div className="wrap button-ui">
-      <div className="row u-mb-3">
+      <div className="row">
         <div className="columns small-12">
           <h1>Banners</h1>
         </div>
       </div>
+      <div className="row">
+        <div className="columns small-12">
+          <ul className="tabs">
+            <li className="tabs-tab tabs-tab-is-active">
+              <Link to='/ui-design-system/components/banners' className="tabs-tab-link">CSS</Link>
+            </li>
+            <li className="tabs-tab">
+              <Link to='/ui-design-system/components/banners/react-banners' className="tabs-tab-link">React</Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+       <div className="row">
+        <div className="columns small-12">
+          <h2>Alerts</h2>
+          <p>Alerts are available in four levels – success, warning, danger, and info – and with or without a dismiss button.</p>
+        </div>
+      </div>
+      <div className="row">
+        <div className="columns small-12">
+          <h3>Success</h3>
+        </div>
+      </div>
+      <div className="row">
+        <div className="columns small-12">
+          <div className="bem-alert bem-alert-is-success">
+              <button type="button" className="bem-alert-close-button" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <div>Well done! You successfully read this important alert message.</div>
+          </div>
+        </div>
+      </div>
       <div className="row u-mb-3">
         <div className="columns small-12">
-          <h2>Callout Banners</h2>
-          <p>Our button styles comes in a variety of flavors including default, primary, destructive and disabled.</p>
-        </div>
-      </div>
-      <div className="row">
-        <div className="columns small-12">
-          <h3>Standard Callout</h3>
-        </div>
-      </div>
-      <div className="row">
-        <div className="columns small-12">
-          <div className="banner banner-is-callout">
-            <p>Looking for a way to be webscale?</p>
-            <div className="u-float-right">
-              <button className="button button-is-small u-mr-2">Close</button>
-              <button className="button button-is-primary button-is-small">Learn How</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="row u-mb-5">
-        <div className="columns small-12">
           <Code
             language='language-html'
-            text={`<div class="banner banner-is-callout">
-    <p>Looking for a way to be webscale?</p>
-    <div class="u-float-right">
-      <button class="button button-is-small u-mr-2">Close</button>
-      <button class="button button-is-primary">Learn How</button>
-    </div>
-  </div>
+            text={`<div className="bem-alert bem-alert-is-success">
+    <button type="button" className="bem-alert-close-button" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <div>Well done! You successfully read this important alert message.</div>
 </div>`}>
           </Code>
         </div>
       </div>
-
       <div className="row">
         <div className="columns small-12">
-          <h3>Condensed Banner Callout</h3>
+          <h3>Warning</h3>
         </div>
       </div>
       <div className="row">
-        <div className="columns small-6">
-          <div className="banner banner-is-callout banner-is-condensed">
-            <h4>Without the bubble label above</h4>
-            <p className="u-mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
-            <div className="u-float-right">
-              <button className="button button-is-small u-mr-2">Close</button>
-              <button className="button button-is-primary button-is-small">Learn How</button>
-            </div>
-          </div>
-        </div>
-        <div className="columns small-6">
-          <div className="banner banner-is-callout banner-is-condensed">
-            <div className="bubble-label bubble-label-blue">NEW!</div>
-            <h4>With the bubble label above</h4>
-            <p className="u-mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
-            <div className="u-float-right">
-              <button className="button button-is-small u-mr-2">Close</button>
-              <button className="button button-is-primary button-is-small">Learn How</button>
-            </div>
+        <div className="columns small-12">
+          <div className="bem-alert bem-alert-is-warning">
+              <div>Warning! Better check yourself before you wreck yourself, you’re not looking good.</div>
           </div>
         </div>
       </div>
-      <div className="row u-mb-5">
+      <div className="row u-mb-3">
         <div className="columns small-12">
           <Code
             language='language-html'
-            text={`<div class="banner banner-is-callout banner-is-condensed">
-  <h4>Without the bubble label above</h4>
-  <p class="u-mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
-  <div class="u-float-right">
-    <button class="button button-is-small u-mr-2">Close</button>
-    <button class="button button-is-primary button-is-small">Learn How</button>
-  </div>
-</div>
-
-<div class="banner banner-is-callout banner-is-condensed">
-  <div class="bubble-label bubble-label-blue">NEW!</div>
-  <h4>With the bubble label above</h4>
-  <p class="u-mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
-  <div class="u-float-right">
-    <button class="button button-is-small u-mr-2">Close</button>
-    <button class="button button-is-primary button-is-small">Learn How</button>
-  </div>
+            text={`<div className="bem-alert bem-alert-is-warning">
+    <div>Warning! Better check yourself before you wreck yourself, you’re not looking good.</div>
 </div>`}>
           </Code>
+        </div>
       </div>
-    </div>
-
-    <div className="row u-mb-3">
+            <div className="row">
+        <div className="columns small-12">
+          <h3>Danger</h3>
+        </div>
+      </div>
+      <div className="row">
+        <div className="columns small-12">
+          <div className="bem-alert bem-alert-is-danger">
+              <div>Danger! Better check yourself, you’re not looking good.</div>
+          </div>
+        </div>
+      </div>
+      <div className="row u-mb-3">
+        <div className="columns small-12">
+          <Code
+            language='language-html'
+            text={`<div className="bem-alert bem-alert-is-danger">
+    <div>Danger! Better check yourself, you’re not looking good.</div>
+</div>`}>
+          </Code>
+        </div>
+      </div>
+            <div className="row">
+        <div className="columns small-12">
+          <h3>Info</h3>
+        </div>
+      </div>
+      <div className="row">
+        <div className="columns small-12">
+          <div className="bem-alert bem-alert-is-info">
+              <div>Heads up! This alert needs your attention, but it’s not super important.</div>
+          </div>
+        </div>
+      </div>
+      <div className="row u-mb-3">
+        <div className="columns small-12">
+          <Code
+            language='language-html'
+            text={`<div className="bem-alert bem-alert-is-info">
+    <div>Heads up! This alert needs your attention, but it’s not super important.</div>
+</div>`}>
+          </Code>
+        </div>
+      </div>
+    <div className="row">
       <div className="columns small-12">
         <h2>Status Banners</h2>
         <p>Our button styles comes in a variety of flavors including default, primary, destructive and disabled.</p>
@@ -126,7 +147,7 @@ const UIBanners = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
        <Code
         language='language-html'
@@ -156,7 +177,7 @@ const UIBanners = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
         <Code
           language='language-html'
@@ -186,7 +207,7 @@ const UIBanners = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
          <Code
           language='language-html'
@@ -216,7 +237,7 @@ const UIBanners = () => (
         </div>
       </div>
     </div>
-    <div className="row u-mb-5">
+    <div className="row u-mb-3">
       <div className="columns small-12">
        <Code
           language='language-html'
@@ -230,155 +251,94 @@ const UIBanners = () => (
         </Code>
       </div>
     </div>
-
-    <div className="row u-mb-3">
-      <div className="columns small-12">
-        <h2>Growl Notifications</h2>
-        <p>Our button styles comes in a variety of flavors including default, primary, destructive and disabled.</p>
-      </div>
-    </div>
     <div className="row">
-      <div className="columns small-12">
-        <h3>Alert Notification</h3>
-        <p>Our alert growl notification style is used for important notices regarding a users cluster or account. This should be used only when the notification is urgent and requires immediate attention.</p>
-      </div>
-    </div>
-    <div className="row u-mv-2">
-      <div className="columns small-12">
-        <div className="growl growl-is-alert">
-          <span className="temp-icon"></span>
-          <h4>Update Automation Agent</h4>
-          <p className="u-text-is-small">Your automation agent requires an important update before you can continue using your cluster.</p>
-          <div className="u-mt-2">
-            <button className="button button-is-text button-is-xs u-mr-3 growl-button-primary">UPDATE NOW</button>
-            <button className="button button-is-text button-is-xs growl-button-secondary">DO IT LATER</button>
-          </div>
+        <div className="columns small-12">
+          <h2>Callout Banners</h2>
+          <p>Used for calling attention to new products, features, and functionality.</p>
         </div>
       </div>
-    </div>
-    <div className="row u-mb-5">
-      <div className="columns small-12">
-        <Code
-          language='language-html'
-          text={`<div class="growl growl-is-alert">
-  <span class="temp-icon"></span>
-  <h4>Update Automation Agent</h4>
-  <p class="u-text-is-small">Your automation agent requires an important update before you can continue using your cluster.</p>
-  <div class="u-mt-2">
-    <button class="button button-is-text button-is-xs u-mr-3 growl-button-primary">UPDATE NOW</button>
-    <button class="button button-is-text button-is-xs growl-button-secondary">DO IT LATER</button>
-  </div>
-</div>`}>
-        </Code>
-      </div>
-    </div>
-    <div className="row">
-      <div className="columns small-12">
-        <h3>Success Notification</h3>
-        <p>Our alert growl notification style is used for important notices regarding a users cluster or account. This should be used only when the notification is urgent and requires immediate attention.</p>
-      </div>
-    </div>
-    <div className="row u-mv-2">
-      <div className="columns small-12">
-        <div className="growl growl-is-alert">
-          <span className="temp-icon"></span>
-          <h4>Cluster Completed</h4>
-          <p className="u-text-is-small">Your cluster has successfully been completed!</p>
-          <div className="u-mt-2">
-            <button className="button button-is-text button-is-xs u-mr-3 growl-button-primary">VIEW CLUSTER</button>
-            <button className="button button-is-text button-is-xs growl-button-secondary">OK, THANKS</button>
-          </div>
+      <div className="row">
+        <div className="columns small-12">
+          <h3>Standard Callout</h3>
         </div>
       </div>
-    </div>
-    <div className="row u-mb-5">
-      <div className="columns small-12">
-        <Code
-          language='language-html'
-          text={`<div class="growl growl-is-alert">
-  <span class="temp-icon"></span>
-  <h4>Cluster Completed</h4>
-  <p class="u-text-is-small">Your cluster has successfully been completed!</p>
-  <div class="u-mt-2">
-    <button class="button button-is-text button-is-xs u-mr-3 growl-button-primary">VIEW CLUSTER</button>
-    <button class="button button-is-text button-is-xs growl-button-secondary">OK, THANKS</button>
-  </div>
-</div>`}>
-        </Code>
-      </div>
-    </div>
-    <div className="row">
-      <div className="columns small-12">
-        <h3>In Progress Notification</h3>
-        <p>Our alert growl notification style is used for important notices regarding a users cluster or account. This should be used only when the notification is urgent and requires immediate attention.</p>
-      </div>
-    </div>
-    <div className="row u-mv-2">
-      <div className="columns small-12">
-        <div className="growl growl-is-alert">
-          <span className="temp-icon"></span>
-          <h4>In Progress...</h4>
-          <p className="u-text-is-small">We’re currently building your new cluster. You’ll be notified as soon as it is completed!</p>
-          <div className="row u-mt-3 u-ph-2">
-            <div className="columns small-9 temp-progress-bar u-mt-1">
-              <span></span>
+      <div className="row">
+        <div className="columns small-12">
+          <div className="banner banner-is-callout">
+            <p>Looking for a way to be webscale?</p>
+            <div className="u-float-right">
+              <button className="button button-is-small u-mr-2">Close</button>
+              <button className="button button-is-primary button-is-small">Learn How</button>
             </div>
-            <div className="columns small-3 loader-text">33%</div>
           </div>
         </div>
       </div>
+      <div className="row u-mb-3">
+        <div className="columns small-12">
+          <Code
+            language='language-html'
+            text={`<div class="banner banner-is-callout">
+    <p>Looking for a way to be webscale?</p>
+    <div class="u-float-right">
+      <button class="button button-is-small u-mr-2">Close</button>
+      <button class="button button-is-primary">Learn How</button>
     </div>
-    <div className="row u-mb-5">
-      <div className="columns small-12">
-        <Code
-          language='language-html'
-          text={`<div class="growl growl-is-alert">
-  <span class="temp-icon"></span>
-  <h4>In Progress...</h4>
-  <p class="u-text-is-small">We’re currently building your new cluster. You’ll be notified as soon as it is completed!</p>
-  <div class="row u-mt-3 u-ph-2">
-    <div class="columns small-9 temp-progress-bar u-mt-1">
-      <span></span>
-    </div>
-    <div class="columns small-3 loader-text">33%</div>
   </div>
 </div>`}>
-        </Code>
+          </Code>
+        </div>
       </div>
-    </div>
-    <div className="row">
-      <div className="columns small-12">
-        <h3>Generic Notification</h3>
-        <p>Our alert growl notification style is used for important notices regarding a users cluster or account. This should be used only when the notification is urgent and requires immediate attention.</p>
+      <div className="row">
+        <div className="columns small-12">
+          <h3>Condensed Banner Callout</h3>
+        </div>
       </div>
-    </div>
-    <div className="row u-mv-2">
-      <div className="columns small-12">
-        <div className="growl growl-is-alert">
-          <span className="temp-icon"></span>
-          <h4>Update to Terms of Service</h4>
-          <p className="u-text-is-small">We’ve made important updates to our Terms of Service which may effect you and your account.</p>
-          <div className="u-mt-2">
-            <button className="button button-is-text button-is-xs u-mr-3 growl-button-primary">READ UPDATE</button>
-            <button className="button button-is-text button-is-xs growl-button-secondary">DO IT LATER</button>
+      <div className="row">
+        <div className="columns small-6">
+          <div className="banner banner-is-callout banner-is-condensed">
+            <h4>Without the bubble label above</h4>
+            <p className="u-mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
+            <div className="u-float-right">
+              <button className="button button-is-small u-mr-2">Close</button>
+              <button className="button button-is-primary button-is-small">Learn How</button>
+            </div>
+          </div>
+        </div>
+        <div className="columns small-6">
+          <div className="banner banner-is-callout banner-is-condensed">
+            <div className="bubble-label bubble-label-blue">NEW!</div>
+            <h4>With the bubble label above</h4>
+            <p className="u-mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
+            <div className="u-float-right">
+              <button className="button button-is-small u-mr-2">Close</button>
+              <button className="button button-is-primary button-is-small">Learn How</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div className="row u-mb-5">
-      <div className="columns small-12">
-        <Code
-          language='language-html'
-          text={`<div class="growl growl-is-alert">
-  <span class="temp-icon"></span>
-  <h4>Update to Terms of Service</h4>
-  <p class="u-text-is-small">We’ve made important updates to our Terms of Service which may effect you and your account.</p>
-  <div class="u-mt-2">
-    <button class="button button-is-text button-is-xs u-mr-3 growl-button-primary">READ UPDATE</button>
-    <button class="button button-is-text button-is-xs growl-button-secondary">DO IT LATER</button>
+      <div className="row u-mb-3">
+        <div className="columns small-12">
+          <Code
+            language='language-html'
+            text={`<div class="banner banner-is-callout banner-is-condensed">
+  <h4>Without the bubble label above</h4>
+  <p class="u-mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
+  <div class="u-float-right">
+    <button class="button button-is-small u-mr-2">Close</button>
+    <button class="button button-is-primary button-is-small">Learn How</button>
+  </div>
+</div>
+
+<div class="banner banner-is-callout banner-is-condensed">
+  <div class="bubble-label bubble-label-blue">NEW!</div>
+  <h4>With the bubble label above</h4>
+  <p class="u-mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
+  <div class="u-float-right">
+    <button class="button button-is-small u-mr-2">Close</button>
+    <button class="button button-is-primary button-is-small">Learn How</button>
   </div>
 </div>`}>
-        </Code>
+          </Code>
       </div>
     </div>
   </div>
