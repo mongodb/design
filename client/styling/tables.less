@@ -50,7 +50,7 @@
 
   &-header {
     border-bottom: 2px solid @gray6;
-    padding: 5px 10px;
+    padding: 10px;
 
     &-is-dark {
       border-bottom: 2px solid @gray0;
@@ -66,6 +66,42 @@
       border-bottom: 1px solid @gray0;
       background-color: @gray1;      
     }
+  }
+
+//Style from old table.less in Cloud
+  &-is-sortable {
+      color: inherit;
+      text-decoration: none;
+  }
+
+  &-is-ascending::after {
+      content: "\f0d7";
+  }
+
+  &-is-descending::after {
+      content: "\f0d8";
+  }
+
+  &-is-sortable:hover,
+  &-is-sortable:focus {
+      color: inherit;
+      text-decoration: none;
+  }
+
+  &-is-sortable::after {
+      min-width: 1em;
+      display: inline-block;
+      font-family: FontAwesome;
+      margin-left: 4px;
+  }
+
+  &-is-no-head {
+    margin-top: -10px;
+  }
+
+  &-warning-icon {
+      padding-right: 5px;
+      color: @red;
   }
 }
 
