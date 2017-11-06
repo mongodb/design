@@ -126,17 +126,6 @@ const UITabs = () => (
             <button className="button-group-button button button-is-xs">Option 2</button>
           </div>
         </div>
-        <div className="section-controls">
-          <label className="section-controls-label button-is-xs"><div className="section-controls-label-text">I'm stackable:</div></label>
-          <a className="button button-is-xs">Example Control <i className="fa fa-caret-down"></i></a>
-        </div>
-        <div className="section-banner">
-          <span className="section-banner-item">Collection:
-            <span className="section-banner-keyword"> guns_n_roses</span>
-          </span>
-          <span className="section-banner-item">Documents: 111,111</span>
-          <span className="section-banner-item">Total Datasize: 882.03 MB</span>
-        </div>
       </div>
     </div>
     <div className="row u-mb-3">
@@ -189,17 +178,6 @@ const UITabs = () => (
       <button class="button-group-button button button-is-xs">Option 2</button>
     </div>
   </div>
-  <div class="section-controls">
-    <label class="section-controls-label button-is-xs"><div class="section-controls-label-text">I'm stackable:</div></label>
-    <a class="button button-is-xs">Example Control <i class="fa fa-caret-down"></i></a>
-  </div>
-  <div class="section-banner">
-    <span class="section-banner-item">Collection:
-      <span class="section-banner-keyword"> guns_n_roses</span>
-    </span>
-    <span class="section-banner-item">Documents: 111,111</span>
-    <span class="section-banner-item">Total Datasize: 882.03 MB</span>
-  </div>
 </div>`}>
         </Code>
       </div>
@@ -248,7 +226,7 @@ const UITabs = () => (
     <div className="row">
       <div className="section-header">
       <div className="section-header-warnings">
-        <div className="alert alert-warning section-warnings-alert" role="alert">
+        <div className="alert alert-warning" role="alert">
           <i className="fa fa-exclamation-triangle section-warnings-icon"></i> This is a warning
         </div>
       </div>
