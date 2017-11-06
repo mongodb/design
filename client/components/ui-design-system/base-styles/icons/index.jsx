@@ -191,7 +191,7 @@ const UIIcons = () => (
             <td className="icons-table-column icons-table-cell muted">N/A</td>
             <td className="icons-table-column icons-table-cell muted">N/A</td>
             <td className="icons-table-column icons-table-cell muted">N/A</td>
-            <td className="icons-table-column icons-table-cell"></td>
+            <td className="icons-table-column icons-table-cell muted">N/A</td>
         </tr>
         <tr className="icons-table-row">
             <td className="icons-table-column icons-table-header">Recovering</td>
@@ -329,6 +329,7 @@ const UIIcons = () => (
           <td className="icons-table-column icons-table-header">Startup2 Config</td>
           <td className="icons-table-column icons-table-cell"><i className="mms-icon-configsvr-startup2"></i></td>
           <td className="icons-table-column icons-table-cell"><i className="mms-icon-configsvr-startup2-selected"></i></td>
+          <td className="icons-table-column icons-table-cell muted">N/A</td>
           <td className="icons-table-column icons-table-cell muted">N/A</td>
           <td className="icons-table-column icons-table-cell muted">N/A</td>
           <td className="icons-table-column icons-table-cell muted">N/A</td>
