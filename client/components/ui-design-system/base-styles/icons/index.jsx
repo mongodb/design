@@ -7,10 +7,10 @@ import React from 'react';
 const UIIcons = () => (
   <div className="wrap">
 		<h1 className="heading">Icons</h1>
-		<p>We use several sets of icons in our products, including Google's Material Design and Font Awesome, 
-		as well as icons developed internally for MMS (our cloud products) and brand marketing.</p>
+		<p>We use several sets of icons in our products, including Google&rsquo;s Material Design and Font Awesome, 
+		as well as icons developed internally for MongoDB-specific terminolgy.</p>
 
-		<h2>MMS Icons</h2>
+		<h2>MongoDB Cloud Services</h2>
 		<h3>Agents</h3>
 		<table className="table">
 			<thead>
