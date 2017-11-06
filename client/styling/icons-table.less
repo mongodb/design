@@ -1,0 +1,51 @@
+.icons-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+
+  &-row {
+    &:hover {
+      .table-column {
+        background-color: @gray7;
+
+        .table-button {
+          opacity: 1;
+        }
+      }
+    }
+
+    &:last-child {
+      .table-column {
+        border-bottom: none;
+      }
+    }
+
+  }
+
+  &-header, &-cell {
+    text-align: center;
+    border: 1px solid @gray6;
+
+    &-has-actions {
+      text-align: right;
+
+      .table-button {
+        opacity: 0;
+      }
+    }
+  }
+
+  &-header {
+    background-color: @gray7;
+    font-weight: 700;
+    padding: 25px 0px;
+  }
+
+  &-cell {
+    border-bottom: 1px solid @gray6;
+    padding: 25px 20px;
+    background-color: @pw;
+  }
+}
+
+
