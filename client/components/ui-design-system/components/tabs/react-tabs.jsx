@@ -20,7 +20,7 @@ class UITabsReact extends React.Component {
 render() {
   return (
     <div className="wrap">
-      <div className="row u-mb-3">
+      <div className="row">
         <div className="columns small-12">
           <h1>Tabs</h1>
         </div>
