@@ -84,10 +84,10 @@ render() {
       </div>
       
 
-      <div className="row u-mb-2">
+      <div className="row u-mb-2 u-mt-8">
         <div className="columns small-12">
-            <div className="section-header">
-                <div className="section-header-warnings">
+            <div className="section-header section-header-has-tabs">
+                <div className="section-warnings-alert">
                 <Alert level="warning" children="This is a warning"></Alert>
                 </div>
                 <SectionHeader headlineText="Section With Banner">
@@ -112,7 +112,7 @@ render() {
 </SectionHeaderTabs>`}> 
         </Code>
 
-      <div className="row u-mb-2">
+      <div className="row u-mb-2 u-mt-8">
         <div className="columns small-12">
             <div className="section-header">
               <SectionHeader headlineText="Section With Tabs">
