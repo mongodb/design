@@ -7,3 +7,4 @@ nginx.conf
 npm-debug.log
 webpack-assets.json
 config.js
+config.js.BAK

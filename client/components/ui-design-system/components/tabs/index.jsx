@@ -4,6 +4,7 @@
 
 import React from 'react';
 import Code from '../../subcomponents/code';
+import { Link } from 'react-router';
 
 const UITabs = () => (
   <div className="wrap button-ui">
@@ -12,26 +13,41 @@ const UITabs = () => (
         <h1>Tabs</h1>
       </div>
     </div>
-    <div className="row">
+
+    <div className="row u-mb-2">
+      <div className="columns small-12">
+        <ul className="tabs">
+          <li className="tabs-tab tabs-tab-is-active">
+            <Link to='/ui-design-system/components/tabs' className="tabs-tab-link">CSS</Link>
+          </li>
+          <li className="tabs-tab">
+            <Link to='/ui-design-system/components/tabs/react-tabs' className="tabs-tab-link">React</Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div className="row u-mb-2">
       <div className="columns small-12">
     		<h2>Default Tabs</h2>
-    		<p>These horizontal tabs are typically used as the primary page-level navigation.</p>
+    		<p>We have tabs for any and all kinds of options and situations.</p>
+
       </div>
     </div>
     <div className="row">
       <div className="columns small-12">
-        <ul className="tabs">
-          <li className="tabs-tab tabs-tab-is-active">
-            <a className="tabs-tab-link">Processes</a>
+        <ul className="section-header-tabs">
+          <li className="section-header-tab section-header-tab-is-active">
+            <a className="section-header-tab-link">Processes</a>
           </li>
-          <li className="tabs-tab">
-            <a className="tabs-tab-link">Servers</a>
+          <li className="section-header-tab">
+            <a className="section-header-tab-link">Servers</a>
           </li>
-          <li className="tabs-tab">
-            <a className="tabs-tab-link">Agents</a>
+          <li className="section-header-tab">
+            <a className="section-header-tab-link">Agents</a>
           </li>
-          <li className="tabs-tab">
-            <a className="tabs-tab-link">Security</a>
+          <li className="section-header-tab">
+            <a className="section-header-tab-link">Security</a>
           </li>
         </ul>
       </div>
@@ -110,17 +126,6 @@ const UITabs = () => (
             <button className="button-group-button button button-is-xs">Option 2</button>
           </div>
         </div>
-        <div className="section-controls">
-          <label className="section-controls-label button-is-xs"><div className="section-controls-label-text">I'm stackable:</div></label>
-          <a className="button button-is-xs">Example Control <i className="fa fa-caret-down"></i></a>
-        </div>
-        <div className="section-banner">
-          <span className="section-banner-item">Collection:
-            <span className="section-banner-keyword"> guns_n_roses</span>
-          </span>
-          <span className="section-banner-item">Documents: 111,111</span>
-          <span className="section-banner-item">Total Datasize: 882.03 MB</span>
-        </div>
       </div>
     </div>
     <div className="row u-mb-3">
@@ -173,17 +178,6 @@ const UITabs = () => (
       <button class="button-group-button button button-is-xs">Option 2</button>
     </div>
   </div>
-  <div class="section-controls">
-    <label class="section-controls-label button-is-xs"><div class="section-controls-label-text">I'm stackable:</div></label>
-    <a class="button button-is-xs">Example Control <i class="fa fa-caret-down"></i></a>
-  </div>
-  <div class="section-banner">
-    <span class="section-banner-item">Collection:
-      <span class="section-banner-keyword"> guns_n_roses</span>
-    </span>
-    <span class="section-banner-item">Documents: 111,111</span>
-    <span class="section-banner-item">Total Datasize: 882.03 MB</span>
-  </div>
 </div>`}>
         </Code>
       </div>
@@ -232,7 +226,7 @@ const UITabs = () => (
     <div className="row">
       <div className="section-header">
       <div className="section-header-warnings">
-        <div className="alert alert-warning section-warnings-alert" role="alert">
+        <div className="alert alert-warning" role="alert">
           <i className="fa fa-exclamation-triangle section-warnings-icon"></i> This is a warning
         </div>
       </div>
