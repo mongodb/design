@@ -161,6 +161,7 @@ class UITablesReact extends React.Component {
           <Table.Column
             header="Status"
             accessor="status"
+            className="table-column table-cell"
             cell = {(props) => (
               <Table.Cell className="table-column table-cell" key="status">
                 {props.value}
@@ -170,6 +171,7 @@ class UITablesReact extends React.Component {
           <Table.Column
             header="Version"
             accessor="version"
+            className="table-column table-cell"
             cell = {(props) => (
               <Table.Cell className="table-column table-cell" key="version">
                 {props.value}
@@ -179,7 +181,7 @@ class UITablesReact extends React.Component {
           <Table.Column
             header="Actions"
             accessor="actions"
-            className="table-cell-has-actions"
+            className="table-column table-cell table-cell-has-actions"
             cell = {(props) => (
               <Table.Cell className="table-column table-cell table-cell-has-actions" key="actions">
                 {props.value}
@@ -212,6 +214,7 @@ class UITablesReact extends React.Component {
   <Table.Column
     header="Status"
     accessor="status"
+    className="table-column table-cell"
     cell = {(props) => (
       <Table.Cell className="table-column table-cell" key="status">
         {props.value}
@@ -221,6 +224,7 @@ class UITablesReact extends React.Component {
   <Table.Column
     header="Version"
     accessor="version"
+    className="table-column table-cell"
     cell = {(props) => (
       <Table.Cell className="table-column table-cell" key="version">
         {props.value}
@@ -230,7 +234,7 @@ class UITablesReact extends React.Component {
   <Table.Column
     header="Actions"
     accessor="actions"
-    className="table-cell-has-actions"
+    className="table-column table-cell table-cell-has-actions"
     cell = {(props) => (
       <Table.Cell className="table-column table-cell table-cell-has-actions" key="actions">
         {props.value}
