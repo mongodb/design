@@ -7,8 +7,10 @@ import React from 'react';
 const UIIcons = () => (
   <div className="wrap">
 		<h1 className="heading">Icons</h1>
-		<p>I'm working on bringing in alll the icons. Get ready.</p>
+		<p>We use several sets of icons in our products, including Google's Material Design and Font Awesome, 
+		as well as icons developed internally for MMS (our cloud products) and brand marketing.</p>
 
+		<h2>MMS Icons</h2>
 		<h3>Agents</h3>
 		<table className="table">
 			<thead>
@@ -391,16 +393,139 @@ const UIIcons = () => (
 		<h3>Other Managed Features</h3>
 		<table className="table">
 			<thead>
+				<tr className="table-row">
+	        <th className="table-header">Name</th>
+	        <th className="table-header">Icon</th>
+	        <th className="table-header">Add</th>
+	        <th className="table-header">Edit</th>
+	        <th className="table-header">Remove</th>
+	        <th className="table-header">Manual Mode</th>
+	        <th className="table-header">Restart</th>
+        </tr>
 		  </thead>
 		  <tbody>
+        <tr className="table-row">
+          <td className="table-column table-cell">Project</td>
+          <td className="table-column table-cell"><i className="mms-icon-group"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-group-add"><i></i></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-group-edit"><i></i></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-group-remove"><i></i></i></td>
+          <td className="table-column table-cell muted">N/A</td>
+          <td className="table-column table-cell"><i className="mms-icon-group-restart"><i></i></i></td>
+        </tr>
+        <tr className="table-row">
+          <td className="table-column table-cell">User</td>
+          <td className="table-column table-cell"><i className="mms-icon-user"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-user-add"><i></i></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-user-edit"><i></i></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-user-remove"><i></i></i></td>
+          <td className="table-column table-cell muted">N/A</td>
+          <td className="table-column table-cell"><i className="mms-icon-user-restart"><i></i></i></td>
+        </tr>
+        <tr className="table-row">
+	        <td className="table-column table-cell">Role</td>
+          <td className="table-column table-cell"><i className="mms-icon-role"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-role-add"><i></i></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-role-edit"><i></i></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-role-remove"><i></i></i></td>
+          <td className="table-column table-cell muted">N/A</td>
+          <td className="table-column table-cell"><i className="mms-icon-role-restart"><i></i></i></td>
+        </tr>
+        <tr className="table-row">
+          <td className="table-column table-cell">MongoDB Version</td>
+          <td className="table-column table-cell"><i className="mms-icon-leaf"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-leaf-add"><i></i></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-leaf-edit"><i></i></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-leaf-remove"><i></i></i></td>
+          <td className="table-column table-cell muted">N/A</td>
+          <td className="table-column table-cell"><i className="mms-icon-leaf-restart"><i></i></i></td>
+        </tr>
+        <tr className="table-row">
+	        <td className="table-column table-cell">Server</td>
+          <td className="table-column table-cell"><i className="mms-icon-server"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-server-add"><i></i></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-server-edit"><i></i></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-server-remove"><i></i></i></td>
+          <td className="table-column table-cell muted">N/A</td>
+          <td className="table-column table-cell"><i className="mms-icon-server-restart"><i></i></i></td>
+        </tr>
+        <tr className="table-row">
+          <td className="table-column table-cell">Automation Wrench</td>
+          <td className="table-column table-cell"><i className="mms-icon-wrench"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-wrench-add"><i></i></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-wrench-edit"><i></i></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-wrench-remove"><i></i></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-wrench-exclamation"><i></i></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-wrench-restart"><i></i></i></td>
+        </tr>
 		  </tbody>
 		</table>
 
 		<h3>Misc UI</h3>
 		<table className="table">
-			<thead>
-		  </thead>
 		  <tbody>
+        <tr className="table-row">
+          <td className="table-column table-cell"><i className="mms-icon-dragtopleft"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-bell"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-list"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-topology"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-cloud"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-lock"></i></td>
+        </tr>
+        <tr className="table-row">
+          <td className="table-column table-cell"><i className="mms-icon-laptop"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-office"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-floppy"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-support1"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-support2"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-add"></i></td>
+        </tr>
+        <tr className="table-row">
+          <td className="table-column table-cell"><i className="mms-icon-remove"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-check"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-creditcard"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-graph"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-api"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-2fa"></i></td>
+        </tr>
+        <tr className="table-row">
+          <td className="table-column table-cell"><i className="mms-icon-smartphone"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-continuous"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-pointintime"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-hammer"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-edit"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-umbrella"></i></td>
+        </tr>
+        <tr className="table-row">
+          <td className="table-column table-cell"><i className="mms-icon-ellipsis"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-dragleft"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-list-skinny"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-grid"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-ssl"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-auth"></i></td>
+        </tr>
+        <tr className="table-row">
+          <td className="table-column table-cell"><i className="mms-icon-database"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-databases"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-servers"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-server"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-dashboard"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-setup"></i></td>
+        </tr>
+        <tr className="table-row">
+          <td className="table-column table-cell"><i className="mms-icon-settings"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-activity"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-ops-manager"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-addcenter"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-modify"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-metrics"></i></td>
+        </tr>
+        <tr className="table-row">
+          <td className="table-column table-cell"><i className="mms-icon-back"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-surprisedface"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-sadface"></i></td>
+          <td className="table-column table-cell"><i className="mms-icon-deadface"></i></td>
+        </tr>
 		  </tbody>
 		</table>
 
