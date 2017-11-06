@@ -1,16 +1,9 @@
-@font-face {
-  font-family: 'MMS Icons';
-  src: url('../assets/font/MMSIcons-Regular.eot');
-  font-weight: normal;
-  font-style: normal;
-}
-
 i[class^="mms-icon-"],
 i[class^="mms-icon-"] i {
   font-family: "MMS Icons";
   font-style: normal;
   font-weight: normal;
-  // font-size: 16px;
+  font-size: 16px;
   line-height: 1;
   -moz-osx-font-smoothing: grayscale;
   font-weight: normal;
@@ -22,13 +15,60 @@ i[class^="mms-icon-"] i {
           transition: all 200ms ease;
 }
 
+i.mms-icon-rocketbot,
+i.mms-icon-snowbot,
+i.mms-icon-medium-cloud {
+  font-size: 64px;
+}
+
+i[class^="mms-icon-deployment-location-"],
+i.mms-icon-bigplay,
+i.mms-icon-bookshelf,
+i.mms-icon-desktop,
+i[class^="mms-icon-import-existing-"],
+i[class^="mms-icon-build-new-"],
+i.mms-icon-big-check,
+i[class^="mms-icon-big-"] {
+  font-size: 128px;
+}
+
+i[class^="mms-icon-"] {
+  position: relative;
+  &:after, i {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  &[class$="-add"] i          { color: @green2;       &:before        { content: "\E085" } }
+  &[class$="-remove"] i       { color: @errorText;    &:before        { content: "\E086" } }
+  &[class$="-edit"] i         { color: @warningText;  &:before        { content: "\E087" } }
+  &[class$="-exclamation"] i  { color: @warningText;  &:before        { content: "\E098" } }
+  &[class$="-restart"] i      { color: @alertBlue;    &:before        { content: "\E089" } }
+  &[class$="-selected"]       { color: @gray1; }
+
+  &[class*="-down"],
+  &[class*="-fatal"],
+  &[class*="-shunned"],
+  &[class*="-unknown"] {
+    color: @errorText;
+    &[class$="-selected"] { color: @errorText; }
+  }
+
+  /* color for startup states */
+  &[class*="-startup"],
+  &[class*="-startup2"],
+  &[class*="-rollback"],
+  &[class*="-recovering"] {
+   color: @warningText;
+   &[class$="-selected"] { color: @warningText; }
+  }
+}
 i[class^="mms-icon-group-"] {
   &[class$="-add"] i:before                                     { content: "\E090" }
   &[class$="-remove"] i:before                                  { content: "\E091" }
   &[class$="-edit"] i:before                                    { content: "\E092" }
   &[class$="-restart"] i:before                                 { content: "\E094" }
 }
-
 i[class^="mms-icon-mongos-"],
 i[class^="mms-icon-configsvr-"] {
   &[class$="-add"] i:before                                     { content: "\E095" }
@@ -37,7 +77,6 @@ i[class^="mms-icon-configsvr-"] {
   &[class$="-exclamation"] i:before                             { content: "\E098" }
   &[class$="-restart"] i:before                                 { content: "\E099" }
 }
-
 i[class^="mms-icon-wrench-"] {
   &[class$="-add"] i:before                                     { content: "\E078" }
   &[class$="-remove"] i:before                                  { content: "\E079" }
@@ -45,7 +84,6 @@ i[class^="mms-icon-wrench-"] {
   &[class$="-exclamation"] i:before                             { content: "\E081" }
   &[class$="-restart"] i:before                                 { content: "\E082" }
 }
-
 i[class^="mms-icon-configsvr-primary"],
 i[class^="mms-icon-configsvr-secondary"],
 i[class^="mms-icon-configsvr-nostate"],
@@ -65,7 +103,6 @@ i[class^="mms-icon-configsvr-unknown"] {
   &[class$="-exclamation"] i:before                             { content: "\E088" }
   &[class$="-restart"] i:before                                 { content: "\E089" }
 }
-
 i[class^="mms-icon-configsvr-"] {
   &[class$="-primary"]:before                                   { content: "\E040" }
   &[class$="-secondary"]:before                                 { content: "\E042" }
@@ -113,8 +150,8 @@ i[class^="mms-icon-configsvr-"] {
   &[class$="-rollback-selected"]:before                         { content: "\E068" }
   &[class$="-fatal-selected"]:before                            { content: "\E071" }
   &[class$="-unknown-selected"]:before                          { content: "\E074" }
-}
 
+}
 i[class^="mms-icon-nostate-"]:before                            { content: "\E100" }
 i[class^="mms-icon-startup-"]:before                            { content: "\E101" }
 i[class^="mms-icon-primary-"]:before                            { content: "\E102" }
@@ -275,6 +312,7 @@ i.mms-icon-import-existing-01:before                            { content: "\E40
 i.mms-icon-build-new-02:before                                  { content: "\E408" }
 i.mms-icon-import-existing-02:before                            { content: "\E409" }
 i.mms-icon-big-check:before                                     { content: "\E410" }
+
 i.mms-icon-big-refresh:before                                   { content: "\E411" }
 i.mms-icon-big-error:before                                     { content: "\E412" }
 i.mms-icon-big-warning:before                                   { content: "\E413" }
@@ -289,3 +327,111 @@ i.mms-icon-logo-redhat:before                                   { content: "\E50
 i.mms-icon-rocketbot:before                                     { content: "\F006" }
 i.mms-icon-snowbot:before                                       { content: "\F007" }
 i.mms-icon-medium-cloud:before                                  { content: "\F010" }
+
+/* color for error states */
+
+i.mms-icon-surprisedface {
+  color: @warningText;
+}
+
+i.mms-icon-sadface {
+  color: @alertRedDark;
+}
+
+i.mms-icon-deadface {
+  color: @errorText;
+}
+
+.down,
+.fatal,
+.shunned,
+.unknown {
+  i.mms-icon-mongod {
+    color: @errorText;
+  }
+}
+
+i.mms-icon-wrench-exclamation {
+  color: @gray5;
+}
+
+.startup,
+.startup2,
+.rollback,
+.recovering {
+  i.mms-icon-mongod {
+    color: @warningText;
+  }
+}
+
+i.mms-icon-addcenter {
+  color: @green2;
+}
+
+.has-shadow {
+  border: 1px solid @gray7;
+}
+
+.highlight {
+  color: @green2;
+}
+
+.mms-icon-stack {
+  i[class^="mms-icon-"] {
+    font-family: "MMS Icons";
+    font-style: normal;
+    font-weight: normal;
+    -webkit-transition: color 0.2s ease-out;
+       -moz-transition: color 0.2s ease-out;
+         -o-transition: color 0.2s ease-out;
+            transition: color 0.2s ease-out;
+    position: absolute;
+    margin: auto;
+    top:0;right:0;bottom:0;left:0;
+    font-size: 136px;
+  }
+  height: 108px;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  font-size: 136px;
+  line-height: 1;
+  display: inline-block;
+  text-align: center;
+  i {
+    color: @purple1;
+  }
+  i:first-child {
+    color: @purple3;
+  }
+  i.mms-icon-backup0:before          { content: "\F000" }
+  i.mms-icon-backup1:before          { content: "\F001" }
+  i.mms-icon-monitoring0:before      { content: "\F002" }
+  i.mms-icon-monitoring1:before      { content: "\F003" }
+  i.mms-icon-automation0:before      { content: "\F004" }
+  i.mms-icon-automation1:before      { content: "\F005" }
+
+}
+
+.from-automation h3#notifyMessage {
+  color: @green2;
+}
+
+.status-text {
+  color: @gray4;
+  font-style: italic;
+  font-size: 12px;
+  margin-top: -10px;
+  padding-left: 11px;
+  &.verified {
+    color: @green2;
+  }
+}
+
+.normal-height {
+  line-height:normal;
+}
+
+.muted {
+  color: @mutedText;
+}
