@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import Code from '../../subcomponents/code';
+import Code from '../../../../site-components/code';
 
 const UIBanners = () => (
   <div className="wrap button-ui">

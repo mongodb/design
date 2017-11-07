@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import Code from '../../subcomponents/code';
+import Code from '../../../../site-components/code';
 import { Link } from 'react-router';
 
 const UITabs = () => (

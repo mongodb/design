@@ -3,8 +3,8 @@
 // ==================================================
 
 import React from 'react';
-import '../../../../styling/root.less';
-import Code from '../../subcomponents/code';
+import '../../../../bem-components/root.less';
+import Code from '../../../../site-components/code';
 
 const UIQueryHistoryCard = () => (
   <div className="wrap button-ui">

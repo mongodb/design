@@ -4,10 +4,10 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import Code from '../../subcomponents/code';
-import Button from '../../react-components/Button.js';
-import Modal from '../../react-components/Modal.js';
-import { RadioGroup, Radio } from '../../react-components/RadioGroup.js';
+import Code from '../../../../site-components/code';
+import Button from '../../../../react-components/Button.js';
+import Modal from '../../../../react-components/Modal.js';
+import { RadioGroup, Radio } from '../../../../react-components/RadioGroup.js';
 
 class UIViewModalReact extends React.Component {
 

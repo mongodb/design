@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import '../../../styling/root.less';
+import '../../../bem-components/root.less';
 import config from '../../../../config.js'
 
 var token = config.gitkey;

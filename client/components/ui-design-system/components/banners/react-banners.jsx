@@ -4,10 +4,10 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import Code from '../../subcomponents/code';
-import Alert from '../../react-components/Alert.js';
-import Checkbox from '../../react-components/Checkbox.js';
-import { RadioGroup, Radio } from '../../react-components/RadioGroup.js';
+import Code from '../../../../site-components/code';
+import Alert from '../../../../react-components/Alert.js';
+import Checkbox from '../../../../react-components/Checkbox.js';
+import { RadioGroup, Radio } from '../../../../react-components/RadioGroup.js';
 
 var alertPairing = [
   ['success', 'Well done! You successfully read this important alert message.'],

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Code from '../../subcomponents/code';
-import CopyableCommand from '../../react-components/CopyableCommand.js';
-import Button from '../../react-components/Button.js';
-import { RadioGroup, Radio } from '../../react-components/RadioGroup.js';
-import Checkbox from '../../react-components/Checkbox.js';
+import Code from '../../../../site-components/code';
+import CopyableCommand from '../../../../react-components/CopyableCommand.js';
+import Button from '../../../../react-components/Button.js';
+import { RadioGroup, Radio } from '../../../../react-components/RadioGroup.js';
+import Checkbox from '../../../../react-components/Checkbox.js';
 
 class UICopyableCommandReact extends React.Component {
 

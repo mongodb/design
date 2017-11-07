@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Code from '../../subcomponents/code';
-import Button from '../../react-components/Button.js';
-import SplashView from '../../react-components/SplashView.js';
+import Code from '../../../../site-components/code';
+import Button from '../../../../react-components/Button.js';
+import SplashView from '../../../../react-components/SplashView.js';
 
 class UILayoutsReact extends React.Component {
 

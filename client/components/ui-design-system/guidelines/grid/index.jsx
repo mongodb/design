@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import Code from '../../subcomponents/code';
+import Code from '../../../../site-components/code';
 
 const UIGrid = () => (
   <div className="wrap">

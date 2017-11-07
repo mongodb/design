@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import ColorChip from '../../subcomponents/color-chip';
+import ColorChip from '../../../../site-components/color-chip';
 
 const UIColors = () => (
   <div className="wrap">

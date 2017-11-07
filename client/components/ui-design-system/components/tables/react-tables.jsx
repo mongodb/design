@@ -4,9 +4,9 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import Code from '../../subcomponents/code';
-import Table from '../../react-components/Table.js';
-import TablePaginated from '../../react-components/TablePaginated.js';
+import Code from '../../../../site-components/code';
+import Table from '../../../../react-components/Table.js';
+import TablePaginated from '../../../../react-components/TablePaginated.js';
 
 class UITablesReact extends React.Component {
 

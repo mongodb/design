@@ -5,7 +5,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
-require('../../styling/root.less');
+require('../../bem-components/root.less');
 
 const parent_class = "navigation-is-horizontal-parent";
 

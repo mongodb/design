@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import Code from '../../subcomponents/code';
+import Code from '../../../../site-components/code';
 
 const UIBubbles = () => (
   <div className="wrap button-ui">

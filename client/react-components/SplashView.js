@@ -5,7 +5,7 @@ const PropTypes = require('prop-types');
 const classNames = require('classnames');
 
 //Components
-const SplashViewGraphic = require('../react-components/SplashViewGraphic.js').default;
+const SplashViewGraphic = require('./SplashViewGraphic.js').default;
 
 function SplashView(props) {
     const {

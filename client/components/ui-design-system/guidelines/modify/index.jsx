@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import '../../../../styling/root.less';
+import '../../../../bem-components/root.less';
 var modPattern100 = require('../../../../assets/product-design/guidelines/mod-pattern-1-00.png');
 var modPattern101 = require('../../../../assets/product-design/guidelines/mod-pattern-1-01.png');
 var modPattern102 = require('../../../../assets/product-design/guidelines/mod-pattern-1-02.png');
