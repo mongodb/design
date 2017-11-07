@@ -27,12 +27,12 @@ render() {
       </div>
       <div className="row u-mb-2">
         <div className="columns small-12">
-          <ul className="tabs">
-            <li className="tabs-tab">
-              <Link to='/ui-design-system/components/tabs' className="tabs-tab-link">CSS</Link>
+          <ul className="section-header-tabs">
+            <li className="section-header-tab">
+              <Link to='/ui-design-system/components/tabs' className="section-header-tab-link">CSS</Link>
             </li>
-            <li className="tabs-tab tabs-tab-is-active">
-              <Link to='/ui-design-system/components/tabs/react-tabs' className="tabs-tab-link">React</Link>
+            <li className="section-header-tab section-header-tab-is-active">
+              <Link to='/ui-design-system/components/tabs/react-tabs' className="section-header-tab-link">React</Link>
             </li>
           </ul>
         </div>

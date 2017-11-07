@@ -15,12 +15,12 @@ const UIViewModal = () => (
     </div>
     <div className="row">
       <div className="columns small-12">
-        <ul className="tabs">
-          <li className="tabs-tab tabs-tab-is-active">
-            <Link to='/ui-design-system/components/view-modal' className="tabs-tab-link">CSS</Link>
+        <ul className="section-header-tabs">
+          <li className="section-header-tab section-header-tab-is-active">
+            <Link to='/ui-design-system/components/view-modal' className="section-header-tab-link">CSS</Link>
           </li>
-          <li className="tabs-tab">
-            <Link to='/ui-design-system/components/view-modal/react-view-modal' className="tabs-tab-link">React</Link>
+          <li className="section-header-tab">
+            <Link to='/ui-design-system/components/view-modal/react-view-modal' className="section-header-tab-link">React</Link>
           </li>
         </ul>
       </div>

@@ -15,12 +15,12 @@ const UICode = () => (
         </div>
         <div className="row">
           <div className="columns small-12">
-            <ul className="tabs">
-              <li className="tabs-tab tabs-tab-is-active">
-                <Link to='/ui-design-system/components/code' className="tabs-tab-link">CSS</Link>
+            <ul className="section-header-tabs">
+              <li className="section-header-tab section-header-tab-is-active">
+                <Link to='/ui-design-system/components/code' className="section-header-tab-link">CSS</Link>
               </li>
-              <li className="tabs-tab">
-                <Link to='/ui-design-system/components/code/react-copyablecommand' className="tabs-tab-link">React</Link>
+              <li className="section-header-tab">
+                <Link to='/ui-design-system/components/code/react-copyablecommand' className="section-header-tab-link">React</Link>
               </li>
             </ul>
           </div>
