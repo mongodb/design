@@ -4,7 +4,7 @@
 
 import React from 'react';
 import '../../../../css/root.less';
-import Code from '../../../../site-components/code';
+import Code from '../../../../react-components/site/code';
 
 const UIQueryHistoryCard = () => (
   <div className="wrap button-ui">

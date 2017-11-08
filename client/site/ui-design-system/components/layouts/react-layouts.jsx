@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Code from '../../../../site-components/code';
+import Code from '../../../../react-components/site/code';
 import Button from '../../../../react-components/Button.js';
 import SplashView from '../../../../react-components/SplashView.js';
 

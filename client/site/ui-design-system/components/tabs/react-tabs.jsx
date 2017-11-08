@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Code from '../../../../site-components/code';
+import Code from '../../../../react-components/site/code';
 import Alert from '../../../../react-components/Alert.js';
 import Button from '../../../../react-components/Button.js';
 import Checkbox from '../../../../react-components/Checkbox.js';

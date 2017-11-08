@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import Code from '../../../../site-components/code';
+import Code from '../../../../react-components/site/code';
 
 const UIRichForms = () => (
   <div className="wrap">

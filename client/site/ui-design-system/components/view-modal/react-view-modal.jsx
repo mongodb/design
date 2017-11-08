@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import Code from '../../../../site-components/code';
+import Code from '../../../../react-components/site/code';
 import Button from '../../../../react-components/Button.js';
 import Modal from '../../../../react-components/Modal.js';
 import { RadioGroup, Radio } from '../../../../react-components/RadioGroup.js';

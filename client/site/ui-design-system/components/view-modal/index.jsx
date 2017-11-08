@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import Code from '../../../../site-components/code';
+import Code from '../../../../react-components/site/code';
 
 const UIViewModal = () => (
   <div className="wrap">

@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import Code from '../../../../site-components/code';
+import Code from '../../../../react-components/site/code';
 import Table from '../../../../react-components/Table.js';
 import TablePaginated from '../../../../react-components/TablePaginated.js';
 

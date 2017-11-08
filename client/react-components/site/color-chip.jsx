@@ -1,7 +1,7 @@
 const React = require('react');
 const PropTypes = require('prop-types');
 import Clipboard from 'clipboard';
-import Button from '../react-components/Button.js';
+import Button from '../Button.js';
 
 class ColorChip extends React.Component {
 
