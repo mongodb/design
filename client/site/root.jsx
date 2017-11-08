@@ -10,7 +10,7 @@ import { useScroll } from 'react-router-scroll';
 
 import routes from '../routes.jsx';
 
-require('../bem-components/root.less');
+require('../css/root.less');
 require('../../node_modules/font-awesome/css/font-awesome.css');
 
 const Root = () => (

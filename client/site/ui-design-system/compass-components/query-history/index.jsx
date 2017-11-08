@@ -3,7 +3,7 @@
 // ==================================================
 
 import React from 'react';
-import '../../../../bem-components/root.less';
+import '../../../../css/root.less';
 import Code from '../../../../site-components/code';
 
 const UIQueryHistoryCard = () => (
