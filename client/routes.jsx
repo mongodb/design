@@ -1,51 +1,51 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import Layout from './components/layout/index.jsx';
-import NotFound from './components/not_found.jsx';
-import Resources from './components/ui-design-system/resources/index.jsx';
+import Layout from './site/layout/index.jsx';
+import NotFound from './site/not_found.jsx';
+import Resources from './site/ui-design-system/resources/index.jsx';
 
-import DesignSystem from './components/index.jsx';
+import DesignSystem from './site/index.jsx';
 
-import UIDesignSystem from './components/ui-design-system/index.jsx';
-import UIWelcome from './components/ui-design-system/welcome/index.jsx';
-import UIPrinciples from './components/ui-design-system/welcome/principles.jsx';
+import UIDesignSystem from './site/ui-design-system/index.jsx';
+import UIWelcome from './site/ui-design-system/welcome/index.jsx';
+import UIPrinciples from './site/ui-design-system/welcome/principles.jsx';
 
 //Base Styles
-import BaseStylesIndex from './components/ui-design-system/base-styles/index.jsx';
-import UIColors from './components/ui-design-system/base-styles/colors/index.jsx';
-import UIIcons from './components/ui-design-system/base-styles/icons/index.jsx';
-import UITypography from './components/ui-design-system/base-styles/typography/index.jsx';
+import BaseStylesIndex from './site/ui-design-system/base-styles/index.jsx';
+import UIColors from './site/ui-design-system/base-styles/colors/index.jsx';
+import UIIcons from './site/ui-design-system/base-styles/icons/index.jsx';
+import UITypography from './site/ui-design-system/base-styles/typography/index.jsx';
 
 //Compass Components
-import CompassIndex from './components/ui-design-system/compass-components/index.jsx';
-import UIQueryHistory from './components/ui-design-system/compass-components/query-history/index.jsx';
+import CompassIndex from './site/ui-design-system/compass-components/index.jsx';
+import UIQueryHistory from './site/ui-design-system/compass-components/query-history/index.jsx';
 
 //Components
-import ComponentsIndex from './components/ui-design-system/components/index.jsx';
-import UIBanners from './components/ui-design-system/components/banners/index.jsx';
-import UIBannersReact from './components/ui-design-system/components/banners/react-banners.jsx';
-import UIButtons from './components/ui-design-system/components/buttons/index.jsx';
-import UIButtonsReact from './components/ui-design-system/components/buttons/react-buttons.jsx';
-import UICode from './components/ui-design-system/components/code/index.jsx';
-import UICopyableCommandReact from './components/ui-design-system/components/code/react-copyablecommand.jsx';
-import UIBubbles from './components/ui-design-system/components/bubbles/index.jsx';
-import UIForms from './components/ui-design-system/components/forms/index.jsx';
-import UIRichForms from './components/ui-design-system/components/rich-forms/index.jsx';
-import UILayouts from './components/ui-design-system/components/layouts/index.jsx';
-import UILayoutsReact from './components/ui-design-system/components/layouts/react-layouts.jsx';
-import UILists from './components/ui-design-system/components/lists/index.jsx';
-import UITabs from './components/ui-design-system/components/tabs/index.jsx';
-import UITabsReact from './components/ui-design-system/components/tabs/react-tabs.jsx';
-import UITables from './components/ui-design-system/components/tables/index.jsx';
-import UITablesReact from './components/ui-design-system/components/tables/react-tables.jsx';
-import UIViewModal from './components/ui-design-system/components/view-modal/index.jsx';
-import UIViewModalReact from './components/ui-design-system/components/view-modal/react-view-modal.jsx';
+import ComponentsIndex from './site/ui-design-system/components/index.jsx';
+import UIBanners from './site/ui-design-system/components/banners/index.jsx';
+import UIBannersReact from './site/ui-design-system/components/banners/react-banners.jsx';
+import UIButtons from './site/ui-design-system/components/buttons/index.jsx';
+import UIButtonsReact from './site/ui-design-system/components/buttons/react-buttons.jsx';
+import UICode from './site/ui-design-system/components/code/index.jsx';
+import UICopyableCommandReact from './site/ui-design-system/components/code/react-copyablecommand.jsx';
+import UIBubbles from './site/ui-design-system/components/bubbles/index.jsx';
+import UIForms from './site/ui-design-system/components/forms/index.jsx';
+import UIRichForms from './site/ui-design-system/components/rich-forms/index.jsx';
+import UILayouts from './site/ui-design-system/components/layouts/index.jsx';
+import UILayoutsReact from './site/ui-design-system/components/layouts/react-layouts.jsx';
+import UILists from './site/ui-design-system/components/lists/index.jsx';
+import UITabs from './site/ui-design-system/components/tabs/index.jsx';
+import UITabsReact from './site/ui-design-system/components/tabs/react-tabs.jsx';
+import UITables from './site/ui-design-system/components/tables/index.jsx';
+import UITablesReact from './site/ui-design-system/components/tables/react-tables.jsx';
+import UIViewModal from './site/ui-design-system/components/view-modal/index.jsx';
+import UIViewModalReact from './site/ui-design-system/components/view-modal/react-view-modal.jsx';
 
 //Guidelines
-import GuidelinesIndex from './components/ui-design-system/guidelines/index.jsx';
-import UIGrid from './components/ui-design-system/guidelines/grid/index.jsx';
-import UIModify from './components/ui-design-system/guidelines/modify/index.jsx';
+import GuidelinesIndex from './site/ui-design-system/guidelines/index.jsx';
+import UIGrid from './site/ui-design-system/guidelines/grid/index.jsx';
+import UIModify from './site/ui-design-system/guidelines/modify/index.jsx';
 
 const routes = (
   <Route path="/ui-design-system" component={Layout}>
