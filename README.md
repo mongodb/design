@@ -24,7 +24,7 @@ var config = {
 export default config;
 ```
 
-2. Generate a new Github personal access token and paste it into `...` in the above code snippet. Only the `repo` > `public_repo` scope is required.
+2. Generate a new Github personal access token and paste it into `...` in the above code snippet. Only the *repo* > *public_repo* scope is required.
 
 3. Install the node modules and run the dev server:
 
