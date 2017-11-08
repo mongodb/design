@@ -14,7 +14,7 @@ Sketch template files can be found at [github.com/leafygreen/sketchUILibrary](ht
 
 ### To Build Locally
 
-Clone repo and create `config.js` in the root directory. :
+Clone the repo. Create `config.js` in the root directory and add the following:
 
 ```
 var config = {
@@ -24,7 +24,7 @@ var config = {
 export default config;
 ```
 
-Generate a new Github personal access token and paste it into `...`. Only the `repo` > `public_repo` scope is required.
+Generate a new Github personal access token and paste it into `...` in the above code snippet. Only the `repo` > `public_repo` scope is required.
 
 Install the node modules and run the dev server:
 
