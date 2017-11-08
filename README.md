@@ -26,15 +26,12 @@ export default config;
 
 Generate a new Github personal access token and paste it into `...`. Only the `repo` > `public_repo` scope is required.
 
-
-### Contribute
-
-Fork the repo, install the node modules and run the dev server:
+Install the node modules and run the dev server:
 
 ```
 $ npm install
 $ npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Make changes and submit a pull request (screenshots appreciated). 
+Open locally at [http://localhost:3000](http://localhost:3000)
 
