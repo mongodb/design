@@ -4,6 +4,21 @@
 
 The MongoDB Design System contains the UI building blocks that make up the user experience across all MongoDB products. These components are free to use in your project. HTML/CSS ([BEM](https://en.bem.info/)) as well as React versions are included.
 
+
+### To Build Locally
+
+Clone repo and create `config.js` in the root directory. :
+
+```
+var config = {
+  gitkey : '...'
+}
+
+export default config;
+```
+
+Generate a new Github personal access token and paste it into `...`. The token only needs the `repo` > `public_repo` permissions.
+
 ### Documentation
 
 Build locally or visit [mongodb.design](http://mongodb.design) to view component documentation.
