@@ -2,7 +2,14 @@
 
 ### What is this?
 
-The MongoDB Design System contains the UI building blocks that make up the user experience across all MongoDB products. These components are free to use in your project. HTML/CSS ([BEM](https://en.bem.info/)) as well as React versions are included.
+The MongoDB Design System contains the UI building blocks that make up the user experience across all MongoDB products. These components are available to use in your project. HTML/CSS ([BEM](https://en.bem.info/)) as well as React versions are included.
+
+
+### Documentation
+
+Build locally or visit [mongodb.design](http://mongodb.design/) to view component documentation.
+
+Sketch template files can be found at [github.com/leafygreen/sketchUILibrary](https://github.com/leafygreen/sketchUILibrary).
 
 
 ### To Build Locally
@@ -17,13 +24,8 @@ var config = {
 export default config;
 ```
 
-Generate a new Github personal access token and paste it into `...`. The token only needs the `repo` > `public_repo` permissions.
+Generate a new Github personal access token and paste it into `...`. Only the `repo` > `public_repo` scope is required.
 
-### Documentation
-
-Build locally or visit [mongodb.design](http://mongodb.design) to view component documentation.
-
-Sketch template files can be found at [github.com/leafygreen/sketchUILibrary](https://github.com/leafygreen/sketchUILibrary).
 
 ### Contribute
 
