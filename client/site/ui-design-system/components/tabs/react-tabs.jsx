@@ -3,11 +3,9 @@ import { Link } from 'react-router';
 import Code from '../../../../react-components/site/code';
 import Alert from '../../../../react-components/Alert.js';
 import Button from '../../../../react-components/Button.js';
-import Checkbox from '../../../../react-components/Checkbox.js';
 import SectionHeader from '../../../../react-components/SectionHeader.js';
 import SectionSubtabs from '../../../../react-components/SectionSubtab.js';
 import SectionHeaderTabs from '../../../../react-components/SectionHeaderTab.js';
-import { RadioGroup, Radio } from '../../../../react-components/RadioGroup.js';
 const Prism = require('prismjs');
 
 class UITabsReact extends React.Component {
