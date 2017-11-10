@@ -30,110 +30,157 @@ render() {
           </ul>
         </div>
       </div>
-
       <div className="row u-mb-2 type-default">
         <div className="columns small-12">
           <h2>Default Tabs</h2>
             <p>We have tabs for any and all kinds of options and situations.</p>
-
-          <SectionHeaderTabs children={[<SectionHeaderTabs.Tab linkText="Processes" type="active"/>, <SectionHeaderTabs.Tab linkText="Servers" />,
-            <SectionHeaderTabs.Tab linkText="Agents" />, <SectionHeaderTabs.Tab linkText="Security"/>]}>
-          </SectionHeaderTabs>
-
+          <SectionHeaderTabs 
+            children={
+              [
+                <SectionHeaderTabs.Tab linkText="Processes" type="active" />,
+                <SectionHeaderTabs.Tab linkText="Servers" />,
+                <SectionHeaderTabs.Tab linkText="Agents" />, 
+                <SectionHeaderTabs.Tab linkText="Security" />
+              ]
+            }
+          />
         <Code
           language='language-html'
-          text={`<SectionHeaderTabs children={[<SectionHeaderTabs.Tab linkText="Processes" type="active"/>, <SectionHeaderTabs.Tab linkText="Servers" />,
-  <SectionHeaderTabs.Tab linkText="Agents" />, <SectionHeaderTabs.Tab linkText="Security"/>]}>
-</SectionHeaderTabs>`}> 
+          text={`<SectionHeaderTabs
+  children={
+    [
+      <SectionHeaderTabs.Tab linkText="Processes" type="active" />,
+      <SectionHeaderTabs.Tab linkText="Servers" />,
+      <SectionHeaderTabs.Tab linkText="Agents" />, 
+      <SectionHeaderTabs.Tab linkText="Security" />
+    ]
+  }
+/>`}> 
         </Code> 
         </div>
       </div>
-
     <div className="row u-mb-2">
       <div className="columns small-12">
         <h3>Common Navigation</h3>
         <p>Section Header, Tabs, Subtabs, Controls and Banner</p>
       </div>
     </div>
-
       <div className="row u-mb-3">
           <div className="columns small-12">
             <div className="section-header">
               <SectionHeader headlineText='Section Without Tabs'>
-                <Button label="Primary Action" className="button-is-primary u-mr-2"></Button>
-                <Button className="button-has-ellipsis-only"></Button>
+                <Button label="Primary Action" className="button-is-primary u-mr-2" />
+                <Button className="button-has-ellipsis-only" />
               </SectionHeader>
             </div>
-
         <Code
           language='language-html'
           text={`<SectionHeader headlineText='Section Without Tabs'>
-  <Button label="Primary Action" className="button-is-primary u-mr-2"></Button>
-  <Button className="button-has-ellipsis-only"></Button>
+  <Button label="Primary Action" className="button-is-primary u-mr-2" />
+  <Button className="button-has-ellipsis-only" />
 </SectionHeader>`}> 
         </Code> 
-
         </div>
       </div>
-      
-
       <div className="row u-mb-2 u-mt-8">
         <div className="columns small-12">
             <div className="section-header section-header-has-tabs">
                 <div className="section-warnings-alert">
-                <Alert level="warning" children="This is a warning"></Alert>
+                  <Alert level="warning" children="This is a warning" />
                 </div>
                 <SectionHeader headlineText="Section With Banner">
-                  <Button label="Primary Action" className="button-is-primary u-mr-2"></Button>
-                  <Button className="button-has-ellipsis-only"></Button>
+                  <Button label="Primary Action" className="button-is-primary u-mr-2" />
+                  <Button className="button-has-ellipsis-only" />
                 </SectionHeader>
-                  <SectionHeaderTabs children={[<SectionHeaderTabs.Tab linkText="Tab" />, <SectionHeaderTabs.Tab linkText="Active Tab" type="active" />,
-                    <SectionHeaderTabs.Tab linkText="Tab" />, <SectionHeaderTabs.Tab linkText="More" type="moreToggle"/>]}>
-                  </SectionHeaderTabs>
+                <SectionHeaderTabs 
+                  children={
+                    [
+                      <SectionHeaderTabs.Tab linkText="Tab" />,
+                      <SectionHeaderTabs.Tab linkText="Active Tab" type="active" />,
+                      <SectionHeaderTabs.Tab linkText="Tab" />,
+                      <SectionHeaderTabs.Tab linkText="More" type="moreToggle"/>
+                    ]
+                  }
+                />
             </div>
         </div>
       </div>
       <Code
           language='language-html'
-          text={`<Alert level="warning" children="This is a warning"></Alert>
-<SectionHeader headlineText="Section With Banner">
-  <Button label="Primary Action" className="button-is-primary u-mr-2"></Button>
-  <Button className="button-has-ellipsis-only"></Button>
-</SectionHeader>
-<SectionHeaderTabs children={[<SectionHeaderTabs.Tab linkText="Tab" />, <SectionHeaderTabs.Tab linkText="Active Tab" type="active" />,
-  <SectionHeaderTabs.Tab linkText="Tab" />, <SectionHeaderTabs.Tab linkText="More" type="moreToggle"/>]}>
-</SectionHeaderTabs>`}> 
+          text={`<div className="section-header section-header-has-tabs">
+  <div className="section-warnings-alert">
+    <Alert level="warning" children="This is a warning" />
+  </div>
+  <SectionHeader headlineText="Section With Banner">
+    <Button label="Primary Action" className="button-is-primary u-mr-2" />
+    <Button className="button-has-ellipsis-only" />
+  </SectionHeader>
+  <SectionHeaderTabs
+    children={
+      [
+        <SectionHeaderTabs.Tab linkText="Tab" />,
+        <SectionHeaderTabs.Tab linkText="Active Tab" type="active" />,
+        <SectionHeaderTabs.Tab linkText="Tab" />,
+        <SectionHeaderTabs.Tab linkText="More" type="moreToggle"/>
+      ]
+    }
+  />
+</div>`}> 
         </Code>
-
       <div className="row u-mb-2 u-mt-8">
         <div className="columns small-12">
             <div className="section-header">
               <SectionHeader headlineText="Section With Tabs">
-                <Button label="Primary Action" className="button-is-primary u-mr-2"></Button>
-                <Button className="button-has-ellipsis-only"></Button>
+                <Button label="Primary Action" className="button-is-primary u-mr-2" />
+                <Button className="button-has-ellipsis-only" />
               </SectionHeader>
-                <SectionHeaderTabs children={[<SectionHeaderTabs.Tab linkText="Tab" />, <SectionHeaderTabs.Tab linkText="Active Tab" type="active" />,
-                  <SectionHeaderTabs.Tab linkText="Beta Tab" type='beta'/>, <SectionHeaderTabs.Tab linkText="More" type='moreToggle'/>]}>
-                </SectionHeaderTabs>
-
-                <SectionSubtabs children={[<SectionSubtabs.Tab linkText="Subtab"/>, <SectionSubtabs.Tab linkText="Active Subtab" type="active" />,
-                  <SectionSubtabs.Tab linkText="Last Subtab"/>]}>
-                </SectionSubtabs>
+                <SectionHeaderTabs
+                  children={
+                    [
+                      <SectionHeaderTabs.Tab linkText="Tab" />,
+                      <SectionHeaderTabs.Tab linkText="Active Tab" type="active" />,
+                      <SectionHeaderTabs.Tab linkText="Beta Tab" type='beta' />,
+                      <SectionHeaderTabs.Tab linkText="More" type='moreToggle' />
+                    ]
+                  }
+                />
+                <SectionSubtabs 
+                  children={
+                    [
+                      <SectionSubtabs.Tab linkText="Subtab" />,
+                      <SectionSubtabs.Tab linkText="Active Subtab" type="active" />,
+                      <SectionSubtabs.Tab linkText="Last Subtab" />
+                    ]
+                  } 
+                />
             </div>
-
             <Code
           language='language-html'
-          text={`<SectionHeader headlineText="Section With Tabs">
-  <Button label="Primary Action" className="button-is-primary u-mr-2"></Button>
-  <Button className="button-has-ellipsis-only"></Button>
-</SectionHeader>
-<SectionHeaderTabs children={[<SectionHeaderTabs.Tab linkText="Tab" />, <SectionHeaderTabs.Tab linkText="Active Tab" type="active" />,
-  <SectionHeaderTabs.Tab linkText="Beta Tab" type='beta'/>, <SectionHeaderTabs.Tab linkText="More" type='moreToggle'/>]}>
-</SectionHeaderTabs>
-<SectionSubtabs children={[<SectionSubtabs.Tab linkText="Subtab"/>, <SectionSubtabs.Tab linkText="Active Subtab" type="active" />,
-  <SectionSubtabs.Tab linkText="Last Subtab"/>]}>
-</SectionSubtabs>
-          `}> 
+          text={`<div className="section-header">
+  <SectionHeader headlineText="Section With Tabs">
+    <Button label="Primary Action" className="button-is-primary u-mr-2" />
+    <Button className="button-has-ellipsis-only" />
+  </SectionHeader>
+    <SectionHeaderTabs
+      children={
+        [
+          <SectionHeaderTabs.Tab linkText="Tab" />,
+          <SectionHeaderTabs.Tab linkText="Active Tab" type="active" />,
+          <SectionHeaderTabs.Tab linkText="Beta Tab" type='beta' />,
+          <SectionHeaderTabs.Tab linkText="More" type='moreToggle' />
+        ]
+      }
+    />
+    <SectionSubtabs 
+      children={
+        [
+          <SectionSubtabs.Tab linkText="Subtab" />,
+          <SectionSubtabs.Tab linkText="Active Subtab" type="active" />,
+          <SectionSubtabs.Tab linkText="Last Subtab" />
+        ]
+      } 
+    />
+</div>`}> 
           </Code>
         </div>
       </div>
