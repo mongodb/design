@@ -37,10 +37,10 @@ render() {
           <SectionHeaderTabs 
             children={
               [
-                <SectionHeaderTabs.Tab linkText="Processes" type="active" />,
-                <SectionHeaderTabs.Tab linkText="Servers" />,
-                <SectionHeaderTabs.Tab linkText="Agents" />, 
-                <SectionHeaderTabs.Tab linkText="Security" />
+                <SectionHeaderTabs.Tab linkText="Processes" type="active" href={null} />,
+                <SectionHeaderTabs.Tab linkText="Servers" href={null} />,
+                <SectionHeaderTabs.Tab linkText="Agents" href={null} />, 
+                <SectionHeaderTabs.Tab linkText="Security" href={null} />
               ]
             }
           />
@@ -109,10 +109,10 @@ render() {
                 <SectionHeaderTabs 
                   children={
                     [
-                      <SectionHeaderTabs.Tab linkText="Tab" />,
-                      <SectionHeaderTabs.Tab linkText="Active Tab" type="active" />,
-                      <SectionHeaderTabs.Tab linkText="Tab" />,
-                      <SectionHeaderTabs.Tab linkText="More" type="moreToggle"/>
+                      <SectionHeaderTabs.Tab linkText="Tab" href={null} />,
+                      <SectionHeaderTabs.Tab linkText="Active Tab" type="active" href={null} />,
+                      <SectionHeaderTabs.Tab linkText="Tab" href={null} />,
+                      <SectionHeaderTabs.Tab linkText="More" type="moreToggle" href={null} />
                     ]
                   }
                 />
@@ -158,19 +158,19 @@ render() {
                 <SectionHeaderTabs
                   children={
                     [
-                      <SectionHeaderTabs.Tab linkText="Tab" />,
-                      <SectionHeaderTabs.Tab linkText="Active Tab" type="active" />,
-                      <SectionHeaderTabs.Tab linkText="Beta Tab" type='beta' />,
-                      <SectionHeaderTabs.Tab linkText="More" type='moreToggle' />
+                      <SectionHeaderTabs.Tab linkText="Tab" href={null} />,
+                      <SectionHeaderTabs.Tab linkText="Active Tab" type="active" href={null} />,
+                      <SectionHeaderTabs.Tab linkText="Beta Tab" type='beta' href={null} />,
+                      <SectionHeaderTabs.Tab linkText="More" type='moreToggle' href={null} />
                     ]
                   }
                 />
                 <SectionSubtabs 
                   children={
                     [
-                      <SectionSubtabs.Tab linkText="Subtab" />,
-                      <SectionSubtabs.Tab linkText="Active Subtab" type="active" />,
-                      <SectionSubtabs.Tab linkText="Last Subtab" />
+                      <SectionSubtabs.Tab linkText="Subtab" href={null} />,
+                      <SectionSubtabs.Tab linkText="Active Subtab" type="active" href={null} />,
+                      <SectionSubtabs.Tab linkText="Last Subtab" href={null} />
                     ]
                   } 
                 />
