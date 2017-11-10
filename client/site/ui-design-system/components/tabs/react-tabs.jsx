@@ -69,8 +69,15 @@ render() {
           <div className="columns small-12">
             <div className="section-header">
               <SectionHeader headlineText='Section Without Tabs'>
-                <Button label="Primary Action" className="button-is-primary u-mr-2" />
-                <Button className="button-has-ellipsis-only" />
+                <Button 
+                  label="Primary Action"
+                  className="button-is-primary u-mr-2"
+                  onClick={() => {return null}}
+                />
+                <Button
+                  className="button-has-ellipsis-only"
+                  onClick={() => {return null}}
+                />
               </SectionHeader>
             </div>
         <Code
@@ -89,8 +96,15 @@ render() {
                   <Alert level="warning" children="This is a warning" />
                 </div>
                 <SectionHeader headlineText="Section With Banner">
-                  <Button label="Primary Action" className="button-is-primary u-mr-2" />
-                  <Button className="button-has-ellipsis-only" />
+                  <Button
+                    label="Primary Action"
+                    className="button-is-primary u-mr-2"
+                    onClick={() => {return null}}
+                  />
+                  <Button
+                    className="button-has-ellipsis-only"
+                    onClick={() => {return null}}
+                  />
                 </SectionHeader>
                 <SectionHeaderTabs 
                   children={
@@ -131,8 +145,15 @@ render() {
         <div className="columns small-12">
             <div className="section-header">
               <SectionHeader headlineText="Section With Tabs">
-                <Button label="Primary Action" className="button-is-primary u-mr-2" />
-                <Button className="button-has-ellipsis-only" />
+                <Button
+                  label="Primary Action"
+                  className="button-is-primary u-mr-2"
+                  onClick={() => {return null}}
+                />
+                <Button
+                  className="button-has-ellipsis-only"
+                  onClick={() => {return null}}
+                />
               </SectionHeader>
                 <SectionHeaderTabs
                   children={
