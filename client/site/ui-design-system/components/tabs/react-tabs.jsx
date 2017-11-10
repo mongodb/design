@@ -9,11 +9,6 @@ import SectionHeaderTabs from '../../../../react-components/SectionHeaderTab.js'
 const Prism = require('prismjs');
 
 class UITabsReact extends React.Component {
-   state = {
-    controlDisabled: false,
-    controlTypeClassName: "",
-    controlLabel: "Default Tabs",
-  }
 
 render() {
   return (
@@ -143,10 +138,7 @@ render() {
         </div>
       </div>
     </div>
-
     );
-
-
   }
 }
 
