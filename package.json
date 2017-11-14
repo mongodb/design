@@ -1,5 +1,5 @@
 {
-  "name": "MongoDB Design",
+  "name": "@mongodbdesign/mdbdesignsystem",
   "version": "0.2.2",
   "description": "MongoDB shared UI components and assets. Documentation site built with React.",
   "homepage": "https://mongodb.github.io/design",
