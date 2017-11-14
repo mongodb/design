@@ -10,7 +10,11 @@ module.exports = {
       resolve: {
         extensions: ['.js', 'index.js', '.jsx'],
       }
-    }
+    },
+    publicPath: '',
+    html: {
+      template: 'client/index.html'
+    },
   },
 
 }
