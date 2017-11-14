@@ -2,8 +2,11 @@
   "name": "@mongodbdesign/mdbdesignsystem",
   "version": "0.2.2",
   "description": "MongoDB shared UI components and assets. Documentation site built with React.",
+  "homepage": "https://mongodb.github.io/design",
   "license": "MIT",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "nwb build-react-app client/index.jsx build",
     "clean": "nwb clean-app build",
     "start": "nwb serve-react-app client/index.jsx"
@@ -17,6 +20,7 @@
     "clipboard": "^1.7.1",
     "css-loader": "^0.23.0",
     "font-awesome": "^4.7.0",
+    "gh-pages": "^1.0.0",
     "jquery": "^3.1.1",
     "lodash": "^4.15.0",
     "prismjs": "^1.8.1",
@@ -29,7 +33,6 @@
     "react-router-scroll": "^0.3.1",
     "react-tooltip": "3.3.0",
     "style-loader": "^0.13.1",
-    "prop-types": "15.5.10",
     "underscore": "1.8.3"
   },
   "devDependencies": {
