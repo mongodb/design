@@ -4,28 +4,29 @@
 
 import React from 'react';
 import '../../../../css/root.less';
-var modPattern1alt = require('../../../../assets/product-design/guidelines/modify1-alt.gif');
-var modPattern2alt = require('../../../../assets/product-design/guidelines/modify2-alt.gif');
-var modPattern3alt = require('../../../../assets/product-design/guidelines/modify3-alt.gif');
-var modPattern4alt = require('../../../../assets/product-design/guidelines/modify4-alt.gif');
-var modPattern5alt = require('../../../../assets/product-design/guidelines/modify5-alt.gif');
+var modPattern1 = require('../../../../assets/product-design/guidelines/modify1.mp4');
+var modPattern2 = require('../../../../assets/product-design/guidelines/modify2.mp4');
+var modPattern3 = require('../../../../assets/product-design/guidelines/modify3.mp4');
+var modPattern4 = require('../../../../assets/product-design/guidelines/modify4.mp4');
+var modPattern5 = require('../../../../assets/product-design/guidelines/modify5.mp4');
 
 const UIModify = () => (
   <div className="wrap guidelines-modify">
     <h1 className="heading">Modifying Elements</h1>
     
     <h2>Client-Side Application Data</h2>
-    <p>When modifying client-side application data, there are fewer performance concerns for end users and their systems. Therefore the patterns are less precautionary and pretty straight forward.</p>
+    <p>We encounter fewer performance concerns when modifying client-side application data than we do with MongoDB infrastructure, so these modification patterns are less precautionary and more straightforward.</p>
 
     <h3>Change Instantly</h3>
     <div className="row u-mb-2">
     	<div className="columns small-12">
-		      <img className="u-mb-3" src={modPattern1alt} />
-      </div>
-      <div className="columns small-6">
+	      <video className="guidelines-video u-mb-4" controls>
+    		  <source src={modPattern1} type="video/mp4" />
+    		  I'm sorry; your browser doesn't support HTML5 video.
+    		</video>
+
 	      <p>In this pattern, information is modified and committed at once, without additional views or actions. It's most appropriate for small changes.</p>
-      </div>
-      <div className="columns small-6">
+
 	      <p><strong>When to use</strong></p>
 				<ul>
 	        <li><p>To modify an inline element</p></li>
@@ -38,12 +39,13 @@ const UIModify = () => (
     <h3>Commit Changes</h3>
     <div className="row u-mb-2">
     	<div className="columns small-12">
-	      <img className="u-mb-3" src={modPattern2alt} />
-      </div>
-      <div className="columns small-6">
-	      <p>In this pattern, changes require an additional action, like Save, to be committed. Users are warned if changes they made are about to be lost.</p>
-			</div>
-      <div className="columns small-6">
+        <video className="guidelines-video u-mb-4" controls>
+          <source src={modPattern2} type="video/mp4" />
+          I'm sorry; your browser doesn't support HTML5 video.
+        </video>
+
+	      <p>In this pattern, committing changes require an additional action, like Save. Users are warned if changes they made are about to be lost.</p>
+
 		    <p><strong>When to use</strong></p>
 		    <ul>
 		      <li><p>Parent container with any number of inline child elements</p></li>
@@ -54,23 +56,23 @@ const UIModify = () => (
     </div>
 
 
-    <h2>User’s MongoDB Data and Infrastructure</h2>
-    <p>Higher performance concerns for end users</p>
-    <p>When manipulating MongoDB data and infrastructure, there are greater performance concerns for end users and their systems. Therefore the following patterns aim to manage complexity and progressively disclose precise changes that will take place as the user advances through their pattern towards a final commitment. It is recommended that a container map directly to a single MongoDB concept within our existing documentation.</p>
-    <p>If communicating application behaviors and status is competing with efforts to communicate MongoDB behaviors and status, elevate and reveal the MongoDB concepts in favor of the application concepts wherever possible.</p>
+    <h2 className="u-mt-4">User’s MongoDB Data and Infrastructure</h2>
+    <p>Modifying MongoDB data and infrastructure can have greater performance concerns, so these patterns aim to manage complexity and progressively disclose precise changes. We recommend that a container should map directly to a single MongoDB concept as described in our documentation.</p>
+    <p>If application behavior and status information is competing with MongoDB behavior and status information, choose in favor of application concepts wherever possible.</p>
 
     <h3>Commit Changes on Parent</h3>
     <div className="row u-mb-2">
     	<div className="columns small-12">
-				<img src={modPattern3alt} />
-      </div>
-      <div className="columns small-6">
-      <p>Explain here</p>
-      </div>
-      <div className="columns small-6">
+        <video className="guidelines-video" controls>
+          <source src={modPattern3} type="video/mp4" />
+          I'm sorry; your browser doesn't support HTML5 video.
+        </video>
+
+      <p>In this pattern, multiple inline changes can be made individually, but committing them is done from the parent container level.</p>
+
 		    <p><strong>When to use</strong></p>
 	      <ul>
-	        <li><p>Parent container with any number of inline child elements (all three below)</p></li>
+	        <li><p>Parent container with any number of inline child elements</p></li>
 	        <li><p>Presentation layer matches complexity of configurable options</p></li>
 	        <li><p>e.g., Compass Document CRUD</p></li>
 	      </ul>
@@ -80,12 +82,13 @@ const UIModify = () => (
       <h3>Modification Layer</h3>
 	    <div className="row u-mb-2">
 	    	<div className="columns small-12">
-					<img src={modPattern4alt} />
-	      </div>
-	      <div className="columns small-6">
-	      <p>Explain here</p>
-	      </div>
-	      <div className="columns small-6">
+        <video className="guidelines-video" controls>
+          <source src={modPattern4} type="video/mp4" />
+          I'm sorry; your browser doesn't support HTML5 video.
+        </video>
+
+	      <p>In this pattern, modifications are made on a modification layer separate from the presentation layer. On the modification layer, changes are committed from the parent container.</p>
+
 			    <p><strong>When to use</strong></p>
 	      <ul>
 	        <li><p>Presentation layer obfuscates complexity of configurable options</p></li>
@@ -97,12 +100,13 @@ const UIModify = () => (
       <h3>Modification Layer with Confirmation Layer</h3>
 	    <div className="row u-mb-2">
 	    	<div className="columns small-12">
-					<img src={modPattern5alt} />
-	      </div>
-	      <div className="columns small-6">
-	      <p>Explain here</p>
-	      </div>
-	      <div className="columns small-6">
+        <video className="guidelines-video" controls>
+          <source src={modPattern5} type="video/mp4" />
+          I'm sorry; your browser doesn't support HTML5 video.
+        </video>
+
+	      <p>In this pattern, there are separate presentation, modification, and confirmation layers.</p>
+
 			    <p><strong>When to use</strong></p>
 		      <ul>
 		        <li><p>Presentation layer obfuscates complexity of configurable options</p></li>
