@@ -4,177 +4,99 @@
 
 import React from 'react';
 import '../../../../css/root.less';
-var modPattern100 = require('../../../../assets/product-design/guidelines/mod-pattern-1-00.png');
-var modPattern101 = require('../../../../assets/product-design/guidelines/mod-pattern-1-01.png');
-var modPattern102 = require('../../../../assets/product-design/guidelines/mod-pattern-1-02.png');
-var modPattern103 = require('../../../../assets/product-design/guidelines/mod-pattern-1-03.png');
-
-var modPattern200 = require('../../../../assets/product-design/guidelines/mod-pattern-2-00.png');
-var modPattern201 = require('../../../../assets/product-design/guidelines/mod-pattern-2-01.png');
-
-var modPattern300 = require('../../../../assets/product-design/guidelines/mod-pattern-3-00.png');
-var modPattern301 = require('../../../../assets/product-design/guidelines/mod-pattern-3-01.png');
-var modPattern302 = require('../../../../assets/product-design/guidelines/mod-pattern-3-02.png');
-var modPattern303 = require('../../../../assets/product-design/guidelines/mod-pattern-3-03.png');
-
-var modPattern400 = require('../../../../assets/product-design/guidelines/mod-pattern-4-00.png');
-var modPattern401 = require('../../../../assets/product-design/guidelines/mod-pattern-4-01.png');
-var modPattern402 = require('../../../../assets/product-design/guidelines/mod-pattern-4-02.png');
-var modPattern403 = require('../../../../assets/product-design/guidelines/mod-pattern-4-03.png');
-var modPattern404 = require('../../../../assets/product-design/guidelines/mod-pattern-4-04.png');
-
-var modPattern500 = require('../../../../assets/product-design/guidelines/mod-pattern-5-00.png');
-var modPattern501 = require('../../../../assets/product-design/guidelines/mod-pattern-5-01.png');
-var modPattern502 = require('../../../../assets/product-design/guidelines/mod-pattern-5-02.png');
-var modPattern503 = require('../../../../assets/product-design/guidelines/mod-pattern-5-03.png');
-var modPattern504 = require('../../../../assets/product-design/guidelines/mod-pattern-5-04.png');
-var modPattern505 = require('../../../../assets/product-design/guidelines/mod-pattern-5-05.png');
+var modPattern1 = require('../../../../assets/product-design/guidelines/modify1.mp4');
+var modPattern2 = require('../../../../assets/product-design/guidelines/modify2.mp4');
+var modPattern3 = require('../../../../assets/product-design/guidelines/modify3.mp4');
+var modPattern4 = require('../../../../assets/product-design/guidelines/modify4.mp4');
+var modPattern5 = require('../../../../assets/product-design/guidelines/modify5.mp4');
 
 const UIModify = () => (
   <div className="wrap guidelines-modify">
     <h1 className="heading">Modifying Elements</h1>
-    <p>The following is a set of guidelines for reference when considering the interaction patterns for modifying elements. There are two major categories your feature may fall under: 1). modifying application data, or 2). modifying underlying MongoDB data or infrastructure. You will find patterns below for handling each.</p>
+    
+    <h2 className="u-mt-6">Client-Side Application Data</h2>
+    <p>We encounter fewer performance concerns when modifying client-side application data than we do with MongoDB infrastructure, so these modification patterns are less precautionary and more straightforward.</p>
 
-      <h2>Client-Side Application Data</h2>
-      <p>When modifying client-side application data, there are fewer performance concerns for end users and their systems. Therefore the patterns are less precautionary and pretty straight forward.</p>
+    <h3>Change Instantly</h3>
+    <div className="row u-mb-2">
+    	<div className="columns small-12">
 
-      <h3>Modification Pattern 1</h3>
-      <p>e.g., a MongoDB Charts chart title</p>
-      <h4>Description of pattern:</h4>
-      <ol>
-        <li>
-          <p>Modify and commit text instantly</p>
-          <img className="guideline-screenshot" src={modPattern100} />
-          <img className="guideline-screenshot" src={modPattern101} />
-          <img className="guideline-screenshot" src={modPattern102} />
-          <img className="guideline-screenshot" src={modPattern103} />
-        </li>
-      </ol>
-      <h4>When you should use modification pattern 1:</h4>
-      <ul>
-        <li><p>An inline element</p></li>
-        <li><p>Presentation layer matches complexity of configurable options.</p></li>
-      </ul>
+	      <video className="guidelines-video u-mb-4" controls>
+    		  <source src={modPattern1} type="video/mp4" />
+    		  I'm sorry; your browser doesn't support HTML5 video.
+    		</video>
 
-      <h3>Modification Pattern 2</h3>
-      <p>e.g., settings form in MongoDB Cloud</p>
-      <h4>Description of pattern:</h4>
-      <ol>
-        <li>
-          <p>A collection of simultaneous modifications can be made</p>
-        </li>
-        <li>
-          <p>An additional user action is required to commit modifications as a group (e.g. SAVE changes)</p>
-          <img className="guideline-screenshot" src={modPattern200} />
-        </li>
-        <li>
-          <p>warn for unintentional discarding of modifications</p>
-          <img className="guideline-screenshot" src={modPattern201} />
-        </li>
-      </ol>
-      <h4>When you should use modification pattern 2:</h4>
-      <ul>
-        <li><p>Parent container with any number of inline child elements</p></li>
-        <li><p>Presentation matches complexity of configurable options</p></li>
-      </ul>
+	      <p>In this pattern, information is modified and committed at once, without additional views or actions. It's most appropriate for small changes.</p>
+
+	      <h4 className="u-mt-6">When to use</h4>
+				<ul>
+	        <li><p>To modify an inline element</p></li>
+	        <li><p>Presentation layer matches complexity of configurable options.</p></li>
+	        <li><p>Example: a MongoDB Charts chart title</p></li>
+	      </ul>
+      </div>
+    </div>
+
+    <h3>Commit Changes</h3>
+    <div className="row u-mb-2">
+    	<div className="columns small-12">
+        <video className="guidelines-video u-mb-4" controls>
+          <source src={modPattern2} type="video/mp4" />
+          I'm sorry; your browser doesn't support HTML5 video.
+        </video>
+
+	      <p>In this pattern, committing changes require an additional action, like Save. Users are warned if changes they made are about to be lost.</p>
+
+		    <h4 className="u-mt-6">When to use</h4>
+		    <ul>
+		      <li><p>Parent container with any number of inline child elements</p></li>
+		      <li><p>Presentation matches complexity of configurable options</p></li>
+		      <li><p>Example: settings form in MongoDB Cloud</p></li>
+		    </ul>
+      </div>
+    </div>
 
 
-      <h2>User’s MongoDB Data and Infrastructure</h2>
-      <p>Higher performance concerns for end users</p>
-      <p>When manipulating MongoDB data and infrastructure, there are greater performance concerns for end users and their systems. Therefore the following patterns aim to manage complexity and progressively disclose precise changes that will take place as the user advances through their pattern towards a final commitment. It is recommended that a container map directly to a single MongoDB concept within our existing documentation.</p>
-      <p>If communicating application behaviors and status is competing with efforts to communicate MongoDB behaviors and status, elevate and reveal the MongoDB concepts in favor of the application concepts wherever possible.</p>
+    <h2 className="u-mt-6">MongoDB Data and Infrastructure</h2>
+    <p>Modifying MongoDB data and infrastructure can have greater performance concerns, so these patterns aim to manage complexity and progressively disclose precise changes. We recommend that a container should map directly to a single MongoDB concept as described in our documentation.</p>
+    <p>If application behavior and status information is competing with MongoDB behavior and status information, choose in favor of application concepts wherever possible.</p>
 
-      <h3>Modification Pattern 3</h3>
-      <p>e.g., Compass Document CRUD</p>
-      <h4>Description of pattern:</h4>
-      <ol>
-        <li>
-          <p>Modify inline elements, display each’s modified state</p>
-          <img className="guideline-screenshot" src={modPattern300} />
-          <img className="guideline-screenshot" src={modPattern301} />
-        </li>
-        <li>
-          <p>Synchronously display its parent container’s modified state</p>
-        </li>
-        <li>
-          <p>Commit modifications to the child elements via controls on the parent container</p>
-          <img className="guideline-screenshot" src={modPattern302} />
-        </li>
-        <li>
-          <p>Display modification success on presentation layer</p>
-          <img className="guideline-screenshot" src={modPattern303} />
-        </li>
-      </ol>
-      <h4>When you should use modification pattern 3:</h4>
-      <ul>
-        <li><p>Parent container with any number of inline child elements (all three below)</p></li>
-        <li><p>Presentation layer matches complexity of configurable options</p></li>
-      </ul>
+    <h3>Commit Changes on Object</h3>
+    <div className="row u-mb-2">
+    	<div className="columns small-12">
+        <video className="guidelines-video" controls>
+          <source src={modPattern3} type="video/mp4" />
+          I'm sorry; your browser doesn't support HTML5 video.
+        </video>
 
-      <h3>Modification Pattern 4</h3>
-      <p>e.g., Atlas clusters</p>
-      <h4>Description of pattern:</h4>
-      <ol>
-        <li>
-          <p>User initiates modification layer from presentation layer, which unwinds and displays complexity underlying a component’s presentation</p>
-          <img className="guideline-screenshot" src={modPattern400} />
-          <img className="guideline-screenshot" src={modPattern401} />
-        </li>
-        <li>
-          <p>Modify inline elements, display each’s modified state</p>
-          <img className="guideline-screenshot" src={modPattern402} />
-        </li>
-        <li>
-          <p>Synchronously display its parent container’s modified state</p>
-        </li>
-        <li>
-          <p>Commit modifications to the child elements via controls on the modification layer’s parent container</p>
-          <img className="guideline-screenshot" src={modPattern403} />
-        </li>
-        <li>
-          <p>Display modification progress and success on presentation layer</p>
-          <img className="guideline-screenshot" src={modPattern404} />
-        </li>
-      </ol>
-      <h4>When you should use modification pattern 4:</h4>
-      <ul>
-        <li><p>Presentation layer obfuscates complexity of configurable options</p></li>
-      </ul>
+      <p>In this pattern, multiple inline changes can be made individually, but committing them is done from the parent container level.</p>
 
-      <h3>Modification Pattern 5</h3>
-      <p>e.g., Cloud Manager Automation</p>
-      <h4>Description of pattern:</h4>
-      <ol>
-        <li>
-          <p>User initiates modification layer from presentation layer, which unwinds and displays complexity underlying a component’s presentation</p>
-          <img className="guideline-screenshot" src={modPattern500} />
-        </li>
-        <li>
-          <p>Modify inline elements, display each’s modified state</p>
-          <img className="guideline-screenshot" src={modPattern501} />
-        </li>
-        <li>
-          <p>Synchronously display its parent container’s modified state</p>
-          <img className="guideline-screenshot" src={modPattern502} />
-        </li>
-        <li>
-          <p>User initiates confirmation layer (from presentation or modification layer), which unwinds and displays complexity underlying as line-items</p>
-          <img className="guideline-screenshot" src={modPattern503} />
-        </li>
-        <li>
-          <p>Commit modifications to the child elements via controls on the confirmation layer</p>
-          <img className="guideline-screenshot" src={modPattern504} />
-        </li>
-        <li>
-          <p>Display modification progress and success on presentation layer</p>
-          <img className="guideline-screenshot" src={modPattern505} />
-        </li>
-      </ol>
-      <h4>When you should use modification pattern 5:</h4>
-      <ul>
-        <li><p>Presentation layer obfuscates complexity of configurable options</p></li>
-        <li><p>Subsequent modification layer also obfuscates complexity of configurable options through processes like bulk edits</p></li>
-      </ul>
+		    <h4 className="u-mt-6">When to use</h4>
+	      <ul>
+	        <li><p>Parent container with any number of inline child elements</p></li>
+	        <li><p>Presentation layer matches complexity of configurable options</p></li>
+	        <li><p>Example: Compass Document CRUD</p></li>
+	      </ul>
+      </div>
+    </div>
+
+      <h3>Modify in Separate Layer</h3>
+	    <div className="row u-mb-2">
+	    	<div className="columns small-12">
+        <video className="guidelines-video" controls>
+          <source src={modPattern4} type="video/mp4" />
+          I'm sorry; your browser doesn't support HTML5 video.
+        </video>
+
+	      <p>In this pattern, modifications are made on a modification layer separate from the presentation layer. On the modification layer, changes are committed from the parent container.</p>
+
+		    <h4 className="u-mt-6">When to use</h4>
+	      <ul>
+	        <li><p>Presentation layer obfuscates complexity of configurable options</p></li>
+	        <li><p>Example: Atlas clusters</p></li>
+	      </ul>
+      </div>
+    </div>
   </div>
 );
 
