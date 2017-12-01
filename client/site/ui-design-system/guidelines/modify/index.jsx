@@ -97,25 +97,6 @@ const UIModify = () => (
 	      </ul>
       </div>
     </div>
-
-      <h3>Modify and Confirm Changes in Separate Layers</h3>
-	    <div className="row u-mb-2">
-	    	<div className="columns small-12">
-        <video className="guidelines-video" controls>
-          <source src={modPattern5} type="video/mp4" />
-          I'm sorry; your browser doesn't support HTML5 video.
-        </video>
-
-	      <p>In this pattern, there are separate presentation, modification, and confirmation layers.</p>
-
-			    <h4 className="u-mt-6">When to use</h4>
-		      <ul>
-		        <li><p>Presentation layer obfuscates complexity of configurable options</p></li>
-		        <li><p>Subsequent modification layer also obfuscates complexity of configurable options through processes like bulk edits</p></li>
-		        <li><p>Example: Cloud Manager Automation</p></li>
-		      </ul>
-	      </div>
-      </div>
   </div>
 );
 
