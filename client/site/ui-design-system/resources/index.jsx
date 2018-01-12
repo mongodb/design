@@ -4,9 +4,8 @@
 
 import React from 'react';
 import '../../../css/root.less';
-import config from '../../../../config.js'
 
-var token = config.gitkey;
+const client = new stitch.StitchClient('mdb-design-site-apis-wpxcw');
 
 class Resources extends React.Component {
   state = {
@@ -29,29 +28,20 @@ class Resources extends React.Component {
     ];
     var stateMap = new Map(statePairing);
 
-    var queryTemplate = `query FindLatestCommit($file: String) { repository(owner: \"leafygreen\", name: \"sketchUIlibrary\") { ref(qualifiedName: \"master\") { target { ... on Commit { history(first:1, path: $file) { edges { node { messageHeadline committedDate } } } } } } } }`
-    files.map(files => { 
-      fetch("https://api.github.com/graphql", {
-        body: JSON.stringify({
-          query: queryTemplate,
-          variables: { file: files },
-        }),
-        headers: {
-          Authorization: `bearer ${token}`,
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        method: "POST"
-      })
-        .then((response) => response.json())
-        .then((responseJson) => {
-          var updatedDate = responseJson.data.repository.ref.target.history.edges[0].node.committedDate.split('T')[0];
-          var fileState = stateMap.get(files);
+    client.login().then(() => {
+      client.executeFunction("fetchLastUpdated").then((result) => {        
+        result.http_result.forEach((item) => {
+          var item_json = JSON.parse(item.response.body.toString());
+          var updatedDate = item_json.data.repository.ref.target.history.edges[0].node.committedDate.split('T')[0];
+          var file = item.file;
+          var fileState = stateMap.get(file);
+          
           this.setState( {
             [fileState]: updatedDate
           });
-        }
-      );
-    })
+        });
+      })
+    });
   }
 
   render() {
