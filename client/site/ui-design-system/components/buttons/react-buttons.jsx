@@ -6,10 +6,10 @@ import React from 'react';
 import { Link } from 'react-router';
 import Code from '../../../../react-components/site/code';
 import Button from '../../../../react-components/Button.js';
+import ButtonGroup from '../../../../react-components/ButtonGroup.js';
 import Checkbox from '../../../../react-components/Checkbox.js';
 import { RadioGroup, Radio } from '../../../../react-components/RadioGroup.js';
 const Prism = require('prismjs');
-
 
 var buttonPairing = [
   ['', 'Default Button'],
@@ -24,7 +24,8 @@ class UIButtonsReact extends React.Component {
   state = {
     controlDisabled: false,
     controlTypeClassName: "",
-    controlLabel: "Default Button"
+    controlLabel: "Default Button",
+    selected: 'Topology',
   }
 
   codeSnippetHandler() {
@@ -220,6 +221,134 @@ class UIButtonsReact extends React.Component {
             </table>
           </div>
         </div>
+        <div className="row">
+          <div className="columns small-12">
+            <h2>Button Group Component</h2>
+          </div>
+        </div>
+        <div className="row">
+          <div className="columns small-12">
+            <ButtonGroup
+              buttonClassName="button-is-xs"
+              options={[
+                {
+                  label: 'Topology',
+                  iconClassName: 'fa fa-bars',
+                  value: 'Topology'
+                },
+                {
+                  label: 'List',
+                  iconClassName: 'fa fa-list',
+                  value: 'List'
+                }
+              ]}
+              value={this.state.selected}
+              onChange={(newValue) => {
+                this.setState({ selected: newValue });
+              }}
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="columns small-12">
+            <Code
+              language='language-jsx'
+              text={`<ButtonGroup
+  buttonClassName="button-is-xs"
+  options={[
+    {
+      label: 'Topology',
+      iconClassName: 'fa fa-bars',
+      value: 'Topology'
+    },
+    {
+      label: 'List',
+      iconClassName: 'fa fa-list',
+      value: 'List'
+    }
+  ]}
+  value={this.state.selected}
+  onChange={(newValue) => {
+    this.setState({ selected: newValue });
+  }}
+/>`}>
+            </Code>
+          </div>
+        </div>
+        <div className="row">
+          <div className="columns small-12">
+            <h3>Available Props</h3>
+            <table className="table">
+              <thead>
+                <tr className="table-row">
+                  <th className="table-header">Prop Name</th>
+                  <th className="table-header">Type</th>
+                  <th className="table-header">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">onChange</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>Function, Required</b></p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p>Click event handler</p>
+                  </td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">label</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>String</b></p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p>Text rendered in the body of the button</p>
+                  </td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">value</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>String, Required</b></p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p>Defines the default value of the button</p>
+                  </td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">iconClassName</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>String</b></p>
+                  </td> 
+                  <td className="table-column table-cell">
+                    <p>Icon(s) using Font-Awesome class</p>
+                  </td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-column table-cell">
+                    <p className="code">buttonClassName</p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p><b>string</b></p>
+                  </td>
+                  <td className="table-column table-cell">
+                    <p>CSS class(es) passed to the button</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+
       </div>
     );
   }
