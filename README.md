@@ -14,7 +14,7 @@ Sketch template files can be found at [github.com/leafygreen/sketchUILibrary](ht
 
 ### To Build Locally
 
-1. Clone the repo.
+1. Clone this repo.
 
 2. Install the node modules and run the dev server:
 
