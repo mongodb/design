@@ -2,7 +2,7 @@
   "name": "@mongodbdesign/mdbdesignsystem",
   "version": "0.2.2",
   "description": "MongoDB shared UI components and assets. Documentation site built with React.",
-  "homepage": "https://mongodb.github.io/design",
+  "homepage": "http://mongodb.design",
   "license": "MIT",
   "scripts": {
     "predeploy": "npm run build",
@@ -45,6 +45,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/leafygreen/design"
+    "url": "https://github.com/mongodb/design"
   }
 }
