@@ -103,7 +103,7 @@ const UIButtons = () => (
     </div>
     <div className="row">
       <div className="columns small-12">
-        <button className="button button-is-full">Full Width Button</button>
+        <button className="button button-is-full u-mt-2">Full Width Button</button>
       </div>
     </div>
     <div className="row u-mb-3">
