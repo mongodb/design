@@ -50,8 +50,8 @@ const UIBanners = () => (
         <div className="columns small-12">
           <Code
             language='language-html'
-            text={`<div className="bem-alert bem-alert-is-success">
-    <button type="button" className="bem-alert-close-button" aria-label="Close">
+            text={`<div class="bem-alert bem-alert-is-success">
+    <button type="button" class="bem-alert-close-button" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
     <div>Well done! You successfully read this important alert message.</div>
@@ -75,7 +75,7 @@ const UIBanners = () => (
         <div className="columns small-12">
           <Code
             language='language-html'
-            text={`<div className="bem-alert bem-alert-is-warning">
+            text={`<div class="bem-alert bem-alert-is-warning">
     <div>Warning! Better check yourself before you wreck yourself, you’re not looking good.</div>
 </div>`}>
           </Code>
@@ -97,7 +97,7 @@ const UIBanners = () => (
         <div className="columns small-12">
           <Code
             language='language-html'
-            text={`<div className="bem-alert bem-alert-is-danger">
+            text={`<div class="bem-alert bem-alert-is-danger">
     <div>Danger! Better check yourself, you’re not looking good.</div>
 </div>`}>
           </Code>
@@ -119,7 +119,7 @@ const UIBanners = () => (
         <div className="columns small-12">
           <Code
             language='language-html'
-            text={`<div className="bem-alert bem-alert-is-info">
+            text={`<div class="bem-alert bem-alert-is-info">
     <div>Heads up! This alert needs your attention, but it’s not super important.</div>
 </div>`}>
           </Code>

@@ -87,44 +87,44 @@ const UITables = () => (
       <div className="columns small-12">
         <Code
           language='language-html'
-          text={`<table className="table">
+          text={`<table class="table">
   <thead>
-    <tr className="table-row">
-      <th className="table-header">Name</th>
-      <th className="table-header">Status</th>
-      <th className="table-header">Version</th>
-      <th className="table-header table-cell-has-actions">Actions</th>
+    <tr class="table-row">
+      <th class="table-header">Name</th>
+      <th class="table-header">Status</th>
+      <th class="table-header">Version</th>
+      <th class="table-header table-cell-has-actions">Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr className="table-row">
-      <td className="table-column table-cell"><a href={""} className="link">free-shard-0</a></td>
-      <td className="table-column table-cell">1 min ago</td>
-      <td className="table-column table-cell">3.4.4</td>
-      <td className="table-column table-cell table-cell-has-actions">
-        <button className="button table-button button-is-xs u-mr-1">data</button>
-        <button className="button table-button button-is-xs u-mr-1">metrics</button>
-        <button className="button table-button button-is-xs">modify</button>
+    <tr class="table-row">
+      <td class="table-column table-cell"><a href="" class="link">free-shard-0</a></td>
+      <td class="table-column table-cell">1 min ago</td>
+      <td class="table-column table-cell">3.4.4</td>
+      <td class="table-column table-cell table-cell-has-actions">
+        <button class="button table-button button-is-xs u-mr-1">data</button>
+        <button class="button table-button button-is-xs u-mr-1">metrics</button>
+        <button class="button table-button button-is-xs">modify</button>
       </td>
     </tr>
-    <tr className="table-row">
-      <td className="table-column table-cell"><a href={""} className="link">free-shard-1</a></td>
-      <td className="table-column table-cell">3 min ago</td>
-      <td className="table-column table-cell">3.4.4</td>
-      <td className="table-column table-cell table-cell-has-actions">
-        <button className="button table-button button-is-xs u-mr-1">data</button>
-        <button className="button table-button button-is-xs u-mr-1">metrics</button>
-        <button className="button table-button button-is-xs">modify</button>
+    <tr class="table-row">
+      <td class="table-column table-cell"><a href="" class="link">free-shard-1</a></td>
+      <td class="table-column table-cell">3 min ago</td>
+      <td class="table-column table-cell">3.4.4</td>
+      <td class="table-column table-cell table-cell-has-actions">
+        <button class="button table-button button-is-xs u-mr-1">data</button>
+        <button class="button table-button button-is-xs u-mr-1">metrics</button>
+        <button class="button table-button button-is-xs">modify</button>
       </td>
     </tr>
-    <tr className="table-row">
-      <td className="table-column table-cell"><a href={""} className="link">free-shard-2</a></td>
-      <td className="table-column table-cell">5 min ago</td>
-      <td className="table-column table-cell">3.4.4</td>
-      <td className="table-column table-cell table-cell-has-actions">
-        <button className="button table-button button-is-xs u-mr-1">data</button>
-        <button className="button table-button button-is-xs u-mr-1">metrics</button>
-        <button className="button table-button button-is-xs">modify</button>
+    <tr class="table-row">
+      <td class="table-column table-cell"><a href="" class="link">free-shard-2</a></td>
+      <td class="table-column table-cell">5 min ago</td>
+      <td class="table-column table-cell">3.4.4</td>
+      <td class="table-column table-cell table-cell-has-actions">
+        <button class="button table-button button-is-xs u-mr-1">data</button>
+        <button class="button table-button button-is-xs u-mr-1">metrics</button>
+        <button class="button table-button button-is-xs">modify</button>
       </td>
     </tr>
   </tbody>
@@ -192,44 +192,44 @@ const UITables = () => (
       <div className="columns small-12">
         <Code
           language='language-html'
-          text={`<table className="table">
+          text={`<table class="table">
   <thead>
-    <tr className="table-row table-row-is-dark">
-      <th className="table-header table-header-is-dark">Name</th>
-      <th className="table-header table-header-is-dark">Status</th>
-      <th className="table-header table-header-is-dark">Version</th>
-      <th className="table-header table-header-is-dark table-cell-has-actions">Actions</th>
+    <tr class="table-row table-row-is-dark">
+      <th class="table-header table-header-is-dark">Name</th>
+      <th class="table-header table-header-is-dark">Status</th>
+      <th class="table-header table-header-is-dark">Version</th>
+      <th class="table-header table-header-is-dark table-cell-has-actions">Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr className="table-row table-row-is-dark">
-      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-0</a></td>
-      <td className="table-column table-cell table-cell-is-dark">1 min ago</td>
-      <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
-      <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
-        <button className="button table-button button-is-xs u-mr-1">data</button>
-        <button className="button table-button button-is-xs u-mr-1">metrics</button>
-        <button className="button table-button button-is-xs">modify</button>
+    <tr class="table-row table-row-is-dark">
+      <td class="table-column table-cell table-cell-is-dark"><a href="" class="link">free-shard-0</a></td>
+      <td class="table-column table-cell table-cell-is-dark">1 min ago</td>
+      <td class="table-column table-cell table-cell-is-dark">3.4.4</td>
+      <td class="table-column table-cell table-cell-is-dark table-cell-has-actions">
+        <button class="button table-button button-is-xs u-mr-1">data</button>
+        <button class="button table-button button-is-xs u-mr-1">metrics</button>
+        <button class="button table-button button-is-xs">modify</button>
       </td>
     </tr>
     <tr className="table-row table-row-is-dark">
-      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-1</a></td>
-      <td className="table-column table-cell table-cell-is-dark">3 min ago</td>
-      <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
-      <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
-        <button className="button table-button button-is-xs u-mr-1">data</button>
-        <button className="button table-button button-is-xs u-mr-1">metrics</button>
-        <button className="button table-button button-is-xs">modify</button>
+      <td class="table-column table-cell table-cell-is-dark"><a href="" class="link">free-shard-1</a></td>
+      <td class="table-column table-cell table-cell-is-dark">3 min ago</td>
+      <td class="table-column table-cell table-cell-is-dark">3.4.4</td>
+      <td class="table-column table-cell table-cell-is-dark table-cell-has-actions">
+        <button class="button table-button button-is-xs u-mr-1">data</button>
+        <button class="button table-button button-is-xs u-mr-1">metrics</button>
+        <button class="button table-button button-is-xs">modify</button>
       </td>
     </tr>
-    <tr className="table-row table-row-is-dark">
-      <td className="table-column table-cell table-cell-is-dark"><a href={""} className="link">free-shard-2</a></td>
-      <td className="table-column table-cell table-cell-is-dark">5 min ago</td>
-      <td className="table-column table-cell table-cell-is-dark">3.4.4</td>
-      <td className="table-column table-cell table-cell-is-dark table-cell-has-actions">
-        <button className="button table-button button-is-xs u-mr-1">data</button>
-        <button className="button table-button button-is-xs u-mr-1">metrics</button>
-        <button className="button table-button button-is-xs">modify</button>
+    <tr class="table-row table-row-is-dark">
+      <td class="table-column table-cell table-cell-is-dark"><a href="" class="link">free-shard-2</a></td>
+      <td class="table-column table-cell table-cell-is-dark">5 min ago</td>
+      <td class="table-column table-cell table-cell-is-dark">3.4.4</td>
+      <td class="table-column table-cell table-cell-is-dark table-cell-has-actions">
+        <button class="button table-button button-is-xs u-mr-1">data</button>
+        <button class="button table-button button-is-xs u-mr-1">metrics</button>
+        <button class="button table-button button-is-xs">modify</button>
       </td>
     </tr>
   </tbody>
