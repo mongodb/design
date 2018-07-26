@@ -1,7 +1,7 @@
 // Basic alert styles
 
 .bem-alert-component(@color, @border, @bg) {
-    color: darken(@color, 25%);
+    color: @color;
     border-color: @border;
     background: @bg;
 
@@ -16,19 +16,19 @@
     border-radius: 5px;
 
     &-is-success {
-        .bem-alert-component(@alertGreen, @alertGreenBorder, @alertGreenBg);
+        .bem-alert-component(@alertGreenBannerText, @alertGreenBannerBorder, @alertGreenBannerBg);
     }
 
     &-is-warning {
-        .bem-alert-component(@alertOrange, @alertOrangeBorder, @alertOrangeBg);
+        .bem-alert-component(@alertOrangeBannerText, @alertOrangeBannerBorder, @alertOrangeBannerBg);
     }
 
     &-is-danger {
-        .bem-alert-component(@alertRed, @alertRedBorder, @alertRedBg);
+        .bem-alert-component(@alertRedBannerText, @alertRedBannerBorder, @alertRedBannerBg);
     }
 
     &-is-info {
-        .bem-alert-component(@alertBlue, @alertBlueBorder, @alertBlueBg);
+        .bem-alert-component(@alertBlueBannerText, @alertBlueBannerBorder, @alertBlueBannerBg);
     }
 
     &-close-button {

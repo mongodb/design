@@ -4,11 +4,8 @@
   height: 100vh;
   width: 100%;
   padding: 5%;
-  background-image: url(~assets/hero-background.png);
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: 83.25vh 100vh;
-  background-color: white;
+  background: -webkit-linear-gradient(-2deg, rgb(17, 97, 73), rgb(19, 170, 82));
+  background: linear-gradient(-2deg, rgb(17, 97, 73), rgb(19, 170, 82));
 
   &-container {
     width: 50%;
@@ -17,7 +14,8 @@
 
 .hero h1, .featured h1 {
   font-size: 48px;
-  font-weight: 300;
+  font-weight: 700;
+  color: @pw;
 }
 
 .hero h2, .featured h2 {
@@ -29,6 +27,8 @@
   font-size: 24px;
   font-weight: 300;
   line-height: 1.4em;
+  margin-top: 0;
+  color: @pw;
 }
 
 .hero h4, .featured h4 {
@@ -81,27 +81,23 @@
     padding: 1.25em 3em;
     margin: 0 20px 20px 0;
     font-weight: 700;
-    color: @mongodbgreen;
-    border-color: @mongodbgreen;
   }
 }
 
-@media (max-width: 736px)  { 
+@media (max-width: 736px)  {
   .hero {
-    background: @pw;
 
-    &-container { 
+    &-container {
       top: 50px;
       margin: 0 auto;
       width: 100%;
       text-align: center;
 
-
       h1 {
         font-size: 30px;
       }
 
-      h3 { 
+      h3 {
         font-size: 20px;
       }
     }

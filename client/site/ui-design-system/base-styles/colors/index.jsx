@@ -9,7 +9,7 @@ const UIColors = () => (
   <div className="wrap">
     <div className="row">
       <div className="columns small-12">
-        <h1>Design Principles</h1>
+        <h1>Colors</h1>
       </div>
     </div>
     <div className="row">
@@ -22,21 +22,21 @@ const UIColors = () => (
         <ColorChip
           code="@green0"
           className="green0"
-          hex="#224620"
+          hex="#0E7E3D"
         />
       </div>
       <div className="columns small-4">
         <ColorChip
           code="@green1"
           className="green1"
-          hex="#4E8E36"
+          hex="#168B46"
         />
       </div>
       <div className="columns small-4">
         <ColorChip
           code="@green2"
           className="green2"
-          hex="#69B241"
+          hex="#13AA52"
         />
       </div>
     </div>
@@ -45,21 +45,21 @@ const UIColors = () => (
         <ColorChip
           code="@green3"
           className="green3"
-          hex="#86C16A"
+          hex="#1CC061"
         />
       </div>
       <div className="columns small-4">
         <ColorChip
           code="@green4"
           className="green4"
-          hex="#A4D18F"
+          hex="#89E5B3"
         />
       </div>
       <div className="columns small-4">
         <ColorChip
           code="@green5"
           className="green5"
-          hex="#C2E0B4"
+          hex="#CCFFE1"
         />
       </div>
     </div>
@@ -68,7 +68,7 @@ const UIColors = () => (
         <ColorChip
           code="@green8"
           className="green8"
-          hex="#EFF6EC"
+          hex="#EFFEF6"
         />
       </div>
     </div>
@@ -135,7 +135,7 @@ const UIColors = () => (
         <ColorChip
           code="@gray7"
           className="gray7"
-          hex="#e8e9e9"
+          hex="#ebebeb"
         />
       </div>
       <div className="columns small-4">
@@ -146,9 +146,10 @@ const UIColors = () => (
         />
       </div>
     </div>
+
     <div className="row">
       <div className="columns small-12">
-        <h2>Alert Colors</h2>
+        <h2>Heavy Banners</h2>
       </div>
     </div>
     <div className="row u-mb-5">
@@ -179,24 +180,112 @@ const UIColors = () => (
         <ColorChip
           code="@alertGreen"
           className="alert-green"
-          hex="#69B241"
+          hex="#13AA52"
         />
       </div>
+    </div>
+
+    <div className="row">
+      <div className="columns small-12">
+        <h2>Desaturated Banners</h2>
+      </div>
+    </div>
+    <div className="row u-mb-5">
       <div className="columns small-4">
-       <ColorChip
-          code="@alertBlueInputDisabled"
-          className="alert-blue-input-disabled"
-          hex="#C9DBE4"
+        <ColorChip
+          code="@alertRedBannerText"
+          className="alert-red-banner-text"
+          hex="#AC0F0F"
         />
       </div>
       <div className="columns small-4">
         <ColorChip
-          code="@alertBlueTextDisabled"
-          className="alert-blue-text-disabled"
-          hex="#5A869C"
+          code="@alertRedBannerBG"
+          className="alert-red-banner-bg"
+          hex="#FFF6F6"
+        />
+      </div>
+      <div className="columns small-4">
+        <ColorChip
+          code="@alertRedBannerBorder"
+          className="alert-red-banner-border"
+          hex="#F8D3D3"
         />
       </div>
     </div>
+
+    <div className="row u-mb-5">
+      <div className="columns small-4">
+        <ColorChip
+          code="@alertBlueBannerText"
+          className="alert-blue-banner-text"
+          hex="#006CBC"
+        />
+      </div>
+      <div className="columns small-4">
+        <ColorChip
+          code="@alertBlueBannerBG"
+          className="alert-blue-banner-bg"
+          hex="#E7F5FB"
+        />
+      </div>
+      <div className="columns small-4">
+        <ColorChip
+          code="@alertBlueBannerBorder"
+          className="alert-blue-banner-border"
+          hex="#A4D2E7"
+        />
+      </div>
+    </div>
+
+    <div className="row u-mb-5">
+      <div className="columns small-4">
+        <ColorChip
+          code="@alertOrangeBannerText"
+          className="alert-orange-banner-text"
+          hex="#94640B"
+        />
+      </div>
+      <div className="columns small-4">
+        <ColorChip
+          code="@alertOrangeBannerBG"
+          className="alert-orange-banner-bg"
+          hex="#FFFBF5"
+        />
+      </div>
+      <div className="columns small-4">
+        <ColorChip
+          code="@alertOrangeBannerBorder"
+          className="alert-orange-banner-border"
+          hex="#F2DCB5"
+        />
+      </div>
+    </div>
+
+    <div className="row u-mb-5">
+      <div className="columns small-4">
+        <ColorChip
+          code="@alertGreenBannerText"
+          className="alert-green-banner-text"
+          hex="#0E7C3C"
+        />
+      </div>
+      <div className="columns small-4">
+        <ColorChip
+          code="@alertGreenBannerBG"
+          className="alert-green-banner-bg"
+          hex="#EFFEF6"
+        />
+      </div>
+      <div className="columns small-4">
+        <ColorChip
+          code="@alertGreenBannerBorder"
+          className="alert-green-banner-border"
+          hex="#98EFBB"
+        />
+      </div>
+    </div>
+
     <div className="row">
       <div className="columns small-12">
         <h2>Text Colors</h2>
@@ -237,7 +326,7 @@ const UIColors = () => (
         <ColorChip
           code="@successText"
           className="success-text"
-          hex="#69B241"
+          hex="#13AA52"
         />
       </div>
       <div className="columns small-4">
@@ -264,6 +353,99 @@ const UIColors = () => (
         />
       </div>
     </div>
+
+    <div className="row">
+      <div className="columns small-12">
+        <h2>Charts Colors</h2>
+      </div>
+    </div>
+
+    <div className="row u-mb-5">
+      <div className="columns small-4">
+        <ColorChip
+          code="@chart0"
+          className="chart0"
+          hex="#16CC62"
+        />
+      </div>
+      <div className="columns small-4">
+        <ColorChip
+          code="@chart1"
+          className="chart1"
+          hex="#13AA52"
+        />
+      </div>
+      <div className="columns small-4">
+        <ColorChip
+          code="@chart2"
+          className="chart2"
+          hex="#9fa1a2"
+        />
+      </div>
+    </div>
+    <div className="row u-mb-5">
+      <div className="columns small-4">
+        <ColorChip
+          code="@chart3"
+          className="chart3"
+          hex="#ef4c4c"
+        />
+      </div>
+      <div className="columns small-4">
+        <ColorChip
+          code="@chart4"
+          className="chart4"
+          hex="#13AA52"
+        />
+      </div>
+      <div className="columns small-4">
+        <ColorChip
+          code="@chart5"
+          className="chart5"
+          hex="#9fa1a2"
+        />
+      </div>
+    </div>
+    <div className="row u-mb-5">
+      <div className="columns small-4">
+        <ColorChip
+          code="@chart6"
+          className="chart6"
+          hex="#ef4c4c"
+        />
+      </div>
+      <div className="columns small-4">
+        <ColorChip
+          code="@chart7"
+          className="chart7"
+          hex="#13AA52"
+        />
+      </div>
+      <div className="columns small-4">
+        <ColorChip
+          code="@chart8"
+          className="chart8"
+          hex="#9fa1a2"
+        />
+      </div>
+    </div>
+    <div className="row u-mb-5">
+      <div className="columns small-4">
+        <ColorChip
+          code="@chart9"
+          className="chart9"
+          hex="#ef4c4c"
+        />
+      </div>
+      <div className="columns small-4">
+
+      </div>
+      <div className="columns small-4">
+
+      </div>
+    </div>
+
+
   </div>
 );
 
