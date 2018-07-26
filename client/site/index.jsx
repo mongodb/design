@@ -6,13 +6,13 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const DesignSystem = () => (
-  <div> 
+  <div>
     <div className="hero">
       <div className="hero-container">
-        <h1><strong>MongoDB</strong> Design</h1>
+        <h1>MongoDB Design</h1>
         <h3>Design for mission-critical applications.</h3>
         <div className="button-container">
-          <Link to='/ui-design-system/welcome' className="button button-is-info button-mktg">Design System</Link>
+          <Link to='/ui-design-system/welcome' className="button button-is-default button-mktg">Design System</Link>
         </div>
       </div>
     </div>
