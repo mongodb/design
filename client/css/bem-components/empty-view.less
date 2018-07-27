@@ -6,7 +6,7 @@
   border: 1px solid @gray6;
   background-color: @pw;
   border-radius: 3px;
-  padding: 50px calc(~"50% - 400px") 50px;
+  padding: 80px 80px 40px;
 
   &-margin {
     margin: 35px 0;
@@ -28,6 +28,21 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
+    background-image: url(~assets/dashboard-zero.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    height: 70px;
+    width: 70px;
+  }
+
+  &-loading {
+    background-image: url(~assets/dot-dot-dot.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 54px 14px;
+    display: block;
+    height: 14px;
   }
 
   &-icon {
@@ -53,68 +68,37 @@
   }
 
   &-text {
-    color: @gray6;
-    font-weight: normal;
-    font-size: 28px;
-    margin: 8px 0;
-
-    &-wrap {
-      width: 475px;
-      margin: auto;
-    }
-
-    &-is-error {
-      color: @alertRedDark;
-    }
-
-    &-is-dark {
-      color: inherit;
-    }
+    margin-bottom: 20px;
 
     &-is-heading {
-      font-size: 36px;
-      color: inherit;
+      font-size: 32px;
+      font-weight: 200;
+      line-height: 1.2;
+      margin: 0;
+      padding: 0 0 10px 0;
     }
 
-    &-is-sub-heading {
-      font-size: 18px;
-      color: inherit;
-    }
-
-    &-is-secondary {
-      font-size: 18px;
-    }
-
-    &-is-tertiary {
-      font-size: 14px;
-      margin-left: auto;
-      margin-right: auto;
-      width: 515px;
-    }
-
-    &-is-green {
-      color: @green4;
-    }
-
-    &-has-bottom-margin {
-      margin-bottom: @emptyViewDefaultMargin;
-    }
-
-    &-has-top-margin {
-      margin-top: @emptyViewDefaultMargin;
+    &-is-description {
+      font-size: 21px;
+      font-weight: 200;
+      line-height: 1.2;
+      margin: 0;
+      padding: 0;
     }
   }
 
-  &-has-margins {
-    margin: 25px;
+  &-cta {
+    margin-bottom: 20px;
+
+    .button + .button {
+      margin-left: 10px;
+    }
   }
 
-  &-has-wide-margins {
-    margin-top: 25px;
-  }
-
-  &-has-dashed-border {
-    border-style: dashed;
+  &-link {
+    font-size: 16px;
+    padding: 0;
+    margin: 0 0 20px;
   }
 }
 
@@ -127,9 +111,4 @@
     opacity: 1;
     transform: translateY(0%);
   }
-}
-
-@keyframes rotating-icon {
-  0%   { transform: rotate(360deg); }
-  100% { transform: rotate(0deg); }
 }

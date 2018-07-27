@@ -4,47 +4,23 @@ const React = require('react');
 const PropTypes = require('prop-types');
 
 function SplashViewGraphic(props) {
-    const {
-        fallback,
-        isError,
-        isLoading,
-    } = props;
 
-    if (isError) {
-        return (
-            <div className="empty-view-graphic">
-                <i className="fa fa-4x fa-exclamation-triangle empty-view-icon" />
-                <svg className="empty-view-shadow empty-view-shadow-is-error">
-                    <ellipse cx="50%" cy="50%" rx="50%" ry="50%" />
-                </svg>
-            </div>
-        );
-    }
+  const {
+      url
+  } = props;
 
-    if (isLoading) {
-        return (
-            <div className="empty-view-graphic">
-                <i className="mms-icon-continuous empty-view-icon empty-view-icon-is-rotating" />
-                <svg className="empty-view-shadow">
-                    <ellipse cx="50%" cy="50%" rx="50%" ry="50%" />
-                </svg>
-            </div>
-        );
-    }
-
-    return fallback;
+  return (
+    <div className="empty-view-graphic">
+    </div>
+  );
 }
 
 SplashViewGraphic.propTypes = {
-    fallback: PropTypes.node,
-    isError: PropTypes.bool,
-    isLoading: PropTypes.bool,
+    url: PropTypes.string
 };
 
 SplashViewGraphic.defaultProps = {
-    fallback: null,
-    isError: false,
-    isLoading: false,
+    url: null
 };
 
 export default SplashViewGraphic;

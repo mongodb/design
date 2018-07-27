@@ -3,8 +3,30 @@ import { Link } from 'react-router';
 import Code from '../../../../react-components/site/code';
 import Button from '../../../../react-components/Button.js';
 import SplashView from '../../../../react-components/SplashView.js';
+import Checkbox from '../../../../react-components/Checkbox.js';
 
 class UILayoutsReact extends React.Component {
+
+  state = {
+    hasGraphic: true,
+    hasHeadline: true,
+    hasDescription: true,
+    hasPrimaryCTA: true,
+    hasSecondaryCTA: true,
+    hasLink: true,
+    isLoading: false
+  };
+
+  codeSnippetHandler() {
+    const disabled = this.state.controlDisabled ? `,\n  disabled={true}` : '';
+    const className = this.state.controlTypeClassName ? ` ${this.state.controlTypeClassName}` : '';
+    return `<Button
+  label="${this.state.controlLabel}",
+  className="button${className}"${disabled}
+/>`
+
+
+  }
 
   render() {
     return (
@@ -34,83 +56,80 @@ class UILayoutsReact extends React.Component {
         <div className="row">
           <div className="columns small-12">
             <h3>Empty State</h3>
+              <Checkbox
+                  label="Graphic"
+                  checked={this.state.hasGraphic}
+                  onChange={hasGraphic => {
+                    this.setState({ hasGraphic });
+                  }}
+              />
+              <Checkbox
+                  label="Headline"
+                  checked={this.state.hasHeadline}
+                  onChange={hasHeadline => {
+                    this.setState({ hasHeadline });
+                  }}
+              />
+              <Checkbox
+                  label="Description"
+                  checked={this.state.hasDescription}
+                  onChange={hasDescription => {
+                    this.setState({ hasDescription });
+                  }}
+              />
+              <Checkbox
+                  label="Primary CTA"
+                  checked={this.state.hasPrimaryCTA}
+                  onChange={hasPrimaryCTA => {
+                    this.setState({ hasPrimaryCTA });
+                  }}
+              />
+              <Checkbox
+                  label="Secondary CTA"
+                  checked={this.state.hasSecondaryCTA}
+                  onChange={hasSecondaryCTA => {
+                    this.setState({ hasSecondaryCTA });
+                  }}
+              />
+              <Checkbox
+                  label="Link"
+                  checked={this.state.hasLink}
+                  onChange={hasLink => {
+                    this.setState({ hasLink });
+                  }}
+              />
+              <Checkbox
+                  label="Loading"
+                  checked={this.state.isLoading}
+                  onChange={isLoading => {
+                    this.setState({ isLoading });
+                  }}
+              />
           </div>
         </div>
         <div className="row">
           <div className="columns small-12">
-            <SplashView 
-              graphic={null} 
-              headlineText="Enter your empty view placeholder text here.">
-              <Button
-                label="Do Something"
-                className="button-is-primary button-is-large"
-                onClick={() => {return null}}
-              />
+            <SplashView
+              hasGraphic = {this.state.hasGraphic}
+              hasHeadline = {this.state.hasHeadline}
+              hasDescription = {this.state.hasDescription}
+              hasPrimaryCTA = {this.state.hasPrimaryCTA}
+              hasSecondaryCTA = {this.state.hasSecondaryCTA}
+              hasLink = {this.state.hasLink}
+              isLoading = {this.state.isLoading} >
             </SplashView>
           </div>
         </div>
-        <div className="row u-mb-3">
+        <div className="row">
           <div className="columns small-12">
+
             <Code
-              language='language-html'
-              text={`<SplashView 
-  graphic={null}
-  headlineText="Enter your empty view placeholder text here.">
-  <Button
-    label="Do Something"
-    className="button-is-primary button-is-large"
-  />
-</SplashView>`}> 
+              language='language-jsx'
+              text={this.codeSnippetHandler()}>
             </Code>
           </div>
         </div>
-        <div className="row">
-          <div className="columns small-12">
-            <h3>Loading State</h3>
-          </div>
-        </div>
-        <div className="row">
-          <div className="columns small-12">
-            <SplashView headlineText="Retrieving list of databases and collections..." isLoading />
-          </div>
-        </div>
-        <div className="row u-mb-3">
-          <div className="columns small-12">
-            <Code
-              language='language-html'
-              text={`<SplashView headlineText="Retrieving list of databases and collections..." isLoading />`}> 
-            </Code>
-          </div>
-        </div>
-        <div className="row">
-          <div className="columns small-12">
-            <h3>Error State</h3>
-          </div>
-        </div>
-        <div className="row">
-          <div className="columns small-12">
-            <SplashView headlineText="Write something about what they did wrong here." isError >            
-              <Button
-                label="Do Something Else"
-                className="button-is-large"
-                onClick={() => {return null}}
-              />
-            </SplashView>
-          </div>
-        </div>
-        <div className="row u-mb-3">
-          <div className="columns small-12">
-            <Code
-              language='language-html'
-              text={`<SplashView headlineText="Write something about what they did wrong here." isError >
-  <Button
-    label="Do Something Else"
-    className="button-is-large"
-  />
-</SplashView>`}> 
-            </Code>
-          </div>
-        </div>
+
       </div>
     );
   }

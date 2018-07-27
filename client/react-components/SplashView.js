@@ -1,58 +1,72 @@
 'use strict';
 
+// 3rd
 const React = require('react');
+const { Component } = React;
 const PropTypes = require('prop-types');
 const classNames = require('classnames');
 
-//Components
-const SplashViewGraphic = require('./SplashViewGraphic.js').default;
+class SplashView extends Component {
+  static propTypes = {
+    isLoading: PropTypes.bool.isRequired
+  };
 
-function SplashView(props) {
+  static defaultProps = {
+    isLoading: false,
+    hasHeadline: true,
+    hasDescription: true,
+    hasPrimaryCTA: true,
+    hasSecondaryCTA: true,
+    hasLink: true,
+    hasGraphic: true
+  };
+
+  render() {
     const {
-        graphic,
-        isLoading,
-        isError,
-        hasNoBorder,
-        headlineText,
-        children
-    } = props;
+      isLoading,
+      hasHeadline,
+      hasDescription,
+      hasPrimaryCTA,
+      hasSecondaryCTA,
+      hasLink,
+      hasGraphic
+    } = this.props;
 
     return (
-        <div className={classNames('empty-view', {
-            'empty-view-has-no-border': hasNoBorder
-        })}
-        >
-            <SplashViewGraphic
-                fallback={graphic}
-                isError={isError}
-                isLoading={isLoading}
-            />
-            <div className={classNames('empty-view-text', {
-                'empty-view-text-is-error': isError
-            })}
-            >
-                {headlineText}
-            </div>
-            {children}
+      <div className="empty-view">
+        <div className={classNames('empty-view-graphic',
+          {'u-display-none': !hasGraphic}
+        )}></div>
+
+        <div className="empty-view-text">
+          <h1 className={classNames('empty-view-text-is-heading',
+            {'u-display-none': !hasHeadline}
+          )}>A positive and actionable headline</h1>
+          <h3 className={classNames('empty-view-text-is-description',
+            {'u-display-none': !hasDescription}
+          )}>Language should be direct in setting communicating need of the feature as well as setting appropriate expectation for using the feature.</h3>
         </div>
+
+        <div className="empty-view-cta">
+          <button className={classNames('button button-is-primary button-is-large',
+            {'u-display-none': !hasPrimaryCTA}
+          )}>Do something</button>
+          <button className={classNames('button button-is-info button-is-large',
+            {'u-display-none': !hasSecondaryCTA}
+          )}>Do something else</button>
+        </div>
+
+        <p className={classNames('empty-view-link',
+          {'u-display-none': !hasLink}
+        )}><a href="#" target="_blank">More guidelines on creating zero state can be found here.</a></p>
+
+        <div className={classNames('empty-view-loading',
+          {'u-display-none': !isLoading}
+        )}></div>
+      </div>
     );
+
+  }
 }
-
-SplashView.propTypes = {
-    graphic: PropTypes.node,
-    isLoading: PropTypes.bool,
-    isError: PropTypes.bool,
-    hasNoBorder: PropTypes.bool,
-    headlineText: PropTypes.string.isRequired,
-    children: PropTypes.node
-};
-
-SplashView.defaultProps = {
-    graphic: '',
-    hasNoBorder: false,
-    isLoading: false,
-    isError: false,
-    children: '',
-};
 
 export default SplashView;
