@@ -29,7 +29,7 @@ const UILayouts = () => (
     <div className="row">
       <div className="columns small-12">
         <h2>Zero States</h2>
-        <p>This zero state component can be used for features that require some user action before there is any viewable content or data. The component also provides various combinations of elements to accommodate most informational and loading scenarios.</p>
+        <p>This zero state component can be used for features that require some user action before there is any viewable content or data. The component also provides various combinations of elements to accommodate most informational and loading scenarios. <a href="https://wiki.corp.mongodb.com/display/10GEN/Zero+States%3A+How+To" target="_blank">More information about choosing zero state graphics here.</a></p>
       </div>
     </div>
     <div className="row">
