@@ -8,57 +8,70 @@ const classNames = require('classnames');
 
 class SplashView extends Component {
   static propTypes = {
-    isLoading: PropTypes.bool.isRequired
+    isLoading: PropTypes.bool,
+    headline: PropTypes.string,
+    description: PropTypes.string,
+    primaryCTA: PropTypes.string,
+    secondaryCTA: PropTypes.string,
+    linkCTA: PropTypes.string,
+    linkTarget: PropTypes.string,
+    graphic: PropTypes.string
   };
 
   static defaultProps = {
     isLoading: false,
-    hasHeadline: true,
-    hasDescription: true,
-    hasPrimaryCTA: true,
-    hasSecondaryCTA: true,
-    hasLink: true,
-    hasGraphic: true
+    headline: null,
+    description: null,
+    primaryCTA: null,
+    secondaryCTA: null,
+    linkCTA: null,
+    linkTarget: null,
+    graphic: null
   };
 
   render() {
     const {
       isLoading,
-      hasHeadline,
-      hasDescription,
-      hasPrimaryCTA,
-      hasSecondaryCTA,
-      hasLink,
-      hasGraphic
+      headline,
+      description,
+      primaryCTA,
+      secondaryCTA,
+      linkCTA,
+      linkTarget,
+      graphic
     } = this.props;
 
     return (
       <div className="empty-view">
         <div className={classNames('empty-view-graphic',
-          {'u-display-none': !hasGraphic}
+          {'u-display-none': graphic == null}
         )}></div>
 
-        <div className="empty-view-text">
+        <div className={classNames('empty-view-text',
+          {'u-display-none': (headline == null && description == null)}
+        )}>
           <h1 className={classNames('empty-view-text-is-heading',
-            {'u-display-none': !hasHeadline}
-          )}>A positive and actionable headline</h1>
+            {'u-display-none': headline == null}
+          )}>{headline}</h1>
           <h3 className={classNames('empty-view-text-is-description',
-            {'u-display-none': !hasDescription}
-          )}>Language should be direct in setting communicating need of the feature as well as setting appropriate expectation for using the feature.</h3>
+            {'u-display-none': description == null}
+          )}>{description}</h3>
         </div>
 
-        <div className="empty-view-cta">
+        <div className={classNames('empty-view-cta',
+          {'u-display-none': (primaryCTA == null && secondaryCTA == null)}
+        )}>
           <button className={classNames('button button-is-primary button-is-large',
-            {'u-display-none': !hasPrimaryCTA}
-          )}>Do something</button>
+            {'u-display-none': primaryCTA == null}
+          )}>{primaryCTA}</button>
           <button className={classNames('button button-is-info button-is-large',
-            {'u-display-none': !hasSecondaryCTA}
-          )}>Do something else</button>
+            {'u-display-none': secondaryCTA == null}
+          )}>{secondaryCTA}</button>
         </div>
 
         <p className={classNames('empty-view-link',
-          {'u-display-none': !hasLink}
-        )}><a href="#" target="_blank">More guidelines on creating zero state can be found here.</a></p>
+          {'u-display-none': linkCTA == null}
+        )}><a href={linkTarget} target="_blank">{linkCTA}</a></p>
 
         <div className={classNames('empty-view-loading',
           {'u-display-none': !isLoading}

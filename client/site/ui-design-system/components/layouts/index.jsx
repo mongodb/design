@@ -5,6 +5,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Code from '../../../../react-components/site/code';
+import SplashView from '../../../../react-components/SplashView.js';
 
 const UILayouts = () => (
   <div className="wrap">
@@ -28,48 +29,42 @@ const UILayouts = () => (
     <div className="row">
       <div className="columns small-12">
         <h2>Zero States</h2>
+        <p>This zero state component can be used for features that require some user action before there is any viewable content or data. The component also provides various combinations of elements to accommodate most informational and loading scenarios.</p>
       </div>
     </div>
     <div className="row">
       <div className="columns small-12">
-        <h3>Empty State</h3>
-      </div>
-    </div>
-    <div className="row">
-      <div className="columns small-12">
-        <div className="empty-view">
-          <div className="empty-view-graphic"></div>
-          <div className="empty-view-text">
-            <h1 className="empty-view-text-is-heading">A positive and actionable headline</h1>
-            <h3 className="empty-view-text-is-description">Language should be direct in setting communicating need of the feature as well as setting appropriate expectation for using the feature.</h3>
-          </div>
-          <div className="empty-view-cta">
-            <button className="button button-is-primary button-is-large">Do something</button>
-            <button className="button button-is-info button-is-large">Do something else</button>
-          </div>
-          <p className="empty-view-link"><a href="#" target="_blank">More guidelines on creating zero state can be found here.</a></p>
-        </div>
+        <SplashView
+          graphic = 'dashboard-zero.svg'
+          headline = 'A positive and actionable headline'
+          description = 'Language should be direct in communicating need of the feature as well as setting appropriate expectation for using the feature.'
+          primaryCTA = 'Do something'
+          secondaryCTA = 'Do something else'
+          linkCTA = 'More information about choosing zero state graphics here'
+          linkTarget = 'https://wiki.corp.mongodb.com/display/10GEN/Zero+States%3A+How+To'
+          isLoading = {false} />
       </div>
     </div>
     <div className="row">
       <div className="columns small-12">
         <Code
           language='language-html'
-          text={`
-  <div className="empty-view">
-    <div className="empty-view-graphic"></div>
-    <div className="empty-view-text">
-      <h1 className="empty-view-text-is-heading">A positive and actionable headline</h1>
-      <h3 className="empty-view-text-is-description">Language should be direct in setting communicating need of the feature as well as setting appropriate expectation for using the feature.</h3>
-    </div>
-    <div className="empty-view-cta">
-      <button className="button button-is-primary button-is-large">Do something</button>
-      <button className="button button-is-info button-is-large">Do something else</button>
-    </div>
-    <p className="empty-view-link"><a href="#" target="_blank">More guidelines on creating zero state can be found here.</a></p>
+          text={`<div class="empty-view">
+  <div class="empty-view-graphic"></div>
+  <div class="empty-view-text">
+    <h1 class="empty-view-text-is-heading">A positive and actionable headline</h1>
+    <h3 class="empty-view-text-is-description">Language should be direct in communicating need of the feature as well as setting appropriate expectation for using the feature.</h3>
   </div>
-
-`}>
+  <div class="empty-view-cta">
+    <button class="button button-is-primary button-is-large">Do something</button>
+    <button class="button button-is-info button-is-large">Do something else</button>
+  </div>
+  <p class="empty-view-link u-display-none">
+    <a href="http://google.com" target="_blank">More information about choosing zero state graphics here</a>
+  </p>
+  <div class="empty-view-loading u-display-none">
+  </div>
+</div>`}>
         </Code>
       </div>
     </div>
