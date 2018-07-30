@@ -3,8 +3,35 @@ import { Link } from 'react-router';
 import Code from '../../../../react-components/site/code';
 import Button from '../../../../react-components/Button.js';
 import SplashView from '../../../../react-components/SplashView.js';
+import Checkbox from '../../../../react-components/Checkbox.js';
+const Prism = require('prismjs');
 
 class UILayoutsReact extends React.Component {
+
+  state = {
+    hasGraphic: true,
+    hasHeadline: true,
+    hasDescription: true,
+    hasPrimaryCTA: true,
+    hasSecondaryCTA: true,
+    haslinkCTA: true,
+    isLoading: false
+  };
+
+  codeSnippetHandler() {
+    const graphic = this.state.hasGraphic ? `\n  graphic = \"dashboard-zero.svg\",` : '';
+    const headline = this.state.hasHeadline ? `\n  headline = \"A positive and actionable headline\",` : '';
+    const description = this.state.hasDescription ? `\n  description = \"Language should be direct in communicating need of the feature as well as setting appropriate expectation for using the feature.\",` : '';
+    const primaryCTA = this.state.hasPrimaryCTA ? `\n  primaryCTA = \"Do something\",` : '';
+    const secondaryCTA = this.state.hasSecondaryCTA ? `\n  secondaryCTA = \"Do something else\",` : '';
+    const linkCTA = this.state.hasLinkCTA ? `\n  linkCTA = \"More information about choosing zero state graphics here\",` : '';
+    const linkTarget = this.state.hasLinkCTA ? `\n  linkTarget = \"http://google.com\",` : '';
+    const isLoading = this.state.isLoading ? `\n  isLoading = true` : '\n  isLoading = false';
+
+    return `<SplashView${graphic}${headline}${description}${primaryCTA}${secondaryCTA}${linkCTA}${linkTarget}${isLoading}
+/>`
+
+  }
 
   render() {
     return (
@@ -29,88 +56,108 @@ class UILayoutsReact extends React.Component {
         <div className="row">
           <div className="columns small-12">
             <h2>Zero States</h2>
+            <p>This zero state component can be used for features that require some user action before there is any viewable content or data. The component also provides various combinations of elements to accommodate most informational and loading scenarios.</p>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="columns small-6">
+            <h3>Options</h3>
+          </div>
+        </div>
+        <div className="row">
+          <div className="columns small-6">
+            <p><strong>Elements</strong></p>
+            <Checkbox
+                label="Headline"
+                checked={this.state.hasHeadline}
+                onChange={hasHeadline => {
+                  this.setState({ hasHeadline });
+                  setTimeout(function(){ Prism.highlightAll(); }, 5);
+                }}
+            />
+            <Checkbox
+                label="Description"
+                checked={this.state.hasDescription}
+                onChange={hasDescription => {
+                  this.setState({ hasDescription });
+                  setTimeout(function(){ Prism.highlightAll(); }, 5);
+                }}
+            />
+            <Checkbox
+                label="Primary CTA"
+                checked={this.state.hasPrimaryCTA}
+                onChange={hasPrimaryCTA => {
+                  this.setState({ hasPrimaryCTA });
+                  setTimeout(function(){ Prism.highlightAll(); }, 5);
+                }}
+            />
+            <Checkbox
+                label="Secondary CTA"
+                checked={this.state.hasSecondaryCTA}
+                onChange={hasSecondaryCTA => {
+                  this.setState({ hasSecondaryCTA });
+                  setTimeout(function(){ Prism.highlightAll(); }, 5);
+                }}
+            />
+          </div>
+          <div className="columns small-6">
+            <Checkbox
+                label="Graphic"
+                checked={this.state.hasGraphic}
+                onChange={hasGraphic => {
+                  this.setState({ hasGraphic });
+                  setTimeout(function(){ Prism.highlightAll(); }, 5);
+                }}
+            />
+
+            <Checkbox
+                label="Link"
+                checked={this.state.hasLinkCTA}
+                onChange={hasLinkCTA => {
+                  this.setState({ hasLinkCTA });
+                  setTimeout(function(){ Prism.highlightAll(); }, 5);
+                }}
+            />
+            <Checkbox
+                label="Loading"
+                checked={this.state.isLoading}
+                onChange={isLoading => {
+                  this.setState({ isLoading });
+                  setTimeout(function(){ Prism.highlightAll(); }, 5);
+                }}
+            />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="columns small-12">
+            <h3>Output</h3>
           </div>
         </div>
         <div className="row">
           <div className="columns small-12">
-            <h3>Empty State</h3>
+            <SplashView
+              graphic = {this.state.hasGraphic ? 'dashboard-zero.svg': null}
+              headline = {this.state.hasHeadline ? 'A positive and actionable headline': null}
+              description = {this.state.hasDescription ? 'Language should be direct in communicating need of the feature as well as setting appropriate expectation for using the feature.' : null}
+              primaryCTA = {this.state.hasPrimaryCTA ? 'Do something' : null }
+              secondaryCTA = {this.state.hasSecondaryCTA ? 'Do something else' : null }
+              linkCTA = {this.state.hasLinkCTA ? 'More information about choosing zero state graphics here' : null }
+              linkTarget = {this.state.hasLinkCTA ? 'https://wiki.corp.mongodb.com/display/10GEN/Zero+States%3A+How+To' : null }
+              isLoading = {this.state.isLoading} />
           </div>
         </div>
+
         <div className="row">
-          <div className="columns small-12">
-            <SplashView 
-              graphic={null} 
-              headlineText="Enter your empty view placeholder text here.">
-              <Button
-                label="Do Something"
-                className="button-is-primary button-is-large"
-                onClick={() => {return null}}
-              />
-            </SplashView>
-          </div>
-        </div>
-        <div className="row u-mb-3">
           <div className="columns small-12">
             <Code
-              language='language-html'
-              text={`<SplashView 
-  graphic={null}
-  headlineText="Enter your empty view placeholder text here.">
-  <Button
-    label="Do Something"
-    className="button-is-primary button-is-large"
-  />
-</SplashView>`}> 
+              language='language-jsx'
+              text={this.codeSnippetHandler()}>
             </Code>
           </div>
         </div>
-        <div className="row">
-          <div className="columns small-12">
-            <h3>Loading State</h3>
-          </div>
-        </div>
-        <div className="row">
-          <div className="columns small-12">
-            <SplashView headlineText="Retrieving list of databases and collections..." isLoading />
-          </div>
-        </div>
-        <div className="row u-mb-3">
-          <div className="columns small-12">
-            <Code
-              language='language-html'
-              text={`<SplashView headlineText="Retrieving list of databases and collections..." isLoading />`}> 
-            </Code>
-          </div>
-        </div>
-        <div className="row">
-          <div className="columns small-12">
-            <h3>Error State</h3>
-          </div>
-        </div>
-        <div className="row">
-          <div className="columns small-12">
-            <SplashView headlineText="Write something about what they did wrong here." isError >            
-              <Button
-                label="Do Something Else"
-                className="button-is-large"
-                onClick={() => {return null}}
-              />
-            </SplashView>
-          </div>
-        </div>
-        <div className="row u-mb-3">
-          <div className="columns small-12">
-            <Code
-              language='language-html'
-              text={`<SplashView headlineText="Write something about what they did wrong here." isError >
-  <Button
-    label="Do Something Else"
-    className="button-is-large"
-  />
-</SplashView>`}> 
-            </Code>
-          </div>
-        </div>
+
       </div>
     );
   }
