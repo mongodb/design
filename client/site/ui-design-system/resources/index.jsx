@@ -18,14 +18,14 @@ class Resources extends React.Component {
 
   // Fetch last commit dates for each sketch file
   componentWillMount() {
-    var files = [ "_mongodb-core.sketch", "_charts-template-0.1.sketch", "_cloud-template.sketch", "_compass-template-1.7.sketch", "_stitch-template.sketch", "_university-template-1.2.sketch" ];
+    var files = [ "_mongodb-core.sketch", "_charts-template-0.1.sketch", "_cloud-template.sketch", "_compass-template-1.7.sketch", "_stitch-template.sketch", "_university-template-1.5.sketch" ];
     var statePairing = [
       ["_mongodb-core.sketch", "coreLastUpdated"],
       ["_charts-template-0.1.sketch", "chartsLastUpdated"],
       ["_cloud-template.sketch", "cloudLastUpdated"],
       ["_compass-template-1.7.sketch", "compassLastUpdated"],
       ["_stitch-template.sketch", "stitchLastUpdated"],
-      ["_university-template-1.2.sketch", "universityLastUpdated"],
+      ["_university-template-1.5.sketch", "universityLastUpdated"],
     ];
     var stateMap = new Map(statePairing);
 
@@ -102,7 +102,7 @@ class Resources extends React.Component {
                 </tr>
                 <tr className="table-row">
                   <td className="table-column table-cell">
-                    <a href="https://github.com/leafygreen/sketchUILibrary/blob/master/_university-template-1.2.sketch?raw=true"><strong>_university-template-1.2.sketch</strong></a>
+                    <a href="https://github.com/leafygreen/sketchUILibrary/blob/master/_university-template-1.5.sketch?raw=true"><strong>_university-template-1.5.sketch</strong></a>
                   </td>
                   <td className="table-column table-cell">Components and layouts for MongoDB University</td>
                   <td className="table-column table-cell">{this.state.universityLastUpdated}</td>
