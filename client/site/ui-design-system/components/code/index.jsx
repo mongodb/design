@@ -37,32 +37,9 @@ const UICode = () => (
         </div>
         <div className="row">
           <div className="columns small-12">
-            <div className="copy-command">
-              <span className="copy-command-text">This is a command that you can copy. It will not break onto the next line since the overflow will keep scrolling horizontally.</span>
-              <button className="copy-command-button">
-                <i className="fa fa-files-o"></i> Copy
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="row u-mb-3">
-          <div className="columns small-12">
-            <Code
-              language='language-html'
-              text={`<div class="copy-command">
-  <span class="copy-command-text">This is a command that you can copy. It will not break onto the next line since the overflow will keep scrolling horizontally.</span>
-  <button class="copy-command-button">
-    <i class="fa fa-files-o"></i> Copy
-  </button>
-</div>`}> 
-            </Code>
-          </div>
-        </div>
-        <div className="row">
-          <div className="columns small-12">
-            <div className="copy-command">
+            <div className="copy-command copy-command-single">
               <span className="copy-command-text">By default command snippets are not full width.</span>
-              <button className="copy-command-button">
+              <button className="button copy-command-button">
                 <i className="fa fa-files-o"></i> Copy
               </button>
             </div>
@@ -72,9 +49,9 @@ const UICode = () => (
           <div className="columns small-12">
             <Code
               language='language-html'
-              text={`<div class="copy-command">
+              text={`<div class="copy-command copy-command-single">
   <span class="copy-command-text">By default command snippets are not full width.</span>
-  <button class="copy-command-button">
+  <button class="button copy-command-button">
     <i class="fa fa-files-o"></i> Copy
   </button>
 </div>`}> 
@@ -83,9 +60,9 @@ const UICode = () => (
         </div>
         <div className="row">
           <div className="columns small-12">
-            <div className="copy-command">
-              <span className="copy-command-text copy-command-is-full-width">However, you can force the snippet to be full width by adding an additional class.</span>
-              <button className="copy-command-button">
+            <div className="copy-command copy-command-single copy-command-is-full-width">
+              <span className="copy-command-text">However, you can force the snippet to be full width by adding an additional class. this code runs extra long.</span>
+              <button className="button copy-command-button">
                 <i className="fa fa-files-o"></i> Copy
               </button>
             </div>
@@ -95,9 +72,9 @@ const UICode = () => (
           <div className="columns small-12">
             <Code
               language='language-html'
-              text={`<div class="copy-command">
-  <span class="copy-command-text copy-command-is-full-width">However, you can force the snippet to be full width by adding an additional class.</span>
-  <button class="copy-command-button">
+              text={`<div class="copy-command copy-command-single copy-command-is-full-width">
+  <span class="copy-command-text">However, you can force the snippet to be full width by adding an additional class. this code runs extra long.</span>
+  <button class="button copy-command-button">
     <i class="fa fa-files-o"></i> Copy
   </button>
 </div>`}> 
@@ -111,8 +88,8 @@ const UICode = () => (
         </div>
         <div className="row">
           <div className="columns small-12">
-            <div className="codeblock">
-              <code>
+            <div className="copy-command copy-command-block">
+              <code className="copy-command-text">
                 <div>{ 'const exampleCodeblock = {' }</div>
                 <div>{ '  description: \'this is a codeblock that preserves whitespace\',' }</div>
                 <div>{ '  overflow: \'this is also scrollable horizontally, so it won\'t break onto the next line even if it\'s really long, it just keeps scrolling and scrolling and scrolling...\'' }</div>
@@ -125,12 +102,39 @@ const UICode = () => (
           <div className="columns small-12">
             <Code
               language='language-html'
-              text={`<div class="codeblock">
-  <code>
+              text={`<div class="copy-command copy-command-block">
+  <code class="copy-command-text">
     <div>{ 'const exampleCodeblock = {' }</div>
       <div>{ '  description: 'this is a codeblock that preserves whitespace',' }</div>
       <div>{ '  overflow: 'this is also scrollable horizontally, so it won't break onto the next line even if it's really long, it just keeps scrolling and scrolling and scrolling...'' }</div>
     <div>{ '};' }</div>
+  </code>
+</div>`}> 
+            </Code>
+          </div>
+        </div>
+        <div className="row">
+          <div className="columns small-12">
+            <div className="copy-command copy-command-block copy-command-block-has-button">
+              <button className="button copy-command-button">
+                <i className="fa fa-files-o"></i> Copy
+              </button>
+              <code className="copy-command-text">
+                <div>{ 'description: \'this is a codeblock that does not preseve white space and runs really long and will break onto the next line if it is really long. this codeblock has a button so there is no overflow scroll. the code will cut off before it reaches the button\'.' }</div>
+              </code>
+            </div>
+          </div>
+        </div>
+        <div className="row u-mb-3">
+          <div className="columns small-12">
+            <Code
+              language='language-html'
+              text={`<div class="copy-command copy-command-block copy-command-block-has-button">
+  <button class="button copy-command-button">
+    <i class="fa fa-files-o"></i> Copy
+  </button>
+  <code class="copy-command-text">
+    <div>{ 'description: 'this is a codeblock that does not preseve white space and runs really long and will break onto the next line if it is really long. this codeblock has a button so there is no overflow scroll. the code will cut off before it reaches the button'.' }</div>
   </code>
 </div>`}> 
             </Code>

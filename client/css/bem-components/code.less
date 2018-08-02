@@ -1,51 +1,48 @@
 .copy-command {
-  // flexbox gets the button to fill vertical space-- requires silly hacks otherwise
-  display: -ms-flexbox;
-  display: flex;
+  background: @gray7;
+  border-left: 3px solid @gray6;
+  position: relative;
+  z-index: 0;
+  overflow: auto;
 
-  &-text {
-    background: @gray7;
-    border-left: 3px solid @gray5;
+  &-single {
     display: inline-block;
-    padding: 10px 15px;
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-    font-size: 12px;
+    padding: 10px 100px 10px 15px;
     line-height: 35px;
-    overflow: scroll;
+    height: 58px;
     white-space: nowrap;
   }
 
-  &-button {
-    flex: 0 0 100px;
-    display: inline-block;
-    background-color: @pw;
-    border: 1px solid @gray6;
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-    outline: 0;
+  &-block {
+    padding: 15px 100px 15px 15px;
+    line-height: 1.75;
+    white-space: pre;
 
-    &:active {
-      box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.1);
+    &-has-button {
+      white-space: normal;
+      overflow: hidden;
     }
+  }
+  
+  &-text {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 12px;
+  }
+
+  &-button {
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
   }
 
   &-is-full-width {
-    flex-basis: 100%;
+    width: 100%;
+    white-space: normal;
+    overflow: hidden;
   }
 
   &-is-spaced {
     margin-bottom: 10px;
   }
-}
-
-.codeblock {
-  white-space: pre;
-  overflow: scroll;
-  padding: 10px;
-  background: @gray7;
-  border-left: 3px solid @gray5;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 13px;
-  line-height: 1.65;
 }
