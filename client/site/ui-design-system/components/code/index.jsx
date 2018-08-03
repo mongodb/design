@@ -105,7 +105,7 @@ const UICode = () => (
         <div className="row">
           <div className="columns small-12">
             <div className="copy-command copy-command-block">
-              <div className="copy-command-multi-container">
+              <div className="copy-command-block-container">
                 <code className="copy-command-text">
                   <div>{ 'const exampleCodeblock = {' }</div>
                   <div>{ '  description: \'this is a codeblock that preserves whitespace\',' }</div>
@@ -126,7 +126,7 @@ const UICode = () => (
             <Code
               language='language-html'
               text={`<div class="copy-command copy-command-block">
-  <div class="copy-command-multi-container">
+  <div class="copy-command-block-container">
     <code class="copy-command-text">
       <div>{ 'const exampleCodeblock = {' }</div>
         <div>{ '  description: 'this is a codeblock that preserves whitespace',' }</div>

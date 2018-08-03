@@ -35,6 +35,7 @@ const UIButtons = () => (
       <div className="columns small-12">
         <button className="button u-mr-2">Default Button</button>
         <button className="button button-is-primary u-mr-2">Primary Button</button>
+        <button className="button button-is-info u-mr-2">Info Button</button>
         <button className="button button-is-danger u-mr-2">Destructive Button</button>
         <button className="button" disabled>Disabled Button</button>
       </div>
