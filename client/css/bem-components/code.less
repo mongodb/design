@@ -1,27 +1,38 @@
 .copy-command {
   background: @gray7;
   border-left: 3px solid @gray6;
-  position: relative;
-  z-index: 0;
-  overflow: auto;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
 
-  &-single {
-    display: inline-block;
-    padding: 10px 100px 10px 15px;
-    line-height: 35px;
-    height: 58px;
+  &-single-container {
+    flex-basis: auto;
+    flex-shrink: 1;
+    flex-grow: 1;
+    overflow-x: auto;
     white-space: nowrap;
   }
 
-  &-block {
-    padding: 15px 100px 15px 15px;
-    line-height: 1.75;
-    white-space: pre;
+  &-multi-container {
+    white-space: pre-wrap;
+  }
 
-    &-has-button {
-      white-space: normal;
-      overflow: hidden;
-    }
+  &-button-container {
+    flex-basis: auto;
+    flex-shrink: 0;
+    flex-grow: 0; 
+    padding-left: 15px;
+  }
+
+  &-single {
+    padding: 15px;
+    height: 54px;
+  }
+
+  &-block {
+    padding: 15px;
+    line-height: 1.75;
+    align-items: end;
   }
   
   &-text {
@@ -30,10 +41,6 @@
   }
 
   &-button {
-    position: absolute;
-    top: 13px;
-    right: 15px;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
     -webkit-touch-callout: none;
     -webkit-user-select: none; /* Webkit */
     -moz-user-select: none;    /* Firefox */
@@ -43,12 +50,67 @@
   }
 
   &-is-full-width {
-    width: 100%;
-    white-space: normal;
-    overflow: hidden;
+    display: flex;
   }
 
   &-is-spaced {
     margin-bottom: 10px;
   }
 }
+
+// .copy-command {
+//   background: @gray7;
+//   border-left: 3px solid @gray6;
+//   position: relative;
+
+//   &-container {
+//     overflow-x: auto;
+//     position: relative;
+//     white-space: nowrap;
+//   }
+
+//   &-single {
+//     display: inline-block;
+//     padding: 15px 100px 15px 15px;
+//     align-items: center;
+//     height: 54px;
+//   }
+
+//   &-block {
+//     padding: 15px 100px 15px 15px;
+//     line-height: 1.75;
+//     white-space: pre;
+
+//     &-has-button {
+//       white-space: normal;
+//       overflow: hidden;
+//     }
+//   }
+  
+//   &-text {
+//     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+//     font-size: 12px;
+//   }
+
+//   &-button {
+//     position: absolute;
+//     top: 11px;
+//     right: 15px;
+//     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.05);
+//     -webkit-touch-callout: none;
+//     -webkit-user-select: none; /* Webkit */
+//     -moz-user-select: none;    /* Firefox */
+//     -ms-user-select: none;     /* IE 10  */
+//     -o-user-select: none;
+//     user-select: none;
+//   }
+
+//   &-is-full-width {
+//     width: 100%;
+//   }
+
+//   &-is-spaced {
+//     margin-bottom: 10px;
+//   }
+// }
+

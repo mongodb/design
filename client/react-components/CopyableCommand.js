@@ -64,21 +64,25 @@ class CopyableCommand extends Component {
         {'copy-command-is-full-width': fullWidth}
       )}
       >
-        <span className={classNames('copy-command-text')}
-        >
-          {this.props.children || copyableText}
-        </span>
-        <button
-          ref={(button) => { this.copyButton = button; }}
-          className="button copy-command-button"
-          data-clipboard-mixin
-          data-clipboard-text={copyableText}
-          onMouseLeave={this.onMouseLeave}
-        >
-          <Tooltip content={tooltipText}>
-            <i className="fa fa-files-o" /> Copy
-          </Tooltip>
-        </button>
+        <div className="copy-command-single-container">
+          <code className={classNames('copy-command-text')}
+          >
+            {this.props.children || copyableText}
+          </code>
+        </div>
+        <div className="copy-command-button-container">
+          <button
+            ref={(button) => { this.copyButton = button; }}
+            className="button copy-command-button"
+            data-clipboard-mixin
+            data-clipboard-text={copyableText}
+            onMouseLeave={this.onMouseLeave}
+          >
+            <Tooltip content={tooltipText}>
+              <i className="fa fa-files-o" /> Copy
+            </Tooltip>
+          </button>
+        </div>
       </div>
     );
 
