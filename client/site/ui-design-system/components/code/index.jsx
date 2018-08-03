@@ -143,7 +143,6 @@ const UICode = () => (
             </Code>
           </div>
         </div>
-
         <div className="row">
           <div className="columns small-12">
             <h3>JSON View</h3>
