@@ -372,14 +372,14 @@ const UIColors = () => (
         <ColorChip
           code="@chart1"
           className="chart1"
-          hex="#13AA52"
+          hex="#196EE6"
         />
       </div>
       <div className="columns small-4">
         <ColorChip
           code="@chart2"
           className="chart2"
-          hex="#9fa1a2"
+          hex="#E6B219"
         />
       </div>
     </div>
@@ -388,21 +388,21 @@ const UIColors = () => (
         <ColorChip
           code="@chart3"
           className="chart3"
-          hex="#ef4c4c"
+          hex="#E6196E"
         />
       </div>
       <div className="columns small-4">
         <ColorChip
           code="@chart4"
           className="chart4"
-          hex="#13AA52"
+          hex="#19C3E6"
         />
       </div>
       <div className="columns small-4">
         <ColorChip
           code="@chart5"
           className="chart5"
-          hex="#9fa1a2"
+          hex="#116149"
         />
       </div>
     </div>
@@ -411,21 +411,21 @@ const UIColors = () => (
         <ColorChip
           code="@chart6"
           className="chart6"
-          hex="#ef4c4c"
+          hex="#E65D19"
         />
       </div>
       <div className="columns small-4">
         <ColorChip
           code="@chart7"
           className="chart7"
-          hex="#13AA52"
+          hex="#ABABAB"
         />
       </div>
       <div className="columns small-4">
         <ColorChip
           code="@chart8"
           className="chart8"
-          hex="#9fa1a2"
+          hex="#1392AB"
         />
       </div>
     </div>
@@ -434,7 +434,7 @@ const UIColors = () => (
         <ColorChip
           code="@chart9"
           className="chart9"
-          hex="#ef4c4c"
+          hex="#80340E"
         />
       </div>
       <div className="columns small-4">
