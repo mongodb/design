@@ -30,16 +30,16 @@ const OutOfDateBanner = ({ links }) => (
 				<div>
 					<br />
 
-					{links.map(link => (
-						<div className='out-of-date-banner--resource'>
+					{links.map((link, i) => (
+						<div key={i} className='out-of-date-banner--resource'>
 							{link.url ? (
 								<BannerLink url={link.url}>
 									{link.title}
 								</BannerLink>
 							) : link.title}
 
-							{link.sources && link.sources.map(source => (
-								<span>
+							{link.sources && link.sources.map((source, j) => (
+								<span key={j}>
 									&nbsp;&nbsp;
 
 									<BannerLink url={source.url}>
