@@ -5,9 +5,14 @@
 import React from 'react';
 import Code from '../../../../react-components/site/code';
 import { Link } from 'react-router';
+import OutOfDateBanner from '../../../../react-components/OutOfDateBanner';
 
 const UITabs = () => (
   <div className="wrap button-ui">
+    <div className="row">
+      <OutOfDateBanner />
+    </div>
+
     <div className="row">
       <div className="columns small-12">
         <h1>Tabs</h1>

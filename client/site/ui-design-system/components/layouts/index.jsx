@@ -6,9 +6,14 @@ import React from 'react';
 import { Link } from 'react-router';
 import Code from '../../../../react-components/site/code';
 import SplashView from '../../../../react-components/SplashView.js';
+import OutOfDateBanner from '../../../../react-components/OutOfDateBanner';
 
 const UILayouts = () => (
   <div className="wrap">
+    <div className="row">
+      <OutOfDateBanner />
+    </div>
+
     <div className="row">
       <div className="columns small-12">
         <h1>Layouts</h1>

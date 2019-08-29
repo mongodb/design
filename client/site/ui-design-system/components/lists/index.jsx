@@ -3,11 +3,15 @@
 // ==================================================
 
 import React from 'react';
-import { Link } from 'react-router';
 import Code from '../../../../react-components/site/code';
+import OutOfDateBanner from '../../../../react-components/OutOfDateBanner';
 
 const UILists = () => (
   <div className="wrap">
+    <div className="row">
+      <OutOfDateBanner />
+    </div>
+
     <div className="row">
       <div className="columns small-12">
         <h1>Lists</h1>

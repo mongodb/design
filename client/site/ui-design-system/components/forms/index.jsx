@@ -4,9 +4,14 @@
 
 import React from 'react';
 import Code from '../../../../react-components/site/code';
+import OutOfDateBanner from '../../../../react-components/OutOfDateBanner';
 
 const UIForms = () => (
   <div className="wrap">
+    <div className="row">
+      <OutOfDateBanner />
+    </div>
+    
     <div className="row">
       <div className="columns small-12">
         <h1>Forms</h1>

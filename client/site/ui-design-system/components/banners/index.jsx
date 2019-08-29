@@ -5,126 +5,131 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Code from '../../../../react-components/site/code';
+import OutOfDateBanner from '../../../../react-components/OutOfDateBanner';
 
 const UIBanners = () => (
   <div className="wrap button-ui">
+    <div className='row'>
+      <OutOfDateBanner />
+    </div>
+
+    <div className="row">
+      <div className="columns small-12">
+        <h1>Banners</h1>
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <ul className="section-header-tabs">
+          <li className="section-header-tab section-header-tab-is-active">
+            <Link to='/ui-design-system/components/banners' className="section-header-tab-link">CSS</Link>
+          </li>
+          <li className="section-header-tab">
+            <Link to='/ui-design-system/components/banners/react-banners' className="section-header-tab-link">React</Link>
+          </li>
+        </ul>
+      </div>
+    </div>
       <div className="row">
-        <div className="columns small-12">
-          <h1>Banners</h1>
+      <div className="columns small-12">
+        <h2>Alerts</h2>
+        <p>Alerts are available in four levels – success, warning, danger, and info – and with or without a dismiss button.</p>
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Success</h3>
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <div className="bem-alert bem-alert-is-success">
+            <button type="button" className="bem-alert-close-button" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div>Well done! You successfully read this important alert message.</div>
         </div>
       </div>
-      <div className="row">
-        <div className="columns small-12">
-          <ul className="section-header-tabs">
-            <li className="section-header-tab section-header-tab-is-active">
-              <Link to='/ui-design-system/components/banners' className="section-header-tab-link">CSS</Link>
-            </li>
-            <li className="section-header-tab">
-              <Link to='/ui-design-system/components/banners/react-banners' className="section-header-tab-link">React</Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-       <div className="row">
-        <div className="columns small-12">
-          <h2>Alerts</h2>
-          <p>Alerts are available in four levels – success, warning, danger, and info – and with or without a dismiss button.</p>
-        </div>
-      </div>
-      <div className="row">
-        <div className="columns small-12">
-          <h3>Success</h3>
-        </div>
-      </div>
-      <div className="row">
-        <div className="columns small-12">
-          <div className="bem-alert bem-alert-is-success">
-              <button type="button" className="bem-alert-close-button" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <div>Well done! You successfully read this important alert message.</div>
-          </div>
-        </div>
-      </div>
-      <div className="row u-mb-3">
-        <div className="columns small-12">
-          <Code
-            language='language-html'
-            text={`<div class="bem-alert bem-alert-is-success">
-    <button type="button" class="bem-alert-close-button" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    <div>Well done! You successfully read this important alert message.</div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <Code
+          language='language-html'
+          text={`<div class="bem-alert bem-alert-is-success">
+  <button type="button" class="bem-alert-close-button" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+  </button>
+  <div>Well done! You successfully read this important alert message.</div>
 </div>`}>
-          </Code>
+        </Code>
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Warning</h3>
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <div className="bem-alert bem-alert-is-warning">
+            <div>Warning! Better check yourself before you wreck yourself, you’re not looking good.</div>
         </div>
       </div>
-      <div className="row">
-        <div className="columns small-12">
-          <h3>Warning</h3>
-        </div>
-      </div>
-      <div className="row">
-        <div className="columns small-12">
-          <div className="bem-alert bem-alert-is-warning">
-              <div>Warning! Better check yourself before you wreck yourself, you’re not looking good.</div>
-          </div>
-        </div>
-      </div>
-      <div className="row u-mb-3">
-        <div className="columns small-12">
-          <Code
-            language='language-html'
-            text={`<div class="bem-alert bem-alert-is-warning">
-    <div>Warning! Better check yourself before you wreck yourself, you’re not looking good.</div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <Code
+          language='language-html'
+          text={`<div class="bem-alert bem-alert-is-warning">
+  <div>Warning! Better check yourself before you wreck yourself, you’re not looking good.</div>
 </div>`}>
-          </Code>
+        </Code>
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Danger</h3>
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <div className="bem-alert bem-alert-is-danger">
+            <div>Danger! Better check yourself, you’re not looking good.</div>
         </div>
       </div>
-            <div className="row">
-        <div className="columns small-12">
-          <h3>Danger</h3>
-        </div>
-      </div>
-      <div className="row">
-        <div className="columns small-12">
-          <div className="bem-alert bem-alert-is-danger">
-              <div>Danger! Better check yourself, you’re not looking good.</div>
-          </div>
-        </div>
-      </div>
-      <div className="row u-mb-3">
-        <div className="columns small-12">
-          <Code
-            language='language-html'
-            text={`<div class="bem-alert bem-alert-is-danger">
-    <div>Danger! Better check yourself, you’re not looking good.</div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <Code
+          language='language-html'
+          text={`<div class="bem-alert bem-alert-is-danger">
+  <div>Danger! Better check yourself, you’re not looking good.</div>
 </div>`}>
-          </Code>
+        </Code>
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <h3>Info</h3>
+      </div>
+    </div>
+    <div className="row">
+      <div className="columns small-12">
+        <div className="bem-alert bem-alert-is-info">
+            <div>Heads up! This alert needs your attention, but it’s not super important.</div>
         </div>
       </div>
-            <div className="row">
-        <div className="columns small-12">
-          <h3>Info</h3>
-        </div>
-      </div>
-      <div className="row">
-        <div className="columns small-12">
-          <div className="bem-alert bem-alert-is-info">
-              <div>Heads up! This alert needs your attention, but it’s not super important.</div>
-          </div>
-        </div>
-      </div>
-      <div className="row u-mb-3">
-        <div className="columns small-12">
-          <Code
-            language='language-html'
-            text={`<div class="bem-alert bem-alert-is-info">
-    <div>Heads up! This alert needs your attention, but it’s not super important.</div>
+    </div>
+    <div className="row u-mb-3">
+      <div className="columns small-12">
+        <Code
+          language='language-html'
+          text={`<div class="bem-alert bem-alert-is-info">
+  <div>Heads up! This alert needs your attention, but it’s not super important.</div>
 </div>`}>
-          </Code>
-        </div>
+        </Code>
       </div>
+    </div>
     <div className="row">
       <div className="columns small-12">
         <h2>Status Banners</h2>

@@ -4,6 +4,7 @@
 
 import React from 'react';
 import '../../../css/root.less';
+import OutOfDateBanner from '../../../react-components/OutOfDateBanner';
 
 const client = new stitch.StitchClient('mdb-design-site-apis-wpxcw');
 
@@ -48,6 +49,10 @@ class Resources extends React.Component {
   render() {
     return (
       <div className="wrap">
+        <div className="row">
+          <OutOfDateBanner />
+        </div>
+
         <div className="row u-mb-3">
           <div className="columns small-12">
             <h1 className="heading">Resources</h1>

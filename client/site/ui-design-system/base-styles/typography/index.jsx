@@ -3,9 +3,14 @@
 // ==================================================
 
 import React from 'react';
+import OutOfDateBanner from '../../../../react-components/OutOfDateBanner';
 
 const UITypography = () => (
   <div className="wrap">
+    <div className="row">
+      <OutOfDateBanner />
+    </div>
+
     <div className="row">
       <div className="columns small-12 u-mb-3">
         <h1>Typography</h1>
