@@ -4,9 +4,39 @@
 
 import React from 'react';
 import Code from '../../../../react-components/site/code';
+import OutOfDateBanner from '../../../../react-components/OutOfDateBanner';
 
 const UIBubbles = () => (
   <div className="wrap button-ui">
+    <div className='row'>
+      <OutOfDateBanner links={[
+          {
+            url: 'https://mongodb.github.io/leafygreen-ui/?path=/story/badge--default',
+            title: 'Storybook',
+          },
+
+          {
+            url: 'https://github.com/mongodb/leafygreen-sketch/blob/master/Badge%20%5BLeafyGreen%5D.sketch',
+            title: 'Sketch Library',
+          },
+
+          {
+            title: 'React Component',
+            sources: [
+              {
+                title: 'GitHub',
+                url: 'https://github.com/mongodb/leafygreen-ui/tree/master/packages/badge',
+              },
+
+              {
+                title: 'NPM',
+                url: 'https://www.npmjs.com/package/@leafygreen-ui/badge',
+              },
+            ],
+          },
+        ]} />
+    </div>
+
     <div className="row">
       <div className="columns small-12">
         <h1>Bubbles</h1>

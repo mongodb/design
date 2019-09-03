@@ -3,9 +3,39 @@
 // ==================================================
 
 import React from 'react';
+import OutOfDateBanner from '../../../../react-components/OutOfDateBanner';
 
 const UIIcons = () => (
   <div className="wrap">
+    <div className="row">
+      <OutOfDateBanner links={[
+        {
+          url: 'https://mongodb.github.io/leafygreen-ui/?path=/story/icons--icon',
+          title: 'Storybook',
+        },
+
+        {
+          url: 'https://github.com/mongodb/leafygreen-sketch/blob/master/Glyphs%20%5BLeafyGreen%5D.sketch',
+          title: 'Sketch Library',
+        },
+
+        {
+          title: 'React Component',
+          sources: [
+            {
+              title: 'GitHub',
+              url: 'https://github.com/mongodb/leafygreen-ui/tree/master/packages/icon',
+            },
+
+            {
+              title: 'NPM',
+              url: 'https://www.npmjs.com/package/@leafygreen-ui/icon',
+            },
+          ],
+        },
+      ]} />
+    </div>
+    
 		<h1 className="heading">Icons</h1>
 		<p>We use several sets of icons in our products, including Google&rsquo;s Material Design and Font Awesome, 
 		as well as icons developed internally for MongoDB-specific terminolgy.</p>

@@ -1,0 +1,36 @@
+.out-of-date-banner {
+	background-color: #FEF7E3;
+	border: 1px solid #FEF2C8;
+	border-radius: 3px;
+	padding: 1rem;
+	box-shadow: 0 5px 3px -4px rgba(134, 104, 29, 0.3);
+	flex-grow: 1;
+	margin-bottom: 3rem;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	display: flex;
+	font-size: 15px;
+
+	&--text {
+		margin: 0;
+		color: #86681D;
+		line-height: 1.4em;
+		top: 2px;
+	}
+	
+	&--warning-icon {
+		flex-shrink: 0;
+		margin-right: 0.5rem;
+		position: relative;
+		top: 3px;
+	}
+	
+	&--link {
+		color: #007CAD;
+		font-weight: bold;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

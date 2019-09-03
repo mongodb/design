@@ -4,9 +4,38 @@
 
 import React from 'react';
 import ColorChip from '../../../../react-components/site/color-chip';
+import OutOfDateBanner from '../../../../react-components/OutOfDateBanner';
 
 const UIColors = () => (
   <div className="wrap">
+    <div className="row">
+      <OutOfDateBanner links={[
+        {
+          url: 'https://mongodb.github.io/leafygreen-ui/?path=/story/palette--ui',
+          title: 'Storybook',
+        },
+
+        {
+          url: 'https://github.com/mongodb/leafygreen-sketch/blob/master/Palette%20%5BLeafyGreen%5D.sketch',
+          title: 'Sketch Library',
+        },
+
+        {
+          title: 'React Component',
+          sources: [
+            {
+              title: 'GitHub',
+              url: 'https://github.com/mongodb/leafygreen-ui/tree/master/packages/palette',
+            },
+
+            {
+              title: 'NPM',
+              url: 'https://www.npmjs.com/package/@leafygreen-ui/palette',
+            },
+          ],
+        },
+      ]} />
+    </div>
     <div className="row">
       <div className="columns small-12">
         <h1>Colors</h1>

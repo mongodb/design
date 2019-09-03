@@ -5,9 +5,34 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Code from '../../../../react-components/site/code';
+import OutOfDateBanner from '../../../../react-components/OutOfDateBanner';
 
 const UIViewModal = () => (
   <div className="wrap">
+    <div className="row">
+      <OutOfDateBanner links={[
+        {
+          url: 'https://mongodb.github.io/leafygreen-ui/?path=/story/modal--default',
+          title: 'Storybook',
+        },
+
+        {
+          title: 'React Component',
+          sources: [
+            {
+              title: 'GitHub',
+              url: 'https://github.com/mongodb/leafygreen-ui/tree/master/packages/modal',
+            },
+
+            {
+              title: 'NPM',
+              url: 'https://www.npmjs.com/package/@leafygreen-ui/modal',
+            },
+          ],
+        },
+      ]} />
+    </div>
+    
     <div className="row">
       <div className="columns small-12">
         <h1>Modals</h1>
