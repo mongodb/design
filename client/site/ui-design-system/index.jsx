@@ -7,6 +7,17 @@ import { Link } from 'react-router';
 
 const container_class = "navigation-is-vertical-container";
 
+const NavigationLink = ({ to, children }) => (
+  <li>
+    <Link
+      to={to}
+      className="navigation-link"
+      activeClassName="navigation-link-active">
+      {children}
+    </Link>
+  </li>
+)
+
 class UIDesignSystem extends React.Component { 
 
   constructor(props) {
@@ -39,44 +50,53 @@ class UIDesignSystem extends React.Component {
             <li className="navigation-is-vertical-parent">
               <h4><Link to='/ui-design-system/welcome' className="navigation-link" activeClassName="navigation-link-active">Welcome</Link></h4>
               <ul className="navigation-is-vertical-child">
-                <li className="navigation-link"><Link to='/ui-design-system/principles' className="navigation-link" activeClassName="navigation-link-active">Design Principles</Link></li>
+                <NavigationLink to='/ui-design-system/principles'>Design Principles</NavigationLink>
               </ul>
             </li>
+
+            <li className="navigation-is-vertical-parent">
+              <h4>Brand</h4>
+              <ul className="navigation-is-vertical-child">
+                <NavigationLink to='/ui-design-system/brand/brand-guidelines'>Brand Guidelines</NavigationLink>
+                <NavigationLink to='/ui-design-system/brand/website-guidelines'>Website Guidelines</NavigationLink>
+              </ul>
+            </li>
+
             <li className="navigation-is-vertical-parent">
               <h4><Link to='/ui-design-system/base-styles' className="navigation-link" activeClassName="navigation-link-active">Base Styles</Link></h4>
               <ul className="navigation-is-vertical-child">
-                <li><Link to='/ui-design-system/base-styles/colors' className="navigation-link" activeClassName="navigation-link-active">Colors</Link></li>
-                <li><Link to='/ui-design-system/base-styles/typography' className="navigation-link" activeClassName="navigation-link-active">Typography</Link></li>
-                <li><Link to='/ui-design-system/guidelines/grid' className="navigation-link" activeClassName="navigation-link-active">Grid</Link></li>
-                <li><Link to='/ui-design-system/base-styles/icons' className="navigation-link" activeClassName="navigation-link-active">Icons</Link></li>
+                <NavigationLink to='/ui-design-system/base-styles/colors'>Colors</NavigationLink>
+                <NavigationLink to='/ui-design-system/base-styles/typography'>Typography</NavigationLink>
+                <NavigationLink to='/ui-design-system/guidelines/grid'>Grid</NavigationLink>
+                <NavigationLink to='/ui-design-system/base-styles/icons'>Icons</NavigationLink>
               </ul>
             </li>
             <li className="navigation-is-vertical-parent">
               <h4><Link to='/ui-design-system/components' className="navigation-link" activeClassName="navigation-link-active">Components</Link></h4>
               <ul className="navigation-is-vertical-child">
-                <li><Link to='/ui-design-system/components/buttons' className="navigation-link" activeClassName="navigation-link-active">Buttons</Link></li>
-                <li><Link to='/ui-design-system/components/banners' className="navigation-link" activeClassName="navigation-link-active">Banners</Link></li>
-                <li><Link to='/ui-design-system/components/bubbles' className="navigation-link" activeClassName="navigation-link-active">Bubbles</Link></li>
-                <li><Link to='/ui-design-system/components/code' className="navigation-link" activeClassName="navigation-link-active">Code</Link></li>
-                <li><Link to='/ui-design-system/components/forms' className="navigation-link" activeClassName="navigation-link-active">Inputs</Link></li>
-                <li><Link to='/ui-design-system/components/rich-forms' className="navigation-link" activeClassName="navigation-link-active">Rich Inputs</Link></li>
-                <li><Link to='/ui-design-system/components/layouts' className="navigation-link" activeClassName="navigation-link-active">Layouts</Link></li>
-                <li><Link to='/ui-design-system/components/lists' className="navigation-link" activeClassName="navigation-link-active">Lists</Link></li>
-                <li><Link to='/ui-design-system/components/view-modal' className="navigation-link" activeClassName="navigation-link-active">Modals</Link></li>
-                <li><Link to='/ui-design-system/components/tabs' className="navigation-link" activeClassName="navigation-link-active">Tabs</Link></li>
-                <li><Link to='/ui-design-system/components/tables' className="navigation-link" activeClassName="navigation-link-active">Tables</Link></li>
+                <NavigationLink to='/ui-design-system/components/buttons'>Buttons</NavigationLink>
+                <NavigationLink to='/ui-design-system/components/banners'>Banners</NavigationLink>
+                <NavigationLink to='/ui-design-system/components/bubbles'>Bubbles</NavigationLink>
+                <NavigationLink to='/ui-design-system/components/code'>Code</NavigationLink>
+                <NavigationLink to='/ui-design-system/components/forms'>Inputs</NavigationLink>
+                <NavigationLink to='/ui-design-system/components/rich-forms'>Rich Inputs</NavigationLink>
+                <NavigationLink to='/ui-design-system/components/layouts'>Layouts</NavigationLink>
+                <NavigationLink to='/ui-design-system/components/lists'>Lists</NavigationLink>
+                <NavigationLink to='/ui-design-system/components/view-modal'>Modals</NavigationLink>
+                <NavigationLink to='/ui-design-system/components/tabs'>Tabs</NavigationLink>
+                <NavigationLink to='/ui-design-system/components/tables'>Tables</NavigationLink>
               </ul>
             </li>
             <li className="navigation-is-vertical-parent">
               <h4><Link to='/ui-design-system/compass-components' className="navigation-link" activeClassName="navigation-link-active">Compass</Link></h4>
               <ul className="navigation-is-vertical-child">
-                <li><Link to='/ui-design-system/compass-components/query-history' className="navigation-link" activeClassName="navigation-link-active">Query History</Link></li>
+                <NavigationLink to='/ui-design-system/compass-components/query-history'>Query History</NavigationLink>
               </ul>
             </li>
             <li className="navigation-is-vertical-parent">
               <h4><Link to='/ui-design-system/guidelines' className="navigation-link" activeClassName="navigation-link-active">Guidelines</Link></h4>
               <ul className="navigation-is-vertical-child">
-                <li><Link to='/ui-design-system/guidelines/modify' className="navigation-link" activeClassName="navigation-link-active">Modify</Link></li>
+                <NavigationLink to='/ui-design-system/guidelines/modify'>Modify</NavigationLink>
               </ul>
             </li>
             <li className="navigation-is-vertical-parent">

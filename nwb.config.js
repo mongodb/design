@@ -6,12 +6,28 @@ module.exports = {
     rules: {
       babel: {
         test: /\.jsx?/
-      }
+      },
     },
     extra: {
       resolve: {
         extensions: ['.js', 'index.js', '.jsx'],
-      }
+      },
+      
+      module: {
+        rules: [
+          {
+            test: /\.pdf$/,
+            use: [
+              {
+                loader: 'file-loader',
+                options: {
+                  name: '[name].[ext]'
+                }
+              }
+            ]
+          }
+        ]
+      },
     },
     publicPath: '',
     html: {

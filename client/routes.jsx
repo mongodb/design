@@ -11,6 +11,10 @@ import UIDesignSystem from './site/ui-design-system/index.jsx';
 import UIWelcome from './site/ui-design-system/welcome/index.jsx';
 import UIPrinciples from './site/ui-design-system/welcome/principles.jsx';
 
+// Brand
+import BrandGuidelines from './site/ui-design-system/brand/BrandGuidelines.jsx';
+import WebsiteGuidelines from './site/ui-design-system/brand/WebsiteGuidelines.jsx';
+
 //Base Styles
 import BaseStylesIndex from './site/ui-design-system/base-styles/index.jsx';
 import UIColors from './site/ui-design-system/base-styles/colors/index.jsx';
@@ -53,9 +57,14 @@ const routes = (
       <Route path="/" component={DesignSystem}>
         <IndexRoute component={DesignSystem} />
       </Route>
+
       <Route path="/" component={UIDesignSystem}>
       <Route path="/ui-design-system/welcome" component={UIWelcome} />
       <Route path="/ui-design-system/principles" component={UIPrinciples} />
+
+      // Brand
+      <Route path="/ui-design-system/brand/brand-guidelines" component={BrandGuidelines} />
+      <Route path="/ui-design-system/brand/website-guidelines" component={WebsiteGuidelines} />
 
       //Base Styles
       <Route path="/ui-design-system/base-styles" component={BaseStylesIndex} />
