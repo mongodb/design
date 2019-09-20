@@ -116,12 +116,6 @@ class Resources extends React.Component {
             </table>
           </div>
         </div>
-        <div className="row">
-          <div className="columns small-12">
-            <h2 className="heading">Brand Guide</h2>
-            <p>Looking for the brand guide? Visit the <a href="https://mongodb.frontify.com" target="_blank">MongoDB Brand Portal</a> for logos, icons, color palettes, illustration guidelines, and more.</p>
-          </div>
-        </div>
       </div>
     );
   }
