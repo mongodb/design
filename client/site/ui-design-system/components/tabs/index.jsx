@@ -10,7 +10,27 @@ import OutOfDateBanner from '../../../../react-components/OutOfDateBanner';
 const UITabs = () => (
   <div className="wrap button-ui">
     <div className="row">
-      <OutOfDateBanner />
+      <OutOfDateBanner links={[
+        {
+          url: 'https://mongodb.github.io/leafygreen-ui/?path=/story/tabs--uncontrolled',
+          title: 'Storybook',
+        },
+
+        {
+          title: 'React Component',
+          sources: [
+            {
+              title: 'GitHub',
+              url: 'https://github.com/mongodb/leafygreen-ui/tree/master/packages/tabs',
+            },
+
+            {
+              title: 'NPM',
+              url: 'https://www.npmjs.com/package/@leafygreen-ui/tabs',
+            },
+          ],
+        },
+      ]}/>
     </div>
 
     <div className="row">
