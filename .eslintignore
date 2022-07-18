@@ -1,0 +1,7 @@
+node_modules
+dist
+lib
+packages/icon/src/glyphs/*.svg
+storybook-static
+website/.next
+website/hosting
