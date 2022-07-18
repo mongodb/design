@@ -24,7 +24,7 @@ export const getStaticProps = async (
 
   try {
     changelogMarkdown = await getFileContent(
-      path.join('../packages/', component, '/CHANGELOG.md'),
+      path.join('./node_modules', `@leafygreen-ui/${component}`, '/CHANGELOG.md'),
     );
   } catch (error) {
     console.warn(error);
@@ -32,7 +32,7 @@ export const getStaticProps = async (
 
   try {
     readmeMarkdown = await getFileContent(
-      path.join('../packages/', component, '/README.md'),
+      path.join('./node_modules', `@leafygreen-ui/${component}`, '/README.md'),
       'utf-8',
     );
   } catch (error) {
