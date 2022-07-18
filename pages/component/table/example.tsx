@@ -70,6 +70,7 @@ function DefaultExample({
       {...rest}
       darkMode={darkMode}
       data={defaultData}
+      // @ts-ignore-line
       columns={
         <HeaderRow>
           <TableHeader key="name" label="Project Name" />

@@ -5,11 +5,9 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:jest/recommended',
     'prettier',
     'prettier/react',
     'plugin:jsx-a11y/recommended',
-    'plugin:storybook/recommended',
   ],
   parserOptions: {
     sourceType: 'module',
@@ -32,6 +30,8 @@ module.exports = {
     '@emotion/pkg-renaming': 'error',
     'jest/no-conditional-expect': 'off',
     'jest/valid-title': 'off',
+    'react/prop-types': 'off',
+    'react/display-name': 'off',
     // can't detect titles that are string variables
     'react/jsx-filename-extension': [
       'error',
@@ -129,29 +129,10 @@ module.exports = {
       },
     },
     {
-      files: ['website/**/*.{ts,tsx}'],
+      files: ['**/*.{ts,tsx}'],
       rules: {
         'react/react-in-jsx-scope': 'off',
       },
-    },
-    {
-      files: ['packages/**/*.spec.{ts,tsx}'],
-      globals: {
-        expect: true,
-        should: true,
-        jest: true,
-      },
-      rules: {
-        'jest/no-disabled-tests': 'error',
-        'jest/no-identical-title': 'error',
-        'jest/valid-expect': 'error',
-        'jest/expect-expect': [
-          'warn',
-          {
-            assertFunctionNames: ['expect', 'waitForElementToBeRemoved'],
-          },
-        ],
-      },
-    },
+    }
   ],
 };

@@ -57,7 +57,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const layout = router.pathname.split('/').filter(substr => !!substr)[0];
 
-  let SubLayout: React.FunctionComponent;
+  let SubLayout: React.FunctionComponent<{
+    children: React.ReactNode;
+  }>;
 
   switch (layout) {
     case 'component':
@@ -73,7 +75,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   }
 
   return (
-    /// @ts-expect-error
     <MDXProvider components={MDXComponentMap}>
       <Head>
         <title>Home – LeafyGreen Design System | MongoDB</title>
