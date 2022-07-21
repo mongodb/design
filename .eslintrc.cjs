@@ -68,12 +68,6 @@ module.exports = {
     // covered by TypeScript
     'no-var': 'warn',
     'prefer-const': 'warn',
-    'no-console': [
-      'error',
-      {
-        allow: ['warn', 'error'],
-      },
-    ],
   },
   overrides: [
     {

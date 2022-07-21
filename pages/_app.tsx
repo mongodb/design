@@ -6,7 +6,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { css, Global } from '@emotion/react';
 import styled from '@emotion/styled';
 import { globalStyles } from 'styles/globals';
-import BaseLayout from 'layouts/BaseLayout';
+import BaseLayout from 'pages/BaseLayout';
 import ComponentLayout from 'layouts/ComponentLayout';
 import metaTagKey from 'utils/metaTagKey';
 import FoundationLayout from 'layouts/FoundationLayout';
