@@ -1,6 +1,14 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import { getComponent, ComponentFields } from 'lib/_getContentfulResources';
 import { Entry } from 'contentful';
+import { Body } from '@leafygreen-ui/typography';
+import { spacing } from '@leafygreen-ui/tokens';
+
+const Image = styled('img')`
+  margin-top: ${spacing[4]}px;
+	margin-bottom: ${spacing[4]}px;
+`;
 
 function renderRichContent(
   guidelines: Entry<ComponentFields>['fields']['designGuidelines'],
@@ -8,13 +16,12 @@ function renderRichContent(
   return guidelines?.content.map(node => {
     switch (node.nodeType) {
       case 'paragraph':
-        return node.content?.map((node, i) => <p key={i}>{node.value}</p>);
+        return node.content?.map((node, i) => <Body key={i}>{node.value}</Body>);
       // @ts-expect-error
       case 'embedded-asset-block':
-        console.log(node);
         // Contentful's TS definitions seem to miss this content type, so the fields property is missing as well.
         return (
-					<img
+					<Image
 						// @ts-expect-error
             src={node?.data?.target?.fields.file.url}
 						// @ts-expect-error
