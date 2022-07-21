@@ -1,15 +1,13 @@
 import React from 'react';
 import { getComponent, ComponentFields } from 'lib/_getContentfulResources';
 import { Entry } from 'contentful';
-import { ContentStyle } from '@leafygreen-ui/card';
 
 
 function renderRichContent(guidelines: Entry<ComponentFields>['fields']['designGuidelines']) {
 	return guidelines?.content.map(node => {
 		switch (node.nodeType) {
 			case 'paragraph':
-				console.log(node)
-				return <>{node?.content?.map(node => <p>{node.value}</p>)}</>;
+				return node.content?.map((node, i) => <p key={i}>{node.value}</p>);
 			default:
 				return <h1>Unsupported nodeType: ${node.nodeType!}</h1>
 		}
