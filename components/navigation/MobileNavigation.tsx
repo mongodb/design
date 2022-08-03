@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useRouter } from 'next/router';
 import { css, cx } from '@emotion/css';
 import { Transition } from 'react-transition-group';
-import { uiColors } from '@leafygreen-ui/palette';
+import { palette } from '@leafygreen-ui/palette';
 import { spacing } from '@leafygreen-ui/tokens';
 import IconButton from '@leafygreen-ui/icon-button';
 import MenuIcon from '@leafygreen-ui/icon/dist/Menu';
@@ -64,7 +64,7 @@ const logoContainer = css`
 const navItemStyle = css`
   font-size: 20px;
   line-height: 24px;
-  color: ${uiColors.gray.dark3};
+  color: ${palette.gray.dark3};
   margin: 0;
 `;
 

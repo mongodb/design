@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { css, cx } from '@emotion/css';
 import { transparentize } from 'polished';
 import { Overline } from '@leafygreen-ui/typography';
-import { uiColors } from '@leafygreen-ui/palette';
+import { palette } from '@leafygreen-ui/palette';
 import { useViewportSize } from '@leafygreen-ui/hooks';
 import { spacing, breakpoints } from '@leafygreen-ui/tokens';
 import { VisuallyHidden } from '@leafygreen-ui/a11y';
@@ -21,18 +21,18 @@ const layoutProperties = css`
   margin-right: 0;
 
   ${mq({
-    width: [
-      'calc(100% + 48px)',
-      '100%',
-      '100%',
-      `${pageContainerWidth.dataGraphic}px`,
-    ],
-    marginLeft: [`-${spacing[4]}px`, '0px', '0px', '0px'],
-  })}
+  width: [
+    'calc(100% + 48px)',
+    '100%',
+    '100%',
+    `${pageContainerWidth.dataGraphic}px`,
+  ],
+  marginLeft: [`-${spacing[4]}px`, '0px', '0px', '0px'],
+})}
 `;
 
 const boxShadow = css`
-  box-shadow: 0 0 0 1px ${uiColors.gray.light2};
+  box-shadow: 0 0 0 1px ${palette.gray.light2};
 `;
 
 const container = css`
@@ -44,13 +44,13 @@ const container = css`
   border: unset;
   padding: unset;
   cursor: pointer;
-  color: ${uiColors.gray.dark3};
+  color: ${palette.gray.dark3};
 `;
 
 const sharedHoverInteraction = css`
   &:hover {
-    background-color: ${uiColors.gray.light3};
-    box-shadow: 0 0 0 1px ${uiColors.gray.light1},
+    background-color: ${palette.gray.light3};
+    box-shadow: 0 0 0 1px ${palette.gray.light1},
       2px 16px 20px -10px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
     z-index: 99999;
@@ -79,18 +79,18 @@ const overlineContainer = css`
   transition: all 150ms ease-in-out;
 
   ${mq({
-    opacity: [1, 1, 0],
-    transform: [
-      'none',
-      'none',
-      `translate3d(0, ${spacing[3]}px, 0) scale(0.95)`,
-    ],
-  })}
+  opacity: [1, 1, 0],
+  transform: [
+    'none',
+    'none',
+    `translate3d(0, ${spacing[3]}px, 0) scale(0.95)`,
+  ],
+})}
 `;
 
 const overlineColor = css`
-  color: ${uiColors.gray.dark2};
-  text-shadow: 0 1px 2px white, 0 1px 5px ${uiColors.gray.light3};
+  color: ${palette.gray.dark2};
+  text-shadow: 0 1px 2px white, 0 1px 5px ${palette.gray.light3};
 `;
 
 const marketingWrapper = css`
@@ -101,8 +101,8 @@ const marketingWrapper = css`
   position: relative;
   transition: transform 300ms ease-in-out;
   color: white;
-  text-shadow: 0 0 10px ${transparentize(0.2, uiColors.green.base)},
-    0 2px 2px ${transparentize(0.2, uiColors.green.dark2)};
+  text-shadow: 0 0 10px ${transparentize(0.2, palette.green.base)},
+    0 2px 2px ${transparentize(0.2, palette.green.dark2)};
 `;
 
 const textWrapper = css`
@@ -115,29 +115,29 @@ const textWrapper = css`
   overflow: hidden;
 
   ${mq({
-    paddingTop: [`${spacing[3]}px`, `${spacing[4]}px`],
-    paddingLeft: [`${spacing[3]}px`, `${spacing[4]}px`],
-    paddingRight: [`${spacing[3]}px`, `${spacing[4]}px`],
-    fontSize: ['24px', '60px', '60px', '60px'],
-  })}
+  paddingTop: [`${spacing[3]}px`, `${spacing[4]}px`],
+  paddingLeft: [`${spacing[3]}px`, `${spacing[4]}px`],
+  paddingRight: [`${spacing[3]}px`, `${spacing[4]}px`],
+  fontSize: ['24px', '60px', '60px', '60px'],
+})}
 `;
 
 const newsContainer = css`
   ${mq({
-    height: ['unset', '350px'],
-  })}
+  height: ['unset', '350px'],
+})}
 `;
 
 const largeHeight = css`
   ${mq({
-    height: ['50vw', '350px'],
-  })}
+  height: ['50vw', '350px'],
+})}
 `;
 
 const smallHeight = css`
   ${mq({
-    height: ['50vw', '175px'],
-  })}
+  height: ['50vw', '175px'],
+})}
 `;
 
 const halfWidth = css`

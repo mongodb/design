@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/css';
-import { uiColors } from '@leafygreen-ui/palette';
+import { palette } from '@leafygreen-ui/palette';
 import { Overline, Subtitle, H2 } from '@leafygreen-ui/typography';
 import { spacing } from '@leafygreen-ui/tokens';
 import { UpdateProps } from 'utils/fetchUpdates';
@@ -15,11 +15,11 @@ const newsContainer = css`
   padding-top: ${spacing[2] - 1}px;
 
   ${mq({
-    height: ['auto', '100%'],
-    marginTop: ['48px', 'unset'],
-    marginBottom: ['40px', 'unset'],
-    marginLeft: [`${spacing[4]}px`, 'unset'],
-  })}
+  height: ['auto', '100%'],
+  marginTop: ['48px', 'unset'],
+  marginBottom: ['40px', 'unset'],
+  marginLeft: [`${spacing[4]}px`, 'unset'],
+})}
 `;
 
 const subtitleStyle = css`
@@ -34,7 +34,7 @@ const updateMargin = css`
 `;
 
 const overlineColor = css`
-  color: ${uiColors.gray.dark1};
+  color: ${palette.gray.dark1};
 `;
 
 function Update({ date, story, route, updateURL }: UpdateProps) {
@@ -45,11 +45,11 @@ function Update({ date, story, route, updateURL }: UpdateProps) {
   const subtitleProps = route
     ? ({ onClick: () => push(route), as: 'p' } as const)
     : ({
-        href: updateURL,
-        as: 'a',
-        target: '_blank',
-        rel: 'noopener noreferrer',
-      } as const);
+      href: updateURL,
+      as: 'a',
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    } as const);
 
   useEffect(() => {
     if (typeof navigator !== 'undefined') {

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { css, cx } from '@leafygreen-ui/emotion';
 import { spacing, breakpoints } from '@leafygreen-ui/tokens';
-import { uiColors } from '@leafygreen-ui/palette';
+import { palette } from '@leafygreen-ui/palette';
 import { useViewportSize, useIdAllocator } from '@leafygreen-ui/hooks';
 import { Select as LGUISelect, Option } from '@leafygreen-ui/select';
 import TextInput from '@leafygreen-ui/text-input';
@@ -19,11 +19,11 @@ const knobContainerStyle = css`
   flex-grow: 1;
 
   ${mq({
-    padding: [
-      `${spacing[3]}px ${spacing[4]}px`,
-      `${spacing[3]}px ${spacing[5]}px`,
-    ],
-  })}
+  padding: [
+    `${spacing[3]}px ${spacing[4]}px`,
+    `${spacing[3]}px ${spacing[5]}px`,
+  ],
+})}
 `;
 
 const knobContainerHeight = css`
@@ -31,7 +31,7 @@ const knobContainerHeight = css`
 `;
 
 const labelStyle = css`
-  color: ${uiColors.gray.dark2};
+  color: ${palette.gray.dark2};
   font-size: 16px;
   letter-spacing: 0;
   line-height: 20px;
@@ -45,12 +45,12 @@ const textAreaClassName = css`
 
 const inputClassName = css`
   ${mq({
-    width: ['200px', `${knobsWidth}px`],
-  })}
+  width: ['200px', `${knobsWidth}px`],
+})}
 `;
 
 const labelDarkMode = css`
-  color: ${uiColors.gray.light1};
+  color: ${palette.gray.light1};
 `;
 
 interface KnobRowProps {
@@ -67,7 +67,7 @@ function KnobRow({ children, className, darkMode = false }: KnobRowProps) {
         knobContainerHeight,
         css`
           border-top: 1px solid
-            ${darkMode ? uiColors.gray.dark2 : uiColors.gray.light2};
+            ${darkMode ? palette.gray.dark2 : palette.gray.light2};
         `,
         className,
       )}

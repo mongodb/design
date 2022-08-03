@@ -1,13 +1,13 @@
 import { css } from '@emotion/css';
 import { spacing } from '@leafygreen-ui/tokens';
-import { uiColors } from '@leafygreen-ui/palette';
+import { palette } from '@leafygreen-ui/palette';
 
 export const leftRightPadding = css`
   padding-left: ${spacing[4]}px;
   padding-right: ${spacing[4]}px;
 `;
 
-export const borderColor = uiColors.gray.light2;
+export const borderColor = palette.gray.light2;
 
 export const ulStyleOverrides = css`
   margin-block-start: 0;

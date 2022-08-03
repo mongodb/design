@@ -1,12 +1,12 @@
 import React from 'react';
 import { css } from '@emotion/css';
 import { MongoDBLogo } from '@leafygreen-ui/logo';
-import { uiColors } from '@leafygreen-ui/palette';
+import { palette } from '@leafygreen-ui/palette';
 import { spacing } from '@leafygreen-ui/tokens';
 import { mq } from 'utils/mediaQuery';
 
 const footerContainer = css`
-  border-top: 1px solid ${uiColors.gray.light2};
+  border-top: 1px solid ${palette.gray.light2};
   width: 100%;
   display: flex;
   align-items: flex-start;
@@ -16,21 +16,21 @@ const footerContainer = css`
   padding-top: ${spacing[4]}px;
 
   ${mq({
-    marginTop: ['0px', `${spacing[7]}px`],
-  })}
+  marginTop: ['0px', `${spacing[7]}px`],
+})}
 `;
 
 const linksContainer = css`
   display: flex;
   flex-direction: column;
-  color: ${uiColors.gray.dark2};
+  color: ${palette.gray.dark2};
   // Pixel-pushed for baseline alignment with logo
   margin-top: 5px;
 
   ${mq({
-    marginLeft: [`${spacing[4]}px`, `${spacing[6]}px`],
-    marginRight: [`${spacing[4]}px`, `${spacing[6]}px`],
-  })}
+  marginLeft: [`${spacing[4]}px`, `${spacing[6]}px`],
+  marginRight: [`${spacing[4]}px`, `${spacing[6]}px`],
+})}
 `;
 
 const linkStyle = css`
@@ -38,14 +38,14 @@ const linkStyle = css`
   font-size: 14px;
   line-height: 20px;
   text-decoration: none;
-  color: ${uiColors.gray.dark2};
+  color: ${palette.gray.dark2};
 
   & + & {
     margin-top: ${spacing[3]}px;
   }
 
   &:hover {
-    color: ${uiColors.gray.dark3};
+    color: ${palette.gray.dark3};
   }
 `;
 
@@ -53,7 +53,7 @@ const trademarkStyle = css`
   margin-top: ${spacing[6]}px;
   margin-bottom: ${spacing[4]}px;
   font-size: 12px;
-  color: ${uiColors.gray.dark1};
+  color: ${palette.gray.dark1};
 `;
 
 function FooterLink({ href, children }: JSX.IntrinsicElements['a']) {
