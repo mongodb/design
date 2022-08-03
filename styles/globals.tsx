@@ -211,9 +211,4 @@ export const globalStyles = css`
       cursor: pointer;
     }
   }
-
-  li {
-    margin: 12px 0;
-    line-spacing: 1.6;
-  }
 `;

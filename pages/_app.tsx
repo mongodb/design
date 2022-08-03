@@ -6,7 +6,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { css, Global } from '@emotion/react';
 import styled from '@emotion/styled';
 import { globalStyles } from 'styles/globals';
-import BaseLayout from 'layouts/BaseLayout';
+import BaseLayout from 'pages/BaseLayout';
 import ComponentLayout from 'layouts/ComponentLayout';
 import metaTagKey from 'utils/metaTagKey';
 import FoundationLayout from 'layouts/FoundationLayout';
@@ -57,7 +57,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const layout = router.pathname.split('/').filter(substr => !!substr)[0];
 
-  let SubLayout: React.FunctionComponent;
+  let SubLayout: React.FunctionComponent<{
+    children: React.ReactNode;
+  }>;
 
   switch (layout) {
     case 'component':
@@ -73,7 +75,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   }
 
   return (
-    /// @ts-expect-error
     <MDXProvider components={MDXComponentMap}>
       <Head>
         <title>Home – LeafyGreen Design System | MongoDB</title>

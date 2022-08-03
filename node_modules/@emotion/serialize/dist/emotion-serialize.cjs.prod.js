@@ -1,110 +1,230 @@
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: !0
-});
+Object.defineProperty(exports, '__esModule', { value: true });
 
-var hashString = require("@emotion/hash"), unitless = require("@emotion/unitless"), memoize = require("@emotion/memoize");
+var hashString = require('@emotion/hash');
+var unitless = require('@emotion/unitless');
+var memoize = require('@emotion/memoize');
 
-function _interopDefault(e) {
-  return e && e.__esModule ? e : {
-    default: e
-  };
-}
+function _interopDefault (e) { return e && e.__esModule ? e : { 'default': e }; }
 
-var contentValuePattern, contentValues, oldProcessStyleValue, msPattern, hyphenPattern, hyphenatedCache, hashString__default = _interopDefault(hashString), unitless__default = _interopDefault(unitless), memoize__default = _interopDefault(memoize), ILLEGAL_ESCAPE_SEQUENCE_ERROR = "You have illegal escape sequence in your template literal, most likely inside content's property value.\nBecause you write your CSS inside a JavaScript string you actually have to do double escaping, so for example \"content: '\\00d7';\" should become \"content: '\\\\00d7';\".\nYou can read more about this here:\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#ES2018_revision_of_illegal_escape_sequences", UNDEFINED_AS_OBJECT_KEY_ERROR = "You have passed in falsy value as style object's key (can happen when in example you pass unexported component as computed key).", hyphenateRegex = /[A-Z]|^ms/g, animationRegex = /_EMO_([^_]+?)_([^]*?)_EMO_/g, isCustomProperty = function(property) {
-  return 45 === property.charCodeAt(1);
-}, isProcessableValue = function(value) {
-  return null != value && "boolean" != typeof value;
-}, processStyleName = memoize__default.default((function(styleName) {
-  return isCustomProperty(styleName) ? styleName : styleName.replace(hyphenateRegex, "-$&").toLowerCase();
-})), processStyleValue = function(key, value) {
-  switch (key) {
-   case "animation":
-   case "animationName":
-    if ("string" == typeof value) return value.replace(animationRegex, (function(match, p1, p2) {
-      return cursor = {
-        name: p1,
-        styles: p2,
-        next: cursor
-      }, p1;
-    }));
-  }
-  return 1 === unitless__default.default[key] || isCustomProperty(key) || "number" != typeof value || 0 === value ? value : value + "px";
+var hashString__default = /*#__PURE__*/_interopDefault(hashString);
+var unitless__default = /*#__PURE__*/_interopDefault(unitless);
+var memoize__default = /*#__PURE__*/_interopDefault(memoize);
+
+var hyphenateRegex = /[A-Z]|^ms/g;
+var animationRegex = /_EMO_([^_]+?)_([^]*?)_EMO_/g;
+
+var isCustomProperty = function isCustomProperty(property) {
+  return property.charCodeAt(1) === 45;
 };
 
-function handleInterpolation(mergedProps, registered, interpolation) {
-  if (null == interpolation) return "";
-  if (void 0 !== interpolation.__emotion_styles) return interpolation;
-  switch (typeof interpolation) {
-   case "boolean":
-    return "";
+var isProcessableValue = function isProcessableValue(value) {
+  return value != null && typeof value !== 'boolean';
+};
 
-   case "object":
-    if (1 === interpolation.anim) return cursor = {
-      name: interpolation.name,
-      styles: interpolation.styles,
-      next: cursor
-    }, interpolation.name;
-    if (void 0 !== interpolation.styles) {
-      var next = interpolation.next;
-      if (void 0 !== next) for (;void 0 !== next; ) cursor = {
-        name: next.name,
-        styles: next.styles,
-        next: cursor
-      }, next = next.next;
-      var styles = interpolation.styles + ";";
-      return styles;
-    }
-    return createStringFromObject(mergedProps, registered, interpolation);
+var processStyleName = /* #__PURE__ */memoize__default['default'](function (styleName) {
+  return isCustomProperty(styleName) ? styleName : styleName.replace(hyphenateRegex, '-$&').toLowerCase();
+});
 
-   case "function":
-    if (void 0 !== mergedProps) {
-      var previousCursor = cursor, result = interpolation(mergedProps);
-      return cursor = previousCursor, handleInterpolation(mergedProps, registered, result);
-    }
-    break;
-
-   case "string":
+var processStyleValue = function processStyleValue(key, value) {
+  switch (key) {
+    case 'animation':
+    case 'animationName':
+      {
+        if (typeof value === 'string') {
+          return value.replace(animationRegex, function (match, p1, p2) {
+            cursor = {
+              name: p1,
+              styles: p2,
+              next: cursor
+            };
+            return p1;
+          });
+        }
+      }
   }
-  if (null == registered) return interpolation;
+
+  if (unitless__default['default'][key] !== 1 && !isCustomProperty(key) && typeof value === 'number' && value !== 0) {
+    return value + 'px';
+  }
+
+  return value;
+};
+
+var noComponentSelectorMessage = 'Component selectors can only be used in conjunction with ' + '@emotion/babel-plugin, the swc Emotion plugin, or another Emotion-aware ' + 'compiler transform.';
+
+function handleInterpolation(mergedProps, registered, interpolation) {
+  if (interpolation == null) {
+    return '';
+  }
+
+  if (interpolation.__emotion_styles !== undefined) {
+
+    return interpolation;
+  }
+
+  switch (typeof interpolation) {
+    case 'boolean':
+      {
+        return '';
+      }
+
+    case 'object':
+      {
+        if (interpolation.anim === 1) {
+          cursor = {
+            name: interpolation.name,
+            styles: interpolation.styles,
+            next: cursor
+          };
+          return interpolation.name;
+        }
+
+        if (interpolation.styles !== undefined) {
+          var next = interpolation.next;
+
+          if (next !== undefined) {
+            // not the most efficient thing ever but this is a pretty rare case
+            // and there will be very few iterations of this generally
+            while (next !== undefined) {
+              cursor = {
+                name: next.name,
+                styles: next.styles,
+                next: cursor
+              };
+              next = next.next;
+            }
+          }
+
+          var styles = interpolation.styles + ";";
+
+          return styles;
+        }
+
+        return createStringFromObject(mergedProps, registered, interpolation);
+      }
+
+    case 'function':
+      {
+        if (mergedProps !== undefined) {
+          var previousCursor = cursor;
+          var result = interpolation(mergedProps);
+          cursor = previousCursor;
+          return handleInterpolation(mergedProps, registered, result);
+        }
+
+        break;
+      }
+  } // finalize string values (regular strings and functions interpolated into css calls)
+
+
+  if (registered == null) {
+    return interpolation;
+  }
+
   var cached = registered[interpolation];
-  return void 0 !== cached ? cached : interpolation;
+  return cached !== undefined ? cached : interpolation;
 }
 
 function createStringFromObject(mergedProps, registered, obj) {
-  var string = "";
-  if (Array.isArray(obj)) for (var i = 0; i < obj.length; i++) string += handleInterpolation(mergedProps, registered, obj[i]) + ";"; else for (var _key in obj) {
-    var value = obj[_key];
-    if ("object" != typeof value) null != registered && void 0 !== registered[value] ? string += _key + "{" + registered[value] + "}" : isProcessableValue(value) && (string += processStyleName(_key) + ":" + processStyleValue(_key, value) + ";"); else if (!Array.isArray(value) || "string" != typeof value[0] || null != registered && void 0 !== registered[value[0]]) {
-      var interpolated = handleInterpolation(mergedProps, registered, value);
-      switch (_key) {
-       case "animation":
-       case "animationName":
-        string += processStyleName(_key) + ":" + interpolated + ";";
-        break;
+  var string = '';
 
-       default:
-        string += _key + "{" + interpolated + "}";
+  if (Array.isArray(obj)) {
+    for (var i = 0; i < obj.length; i++) {
+      string += handleInterpolation(mergedProps, registered, obj[i]) + ";";
+    }
+  } else {
+    for (var _key in obj) {
+      var value = obj[_key];
+
+      if (typeof value !== 'object') {
+        if (registered != null && registered[value] !== undefined) {
+          string += _key + "{" + registered[value] + "}";
+        } else if (isProcessableValue(value)) {
+          string += processStyleName(_key) + ":" + processStyleValue(_key, value) + ";";
+        }
+      } else {
+        if (_key === 'NO_COMPONENT_SELECTOR' &&         "production" !== 'production') {
+          throw new Error(noComponentSelectorMessage);
+        }
+
+        if (Array.isArray(value) && typeof value[0] === 'string' && (registered == null || registered[value[0]] === undefined)) {
+          for (var _i = 0; _i < value.length; _i++) {
+            if (isProcessableValue(value[_i])) {
+              string += processStyleName(_key) + ":" + processStyleValue(_key, value[_i]) + ";";
+            }
+          }
+        } else {
+          var interpolated = handleInterpolation(mergedProps, registered, value);
+
+          switch (_key) {
+            case 'animation':
+            case 'animationName':
+              {
+                string += processStyleName(_key) + ":" + interpolated + ";";
+                break;
+              }
+
+            default:
+              {
+
+                string += _key + "{" + interpolated + "}";
+              }
+          }
+        }
       }
-    } else for (var _i = 0; _i < value.length; _i++) isProcessableValue(value[_i]) && (string += processStyleName(_key) + ":" + processStyleValue(_key, value[_i]) + ";");
+    }
   }
+
   return string;
 }
 
-var sourceMapPattern, cursor, labelPattern = /label:\s*([^\s;\n{]+)\s*(;|$)/g;
+var labelPattern = /label:\s*([^\s;\n{]+)\s*(;|$)/g;
+// keyframes are stored on the SerializedStyles object as a linked list
 
-var serializeStyles = function(args, registered, mergedProps) {
-  if (1 === args.length && "object" == typeof args[0] && null !== args[0] && void 0 !== args[0].styles) return args[0];
-  var stringMode = !0, styles = "";
-  cursor = void 0;
+
+var cursor;
+var serializeStyles = function serializeStyles(args, registered, mergedProps) {
+  if (args.length === 1 && typeof args[0] === 'object' && args[0] !== null && args[0].styles !== undefined) {
+    return args[0];
+  }
+
+  var stringMode = true;
+  var styles = '';
+  cursor = undefined;
   var strings = args[0];
-  null == strings || void 0 === strings.raw ? (stringMode = !1, styles += handleInterpolation(mergedProps, registered, strings)) : styles += strings[0];
-  for (var i = 1; i < args.length; i++) styles += handleInterpolation(mergedProps, registered, args[i]), 
-  stringMode && (styles += strings[i]);
+
+  if (strings == null || strings.raw === undefined) {
+    stringMode = false;
+    styles += handleInterpolation(mergedProps, registered, strings);
+  } else {
+
+    styles += strings[0];
+  } // we start at 1 since we've already handled the first arg
+
+
+  for (var i = 1; i < args.length; i++) {
+    styles += handleInterpolation(mergedProps, registered, args[i]);
+
+    if (stringMode) {
+
+      styles += strings[i];
+    }
+  }
+
+
   labelPattern.lastIndex = 0;
-  for (var match, identifierName = ""; null !== (match = labelPattern.exec(styles)); ) identifierName += "-" + match[1];
-  var name = hashString__default.default(styles) + identifierName;
+  var identifierName = '';
+  var match; // https://esbench.com/bench/5b809c2cf2949800a0f61fb5
+
+  while ((match = labelPattern.exec(styles)) !== null) {
+    identifierName += '-' + // $FlowFixMe we know it's not null
+    match[1];
+  }
+
+  var name = hashString__default['default'](styles) + identifierName;
+
   return {
     name: name,
     styles: styles,
