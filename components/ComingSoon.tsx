@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/css';
-import { uiColors } from '@leafygreen-ui/palette';
+import { palette } from '@leafygreen-ui/palette';
 import { Subtitle } from '@leafygreen-ui/typography';
 import { spacing } from '@leafygreen-ui/tokens';
 import { CDN } from 'utils/routes';
@@ -18,7 +18,7 @@ const subtitleStyle = css`
   font-weight: bolder;
   margin-top: ${spacing[5]}px;
   margin-bottom: ${spacing[4]}px;
-  color: ${uiColors.gray.dark3};
+  color: ${palette.gray.dark3};
 `;
 
 function ComingSoon() {

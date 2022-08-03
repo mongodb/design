@@ -1,6 +1,6 @@
 import React from 'react';
 import { css, cx } from '@emotion/css';
-import { uiColors } from '@leafygreen-ui/palette';
+import { palette } from '@leafygreen-ui/palette';
 import { keyMap } from '@leafygreen-ui/lib';
 import { borderColor, leftRightPadding } from './styles';
 import { useMobileNavigation } from './NavigationContext';
@@ -9,11 +9,11 @@ const listItemStyle = css`
   ${leftRightPadding}
   width: 50%;
   height: 68px;
-  background-color: ${uiColors.gray.light3};
+  background-color: ${palette.gray.light3};
   border-bottom: 1px solid ${borderColor};
   display: flex;
   align-items: center;
-  color: ${uiColors.gray.dark1};
+  color: ${palette.gray.dark1};
   font-size: 16px;
   line-height: 24px;
   text-transform: capitalize;
@@ -24,7 +24,7 @@ const listItemStyle = css`
 `;
 
 const activeStyle = css`
-  background-color: ${uiColors.green.light3};
+  background-color: ${palette.green.light3};
 `;
 
 type MobileNavigationItemProps = JSX.IntrinsicElements['li'] & {

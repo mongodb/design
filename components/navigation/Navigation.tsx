@@ -12,10 +12,10 @@ import { useViewportSize } from '@leafygreen-ui/hooks';
 import Icon from '@leafygreen-ui/icon';
 import { MongoDBLogo, MongoDBLogoMark } from '@leafygreen-ui/logo';
 import { HOME_PAGE } from 'utils/routes';
-import { Component } from 'utils/types';
 import MobileNavigationGroup from './MobileNavigationGroup';
 import MobileNavigationItem from './MobileNavigationItem';
 import MobileNavigation from './MobileNavigation';
+import { Component } from 'utils/types';
 
 const sideNavStyles = css`
   z-index: 1;
@@ -43,48 +43,6 @@ const foundations: Array<String> = [
   'refresh-guide',
 ];
 
-const components: Array<Component> = [
-  'badge',
-  'banner',
-  'box',
-  'button',
-  'callout',
-  'card',
-  'checkbox',
-  'code',
-  'combobox',
-  'confirmation-modal',
-  'copyable',
-  'form-footer',
-  'expandable-card',
-  'icon',
-  'icon-button',
-  'inline-definition',
-  'logo',
-  'marketing-modal',
-  'menu',
-  'modal',
-  'palette',
-  'pipeline',
-  'popover',
-  'portal',
-  'radio-box-group',
-  'radio-group',
-  'segmented-control',
-  'select',
-  'side-nav',
-  'stepper',
-  'table',
-  'tabs',
-  'text-area',
-  'text-input',
-  'toast',
-  'toggle',
-  'tokens',
-  'tooltip',
-  'typography',
-];
-
 function Content({ isTouchDevice = false }: { isTouchDevice?: boolean }) {
   const router = useRouter();
   const activePage = router.asPath.split('/')[2];
@@ -108,11 +66,11 @@ function Content({ isTouchDevice = false }: { isTouchDevice?: boolean }) {
             header="Components"
             initialCollapsed={false} // Always false until we add more sections to navigation
           >
-            {components.map(item => {
+            {Object.values(Component).map(item => {
               return (
                 <MobileNavigationItem
                   key={item}
-                  onClick={() => router.push(`/component/${item}/example`)}
+                  onClick={() => router.push(`component/${item}/example`)}
                   active={item === activePage}
                 >
                   {item.split('-').join(' ')}
@@ -138,11 +96,11 @@ function Content({ isTouchDevice = false }: { isTouchDevice?: boolean }) {
           ))}
         </SideNavGroup>
         <SideNavGroup header="Components" glyph={<Icon glyph="Apps" />}>
-          {components.map(item => {
+          {Object.values(Component).map(item => {
             return (
               <SideNavItem
                 key={item}
-                onClick={() => router.push(`/component/${item}/example`)}
+                onClick={() => router.push(`component/${item}/example`)}
                 active={item === activePage}
               >
                 {item.split('-').join(' ')}

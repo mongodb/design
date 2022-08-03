@@ -11,7 +11,7 @@ import Copyable from '@leafygreen-ui/copyable';
 import Modal from '@leafygreen-ui/modal';
 import { Tabs, Tab } from '@leafygreen-ui/tabs';
 import { Subtitle, Body } from '@leafygreen-ui/typography';
-import { uiColors } from '@leafygreen-ui/palette';
+import { palette } from '@leafygreen-ui/palette';
 import { spacing, breakpoints } from '@leafygreen-ui/tokens';
 import { useViewportSize } from '@leafygreen-ui/hooks';
 import { BaseLayoutProps } from 'utils/types';
@@ -62,16 +62,16 @@ const mobileInstallMargin = css`
 `;
 
 const changelogStyles = css`
-  color: ${uiColors.gray.dark3};
+  color: ${palette.gray.dark3};
   pointer-events: none;
 
   & > h2 {
     padding-top: ${spacing[3]}px;
-    border-top: 1px solid ${uiColors.gray.light2};
+    border-top: 1px solid ${palette.gray.light2};
   }
 
   a {
-    color: ${uiColors.gray.dark3};
+    color: ${palette.gray.dark3};
     text-decoration: none;
   }
 `;

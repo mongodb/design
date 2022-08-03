@@ -34,7 +34,38 @@ export default class AppDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <meta
+            name="description"
+            content="MongoDB's open-source, accessible design system for designing and building web applications with React."
+          />
+
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta name="generator" content="LeafyGreen UI" />
+
+          <meta
+            property="og:title"
+            content="LeafyGreen - MongoDB Design System"
+          />
+          <meta
+            property="og:site_name"
+            content="LeafyGreen - MongoDB Design System"
+          />
+          <meta property="og:url" content="https://mongodb.design" />
+          <meta
+            property="og:description"
+            content="MongoDB's open-source, accessible design system for designing and building web applications with React."
+          />
+
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,600;1,400&display=swap"
+            rel="stylesheet"
+          />
+
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         <body>
           <Main />
           <NextScript />

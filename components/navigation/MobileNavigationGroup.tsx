@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { css, cx } from '@emotion/css';
 import { Transition } from 'react-transition-group';
 import ChevronRightIcon from '@leafygreen-ui/icon/dist/ChevronRight';
-import { uiColors } from '@leafygreen-ui/palette';
+import { palette } from '@leafygreen-ui/palette';
 import { borderColor, leftRightPadding, ulStyleOverrides } from './styles';
 
 const buttonResetStyles = css`
@@ -34,7 +34,7 @@ const openIconStyle = css`
 const navItemStyle = css`
   font-size: 20px;
   line-height: 24px;
-  color: ${uiColors.gray.dark3};
+  color: ${palette.gray.dark3};
   margin: 0;
 `;
 
