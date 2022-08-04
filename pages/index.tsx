@@ -554,7 +554,7 @@ export default function Home({ updates }: { updates: Array<UpdateProps> }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
   const updates = await getAllUpdates();
   return { props: { updates } };
 }

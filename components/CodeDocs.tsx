@@ -87,7 +87,7 @@ interface VersionCardProps {
 }
 
 interface InstallProps {
-  component: string;
+  componentKebabCaseName: string;
   version?: string;
   changelog: string;
 }
@@ -134,7 +134,7 @@ function VersionCard({
 
 VersionCard.displayName = 'VersionCard';
 
-function MobileInstall({ component, version, changelog }: InstallProps) {
+function MobileInstall({ componentKebabCaseName, version, changelog }: InstallProps) {
   return (
     <GridContainer>
       <GridItem sm={12}>
@@ -145,13 +145,13 @@ function MobileInstall({ component, version, changelog }: InstallProps) {
           </Body>
           <Copyable
             className={copyableStyles}
-          >{`yarn add @leafygreen-ui/${component}`}</Copyable>
+          >{`yarn add @leafygreen-ui/${componentKebabCaseName}`}</Copyable>
           <Body weight="medium" className={mt3}>
             NPM
           </Body>
           <Copyable
             className={copyableStyles}
-          >{`npm install @leafygreen-ui/${component}`}</Copyable>
+          >{`npm install @leafygreen-ui/${componentKebabCaseName}`}</Copyable>
         </div>
       </GridItem>
       <GridItem sm={12}>
@@ -165,7 +165,7 @@ function MobileInstall({ component, version, changelog }: InstallProps) {
 
 MobileInstall.displayName = 'MobileInstall';
 
-function DesktopInstall({ component, changelog, version }: InstallProps) {
+function DesktopInstall({ componentKebabCaseName, changelog, version }: InstallProps) {
   return (
     <>
       <GridContainer
@@ -186,7 +186,7 @@ function DesktopInstall({ component, changelog, version }: InstallProps) {
             <Body weight="medium" className={mb1}>
               Yarn
             </Body>
-            <Copyable>{`yarn add @leafygreen-ui/${component}`}</Copyable>
+            <Copyable>{`yarn add @leafygreen-ui/${componentKebabCaseName}`}</Copyable>
           </div>
         </GridItem>
         <GridItem md={5} lg={5}>
@@ -200,7 +200,7 @@ function DesktopInstall({ component, changelog, version }: InstallProps) {
           <Body weight="medium" className={mb1}>
             NPM
           </Body>
-          <Copyable>{`npm install @leafygreen-ui/${component}`}</Copyable>
+          <Copyable>{`npm install @leafygreen-ui/${componentKebabCaseName}`}</Copyable>
         </GridItem>
       </GridContainer>
     </>
@@ -209,7 +209,7 @@ function DesktopInstall({ component, changelog, version }: InstallProps) {
 
 DesktopInstall.displayName = 'DesktopInstall';
 
-function CodeDocs({ component, readme, changelog }: BaseLayoutProps) {
+function CodeDocs({ componentName, componentKebabCaseName, readme, changelog }: BaseLayoutProps) {
   const viewport = useViewportSize();
   const isMobile = viewport?.width
     ? viewport?.width < breakpoints.Tablet
@@ -227,13 +227,13 @@ function CodeDocs({ component, readme, changelog }: BaseLayoutProps) {
     <>
       {isMobile ? (
         <MobileInstall
-          component={component}
+          componentKebabCaseName={componentKebabCaseName}
           version={version}
           changelog={changelog}
         />
       ) : (
         <DesktopInstall
-          component={component}
+          componentKebabCaseName={componentKebabCaseName}
           version={version}
           changelog={changelog}
         />
@@ -246,7 +246,7 @@ function CodeDocs({ component, readme, changelog }: BaseLayoutProps) {
         <GridItem sm={12} md={12} xl={12}>
           <Tabs
             className={tabsPadding}
-            aria-label={`View source code for ${component} component`}
+            aria-label={`View source code for ${componentName} component`}
           >
             {example && (
               <Tab default name="Example" className={mt3}>
@@ -264,7 +264,7 @@ function CodeDocs({ component, readme, changelog }: BaseLayoutProps) {
       </GridContainer>
       <GridContainer align="flex-start" justify="flex-start">
         <GridItem sm={12} md={12} xl={12}>
-          <PropTable markdownAst={markdownAst} component={component} />
+          <PropTable markdownAst={markdownAst} component={componentName} />
           <TypeDefinition markdownAst={markdownAst} readme={readme} />
         </GridItem>
       </GridContainer>

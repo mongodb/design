@@ -10,21 +10,21 @@ export default function () {
 
 const getFileContent = util.promisify(fs.readFile);
 
-export const getStaticProps = async (
-  component: BaseLayoutProps['component'],
+export const getDependencyDocumentation = async (
+  componentKebabCaseName: BaseLayoutProps['componentKebabCaseName'],
 ) => {
-  if (typeof component !== 'string') {
-    return { props: { component: null } };
+  if (typeof componentKebabCaseName !== 'string') {
+    return { props: { changelog: null, readme: null } };
   }
 
-  const props: Partial<BaseLayoutProps> = { component };
+  const props: Partial<BaseLayoutProps> = { componentKebabCaseName };
 
   let changelogMarkdown: '' | Buffer = '';
   let readmeMarkdown = '';
 
   try {
     changelogMarkdown = await getFileContent(
-      path.join('./node_modules', `@leafygreen-ui/${component}`, '/CHANGELOG.md'),
+      path.join('./node_modules', `@leafygreen-ui/${componentKebabCaseName}`, '/CHANGELOG.md'),
     );
   } catch (error) {
     console.warn(error);
@@ -32,7 +32,7 @@ export const getStaticProps = async (
 
   try {
     readmeMarkdown = await getFileContent(
-      path.join('./node_modules', `@leafygreen-ui/${component}`, '/README.md'),
+      path.join('./node_modules', `@leafygreen-ui/${componentKebabCaseName}`, '/README.md'),
       'utf-8',
     );
   } catch (error) {

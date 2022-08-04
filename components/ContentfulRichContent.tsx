@@ -1,5 +1,5 @@
 import { Body } from "@leafygreen-ui/typography";
-import { ComponentFields } from "utils/getContentfulResources";
+import { ComponentFields } from "utils/types";
 import Image from "./Image";
 
 interface Props {

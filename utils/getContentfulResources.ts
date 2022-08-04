@@ -1,4 +1,5 @@
-import { ContentfulClientApi, EntryCollection, EntryFields } from 'contentful';
+import { ContentfulClientApi, EntryCollection } from 'contentful';
+import { ComponentFields } from './types';
 
 const contentful = require('contentful');
 
@@ -19,15 +20,6 @@ export async function getContentTypes() {
   }
 }
 
-export interface ComponentFields {
-  name: EntryFields.Text;
-  description: EntryFields.Text;
-  kebabCaseName: EntryFields.Text;
-  packageName: EntryFields.Text;
-  figmaUrl?: EntryFields.Text;
-  designGuidelines?: EntryFields.RichText;
-};
-
 
 export async function getComponents(): Promise<EntryCollection<ComponentFields>['items']> {
   try {
@@ -40,12 +32,11 @@ export async function getComponents(): Promise<EntryCollection<ComponentFields>[
   }
 }
 
-export async function getComponent(componentName: string) {
+export async function getComponent(componentKebabCaseName: string) {
   try {
     const components = await getComponents() ?? []
-    const componentId = components.find(item => item?.fields?.kebabCaseName === componentName)?.sys.id ?? '';
-    const component = await createContentfulClient().getEntry(componentId);
-    return component
+    const component = components.find(item => item?.fields?.kebabCaseName === componentKebabCaseName)
+    return component;
   } catch (error) {
     console.error(error);
   }

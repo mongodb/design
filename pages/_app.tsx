@@ -9,6 +9,7 @@ import { Body, H1, H2, H3, InlineCode, Link } from '@leafygreen-ui/typography';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { AppContextProvider } from 'contexts/AppContext';
+import { getComponents } from 'utils/getContentfulResources';
 
 const headerStyle = css`
   margin-block: 0.5em;
@@ -52,18 +53,18 @@ export type NextPageWithLayout = NextPage & {
 }
 
 type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout
+  Component: NextPageWithLayout;
+  components: any;
 }
 
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-
+function MyApp({ Component, pageProps, components }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page)
 
   return (
-    <AppContextProvider>
+    <AppContextProvider components={components}>
       <MDXProvider components={MDXComponentMap}>
         <Head>
-          <title>Home – LeafyGreen Design System | MongoDB</title>
+          <title>Home - LeafyGreen Design System | MongoDB</title>
         </Head>
         <Global styles={globalStyles} />
         <BaseLayout>
@@ -72,6 +73,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       </MDXProvider>
     </AppContextProvider>
   );
+}
+
+MyApp.getInitialProps = async (ctx) => {
+  const components = await getComponents();
+  return { components }
 }
 
 export default MyApp;

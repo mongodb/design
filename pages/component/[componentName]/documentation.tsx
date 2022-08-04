@@ -1,13 +1,14 @@
 import CodeDocs from 'components/CodeDocs';
 import ComponentLayout from 'layouts/ComponentLayout';
-import { getStaticProps as getComponentResources } from 'utils/_getComponentResources';
+import { getDependencyDocumentation } from 'utils/_getComponentResources';
 import { ReactElement } from 'react';
 import { getComponent, getComponents } from 'utils/getContentfulResources'
 
 const ComponentDocumentation = ({ component, changelog, readme }) => {
   return (
     <CodeDocs
-      component={component.fields.kebabCaseName}
+      componentName={component.fields.name}
+      componentKebabCaseName={component.fields.kebabCaseName}
       changelog={changelog}
       readme={readme}
     />
@@ -37,8 +38,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  // @ts-expect-error
-  const { changelog, readme } = (await getComponentResources(params.componentName)).props;
+  const { changelog, readme } = (await getDependencyDocumentation(params.componentName)).props;
   return {
     props: {
       component: await getComponent(params.componentName),
