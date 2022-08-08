@@ -3,6 +3,10 @@ on:
     branches:
     - staging
 
+env:
+  CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+
+
 jobs:
   create-pr-to-main:
     runs-on: ubuntu-latest
@@ -12,7 +16,7 @@ jobs:
       uses: repo-sync/pull-request@v2
       with:
         destination_branch: "main"
-        pr_title: "Automated PR: ${{ github.ref }} into main"
+        pr_title: "Automated PR: ${{ env.GITHUB_REF_NAME }} into main"
         github_token: ${{ secrets.GITHUB_TOKEN }}
   deploy-to-vercel-staging:
     runs-on: ubuntu-latest
