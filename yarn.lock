@@ -1026,7 +1026,7 @@
     polished "^4.1.3"
     react-is "^17.0.1"
 
-"@leafygreen-ui/side-nav@latest":
+"@leafygreen-ui/side-nav@*":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/side-nav/-/side-nav-10.0.0.tgz#91b08e81b79277efd8dab33e64713b6290e37f90"
   integrity sha512-ztBy/f0CbKqei1gNEmNxN04ONlwqZFlRTh4Ks6BV9CPv/A5YYS0x5ZRC3KXUrs96DpvCF7AYtVFJMXv2Zwgpxg==
