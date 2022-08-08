@@ -9,7 +9,7 @@ import { Body, H1, H2, H3, InlineCode, Link } from '@leafygreen-ui/typography';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { AppContextProvider } from 'contexts/AppContext';
-import { getComponents } from 'utils/getContentfulResources';
+import { getComponents, getContentPageSections } from 'utils/getContentfulResources';
 
 const headerStyle = css`
   margin-block: 0.5em;
@@ -55,13 +55,14 @@ export type NextPageWithLayout = NextPage & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
   components: any;
+  contentPageSections: any;
 }
 
-function MyApp({ Component, pageProps, components }: AppPropsWithLayout) {
+function MyApp({ Component, pageProps, components, contentPageSections }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page)
 
   return (
-    <AppContextProvider components={components}>
+    <AppContextProvider components={components} contentPageSections={contentPageSections}>
       <MDXProvider components={MDXComponentMap}>
         <Head>
           <title>Home - LeafyGreen Design System | MongoDB</title>
@@ -76,8 +77,10 @@ function MyApp({ Component, pageProps, components }: AppPropsWithLayout) {
 }
 
 MyApp.getInitialProps = async (ctx) => {
+  // todo: make these graphQL requests to retrieve only titles
   const components = await getComponents();
-  return { components }
+  const contentPageSections = await getContentPageSections();
+  return { components, contentPageSections }
 }
 
 export default MyApp;

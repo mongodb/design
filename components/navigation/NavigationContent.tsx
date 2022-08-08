@@ -7,10 +7,10 @@ import {
 import Icon from '@leafygreen-ui/icon';
 import MobileNavigationGroup from './MobileNavigationGroup';
 import MobileNavigationItem from './MobileNavigationItem';
-import componentData from 'utils/componentData';
 import { useAppContext } from 'contexts/AppContext';
-import { Entry, EntryCollection } from 'contentful';
-import { ComponentFields } from 'utils/types';
+import { Entry } from 'contentful';
+import { ComponentFields, ContentPageFields } from 'utils/types';
+import groupBy from 'utils/groupBy';
 
 const foundations: Array<String> = [
   'accessibility',
@@ -23,7 +23,7 @@ const foundations: Array<String> = [
 function NavigationContent({ isTouchDevice = false }: { isTouchDevice?: boolean }) {
   const router = useRouter();
   const activePage = router.asPath.split('/')[2];
-  const { components } = useAppContext();
+  const { components, contentPageSections } = useAppContext();
 
   const renderGroup = () => {
     if (isTouchDevice) {
@@ -64,17 +64,19 @@ function NavigationContent({ isTouchDevice = false }: { isTouchDevice?: boolean 
 
     return (
       <>
-        <SideNavGroup header="Foundations" glyph={<Icon glyph="University" />}>
-          {foundations.map(componentKebabCaseName => (
-            <SideNavItem
-              key={componentKebabCaseName as Key}
-              onClick={() => router.push(`/foundation/${componentKebabCaseName}`)}
-              active={componentKebabCaseName === activePage}
-            >
-              {componentKebabCaseName.split('-').join(' ')}
-            </SideNavItem>
-          ))}
-        </SideNavGroup>
+        {contentPageSections.map(contentPageSection => (
+          <SideNavGroup header={contentPageSection.fields.title} glyph={<Icon glyph={contentPageSection.fields.iconName} />}>
+            {contentPageSection.fields.contentPages.map(contentPage => (
+              <SideNavItem
+                key={contentPage.fields.title}
+                onClick={() => router.push(`/${contentPageSection.fields.title.toLowerCase()}/${contentPage.fields.title.toLowerCase()}`)}
+                active={contentPage.fields.title === activePage}
+              >
+                {contentPage.fields.title}
+              </SideNavItem>
+            ))}
+          </SideNavGroup>
+        ))}
         <SideNavGroup header="Components" glyph={<Icon glyph="Apps" />}>
           {components.map((component: Entry<ComponentFields>) => {
             const componentKebabCaseName = component.fields.kebabCaseName;
