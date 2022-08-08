@@ -13,6 +13,4 @@ jobs:
     - name: Lint
       run: yarn lint
     - name: Build NextJS
-      run: next build
-    - name: Build Vercel
-      run: vercel build
+      run: yarn build
