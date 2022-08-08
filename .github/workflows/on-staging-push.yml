@@ -22,14 +22,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ngduc/vercel-deploy-action@master
-        with:
-          vercel-cli: vercel
-          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-          github-token: ${{ secrets.GITHUB_TOKEN }} #Optional 
-          vercel-args: '--staging' #Optional
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}  #Required
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} #Required 
-
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --staging --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
 
   
