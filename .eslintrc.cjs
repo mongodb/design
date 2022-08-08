@@ -33,6 +33,7 @@ module.exports = {
     '@emotion/pkg-renaming': 'error',
     'jest/no-conditional-expect': 'off',
     'jest/valid-title': 'off',
+    'react/jsx-key': 1,
     // can't detect titles that are string variables
     'react/jsx-filename-extension': [
       'error',
@@ -50,7 +51,7 @@ module.exports = {
     'react/sort-comp': 'error',
     'import/no-extraneous-dependencies': 'off',
     'padding-line-between-statements': [
-      'error',
+      1,
       {
         blankLine: 'always',
         prev: ['block-like', 'const', 'let', 'if', 'while', 'return'],

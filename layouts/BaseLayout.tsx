@@ -6,7 +6,7 @@ import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
 import Navigation from 'components/navigation';
 import { LayoutContext } from 'components/LayoutContext';
 import { mq } from 'utils/mediaQuery';
-import Footer from './Footer';
+import Footer from '../components/Footer';
 import { useRouter } from 'next/router';
 
 const containerStyle = css`

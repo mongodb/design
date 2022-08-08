@@ -9,8 +9,7 @@ import MobileNavigationGroup from './MobileNavigationGroup';
 import MobileNavigationItem from './MobileNavigationItem';
 import { useAppContext } from 'contexts/AppContext';
 import { Entry } from 'contentful';
-import { ComponentFields, ContentPageFields } from 'utils/types';
-import groupBy from 'utils/groupBy';
+import { ComponentFields } from 'utils/types';
 
 const foundations: Array<String> = [
   'accessibility',
