@@ -1,13 +1,20 @@
-name: Staging Vercel Deployment
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
   push:
     branches:
-      - staging
+    - staging
+
 jobs:
-  Deploy-Preview:
+  create-pr-to-main:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: "main"
+        pr_title: "Automated PR: ${{ github.ref }} into main"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+  deploy-to-vercel-staging:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,3 +26,5 @@ jobs:
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --staging --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+
+  
