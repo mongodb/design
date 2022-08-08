@@ -1,4 +1,5 @@
-import { ContentfulClientApi, EntryCollection, EntryFields } from 'contentful';
+import { ContentfulClientApi, Entry, EntryCollection } from 'contentful';
+import { ComponentFields, ContentPageSectionFields } from './types';
 
 const contentful = require('contentful');
 
@@ -19,34 +20,48 @@ export async function getContentTypes() {
   }
 }
 
-export interface ComponentFields {
-  name: EntryFields.Text;
-  description: EntryFields.Text;
-  kebabCaseName: EntryFields.Text;
-  packageName: EntryFields.Text;
-  figmaUrl?: EntryFields.Text;
-  designGuidelines?: EntryFields.RichText;
-};
-
 
 export async function getComponents(): Promise<EntryCollection<ComponentFields>['items']> {
   try {
-    const entries = await createContentfulClient().getEntries<ComponentFields>(
-      'component',
-    );
+    const entries = await createContentfulClient().getEntries<ComponentFields>({
+      content_type: 'component',
+    });
     return entries.items;
   } catch (error) {
     throw error;
   }
 }
 
-export async function getComponent(componentName: string) {
+export async function getComponent(componentKebabCaseName: string) {
   try {
     const components = await getComponents() ?? []
-    const componentId = components.find(item => item?.fields?.kebabCaseName === componentName)?.sys.id ?? '';
-    const component = await createContentfulClient().getEntry(componentId);
-    return component
+    const component = components.find(item => item?.fields?.kebabCaseName === componentKebabCaseName)
+    return component;
   } catch (error) {
     console.error(error);
+  }
+}
+
+export async function getContentPageSections(): Promise<EntryCollection<ContentPageSectionFields>['items']> {
+  try {
+    const entries = await createContentfulClient().getEntries<ContentPageSectionFields>({
+      content_type: 'contentPageSection',
+    });
+    return entries.items;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getContentPage(contentPageSectionTitle: string, contentPageTitle: string) {
+  console.log(contentPageSectionTitle, contentPageTitle)
+  try {
+    const contentPageSections = await getContentPageSections();
+    const contentPageSection = contentPageSections.find(item => item?.fields?.title === contentPageSectionTitle)
+    // @ts-expect-error since we're in a try block
+    const contentPage = contentPageSection.fields.contentPages.find(item => item?.fields?.title === contentPageTitle)
+    return contentPage;
+  } catch (error) {
+    throw error;
   }
 }

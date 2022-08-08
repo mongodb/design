@@ -4,7 +4,7 @@ import { ReactElement } from 'react';
 import { getComponent, getComponents } from 'utils/getContentfulResources'
 
 const ComponentGuidelines = ({ component }) => {
-  return <ContentfulRichContent designGuidelines={component.fields?.designGuidelines} />
+  return <ContentfulRichContent richContent={component.fields?.designGuidelines} />
 }
 
 ComponentGuidelines.getLayout = function getLayout(page: ReactElement) {

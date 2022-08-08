@@ -13,7 +13,7 @@ import ReactIcon from 'components/svgs/ReactIcon';
 import FigmaIcon from 'components/svgs/FigmaIcon';
 import { mq } from 'utils/mediaQuery';
 import { pageContainerWidth } from 'styles/constants';
-import { ComponentFields } from 'utils/getContentfulResources';
+import { ComponentFields } from 'utils/types';
 
 const layout = css`
   ${mq({

@@ -1,21 +1,16 @@
-import React, { Key } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/css';
 import { spacing, breakpoints } from '@leafygreen-ui/tokens';
 import {
   SideNav,
-  SideNavGroup,
-  SideNavItem,
   CollapsedSideNavItem,
 } from '@leafygreen-ui/side-nav';
 import { useViewportSize } from '@leafygreen-ui/hooks';
-import Icon from '@leafygreen-ui/icon';
 import { MongoDBLogo, MongoDBLogoMark } from '@leafygreen-ui/logo';
 import { HOME_PAGE } from 'utils/routes';
-import MobileNavigationGroup from './MobileNavigationGroup';
-import MobileNavigationItem from './MobileNavigationItem';
 import MobileNavigation from './MobileNavigation';
-import { Component } from 'utils/types';
+import NavigationContent from './NavigationContent';
 
 const sideNavStyles = css`
   z-index: 1;
@@ -35,88 +30,6 @@ const logoLinkStyles = css`
   margin: 12px 0 ${spacing[4]}px ${spacing[3]}px;
 `;
 
-const foundations: Array<String> = [
-  'accessibility',
-  'forms',
-  'grid',
-  'icon-creation',
-  'refresh-guide',
-];
-
-function Content({ isTouchDevice = false }: { isTouchDevice?: boolean }) {
-  const router = useRouter();
-  const activePage = router.asPath.split('/')[2];
-
-  const renderGroup = () => {
-    if (isTouchDevice) {
-      return (
-        <>
-          <MobileNavigationGroup header="Foundations">
-            {foundations.map(item => (
-              <MobileNavigationItem
-                key={item as Key}
-                onClick={() => router.push(`/foundation/${item}`)}
-                active={item === activePage}
-              >
-                {item.split('-').join(' ')}
-              </MobileNavigationItem>
-            ))}
-          </MobileNavigationGroup>
-          <MobileNavigationGroup
-            header="Components"
-            initialCollapsed={false} // Always false until we add more sections to navigation
-          >
-            {Object.values(Component).map(item => {
-              return (
-                <MobileNavigationItem
-                  key={item}
-                  onClick={() => router.push(`component/${item}/example`)}
-                  active={item === activePage}
-                >
-                  {item.split('-').join(' ')}
-                </MobileNavigationItem>
-              );
-            })}
-          </MobileNavigationGroup>
-        </>
-      );
-    }
-
-    return (
-      <>
-        <SideNavGroup header="Foundations" glyph={<Icon glyph="University" />}>
-          {foundations.map(item => (
-            <SideNavItem
-              key={item as Key}
-              onClick={() => router.push(`/foundation/${item}`)}
-              active={item === activePage}
-            >
-              {item.split('-').join(' ')}
-            </SideNavItem>
-          ))}
-        </SideNavGroup>
-        <SideNavGroup header="Components" glyph={<Icon glyph="Apps" />}>
-          {Object.values(Component).map(item => {
-            return (
-              <SideNavItem
-                key={item}
-                onClick={() => router.push(`component/${item}/example`)}
-                active={item === activePage}
-              >
-                {item.split('-').join(' ')}
-              </SideNavItem>
-            );
-          })}
-        </SideNavGroup>
-      </>
-    );
-  };
-
-  return renderGroup();
-}
-
-Content.displayName = 'Content';
-
 function Navigation() {
   const { push } = useRouter();
   const viewport = useViewportSize();
@@ -125,7 +38,7 @@ function Navigation() {
   if (isTouchDevice) {
     return (
       <MobileNavigation>
-        <Content isTouchDevice />
+        <NavigationContent isTouchDevice />
       </MobileNavigation>
     );
   }
@@ -153,7 +66,7 @@ function Navigation() {
       >
         <MongoDBLogoMark color="white" height={24} />
       </CollapsedSideNavItem>
-      <Content />
+      <NavigationContent />
     </SideNav>
   );
 }

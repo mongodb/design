@@ -96,7 +96,8 @@
     "rehype-slug": "^5.0.1",
     "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",
-    "remark-html": "^15.0.1"
+    "remark-html": "^15.0.1",
+    "vercel": "^27.3.4"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.0.0",
