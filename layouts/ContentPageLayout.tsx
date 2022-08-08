@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { css } from '@emotion/css';
 import { spacing } from '@leafygreen-ui/tokens';
 import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';

@@ -1,4 +1,4 @@
-import { ContentfulClientApi, Entry, EntryCollection } from 'contentful';
+import { ContentfulClientApi, EntryCollection } from 'contentful';
 import { ComponentFields, ContentPageSectionFields } from './types';
 
 const contentful = require('contentful');
