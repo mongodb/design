@@ -1,0 +1,16 @@
+on:
+  push:
+    branches:
+    - staging
+
+jobs:
+  create-pr-to-main:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: "main"
+        pr_title: "Automated PR: ${{ env.GITHUB_REF_NAME }} into main"
+        github_token: ${{ secrets.GITHUB_TOKEN }}

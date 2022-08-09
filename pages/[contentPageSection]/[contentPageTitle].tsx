@@ -20,7 +20,7 @@ ContentPage.getLayout = function getLayout(page: ReactElement) {
 
 export async function getStaticPaths() {
   const contentPageSections = await getContentPageSections();
-  const paths: any[] = []
+  const paths: Array<any> = []
   contentPageSections.forEach(pageSection => {
     pageSection.fields.contentPages.forEach((contentPage: Entry<ContentPageFields>) => {
       const newPath = {
