@@ -11,6 +11,7 @@ import { H2 } from '@leafygreen-ui/typography';
 import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
 import ReactIcon from 'components/svgs/ReactIcon';
 import FigmaIcon from 'components/svgs/FigmaIcon';
+import GithubIcon from 'components/svgs/GithubIcon';
 import { mq } from 'utils/mediaQuery';
 import { pageContainerWidth } from 'styles/constants';
 import { ComponentFields } from 'utils/types';
@@ -98,16 +99,28 @@ function ComponentLayout({ componentFields, children }: { componentFields: Compo
             {componentFields.name}
           </H2>
 
-          {!isMobile && componentFields.figmaUrl && (
-            <Button
-              leftGlyph={<FigmaIcon />}
-              variant="primary"
-              href={componentFields.figmaUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View in Figma
-            </Button>
+          {!isMobile && (
+            <div className={flexContainer}>
+              <Button
+                leftGlyph={<GithubIcon />}
+                variant="primaryOutline"
+                href={`https://github.com/mongodb/leafygreen-ui/tree/main/packages/${componentFields.kebabCaseName}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ marginRight: '8px' }}
+              >
+                View in Github
+              </Button>
+              <Button
+                leftGlyph={<FigmaIcon />}
+                variant="primary"
+                href={componentFields.figmaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View in Figma
+              </Button>
+            </div>
           )}
         </div>
       </div>
