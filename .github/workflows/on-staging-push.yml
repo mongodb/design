@@ -14,5 +14,3 @@ jobs:
         destination_branch: "main"
         pr_title: "Automated PR: ${{ env.GITHUB_REF_NAME }} into main"
         github_token: ${{ secrets.GITHUB_TOKEN }}
-
-  
