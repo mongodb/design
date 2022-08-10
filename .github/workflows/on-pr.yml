@@ -7,13 +7,20 @@ env:
   CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
 
 jobs:
-  verify-build:
+  lint:
+    runs-on: ubuntu-latest
+    name: Yarn Lint
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: yarn install
+      - name: Lint
+        run: yarn lint
+  build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Install Dependencies
-      run: yarn install
-    - name: Lint
-      run: yarn lint
-    - name: Build NextJS
-      run: yarn build
+      - uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: yarn install
+      - name: Build NextJS
+        run: yarn build

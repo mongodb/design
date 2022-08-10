@@ -1,4 +1,4 @@
-import ContentfulRichContent from 'components/ContentfulRichContent';
+import ContentfulRichText from 'components/ContentfulRichText';
 import { Entry } from 'contentful';
 import ContentPageLayout from 'layouts/ContentPageLayout';
 import { ReactElement } from 'react';
@@ -7,7 +7,7 @@ import titlecase from 'utils/titlecase';
 import { ContentPageFields } from 'utils/types';
 
 const ContentPage = ({ contentPage }) => {
-  return <ContentfulRichContent richContent={contentPage.fields?.content} />
+  return <ContentfulRichText document={contentPage.fields?.content} />
 }
 
 ContentPage.getLayout = function getLayout(page: ReactElement) {
