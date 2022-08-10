@@ -1,10 +1,10 @@
-import ContentfulRichContent from 'components/ContentfulRichContent';
+import ContentfulRichText from 'components/ContentfulRichText';
 import ComponentLayout from 'layouts/ComponentLayout';
 import { ReactElement } from 'react';
 import { getComponent, getComponents } from 'utils/getContentfulResources'
 
 const ComponentGuidelines = ({ component }) => {
-  return <ContentfulRichContent richContent={component.fields?.designGuidelines} />
+  return <ContentfulRichText document={component.fields?.designGuidelines} />
 }
 
 ComponentGuidelines.getLayout = function getLayout(page: ReactElement) {
