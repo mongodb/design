@@ -11,11 +11,7 @@ const renderAsset = (node) => {
   const mimeGroup = mimeType.split('/')[0]
   switch (mimeGroup) {
     case 'image':
-      return (
-        <>
-          <Image alt={title} src={file.url} width="100%" />
-        </>
-      )
+      return <Image alt={title} src={file.url} width="100%" />
     default:
       return <h1>Unsupported embedded-asset-block mimeGroup: ${mimeGroup!}</h1>
   }
@@ -25,9 +21,10 @@ const renderEntry = (node) => {
   const embeddedEntryNodeType = node.data.target?.sys?.contentType?.sys.id;
   const embeddedEntryFields = node.data.target.fields;
   switch (embeddedEntryNodeType) {
-    case 'expandableCardBlock':
+    case 'expandableCardBlock': {
       const { title, description, content } = embeddedEntryFields;
       return <ExpandableCard title={title} description={description}><ContentfulRichText document={content} /></ExpandableCard>
+    }
     default:
       return <h1>Unsupported embedded-entry-block nodeType: ${embeddedEntryNodeType!}</h1>
   }
