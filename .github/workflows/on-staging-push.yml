@@ -12,5 +12,5 @@ jobs:
       uses: repo-sync/pull-request@v2
       with:
         destination_branch: "main"
-        pr_title: "Automated PR: ${{ env.GITHUB_REF_NAME }} into main"
+        pr_title: "Automated PR: staging to main"
         github_token: ${{ secrets.GITHUB_TOKEN }}
