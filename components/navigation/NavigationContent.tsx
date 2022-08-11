@@ -22,7 +22,7 @@ const foundations: Array<String> = [
 function NavigationContent({ isTouchDevice = false }: { isTouchDevice?: boolean }) {
   const router = useRouter();
   const activePage = router.asPath.split('/')[2];
-  const { components, contentPageSections } = useAppContext();
+  const { components, contentPageGroups } = useAppContext();
 
   const renderGroup = () => {
     if (isTouchDevice) {
@@ -63,12 +63,12 @@ function NavigationContent({ isTouchDevice = false }: { isTouchDevice?: boolean 
 
     return (
       <>
-        {contentPageSections.map(contentPageSection => (
-          <SideNavGroup header={contentPageSection.fields.title} glyph={<Icon glyph={contentPageSection.fields.iconName} />}>
-            {contentPageSection.fields.contentPages.map(contentPage => (
+        {contentPageGroups.map(contentPageGroup => (
+          <SideNavGroup header={contentPageGroup.fields.title} glyph={<Icon glyph={contentPageGroup.fields.iconName} />}>
+            {contentPageGroup.fields.contentPages.map(contentPage => (
               <SideNavItem
                 key={contentPage.fields.title}
-                onClick={() => router.push(`/${contentPageSection.fields.title.toLowerCase()}/${contentPage.fields.title.toLowerCase()}`)}
+                onClick={() => router.push(`/${contentPageGroup.fields.title.toLowerCase()}/${contentPage.fields.title.toLowerCase()}`)}
                 active={contentPage.fields.title === activePage}
               >
                 {contentPage.fields.title}

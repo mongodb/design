@@ -55,14 +55,14 @@ export type NextPageWithLayout = NextPage & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
   components: any;
-  contentPageSections: any;
+  contentPageGroups: any;
 }
 
-function MyApp({ Component, pageProps, components, contentPageSections }: AppPropsWithLayout) {
+function MyApp({ Component, pageProps, components, contentPageGroups }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page)
 
   return (
-    <AppContextProvider components={components} contentPageSections={contentPageSections}>
+    <AppContextProvider components={components} contentPageGroups={contentPageGroups}>
       <MDXProvider components={MDXComponentMap}>
         <Head>
           <title>Home - LeafyGreen Design System | MongoDB</title>
@@ -79,8 +79,8 @@ function MyApp({ Component, pageProps, components, contentPageSections }: AppPro
 MyApp.getInitialProps = async (ctx) => {
   // todo: make these graphQL requests to retrieve only titles
   const components = await getComponents();
-  const contentPageSections = await getContentPageSections();
-  return { components, contentPageSections }
+  const contentPageGroups = await getContentPageSections();
+  return { components, contentPageGroups }
 }
 
 export default MyApp;
