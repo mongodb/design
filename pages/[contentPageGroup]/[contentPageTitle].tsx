@@ -19,13 +19,13 @@ ContentPage.getLayout = function getLayout(page: ReactElement) {
 }
 
 export async function getStaticPaths() {
-  const contentPageSections = await getContentPageSections();
+  const contentPageGroups = await getContentPageSections();
   const paths: Array<any> = []
-  contentPageSections.forEach(pageSection => {
-    pageSection.fields.contentPages.forEach((contentPage: Entry<ContentPageFields>) => {
+  contentPageGroups.forEach(pageGroup => {
+    pageGroup.fields.contentPages.forEach((contentPage: Entry<ContentPageFields>) => {
       const newPath = {
         params: {
-          contentPageSection: pageSection.fields.title.toLowerCase(),
+          contentPageGroup: pageGroup.fields.title.toLowerCase(),
           contentPageTitle: contentPage.fields.title.toLowerCase()
         }
       }
@@ -36,7 +36,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const contentPage = await getContentPage(titlecase(params.contentPageSection), titlecase(params.contentPageTitle));
+  const contentPage = await getContentPage(titlecase(params.contentPageGroup), titlecase(params.contentPageTitle));
   return {
     props: {
       contentPage,

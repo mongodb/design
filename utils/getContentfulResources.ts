@@ -53,13 +53,13 @@ export async function getContentPageSections(): Promise<EntryCollection<ContentP
   }
 }
 
-export async function getContentPage(contentPageSectionTitle: string, contentPageTitle: string) {
-  console.log(contentPageSectionTitle, contentPageTitle)
+export async function getContentPage(contentPageGroupTitle: string, contentPageTitle: string) {
+  console.log(contentPageGroupTitle, contentPageTitle)
   try {
-    const contentPageSections = await getContentPageSections();
-    const contentPageSection = contentPageSections.find(item => item?.fields?.title === contentPageSectionTitle)
+    const contentPageGroups = await getContentPageSections();
+    const contentPageGroup = contentPageGroups.find(item => item?.fields?.title === contentPageGroupTitle)
     // @ts-expect-error since we're in a try block
-    const contentPage = contentPageSection.fields.contentPages.find(item => item?.fields?.title === contentPageTitle)
+    const contentPage = contentPageGroup.fields.contentPages.find(item => item?.fields?.title === contentPageTitle)
     return contentPage;
   } catch (error) {
     throw error;

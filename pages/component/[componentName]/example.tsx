@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 import { getComponent, getComponents } from 'utils/getContentfulResources'
 import dynamic from 'next/dynamic'
 
-// This will probably be useful later when moving over to generating live examples from Storybook files.
+// This might be useful later when moving over to generating live examples from Storybook files.
 // const getStoryFile = (component) => dynamic(() => import(`node_modules/${component.fields.packageName}/src/${component.fields.name}.story.tsx`), {
 //   ssr: false,
 //   loading: () => <p>Loading...</p>,
