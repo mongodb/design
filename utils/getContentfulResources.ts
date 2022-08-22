@@ -31,7 +31,7 @@ export async function getComponents(): Promise<EntryCollection<ComponentFields>[
     const entries = await client.getEntries<ComponentFields>({
       content_type: 'component',
     });
-    return entries.items;
+    return entries.items.reverse()
   } catch (error) {
     console.error('No Component pages found', error)
     // Return no component pages

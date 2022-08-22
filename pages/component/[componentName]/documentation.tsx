@@ -1,8 +1,9 @@
-import CodeDocs from 'components/CodeDocs';
-import ComponentLayout from 'layouts/ComponentLayout';
-import { getDependencyDocumentation } from 'utils/_getComponentResources';
-import { ReactElement } from 'react';
-import { getComponent, getComponents } from 'utils/getContentfulResources'
+import CodeDocs from "components/CodeDocs";
+import ComponentLayout from "layouts/ComponentLayout";
+import { getDependencyDocumentation } from "utils/_getComponentResources";
+import { ReactElement } from "react";
+import { getComponent } from "utils/getContentfulResources";
+import { getStaticComponentPaths } from "utils/getStaticComponent";
 
 const ComponentDocumentation = ({ component, changelog, readme }) => {
   return (
@@ -13,32 +14,22 @@ const ComponentDocumentation = ({ component, changelog, readme }) => {
       readme={readme}
     />
   );
-}
+};
 
 ComponentDocumentation.getLayout = function getLayout(page: ReactElement) {
   return (
     <ComponentLayout componentFields={page.props.component.fields}>
       {page}
     </ComponentLayout>
-  )
-}
+  );
+};
 
-// todo: do this once on the app level
-export async function getStaticPaths() {
-  const components = await getComponents();
-
-  const paths = components.map((component) => ({
-    params: {
-      id: component.sys.id,
-      componentName: component.fields.kebabCaseName,
-    },
-  }))
-
-  return { paths, fallback: false }
-}
+export const getStaticPaths = getStaticComponentPaths;
 
 export async function getStaticProps({ params }) {
-  const { changelog, readme } = (await getDependencyDocumentation(params.componentName)).props;
+  const { changelog, readme } = (
+    await getDependencyDocumentation(params.componentName)
+  ).props;
   return {
     props: {
       component: await getComponent(params.componentName),
@@ -48,4 +39,4 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default ComponentDocumentation
+export default ComponentDocumentation;

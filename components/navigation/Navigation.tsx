@@ -1,16 +1,13 @@
-import React from 'react';
-import { useRouter } from 'next/router';
-import { css } from '@emotion/css';
-import { spacing, breakpoints } from '@leafygreen-ui/tokens';
-import {
-  SideNav,
-  CollapsedSideNavItem,
-} from '@leafygreen-ui/side-nav';
-import { useViewportSize } from '@leafygreen-ui/hooks';
-import { MongoDBLogo, MongoDBLogoMark } from '@leafygreen-ui/logo';
-import { HOME_PAGE } from 'utils/routes';
-import MobileNavigation from './MobileNavigation';
-import NavigationContent from './NavigationContent';
+import React from "react";
+import { useRouter } from "next/router";
+import { css } from "@emotion/css";
+import { spacing, breakpoints } from "@leafygreen-ui/tokens";
+import { SideNav, CollapsedSideNavItem } from "@leafygreen-ui/side-nav";
+import { useViewportSize } from "@leafygreen-ui/hooks";
+import { MongoDBLogo, MongoDBLogoMark } from "@leafygreen-ui/logo";
+import { HOME_PAGE } from "utils/routes";
+import MobileNavigation from "./MobileNavigation";
+import NavigationContent from "./NavigationContent";
 
 const sideNavStyles = css`
   z-index: 1;
@@ -48,7 +45,7 @@ function Navigation() {
       <a
         className={logoLinkStyles}
         href="/"
-        onClick={e => {
+        onClick={(e) => {
           e.preventDefault();
           push(HOME_PAGE);
         }}
@@ -71,6 +68,6 @@ function Navigation() {
   );
 }
 
-Navigation.displayName = 'Navigation';
+Navigation.displayName = "Navigation";
 
 export default Navigation;
