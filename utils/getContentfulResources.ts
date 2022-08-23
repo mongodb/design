@@ -2,13 +2,17 @@ import { ContentfulClientApi, EntryCollection } from 'contentful';
 import { ComponentFields, ContentPageSectionFields } from './types';
 
 const contentful = require('contentful');
+const isProd = process.env.NODE_ENV === 'production'
 
 export function createContentfulClient(): ContentfulClientApi {
-  return contentful.createClient({
-    space: '5fb8fg2odr3q',
+  const client = contentful.createClient({
     environment: 'master',
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: isProd ? process.env.CONTENTFUL_DELIVERY_TOKEN : process.env.CONTENTFUL_PREVIEW_TOKEN,
+    host: isProd ? 'cdn.contentful.com' : 'preview.contentful.com',
   });
+
+  return client
 }
 
 export async function getContentTypes() {
@@ -23,12 +27,15 @@ export async function getContentTypes() {
 
 export async function getComponents(): Promise<EntryCollection<ComponentFields>['items']> {
   try {
-    const entries = await createContentfulClient().getEntries<ComponentFields>({
+    const client = createContentfulClient()
+    const entries = await client.getEntries<ComponentFields>({
       content_type: 'component',
     });
-    return entries.items;
+    return entries.items.reverse()
   } catch (error) {
-    throw error;
+    console.error('No Component pages found', error)
+    // Return no component pages
+    return [] as EntryCollection<ComponentFields>['items']
   }
 }
 
@@ -45,23 +52,26 @@ export async function getComponent(componentKebabCaseName: string) {
 export async function getContentPageSections(): Promise<EntryCollection<ContentPageSectionFields>['items']> {
   try {
     const entries = await createContentfulClient().getEntries<ContentPageSectionFields>({
-      content_type: 'contentPageSection',
+      content_type: 'contentPageGroup',
     });
     return entries.items;
   } catch (error) {
-    throw error;
+    console.error('No Page Groups found', error)
+    // Return no sections
+    return [] as EntryCollection<ContentPageSectionFields>['items']
   }
 }
 
-export async function getContentPage(contentPageSectionTitle: string, contentPageTitle: string) {
-  console.log(contentPageSectionTitle, contentPageTitle)
+export async function getContentPage(contentPageGroupTitle: string, contentPageTitle: string) {
+  // eslint-disable-next-line no-console
+  console.log(contentPageGroupTitle, contentPageTitle)
   try {
-    const contentPageSections = await getContentPageSections();
-    const contentPageSection = contentPageSections.find(item => item?.fields?.title === contentPageSectionTitle)
+    const contentPageGroups = await getContentPageSections();
+    const contentPageGroup = contentPageGroups.find(item => item?.fields?.title === contentPageGroupTitle)
     // @ts-expect-error since we're in a try block
-    const contentPage = contentPageSection.fields.contentPages.find(item => item?.fields?.title === contentPageTitle)
+    const contentPage = contentPageGroup.fields.contentPages.find(item => item?.fields?.title === contentPageTitle)
     return contentPage;
   } catch (error) {
-    throw error;
+    // noop
   }
 }

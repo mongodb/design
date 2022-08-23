@@ -2,12 +2,12 @@ import { createContext, useContext } from 'react';
 
 const AppContext = createContext<any>({});
 
-export function AppContextProvider({ components, contentPageSections, children }) {
+export function AppContextProvider({ components, contentPageGroups, children }) {
 
   return (
     <AppContext.Provider value={{
       components,
-      contentPageSections
+      contentPageGroups
     }}>
       {children}
     </AppContext.Provider>
