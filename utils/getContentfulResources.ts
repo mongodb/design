@@ -1,6 +1,6 @@
+import startCase from 'lodash/startCase'
 import { ContentfulClientApi, EntryCollection } from 'contentful';
 import { ComponentFields, ContentPageSectionFields } from './types';
-import titlecase from 'utils/titlecase';
 
 const contentful = require('contentful');
 const isProd = process.env.NODE_ENV === 'production'
@@ -45,7 +45,7 @@ export async function getComponents(): Promise<EntryCollection<ComponentFields>[
 export async function getComponent(kebabCaseName: string) {
   try {
     const components = await getComponents() ?? []
-    const component = components.find(item => item?.fields?.name === titlecase(kebabCaseName.replaceAll('-', ' ')))
+    const component = components.find(item => item?.fields?.name === startCase(kebabCaseName))
     return component;
   } catch (error) {
     console.error(error);
