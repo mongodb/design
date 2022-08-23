@@ -19,10 +19,10 @@ import kebabCase from 'lodash/kebabCase';
 
 const layout = css`
   ${mq({
-  // 51px is a magic number for baseline alignment with the first SideNavGroup header
-  marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
-  width: ['100%', '100%', '100%', `${pageContainerWidth.dataGraphic}px`],
-})}
+    // 51px is a magic number for baseline alignment with the first SideNavGroup header
+    marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
+    width: ['100%', '100%', '100%', `${pageContainerWidth.dataGraphic}px`],
+  })}
 `;
 
 const margin4 = css`
@@ -61,7 +61,13 @@ const reactIconStyle = css`
   margin-right: 4px;
 `;
 
-function ComponentLayout({ componentFields, children }: { componentFields: ComponentFields, children: React.ReactNode }) {
+function ComponentLayout({
+  componentFields,
+  children,
+}: {
+  componentFields: ComponentFields;
+  children: React.ReactNode;
+}) {
   const pageTitle = `${componentFields.name} – LeafyGreen Design System | MongoDB`;
 
   const router = useRouter();
@@ -72,9 +78,7 @@ function ComponentLayout({ componentFields, children }: { componentFields: Compo
   const [selected, setSelected] = React.useState(0);
 
   React.useEffect(() => {
-    const activeTab = router.pathname
-      .split('/')
-      .filter(subStr => !!subStr)[2];
+    const activeTab = router.pathname.split('/').filter(subStr => !!subStr)[2];
     setSelected(
       activeTab === 'example' ? 0 : activeTab === 'guidelines' ? 1 : 2,
     );
@@ -105,7 +109,9 @@ function ComponentLayout({ componentFields, children }: { componentFields: Compo
               <Button
                 leftGlyph={<GithubIcon />}
                 variant="primaryOutline"
-                href={`https://github.com/mongodb/leafygreen-ui/tree/main/packages/${kebabCase(componentFields.name)}`}
+                href={`https://github.com/mongodb/leafygreen-ui/tree/main/packages/${kebabCase(
+                  componentFields.name,
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ marginRight: '8px' }}
@@ -132,13 +138,19 @@ function ComponentLayout({ componentFields, children }: { componentFields: Compo
       >
         <Tab
           name="Live Example"
-          onClick={() => router.push(`/component/${kebabCase(componentFields.name)}/example`)}
+          onClick={() =>
+            router.push(`/component/${kebabCase(componentFields.name)}/example`)
+          }
         >
           {children}
         </Tab>
         <Tab
           name="Design Guidelines"
-          onClick={() => router.push(`/component/${kebabCase(componentFields.name)}/guidelines`)}
+          onClick={() =>
+            router.push(
+              `/component/${kebabCase(componentFields.name)}/guidelines`,
+            )
+          }
         >
           <LeafyGreenProvider baseFontSize={16}>
             <div className={componentGuidelineStyles}>{children}</div>
@@ -152,7 +164,9 @@ function ComponentLayout({ componentFields, children }: { componentFields: Compo
             </div>
           }
           onClick={() =>
-            router.push(`/component/${kebabCase(componentFields.name)}/documentation`)
+            router.push(
+              `/component/${kebabCase(componentFields.name)}/documentation`,
+            )
           }
         >
           {children}

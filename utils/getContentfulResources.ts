@@ -1,19 +1,21 @@
-import startCase from 'lodash/startCase'
+import startCase from 'lodash/startCase';
 import { ContentfulClientApi, EntryCollection } from 'contentful';
 import { ComponentFields, ContentPageSectionFields } from './types';
 
 const contentful = require('contentful');
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production';
 
 export function createContentfulClient(): ContentfulClientApi {
   const client = contentful.createClient({
     environment: 'master',
     space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: isProd ? process.env.CONTENTFUL_DELIVERY_TOKEN : process.env.CONTENTFUL_PREVIEW_TOKEN,
+    accessToken: isProd
+      ? process.env.CONTENTFUL_DELIVERY_TOKEN
+      : process.env.CONTENTFUL_PREVIEW_TOKEN,
     host: isProd ? 'cdn.contentful.com' : 'preview.contentful.com',
   });
 
-  return client
+  return client;
 }
 
 export async function getContentTypes() {
@@ -25,52 +27,67 @@ export async function getContentTypes() {
   }
 }
 
-
-export async function getComponents(): Promise<EntryCollection<ComponentFields>['items']> {
+export async function getComponents(): Promise<
+  EntryCollection<ComponentFields>['items']
+> {
   try {
-    const client = createContentfulClient()
+    const client = createContentfulClient();
     const entries = await client.getEntries<ComponentFields>({
       content_type: 'component',
       order: 'fields.name',
     });
     // remove the related components field for now to avoid circular references
-    return entries.items.map(item => { return { ...item, fields: { ...item.fields, relatedComponents: [] } } })
+    return entries.items.map(item => {
+      return { ...item, fields: { ...item.fields, relatedComponents: [] } };
+    });
   } catch (error) {
-    console.error('No Component pages found', error)
+    console.error('No Component pages found', error);
     // Return no component pages
-    return [] as EntryCollection<ComponentFields>['items']
+    return [] as EntryCollection<ComponentFields>['items'];
   }
 }
 
 export async function getComponent(kebabCaseName: string) {
   try {
-    const components = await getComponents() ?? []
-    const component = components.find(item => item?.fields?.name === startCase(kebabCaseName))
+    const components = (await getComponents()) ?? [];
+    const component = components.find(
+      item => item?.fields?.name === startCase(kebabCaseName),
+    );
     return component;
   } catch (error) {
     console.error(error);
   }
 }
 
-export async function getContentPageGroups(): Promise<EntryCollection<ContentPageSectionFields>['items']> {
+export async function getContentPageGroups(): Promise<
+  EntryCollection<ContentPageSectionFields>['items']
+> {
   try {
-    const entries = await createContentfulClient().getEntries<ContentPageSectionFields>({
-      content_type: 'contentPageGroup',
-    });
+    const entries =
+      await createContentfulClient().getEntries<ContentPageSectionFields>({
+        content_type: 'contentPageGroup',
+      });
     return entries.items;
   } catch (error) {
-    console.error('No Page Groups found', error)
+    console.error('No Page Groups found', error);
     // Return no sections
-    return [] as EntryCollection<ContentPageSectionFields>['items']
+    return [] as EntryCollection<ContentPageSectionFields>['items'];
   }
 }
 
-export async function getContentPage(contentPageGroupTitle: string, contentPageTitle: string) {
+export async function getContentPage(
+  contentPageGroupTitle: string,
+  contentPageTitle: string,
+) {
   try {
     const contentPageGroups = await getContentPageGroups();
-    const contentPageGroup = contentPageGroups.find(item => item?.fields?.title === startCase(contentPageGroupTitle))
+    const contentPageGroup = contentPageGroups.find(
+      item => item?.fields?.title === startCase(contentPageGroupTitle),
+    );
     // @ts-expect-error since we're in a try block
-    const contentPage = contentPageGroup.fields.contentPages.find(item => item?.fields?.title === contentPageTitle)
+    const contentPage = contentPageGroup.fields.contentPages.find(
+      item => item?.fields?.title === contentPageTitle,
+    );
     return contentPage;
   } catch (error) {
     // noop

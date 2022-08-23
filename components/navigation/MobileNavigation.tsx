@@ -92,7 +92,7 @@ function MobileNavigation({ children }: { children: React.ReactNode }) {
         setOpen(false);
       }
     },
-    [scrollContainerNode]
+    [scrollContainerNode],
   );
 
   return (
@@ -113,7 +113,7 @@ function MobileNavigation({ children }: { children: React.ReactNode }) {
           </IconButton>
           <a
             href="/"
-            onClick={(e) => {
+            onClick={e => {
               e.preventDefault();
               push(HOME_PAGE);
             }}
@@ -147,7 +147,7 @@ function MobileNavigation({ children }: { children: React.ReactNode }) {
                 <div className={logoContainer}>
                   <a
                     href="/"
-                    onClick={(e) => {
+                    onClick={e => {
                       e.preventDefault();
                       push(HOME_PAGE);
                       setOpen(false);

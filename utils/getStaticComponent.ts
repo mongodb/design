@@ -4,7 +4,7 @@ import { getComponent, getComponents } from './getContentfulResources';
 export async function getStaticComponentPaths() {
   const components = await getComponents();
 
-  const paths = components.map((component) => ({
+  const paths = components.map(component => ({
     params: {
       id: component.sys.id,
       componentName: kebabCase(component.fields.name),

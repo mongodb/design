@@ -47,7 +47,7 @@ function Navigation() {
       <a
         className={logoLinkStyles}
         href="/"
-        onClick={(e) => {
+        onClick={e => {
           e.preventDefault();
           push(HOME_PAGE);
         }}
