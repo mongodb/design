@@ -9,7 +9,7 @@ import { Body, H1, H2, H3, InlineCode, Link } from '@leafygreen-ui/typography';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { AppContextProvider } from 'contexts/AppContext';
-import { getComponents, getContentPageSections } from 'utils/getContentfulResources';
+import { getComponents, getContentPageGroups } from 'utils/getContentfulResources';
 
 const headerStyle = css`
   margin-block: 0.5em;
@@ -79,7 +79,7 @@ function MyApp({ Component, pageProps, components, contentPageGroups }: AppProps
 MyApp.getInitialProps = async (ctx) => {
   // todo: make these graphQL requests to retrieve only titles
   const components = await getComponents();
-  const contentPageGroups = await getContentPageSections();
+  const contentPageGroups = await getContentPageGroups();
   return { components, contentPageGroups }
 }
 

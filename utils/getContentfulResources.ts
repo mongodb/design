@@ -43,7 +43,6 @@ export async function getComponents(): Promise<EntryCollection<ComponentFields>[
 }
 
 export async function getComponent(kebabCaseName: string) {
-  console.log(titlecase(kebabCaseName.replaceAll('-', ' ')))
   try {
     const components = await getComponents() ?? []
     const component = components.find(item => item?.fields?.name === titlecase(kebabCaseName.replaceAll('-', ' ')))
@@ -53,7 +52,7 @@ export async function getComponent(kebabCaseName: string) {
   }
 }
 
-export async function getContentPageSections(): Promise<EntryCollection<ContentPageSectionFields>['items']> {
+export async function getContentPageGroups(): Promise<EntryCollection<ContentPageSectionFields>['items']> {
   try {
     const entries = await createContentfulClient().getEntries<ContentPageSectionFields>({
       content_type: 'contentPageGroup',
@@ -67,10 +66,8 @@ export async function getContentPageSections(): Promise<EntryCollection<ContentP
 }
 
 export async function getContentPage(contentPageGroupTitle: string, contentPageTitle: string) {
-  // eslint-disable-next-line no-console
-  console.log(contentPageGroupTitle, contentPageTitle)
   try {
-    const contentPageGroups = await getContentPageSections();
+    const contentPageGroups = await getContentPageGroups();
     const contentPageGroup = contentPageGroups.find(item => item?.fields?.title === contentPageGroupTitle)
     // @ts-expect-error since we're in a try block
     const contentPage = contentPageGroup.fields.contentPages.find(item => item?.fields?.title === contentPageTitle)

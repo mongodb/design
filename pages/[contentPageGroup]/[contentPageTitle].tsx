@@ -2,7 +2,7 @@ import ContentfulRichText from 'components/ContentfulRichText';
 import { Entry } from 'contentful';
 import ContentPageLayout from 'layouts/ContentPageLayout';
 import { ReactElement } from 'react';
-import { getContentPage, getContentPageSections } from 'utils/getContentfulResources'
+import { getContentPage, getContentPageGroups } from 'utils/getContentfulResources'
 import titlecase from 'utils/titlecase';
 import { ContentPageFields } from 'utils/types';
 
@@ -19,7 +19,7 @@ ContentPage.getLayout = function getLayout(page: ReactElement) {
 }
 
 export async function getStaticPaths() {
-  const contentPageGroups = await getContentPageSections();
+  const contentPageGroups = await getContentPageGroups();
   const paths: Array<any> = []
   contentPageGroups.forEach(pageGroup => {
     pageGroup.fields.contentPages.forEach((contentPage: Entry<ContentPageFields>) => {
