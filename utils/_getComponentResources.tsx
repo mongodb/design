@@ -4,6 +4,7 @@ import util from 'util';
 import markdownToHtml from 'utils/markdownToHtml';
 import type { BaseLayoutProps } from 'utils/types';
 
+// eslint-disable-next-line import/no-anonymous-default-export, react/display-name
 export default function () {
   return null;
 }
@@ -11,7 +12,7 @@ export default function () {
 const getFileContent = util.promisify(fs.readFile);
 
 export const getDependencyDocumentation = async (
-  componentKebabCaseName: BaseLayoutProps['componentKebabCaseName'],
+  componentKebabCaseName: BaseLayoutProps['componentKebabCaseName']
 ) => {
   if (typeof componentKebabCaseName !== 'string') {
     return { props: { changelog: null, readme: null } };
@@ -24,7 +25,11 @@ export const getDependencyDocumentation = async (
 
   try {
     changelogMarkdown = await getFileContent(
-      path.join('./node_modules', `@leafygreen-ui/${componentKebabCaseName}`, '/CHANGELOG.md'),
+      path.join(
+        './node_modules',
+        `@leafygreen-ui/${componentKebabCaseName}`,
+        '/CHANGELOG.md'
+      )
     );
   } catch (error) {
     console.warn(error);
@@ -32,8 +37,12 @@ export const getDependencyDocumentation = async (
 
   try {
     readmeMarkdown = await getFileContent(
-      path.join('./node_modules', `@leafygreen-ui/${componentKebabCaseName}`, '/README.md'),
-      'utf-8',
+      path.join(
+        './node_modules',
+        `@leafygreen-ui/${componentKebabCaseName}`,
+        '/README.md'
+      ),
+      'utf-8'
     );
   } catch (error) {
     console.warn(error);
