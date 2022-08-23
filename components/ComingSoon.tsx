@@ -1,9 +1,11 @@
-import React from "react";
-import { css } from "@emotion/css";
-import { palette } from "@leafygreen-ui/palette";
-import { Subtitle } from "@leafygreen-ui/typography";
-import { spacing } from "@leafygreen-ui/tokens";
-import { CDN } from "utils/routes";
+// TODO: Remove this
+/* eslint-disable @next/next/no-img-element */
+import React from 'react';
+import { css } from '@emotion/css';
+import { palette } from '@leafygreen-ui/palette';
+import { Subtitle } from '@leafygreen-ui/typography';
+import { spacing } from '@leafygreen-ui/tokens';
+import { CDN } from 'utils/routes';
 
 const containerStyle = css`
   width: 100%;
@@ -38,6 +40,6 @@ function ComingSoon() {
   );
 }
 
-ComingSoon.displayName = "ComingSoon";
+ComingSoon.displayName = 'ComingSoon';
 
 export default ComingSoon;

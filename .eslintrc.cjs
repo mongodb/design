@@ -76,7 +76,7 @@ module.exports = {
         allow: ['warn', 'error'],
       },
     ],
-    'quotes': [2, 'single', { 'avoidEscape': true }]
+    'quotes': [1, 'single', { 'avoidEscape': true }]
   },
   overrides: [
     {
