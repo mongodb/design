@@ -1,6 +1,6 @@
+import startCase from 'lodash/startCase'
 import { ContentfulClientApi, EntryCollection } from 'contentful';
 import { ComponentFields, ContentPageSectionFields } from './types';
-import titlecase from 'utils/titlecase';
 
 const contentful = require('contentful');
 const isProd = process.env.NODE_ENV === 'production'
@@ -45,7 +45,7 @@ export async function getComponents(): Promise<EntryCollection<ComponentFields>[
 export async function getComponent(kebabCaseName: string) {
   try {
     const components = await getComponents() ?? []
-    const component = components.find(item => item?.fields?.name === titlecase(kebabCaseName))
+    const component = components.find(item => item?.fields?.name === startCase(kebabCaseName))
     return component;
   } catch (error) {
     console.error(error);
@@ -68,7 +68,7 @@ export async function getContentPageGroups(): Promise<EntryCollection<ContentPag
 export async function getContentPage(contentPageGroupTitle: string, contentPageTitle: string) {
   try {
     const contentPageGroups = await getContentPageGroups();
-    const contentPageGroup = contentPageGroups.find(item => item?.fields?.title === titlecase(contentPageGroupTitle))
+    const contentPageGroup = contentPageGroups.find(item => item?.fields?.title === startCase(contentPageGroupTitle))
     // @ts-expect-error since we're in a try block
     const contentPage = contentPageGroup.fields.contentPages.find(item => item?.fields?.title === contentPageTitle)
     return contentPage;

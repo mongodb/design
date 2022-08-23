@@ -1,4 +1,4 @@
-import getFromObjectByString from "./getFromObjectByString";
+import getFromObjectByString from './getFromObjectByString';
 
 const groupBy = (xs, key) => {
   return xs.reduce(function (rv, x) {
