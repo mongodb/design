@@ -2,10 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/css';
 import { spacing, breakpoints } from '@leafygreen-ui/tokens';
-import {
-  SideNav,
-  CollapsedSideNavItem,
-} from '@leafygreen-ui/side-nav';
+import { SideNav, CollapsedSideNavItem } from '@leafygreen-ui/side-nav';
 import { useViewportSize } from '@leafygreen-ui/hooks';
 import { MongoDBLogo, MongoDBLogoMark } from '@leafygreen-ui/logo';
 import { HOME_PAGE } from 'utils/routes';
@@ -48,7 +45,7 @@ function Navigation() {
       <a
         className={logoLinkStyles}
         href="/"
-        onClick={e => {
+        onClick={(e) => {
           e.preventDefault();
           push(HOME_PAGE);
         }}
