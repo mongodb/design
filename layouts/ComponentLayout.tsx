@@ -62,7 +62,7 @@ const reactIconStyle = css`
 `;
 
 function ComponentLayout({ componentFields, children }: { componentFields: ComponentFields, children: React.ReactNode }) {
-  const pageTitle = `${kebabCase(componentFields.name)} – LeafyGreen Design System | MongoDB`;
+  const pageTitle = `${componentFields.name} – LeafyGreen Design System | MongoDB`;
 
   const router = useRouter();
   const viewport = useViewportSize();
@@ -97,7 +97,7 @@ function ComponentLayout({ componentFields, children }: { componentFields: Compo
       <div className={margin4}>
         <div className={flexContainer}>
           <H2 as="h1" className={caps}>
-            {kebabCase(componentFields.name)}
+            {componentFields.name}
           </H2>
 
           {!isMobile && (

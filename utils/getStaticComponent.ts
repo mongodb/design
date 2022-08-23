@@ -17,7 +17,7 @@ export async function getStaticComponentPaths() {
 export async function getStaticComponentProps({ params }) {
   return {
     props: {
-      component: await getComponent(params.name),
+      component: await getComponent(params.componentName), // this is in kebabCase
     },
   };
 }

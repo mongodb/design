@@ -5,6 +5,7 @@ import {
   getStaticComponentPaths,
   getStaticComponentProps,
 } from 'utils/getStaticComponent';
+import kebabCase from 'lodash/kebabCase';
 
 // This might be useful later when moving over to generating live examples from Storybook files.
 // const getStoryFile = (component) => dynamic(() => import(`node_modules/${component.fields.packageName}/src/${component.fields.name}.story.tsx`), {
@@ -14,7 +15,7 @@ import {
 
 const getExampleFile = (component) =>
   dynamic(
-    () => import(`../deprecated/${component.fields.kebabCaseName}/example.tsx`),
+    () => import(`../deprecated/${kebabCase(component.fields.name)}/example.tsx`),
     {
       ssr: false,
       loading: () => <p>Loading...</p>,

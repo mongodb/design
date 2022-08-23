@@ -1,5 +1,6 @@
 import { ContentfulClientApi, EntryCollection } from 'contentful';
 import { ComponentFields, ContentPageSectionFields } from './types';
+import titlecase from 'utils/titlecase';
 
 const contentful = require('contentful');
 const isProd = process.env.NODE_ENV === 'production'
@@ -30,8 +31,10 @@ export async function getComponents(): Promise<EntryCollection<ComponentFields>[
     const client = createContentfulClient()
     const entries = await client.getEntries<ComponentFields>({
       content_type: 'component',
+      order: 'fields.name',
     });
-    return entries.items.reverse()
+    // remove the related components field for now to avoid circular references
+    return entries.items.map(item => { return { ...item, fields: { ...item.fields, relatedComponents: [] } } })
   } catch (error) {
     console.error('No Component pages found', error)
     // Return no component pages
@@ -39,10 +42,11 @@ export async function getComponents(): Promise<EntryCollection<ComponentFields>[
   }
 }
 
-export async function getComponent(componentKebabCaseName: string) {
+export async function getComponent(kebabCaseName: string) {
+  console.log(titlecase(kebabCaseName.replaceAll('-', ' ')))
   try {
     const components = await getComponents() ?? []
-    const component = components.find(item => item?.fields?.kebabCaseName === componentKebabCaseName)
+    const component = components.find(item => item?.fields?.name === titlecase(kebabCaseName.replaceAll('-', ' ')))
     return component;
   } catch (error) {
     console.error(error);

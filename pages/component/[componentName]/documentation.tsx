@@ -4,12 +4,13 @@ import { getDependencyDocumentation } from 'utils/_getComponentResources';
 import { ReactElement } from 'react';
 import { getComponent } from 'utils/getContentfulResources';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
+import kebabCase from 'lodash/kebabCase';
 
 const ComponentDocumentation = ({ component, changelog, readme }) => {
   return (
     <CodeDocs
       componentName={component.fields.name}
-      componentKebabCaseName={component.fields.kebabCaseName}
+      componentKebabCaseName={kebabCase(component.fields.name)}
       changelog={changelog}
       readme={readme}
     />
@@ -28,11 +29,11 @@ export const getStaticPaths = getStaticComponentPaths;
 
 export async function getStaticProps({ params }) {
   const { changelog, readme } = (
-    await getDependencyDocumentation(params.name)
+    await getDependencyDocumentation(params.componentName)
   ).props;
   return {
     props: {
-      component: await getComponent(params.name),
+      component: await getComponent(params.componentName),
       changelog,
       readme,
     },
