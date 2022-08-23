@@ -15,11 +15,11 @@ const newsContainer = css`
   padding-top: ${spacing[2] - 1}px;
 
   ${mq({
-  height: ['auto', '100%'],
-  marginTop: ['48px', 'unset'],
-  marginBottom: ['40px', 'unset'],
-  marginLeft: [`${spacing[4]}px`, 'unset'],
-})}
+    height: ['auto', '100%'],
+    marginTop: ['48px', 'unset'],
+    marginBottom: ['40px', 'unset'],
+    marginLeft: [`${spacing[4]}px`, 'unset'],
+  })}
 `;
 
 const subtitleStyle = css`
@@ -45,11 +45,11 @@ function Update({ date, story, route, updateURL }: UpdateProps) {
   const subtitleProps = route
     ? ({ onClick: () => push(route), as: 'p' } as const)
     : ({
-      href: updateURL,
-      as: 'a',
-      target: '_blank',
-      rel: 'noopener noreferrer',
-    } as const);
+        href: updateURL,
+        as: 'a',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      } as const);
 
   useEffect(() => {
     if (typeof navigator !== 'undefined') {

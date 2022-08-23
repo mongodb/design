@@ -22,7 +22,7 @@ function ContentPageLayout({
   children?: React.ReactNode;
 }) {
   const pageTitle = `${startCase(
-    contentPageTitle
+    contentPageTitle,
   )} – LeafyGreen Design System | MongoDB`;
 
   return (

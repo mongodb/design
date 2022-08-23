@@ -69,18 +69,20 @@ function NavigationContent({
 
     return (
       <>
-        {contentPageGroups.map((contentPageGroup) => (
+        {contentPageGroups.map(contentPageGroup => (
           <SideNavGroup
             key={contentPageGroup.id}
             header={contentPageGroup.fields.title}
             glyph={<Icon glyph={contentPageGroup.fields.iconName} />}
           >
-            {contentPageGroup.fields.contentPages.map((contentPage) => (
+            {contentPageGroup.fields.contentPages.map(contentPage => (
               <SideNavItem
                 key={contentPage.fields.title}
                 onClick={() =>
                   router.push(
-                    `/${kebabCase(contentPageGroup.fields.title)}/${kebabCase(contentPage.fields.title)}`
+                    `/${kebabCase(contentPageGroup.fields.title)}/${kebabCase(
+                      contentPage.fields.title,
+                    )}`,
                   )
                 }
                 active={contentPage.fields.title === activePage}

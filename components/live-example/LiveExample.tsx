@@ -30,17 +30,17 @@ const previewStyle = css`
   margin-top: ${spacing[4]}px;
 
   ${mq({
-  boxShadow: ['none', baseBoxShadow],
-  borderRadius: ['0px', '7px'],
-  marginLeft: ['-24px', 'unset'],
-  marginRight: ['-24px', 'unset'],
-  width: [
-    'inherit',
-    'inherit',
-    'inherit',
-    `${pageContainerWidth.dataGraphic}px`,
-  ],
-})}
+    boxShadow: ['none', baseBoxShadow],
+    borderRadius: ['0px', '7px'],
+    marginLeft: ['-24px', 'unset'],
+    marginRight: ['-24px', 'unset'],
+    width: [
+      'inherit',
+      'inherit',
+      'inherit',
+      `${pageContainerWidth.dataGraphic}px`,
+    ],
+  })}
 `;
 
 const componentContainer = css`
@@ -53,9 +53,9 @@ const componentContainer = css`
   min-height: 400px;
 
   ${mq({
-  padding: [`${spacing[4]}px`, `${spacing[6]}px`],
-  minHeight: ['200px', '400px'],
-})}
+    padding: [`${spacing[4]}px`, `${spacing[6]}px`],
+    minHeight: ['200px', '400px'],
+  })}
 `;
 
 const componentContainerDarkMode = css`
@@ -117,14 +117,14 @@ interface ComponentPropsInterface {
 
 export type KnobsConfigInterface<
   ComponentProps extends ComponentPropsInterface,
-  > = {
-    [K in keyof ComponentProps]: Extract<
-      PropsType<ComponentProps[K]>,
-      {
-        default: ComponentProps[K];
-      }
-    >;
-  };
+> = {
+  [K in keyof ComponentProps]: Extract<
+    PropsType<ComponentProps[K]>,
+    {
+      default: ComponentProps[K];
+    }
+  >;
+};
 
 interface LiveExampleInterface<ComponentProps extends ComponentPropsInterface> {
   knobsConfig: KnobsConfigInterface<ComponentProps>;
