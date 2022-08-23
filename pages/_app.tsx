@@ -9,8 +9,10 @@ import { Body, H1, H2, H3, InlineCode, Link } from '@leafygreen-ui/typography';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { AppContextProvider } from 'contexts/AppContext';
-import { getComponents, getContentPageGroups } from 'utils/getContentfulResources';
-
+import {
+  getComponents,
+  getContentPageGroups,
+} from 'utils/getContentfulResources';
 const headerStyle = css`
   margin-block: 0.5em;
   a,
@@ -49,38 +51,44 @@ const MDXComponentMap = {
 };
 
 export type NextPageWithLayout = NextPage & {
-  getLayout?: (page: ReactElement) => ReactNode
-}
+  getLayout?: (page: ReactElement) => ReactNode;
+};
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
   components: any;
   contentPageGroups: any;
-}
+};
 
-function MyApp({ Component, pageProps, components, contentPageGroups }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout ?? ((page) => page)
+function MyApp({
+  Component,
+  pageProps,
+  components,
+  contentPageGroups,
+}: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
-    <AppContextProvider components={components} contentPageGroups={contentPageGroups}>
+    <AppContextProvider
+      components={components}
+      contentPageGroups={contentPageGroups}
+    >
       <MDXProvider components={MDXComponentMap}>
         <Head>
           <title>Home - LeafyGreen Design System | MongoDB</title>
         </Head>
         <Global styles={globalStyles} />
-        <BaseLayout>
-          {getLayout(<Component {...pageProps} />)}
-        </BaseLayout>
+        <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
       </MDXProvider>
     </AppContextProvider>
   );
 }
 
-MyApp.getInitialProps = async (ctx) => {
+MyApp.getInitialProps = async () => {
   // todo: make these graphQL requests to retrieve only titles
   const components = await getComponents();
   const contentPageGroups = await getContentPageGroups();
-  return { components, contentPageGroups }
-}
+  return { components, contentPageGroups };
+};
 
 export default MyApp;

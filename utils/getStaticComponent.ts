@@ -1,5 +1,5 @@
-import kebabCase from "lodash/kebabCase";
-import { getComponent, getComponents } from "./getContentfulResources";
+import kebabCase from 'lodash/kebabCase';
+import { getComponent, getComponents } from './getContentfulResources';
 
 export async function getStaticComponentPaths() {
   const components = await getComponents();

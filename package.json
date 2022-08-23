@@ -8,7 +8,7 @@
     "build": "NEXT_TELEMETRY_DISABLED=1 next build",
     "start": "NEXT_TELEMETRY_DISABLED=1 next start",
     "lint": "next lint",
-    "fix": "eslint . --ext js,md,mdx --fix",
+    "fix": "eslint . --ext js,jsx,md,mdx,ts,tsx --fix",
     "check:ts": "tsc --project tsconfig.json"
   },
   "dependencies": {

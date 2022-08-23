@@ -1,3 +1,5 @@
+// TODO: Remove this
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import { css } from '@emotion/css';
 import { palette } from '@leafygreen-ui/palette';

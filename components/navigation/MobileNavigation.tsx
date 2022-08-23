@@ -1,3 +1,5 @@
+// TODO: Remove this
+/* eslint-disable @next/next/no-html-link-for-pages */
 import React, { useCallback, useState } from 'react';
 import { useRouter } from 'next/router';
 import { css, cx } from '@emotion/css';
@@ -90,7 +92,7 @@ function MobileNavigation({ children }: { children: React.ReactNode }) {
         setOpen(false);
       }
     },
-    [scrollContainerNode],
+    [scrollContainerNode]
   );
 
   return (
@@ -111,7 +113,7 @@ function MobileNavigation({ children }: { children: React.ReactNode }) {
           </IconButton>
           <a
             href="/"
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               push(HOME_PAGE);
             }}
@@ -145,7 +147,7 @@ function MobileNavigation({ children }: { children: React.ReactNode }) {
                 <div className={logoContainer}>
                   <a
                     href="/"
-                    onClick={e => {
+                    onClick={(e) => {
                       e.preventDefault();
                       push(HOME_PAGE);
                       setOpen(false);
