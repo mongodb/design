@@ -10,6 +10,7 @@ import MobileNavigationItem from './MobileNavigationItem';
 import { useAppContext } from 'contexts/AppContext';
 import { Entry } from 'contentful';
 import { ComponentFields } from 'utils/types';
+import getKebabCaseName from 'utils/getKebabCaseName';
 
 const foundations: Array<String> = [
   'accessibility',
@@ -44,7 +45,7 @@ function NavigationContent({ isTouchDevice = false }: { isTouchDevice?: boolean 
             initialCollapsed={false} // Always false until we add more sections to navigation
           >
             {components.map((component: Entry<ComponentFields>) => {
-              const componentKebabCaseName = component.fields.kebabCaseName;
+              const componentKebabCaseName = getKebabCaseName(component.fields.name);
               const componentName = component.fields.name;
               return (
                 <MobileNavigationItem
@@ -78,7 +79,7 @@ function NavigationContent({ isTouchDevice = false }: { isTouchDevice?: boolean 
         ))}
         <SideNavGroup header="Components" glyph={<Icon glyph="Apps" />}>
           {components.map((component: Entry<ComponentFields>) => {
-            const componentKebabCaseName = component.fields.kebabCaseName;
+            const componentKebabCaseName = getKebabCaseName(component.fields.name);;
             const componentName = component.fields.name;
             return (
               <SideNavItem

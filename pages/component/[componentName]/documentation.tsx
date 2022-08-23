@@ -3,12 +3,13 @@ import ComponentLayout from 'layouts/ComponentLayout';
 import { getDependencyDocumentation } from 'utils/_getComponentResources';
 import { ReactElement } from 'react';
 import { getComponent, getComponents } from 'utils/getContentfulResources'
+import getKebabCaseName from 'utils/getKebabCaseName';
 
 const ComponentDocumentation = ({ component, changelog, readme }) => {
   return (
     <CodeDocs
       componentName={component.fields.name}
-      componentKebabCaseName={component.fields.kebabCaseName}
+      componentKebabCaseName={getKebabCaseName(component.fields.name)}
       changelog={changelog}
       readme={readme}
     />
@@ -30,7 +31,7 @@ export async function getStaticPaths() {
   const paths = components.map((component) => ({
     params: {
       id: component.sys.id,
-      componentName: component.fields.kebabCaseName,
+      componentName: getKebabCaseName(component.fields.name)
     },
   }))
 

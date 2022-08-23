@@ -1,4 +1,5 @@
 import { ContentfulClientApi, EntryCollection } from 'contentful';
+import getKebabCaseName from './getKebabCaseName';
 import { ComponentFields, ContentPageSectionFields } from './types';
 
 const contentful = require('contentful');
@@ -35,7 +36,7 @@ export async function getComponents(): Promise<EntryCollection<ComponentFields>[
 export async function getComponent(componentKebabCaseName: string) {
   try {
     const components = await getComponents() ?? []
-    const component = components.find(item => item?.fields?.kebabCaseName === componentKebabCaseName)
+    const component = components.find(item => getKebabCaseName(item.fields.name) === componentKebabCaseName)
     return component;
   } catch (error) {
     console.error(error);

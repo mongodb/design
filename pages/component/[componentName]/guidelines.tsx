@@ -1,10 +1,16 @@
+import ComingSoon from 'components/ComingSoon';
 import ContentfulRichText from 'components/ContentfulRichText';
 import ComponentLayout from 'layouts/ComponentLayout';
 import { ReactElement } from 'react';
 import { getComponent, getComponents } from 'utils/getContentfulResources'
+import getKebabCaseName from 'utils/getKebabCaseName';
 
 const ComponentGuidelines = ({ component }) => {
-  return <ContentfulRichText document={component.fields?.designGuidelines} />
+  if (!component.fields?.designGuidelines) {
+    return <ComingSoon />
+  } else {
+    return <ContentfulRichText document={component.fields?.designGuidelines} />
+  }
 }
 
 ComponentGuidelines.getLayout = function getLayout(page: ReactElement) {
@@ -22,7 +28,7 @@ export async function getStaticPaths() {
   const paths = components.map((component) => ({
     params: {
       id: component.sys.id,
-      componentName: component.fields.kebabCaseName,
+      componentName: getKebabCaseName(component.fields.name),
     },
   }))
 

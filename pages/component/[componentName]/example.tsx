@@ -2,6 +2,7 @@ import ComponentLayout from 'layouts/ComponentLayout';
 import { ReactElement } from 'react';
 import { getComponent, getComponents } from 'utils/getContentfulResources'
 import dynamic from 'next/dynamic'
+import getKebabCaseName from 'utils/getKebabCaseName';
 
 // This might be useful later when moving over to generating live examples from Storybook files.
 // const getStoryFile = (component) => dynamic(() => import(`node_modules/${component.fields.packageName}/src/${component.fields.name}.story.tsx`), {
@@ -9,7 +10,7 @@ import dynamic from 'next/dynamic'
 //   loading: () => <p>Loading...</p>,
 // });
 
-const getExampleFile = (component) => dynamic(() => import(`../deprecated/${component.fields.kebabCaseName}/example.tsx`), {
+const getExampleFile = (component) => dynamic(() => import(`../deprecated/${getKebabCaseName(component.fields.name)}/example.tsx`), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
@@ -35,7 +36,7 @@ export async function getStaticPaths() {
   const paths = components.map((component) => ({
     params: {
       id: component.sys.id,
-      componentName: component.fields.kebabCaseName,
+      componentName: getKebabCaseName(component.fields.name)
     },
   }))
 
