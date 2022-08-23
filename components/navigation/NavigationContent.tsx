@@ -80,7 +80,7 @@ function NavigationContent({
                 key={contentPage.fields.title}
                 onClick={() =>
                   router.push(
-                    `/${contentPageGroup.fields.title.toLowerCase()}/${contentPage.fields.title.toLowerCase()}`
+                    `/${kebabCase(contentPageGroup.fields.title)}/${kebabCase(contentPage.fields.title)}`
                   )
                 }
                 active={contentPage.fields.title === activePage}

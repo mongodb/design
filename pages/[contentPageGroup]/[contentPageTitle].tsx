@@ -5,6 +5,7 @@ import { ReactElement } from 'react';
 import { getContentPage, getContentPageGroups } from 'utils/getContentfulResources'
 import titlecase from 'utils/titlecase';
 import { ContentPageFields } from 'utils/types';
+import kebabCase from 'lodash/kebabCase';
 
 const ContentPage = ({ contentPage }) => {
   return <ContentfulRichText document={contentPage.fields?.content} />
@@ -25,8 +26,8 @@ export async function getStaticPaths() {
     pageGroup.fields.contentPages.forEach((contentPage: Entry<ContentPageFields>) => {
       const newPath = {
         params: {
-          contentPageGroup: pageGroup.fields.title.toLowerCase(),
-          contentPageTitle: contentPage.fields.title.toLowerCase()
+          contentPageGroup: kebabCase(pageGroup.fields.title),
+          contentPageTitle: kebabCase(contentPage.fields.title),
         }
       }
       paths.push(newPath)
