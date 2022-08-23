@@ -28,11 +28,11 @@ export const getStaticPaths = getStaticComponentPaths;
 
 export async function getStaticProps({ params }) {
   const { changelog, readme } = (
-    await getDependencyDocumentation(params.componentName)
+    await getDependencyDocumentation(params.name)
   ).props;
   return {
     props: {
-      component: await getComponent(params.componentName),
+      component: await getComponent(params.name),
       changelog,
       readme,
     },
