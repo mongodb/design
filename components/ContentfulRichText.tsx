@@ -3,7 +3,6 @@ import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { Body, H1, H2, H3, Subtitle, Overline, Link } from '@leafygreen-ui/typography';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import Image from './Image';
-import prependUrls from 'utils/prependUrls';
 
 const renderAsset = (node) => {
   if (!node.data.target.fields) {
@@ -48,7 +47,10 @@ const ContentfulRichText = ({ document }) => (
         [BLOCKS.HEADING_5]: (node, children) => <Overline>{children}</Overline>,
         [BLOCKS.EMBEDDED_ASSET]: renderAsset,
         [BLOCKS.EMBEDDED_ENTRY]: renderEntry,
-        [INLINES.HYPERLINK]: (node, children) => <Link href={prependUrls(node.data.uri)} target="_blank">{children}</Link>,
+        [INLINES.HYPERLINK]: (node, children) => {
+          console.log(node.data.uri)
+          return <Link href={node.data.uri} target="_blank">{children}</Link>
+        },
         [INLINES.ASSET_HYPERLINK]: renderAsset,
       },
     })}
