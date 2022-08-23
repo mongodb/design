@@ -1,4 +1,4 @@
-import { EntryFields } from "contentful";
+import { EntryFields } from 'contentful';
 
 export interface ContentPageFields {
   title: EntryFields.Text;
