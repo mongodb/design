@@ -13,13 +13,16 @@ import kebabCase from 'lodash/kebabCase';
 //   loading: () => <p>Loading...</p>,
 // });
 
-const getExampleFile = (component) =>
+const getExampleFile = component =>
   dynamic(
-    () => import(`../../../deprecated/${kebabCase(component.fields.name)}/example.tsx`),
+    () =>
+      import(
+        `../../../deprecated/${kebabCase(component.fields.name)}/example.tsx`
+      ),
     {
       ssr: false,
       loading: () => <p>Loading...</p>,
-    }
+    },
   );
 
 const ComponentExample = ({ component }) => {

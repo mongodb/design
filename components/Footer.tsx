@@ -16,8 +16,8 @@ const footerContainer = css`
   padding-top: ${spacing[4]}px;
 
   ${mq({
-  marginTop: ['0px', `${spacing[7]}px`],
-})}
+    marginTop: ['0px', `${spacing[7]}px`],
+  })}
 `;
 
 const linksContainer = css`
@@ -28,9 +28,9 @@ const linksContainer = css`
   margin-top: 5px;
 
   ${mq({
-  marginLeft: [`${spacing[4]}px`, `${spacing[6]}px`],
-  marginRight: [`${spacing[4]}px`, `${spacing[6]}px`],
-})}
+    marginLeft: [`${spacing[4]}px`, `${spacing[6]}px`],
+    marginRight: [`${spacing[4]}px`, `${spacing[6]}px`],
+  })}
 `;
 
 const linkStyle = css`

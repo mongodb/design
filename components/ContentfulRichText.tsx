@@ -1,39 +1,55 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
-import { Body, H1, H2, H3, Subtitle, Overline, Link } from '@leafygreen-ui/typography';
+import {
+  Body,
+  H1,
+  H2,
+  H3,
+  Subtitle,
+  Overline,
+  Link,
+} from '@leafygreen-ui/typography';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import Image from './Image';
 
-const renderAsset = (node) => {
+const renderAsset = node => {
   if (!node.data.target.fields) {
-    return <>Invalid asset.</>
+    return <>Invalid asset.</>;
   }
 
   const { title, file } = node.data.target.fields;
-  const mimeType = file.contentType
-  const mimeGroup = mimeType.split('/')[0]
+  const mimeType = file.contentType;
+  const mimeGroup = mimeType.split('/')[0];
 
   switch (mimeGroup) {
     case 'image':
-      return <Image alt={title} src={file.url} width="100%" />
+      return <Image alt={title} src={file.url} width="100%" />;
     default:
-      return <h1>Unsupported embedded-asset-block mimeGroup: ${mimeGroup!}</h1>
+      return <h1>Unsupported embedded-asset-block mimeGroup: ${mimeGroup!}</h1>;
   }
-}
+};
 
-const renderEntry = (node) => {
+const renderEntry = node => {
   const embeddedEntryNodeType = node.data.target?.sys?.contentType?.sys.id;
   const embeddedEntryFields = node.data.target.fields;
 
   switch (embeddedEntryNodeType) {
     case 'expandableCardBlock': {
       const { title, description, content } = embeddedEntryFields;
-      return <ExpandableCard title={title} description={description}><ContentfulRichText document={content} /></ExpandableCard>
+      return (
+        <ExpandableCard title={title} description={description}>
+          <ContentfulRichText document={content} />
+        </ExpandableCard>
+      );
     }
     default:
-      return <h1>Unsupported embedded-entry-block nodeType: ${embeddedEntryNodeType!}</h1>
+      return (
+        <h1>
+          Unsupported embedded-entry-block nodeType: ${embeddedEntryNodeType!}
+        </h1>
+      );
   }
-}
+};
 
 const ContentfulRichText = ({ document }) => (
   <>
@@ -47,10 +63,7 @@ const ContentfulRichText = ({ document }) => (
         [BLOCKS.HEADING_5]: (node, children) => <Overline>{children}</Overline>,
         [BLOCKS.EMBEDDED_ASSET]: renderAsset,
         [BLOCKS.EMBEDDED_ENTRY]: renderEntry,
-        [INLINES.HYPERLINK]: (node, children) => {
-          console.log(node.data.uri)
-          return <Link href={node.data.uri} target="_blank">{children}</Link>
-        },
+        [INLINES.HYPERLINK]: (node, children) => <Link href={node.data.uri} target="_blank">{children}</Link>,
         [INLINES.ASSET_HYPERLINK]: renderAsset,
       },
     })}

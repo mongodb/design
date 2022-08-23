@@ -9,9 +9,11 @@ import {
 
 const ComponentGuidelines = ({ component }) => {
   const guidelines = component.fields?.designGuidelines;
-  return guidelines.content == 0 ?
-    <ComingSoon /> :
+  return guidelines.content == 0 ? (
+    <ComingSoon />
+  ) : (
     <ContentfulRichText document={guidelines} />
+  );
 };
 
 ComponentGuidelines.getLayout = function getLayout(page: ReactElement) {

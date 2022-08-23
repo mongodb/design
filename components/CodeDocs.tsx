@@ -134,7 +134,11 @@ function VersionCard({
 
 VersionCard.displayName = 'VersionCard';
 
-function MobileInstall({ componentKebabCaseName, version, changelog }: InstallProps) {
+function MobileInstall({
+  componentKebabCaseName,
+  version,
+  changelog,
+}: InstallProps) {
   return (
     <GridContainer>
       <GridItem sm={12}>
@@ -165,7 +169,11 @@ function MobileInstall({ componentKebabCaseName, version, changelog }: InstallPr
 
 MobileInstall.displayName = 'MobileInstall';
 
-function DesktopInstall({ componentKebabCaseName, changelog, version }: InstallProps) {
+function DesktopInstall({
+  componentKebabCaseName,
+  changelog,
+  version,
+}: InstallProps) {
   return (
     <>
       <GridContainer
@@ -209,7 +217,12 @@ function DesktopInstall({ componentKebabCaseName, changelog, version }: InstallP
 
 DesktopInstall.displayName = 'DesktopInstall';
 
-function CodeDocs({ componentName, componentKebabCaseName, readme, changelog }: BaseLayoutProps) {
+function CodeDocs({
+  componentName,
+  componentKebabCaseName,
+  readme,
+  changelog,
+}: BaseLayoutProps) {
   const viewport = useViewportSize();
   const isMobile = viewport?.width
     ? viewport?.width < breakpoints.Tablet

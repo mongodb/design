@@ -151,7 +151,7 @@ const secondRowContainer = css`
 
 function backgroundImageCSS(backgroundURL): string {
   return css`
-    background-image: url("${backgroundURL}");
+    background-image: url('${backgroundURL}');
     background-position: center;
     background-size: cover;
   `;
@@ -183,7 +183,7 @@ function ComponentPreview({
           {
             [sharedHoverInteraction]: !isTouchDevice,
           },
-          backgroundImageCSS(backgroundURL)
+          backgroundImageCSS(backgroundURL),
         )}
         onClick={() => push(route)}
       >
@@ -224,7 +224,7 @@ function MarketingPreview({
             {
               [sharedHoverInteraction]: !isTouchDevice,
             },
-            backgroundImageCSS(backgroundURL)
+            backgroundImageCSS(backgroundURL),
           )}
         >
           <div className={textWrapper}>{children}</div>
