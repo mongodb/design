@@ -1,3 +1,4 @@
+import ComingSoon from 'components/ComingSoon';
 import ContentfulRichText from 'components/ContentfulRichText';
 import ComponentLayout from 'layouts/ComponentLayout';
 import { ReactElement } from 'react';
@@ -7,7 +8,10 @@ import {
 } from 'utils/getStaticComponent';
 
 const ComponentGuidelines = ({ component }) => {
-  return <ContentfulRichText document={component.fields?.designGuidelines} />;
+  const guidelines = component.fields?.designGuidelines;
+  return guidelines.content == 0 ?
+    <ComingSoon /> :
+    <ContentfulRichText document={guidelines} />
 };
 
 ComponentGuidelines.getLayout = function getLayout(page: ReactElement) {
