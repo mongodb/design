@@ -7,7 +7,7 @@ const isProd = process.env.NODE_ENV === 'production'
 export function createContentfulClient(): ContentfulClientApi {
   const client = contentful.createClient({
     environment: 'master',
-    space: process.env.CONTENTFUL_SPACE_ID ?? 's9zggw79q9w3',
+    space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: isProd ? process.env.CONTENTFUL_DELIVERY_TOKEN : process.env.CONTENTFUL_PREVIEW_TOKEN,
     host: isProd ? 'cdn.contentful.com' : 'preview.contentful.com',
   });
