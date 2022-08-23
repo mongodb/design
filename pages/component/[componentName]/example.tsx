@@ -1,10 +1,10 @@
-import ComponentLayout from "layouts/ComponentLayout";
-import { ReactElement } from "react";
-import dynamic from "next/dynamic";
+import ComponentLayout from 'layouts/ComponentLayout';
+import { ReactElement } from 'react';
+import dynamic from 'next/dynamic';
 import {
   getStaticComponentPaths,
   getStaticComponentProps,
-} from "utils/getStaticComponent";
+} from 'utils/getStaticComponent';
 
 // This might be useful later when moving over to generating live examples from Storybook files.
 // const getStoryFile = (component) => dynamic(() => import(`node_modules/${component.fields.packageName}/src/${component.fields.name}.story.tsx`), {

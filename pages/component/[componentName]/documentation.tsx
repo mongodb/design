@@ -1,9 +1,9 @@
-import CodeDocs from "components/CodeDocs";
-import ComponentLayout from "layouts/ComponentLayout";
-import { getDependencyDocumentation } from "utils/_getComponentResources";
-import { ReactElement } from "react";
-import { getComponent } from "utils/getContentfulResources";
-import { getStaticComponentPaths } from "utils/getStaticComponent";
+import CodeDocs from 'components/CodeDocs';
+import ComponentLayout from 'layouts/ComponentLayout';
+import { getDependencyDocumentation } from 'utils/_getComponentResources';
+import { ReactElement } from 'react';
+import { getComponent } from 'utils/getContentfulResources';
+import { getStaticComponentPaths } from 'utils/getStaticComponent';
 
 const ComponentDocumentation = ({ component, changelog, readme }) => {
   return (

@@ -1,10 +1,10 @@
-import ContentfulRichText from "components/ContentfulRichText";
-import ComponentLayout from "layouts/ComponentLayout";
-import { ReactElement } from "react";
+import ContentfulRichText from 'components/ContentfulRichText';
+import ComponentLayout from 'layouts/ComponentLayout';
+import { ReactElement } from 'react';
 import {
   getStaticComponentPaths,
   getStaticComponentProps,
-} from "utils/getStaticComponent";
+} from 'utils/getStaticComponent';
 
 const ComponentGuidelines = ({ component }) => {
   return <ContentfulRichText document={component.fields?.designGuidelines} />;

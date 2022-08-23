@@ -1,6 +1,6 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
-import { Body, H1, H2, H3, Subtitle, Overline, Link } from "@leafygreen-ui/typography";
+import { Body, H1, H2, H3, Subtitle, Overline, Link } from '@leafygreen-ui/typography';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import Image from './Image';
 import prependUrls from 'utils/prependUrls';
@@ -9,6 +9,7 @@ const renderAsset = (node) => {
   const { title, file } = node.data.target.fields;
   const mimeType = file.contentType
   const mimeGroup = mimeType.split('/')[0]
+
   switch (mimeGroup) {
     case 'image':
       return <Image alt={title} src={file.url} width="100%" />
@@ -20,6 +21,7 @@ const renderAsset = (node) => {
 const renderEntry = (node) => {
   const embeddedEntryNodeType = node.data.target?.sys?.contentType?.sys.id;
   const embeddedEntryFields = node.data.target.fields;
+
   switch (embeddedEntryNodeType) {
     case 'expandableCardBlock': {
       const { title, description, content } = embeddedEntryFields;

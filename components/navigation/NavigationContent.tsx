@@ -1,20 +1,20 @@
-import React, { Key } from "react";
-import { useRouter } from "next/router";
-import { SideNavGroup, SideNavItem } from "@leafygreen-ui/side-nav";
-import Icon from "@leafygreen-ui/icon";
-import MobileNavigationGroup from "./MobileNavigationGroup";
-import MobileNavigationItem from "./MobileNavigationItem";
-import { useAppContext } from "contexts/AppContext";
-import { Entry } from "contentful";
-import kebabCase from "lodash/kebabCase";
-import { ComponentFields } from "utils/types";
+import React, { Key } from 'react';
+import { useRouter } from 'next/router';
+import { SideNavGroup, SideNavItem } from '@leafygreen-ui/side-nav';
+import Icon from '@leafygreen-ui/icon';
+import MobileNavigationGroup from './MobileNavigationGroup';
+import MobileNavigationItem from './MobileNavigationItem';
+import { useAppContext } from 'contexts/AppContext';
+import { Entry } from 'contentful';
+import kebabCase from 'lodash/kebabCase';
+import { ComponentFields } from 'utils/types';
 
 const foundations: Array<String> = [
-  "accessibility",
-  "forms",
-  "grid",
-  "icon-creation",
-  "refresh-guide",
+  'accessibility',
+  'forms',
+  'grid',
+  'icon-creation',
+  'refresh-guide',
 ];
 
 function NavigationContent({
@@ -23,7 +23,7 @@ function NavigationContent({
   isTouchDevice?: boolean;
 }) {
   const router = useRouter();
-  const activePage = router.asPath.split("/")[2];
+  const activePage = router.asPath.split('/')[2];
   const { components, contentPageGroups } = useAppContext();
 
   const renderGroup = () => {
@@ -39,7 +39,7 @@ function NavigationContent({
                 }
                 active={componentKebabCaseName === activePage}
               >
-                {componentKebabCaseName.split("-").join(" ")}
+                {componentKebabCaseName.split('-').join(' ')}
               </MobileNavigationItem>
             ))}
           </MobileNavigationGroup>
@@ -114,6 +114,6 @@ function NavigationContent({
   return renderGroup();
 }
 
-NavigationContent.displayName = "NavigationContent";
+NavigationContent.displayName = 'NavigationContent';
 
 export default NavigationContent;
