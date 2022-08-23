@@ -15,6 +15,7 @@ import GithubIcon from 'components/icons/GithubIcon';
 import { mq } from 'utils/mediaQuery';
 import { pageContainerWidth } from 'styles/constants';
 import { ComponentFields } from 'utils/types';
+import kebabCase from 'lodash/kebabCase';
 
 const layout = css`
   ${mq({
@@ -61,7 +62,7 @@ const reactIconStyle = css`
 `;
 
 function ComponentLayout({ componentFields, children }: { componentFields: ComponentFields, children: React.ReactNode }) {
-  const pageTitle = `${componentFields.name} – LeafyGreen Design System | MongoDB`;
+  const pageTitle = `${kebabCase(componentFields.name)} – LeafyGreen Design System | MongoDB`;
 
   const router = useRouter();
   const viewport = useViewportSize();
@@ -96,7 +97,7 @@ function ComponentLayout({ componentFields, children }: { componentFields: Compo
       <div className={margin4}>
         <div className={flexContainer}>
           <H2 as="h1" className={caps}>
-            {componentFields.name}
+            {kebabCase(componentFields.name)}
           </H2>
 
           {!isMobile && (
@@ -104,7 +105,7 @@ function ComponentLayout({ componentFields, children }: { componentFields: Compo
               <Button
                 leftGlyph={<GithubIcon />}
                 variant="primaryOutline"
-                href={`https://github.com/mongodb/leafygreen-ui/tree/main/packages/${componentFields.kebabCaseName}`}
+                href={`https://github.com/mongodb/leafygreen-ui/tree/main/packages/${kebabCase(componentFields.name)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ marginRight: '8px' }}
@@ -127,19 +128,17 @@ function ComponentLayout({ componentFields, children }: { componentFields: Compo
       <Tabs
         selected={selected}
         setSelected={setSelected}
-        aria-label={`Information on LeafyGreen UI ${componentFields.name
-          .split('-')
-          .join(' ')} component`}
+        aria-label={`Information on LeafyGreen UI ${componentFields.name} component`}
       >
         <Tab
           name="Live Example"
-          onClick={() => router.push(`/component/${componentFields.kebabCaseName}/example`)}
+          onClick={() => router.push(`/component/${kebabCase(componentFields.name)}/example`)}
         >
           {children}
         </Tab>
         <Tab
           name="Design Guidelines"
-          onClick={() => router.push(`/component/${componentFields.kebabCaseName}/guidelines`)}
+          onClick={() => router.push(`/component/${kebabCase(componentFields.name)}/guidelines`)}
         >
           <LeafyGreenProvider baseFontSize={16}>
             <div className={componentGuidelineStyles}>{children}</div>
@@ -153,7 +152,7 @@ function ComponentLayout({ componentFields, children }: { componentFields: Compo
             </div>
           }
           onClick={() =>
-            router.push(`/component/${componentFields.kebabCaseName}/documentation`)
+            router.push(`/component/${kebabCase(componentFields.name)}/documentation`)
           }
         >
           {children}
