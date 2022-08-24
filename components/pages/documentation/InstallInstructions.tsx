@@ -1,24 +1,22 @@
 import React, { useState } from 'react';
+import Copyable from '@leafygreen-ui/copyable';
+import { breakpoints, spacing } from '@leafygreen-ui/tokens';
+import { Body, Subtitle } from '@leafygreen-ui/typography';
+import { GridContainer, GridItem } from 'components/Grid';
 import { css, cx } from '@emotion/css';
-import { unified } from 'unified';
-import markdown from 'remark-parse';
-import remarkGfm from 'remark-gfm';
 import ActivityFeedIcon from '@leafygreen-ui/icon/dist/ActivityFeed';
 import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
-import Code from '@leafygreen-ui/code';
-import Copyable from '@leafygreen-ui/copyable';
 import Modal from '@leafygreen-ui/modal';
-import { Tabs, Tab } from '@leafygreen-ui/tabs';
-import { Subtitle, Body } from '@leafygreen-ui/typography';
 import { palette } from '@leafygreen-ui/palette';
-import { spacing, breakpoints } from '@leafygreen-ui/tokens';
 import { useViewportSize } from '@leafygreen-ui/hooks';
-import { BaseLayoutProps } from 'utils/types';
-import { pageContainerWidth } from 'styles/constants';
-import { GridContainer, GridItem } from 'components/Grid';
-import PropTable, { ReadmeMarkdown } from 'components/PropTable';
-import TypeDefinition from 'components/TypeDefinition';
+import { maxWidth, mt3 } from './documentationPageStyles';
+
+interface InstallProps {
+  componentKebabCaseName: string;
+  version?: string;
+  changelog: string;
+}
 
 const topAlignment = css`
   margin-top: ${spacing[4]}px;
@@ -30,10 +28,6 @@ const versionCardDesktopMargin = css`
   margin-left: 20px;
 `;
 
-const mt3 = css`
-  margin-top: ${spacing[3]}px;
-`;
-
 const mb1 = css`
   margin-bottom: ${spacing[1]}px;
 `;
@@ -43,6 +37,11 @@ const copyableStyles = css`
   max-width: 400px;
 `;
 
+const mobileInstallMargin = css`
+  margin-top: 50px;
+  margin-bottom: ${spacing[3]}px;
+`;
+
 const versionCard = css`
   min-height: 106px;
   padding: ${spacing[3]}px ${spacing[4]}px;
@@ -50,15 +49,6 @@ const versionCard = css`
 
 const subtitlePadding = css`
   padding-bottom: ${spacing[3]}px;
-`;
-
-const tabsPadding = css`
-  padding-top: ${spacing[4]}px;
-`;
-
-const mobileInstallMargin = css`
-  margin-top: 50px;
-  margin-bottom: ${spacing[3]}px;
 `;
 
 const changelogStyles = css`
@@ -76,22 +66,11 @@ const changelogStyles = css`
   }
 `;
 
-const maxWidth = css`
-  max-width: ${pageContainerWidth.default}px;
-`;
-
 interface VersionCardProps {
   version?: string;
   changelog: string;
   isMobile?: boolean;
 }
-
-interface InstallProps {
-  componentKebabCaseName: string;
-  version?: string;
-  changelog: string;
-}
-
 function VersionCard({
   version,
   changelog,
@@ -217,74 +196,24 @@ function DesktopInstall({
 
 DesktopInstall.displayName = 'DesktopInstall';
 
-function CodeDocs({
-  componentName,
-  componentKebabCaseName,
-  readme,
-  changelog,
-}: BaseLayoutProps) {
+export const InstallInstructions = ({ componentKebabCaseName, changelog }) => {
+  const version = changelog?.split('h2')[1]?.replace(/[>/<]+/g, '');
   const viewport = useViewportSize();
   const isMobile = viewport?.width
     ? viewport?.width < breakpoints.Tablet
     : false;
 
-  const version = changelog?.split('h2')[1]?.replace(/[>/<]+/g, '');
-  const example = readme?.split('js')[1]?.split('```')[0]?.trimStart();
-  const outputHTML = readme?.split('```html')[1]?.split('```')[0]?.trimStart();
-  const markdownAst = unified()
-    .use(markdown)
-    .use(remarkGfm)
-    .parse(readme) as unknown as ReadmeMarkdown;
-
-  return (
-    <>
-      {isMobile ? (
-        <MobileInstall
-          componentKebabCaseName={componentKebabCaseName}
-          version={version}
-          changelog={changelog}
-        />
-      ) : (
-        <DesktopInstall
-          componentKebabCaseName={componentKebabCaseName}
-          version={version}
-          changelog={changelog}
-        />
-      )}
-      <GridContainer
-        align="flex-start"
-        justify="flex-start"
-        className={maxWidth}
-      >
-        <GridItem sm={12} md={12} xl={12}>
-          <Tabs
-            className={tabsPadding}
-            aria-label={`View source code for ${componentName} component`}
-          >
-            {example && (
-              <Tab default name="Example" className={mt3}>
-                <Code language="js">{example}</Code>
-              </Tab>
-            )}
-
-            {outputHTML && (
-              <Tab name="Output HTML" className={mt3} default={!example}>
-                <Code language="xml">{outputHTML}</Code>
-              </Tab>
-            )}
-          </Tabs>
-        </GridItem>
-      </GridContainer>
-      <GridContainer align="flex-start" justify="flex-start">
-        <GridItem sm={12} md={12} xl={12}>
-          <PropTable markdownAst={markdownAst} component={componentName} />
-          <TypeDefinition markdownAst={markdownAst} readme={readme} />
-        </GridItem>
-      </GridContainer>
-    </>
+  return isMobile ? (
+    <MobileInstall
+      componentKebabCaseName={componentKebabCaseName}
+      version={version}
+      changelog={changelog}
+    />
+  ) : (
+    <DesktopInstall
+      componentKebabCaseName={componentKebabCaseName}
+      version={version}
+      changelog={changelog}
+    />
   );
-}
-
-CodeDocs.displayName = 'CodeDocs';
-
-export default CodeDocs;
+};

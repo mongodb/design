@@ -1,4 +1,4 @@
-import CodeDocs from 'components/CodeDocs';
+import CodeDocs from 'components/pages/documentation/CodeDocs';
 import ComponentLayout from 'layouts/ComponentLayout';
 import { getDependencyDocumentation } from 'utils/_getComponentResources';
 import { ReactElement } from 'react';
