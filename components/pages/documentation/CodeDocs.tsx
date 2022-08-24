@@ -17,8 +17,8 @@ import { useViewportSize } from '@leafygreen-ui/hooks';
 import { BaseLayoutProps } from 'utils/types';
 import { pageContainerWidth } from 'styles/constants';
 import { GridContainer, GridItem } from 'components/Grid';
-import PropTable, { ReadmeMarkdown } from 'components/PropTable';
-import TypeDefinition from 'components/TypeDefinition';
+import PropTable, { ReadmeMarkdown } from './PropTable';
+import TypeDefinition from './TypeDefinition';
 
 const topAlignment = css`
   margin-top: ${spacing[4]}px;

@@ -1,5 +1,6 @@
 import { createContext, useContext } from 'react';
 
+// TODO: TS type
 const AppContext = createContext<any>({});
 
 export function AppContextProvider({
