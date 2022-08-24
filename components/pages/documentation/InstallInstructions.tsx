@@ -9,8 +9,8 @@ import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
 import Modal from '@leafygreen-ui/modal';
 import { palette } from '@leafygreen-ui/palette';
-import { pageContainerWidth } from 'styles/constants';
 import { useViewportSize } from '@leafygreen-ui/hooks';
+import { maxWidth, mt3 } from './documentationPageStyles';
 
 interface InstallProps {
   componentKebabCaseName: string;
@@ -28,10 +28,6 @@ const versionCardDesktopMargin = css`
   margin-left: 20px;
 `;
 
-const mt3 = css`
-  margin-top: ${spacing[3]}px;
-`;
-
 const mb1 = css`
   margin-bottom: ${spacing[1]}px;
 `;
@@ -44,10 +40,6 @@ const copyableStyles = css`
 const mobileInstallMargin = css`
   margin-top: 50px;
   margin-bottom: ${spacing[3]}px;
-`;
-
-const maxWidth = css`
-  max-width: ${pageContainerWidth.default}px;
 `;
 
 const versionCard = css`
