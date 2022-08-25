@@ -1,4 +1,4 @@
-import ContentfulRichText from 'components/ContentfulRichText/ContentfulRichText';
+import ContentfulRichText from 'components/ContentfulRichText';
 import { Entry } from 'contentful';
 import ContentPageLayout from 'layouts/ContentPageLayout';
 import { ReactElement } from 'react';

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { palette } from '@leafygreen-ui/palette';
 import kebabCase from 'lodash/kebabCase';
-import { PropsWithChildren } from "react";
+import { PropsWithChildren } from 'react';
 import Icon from '@leafygreen-ui/icon';
 import Link from 'next/link';
 

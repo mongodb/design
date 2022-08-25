@@ -1,4 +1,5 @@
 import ExpandableCard from '@leafygreen-ui/expandable-card';
+import ContentfulRichText from '.';
 
 const renderEntry = node => {
   const embeddedEntryNodeType = node.data.target?.sys?.contentType?.sys.id;

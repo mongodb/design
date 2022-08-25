@@ -3,6 +3,8 @@ import path from 'path';
 import util from 'util';
 import markdownToHtml from 'utils/markdownToHtml';
 import type { BaseLayoutProps } from 'utils/types';
+import { ComponentDoc } from 'react-docgen-typescript';
+import { startCase, isUndefined } from 'lodash';
 
 // eslint-disable-next-line import/no-anonymous-default-export, react/display-name
 export default function () {
@@ -15,13 +17,14 @@ export const getDependencyDocumentation = async (
   componentKebabCaseName: BaseLayoutProps['componentKebabCaseName'],
 ) => {
   if (typeof componentKebabCaseName !== 'string') {
-    return { props: { changelog: null, readme: null } };
+    return { props: { changelog: null, readme: null, tsDoc: null } };
   }
 
   const props: Partial<BaseLayoutProps> = { componentKebabCaseName };
 
   let changelogMarkdown: '' | Buffer = '';
   let readmeMarkdown = '';
+  let tsDoc: Array<ComponentDoc> | null = null;
 
   try {
     changelogMarkdown = await getFileContent(
@@ -48,9 +51,33 @@ export const getDependencyDocumentation = async (
     console.warn(error);
   }
 
-  props.changelog = await markdownToHtml(changelogMarkdown);
+  try {
+    const _tsDoc: Array<ComponentDoc> = JSON.parse(
+      await getFileContent(
+        path.join(
+          './node_modules',
+          `@leafygreen-ui/${componentKebabCaseName}`,
+          '/tsdoc.json',
+        ),
+        'utf-8',
+      ),
+    );
 
+    tsDoc = _tsDoc
+      // Only show docs for functions that are explicitly related to the component.
+      // TODO: this should be removed in favor of consistent use of `@internal`
+      .filter(doc =>
+        doc.displayName.startsWith(startCase(componentKebabCaseName)),
+      )
+      // and are not tagged as internal
+      .filter(doc => isUndefined(doc.tags?.internal));
+  } catch (error) {
+    console.warn(error);
+  }
+
+  props.changelog = await markdownToHtml(changelogMarkdown);
   props.readme = readmeMarkdown;
+  props.tsDoc = tsDoc;
 
   return {
     props,
