@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Copyable from '@leafygreen-ui/copyable';
 import { breakpoints, spacing } from '@leafygreen-ui/tokens';
-import { Body, Subtitle } from '@leafygreen-ui/typography';
+import { Subtitle } from '@leafygreen-ui/typography';
 import ActivityFeedIcon from '@leafygreen-ui/icon/dist/ActivityFeed';
 import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
@@ -13,14 +13,6 @@ import {
   SegmentedControl,
   SegmentedControlOption,
 } from '@leafygreen-ui/segmented-control';
-import { GridContainer, GridItem } from 'components/Grid';
-import { maxWidth, mt3 } from './documentationPageStyles';
-
-interface InstallProps {
-  componentKebabCaseName: string;
-  version?: string;
-  changelog: string;
-}
 
 const topAlignment = css`
   margin-top: ${spacing[4]}px;
@@ -28,25 +20,7 @@ const topAlignment = css`
   margin-bottom: ${spacing[3]}px;
 `;
 
-const versionCardDesktopMargin = css`
-  margin-left: 20px;
-`;
-
-const mb1 = css`
-  margin-bottom: ${spacing[1]}px;
-`;
-
-const copyableStyles = css`
-  width: 100%;
-  max-width: 400px;
-`;
-
-const mobileInstallMargin = css`
-  margin-top: 50px;
-  margin-bottom: ${spacing[3]}px;
-`;
-
-const versionCard = css`
+const cardStyle = css`
   min-height: 106px;
   padding: ${spacing[3]}px ${spacing[4]}px;
 `;
@@ -83,7 +57,7 @@ function VersionCard({
   const [openModal, setOpenModal] = useState(false);
 
   return (
-    <Card className={cx(topAlignment, versionCard)}>
+    <Card className={cx(topAlignment, cardStyle)}>
       <Subtitle as="h2" className={subtitlePadding}>
         Version {version}
       </Subtitle>
@@ -132,7 +106,7 @@ export const InstallInstructions = ({ componentKebabCaseName, changelog }) => {
         flex-direction: ${isMobile ? 'column' : 'row'};
       `}
     >
-      <Card className={cx(topAlignment, versionCard)}>
+      <Card className={cx(topAlignment, cardStyle)}>
         <Subtitle as="h2" className={subtitlePadding}>
           Installation
         </Subtitle>
