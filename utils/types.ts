@@ -1,3 +1,4 @@
+import { ComponentDoc } from 'react-docgen-typescript';
 import { EntryFields } from 'contentful';
 
 export interface ContentPageFields {
@@ -24,4 +25,5 @@ export interface BaseLayoutProps {
   componentKebabCaseName: string;
   changelog: string;
   readme: string;
+  tsDoc?: Array<ComponentDoc>
 }
