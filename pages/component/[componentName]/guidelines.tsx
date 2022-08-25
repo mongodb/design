@@ -1,5 +1,5 @@
 import ComingSoon from 'components/ComingSoon';
-import ContentfulRichText from 'components/ContentfulRichText';
+import ContentfulRichText from 'components/ContentfulRichText/ContentfulRichText';
 import ComponentLayout from 'layouts/ComponentLayout';
 import { ReactElement } from 'react';
 import {
