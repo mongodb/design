@@ -63,7 +63,11 @@ const ContentfulRichText = ({ document }) => (
         [BLOCKS.HEADING_5]: (node, children) => <Overline>{children}</Overline>,
         [BLOCKS.EMBEDDED_ASSET]: renderAsset,
         [BLOCKS.EMBEDDED_ENTRY]: renderEntry,
-        [INLINES.HYPERLINK]: (node, children) => <Link href={node.data.uri} target="_blank">{children}</Link>,
+        [INLINES.HYPERLINK]: (node, children) => (
+          <Link href={node.data.uri} target="_blank">
+            {children}
+          </Link>
+        ),
         [INLINES.ASSET_HYPERLINK]: renderAsset,
       },
     })}
