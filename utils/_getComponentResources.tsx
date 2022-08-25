@@ -23,7 +23,8 @@ export const getDependencyDocumentation = async (
   const props: Partial<BaseLayoutProps> = { componentKebabCaseName };
 
   let changelogMarkdown: '' | Buffer = '';
-  let readmeMarkdown = '';
+  let readmeMarkdown;
+  let tsDoc: Array<ComponentDoc> | null = null;
 
   try {
     changelogMarkdown = await getFileContent(
@@ -50,8 +51,6 @@ export const getDependencyDocumentation = async (
     console.warn(error);
   }
 
-  let tsDoc: Array<ComponentDoc> | null;
-
   try {
     const { default: _tsDoc } = (await import(
       `../../../node_modules/@leafygreen-ui/${componentKebabCaseName}/tsdoc.json`
@@ -68,13 +67,11 @@ export const getDependencyDocumentation = async (
       // and are not tagged as internal
       .filter(doc => isUndefined(doc.tags?.internal));
   } catch (error) {
-    tsDoc = null;
+    console.warn(error);
   }
 
   props.changelog = await markdownToHtml(changelogMarkdown);
-
   props.readme = readmeMarkdown;
-
   props.tsDoc = tsDoc;
 
   return {
