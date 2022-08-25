@@ -35,18 +35,12 @@ export default class AppDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta
-            name="description"
-            content="MongoDB's open-source, accessible design system for designing and building web applications with React."
-          />
-
           <meta charSet="utf-8" />
           <meta
             name="viewport"
             content="initial-scale=1.0, width=device-width"
           />
           <meta name="generator" content="LeafyGreen UI" />
-
           <meta
             property="og:title"
             content="LeafyGreen - MongoDB Design System"
@@ -55,12 +49,16 @@ export default class AppDocument extends Document {
             property="og:site_name"
             content="LeafyGreen - MongoDB Design System"
           />
-          <meta property="og:url" content="https://mongodb.design" />
+          <meta
+            name="description"
+            content="MongoDB's open-source, accessible design system for designing and building web applications with React."
+          />
           <meta
             property="og:description"
             content="MongoDB's open-source, accessible design system for designing and building web applications with React."
           />
-
+          <meta property="og:url" content="https://mongodb.design" />
+          <meta name="keywords" content="mongodb, user interface, component library, react, design, ui, ux" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,600;1,400&display=swap"

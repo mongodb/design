@@ -16,13 +16,14 @@ import { mq } from 'utils/mediaQuery';
 import { pageContainerWidth } from 'styles/constants';
 import { ComponentFields } from 'utils/types';
 import kebabCase from 'lodash/kebabCase';
+import getFullPageTitle from 'utils/getFullPageTitle';
 
 const layout = css`
   ${mq({
-    // 51px is a magic number for baseline alignment with the first SideNavGroup header
-    marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
-    width: ['100%', '100%', '100%', `${pageContainerWidth.dataGraphic}px`],
-  })}
+  // 51px is a magic number for baseline alignment with the first SideNavGroup header
+  marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
+  width: ['100%', '100%', '100%', `${pageContainerWidth.dataGraphic}px`],
+})}
 `;
 
 const margin4 = css`
@@ -68,7 +69,7 @@ function ComponentLayout({
   componentFields: ComponentFields;
   children: React.ReactNode;
 }) {
-  const pageTitle = `${componentFields.name} – LeafyGreen Design System | MongoDB`;
+  const pageTitle = getFullPageTitle(componentFields.name);
 
   const router = useRouter();
   const viewport = useViewportSize();
@@ -90,12 +91,16 @@ function ComponentLayout({
         <title>{pageTitle}</title>
 
         <meta property="og:title" content={pageTitle} />
+
+        {/* If the description field doesn't exist, it will default to a description of the site, defined in _document. */}
         {componentFields.description && (
           <meta
             property="og:description"
             content={componentFields.description}
           />
         )}
+        <meta name="keywords" content={componentFields.name} />
+
       </Head>
 
       <div className={margin4}>

@@ -13,6 +13,7 @@ import {
   getComponents,
   getContentPageGroups,
 } from 'utils/getContentfulResources';
+import getFullPageTitle from 'utils/getFullPageTitle';
 const headerStyle = css`
   margin-block: 0.5em;
   a,
@@ -75,7 +76,11 @@ function MyApp({
     >
       <MDXProvider components={MDXComponentMap}>
         <Head>
-          <title>Home - LeafyGreen Design System | MongoDB</title>
+          <title>{getFullPageTitle('Home')}</title>
+          <meta
+            property="og:title"
+            content={getFullPageTitle('Home')}
+          />
         </Head>
         <Global styles={globalStyles} />
         <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
