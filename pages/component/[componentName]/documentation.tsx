@@ -39,7 +39,7 @@ export async function getStaticProps({ params }) {
       component: await getComponent(params.componentName),
       changelog,
       readme,
-      tsDoc,
+      tsDoc: JSON.stringify(tsDoc),
     },
   };
 }

@@ -52,17 +52,22 @@ export const getDependencyDocumentation = async (
   }
 
   try {
-    const { default: _tsDoc } = (await import(
-      `../../../node_modules/@leafygreen-ui/${componentKebabCaseName}/tsdoc.json`
-    )) as { default: Array<ComponentDoc> };
+    const _tsDoc: Array<ComponentDoc> = JSON.parse(
+      await getFileContent(
+        path.join(
+          './node_modules',
+          `@leafygreen-ui/${componentKebabCaseName}`,
+          '/tsdoc.json',
+        ),
+        'utf-8',
+      ),
+    );
 
     tsDoc = _tsDoc
       // Only show docs for functions that are explicitly related to the component.
       // TODO: this should be removed in favor of consistent use of `@internal`
       .filter(doc =>
-        doc.displayName
-          .toLowerCase()
-          .startsWith(startCase(componentKebabCaseName)),
+        doc.displayName.startsWith(startCase(componentKebabCaseName)),
       )
       // and are not tagged as internal
       .filter(doc => isUndefined(doc.tags?.internal));
