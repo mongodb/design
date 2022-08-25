@@ -6,7 +6,6 @@ import { ReactElement } from 'react';
 import { getComponent } from 'utils/getContentfulResources';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import kebabCase from 'lodash/kebabCase';
-import uniqBy from 'lodash/uniqBy';
 import isUndefined from 'lodash/isUndefined';
 
 const ComponentDocumentation = ({ component, changelog, readme, tsDoc }) => {
@@ -45,17 +44,14 @@ export async function getStaticProps({ params }) {
       )}/tsdoc.json`
     )) as { default: Array<ComponentDoc> };
 
-    tsDoc = uniqBy(
-      _tsDoc
-        // Only show docs for functions that are explicitly related to the component.
-        // TODO: this should be removed in favor of consistent use of `@internal`
-        .filter(doc =>
-          doc.displayName.toLowerCase().startsWith(params.componentName),
-        )
-        // and are not tagged as internal
-        .filter(doc => isUndefined(doc.tags?.internal)),
-      'displayName',
-    );
+    tsDoc = _tsDoc
+      // Only show docs for functions that are explicitly related to the component.
+      // TODO: this should be removed in favor of consistent use of `@internal`
+      .filter(doc =>
+        doc.displayName.toLowerCase().startsWith(params.componentName),
+      )
+      // and are not tagged as internal
+      .filter(doc => isUndefined(doc.tags?.internal));
   } catch (error) {
     tsDoc = null;
   }
