@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import Copyable from '@leafygreen-ui/copyable';
 import { breakpoints, spacing } from '@leafygreen-ui/tokens';
 import { Body, Subtitle } from '@leafygreen-ui/typography';
-import { GridContainer, GridItem } from 'components/Grid';
-import { css, cx } from '@emotion/css';
 import ActivityFeedIcon from '@leafygreen-ui/icon/dist/ActivityFeed';
 import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
 import Modal from '@leafygreen-ui/modal';
 import { palette } from '@leafygreen-ui/palette';
 import { useViewportSize } from '@leafygreen-ui/hooks';
+import { css, cx } from '@leafygreen-ui/emotion';
+import {
+  SegmentedControl,
+  SegmentedControlOption,
+} from '@leafygreen-ui/segmented-control';
+import { GridContainer, GridItem } from 'components/Grid';
 import { maxWidth, mt3 } from './documentationPageStyles';
 
 interface InstallProps {
@@ -111,8 +115,6 @@ function VersionCard({
   );
 }
 
-VersionCard.displayName = 'VersionCard';
-
 function MobileInstall({
   componentKebabCaseName,
   version,
@@ -145,8 +147,6 @@ function MobileInstall({
     </GridContainer>
   );
 }
-
-MobileInstall.displayName = 'MobileInstall';
 
 function DesktopInstall({
   componentKebabCaseName,
@@ -194,8 +194,6 @@ function DesktopInstall({
   );
 }
 
-DesktopInstall.displayName = 'DesktopInstall';
-
 export const InstallInstructions = ({ componentKebabCaseName, changelog }) => {
   const version = changelog?.split('h2')[1]?.replace(/[>/<]+/g, '');
   const viewport = useViewportSize();
@@ -203,17 +201,44 @@ export const InstallInstructions = ({ componentKebabCaseName, changelog }) => {
     ? viewport?.width < breakpoints.Tablet
     : false;
 
-  return isMobile ? (
-    <MobileInstall
-      componentKebabCaseName={componentKebabCaseName}
-      version={version}
-      changelog={changelog}
-    />
-  ) : (
-    <DesktopInstall
-      componentKebabCaseName={componentKebabCaseName}
-      version={version}
-      changelog={changelog}
-    />
+  const [packageMgr, setPackageMgr] = useState('npm');
+
+  return (
+    <div
+      className={css`
+        display: flex;
+        gap: ${spacing[3]}px;
+        flex-direction: ${isMobile ? 'column' : 'row'};
+      `}
+    >
+      <Card className={cx(topAlignment, versionCard)}>
+        <Subtitle as="h2" className={subtitlePadding}>
+          Installation
+        </Subtitle>
+        <div
+          className={css`
+            display: flex;
+            gap: ${spacing[2]}px;
+          `}
+        >
+          <SegmentedControl value={packageMgr} onChange={setPackageMgr}>
+            <SegmentedControlOption value="npm">npm</SegmentedControlOption>
+            <SegmentedControlOption value="yarn">yarn</SegmentedControlOption>
+          </SegmentedControl>
+
+          <Copyable
+            className={css`
+              margin: unset;
+            `}
+          >
+            {packageMgr === 'yarn'
+              ? `yarn add @leafygreen-ui/${componentKebabCaseName}`
+              : `npm i @leafygreen-ui/${componentKebabCaseName}`}
+          </Copyable>
+        </div>
+      </Card>
+
+      <VersionCard version={version} changelog={changelog} />
+    </div>
   );
 };
