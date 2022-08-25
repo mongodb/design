@@ -23,7 +23,7 @@ export const getDependencyDocumentation = async (
   const props: Partial<BaseLayoutProps> = { componentKebabCaseName };
 
   let changelogMarkdown: '' | Buffer = '';
-  let readmeMarkdown;
+  let readmeMarkdown = '';
   let tsDoc: Array<ComponentDoc> | null = null;
 
   try {
