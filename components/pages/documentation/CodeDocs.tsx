@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseLayoutProps } from 'utils/types';
 import { InstallInstructions } from './InstallInstructions';
 import { CodeExample } from './CodeExample';
-import { MarkdownPropTable } from './MarkdownPropTable/MarkdownPropTable';
+// import { MarkdownPropTable } from './MarkdownPropTable/MarkdownPropTable';
 import { TSDocPropTable } from './TSDocPropTable';
 import { Subtitle } from '@leafygreen-ui/typography';
 
