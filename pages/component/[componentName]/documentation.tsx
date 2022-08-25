@@ -47,12 +47,11 @@ export async function getStaticProps({ params }) {
 
     tsDoc = uniqBy(
       _tsDoc
-        // Only show docs for functions that are explicitly related to the component
+        // Only show docs for functions that are explicitly related to the component.
+        // TODO: this should be removed in favor of consistent use of `@internal`
         .filter(doc =>
           doc.displayName.toLowerCase().startsWith(params.componentName),
         )
-        // And that have prop definitions
-        .filter(doc => Object.keys(doc.props).length > 0)
         // and are not tagged as internal
         .filter(doc => isUndefined(doc.tags?.internal)),
       'displayName',
