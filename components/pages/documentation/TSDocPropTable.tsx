@@ -1,9 +1,10 @@
 import React from 'react';
 import { ComponentDoc, PropItemType } from 'react-docgen-typescript';
 import { Cell, Row, Table, TableHeader } from '@leafygreen-ui/table';
-import { InlineCode, Subtitle } from '@leafygreen-ui/typography';
+import { Description, InlineCode, Subtitle } from '@leafygreen-ui/typography';
 import { css } from '@leafygreen-ui/emotion';
 import Card from '@leafygreen-ui/card';
+import InlineDefinition from '@leafygreen-ui/inline-definition';
 import isNull from 'lodash/isNull';
 
 interface PropTableProps {
@@ -13,14 +14,15 @@ interface PropTableProps {
 export const TSDocPropTable = ({ tsDoc }: PropTableProps) => {
   return (
     <>
-      <Subtitle
-        as="h2"
+      <div
         className={css`
           margin-block: 2em 1em;
+          padding-inline: 1em;
         `}
       >
-        {tsDoc?.displayName} props
-      </Subtitle>
+        <Subtitle as="h2">{tsDoc?.displayName} props</Subtitle>
+        <Description>{tsDoc?.description}</Description>
+      </div>
       <Card>
         <Table
           data={Object.values(tsDoc!.props)}
@@ -34,7 +36,9 @@ export const TSDocPropTable = ({ tsDoc }: PropTableProps) => {
           {({ datum }) => (
             <Row key={datum.name}>
               <Cell>
-                <strong>{datum.name}</strong>
+                <InlineDefinition definition={datum.description}>
+                  <strong>{datum.name}</strong>
+                </InlineDefinition>
               </Cell>
               <Cell>
                 <InlineCode>{getTypeString(datum.type)}</InlineCode>
@@ -72,12 +76,12 @@ function getTypeString(propType: PropItemType): string | undefined {
 }
 
 function getDefaultValueString(defaultValue: any): string {
-  if (defaultValue?.value && !isNull(defaultValue?.value)) {
-    return defaultValue.value.toString();
-  }
-
   if (isNull(defaultValue)) {
     return '—';
+  }
+
+  if (!isNull(defaultValue?.value)) {
+    return defaultValue.value.toString();
   }
 
   return JSON.stringify(defaultValue);

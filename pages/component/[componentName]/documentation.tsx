@@ -7,6 +7,7 @@ import { getComponent } from 'utils/getContentfulResources';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import kebabCase from 'lodash/kebabCase';
 import uniqBy from 'lodash/uniqBy';
+import isUndefined from 'lodash/isUndefined';
 
 const ComponentDocumentation = ({ component, changelog, readme, tsDoc }) => {
   return (
@@ -35,18 +36,30 @@ export async function getStaticProps({ params }) {
     await getDependencyDocumentation(params.componentName)
   ).props;
 
-  let { default: tsDoc } = (await import(
-    `../../../node_modules/@leafygreen-ui/${kebabCase(
-      params.componentName,
-    )}/tsdoc.json`
-  )) as { default: Array<ComponentDoc> };
+  let tsDoc: Array<ComponentDoc> | null;
 
-  tsDoc = uniqBy(
-    tsDoc.filter(doc => {
-      return Object.keys(doc.props).length > 0 && !doc.tags?.internal;
-    }),
-    'displayName',
-  );
+  try {
+    const { default: _tsDoc } = (await import(
+      `../../../node_modules/@leafygreen-ui/${kebabCase(
+        params.componentName,
+      )}/tsdoc.json`
+    )) as { default: Array<ComponentDoc> };
+
+    tsDoc = uniqBy(
+      _tsDoc
+        // Only show docs for functions that are explicitly related to the component
+        .filter(doc =>
+          doc.displayName.toLowerCase().startsWith(params.componentName),
+        )
+        // And that have prop definitions
+        .filter(doc => Object.keys(doc.props).length > 0)
+        // and are not tagged as internal
+        .filter(doc => isUndefined(doc.tags?.internal)),
+      'displayName',
+    );
+  } catch (error) {
+    tsDoc = null;
+  }
 
   return {
     props: {
