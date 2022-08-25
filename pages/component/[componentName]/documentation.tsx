@@ -6,7 +6,6 @@ import { ReactElement } from 'react';
 import { getComponent } from 'utils/getContentfulResources';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import kebabCase from 'lodash/kebabCase';
-import isUndefined from 'lodash/isUndefined';
 
 const ComponentDocumentation = ({ component, changelog, readme, tsDoc }) => {
   return (
@@ -31,37 +30,16 @@ ComponentDocumentation.getLayout = function getLayout(page: ReactElement) {
 export const getStaticPaths = getStaticComponentPaths;
 
 export async function getStaticProps({ params }) {
-  const { changelog, readme } = (
-    await getDependencyDocumentation(params.componentName)
-  ).props;
-
-  let tsDoc: Array<ComponentDoc> | null;
-
-  try {
-    const { default: _tsDoc } = (await import(
-      `../../../node_modules/@leafygreen-ui/${kebabCase(
-        params.componentName,
-      )}/tsdoc.json`
-    )) as { default: Array<ComponentDoc> };
-
-    tsDoc = _tsDoc
-      // Only show docs for functions that are explicitly related to the component.
-      // TODO: this should be removed in favor of consistent use of `@internal`
-      .filter(doc =>
-        doc.displayName.toLowerCase().startsWith(params.componentName),
-      )
-      // and are not tagged as internal
-      .filter(doc => isUndefined(doc.tags?.internal));
-  } catch (error) {
-    tsDoc = null;
-  }
+  const {
+    props: { changelog, readme, tsDoc },
+  } = await getDependencyDocumentation(params.componentName);
 
   return {
     props: {
       component: await getComponent(params.componentName),
       changelog,
       readme,
-      tsDoc: JSON.stringify(tsDoc),
+      tsDoc,
     },
   };
 }
