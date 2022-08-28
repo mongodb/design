@@ -12,6 +12,11 @@ import {
 import HeaderContent from './HeaderContent';
 import renderAsset from './renderAsset';
 import renderEntry from './renderEntry';
+import {
+  renderTable, renderTableRow,
+  renderTableCell,
+  renderTableHeaderCell
+} from './renderTable';
 
 const ContentfulRichText = ({ document }) => (
   documentToReactComponents(document, {
@@ -22,6 +27,10 @@ const ContentfulRichText = ({ document }) => (
       [BLOCKS.HEADING_3]: (node, children) => <H3><HeaderContent>{children}</HeaderContent></H3>,
       [BLOCKS.HEADING_4]: (node, children) => <Subtitle><HeaderContent>{children}</HeaderContent></Subtitle>,
       [BLOCKS.HEADING_5]: (node, children) => <Overline>{children}</Overline>,
+      [BLOCKS.TABLE]: renderTable,
+      [BLOCKS.TABLE_ROW]: renderTableRow,
+      [BLOCKS.TABLE_CELL]: renderTableCell,
+      [BLOCKS.TABLE_HEADER_CELL]: renderTableHeaderCell,
       [BLOCKS.EMBEDDED_ASSET]: renderAsset,
       [BLOCKS.EMBEDDED_ENTRY]: renderEntry,
       [INLINES.HYPERLINK]: (node, children) => <Link href={node.data.uri} target="_blank">{children}</Link>,

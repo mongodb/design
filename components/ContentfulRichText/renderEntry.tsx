@@ -1,5 +1,6 @@
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import Callout, { Variant } from '@leafygreen-ui/callout';
+import Card from '@leafygreen-ui/card';
 import ContentfulRichText from '.';
 
 /*
@@ -24,6 +25,14 @@ const renderEntry = node => {
         <Callout title={title} variant={Variant[variant]}>
           <ContentfulRichText document={content} />
         </Callout>
+      );
+    }
+    case 'cardBlock': {
+      const { content } = embeddedEntryFields;
+      return (
+        <Card>
+          <ContentfulRichText document={content} />
+        </Card>
       );
     }
     default:
