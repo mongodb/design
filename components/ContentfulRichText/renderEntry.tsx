@@ -1,6 +1,10 @@
 import ExpandableCard from '@leafygreen-ui/expandable-card';
+import Callout, { Variant } from '@leafygreen-ui/callout';
 import ContentfulRichText from '.';
 
+/*
+Handles custom component rendering logic
+*/
 const renderEntry = node => {
   const embeddedEntryNodeType = node.data.target?.sys?.contentType?.sys.id;
   const embeddedEntryFields = node.data.target.fields;
@@ -14,10 +18,18 @@ const renderEntry = node => {
         </ExpandableCard>
       );
     }
+    case 'calloutBlock': {
+      const { title, content, variant } = embeddedEntryFields;
+      return (
+        <Callout title={title} variant={Variant[variant]}>
+          <ContentfulRichText document={content} />
+        </Callout>
+      );
+    }
     default:
       return (
         <h1>
-          Unsupported embedded-entry-block nodeType: ${embeddedEntryNodeType!}
+          Unsupported embedded-entry-block nodeType: {embeddedEntryNodeType}.
         </h1>
       );
   }
