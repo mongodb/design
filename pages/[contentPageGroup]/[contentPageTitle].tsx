@@ -43,7 +43,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const contentPage = await getContentPage(
-    startCase(params.contentPageGroup),
     startCase(params.contentPageTitle),
   );
   return {

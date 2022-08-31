@@ -1,6 +1,6 @@
 import startCase from 'lodash/startCase';
 import { ContentfulClientApi, EntryCollection } from 'contentful';
-import { ComponentFields, ContentPageSectionFields } from './types';
+import { ComponentFields, ContentPageGroupFields } from './types';
 
 const contentful = require('contentful');
 const isProd = process.env.NODE_ENV === 'production';
@@ -8,10 +8,10 @@ const isProd = process.env.NODE_ENV === 'production';
 export function createContentfulClient(): ContentfulClientApi {
   const client = contentful.createClient({
     environment: 'master',
-    space: process.env.CONTENTFUL_SPACE_ID,
+    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
     accessToken: isProd
-      ? process.env.CONTENTFUL_DELIVERY_TOKEN
-      : process.env.CONTENTFUL_PREVIEW_TOKEN,
+      ? process.env.NEXT_PUBLIC_CONTENTFUL_DELIVERY_TOKEN
+      : process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW_TOKEN,
     host: isProd ? 'cdn.contentful.com' : 'preview.contentful.com',
   });
 
@@ -60,36 +60,62 @@ export async function getComponent(kebabCaseName: string) {
 }
 
 export async function getContentPageGroups(): Promise<
-  EntryCollection<ContentPageSectionFields>['items']
+  EntryCollection<ContentPageGroupFields>['items']
 > {
   try {
     const entries =
-      await createContentfulClient().getEntries<ContentPageSectionFields>({
+      await createContentfulClient().getEntries<ContentPageGroupFields>({
         content_type: 'contentPageGroup',
       });
     return entries.items;
   } catch (error) {
     console.error('No Page Groups found', error);
     // Return no sections
-    return [] as EntryCollection<ContentPageSectionFields>['items'];
+    return [] as EntryCollection<ContentPageGroupFields>['items'];
+  }
+}
+
+export async function getContentPages(): Promise<
+  EntryCollection<any>['items']
+> {
+  try {
+    const entries =
+      await createContentfulClient().getEntries<ContentPageGroupFields>({
+        content_type: 'contentPage',
+      });
+    return entries.items;
+  } catch (error) {
+    console.error('No Page Groups found', error);
+    // Return no sections
+    return [] as EntryCollection<ContentPageGroupFields>['items'];
   }
 }
 
 export async function getContentPage(
-  contentPageGroupTitle: string,
   contentPageTitle: string,
 ) {
   try {
-    const contentPageGroups = await getContentPageGroups();
-    const contentPageGroup = contentPageGroups.find(
-      item => item?.fields?.title === startCase(contentPageGroupTitle),
-    );
-    // @ts-expect-error since we're in a try block
-    const contentPage = contentPageGroup.fields.contentPages.find(
-      item => item?.fields?.title === contentPageTitle,
-    );
-    return contentPage;
+    const entries =
+      await createContentfulClient().getEntries<ContentPageGroupFields>({
+        content_type: 'contentPage',
+        'fields.title': startCase(contentPageTitle),
+      });
+    return entries.items[0];
   } catch (error) {
-    // noop
+    console.error('No Page Groups found', error);
+    // Return no sections
+    return [] as EntryCollection<ContentPageGroupFields>['items'];
+  }
+}
+
+export async function getEntryById(
+  sysId: string,
+) {
+  try {
+    const entry =
+      await createContentfulClient().getEntry<any>(sysId);
+    return entry;
+  } catch (error) {
+    console.error('No entry found', error);
   }
 }

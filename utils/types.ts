@@ -7,7 +7,7 @@ export interface ContentPageFields {
   content: EntryFields.RichText;
 }
 
-export interface ContentPageSectionFields {
+export interface ContentPageGroupFields {
   title: EntryFields.Text;
   iconName: EntryFields.Text;
   contentPages: any; // todo: replace with correct reference type

@@ -32,7 +32,7 @@ const ContentfulRichText = ({ document }) => (
       [BLOCKS.TABLE_CELL]: renderTableCell,
       [BLOCKS.TABLE_HEADER_CELL]: renderTableHeaderCell,
       [BLOCKS.EMBEDDED_ASSET]: renderAsset,
-      [BLOCKS.EMBEDDED_ENTRY]: renderEntry,
+      [BLOCKS.EMBEDDED_ENTRY]: (node) => renderEntry(node.data.target),
       [INLINES.HYPERLINK]: (node, children) => <Link href={node.data.uri} target="_blank">{children}</Link>,
       [INLINES.ASSET_HYPERLINK]: renderAsset,
     },

@@ -1,46 +1,67 @@
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import Callout, { Variant } from '@leafygreen-ui/callout';
+import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
 import ContentfulRichText from '.';
+import renderLinkedEntry from './renderLinkedEntry';
+import HorizontalLayout from './HorizontalLayout';
 
 /*
 Handles custom component rendering logic
 */
-const renderEntry = node => {
-  const embeddedEntryNodeType = node.data.target?.sys?.contentType?.sys.id;
-  const embeddedEntryFields = node.data.target.fields;
+const renderEntry = nodeTarget => {
+  const isLinkedEntry = nodeTarget.sys.linkType;
+  if (isLinkedEntry) {
+    let embeddedEntryNodeId = nodeTarget?.sys?.id;
+    return renderLinkedEntry(embeddedEntryNodeId)
+  } else {
+    const embeddedEntryNodeId = nodeTarget?.sys?.contentType?.sys.id;
+    const embeddedEntryFields = nodeTarget.fields;
 
-  switch (embeddedEntryNodeType) {
-    case 'expandableCardBlock': {
-      const { title, description, content } = embeddedEntryFields;
-      return (
-        <ExpandableCard title={title} description={description}>
-          <ContentfulRichText document={content} />
-        </ExpandableCard>
-      );
+    switch (embeddedEntryNodeId) {
+      case 'buttonBlock': {
+        const { content, variant, link } = embeddedEntryFields;
+        return (
+          <Button variant={variant} href={link}>
+            {content}
+          </Button>
+        );
+      }
+      case 'calloutBlock': {
+        const { title, content, variant } = embeddedEntryFields;
+        return (
+          <Callout title={title} variant={Variant[variant]}>
+            <ContentfulRichText document={content} />
+          </Callout>
+        );
+      }
+      case 'cardBlock': {
+        const { content } = embeddedEntryFields;
+        return (
+          <Card>
+            <ContentfulRichText document={content} />
+          </Card>
+        );
+      }
+      case 'expandableCardBlock': {
+        const { title, description, content } = embeddedEntryFields;
+        return (
+          <ExpandableCard title={title} description={description}>
+            <ContentfulRichText document={content} />
+          </ExpandableCard>
+        );
+      }
+      case 'horizontalLayout': {
+        const { columns } = embeddedEntryFields;
+        return <HorizontalLayout columns={columns} />
+      }
+      default:
+        return (
+          <h1>
+            Unsupported embedded-entry-block nodeType: {embeddedEntryNodeId}.
+          </h1>
+        );
     }
-    case 'calloutBlock': {
-      const { title, content, variant } = embeddedEntryFields;
-      return (
-        <Callout title={title} variant={Variant[variant]}>
-          <ContentfulRichText document={content} />
-        </Callout>
-      );
-    }
-    case 'cardBlock': {
-      const { content } = embeddedEntryFields;
-      return (
-        <Card>
-          <ContentfulRichText document={content} />
-        </Card>
-      );
-    }
-    default:
-      return (
-        <h1>
-          Unsupported embedded-entry-block nodeType: {embeddedEntryNodeType}.
-        </h1>
-      );
   }
 };
 
