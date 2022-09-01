@@ -11,17 +11,19 @@ import { css } from '@leafygreen-ui/emotion';
 import Card from '@leafygreen-ui/card';
 import InlineDefinition from '@leafygreen-ui/inline-definition';
 import { isUndefined, omitBy, pickBy } from 'lodash';
+import { palette } from '@leafygreen-ui/palette';
 
 const InheritablePropGroup = [
   'HTMLAttributes',
   'DOMAttributes',
   'AriaAttributes',
+  'SVGAttributes',
 ] as const;
 type InheritablePropGroup = keyof typeof InheritablePropGroup;
-const isInheritableGroup = (_, key) =>
+const isInheritableGroup = (_: never, key: any) =>
   InheritablePropGroup.includes(key) || key.endsWith('HTMLAttributes');
 type PropCategory = Record<string, Props>;
-type CustomComponentDoc = Omit<ComponentDoc, 'props'> & {
+export type CustomComponentDoc = Omit<ComponentDoc, 'props'> & {
   props: PropCategory;
 };
 interface PropGroup {
@@ -100,6 +102,15 @@ export const TSDocPropTable = ({ tsDoc }: PropTableProps) => {
                     >
                       <strong>{datum.name}</strong>
                     </InlineDefinition>
+                    {datum.required && (
+                      <sup
+                        className={css`
+                          color: ${palette.red.base};
+                        `}
+                      >
+                        &nbsp; *
+                      </sup>
+                    )}
                   </Cell>
                   <Cell>
                     <InlineCode>{getTypeString(datum.type)}</InlineCode>

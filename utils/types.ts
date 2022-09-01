@@ -1,5 +1,5 @@
-import { ComponentDoc } from 'react-docgen-typescript';
 import { EntryFields } from 'contentful';
+import { CustomComponentDoc } from 'components/pages/documentation/TSDocPropTable';
 
 export interface ContentPageFields {
   title: EntryFields.Text;
@@ -25,5 +25,5 @@ export interface BaseLayoutProps {
   componentKebabCaseName: string;
   changelog: string;
   readme: string;
-  tsDoc: Array<ComponentDoc> | null;
+  tsDoc: Array<CustomComponentDoc> | null;
 }

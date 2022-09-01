@@ -1,11 +1,11 @@
 import CodeDocs from 'components/pages/documentation/CodeDocs';
-import { ComponentDoc } from 'react-docgen-typescript';
 import ComponentLayout from 'layouts/ComponentLayout';
 import { getDependencyDocumentation } from 'utils/_getComponentResources';
 import { ReactElement } from 'react';
 import { getComponent } from 'utils/getContentfulResources';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import kebabCase from 'lodash/kebabCase';
+import { CustomComponentDoc } from 'components/pages/documentation/TSDocPropTable';
 
 const ComponentDocumentation = ({ component, changelog, readme, tsDoc }) => {
   return (
@@ -14,7 +14,7 @@ const ComponentDocumentation = ({ component, changelog, readme, tsDoc }) => {
       componentKebabCaseName={kebabCase(component.fields.name)}
       changelog={changelog}
       readme={readme}
-      tsDoc={JSON.parse(tsDoc) as Array<ComponentDoc>}
+      tsDoc={JSON.parse(tsDoc) as Array<CustomComponentDoc>}
     />
   );
 };
