@@ -10,15 +10,16 @@ import { Description, InlineCode, Subtitle } from '@leafygreen-ui/typography';
 import { css } from '@leafygreen-ui/emotion';
 import Card from '@leafygreen-ui/card';
 import InlineDefinition from '@leafygreen-ui/inline-definition';
-import { isUndefined, omit, pick } from 'lodash';
+import { isUndefined, omitBy, pickBy } from 'lodash';
 
 const InheritablePropGroup = [
   'HTMLAttributes',
   'DOMAttributes',
   'AriaAttributes',
-  'ButtonHTMLAttributes',
 ] as const;
 type InheritablePropGroup = keyof typeof InheritablePropGroup;
+const isInheritableGroup = (_, key) =>
+  InheritablePropGroup.includes(key) || key.endsWith('HTMLAttributes');
 type PropCategory = Record<string, Props>;
 type CustomComponentDoc = Omit<ComponentDoc, 'props'> & {
   props: PropCategory;
@@ -51,12 +52,12 @@ const PropTableTooltipContent = ({ prop }: { prop: PropItem }) => (
 );
 
 export const TSDocPropTable = ({ tsDoc }: PropTableProps) => {
-  const _componentProps: PropCategory = omit(tsDoc.props, InheritablePropGroup);
-  const componentProps = Object.values(_componentProps).flatMap((prop: Props) =>
-    Object.values(prop),
-  );
+  const _componentProps: PropCategory = omitBy(tsDoc.props, isInheritableGroup);
+  const componentProps = Object.values(_componentProps)
+    .flatMap((prop: Props) => Object.values(prop))
+    .sort((a, z) => a.name.localeCompare(z.name));
 
-  const _inheritedProps: PropCategory = pick(tsDoc.props, InheritablePropGroup);
+  const _inheritedProps: PropCategory = pickBy(tsDoc.props, isInheritableGroup);
   const inheritedProps: Array<PropGroup> = Object.entries(_inheritedProps).map(
     ([groupName, props]: [string, Props]) => {
       return {
