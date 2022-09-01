@@ -63,14 +63,7 @@ export const getDependencyDocumentation = async (
       ),
     );
 
-    tsDoc = _tsDoc
-      // Only show docs for functions that are explicitly related to the component.
-      // TODO: this should be removed in favor of consistent use of `@internal`
-      .filter(doc =>
-        doc.displayName.startsWith(startCase(componentKebabCaseName)),
-      )
-      // and are not tagged as internal
-      .filter(doc => isUndefined(doc.tags?.internal));
+    tsDoc = _tsDoc;
   } catch (error) {
     console.warn(error);
   }

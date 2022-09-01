@@ -1,17 +1,73 @@
 import React from 'react';
-import { ComponentDoc, PropItemType } from 'react-docgen-typescript';
+import {
+  ComponentDoc,
+  PropItemType,
+  PropItem,
+  Props,
+} from 'react-docgen-typescript';
 import { Cell, Row, Table, TableHeader } from '@leafygreen-ui/table';
 import { Description, InlineCode, Subtitle } from '@leafygreen-ui/typography';
 import { css } from '@leafygreen-ui/emotion';
 import Card from '@leafygreen-ui/card';
 import InlineDefinition from '@leafygreen-ui/inline-definition';
-import isNull from 'lodash/isNull';
+import { isUndefined, omit, pick } from 'lodash';
 
-interface PropTableProps {
-  tsDoc?: ComponentDoc;
+const InheritablePropGroup = [
+  'HTMLAttributes',
+  'DOMAttributes',
+  'AriaAttributes',
+  'ButtonHTMLAttributes',
+] as const;
+type InheritablePropGroup = keyof typeof InheritablePropGroup;
+type PropCategory = Record<string, Props>;
+type CustomComponentDoc = Omit<ComponentDoc, 'props'> & {
+  props: PropCategory;
+};
+interface PropGroup {
+  groupName: string;
+  props: Array<PropItem>;
 }
 
+const isPropItem = (obj: any): obj is PropItem => {
+  return (
+    !isUndefined(obj.name) &&
+    !isUndefined(obj.required) &&
+    !isUndefined(obj.type) &&
+    !isUndefined(obj.description) &&
+    !isUndefined(obj.defaultValue)
+  );
+};
+interface PropTableProps {
+  tsDoc: CustomComponentDoc;
+}
+
+const PropTableTooltipContent = ({ prop }: { prop: PropItem }) => (
+  <>
+    <div>
+      <strong>{prop.name}</strong>
+    </div>
+    {prop.description}
+  </>
+);
+
 export const TSDocPropTable = ({ tsDoc }: PropTableProps) => {
+  const _componentProps: PropCategory = omit(tsDoc.props, InheritablePropGroup);
+  const componentProps = Object.values(_componentProps).flatMap((prop: Props) =>
+    Object.values(prop),
+  );
+
+  const _inheritedProps: PropCategory = pick(tsDoc.props, InheritablePropGroup);
+  const inheritedProps: Array<PropGroup> = Object.entries(_inheritedProps).map(
+    ([groupName, props]: [string, Props]) => {
+      return {
+        groupName,
+        props: Object.values(props).flatMap(prop => prop),
+      };
+    },
+  );
+
+  const props = [...componentProps, ...inheritedProps];
+
   return (
     <>
       <div
@@ -25,7 +81,7 @@ export const TSDocPropTable = ({ tsDoc }: PropTableProps) => {
       </div>
       <Card>
         <Table
-          data={Object.values(tsDoc!.props)}
+          data={props}
           columns={[
             <TableHeader label="Prop" key="Prop" />,
             <TableHeader label="Type" key="Type" />,
@@ -34,22 +90,37 @@ export const TSDocPropTable = ({ tsDoc }: PropTableProps) => {
           ]}
         >
           {({ datum }) => (
-            <Row key={datum.name}>
-              <Cell>
-                <InlineDefinition definition={datum.description}>
-                  <strong>{datum.name}</strong>
-                </InlineDefinition>
-              </Cell>
-              <Cell>
-                <InlineCode>{getTypeString(datum.type)}</InlineCode>
-              </Cell>
-              <Cell>{datum.description}</Cell>
-              <Cell>
-                <InlineCode>
-                  {getDefaultValueString(datum.defaultValue)}
-                </InlineCode>
-              </Cell>
-            </Row>
+            <>
+              {isPropItem(datum) ? (
+                <Row key={datum.name}>
+                  <Cell>
+                    <InlineDefinition
+                      definition={<PropTableTooltipContent prop={datum} />}
+                    >
+                      <strong>{datum.name}</strong>
+                    </InlineDefinition>
+                  </Cell>
+                  <Cell>
+                    <InlineCode>{getTypeString(datum.type)}</InlineCode>
+                  </Cell>
+                  <Cell>{datum.description || '—'}</Cell>
+                  <Cell>
+                    <InlineCode>
+                      {getDefaultValueString(datum.defaultValue)}
+                    </InlineCode>
+                  </Cell>
+                </Row>
+              ) : (
+                <Row key={datum.groupName}>
+                  <Cell>...</Cell>
+                  <></>
+                  <Cell>
+                    Attributes inherited from &nbsp;
+                    <InlineCode>{datum.groupName}</InlineCode>
+                  </Cell>
+                </Row>
+              )}
+            </>
           )}
         </Table>
       </Card>
@@ -76,13 +147,13 @@ function getTypeString(propType: PropItemType): string | undefined {
 }
 
 function getDefaultValueString(defaultValue: any): string {
-  if (isNull(defaultValue)) {
+  if (!defaultValue) {
     return '—';
   }
 
-  if (!isNull(defaultValue?.value)) {
-    return defaultValue.value.toString();
+  if (isUndefined(defaultValue.value)) {
+    return JSON.stringify(defaultValue);
   }
 
-  return JSON.stringify(defaultValue);
+  return defaultValue.value.toString();
 }
