@@ -129,9 +129,13 @@ export const TSDocPropTable = ({ tsDoc }: PropTableProps) => {
 };
 
 function getTypeString(propType: PropItemType): string | undefined {
+  if (!propType || !propType.name) return;
+
+  const staticEnums = ['boolean', 'ReactNode', 'keyof IntrinsicElements'];
+
   switch (propType.name) {
     case 'enum':
-      if (['boolean', 'ReactNode'].includes(propType.raw as string)) {
+      if (staticEnums.includes(propType.raw as string)) {
         return propType.raw;
       } else {
         return propType.value.map(val => val.value).join(' | ');
