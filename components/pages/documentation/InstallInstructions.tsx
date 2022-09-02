@@ -96,7 +96,7 @@ export const InstallInstructions = ({ componentKebabCaseName, changelog }) => {
     ? viewport?.width < breakpoints.Tablet
     : false;
 
-  const [packageMgr, setPackageMgr] = useState('npm');
+  const [packageMgr, setPackageMgr] = useState('yarn');
 
   return (
     <div
@@ -117,8 +117,8 @@ export const InstallInstructions = ({ componentKebabCaseName, changelog }) => {
           `}
         >
           <SegmentedControl value={packageMgr} onChange={setPackageMgr}>
-            <SegmentedControlOption value="npm">npm</SegmentedControlOption>
             <SegmentedControlOption value="yarn">yarn</SegmentedControlOption>
+            <SegmentedControlOption value="npm">npm</SegmentedControlOption>
           </SegmentedControl>
 
           <Copyable
