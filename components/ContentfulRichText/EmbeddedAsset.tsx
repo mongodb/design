@@ -1,6 +1,4 @@
-import Image from '../Image';
-
-const renderAsset = node => {
+const EmbeddedAsset = (node) => {
   if (!node.data.target.fields) {
     return <>Invalid asset.</>;
   }
@@ -11,10 +9,10 @@ const renderAsset = node => {
 
   switch (mimeGroup) {
     case 'image':
-      return <Image alt={title} src={file.url} width="100%" />;
+      return <img alt={title} src={file.url} width="100%" />;
     default:
       return <h1>Unsupported embedded-asset-block mimeGroup: ${mimeGroup!}</h1>;
   }
 };
 
-export default renderAsset;
+export default EmbeddedAsset;

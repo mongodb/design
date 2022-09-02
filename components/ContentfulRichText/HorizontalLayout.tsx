@@ -1,28 +1,20 @@
-import styled from "@emotion/styled";
-import ContentfulRichText from ".";
+import styled from '@emotion/styled';
+import EmbeddedEntry from './EmbeddedEntry';
 
 const FlexContainer = styled('div')`
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 32px;
+  > * > * { // first element inside column
+    width: 100%;
+  }
 `;
-
-const verticalAlignments = {
-  'top': 'flex-start',
-  'center': 'center',
-  'bottom': 'flex-end',
-}
 
 const HorizontalLayout = ({ columns }) => {
   return (
     <FlexContainer>
       {columns.map((column) => (
-        <div style={{
-          alignSelf: verticalAlignments[column.fields.verticalAlign],
-          flex: column.fields.widthRatio
-        }}>
-          <ContentfulRichText document={column.fields.content} />
-        </div>
+        <EmbeddedEntry nodeTarget={column} />
       ))}
     </FlexContainer>
   )

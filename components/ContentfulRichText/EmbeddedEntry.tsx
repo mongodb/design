@@ -3,17 +3,19 @@ import Callout, { Variant } from '@leafygreen-ui/callout';
 import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
 import ContentfulRichText from '.';
-import renderLinkedEntry from './renderLinkedEntry';
+import LinkedEntry from './LinkedEntry';
 import HorizontalLayout from './HorizontalLayout';
+import HorizontalLayoutColumn from './HorizontalLayoutColumn';
 
 /*
 Handles custom component rendering logic
 */
-const renderEntry = nodeTarget => {
+const EmbeddedEntry = ({ nodeTarget }) => {
   const isLinkedEntry = nodeTarget.sys.linkType;
+
   if (isLinkedEntry) {
-    let embeddedEntryNodeId = nodeTarget?.sys?.id;
-    return renderLinkedEntry(embeddedEntryNodeId)
+    const embeddedEntryNodeId = nodeTarget?.sys?.id;
+    return <LinkedEntry sysId={embeddedEntryNodeId} />
   } else {
     const embeddedEntryNodeId = nodeTarget?.sys?.contentType?.sys.id;
     const embeddedEntryFields = nodeTarget.fields;
@@ -27,14 +29,16 @@ const renderEntry = nodeTarget => {
           </Button>
         );
       }
+
       case 'calloutBlock': {
         const { title, content, variant } = embeddedEntryFields;
         return (
-          <Callout title={title} variant={Variant[variant]}>
+          <Callout title={title} variant={Variant[variant ?? 'note']}>
             <ContentfulRichText document={content} />
           </Callout>
         );
       }
+
       case 'cardBlock': {
         const { content } = embeddedEntryFields;
         return (
@@ -43,6 +47,7 @@ const renderEntry = nodeTarget => {
           </Card>
         );
       }
+
       case 'expandableCardBlock': {
         const { title, description, content } = embeddedEntryFields;
         return (
@@ -51,9 +56,14 @@ const renderEntry = nodeTarget => {
           </ExpandableCard>
         );
       }
+
       case 'horizontalLayout': {
         const { columns } = embeddedEntryFields;
         return <HorizontalLayout columns={columns} />
+      }
+      case 'horizontalLayoutColumn': {
+        // const { widthRatio, verticalAlign, content } = embeddedEntryFields;
+        return <HorizontalLayoutColumn {...embeddedEntryFields} />
       }
       default:
         return (
@@ -65,4 +75,4 @@ const renderEntry = nodeTarget => {
   }
 };
 
-export default renderEntry;
+export default EmbeddedEntry;

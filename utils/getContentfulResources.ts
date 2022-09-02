@@ -104,7 +104,7 @@ export async function getContentPage(
   } catch (error) {
     console.error('No Page Groups found', error);
     // Return no sections
-    return [] as EntryCollection<ContentPageGroupFields>['items'];
+    return [] as EntryCollection<ContentPageFields>['items'];
   }
 }
 

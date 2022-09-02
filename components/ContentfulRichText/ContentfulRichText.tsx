@@ -10,13 +10,13 @@ import {
   Link,
 } from '@leafygreen-ui/typography';
 import HeaderContent from './HeaderContent';
-import renderAsset from './renderAsset';
-import renderEntry from './renderEntry';
+import EmbeddedAsset from './EmbeddedAsset';
+import EmbeddedEntry from './EmbeddedEntry';
 import {
-  renderTable, renderTableRow,
-  renderTableCell,
-  renderTableHeaderCell
-} from './renderTable';
+  TableBlock, TableRowBlock,
+  TableCellBlock,
+  TableHeaderCellBlock
+} from './Tables';
 
 const ContentfulRichText = ({ document }) => (
   documentToReactComponents(document, {
@@ -27,14 +27,14 @@ const ContentfulRichText = ({ document }) => (
       [BLOCKS.HEADING_3]: (node, children) => <H3><HeaderContent>{children}</HeaderContent></H3>,
       [BLOCKS.HEADING_4]: (node, children) => <Subtitle><HeaderContent>{children}</HeaderContent></Subtitle>,
       [BLOCKS.HEADING_5]: (node, children) => <Overline>{children}</Overline>,
-      [BLOCKS.TABLE]: renderTable,
-      [BLOCKS.TABLE_ROW]: renderTableRow,
-      [BLOCKS.TABLE_CELL]: renderTableCell,
-      [BLOCKS.TABLE_HEADER_CELL]: renderTableHeaderCell,
-      [BLOCKS.EMBEDDED_ASSET]: renderAsset,
-      [BLOCKS.EMBEDDED_ENTRY]: (node) => renderEntry(node.data.target),
+      [BLOCKS.TABLE]: TableBlock,
+      [BLOCKS.TABLE_ROW]: TableRowBlock,
+      [BLOCKS.TABLE_CELL]: TableCellBlock,
+      [BLOCKS.TABLE_HEADER_CELL]: TableHeaderCellBlock,
+      [BLOCKS.EMBEDDED_ASSET]: EmbeddedAsset,
+      [BLOCKS.EMBEDDED_ENTRY]: (node) => <EmbeddedEntry nodeTarget={node.data.target} />,
       [INLINES.HYPERLINK]: (node, children) => <Link href={node.data.uri} target="_blank">{children}</Link>,
-      [INLINES.ASSET_HYPERLINK]: renderAsset,
+      [INLINES.ASSET_HYPERLINK]: EmbeddedAsset,
     },
   }) as JSX.Element
 );
