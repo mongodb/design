@@ -13,6 +13,33 @@ const withMDX = nextMdx({
 const mdxConfig = withMDX({
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'tsx', 'ts'],
   trailingSlash: true,
+  webpack(config) {
+
+    config.module.rules.push({
+      test: /\.stories\.tsx?$/,
+      loader: 'ts-loader',
+      options: {
+        compilerOptions: {
+          noEmit: false,
+          esModuleInterop: true,
+          jsx: true,
+          isolatedModules: false,
+        }
+      }
+    })
+    // config.module.rules.push({
+    //   test: /\.stories\.tsx?$/,
+    //   use: [
+    //     {
+    //       loader: '@storybook/source-loader',
+    //       options: { parser: 'typescript' },
+    //     },
+    //   ],
+    //   enforce: 'pre',
+    // });
+
+    return config
+  }
 });
 
 export default mdxConfig;

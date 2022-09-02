@@ -75,6 +75,8 @@
     "@mdx-js/loader": "^2.1.0",
     "@mdx-js/react": "^2.1.2",
     "@next/mdx": "^10.0.3",
+    "@storybook/react": "^6.5.10",
+    "@storybook/source-loader": "^6.5.10",
     "@types/node": "^18.0.6",
     "@types/react": "^18.0.15",
     "@types/unist": "1.0.0",
@@ -101,6 +103,7 @@
     "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",
     "remark-html": "^15.0.1",
+    "ts-loader": "^9.3.1",
     "vercel": "^27.3.4"
   },
   "devDependencies": {
