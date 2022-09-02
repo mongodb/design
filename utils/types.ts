@@ -3,7 +3,6 @@ import { EntryFields } from 'contentful';
 
 export interface ContentPageFields {
   title: EntryFields.Text;
-  section: EntryFields.Text;
   content: EntryFields.RichText;
 }
 
@@ -12,7 +11,6 @@ export interface ContentPageGroupFields {
   iconName: EntryFields.Text;
   contentPages: any; // todo: replace with correct reference type
 }
-
 export interface ComponentFields {
   name: EntryFields.Text;
   description: EntryFields.Text;

@@ -1,6 +1,6 @@
 import startCase from 'lodash/startCase';
-import { ContentfulClientApi, EntryCollection } from 'contentful';
-import { ComponentFields, ContentPageGroupFields } from './types';
+import { ContentfulClientApi, Entry, EntryCollection } from 'contentful';
+import { ComponentFields, ContentPageFields, ContentPageGroupFields } from './types';
 
 const contentful = require('contentful');
 const isProd = process.env.NODE_ENV === 'production';
@@ -76,18 +76,18 @@ export async function getContentPageGroups(): Promise<
 }
 
 export async function getContentPages(): Promise<
-  EntryCollection<any>['items']
+  EntryCollection<ContentPageFields>['items']
 > {
   try {
     const entries =
-      await createContentfulClient().getEntries<ContentPageGroupFields>({
+      await createContentfulClient().getEntries<ContentPageFields>({
         content_type: 'contentPage',
       });
     return entries.items;
   } catch (error) {
     console.error('No Page Groups found', error);
     // Return no sections
-    return [] as EntryCollection<ContentPageGroupFields>['items'];
+    return [] as EntryCollection<ContentPageFields>['items'];
   }
 }
 
@@ -113,7 +113,7 @@ export async function getEntryById(
 ) {
   try {
     const entry =
-      await createContentfulClient().getEntry<any>(sysId);
+      await createContentfulClient().getEntry<Entry<unknown>>(sysId);
     return entry;
   } catch (error) {
     console.error('No entry found', error);
