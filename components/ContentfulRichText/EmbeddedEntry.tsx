@@ -61,6 +61,7 @@ const EmbeddedEntry = ({ nodeTarget }) => {
         const { columns } = embeddedEntryFields;
         return <HorizontalLayout columns={columns} />
       }
+
       case 'horizontalLayoutColumn': {
         // const { widthRatio, verticalAlign, content } = embeddedEntryFields;
         return <HorizontalLayoutColumn {...embeddedEntryFields} />
