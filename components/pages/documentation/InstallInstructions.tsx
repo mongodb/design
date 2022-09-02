@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
 import Copyable from '@leafygreen-ui/copyable';
 import { breakpoints, spacing } from '@leafygreen-ui/tokens';
-import { Body, Subtitle } from '@leafygreen-ui/typography';
-import { GridContainer, GridItem } from 'components/Grid';
-import { css, cx } from '@emotion/css';
+import { Subtitle } from '@leafygreen-ui/typography';
 import ActivityFeedIcon from '@leafygreen-ui/icon/dist/ActivityFeed';
 import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
 import Modal from '@leafygreen-ui/modal';
 import { palette } from '@leafygreen-ui/palette';
 import { useViewportSize } from '@leafygreen-ui/hooks';
-import { maxWidth, mt3 } from './documentationPageStyles';
-
-interface InstallProps {
-  componentKebabCaseName: string;
-  version?: string;
-  changelog: string;
-}
+import { css, cx } from '@leafygreen-ui/emotion';
+import {
+  SegmentedControl,
+  SegmentedControlOption,
+} from '@leafygreen-ui/segmented-control';
 
 const topAlignment = css`
   margin-top: ${spacing[4]}px;
@@ -24,25 +20,7 @@ const topAlignment = css`
   margin-bottom: ${spacing[3]}px;
 `;
 
-const versionCardDesktopMargin = css`
-  margin-left: 20px;
-`;
-
-const mb1 = css`
-  margin-bottom: ${spacing[1]}px;
-`;
-
-const copyableStyles = css`
-  width: 100%;
-  max-width: 400px;
-`;
-
-const mobileInstallMargin = css`
-  margin-top: 50px;
-  margin-bottom: ${spacing[3]}px;
-`;
-
-const versionCard = css`
+const cardStyle = css`
   min-height: 106px;
   padding: ${spacing[3]}px ${spacing[4]}px;
 `;
@@ -79,7 +57,7 @@ function VersionCard({
   const [openModal, setOpenModal] = useState(false);
 
   return (
-    <Card className={cx(topAlignment, versionCard)}>
+    <Card className={cx(topAlignment, cardStyle)}>
       <Subtitle as="h2" className={subtitlePadding}>
         Version {version}
       </Subtitle>
@@ -111,91 +89,6 @@ function VersionCard({
   );
 }
 
-VersionCard.displayName = 'VersionCard';
-
-function MobileInstall({
-  componentKebabCaseName,
-  version,
-  changelog,
-}: InstallProps) {
-  return (
-    <GridContainer>
-      <GridItem sm={12}>
-        <div className={mobileInstallMargin}>
-          <Subtitle as="h2">Installation</Subtitle>
-          <Body weight="medium" className={mt3}>
-            Yarn
-          </Body>
-          <Copyable
-            className={copyableStyles}
-          >{`yarn add @leafygreen-ui/${componentKebabCaseName}`}</Copyable>
-          <Body weight="medium" className={mt3}>
-            NPM
-          </Body>
-          <Copyable
-            className={copyableStyles}
-          >{`npm install @leafygreen-ui/${componentKebabCaseName}`}</Copyable>
-        </div>
-      </GridItem>
-      <GridItem sm={12}>
-        <div>
-          <VersionCard version={version} changelog={changelog} isMobile />
-        </div>
-      </GridItem>
-    </GridContainer>
-  );
-}
-
-MobileInstall.displayName = 'MobileInstall';
-
-function DesktopInstall({
-  componentKebabCaseName,
-  changelog,
-  version,
-}: InstallProps) {
-  return (
-    <>
-      <GridContainer
-        justify="space-between"
-        align="flex-start"
-        className={maxWidth}
-      >
-        <GridItem md={7} lg={7}>
-          <div className={topAlignment}>
-            <Subtitle
-              as="h2"
-              className={css`
-                margin-bottom: ${spacing[3]}px;
-              `}
-            >
-              Installation
-            </Subtitle>
-            <Body weight="medium" className={mb1}>
-              Yarn
-            </Body>
-            <Copyable>{`yarn add @leafygreen-ui/${componentKebabCaseName}`}</Copyable>
-          </div>
-        </GridItem>
-        <GridItem md={5} lg={5}>
-          <div className={versionCardDesktopMargin}>
-            <VersionCard changelog={changelog} version={version} />
-          </div>
-        </GridItem>
-      </GridContainer>
-      <GridContainer align="flex-start" justify="flex-start">
-        <GridItem md={7} lg={7}>
-          <Body weight="medium" className={mb1}>
-            NPM
-          </Body>
-          <Copyable>{`npm install @leafygreen-ui/${componentKebabCaseName}`}</Copyable>
-        </GridItem>
-      </GridContainer>
-    </>
-  );
-}
-
-DesktopInstall.displayName = 'DesktopInstall';
-
 export const InstallInstructions = ({ componentKebabCaseName, changelog }) => {
   const version = changelog?.split('h2')[1]?.replace(/[>/<]+/g, '');
   const viewport = useViewportSize();
@@ -203,17 +96,44 @@ export const InstallInstructions = ({ componentKebabCaseName, changelog }) => {
     ? viewport?.width < breakpoints.Tablet
     : false;
 
-  return isMobile ? (
-    <MobileInstall
-      componentKebabCaseName={componentKebabCaseName}
-      version={version}
-      changelog={changelog}
-    />
-  ) : (
-    <DesktopInstall
-      componentKebabCaseName={componentKebabCaseName}
-      version={version}
-      changelog={changelog}
-    />
+  const [packageMgr, setPackageMgr] = useState('npm');
+
+  return (
+    <div
+      className={css`
+        display: flex;
+        gap: ${spacing[3]}px;
+        flex-direction: ${isMobile ? 'column' : 'row'};
+      `}
+    >
+      <Card className={cx(topAlignment, cardStyle)}>
+        <Subtitle as="h2" className={subtitlePadding}>
+          Installation
+        </Subtitle>
+        <div
+          className={css`
+            display: flex;
+            gap: ${spacing[2]}px;
+          `}
+        >
+          <SegmentedControl value={packageMgr} onChange={setPackageMgr}>
+            <SegmentedControlOption value="npm">npm</SegmentedControlOption>
+            <SegmentedControlOption value="yarn">yarn</SegmentedControlOption>
+          </SegmentedControl>
+
+          <Copyable
+            className={css`
+              margin: unset;
+            `}
+          >
+            {packageMgr === 'yarn'
+              ? `yarn add @leafygreen-ui/${componentKebabCaseName}`
+              : `npm i @leafygreen-ui/${componentKebabCaseName}`}
+          </Copyable>
+        </div>
+      </Card>
+
+      <VersionCard version={version} changelog={changelog} />
+    </div>
   );
 };

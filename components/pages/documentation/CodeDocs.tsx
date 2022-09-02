@@ -21,7 +21,7 @@ function CodeDocs({
       />
       <CodeExample componentName={componentName} readme={readme} />
       {/* <MarkdownPropTable componentName={componentName} readme={readme} /> */}
-      {tsDoc ? (
+      {tsDoc && tsDoc.length > 0 ? (
         tsDoc?.map(doc => <TSDocPropTable key={doc.displayName} tsDoc={doc} />)
       ) : (
         <Subtitle>No prop definitions found</Subtitle>
