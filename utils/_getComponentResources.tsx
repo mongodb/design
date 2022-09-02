@@ -3,8 +3,7 @@ import path from 'path';
 import util from 'util';
 import markdownToHtml from 'utils/markdownToHtml';
 import type { BaseLayoutProps } from 'utils/types';
-import { ComponentDoc } from 'react-docgen-typescript';
-import { startCase, isUndefined } from 'lodash';
+import { CustomComponentDoc } from 'components/pages/documentation/TSDocPropTable';
 
 // eslint-disable-next-line import/no-anonymous-default-export, react/display-name
 export default function () {
@@ -24,7 +23,7 @@ export const getDependencyDocumentation = async (
 
   let changelogMarkdown: '' | Buffer = '';
   let readmeMarkdown = '';
-  let tsDoc: Array<ComponentDoc> | null = null;
+  let tsDoc: Array<CustomComponentDoc> | null = null;
 
   try {
     changelogMarkdown = await getFileContent(
@@ -52,7 +51,7 @@ export const getDependencyDocumentation = async (
   }
 
   try {
-    const _tsDoc: Array<ComponentDoc> = JSON.parse(
+    const _tsDoc: Array<CustomComponentDoc> = JSON.parse(
       await getFileContent(
         path.join(
           './node_modules',
