@@ -18,6 +18,7 @@ const InheritablePropGroup = [
   'DOMAttributes',
   'AriaAttributes',
   'SVGAttributes',
+  'String',
 ] as const;
 type InheritablePropGroup = keyof typeof InheritablePropGroup;
 const isInheritableGroup = (_: never, key: any) =>
