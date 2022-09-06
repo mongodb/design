@@ -1,49 +1,19 @@
 import React from 'react';
-import {
-  ComponentDoc,
-  PropItemType,
-  PropItem,
-  Props,
-} from 'react-docgen-typescript';
+import { PropItemType, PropItem, Props } from 'react-docgen-typescript';
 import { Cell, Row, Table, TableHeader } from '@leafygreen-ui/table';
-import { Description, InlineCode, Subtitle } from '@leafygreen-ui/typography';
+import { InlineCode } from '@leafygreen-ui/typography';
 import { css } from '@leafygreen-ui/emotion';
-import Card from '@leafygreen-ui/card';
+import ExpandableCard from '@leafygreen-ui/expandable-card';
 import InlineDefinition from '@leafygreen-ui/inline-definition';
 import { isUndefined, omitBy, pickBy } from 'lodash';
 import { palette } from '@leafygreen-ui/palette';
-
-const InheritablePropGroup = [
-  'HTMLAttributes',
-  'DOMAttributes',
-  'AriaAttributes',
-  'SVGAttributes',
-  'String',
-] as const;
-type InheritablePropGroup = keyof typeof InheritablePropGroup;
-const isInheritableGroup = (_: never, key: any) =>
-  InheritablePropGroup.includes(key) || key.endsWith('HTMLAttributes');
-type PropCategory = Record<string, Props>;
-export type CustomComponentDoc = Omit<ComponentDoc, 'props'> & {
-  props: PropCategory;
-};
-interface PropGroup {
-  groupName: string;
-  props: Array<PropItem>;
-}
-
-const isPropItem = (obj: any): obj is PropItem => {
-  return (
-    !isUndefined(obj.name) &&
-    !isUndefined(obj.required) &&
-    !isUndefined(obj.type) &&
-    !isUndefined(obj.description) &&
-    !isUndefined(obj.defaultValue)
-  );
-};
-interface PropTableProps {
-  tsDoc: CustomComponentDoc;
-}
+import {
+  isInheritableGroup,
+  isPropItem,
+  PropCategory,
+  PropGroup,
+  CustomComponentDoc,
+} from './TSDocPropsTable.types';
 
 const PropTableTooltipContent = ({ prop }: { prop: PropItem }) => (
   <>
@@ -54,7 +24,13 @@ const PropTableTooltipContent = ({ prop }: { prop: PropItem }) => (
   </>
 );
 
-export const TSDocPropTable = ({ tsDoc }: PropTableProps) => {
+export const TSDocPropTable = ({
+  tsDoc,
+  className,
+}: {
+  tsDoc: CustomComponentDoc;
+  className?: string;
+}) => {
   const _componentProps: PropCategory = omitBy(tsDoc.props, isInheritableGroup);
   const componentProps = Object.values(_componentProps)
     .flatMap((prop: Props) => Object.values(prop))
@@ -74,16 +50,12 @@ export const TSDocPropTable = ({ tsDoc }: PropTableProps) => {
 
   return (
     <>
-      <div
-        className={css`
-          margin-block: 2em 1em;
-          padding-inline: 1em;
-        `}
+      <ExpandableCard
+        title={`${tsDoc?.displayName} props`}
+        description={tsDoc?.description}
+        defaultOpen
+        className={className}
       >
-        <Subtitle as="h2">{tsDoc?.displayName} props</Subtitle>
-        <Description>{tsDoc?.description}</Description>
-      </div>
-      <Card>
         <Table
           data={props}
           columns={[
@@ -136,10 +108,28 @@ export const TSDocPropTable = ({ tsDoc }: PropTableProps) => {
             </>
           )}
         </Table>
-      </Card>
+      </ExpandableCard>
     </>
   );
 };
+
+export const TSDocPropTableSection = ({
+  tsDocArray,
+}: {
+  tsDocArray: Array<CustomComponentDoc>;
+}) => (
+  <>
+    {tsDocArray?.map(doc => (
+      <TSDocPropTable
+        key={doc.displayName}
+        tsDoc={doc}
+        className={css`
+          margin-block: 2em;
+        `}
+      />
+    ))}
+  </>
+);
 
 function getTypeString(propType: PropItemType): string | undefined {
   if (!propType || !propType.name) return;
