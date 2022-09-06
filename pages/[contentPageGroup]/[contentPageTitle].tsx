@@ -24,7 +24,7 @@ ContentPage.getLayout = function getLayout(page: ReactElement) {
 
 export async function getStaticPaths() {
   const contentPageGroups = await getContentPageGroups();
-  const paths: Array<any> = [];
+  const paths: Array<{ params: { contentPageGroup: string; contentPageTitle: string; } }> = [];
   contentPageGroups.forEach(pageGroup => {
     pageGroup.fields.contentPages.forEach(
       (contentPage: Entry<ContentPageFields>) => {
@@ -43,7 +43,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const contentPage = await getContentPage(
-    startCase(params.contentPageGroup),
     startCase(params.contentPageTitle),
   );
   return {

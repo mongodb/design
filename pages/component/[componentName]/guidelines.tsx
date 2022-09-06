@@ -9,7 +9,7 @@ import {
 
 const ComponentGuidelines = ({ component }) => {
   const guidelines = component.fields?.designGuidelines;
-  return guidelines.content == 0 ? (
+  return !guidelines || guidelines.content.length == 0 ? (
     <ComingSoon />
   ) : (
     <ContentfulRichText document={guidelines} />
