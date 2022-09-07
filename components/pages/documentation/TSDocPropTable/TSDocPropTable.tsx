@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropItemType, PropItem, Props } from 'react-docgen-typescript';
 import { Cell, Row, Table, TableHeader } from '@leafygreen-ui/table';
-import { InlineCode } from '@leafygreen-ui/typography';
+import { InlineCode, Link } from '@leafygreen-ui/typography';
 import { css } from '@leafygreen-ui/emotion';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import InlineDefinition from '@leafygreen-ui/inline-definition';
@@ -96,14 +96,23 @@ export const TSDocPropTable = ({
                   </Cell>
                 </Row>
               ) : (
-                <Row key={datum.groupName}>
-                  <Cell>...</Cell>
-                  <></>
-                  <Cell>
-                    Attributes inherited from &nbsp;
-                    <InlineCode>{datum.groupName}</InlineCode>
-                  </Cell>
-                </Row>
+                <>
+                  {datum.groupName.endsWith('HTMLAttributes') && (
+                    <Row key={datum.groupName}>
+                      <Cell>...</Cell>
+                      <></>
+                      <Cell colSpan={3}>
+                        {datum.groupName === 'HTMLAttributes'
+                          ? 'Global'
+                          : 'Native attributes inherited from'}
+                        &nbsp;
+                        <Link href={getHTMLAttributesLink(datum.groupName)}>
+                          <InlineCode>{datum.groupName}</InlineCode>
+                        </Link>
+                      </Cell>
+                    </Row>
+                  )}
+                </>
               )}
             </>
           )}
@@ -134,7 +143,12 @@ export const TSDocPropTableSection = ({
 function getTypeString(propType: PropItemType): string | undefined {
   if (!propType || !propType.name) return;
 
-  const staticEnums = ['boolean', 'ReactNode', 'keyof IntrinsicElements'];
+  const staticEnums = [
+    'boolean',
+    'ReactNode',
+    'keyof IntrinsicElements',
+    'keyof IntrinsicElements | ComponentType<{}>',
+  ];
 
   switch (propType.name) {
     case 'enum':
@@ -163,4 +177,16 @@ function getDefaultValueString(defaultValue: any): string {
   }
 
   return defaultValue.value.toString();
+}
+
+function getHTMLAttributesLink(groupName: string) {
+  if (groupName === 'HTMLAttributes')
+    return 'https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes';
+
+  let tag = groupName
+    .slice(0, groupName.indexOf('HTMLAttributes'))
+    .toLowerCase();
+
+  tag = tag == 'anchor' ? 'a' : tag;
+  return `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${tag}`;
 }
