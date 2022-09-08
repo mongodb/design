@@ -1,7 +1,14 @@
 import React from 'react';
 import { PropItemType, PropItem, Props } from 'react-docgen-typescript';
 import { Cell, Row, Table, TableHeader } from '@leafygreen-ui/table';
-import { InlineCode, Link } from '@leafygreen-ui/typography';
+import {
+  Body,
+  Description,
+  H3,
+  InlineCode,
+  Label,
+  Link,
+} from '@leafygreen-ui/typography';
 import { css } from '@leafygreen-ui/emotion';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import InlineDefinition from '@leafygreen-ui/inline-definition';
@@ -15,14 +22,57 @@ import {
   CustomComponentDoc,
 } from './TSDocPropsTable.types';
 import { Markdown } from 'components/Markdown';
+import { fontFamilies, typeScales } from '@leafygreen-ui/tokens';
 
 const PropTableTooltipContent = ({ prop }: { prop: PropItem }) => (
-  <>
+  <div
+    className={css`
+      * > {
+        margin-block: ${typeScales.body1.fontSize}px;
+      }
+    `}
+  >
+    <H3
+      darkMode
+      className={css`
+        font-family: ${fontFamilies.code};
+      `}
+    >
+      {prop.name}
+    </H3>
+
     <div>
-      <strong>{prop.name}</strong>
+      <Label htmlFor={`${prop.name}-type`} darkMode>
+        Type: &nbsp;
+      </Label>
+      <InlineCode
+        id={`${prop.name}-type`}
+        className={css`
+          display: inline;
+        `}
+        darkMode
+      >
+        {getTypeString(prop.type)}
+      </InlineCode>
     </div>
-    {prop.description}
-  </>
+
+    <div>
+      <Label htmlFor={`${prop.name}-default`} darkMode>
+        Default: &nbsp;
+      </Label>
+      <InlineCode
+        id={`${prop.name}-default`}
+        className={css`
+          display: inline;
+        `}
+        darkMode
+      >
+        {getDefaultValueString(prop.defaultValue) || '—'}
+      </InlineCode>
+    </div>
+
+    <Description darkMode>{prop.description}</Description>
+  </div>
 );
 
 export const TSDocPropTable = ({
@@ -72,6 +122,10 @@ export const TSDocPropTable = ({
                 <Row key={datum.name}>
                   <Cell>
                     <InlineDefinition
+                      tooltipClassName={css`
+                        min-width: min-content;
+                        max-width: 384px;
+                      `}
                       definition={<PropTableTooltipContent prop={datum} />}
                     >
                       <strong>{datum.name}</strong>
@@ -94,7 +148,7 @@ export const TSDocPropTable = ({
                   </Cell>
                   <Cell>
                     <InlineCode>
-                      {getDefaultValueString(datum.defaultValue)}
+                      {getDefaultValueString(datum.defaultValue) || '—'}
                     </InlineCode>
                   </Cell>
                 </Row>
