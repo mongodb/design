@@ -14,6 +14,7 @@ import {
   PropGroup,
   CustomComponentDoc,
 } from './TSDocPropsTable.types';
+import { Markdown } from 'components/Markdown';
 
 const PropTableTooltipContent = ({ prop }: { prop: PropItem }) => (
   <>
@@ -81,14 +82,16 @@ export const TSDocPropTable = ({
                           color: ${palette.red.base};
                         `}
                       >
-                        &nbsp; *
+                        &nbsp; (REQUIRED)
                       </sup>
                     )}
                   </Cell>
                   <Cell>
                     <InlineCode>{getTypeString(datum.type)}</InlineCode>
                   </Cell>
-                  <Cell>{datum.description || '—'}</Cell>
+                  <Cell>
+                    <Markdown>{datum.description}</Markdown>
+                  </Cell>
                   <Cell>
                     <InlineCode>
                       {getDefaultValueString(datum.defaultValue)}
@@ -106,7 +109,10 @@ export const TSDocPropTable = ({
                           ? 'Global'
                           : 'Native attributes inherited from'}
                         &nbsp;
-                        <Link href={getHTMLAttributesLink(datum.groupName)}>
+                        <Link
+                          target="_blank"
+                          href={getHTMLAttributesLink(datum.groupName)}
+                        >
                           <InlineCode>{datum.groupName}</InlineCode>
                         </Link>
                       </Cell>
