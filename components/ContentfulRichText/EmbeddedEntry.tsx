@@ -15,7 +15,7 @@ const EmbeddedEntry = ({ nodeTarget }) => {
 
   if (isLinkedEntry) {
     const embeddedEntryNodeId = nodeTarget?.sys?.id;
-    return <LinkedEntry sysId={embeddedEntryNodeId} />
+    return <LinkedEntry sysId={embeddedEntryNodeId} />;
   } else {
     const embeddedEntryNodeId = nodeTarget?.sys?.contentType?.sys.id;
     const embeddedEntryFields = nodeTarget.fields;
@@ -59,12 +59,12 @@ const EmbeddedEntry = ({ nodeTarget }) => {
 
       case 'horizontalLayout': {
         const { columns } = embeddedEntryFields;
-        return <HorizontalLayout columns={columns} />
+        return <HorizontalLayout columns={columns} />;
       }
 
       case 'horizontalLayoutColumn': {
         // const { widthRatio, verticalAlign, content } = embeddedEntryFields;
-        return <HorizontalLayoutColumn {...embeddedEntryFields} />
+        return <HorizontalLayoutColumn {...embeddedEntryFields} />;
       }
       default:
         return (

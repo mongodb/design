@@ -58,7 +58,10 @@ export default class AppDocument extends Document {
             content="MongoDB's open-source, accessible design system for designing and building web applications with React."
           />
           <meta property="og:url" content="https://mongodb.design" />
-          <meta name="keywords" content="mongodb, user interface, component library, react, design, ui, ux" />
+          <meta
+            name="keywords"
+            content="mongodb, user interface, component library, react, design, ui, ux"
+          />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,600;1,400&display=swap"

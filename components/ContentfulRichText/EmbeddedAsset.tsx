@@ -1,4 +1,4 @@
-const EmbeddedAsset = (node) => {
+const EmbeddedAsset = node => {
   if (!node.data.target.fields) {
     return <>Invalid asset.</>;
   }
