@@ -3,7 +3,6 @@ import { PropItemType, PropItem, Props } from 'react-docgen-typescript';
 import { Cell, Row, Table, TableHeader } from '@leafygreen-ui/table';
 import {
   Description,
-  H3,
   InlineCode,
   Label,
   Link,
