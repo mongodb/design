@@ -2,7 +2,6 @@ import React from 'react';
 import { PropItemType, PropItem, Props } from 'react-docgen-typescript';
 import { Cell, Row, Table, TableHeader } from '@leafygreen-ui/table';
 import {
-  Body,
   Description,
   H3,
   InlineCode,
