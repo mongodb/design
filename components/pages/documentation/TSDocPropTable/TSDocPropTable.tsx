@@ -21,24 +21,25 @@ import {
   CustomComponentDoc,
 } from './TSDocPropsTable.types';
 import { Markdown } from 'components/Markdown';
-import { fontFamilies, typeScales } from '@leafygreen-ui/tokens';
+import { spacing, typeScales } from '@leafygreen-ui/tokens';
 
 const PropTableTooltipContent = ({ prop }: { prop: PropItem }) => (
   <div
     className={css`
-      * > {
-        margin-block: ${typeScales.body1.fontSize}px;
+      * {
+        margin-block: ${typeScales.body1.lineHeight / 8}px;
       }
     `}
   >
-    <H3
+    <InlineCode
       darkMode
       className={css`
-        font-family: ${fontFamilies.code};
+        font-size: ${typeScales.code2.fontSize}px;
+        display: inline-block;
       `}
     >
       {prop.name}
-    </H3>
+    </InlineCode>
 
     <div>
       <Label htmlFor={`${prop.name}-type`} darkMode>
@@ -70,7 +71,16 @@ const PropTableTooltipContent = ({ prop }: { prop: PropItem }) => (
       </InlineCode>
     </div>
 
-    <Description darkMode>{prop.description}</Description>
+    <hr
+      className={css`
+        border-color: ${palette.gray.dark1};
+        margin: ${spacing[2]}px -${spacing[3]}px;
+      `}
+    />
+
+    <Description darkMode>
+      <Markdown darkMode>{prop.description}</Markdown>
+    </Description>
   </div>
 );
 
@@ -110,8 +120,8 @@ export const TSDocPropTable = ({
           data={props}
           columns={[
             <TableHeader label="Prop" key="Prop" />,
-            <TableHeader label="Type" key="Type" />,
             <TableHeader label="Description" key="Description" />,
+            <TableHeader label="Type" key="Type" />,
             <TableHeader label="Default" key="Default" />,
           ]}
         >
@@ -127,7 +137,7 @@ export const TSDocPropTable = ({
                       `}
                       definition={<PropTableTooltipContent prop={datum} />}
                     >
-                      <strong>{datum.name}</strong>
+                      <InlineCode>{datum.name}</InlineCode>
                     </InlineDefinition>
                     {datum.required && (
                       <sup
@@ -140,10 +150,17 @@ export const TSDocPropTable = ({
                     )}
                   </Cell>
                   <Cell>
-                    <InlineCode>{getTypeString(datum.type)}</InlineCode>
+                    <Markdown>{datum.description}</Markdown>
                   </Cell>
                   <Cell>
-                    <Markdown>{datum.description}</Markdown>
+                    <InlineCode
+                      className={css`
+                        display: inline;
+                        max-width: 40ch;
+                      `}
+                    >
+                      {getTypeString(datum.type)}
+                    </InlineCode>
                   </Cell>
                   <Cell>
                     <InlineCode>

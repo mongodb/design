@@ -3,14 +3,19 @@ import { InlineCode, Link } from '@leafygreen-ui/typography';
 import Code from '@leafygreen-ui/code';
 import { css } from '@leafygreen-ui/emotion';
 
-export const Markdown = ({ children }: any) => (
+export const Markdown = ({ children, darkMode }: any) => (
   <span>
     <ReactMarkdown
       components={{
-        link: ({ href, children }) => <Link href={href}>{children}</Link>,
+        link: ({ href, children }) => (
+          <Link darkMode={darkMode} href={href}>
+            {children}
+          </Link>
+        ),
         code: ({ inline, children }) =>
           inline ? (
             <InlineCode
+              darkMode={darkMode}
               className={css`
                 display: inline;
               `}
@@ -18,7 +23,7 @@ export const Markdown = ({ children }: any) => (
               {children}
             </InlineCode>
           ) : (
-            <Code copyable={false} language="ts">
+            <Code darkMode={darkMode} copyable={false} language="ts">
               {children.toString()}
             </Code>
           ),
