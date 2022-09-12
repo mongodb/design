@@ -13,65 +13,88 @@ export default function () {
 const getFileContent = util.promisify(fs.readFile);
 
 export const getDependencyDocumentation = async (
-  componentKebabCaseName: BaseLayoutProps['componentKebabCaseName'],
-) => {
+  componentKebabCaseName: any,
+): Promise<{
+  props: {
+    componentKebabCaseName: string;
+    changelog: string | null;
+    readme: string | null;
+    tsDoc: Array<CustomComponentDoc> | null;
+  };
+}> => {
   if (typeof componentKebabCaseName !== 'string') {
-    return { props: { changelog: null, readme: null, tsDoc: null } };
+    return {
+      props: {
+        componentKebabCaseName: '',
+        changelog: null,
+        readme: null,
+        tsDoc: null,
+      },
+    };
   }
 
-  const props: Partial<BaseLayoutProps> = { componentKebabCaseName };
+  return {
+    props: {
+      componentKebabCaseName,
+      changelog: await getChangelog(componentKebabCaseName),
+      readme: await getReadme(componentKebabCaseName),
+      tsDoc: await getTSDoc(componentKebabCaseName),
+    },
+  };
+};
 
-  let changelogMarkdown: '' | Buffer = '';
-  let readmeMarkdown = '';
-  let tsDoc: Array<CustomComponentDoc> | null = null;
-
+export async function getChangelog(
+  componentName: string,
+): Promise<string | null> {
   try {
-    changelogMarkdown = await getFileContent(
+    const changelogMarkdown = await getFileContent(
       path.join(
         './node_modules',
-        `@leafygreen-ui/${componentKebabCaseName}`,
+        `@leafygreen-ui/${componentName}`,
         '/CHANGELOG.md',
       ),
     );
+    return await markdownToHtml(changelogMarkdown);
   } catch (error) {
     console.warn(error);
+    return null;
   }
+}
 
+export async function getReadme(componentName: string): Promise<string | null> {
   try {
-    readmeMarkdown = await getFileContent(
+    const readmeMarkdown = await getFileContent(
       path.join(
         './node_modules',
-        `@leafygreen-ui/${componentKebabCaseName}`,
+        `@leafygreen-ui/${componentName}`,
         '/README.md',
       ),
       'utf-8',
     );
+
+    return readmeMarkdown;
   } catch (error) {
     console.warn(error);
+    return null;
   }
+}
 
+export async function getTSDoc(
+  componentName: string,
+): Promise<Array<CustomComponentDoc> | null> {
   try {
-    const _tsDoc: Array<CustomComponentDoc> = JSON.parse(
+    return JSON.parse(
       await getFileContent(
         path.join(
           './node_modules',
-          `@leafygreen-ui/${componentKebabCaseName}`,
+          `@leafygreen-ui/${componentName}`,
           '/tsdoc.json',
         ),
         'utf-8',
       ),
     );
-
-    tsDoc = _tsDoc;
   } catch (error) {
     console.warn(error);
+    return null;
   }
-
-  props.changelog = await markdownToHtml(changelogMarkdown);
-  props.readme = readmeMarkdown;
-  props.tsDoc = tsDoc;
-
-  return {
-    props,
-  };
-};
+}
