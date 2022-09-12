@@ -16,14 +16,29 @@ const mdxConfig = withMDX({
   webpack(config) {
 
     config.module.rules.push({
-      test: /\.stories\.tsx?$/,
+      test: /\.(stor(y|ies))?\.tsx?/,
       loader: 'ts-loader',
       options: {
         compilerOptions: {
-          noEmit: false,
-          esModuleInterop: true,
-          jsx: true,
-          isolatedModules: false,
+          'target': 'ES5',
+          'jsx': 'react',
+          'allowJs': false,
+          'pretty': true,
+          'strictNullChecks': true,
+          'noUnusedLocals': true,
+          'esModuleInterop': true,
+          'strict': true,
+          'allowSyntheticDefaultImports': true,
+          'moduleResolution': 'node',
+          'baseUrl': '.',
+          'skipLibCheck': true,
+          'noEmit': false,
+          'module': 'esnext',
+          'declaration': true,
+          'declarationMap': true,
+          'emitDeclarationOnly': false,
+          'importHelpers': false,
+          'composite': true,
         }
       }
     })
