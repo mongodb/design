@@ -14,7 +14,9 @@ export async function getStaticComponentPaths() {
   return { paths, fallback: false };
 }
 
-export async function getStaticComponentProps({ params }) {
+export async function getStaticComponentProps(ctx) {
+  const { params, req } = ctx;
+  console.log(req.query)
   return {
     props: {
       component: await getComponent(params.componentName), // this is in kebabCase
