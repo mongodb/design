@@ -1,6 +1,10 @@
 import startCase from 'lodash/startCase';
 import { ContentfulClientApi, Entry, EntryCollection } from 'contentful';
-import { ComponentFields, ContentPageFields, ContentPageGroupFields } from './types';
+import {
+  ComponentFields,
+  ContentPageFields,
+  ContentPageGroupFields,
+} from './types';
 
 const contentful = require('contentful');
 const isProd = process.env.NODE_ENV === 'production';
@@ -91,9 +95,7 @@ export async function getContentPages(): Promise<
   }
 }
 
-export async function getContentPage(
-  contentPageTitle: string,
-) {
+export async function getContentPage(contentPageTitle: string) {
   try {
     const entries =
       await createContentfulClient().getEntries<ContentPageGroupFields>({
@@ -108,12 +110,11 @@ export async function getContentPage(
   }
 }
 
-export async function getEntryById(
-  sysId: string,
-) {
+export async function getEntryById(sysId: string) {
   try {
-    const entry =
-      await createContentfulClient().getEntry<Entry<unknown>>(sysId);
+    const entry = await createContentfulClient().getEntry<Entry<unknown>>(
+      sysId,
+    );
     return entry;
   } catch (error) {
     console.error('No entry found', error);

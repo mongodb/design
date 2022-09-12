@@ -1,2 +1,3 @@
-const getFullPageTitle = (str: string) => `${str} – LeafyGreen Design System | MongoDB`
+const getFullPageTitle = (str: string) =>
+  `${str} – LeafyGreen Design System | MongoDB`;
 export default getFullPageTitle;
