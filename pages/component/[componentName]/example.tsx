@@ -1,69 +1,22 @@
 import ComponentLayout from 'layouts/ComponentLayout';
-import dynamic from 'next/dynamic';
-import { startCase, kebabCase } from 'lodash';
-import { ComponentType, ReactElement } from 'react';
-import {
-  getStaticComponentPaths,
-  getStaticComponentProps,
-  StaticComponentProps,
-} from 'utils/getStaticComponent';
+import { ReactElement } from 'react';
+import { getStaticComponentPaths } from 'utils/getStaticComponent';
+import { H2 } from '@leafygreen-ui/typography';
+import { getComponent } from 'utils/getContentfulResources';
+import { getTSDoc } from 'utils/_getComponentResources';
+import { startCase } from 'lodash';
+import { Props } from 'react-docgen-typescript';
 
-// This might be useful later when moving over to generating live examples from Storybook files.
-// const getStoryFile = (component) => dynamic(() => import(`node_modules/${component.fields.packageName}/src/${component.fields.name}.story.tsx`), {
-//   ssr: false,
-//   loading: () => <p>Loading...</p>,
-// });
-
-const getExampleFile = component =>
-  dynamic(
-    () =>
-      import(
-        `../../../deprecated/${kebabCase(component.fields.name)}/example.tsx`
-      ),
-    {
-      ssr: false,
-      loading: () => <p>Loading...</p>,
-    },
-  );
-
-// @ts-ignore
-const getLiveExample = async ({ component }: StaticComponentProps) => {
-  let CSF: ComponentType<any> | null = null;
-
-  try {
-    if (component) {
-      const {
-        fields: { name },
-      } = component;
-
-      CSF = dynamic(
-        () =>
-          import(
-            `node_modules/@leafygreen-ui/${name}/src/${startCase(
-              name,
-            )}.story.tsx`
-          ),
-        {
-          ssr: false,
-          loading: () => <h1>ComponentExample</h1>,
-        },
-      );
-    }
-
-    // );
-  } catch (err) {
-    console.warn(err);
-  }
-
-  return CSF;
-};
-
-const ComponentExample = ({ component }: StaticComponentProps) => {
+const ComponentExample = ({ component, componentProps }) => {
   // todo: replace with Storybook generated live examples
-  const ExampleFile = getExampleFile(component);
-  const Story = getLiveExample({ component });
-  console.log(Story);
-  return <ExampleFile />;
+  componentProps = JSON.parse(componentProps) as Props;
+
+  return (
+    <>
+      <H2>Example {component?.fields.name}</H2>
+      <code>{JSON.stringify(Object.keys(componentProps))}</code>
+    </>
+  );
 };
 
 ComponentExample.getLayout = function getLayout(page: ReactElement) {
@@ -76,6 +29,20 @@ ComponentExample.getLayout = function getLayout(page: ReactElement) {
 
 export const getStaticPaths = getStaticComponentPaths;
 
-export const getStaticProps = getStaticComponentProps;
+export const getStaticProps = async ({ params }) => {
+  const { componentName } = params;
+  const tsDoc = await getTSDoc(componentName);
+
+  const componentProps = tsDoc?.find(
+    doc => doc.displayName === startCase(componentName),
+  )?.props[startCase(componentName) + 'Props'];
+
+  return {
+    props: {
+      component: await getComponent(componentName), // this is in kebabCase
+      componentProps: JSON.stringify(componentProps),
+    },
+  };
+};
 
 export default ComponentExample;

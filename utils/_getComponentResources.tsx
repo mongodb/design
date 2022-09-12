@@ -2,8 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import util from 'util';
 import markdownToHtml from 'utils/markdownToHtml';
-import type { BaseLayoutProps } from 'utils/types';
 import { CustomComponentDoc } from 'components/pages/documentation/TSDocPropTable';
+import dynamic from 'next/dynamic';
+import { startCase } from 'lodash';
+
+// import * as Story from '@leafygreen-ui/button/src/Button.story';
 
 // eslint-disable-next-line import/no-anonymous-default-export, react/display-name
 export default function () {
@@ -98,3 +101,21 @@ export async function getTSDoc(
     return null;
   }
 }
+
+// export async function getStory(componentName: string) {
+//   try {
+//     dynamic(
+//       import(
+//         `@leafygreen-ui/${componentName}/src/${startCase(
+//           componentName,
+//         )}.story.tsx`
+//       ),
+//       {
+//         ssr: false,
+//         loading: () => <>Loading Story...</>,
+//       },
+//     );
+//   } catch (error) {
+//     console.warn(error);
+//   }
+// }
