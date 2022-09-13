@@ -1,15 +1,23 @@
+import styled from "@emotion/styled";
+import Image from "next/image";
+import prependUrl from "utils/prependUrl";
+import { GlobalStyles } from "./styles";
+
+const ImageWrapper = styled.div`${GlobalStyles}`;
+
 const EmbeddedAsset = (node) => {
   if (!node.data.target.fields) {
     return <>Invalid asset.</>;
   }
 
   const { title, file } = node.data.target.fields;
+  const { width, height } = file.details.image;
   const mimeType = file.contentType;
   const mimeGroup = mimeType.split('/')[0];
 
   switch (mimeGroup) {
     case 'image':
-      return <img alt={title} src={file.url} width="100%" />;
+      return <ImageWrapper><Image alt={title} src={prependUrl(file.url)} layout="responsive" width={width} height={height} /></ImageWrapper>;
     default:
       return <h1>Unsupported embedded-asset-block mimeGroup: ${mimeGroup!}</h1>;
   }

@@ -10,9 +10,12 @@ const withMDX = nextMdx({
   },
 });
 
-const mdxConfig = withMDX({
+const nextConfig = withMDX({
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'tsx', 'ts'],
   trailingSlash: true,
+  images: {
+    domains: ['images.ctfassets.net'],
+  }
 });
 
-export default mdxConfig;
+export default nextConfig;

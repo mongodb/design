@@ -17,16 +17,17 @@ import {
   TableCellBlock,
   TableHeaderCellBlock
 } from './Tables';
+import { GlobalStyles } from './styles';
 
 const ContentfulRichText = ({ document }) => (
   documentToReactComponents(document, {
     renderNode: {
-      [BLOCKS.PARAGRAPH]: (node, children) => <Body>{children}</Body>,
-      [BLOCKS.HEADING_1]: (node, children) => <H1><HeaderContent>{children}</HeaderContent></H1>,
-      [BLOCKS.HEADING_2]: (node, children) => <H2><HeaderContent>{children}</HeaderContent></H2>,
-      [BLOCKS.HEADING_3]: (node, children) => <H3><HeaderContent>{children}</HeaderContent></H3>,
-      [BLOCKS.HEADING_4]: (node, children) => <Subtitle><HeaderContent>{children}</HeaderContent></Subtitle>,
-      [BLOCKS.HEADING_5]: (node, children) => <Overline>{children}</Overline>,
+      [BLOCKS.PARAGRAPH]: (node, children) => <Body css={GlobalStyles}>{children}</Body>,
+      [BLOCKS.HEADING_1]: (node, children) => <H1 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H1>,
+      [BLOCKS.HEADING_2]: (node, children) => <H2 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H2>,
+      [BLOCKS.HEADING_3]: (node, children) => <H3 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H3>,
+      [BLOCKS.HEADING_4]: (node, children) => <Subtitle css={GlobalStyles}><HeaderContent>{children}</HeaderContent></Subtitle>,
+      [BLOCKS.HEADING_5]: (node, children) => <Overline css={GlobalStyles}>{children}</Overline>,
       [BLOCKS.TABLE]: TableBlock,
       [BLOCKS.TABLE_ROW]: TableRowBlock,
       [BLOCKS.TABLE_CELL]: TableCellBlock,
@@ -37,6 +38,6 @@ const ContentfulRichText = ({ document }) => (
       [INLINES.ASSET_HYPERLINK]: EmbeddedAsset,
     },
   }) as JSX.Element
-);
+)
 
 export default ContentfulRichText;
