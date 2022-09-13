@@ -186,9 +186,4 @@ export const globalStyles = css`
   *:after {
     box-sizing: border-box;
   }
-  
-  li {
-    margin: 12px 0;
-    line-spacing: 1.6;
-  }
 `;

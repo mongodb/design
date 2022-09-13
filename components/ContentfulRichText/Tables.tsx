@@ -12,6 +12,7 @@ export const TableRowBlock = (node, children) => <tr>{node.content.map(node => <
 const StyledTh = styled.th`
   > * { 
     font-weight: 700;
+    margin-bottom: 0; // overwrite global margin
   }
   min-width: 120px;
   text-align: left;
@@ -25,5 +26,8 @@ const StyledTd = styled.td`
   text-align: left;
   padding: 8px;
   border-bottom: 1px solid ${palette.gray.light2};
+  & > * {
+    margin-bottom: 0; // overwrite global margin
+  }
 `;
 export const TableCellBlock = (node, children) => <StyledTd>{node.content.map(node => <ContentfulRichText document={node} />)}</StyledTd>

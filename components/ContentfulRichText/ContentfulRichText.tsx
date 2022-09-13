@@ -17,7 +17,7 @@ import {
   TableCellBlock,
   TableHeaderCellBlock
 } from './Tables';
-import { GlobalStyles } from './styles';
+import { GlobalStyles, SubtitleStyles } from './styles';
 
 const ContentfulRichText = ({ document }) => (
   documentToReactComponents(document, {
@@ -26,7 +26,7 @@ const ContentfulRichText = ({ document }) => (
       [BLOCKS.HEADING_1]: (node, children) => <H1 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H1>,
       [BLOCKS.HEADING_2]: (node, children) => <H2 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H2>,
       [BLOCKS.HEADING_3]: (node, children) => <H3 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H3>,
-      [BLOCKS.HEADING_4]: (node, children) => <Subtitle css={GlobalStyles}><HeaderContent>{children}</HeaderContent></Subtitle>,
+      [BLOCKS.HEADING_4]: (node, children) => <Subtitle css={SubtitleStyles}><HeaderContent>{children}</HeaderContent></Subtitle>,
       [BLOCKS.HEADING_5]: (node, children) => <Overline css={GlobalStyles}>{children}</Overline>,
       [BLOCKS.TABLE]: TableBlock,
       [BLOCKS.TABLE_ROW]: TableRowBlock,
