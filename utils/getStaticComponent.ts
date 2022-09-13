@@ -17,9 +17,11 @@ export async function getStaticComponentPaths() {
 }
 
 export interface StaticComponentProps {
-  component?: Entry<ComponentFields>
+  component?: Entry<ComponentFields>;
 }
-export async function getStaticComponentProps({ params }): Promise<{ props: StaticComponentProps }> {
+export async function getStaticComponentProps({
+  params,
+}): Promise<{ props: StaticComponentProps }> {
   return {
     props: {
       component: await getComponent(params.componentName), // this is in kebabCase
