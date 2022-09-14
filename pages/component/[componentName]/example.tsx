@@ -5,19 +5,31 @@ import React, {
   useState,
   useMemo,
   ReactNode,
+  useReducer,
 } from 'react';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import { H2 } from '@leafygreen-ui/typography';
+import Card from '@leafygreen-ui/card';
 import { getComponent } from 'utils/getContentfulResources';
 import { getComponentStory } from 'utils/getComponentStory';
 import { kebabCase, startCase } from 'lodash';
-import dynamic from 'next/dynamic';
-import { ComponentStory, Meta } from '@storybook/react';
+import { css } from '@leafygreen-ui/emotion';
 
 const ComponentExample = ({ component }) => {
-  const [meta, setMeta] = useState<Meta<any>>();
-  const [StoryFn, setStoryFn] = useState<any>();
-  const [StoryComponent, setStoryComponent] = useState<ReactNode>();
+  const [{ meta, args, StoryFn, StoryComponent }, setState] = useReducer(
+    (state, newState) => {
+      return {
+        ...state,
+        ...newState,
+      };
+    },
+    {
+      meta: undefined,
+      args: undefined,
+      StoryFn: undefined,
+      StoryComponent: undefined,
+    },
+  );
 
   // Fetch Story if/when component changes
   useEffect(() => {
@@ -26,30 +38,40 @@ const ComponentExample = ({ component }) => {
       const { default: meta, ...stories } = module;
       const StoryFn = Object.values(stories)[0];
       const args = { ...meta.args, ...StoryFn?.args };
-      const Component = StoryFn.bind({})(args);
-      setMeta(meta);
-      setStoryFn(StoryFn);
-      setStoryComponent(Component);
+      const StoryComponent = StoryFn.bind({})();
+      setState({
+        meta,
+        StoryFn,
+        args,
+        StoryComponent,
+      });
     });
   }, [component]);
 
-  // const args = useMemo(
-  //   () => ({ ...meta?.args, ...StoryFn?.args }),
-  //   [meta, StoryFn],
-  // );
-
-  // const StoryComponent = useMemo(() => {
-  //   console.log(StoryFn);
-  //   if (StoryFn) return StoryFn.bind({})(args);
-  //   return <></>;
-  // }, [StoryFn, args]);
-
-  // console.log(StoryComponent);
+  // Update the component with new args when the args change
+  useEffect(() => {
+    if (StoryComponent) {
+      setState({
+        StoryComponent: React.cloneElement(StoryComponent, { ...args }),
+      });
+    }
+    // This will cause an infinite loop if we include StoryComponent
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [args]);
 
   return (
     <>
-      <H2>Example {component?.fields.name}</H2>
-      {StoryComponent}
+      <Card
+        className={css`
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-block: 2em;
+          min-height: 25vh;
+        `}
+      >
+        {StoryComponent}
+      </Card>
     </>
   );
 };
