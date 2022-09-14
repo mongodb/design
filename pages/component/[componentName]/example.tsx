@@ -1,22 +1,14 @@
 import ComponentLayout from 'layouts/ComponentLayout';
-import React, {
-  ReactElement,
-  useEffect,
-  useState,
-  useMemo,
-  ReactNode,
-  useReducer,
-} from 'react';
+import React, { ReactElement, useEffect, useReducer } from 'react';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
-import { H2 } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';
 import { getComponent } from 'utils/getContentfulResources';
 import { getComponentStory } from 'utils/getComponentStory';
-import { kebabCase, startCase } from 'lodash';
+import { kebabCase } from 'lodash';
 import { css } from '@leafygreen-ui/emotion';
 
 const ComponentExample = ({ component }) => {
-  const [{ meta, args, StoryFn, StoryComponent }, setState] = useReducer(
+  const [{ meta, args, StoryComponent }, setState] = useReducer(
     (state, newState) => {
       return {
         ...state,
@@ -26,7 +18,6 @@ const ComponentExample = ({ component }) => {
     {
       meta: undefined,
       args: undefined,
-      StoryFn: undefined,
       StoryComponent: undefined,
     },
   );
@@ -41,7 +32,6 @@ const ComponentExample = ({ component }) => {
       const StoryComponent = StoryFn.bind({})(args);
       setState({
         meta,
-        StoryFn,
         args,
         StoryComponent,
       });

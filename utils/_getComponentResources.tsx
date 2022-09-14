@@ -1,10 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import util from 'util';
-import { startCase } from 'lodash';
 import markdownToHtml from 'utils/markdownToHtml';
 import { CustomComponentDoc } from 'components/pages/documentation/TSDocPropTable';
-import dynamic from 'next/dynamic';
 
 // import * as Story from '@leafygreen-ui/button/src/Button.story';
 
