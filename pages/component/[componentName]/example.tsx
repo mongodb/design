@@ -4,33 +4,54 @@ import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import { H2 } from '@leafygreen-ui/typography';
 import { getComponent } from 'utils/getContentfulResources';
 import { getComponentStory } from 'utils/getComponentStory';
-import { kebabCase } from 'lodash';
+import { kebabCase, startCase } from 'lodash';
+import dynamic from 'next/dynamic';
 
 const ComponentExample = ({ component }) => {
-  const [Story, setStory] = useState<ComponentStory<any> | null>(null);
+  const kebabName = kebabCase(component?.fields.name);
 
-  // getComponentStory(kebabCase(component?.fields.name));
+  // const StoryFn = dynamic(
+  //   () => {
+  //     // return import(
+  //     //   `@leafygreen-ui/${kebabName}/src/${startCase(kebabName)}.story.tsx`
+  //     // );
+  //     return import(`../../../deprecated/${kebabName}/example.tsx`)
+  //     // return import(`@leafygreen-ui/button/src/Button.story`);
+  //     // .then(
+  //     //   m => m.default,
+  //     // );
+  //   },
+  //   {
+  //     ssr: false,
+  //     //   loading: () => <h1>Loading</h1>,
+  //   },
+  // );
+  // console.log(StoryFn);
+
+  const [StoryFn, setStory] = useState<any | null>(null);
 
   useEffect(() => {
-    getComponentStory(kebabCase(component?.fields.name)).then(module => {
-      const meta = module?.default;
-      // const mainStoryName = module.args.mainName
-      // const Component = meta?.component;
-      const StoryFn: ComponentStory<any> =
-        module['Default'] || module['Primary'] || module['Basic'];
+    // import(`@leafygreen-ui/${kebabName}/src/${startCase(kebabName)}.story`)
+    import(`@leafygreen-ui/button/src/Button.story`)
+      // import(`../../../deprecated/${kebabName}/example.tsx`)
+      .then(module => {
+        // const meta = module?.default;
+        // const mainStoryName = module.args.mainName
+        // const Component = meta?.component;
+        // const StoryFn: ComponentStory<any> =
+        //   module['Default'] || module['Primary'] || module['Basic'];
+        // const args = { ...meta.args, ...StoryFn?.args };
+        setStory(module.default);
+      });
+  }, [component, kebabName]);
 
-      const args = { ...meta.args, ...StoryFn?.args };
-      setStory(StoryFn?.(args, {}));
-
-      console.log({ ...StoryFn });
-    });
-  }, [component]);
+  console.log(StoryFn);
 
   return (
     <>
       <H2>Example {component?.fields.name}</H2>
       {/* {Component && <Component />} */}
-      {/* {Story && Story} */}
+      {/* {StoryFn} */}
     </>
   );
 };

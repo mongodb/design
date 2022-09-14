@@ -11,65 +11,25 @@ const withMDX = nextMdx({
   },
 });
 
-const withTM = nextTranspile([
-  '@leafygreen-ui/a11y',
-  '@leafygreen-ui/badge',
-  '@leafygreen-ui/banner',
-  '@leafygreen-ui/box',
-  '@leafygreen-ui/button',
-  '@leafygreen-ui/callout',
-  '@leafygreen-ui/card',
-  '@leafygreen-ui/checkbox',
-  '@leafygreen-ui/code',
-  '@leafygreen-ui/combobox',
-  '@leafygreen-ui/confirmation-modal',
-  '@leafygreen-ui/copyable',
-  '@leafygreen-ui/emotion',
-  '@leafygreen-ui/expandable-card',
-  '@leafygreen-ui/form-footer',
-  '@leafygreen-ui/hooks',
-  '@leafygreen-ui/icon',
-  '@leafygreen-ui/icon-button',
-  '@leafygreen-ui/inline-definition',
-  '@leafygreen-ui/interaction-ring',
-  '@leafygreen-ui/leafygreen-provider',
-  '@leafygreen-ui/lib',
-  '@leafygreen-ui/logo',
-  '@leafygreen-ui/marketing-modal',
-  '@leafygreen-ui/menu',
-  '@leafygreen-ui/modal',
-  '@leafygreen-ui/palette',
-  '@leafygreen-ui/pipeline',
-  '@leafygreen-ui/popover',
-  '@leafygreen-ui/portal',
-  '@leafygreen-ui/radio-box-group',
-  '@leafygreen-ui/radio-group',
-  '@leafygreen-ui/ripple',
-  '@leafygreen-ui/segmented-control',
-  '@leafygreen-ui/select',
-  '@leafygreen-ui/side-nav',
-  '@leafygreen-ui/stepper',
-  '@leafygreen-ui/table',
-  '@leafygreen-ui/tabs',
-  '@leafygreen-ui/testing-lib',
-  '@leafygreen-ui/text-area',
-  '@leafygreen-ui/text-input',
-  '@leafygreen-ui/toast',
-  '@leafygreen-ui/toggle',
-  '@leafygreen-ui/tokens',
-  '@leafygreen-ui/tooltip',
-  '@leafygreen-ui/typography',
-],
-{
-  resolveSymlinks: true
+const nextConfig = withMDX({
+  reactStrictMode: true,
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'tsx', 'ts'],
+  trailingSlash: true,
+  webpack: (config, options) => {
+    config.resolve.symlinks = true;
+    config.module.rules.push({
+      // test: /.+\.story.tsx?$/,
+      test: /\.+(js|jsx|mjs|ts|tsx)$/,
+      use: options.defaultLoaders.babel,
+      // Look for packages (or symlinks) that include `leafygreen-ui`, but omit those modules their own node_modules
+      include: filePath =>
+        /.+(node_modules)*\/@*leafygreen-ui\/(?!node_modules).+/g.test(
+          filePath,
+        ),
+      type: 'javascript/auto',
+    });
+    return config;
+  },
 });
 
-const mdxConfig = withTM(
-  withMDX({
-    reactStrictMode: true,
-    pageExtensions: ['js', 'jsx', 'md', 'mdx', 'tsx', 'ts'],
-    trailingSlash: true,
-  })
-);
-
-export default mdxConfig;
+export default nextConfig;

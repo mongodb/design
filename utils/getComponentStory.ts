@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react';
 import dynamic from 'next/dynamic';
-import {startCase} from 'lodash'
+import { startCase } from 'lodash';
 // import dynamic from 'next/dynamic';
 
 export async function getComponentStory(kebabName: string) {
