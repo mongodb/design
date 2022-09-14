@@ -38,7 +38,7 @@ const ComponentExample = ({ component }) => {
       const { default: meta, ...stories } = module;
       const StoryFn = Object.values(stories)[0];
       const args = { ...meta.args, ...StoryFn?.args };
-      const StoryComponent = StoryFn.bind({})();
+      const StoryComponent = StoryFn.bind({})(args);
       setState({
         meta,
         StoryFn,
