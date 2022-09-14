@@ -1,57 +1,55 @@
 import ComponentLayout from 'layouts/ComponentLayout';
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, {
+  ReactElement,
+  useEffect,
+  useState,
+  useMemo,
+  ReactNode,
+} from 'react';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import { H2 } from '@leafygreen-ui/typography';
 import { getComponent } from 'utils/getContentfulResources';
 import { getComponentStory } from 'utils/getComponentStory';
 import { kebabCase, startCase } from 'lodash';
 import dynamic from 'next/dynamic';
+import { ComponentStory, Meta } from '@storybook/react';
 
 const ComponentExample = ({ component }) => {
-  const kebabName = kebabCase(component?.fields.name);
+  const [meta, setMeta] = useState<Meta<any>>();
+  const [StoryFn, setStoryFn] = useState<any>();
+  const [StoryComponent, setStoryComponent] = useState<ReactNode>();
 
-  // const StoryFn = dynamic(
-  //   () => {
-  //     // return import(
-  //     //   `@leafygreen-ui/${kebabName}/src/${startCase(kebabName)}.story.tsx`
-  //     // );
-  //     return import(`../../../deprecated/${kebabName}/example.tsx`)
-  //     // return import(`@leafygreen-ui/button/src/Button.story`);
-  //     // .then(
-  //     //   m => m.default,
-  //     // );
-  //   },
-  //   {
-  //     ssr: false,
-  //     //   loading: () => <h1>Loading</h1>,
-  //   },
-  // );
-  // console.log(StoryFn);
-
-  const [StoryFn, setStory] = useState<any | null>(null);
-
+  // Fetch Story if/when component changes
   useEffect(() => {
-    // import(`@leafygreen-ui/${kebabName}/src/${startCase(kebabName)}.story`)
-    import(`@leafygreen-ui/button/src/Button.story`)
-      // import(`../../../deprecated/${kebabName}/example.tsx`)
-      .then(module => {
-        // const meta = module?.default;
-        // const mainStoryName = module.args.mainName
-        // const Component = meta?.component;
-        // const StoryFn: ComponentStory<any> =
-        //   module['Default'] || module['Primary'] || module['Basic'];
-        // const args = { ...meta.args, ...StoryFn?.args };
-        setStory(module.default);
-      });
-  }, [component, kebabName]);
+    const kebabName = kebabCase(component?.fields.name);
+    getComponentStory(kebabName).then(module => {
+      const { default: meta, ...stories } = module;
+      const StoryFn = Object.values(stories)[0];
+      const args = { ...meta.args, ...StoryFn?.args };
+      const Component = StoryFn.bind({})(args);
+      setMeta(meta);
+      setStoryFn(StoryFn);
+      setStoryComponent(Component);
+    });
+  }, [component]);
 
-  console.log(StoryFn);
+  // const args = useMemo(
+  //   () => ({ ...meta?.args, ...StoryFn?.args }),
+  //   [meta, StoryFn],
+  // );
+
+  // const StoryComponent = useMemo(() => {
+  //   console.log(StoryFn);
+  //   if (StoryFn) return StoryFn.bind({})(args);
+  //   return <></>;
+  // }, [StoryFn, args]);
+
+  // console.log(StoryComponent);
 
   return (
     <>
       <H2>Example {component?.fields.name}</H2>
-      {/* {Component && <Component />} */}
-      {/* {StoryFn} */}
+      {StoryComponent}
     </>
   );
 };
@@ -68,13 +66,6 @@ export const getStaticPaths = getStaticComponentPaths;
 
 export const getStaticProps = async ({ params }) => {
   const { componentName } = params;
-  // const tsDoc = await getTSDoc(componentName);
-
-  // const componentProps = tsDoc?.find(
-  //   doc => doc.displayName === startCase(componentName),
-  // )?.props[startCase(componentName) + 'Props'];
-
-  // const { Story, Component } = await getStory(componentName);
 
   return {
     props: {
