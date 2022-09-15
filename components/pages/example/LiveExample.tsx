@@ -5,6 +5,8 @@ import { css } from '@leafygreen-ui/emotion';
 import { getComponentStory } from 'utils/getComponentStory';
 import { ComponentStoryFn, Meta } from '@storybook/react';
 import { BaseLayoutProps } from 'utils/types';
+import { getComponentProps } from 'utils/tsdoc.utils';
+import { H3 } from '@leafygreen-ui/typography';
 
 interface LiveExampleState {
   meta?: Meta<any>;
@@ -49,10 +51,9 @@ export const LiveExample = ({
   const { props } = tsDoc?.find(doc => doc.displayName === componentName) || {
     props: undefined,
   };
-  const componentProps =
-    props?.[`${componentName}Props`] || props?.[`${componentName} Props`];
+  const componentProps = getComponentProps(props);
 
-  console.log(props);
+  console.log(componentProps);
 
   return (
     <>
@@ -67,9 +68,13 @@ export const LiveExample = ({
       >
         {StoryComponent}
       </Card>
-      <code>{JSON.stringify(args, null, 2)}</code>
-      <br />
-      <code>{JSON.stringify(componentProps, null, 2)}</code>
+      {componentProps &&
+        componentProps.map(prop => (
+          <H3 key={prop.name}>
+            {prop.name} &nbsp;
+            <code>{prop.type.name}</code>
+          </H3>
+        ))}
     </>
   );
 };

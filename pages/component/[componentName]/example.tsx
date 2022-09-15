@@ -4,7 +4,7 @@ import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import { getComponent } from 'utils/getContentfulResources';
 import { LiveExample } from 'components/pages/example/LiveExample';
 import { getTSDoc } from 'utils/_getComponentResources';
-import { CustomComponentDoc } from 'components/pages/documentation/TSDocPropTable';
+import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 const ComponentExample = ({ component, tsDoc }) => {
   return (
