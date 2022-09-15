@@ -83,6 +83,8 @@ export async function getReadme(componentName: string): Promise<string | null> {
 export async function getTSDoc(
   componentName: string,
 ): Promise<Array<CustomComponentDoc> | null> {
+  if (typeof componentName !== 'string') return null;
+
   try {
     return JSON.parse(
       await getFileContent(
