@@ -5,7 +5,7 @@ import { ReactElement } from 'react';
 import { getComponent } from 'utils/getContentfulResources';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import kebabCase from 'lodash/kebabCase';
-import { CustomComponentDoc } from 'components/pages/documentation/TSDocPropTable';
+import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 const ComponentDocumentation = ({ component, changelog, readme, tsDoc }) => {
   return (

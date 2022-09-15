@@ -1,5 +1,5 @@
 import React from 'react';
-import { PropItemType, PropItem, Props } from 'react-docgen-typescript';
+import { PropItemType, PropItem } from 'react-docgen-typescript';
 import { Cell, Row, Table, TableHeader } from '@leafygreen-ui/table';
 import {
   Description,
@@ -10,17 +10,16 @@ import {
 import { css } from '@leafygreen-ui/emotion';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import InlineDefinition from '@leafygreen-ui/inline-definition';
-import { isUndefined, omitBy, pickBy } from 'lodash';
+import { isUndefined } from 'lodash';
 import { palette } from '@leafygreen-ui/palette';
-import {
-  isInheritableGroup,
-  isPropItem,
-  PropCategory,
-  PropGroup,
-  CustomComponentDoc,
-} from './TSDocPropsTable.types';
 import { Markdown } from 'components/Markdown';
 import { spacing, typeScales } from '@leafygreen-ui/tokens';
+import {
+  CustomComponentDoc,
+  getComponentProps,
+  getInheritedProps,
+  isPropItem,
+} from 'utils/tsdoc.utils';
 
 const PropTableTooltipContent = ({ prop }: { prop: PropItem }) => (
   <div
@@ -90,21 +89,8 @@ export const TSDocPropTable = ({
   tsDoc: CustomComponentDoc;
   className?: string;
 }) => {
-  const _componentProps: PropCategory = omitBy(tsDoc.props, isInheritableGroup);
-  const componentProps = Object.values(_componentProps)
-    .flatMap((prop: Props) => Object.values(prop))
-    .sort((a, z) => a.name.localeCompare(z.name));
-
-  const _inheritedProps: PropCategory = pickBy(tsDoc.props, isInheritableGroup);
-  const inheritedProps: Array<PropGroup> = Object.entries(_inheritedProps).map(
-    ([groupName, props]: [string, Props]) => {
-      return {
-        groupName,
-        props: Object.values(props).flatMap(prop => prop),
-      };
-    },
-  );
-
+  const componentProps = getComponentProps(tsDoc.props);
+  const inheritedProps = getInheritedProps(tsDoc.props);
   const props = [...componentProps, ...inheritedProps];
 
   return (

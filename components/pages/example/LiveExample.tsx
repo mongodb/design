@@ -46,6 +46,14 @@ export const LiveExample = ({
     [StoryFn, args],
   );
 
+  const { props } = tsDoc?.find(doc => doc.displayName === componentName) || {
+    props: undefined,
+  };
+  const componentProps =
+    props?.[`${componentName}Props`] || props?.[`${componentName} Props`];
+
+  console.log(props);
+
   return (
     <>
       <Card
@@ -59,7 +67,9 @@ export const LiveExample = ({
       >
         {StoryComponent}
       </Card>
-      <code>{JSON.stringify(args)}</code>
+      <code>{JSON.stringify(args, null, 2)}</code>
+      <br />
+      <code>{JSON.stringify(componentProps, null, 2)}</code>
     </>
   );
 };
