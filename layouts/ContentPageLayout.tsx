@@ -5,6 +5,7 @@ import { spacing } from '@leafygreen-ui/tokens';
 import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
 import { mq } from 'utils/mediaQuery';
 import startCase from 'lodash/startCase';
+import getFullPageTitle from 'utils/getFullPageTitle';
 
 const layout = css`
   ${mq({
@@ -21,14 +22,14 @@ function ContentPageLayout({
   contentPageTitle: string;
   children?: React.ReactNode;
 }) {
-  const pageTitle = `${startCase(
-    contentPageTitle,
-  )} – LeafyGreen Design System | MongoDB`;
+  const pageTitle = getFullPageTitle(startCase(contentPageTitle));
 
   return (
     <div role="main" className={layout}>
       <Head>
         <title>{pageTitle}</title>
+        <meta property="og:title" content={pageTitle} />
+        <meta name="keywords" content={contentPageTitle} />
       </Head>
       <LeafyGreenProvider baseFontSize={16}>
         <div>{children}</div>

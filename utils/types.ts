@@ -1,17 +1,16 @@
 import { EntryFields } from 'contentful';
+import { CustomComponentDoc } from 'components/pages/documentation/TSDocPropTable';
 
 export interface ContentPageFields {
   title: EntryFields.Text;
-  section: EntryFields.Text;
   content: EntryFields.RichText;
 }
 
-export interface ContentPageSectionFields {
+export interface ContentPageGroupFields {
   title: EntryFields.Text;
   iconName: EntryFields.Text;
   contentPages: any; // todo: replace with correct reference type
 }
-
 export interface ComponentFields {
   name: EntryFields.Text;
   description: EntryFields.Text;
@@ -24,4 +23,5 @@ export interface BaseLayoutProps {
   componentKebabCaseName: string;
   changelog: string;
   readme: string;
+  tsDoc: Array<CustomComponentDoc> | null;
 }

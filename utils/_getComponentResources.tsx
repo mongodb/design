@@ -3,6 +3,7 @@ import path from 'path';
 import util from 'util';
 import markdownToHtml from 'utils/markdownToHtml';
 import type { BaseLayoutProps } from 'utils/types';
+import { CustomComponentDoc } from 'components/pages/documentation/TSDocPropTable';
 
 // eslint-disable-next-line import/no-anonymous-default-export, react/display-name
 export default function () {
@@ -15,13 +16,14 @@ export const getDependencyDocumentation = async (
   componentKebabCaseName: BaseLayoutProps['componentKebabCaseName'],
 ) => {
   if (typeof componentKebabCaseName !== 'string') {
-    return { props: { changelog: null, readme: null } };
+    return { props: { changelog: null, readme: null, tsDoc: null } };
   }
 
   const props: Partial<BaseLayoutProps> = { componentKebabCaseName };
 
   let changelogMarkdown: '' | Buffer = '';
   let readmeMarkdown = '';
+  let tsDoc: Array<CustomComponentDoc> | null = null;
 
   try {
     changelogMarkdown = await getFileContent(
@@ -48,9 +50,26 @@ export const getDependencyDocumentation = async (
     console.warn(error);
   }
 
-  props.changelog = await markdownToHtml(changelogMarkdown);
+  try {
+    const _tsDoc: Array<CustomComponentDoc> = JSON.parse(
+      await getFileContent(
+        path.join(
+          './node_modules',
+          `@leafygreen-ui/${componentKebabCaseName}`,
+          '/tsdoc.json',
+        ),
+        'utf-8',
+      ),
+    );
 
+    tsDoc = _tsDoc;
+  } catch (error) {
+    console.warn(error);
+  }
+
+  props.changelog = await markdownToHtml(changelogMarkdown);
   props.readme = readmeMarkdown;
+  props.tsDoc = tsDoc;
 
   return {
     props,
