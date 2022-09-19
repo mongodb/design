@@ -17,7 +17,6 @@ import { pageContainerWidth } from 'styles/constants';
 import { ComponentFields } from 'utils/types';
 import kebabCase from 'lodash/kebabCase';
 import getFullPageTitle from 'utils/getFullPageTitle';
-import styled from '@emotion/styled';
 
 const layout = css`
   ${mq({

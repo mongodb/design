@@ -8,9 +8,6 @@
       "dom.iterable",
       "esnext"
     ],
-    "types": [
-      "@emotion/core"
-    ],
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,

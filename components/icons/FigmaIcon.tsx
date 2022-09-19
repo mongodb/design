@@ -1,5 +1,3 @@
-import React from 'react';
-
 function FigmaIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg

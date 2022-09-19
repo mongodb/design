@@ -1,4 +1,3 @@
-import React, { Key } from 'react';
 import { useRouter } from 'next/router';
 import { SideNavGroup, SideNavItem } from '@leafygreen-ui/side-nav';
 import Icon from '@leafygreen-ui/icon';

@@ -1,4 +1,6 @@
+/** @jsxRuntime classic */
 /** @jsx jsx */
+// @ts-ignore unused import
 import { jsx } from '@emotion/react'
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import Callout, { Variant } from '@leafygreen-ui/callout';

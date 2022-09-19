@@ -1,4 +1,6 @@
+/** @jsxRuntime classic */
 /** @jsx jsx */
+// @ts-ignore unused import
 import { jsx } from '@emotion/react'
 import styled from '@emotion/styled';
 import Image from 'next/image';

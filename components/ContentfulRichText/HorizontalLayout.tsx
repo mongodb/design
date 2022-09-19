@@ -11,9 +11,9 @@ const FlexContainer = styled('div')`
   }
 `;
 
-const HorizontalLayout = ({ columns }) => {
+const HorizontalLayout = ({ columns, ...rest }) => {
   return (
-    <FlexContainer>
+    <FlexContainer {...rest}>
       {columns.map(column => (
         <EmbeddedEntry nodeTarget={column} />
       ))}

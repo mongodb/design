@@ -1,7 +1,7 @@
 // eslint complaining that we don't have propType definitions for LiveExample component
 /* eslint react/prop-types: 0 */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { transparentize } from 'polished';
 import { enforceExhaustive } from '@leafygreen-ui/lib';
 import { cx, css } from '@leafygreen-ui/emotion';
