@@ -1,12 +1,15 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/react'
 import styled from '@emotion/styled';
 import { palette } from '@leafygreen-ui/palette';
 import ContentfulRichText from '.';
+import { GlobalStyles } from './styles';
 
 const StyledTable = styled.table`
   border-spacing: 0;
 `;
 
-export const TableBlock = (node, children) => <StyledTable>{node.content.map(node => <ContentfulRichText document={node} />)}</StyledTable>
+export const TableBlock = (node, children) => <StyledTable>{node.content.map(node => <ContentfulRichText document={node} css={GlobalStyles} />)}</StyledTable>
 export const TableRowBlock = (node, children) => <tr>{node.content.map(node => <ContentfulRichText document={node} />)}</tr>
 
 const StyledTh = styled.th`
