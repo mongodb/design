@@ -1,7 +1,9 @@
-import styled from "@emotion/styled";
-import Image from "next/image";
-import prependUrl from "utils/prependUrl";
-import { GlobalStyles } from "./styles";
+/** @jsx jsx */
+import { jsx } from '@emotion/react'
+import styled from '@emotion/styled';
+import Image from 'next/image';
+import prependUrl from 'utils/prependUrl';
+import { GlobalStyles } from './styles';
 
 const ImageWrapper = styled.div`
   ${GlobalStyles}
