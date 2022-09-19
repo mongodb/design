@@ -1,7 +1,6 @@
 import ComingSoon from 'components/ComingSoon';
 import ContentfulRichText from 'components/ContentfulRichText';
 import ComponentLayout from 'layouts/ComponentLayout';
-import { NextPageContext } from 'next';
 import { ReactElement } from 'react';
 import {
   getStaticComponentPaths,
@@ -24,12 +23,6 @@ ComponentGuidelines.getLayout = function getLayout(page: ReactElement) {
     </ComponentLayout>
   );
 };
-
-export const getInitialProps = async (ctx: NextPageContext) => {
-  const { req, query, res } = ctx
-  console.log('req', req)
-  if (res) res.statusMessage = 'Received!'
-}
 
 export const getStaticPaths = getStaticComponentPaths;
 export const getStaticProps = getStaticComponentProps;

@@ -2,7 +2,6 @@
   "name": "website",
   "version": "0.4.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "NEXT_TELEMETRY_DISABLED=1 next dev",
     "build": "NEXT_TELEMETRY_DISABLED=1 next build",

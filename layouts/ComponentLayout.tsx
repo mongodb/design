@@ -21,10 +21,10 @@ import styled from '@emotion/styled';
 
 const layout = css`
   ${mq({
-    // 51px is a magic number for baseline alignment with the first SideNavGroup header
-    marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
-    width: ['100%', '100%', '100%', `${pageContainerWidth.dataGraphic}px`],
-  })}
+  // 51px is a magic number for baseline alignment with the first SideNavGroup header
+  marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
+  width: ['100%', '100%', '100%', `${pageContainerWidth.dataGraphic}px`],
+})}
 `;
 
 const margin4 = css`
@@ -46,11 +46,6 @@ const componentGuidelineStyles = css`
   color: ${palette.gray.dark3};
   margin: ${spacing[4]}px 0px;
   max-width: ${pageContainerWidth.default}px;
-
-  & > p {
-    font-size: 16px;
-    line-height: 24px;
-  }
 `;
 
 const codeDocsWrapper = css`

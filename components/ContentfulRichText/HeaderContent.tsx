@@ -8,6 +8,7 @@ import Link from 'next/link';
 const StyledAnchor = styled('a')`
   color: inherit;
   text-decoration: inherit;
+  position: relative;
 `;
 
 const LinkContent = styled('span')`
@@ -37,6 +38,10 @@ const LinkContent = styled('span')`
 
 const StyledIcon = styled(Icon)`
   margin-left: 8px;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
   opacity: 0; // overridden on LinkContent hover
 `;
 

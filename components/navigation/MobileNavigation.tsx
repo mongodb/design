@@ -17,6 +17,7 @@ const resetButtonStyle = css`
   background-color: white;
   width: 100%;
   border: unset;
+  padding: 0;
 `;
 
 const closedContainer = css`

@@ -186,13 +186,4 @@ export const globalStyles = css`
   *:after {
     box-sizing: border-box;
   }
-
-  li {
-    margin: 12px 0;
-    line-spacing: 1.6;
-  }
-
-  button {
-    margin: 0; // remove default Safari margin
-  }
 `;

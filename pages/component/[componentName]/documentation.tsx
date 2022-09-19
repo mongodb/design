@@ -6,7 +6,6 @@ import { getComponent } from 'utils/getContentfulResources';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import kebabCase from 'lodash/kebabCase';
 import { CustomComponentDoc } from 'components/pages/documentation/TSDocPropTable';
-import Code from '@leafygreen-ui/code';
 
 const ComponentDocumentation = ({ component, changelog, readme, tsDoc }) => {
   return (
@@ -23,9 +22,6 @@ const ComponentDocumentation = ({ component, changelog, readme, tsDoc }) => {
 ComponentDocumentation.getLayout = function getLayout(page: ReactElement) {
   return (
     <ComponentLayout componentFields={page.props.component.fields}>
-      <Code language="ts">
-        const test = 'test'
-      </Code>
       {page}
     </ComponentLayout>
   );

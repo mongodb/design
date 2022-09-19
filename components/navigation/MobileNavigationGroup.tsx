@@ -104,6 +104,7 @@ function MobileNavigationGroup({
           className={cx(
             css`
               margin-right: 12px;
+              color: black;
             `,
             { [openIconStyle]: open },
           )}

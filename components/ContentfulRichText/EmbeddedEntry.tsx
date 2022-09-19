@@ -6,11 +6,12 @@ import ContentfulRichText from '.';
 import LinkedEntry from './LinkedEntry';
 import HorizontalLayout from './HorizontalLayout';
 import HorizontalLayoutColumn from './HorizontalLayoutColumn';
+import { GlobalStyles } from './styles';
 
 /*
 Handles custom component rendering logic
 */
-const EmbeddedEntry = ({ nodeTarget }) => {
+const EmbeddedEntry = ({ nodeTarget, css = GlobalStyles }) => {
   const isLinkedEntry = nodeTarget.sys.linkType;
 
   if (isLinkedEntry) {
@@ -24,7 +25,7 @@ const EmbeddedEntry = ({ nodeTarget }) => {
       case 'buttonBlock': {
         const { content, variant, link } = embeddedEntryFields;
         return (
-          <Button variant={variant} href={link}>
+          <Button variant={variant} href={link} css={css}>
             {content}
           </Button>
         );
@@ -33,7 +34,7 @@ const EmbeddedEntry = ({ nodeTarget }) => {
       case 'calloutBlock': {
         const { title, content, variant } = embeddedEntryFields;
         return (
-          <Callout title={title} variant={Variant[variant ?? 'note']}>
+          <Callout title={title} variant={Variant[variant ?? 'note']} css={css}>
             <ContentfulRichText document={content} />
           </Callout>
         );
@@ -42,7 +43,7 @@ const EmbeddedEntry = ({ nodeTarget }) => {
       case 'cardBlock': {
         const { content } = embeddedEntryFields;
         return (
-          <Card>
+          <Card css={css}>
             <ContentfulRichText document={content} />
           </Card>
         );
@@ -51,7 +52,7 @@ const EmbeddedEntry = ({ nodeTarget }) => {
       case 'expandableCardBlock': {
         const { title, description, content } = embeddedEntryFields;
         return (
-          <ExpandableCard title={title} description={description}>
+          <ExpandableCard title={title} description={description} css={css}>
             <ContentfulRichText document={content} />
           </ExpandableCard>
         );
@@ -59,12 +60,12 @@ const EmbeddedEntry = ({ nodeTarget }) => {
 
       case 'horizontalLayout': {
         const { columns } = embeddedEntryFields;
-        return <HorizontalLayout columns={columns} />;
+        return <HorizontalLayout columns={columns} css={css} />
       }
 
       case 'horizontalLayoutColumn': {
         // const { widthRatio, verticalAlign, content } = embeddedEntryFields;
-        return <HorizontalLayoutColumn {...embeddedEntryFields} />;
+        return <HorizontalLayoutColumn {...embeddedEntryFields} css={css} />
       }
       default:
         return (
