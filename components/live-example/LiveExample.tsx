@@ -11,6 +11,8 @@ import { palette } from '@leafygreen-ui/palette';
 import { Knob, Boolean, Text, Area, Number, Select } from './Knobs';
 import { mq } from 'utils/mediaQuery';
 import { pageContainerWidth } from 'styles/constants';
+import { useViewportSize } from '@leafygreen-ui/hooks';
+import { breakpoints } from '@leafygreen-ui/tokens';
 
 const baseBoxShadow = `0 4px 10px -4px ${transparentize(0.7, palette.black)}`;
 
@@ -27,7 +29,6 @@ const backdrop = css`
 const previewStyle = css`
   display: flex;
   flex-direction: column;
-  margin-top: ${spacing[4]}px;
 
   ${mq({
   boxShadow: ['none', baseBoxShadow],
@@ -41,6 +42,10 @@ const previewStyle = css`
     `${pageContainerWidth.dataGraphic}px`,
   ],
 })}
+`;
+
+const desktopMargin = css`
+margin-top: ${spacing[4]}px;
 `;
 
 const componentContainer = css`
@@ -135,6 +140,10 @@ function LiveExample<ComponentProps extends ComponentPropsInterface>({
   knobsConfig,
   children,
 }: LiveExampleInterface<ComponentProps>) {
+  const viewport = useViewportSize();
+  const isTouchDevice =
+    viewport !== null ? viewport.width < breakpoints.Tablet : false;
+
   const initialProps = Object.keys(knobsConfig).reduce(
     (acc: Partial<ComponentProps>, val) => {
       const value = val as keyof ComponentProps;
@@ -222,6 +231,7 @@ function LiveExample<ComponentProps extends ComponentPropsInterface>({
       <Card
         darkMode={props?.darkMode}
         className={cx(previewStyle, {
+          [desktopMargin]: !isTouchDevice,
           [css`
             background-color: ${palette.gray.dark3};
           `]: !!props.darkMode,

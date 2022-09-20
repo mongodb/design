@@ -18,8 +18,15 @@ const knobContainerStyle = css`
 })}
 `;
 
-const knobContainerHeight = css`
-  min-height: 70px;
+const mobileKnobContainerStyle = css`
+  > * {
+    display: block;
+    margin: 8px 0;
+  }
+
+  > *:not(label) {
+    width: 100%;
+  }
 `;
 
 interface KnobRowProps {
@@ -36,8 +43,10 @@ function KnobRow({ children, className, darkMode = false }: KnobRowProps) {
   return (
     <div
       className={cx(
-        { [knobContainerStyle]: !isTouchDevice },
-        knobContainerHeight,
+        {
+          [knobContainerStyle]: !isTouchDevice,
+          [mobileKnobContainerStyle]: isTouchDevice
+        },
         css`
           border-top: 1px solid
             ${darkMode ? palette.gray.dark2 : palette.gray.light2};

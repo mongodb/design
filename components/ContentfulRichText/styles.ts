@@ -1,7 +1,9 @@
 import { css } from '@emotion/react';
 
 export const GlobalStyles = css`
-  margin-bottom: 40px;
+  &:not(:first-child) {
+    margin-top: 40px;
+  }
 
   & li {
     margin: 24px 0;
@@ -12,6 +14,14 @@ export const GlobalStyles = css`
 
   & button {
     margin: 0; // remove default Safari margin
+  }
+
+  &:is(p) + & {
+    margin-top: 16px;
+  }
+
+  &:is(p) > a {
+    line-height: 28px;
   }
 `;
 
@@ -24,5 +34,5 @@ export const ListItemStyles = css`
 
 export const SubtitleStyles = css`
   ${GlobalStyles};
-  margin-bottom: 16px;
+  margin-top: 16px;
 `
