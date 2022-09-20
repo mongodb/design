@@ -4,8 +4,6 @@ import util from 'util';
 import markdownToHtml from 'utils/markdownToHtml';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
-// import * as Story from '@leafygreen-ui/button/src/Button.story';
-
 // eslint-disable-next-line import/no-anonymous-default-export, react/display-name
 export default function () {
   return null;
