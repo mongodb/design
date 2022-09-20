@@ -8,8 +8,7 @@ import { css } from '@leafygreen-ui/emotion';
 import { HTMLElementProps } from '@leafygreen-ui/lib';
 import { PropItem } from 'react-docgen-typescript';
 import { Meta } from '@storybook/react';
-import { Dispatch } from 'react';
-import { LiveExampleState } from './LiveExample';
+import InlineDefinition from '@leafygreen-ui/inline-definition';
 
 interface KnobRowProps extends HTMLElementProps<'div'> {
   prop: PropItem;
@@ -53,13 +52,19 @@ export const KnobRow = ({
     >
       <div>
         <Subtitle darkMode={darkMode} id={`${kebabCase()}-knob-${prop.name}`}>
-          {prop.name}
+          <InlineDefinition
+            align="right"
+            spacing={spacing[4]}
+            darkMode={darkMode}
+            definition={
+              <Markdown darkMode={!darkMode}>
+                {argType?.description || prop.description}
+              </Markdown>
+            }
+          >
+            {prop.name}
+          </InlineDefinition>
         </Subtitle>
-        <Description darkMode={darkMode}>
-          <Markdown darkMode={darkMode}>
-            {argType?.description || prop.description}
-          </Markdown>
-        </Description>
       </div>
       <Knob
         argType={argType}
