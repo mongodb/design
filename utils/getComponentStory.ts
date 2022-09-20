@@ -9,8 +9,12 @@ type ModuleType = {
 
 export async function getComponentStory(
   kebabName: string,
-): Promise<ModuleType> {
-  return import(
-    `@leafygreen-ui/${kebabName}/src/${pascalcase(kebabName)}.story`
-  );
+): Promise<ModuleType | undefined> {
+  try {
+    return import(
+      `@leafygreen-ui/${kebabName}/src/${pascalcase(kebabName)}.story`
+      );
+    } catch(err) {
+    return
+  }
 }

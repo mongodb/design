@@ -76,8 +76,11 @@ export const Knob = ({
     case 'select':
     case 'radio': {
       const options = (
-        argType?.options.map(opt => opt?.toString()) ??
-        prop.type.value.map(({ value }) => value.toString().replace(/"/g, ''))
+        argType?.options?.map(opt => opt?.toString()) ??
+        prop?.type?.value?.map(({ value }) =>
+          value.toString().replace(/"/g, ''),
+        ) ??
+        []
       ).filter(opt => !!opt);
 
       if (options.length <= 3) {
