@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import type { AppProps } from 'next/app';
 import { Global } from '@emotion/react';
 import { globalStyles } from 'styles/globals';

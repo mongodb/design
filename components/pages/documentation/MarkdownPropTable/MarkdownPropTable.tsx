@@ -1,4 +1,3 @@
-import React from 'react';
 import { unified } from 'unified';
 import markdown from 'remark-parse';
 import remarkGfm from 'remark-gfm';

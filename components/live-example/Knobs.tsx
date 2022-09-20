@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { css, cx } from '@leafygreen-ui/emotion';
-import { spacing, breakpoints } from '@leafygreen-ui/tokens';
+import { breakpoints } from '@leafygreen-ui/tokens';
 import { palette } from '@leafygreen-ui/palette';
 import { useViewportSize, useIdAllocator } from '@leafygreen-ui/hooks';
 import { Select as LGUISelect, Option } from '@leafygreen-ui/select';
@@ -9,26 +9,9 @@ import TextArea from '@leafygreen-ui/text-area';
 import Toggle from '@leafygreen-ui/toggle';
 import { mq } from 'utils/mediaQuery';
 import { useBodyContainerRef } from '../LayoutContext';
+import KnobRow from './KnobRow';
 
 const knobsWidth = 326; // totalWidth (700px) - padding on both sides (24px on each side) / 2
-
-const knobContainerStyle = css`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-grow: 1;
-
-  ${mq({
-    padding: [
-      `${spacing[3]}px ${spacing[4]}px`,
-      `${spacing[3]}px ${spacing[5]}px`,
-    ],
-  })}
-`;
-
-const knobContainerHeight = css`
-  min-height: 70px;
-`;
 
 const labelStyle = css`
   color: ${palette.gray.dark2};
@@ -45,37 +28,13 @@ const textAreaClassName = css`
 
 const inputClassName = css`
   ${mq({
-    width: ['200px', `${knobsWidth}px`],
-  })}
+  width: ['200px', `${knobsWidth}px`],
+})}
 `;
 
 const labelDarkMode = css`
   color: ${palette.gray.light1};
 `;
-
-interface KnobRowProps {
-  children: React.ReactNode;
-  darkMode?: boolean;
-  className?: string;
-}
-
-function KnobRow({ children, className, darkMode = false }: KnobRowProps) {
-  return (
-    <div
-      className={cx(
-        knobContainerStyle,
-        knobContainerHeight,
-        css`
-          border-top: 1px solid
-            ${darkMode ? palette.gray.dark2 : palette.gray.light2};
-        `,
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-}
 
 const Knob = {
   Select: 'select',
