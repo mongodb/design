@@ -35,12 +35,12 @@ export const isPropItem = (obj: any): obj is PropItem => {
   );
 };
 
-export const getComponentProps = (props: PropCategories): Array<PropItem> => {
+export const getComponentProps = (props?: PropCategories): Array<PropItem> => {
   const _componentProps: PropCategories = omitBy(props, isInheritableGroup);
   return Object.values(_componentProps)
     .flatMap((prop: Props) => Object.values(prop))
     .sort((a, z) => a.name.localeCompare(z.name));
-}
+};
 
 export const getInheritedProps = (props: PropCategories): Array<PropGroup> => {
   const _inheritedProps: PropCategories = pickBy(props, isInheritableGroup);
@@ -53,4 +53,4 @@ export const getInheritedProps = (props: PropCategories): Array<PropGroup> => {
       };
     },
   );
-}
+};

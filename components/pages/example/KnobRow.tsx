@@ -1,5 +1,5 @@
 import { kebabCase } from 'lodash';
-import { Description, Subtitle } from '@leafygreen-ui/typography';
+import { Subtitle } from '@leafygreen-ui/typography';
 import { Knob } from './Knob';
 import { spacing } from '@leafygreen-ui/tokens';
 import { palette } from '@leafygreen-ui/palette';

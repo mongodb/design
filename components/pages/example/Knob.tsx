@@ -1,8 +1,9 @@
 import { css, cx } from '@leafygreen-ui/emotion';
 import { HTMLElementProps } from '@leafygreen-ui/lib';
 import { Option, Select } from '@leafygreen-ui/select';
-import TextInput from '@leafygreen-ui/text-input';
-// import TextArea from '@leafygreen-ui/text-area';
+import { SelectProps } from '@leafygreen-ui/select/dist/types';
+import TextInput, { TextInputProps } from '@leafygreen-ui/text-input';
+import { RadioBoxGroup, RadioBox } from '@leafygreen-ui/radio-box-group';
 import Toggle from '@leafygreen-ui/toggle';
 import { InputType, SBType, SBScalarType } from '@storybook/csf';
 import { PropItem, PropItemType } from 'react-docgen-typescript';
@@ -24,7 +25,8 @@ type TypeString =
   | SBType['name']
   | 'text'
   | 'select'
-  | 'range';
+  | 'range'
+  | 'radio';
 
 export const Knob = ({
   argType,
@@ -39,10 +41,10 @@ export const Knob = ({
     case 'string':
     case 'text':
       return (
+        /// @ts-ignore
         <TextInput
-          {...rest}
+          {...(rest as TextInputProps)}
           placeholder={prop.name}
-          optional={!prop.required}
           value={value}
           onChange={onChange}
           className={cx(inputStyle, rest.className)}
@@ -52,11 +54,11 @@ export const Knob = ({
     case 'number':
     case 'range':
       return (
+        /// @ts-ignore
         <TextInput
-          {...rest}
+          {...(rest as TextInputProps)}
           type="number"
           placeholder={prop.name}
-          optional={!prop.required}
           value={value}
           onChange={onChange}
           className={cx(inputStyle, rest.className)}
@@ -65,31 +67,49 @@ export const Knob = ({
 
     case 'boolean':
       return (
+        /// @ts-expect-error
         <Toggle {...rest} checked={!!value as boolean} onChange={onChange} />
       );
 
     case 'array':
     case 'enum':
-    case 'select': {
+    case 'select':
+    case 'radio': {
+      const options = (
+        argType?.options.map(opt => opt?.toString()) ??
+        prop.type.value.map(({ value }) => value.toString().replace(/"/g, ''))
+      ).filter(opt => !!opt);
+
+      if (options.length <= 3) {
+        return (
+          <RadioBoxGroup
+            {...rest}
+            onChange={onChange}
+            value={value}
+            size="compact"
+          >
+            {options.map((opt: string) => (
+              <RadioBox key={opt} value={opt}>
+                {opt}
+              </RadioBox>
+            ))}
+          </RadioBoxGroup>
+        );
+      }
+
       return (
-        /// @ts-ignore
+        /// @ts-expect-error
         <Select
-          {...rest}
+          {...(rest as SelectProps)}
           value={value}
           onChange={onChange}
           className={cx(inputStyle, rest.className)}
         >
-          {argType?.options
-            ? argType?.options.map((opt: string) => (
-                <Option key={opt} value={opt}>
-                  {opt}
-                </Option>
-              ))
-            : prop.type?.value?.map(({ value }) => (
-                <Option key={value} value={value.replace(/"/g, '')}>
-                  {value.replace(/"/g, '')}
-                </Option>
-              ))}
+          {options.map((opt: string) => (
+            <Option key={opt} value={opt}>
+              {opt}
+            </Option>
+          ))}
         </Select>
       );
     }
@@ -109,6 +129,8 @@ function getControlType(type: PropItemType, argType?: InputType): TypeString {
       switch (type.raw) {
         case 'boolean':
           return 'boolean';
+        case 'ReactNode':
+          return 'string';
       }
 
       return 'array';

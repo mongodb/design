@@ -2,12 +2,35 @@ import { useEffect, useReducer } from 'react';
 import { kebabCase } from 'lodash';
 import Card from '@leafygreen-ui/card';
 import { css } from '@leafygreen-ui/emotion';
-import { getComponentStory } from 'utils/getComponentStory';
+import pascalcase from 'pascalcase';
 import { ComponentStoryFn, Meta } from '@storybook/react';
+import { getComponentStory } from 'utils/getComponentStory';
 import { BaseLayoutProps } from 'utils/types';
 import { getComponentProps } from 'utils/tsdoc.utils';
 import { KnobRow } from './KnobRow';
 
+const ignoreProps = [
+  'className',
+  'tooltipClassName',
+  'contentClassName',
+  'id',
+  'onClick',
+  'onChange',
+  'onBlur',
+  'handleValidation',
+  'aria-label',
+  'aria-labelledby',
+  'aria-controls',
+  'popoverClassName',
+  'portalClassName',
+  'portalContainer',
+  'shouldTooltipUsePortal',
+  'adjustOnMutation',
+  'refEl',
+  'scrollContainer',
+  'setOpen',
+  'shouldClose',
+];
 export interface LiveExampleState {
   meta?: Meta<any>;
   args?: { [arg: string]: any };
@@ -32,16 +55,6 @@ export const LiveExample = ({
     } as LiveExampleState,
   );
 
-  // const setArg = (key: string, value: any) => {
-  //   console.log({ key, value });
-
-  //   setState({
-  //     meta,
-  //     StoryFn,
-  //     args: { ...args, [key]: value },
-  //   });
-  // };
-
   // Fetch Story if/when component changes
   useEffect(() => {
     const kebabName = kebabCase(componentName);
@@ -53,11 +66,20 @@ export const LiveExample = ({
     });
   }, [componentName]);
 
-  const { props } = tsDoc?.find(doc => doc.displayName === componentName) || {
+  const { props } = tsDoc?.find(
+    doc => doc.displayName === pascalcase(componentName),
+  ) || {
     props: undefined,
   };
   const knobProps = getComponentProps(props).filter(prop => {
-    return !meta?.parameters?.controls.exclude?.includes(prop.name);
+    const isIgnored = ignoreProps.includes(prop.name);
+    const isExcludedBySB = meta?.parameters?.controls.exclude?.includes(
+      prop.name,
+    );
+    const isControlNone = ['none', false].includes(
+      meta?.argTypes?.[prop.name]?.control,
+    );
+    return !isIgnored && !isExcludedBySB && !isControlNone;
   });
 
   const darkMode = args?.darkMode;
