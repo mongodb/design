@@ -52,8 +52,8 @@ const backdrop = css`
   right: 0;
   bottom: 0;
   opacity: 0;
-  z-index: 3;
-  transition: opacity 300ms ease-in-out;
+  z-index: 2;
+  transition: opacity 100ms ease-in-out;
 `;
 
 const logoContainer = css`
@@ -123,7 +123,7 @@ function MobileNavigation({ children }: { children: React.ReactNode }) {
           </a>
         </div>
 
-        <Transition in={open} timeout={300} mountOnEnter unmountOnExit>
+        <Transition in={open} timeout={100} mountOnEnter unmountOnExit>
           {(state: string) => (
             <div
               // Setting role to 'none', because elements with a click event should have a specific role
@@ -133,7 +133,7 @@ function MobileNavigation({ children }: { children: React.ReactNode }) {
               className={cx(backdrop, {
                 [css`
                   opacity: 1;
-                `]: state === 'entered',
+                `]: state === 'entered' || state === 'entering',
               })}
             >
               <nav

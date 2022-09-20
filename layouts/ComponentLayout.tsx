@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/css';
-import Button from '@leafygreen-ui/button';
+import IconButton from '@leafygreen-ui/icon-button';
 import { useViewportSize } from '@leafygreen-ui/hooks';
 import { palette } from '@leafygreen-ui/palette';
 import { Tabs, Tab } from '@leafygreen-ui/tabs';
@@ -17,6 +17,7 @@ import { pageContainerWidth } from 'styles/constants';
 import { ComponentFields } from 'utils/types';
 import kebabCase from 'lodash/kebabCase';
 import getFullPageTitle from 'utils/getFullPageTitle';
+import { cx } from '@leafygreen-ui/emotion';
 
 const layout = css`
   ${mq({
@@ -51,6 +52,14 @@ const codeDocsWrapper = css`
   display: flex;
   align-items: center;
   overflow: hidden;
+`;
+
+const linksContainer = css`
+  align-self: flex-start;
+  flex: 1;
+  justify-content: flex-end;
+  border-bottom: 1px solid ${palette.gray.light2};
+  padding-bottom: 11px;
 `;
 
 const reactIconStyle = css`
@@ -98,80 +107,79 @@ function ComponentLayout({
       </Head>
 
       <div className={margin4}>
-        <div className={flexContainer}>
-          <H2 as="h1" className={caps}>
-            {componentFields.name}
-          </H2>
-
-          {!isMobile && (
-            <div className={flexContainer}>
-              <Button
-                leftGlyph={<GithubIcon />}
-                variant="primaryOutline"
-                href={`https://github.com/mongodb/leafygreen-ui/tree/main/packages/${kebabCase(
-                  componentFields.name,
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ marginRight: '8px' }}
-              >
-                View in Github
-              </Button>
-              <Button
-                leftGlyph={<FigmaIcon />}
-                variant="primary"
-                href={componentFields.figmaUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View in Figma
-              </Button>
-            </div>
-          )}
-        </div>
+        <H2 as="h1" className={caps}>
+          {componentFields.name}
+        </H2>
       </div>
-      <Tabs
-        selected={selected}
-        setSelected={setSelected}
-        aria-label={`Information on LeafyGreen UI ${componentFields.name} component`}
-      >
-        <Tab
-          name="Live Example"
-          onClick={() =>
-            router.push(`/component/${kebabCase(componentFields.name)}/example`)
-          }
+      <div className={flexContainer}>
+        <Tabs
+          selected={selected}
+          setSelected={setSelected}
+          aria-label={`Information on LeafyGreen UI ${componentFields.name} component`}
         >
-          {children}
-        </Tab>
-        <Tab
-          name="Design Guidelines"
-          onClick={() =>
-            router.push(
-              `/component/${kebabCase(componentFields.name)}/guidelines`,
-            )
-          }
-        >
-          <LeafyGreenProvider baseFontSize={16}>
-            <div className={componentGuidelineStyles}>{children}</div>
-          </LeafyGreenProvider>
-        </Tab>
-        <Tab
-          name={
-            <div className={codeDocsWrapper}>
-              <ReactIcon className={reactIconStyle} />
-              Code Docs
-            </div>
-          }
-          onClick={() =>
-            router.push(
-              `/component/${kebabCase(componentFields.name)}/documentation`,
-            )
-          }
-        >
-          {children}
-        </Tab>
-      </Tabs>
-    </div>
+          <Tab
+            name="Live Example"
+            onClick={() =>
+              router.push(`/component/${kebabCase(componentFields.name)}/example`)
+            }
+          >
+            {children}
+          </Tab>
+          <Tab
+            name="Design Guidelines"
+            onClick={() =>
+              router.push(
+                `/component/${kebabCase(componentFields.name)}/guidelines`,
+              )
+            }
+          >
+            <LeafyGreenProvider baseFontSize={16}>
+              <div className={componentGuidelineStyles}>{children}</div>
+            </LeafyGreenProvider>
+          </Tab>
+          <Tab
+            name={
+              <div className={codeDocsWrapper}>
+                <ReactIcon className={reactIconStyle} />
+                Code Docs
+              </div>
+            }
+            onClick={() =>
+              router.push(
+                `/component/${kebabCase(componentFields.name)}/documentation`,
+              )
+            }
+          >
+            {children}
+          </Tab>
+        </Tabs>
+        {!isMobile && (
+          <div className={cx([flexContainer, linksContainer])}>
+            <IconButton
+              // @ts-expect-error
+              as="a"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ marginRight: '8px' }}
+              href={`https://github.com/mongodb/leafygreen-ui/tree/main/packages/${kebabCase(
+                componentFields.name,
+              )}`}
+            >
+              <GithubIcon />
+            </IconButton>
+            <IconButton
+              // @ts-expect-error
+              as="a"
+              href={componentFields.figmaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FigmaIcon />
+            </IconButton>
+          </div>
+        )}
+      </div>
+    </div >
   );
 }
 
