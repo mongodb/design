@@ -38,20 +38,18 @@ const LinkContent = styled('span')`
 const StyledIcon = styled(Icon)`
   margin-left: 8px;
   opacity: 0; // overridden on LinkContent hover
-`
+`;
 
 const HeaderContent = ({ children }: PropsWithChildren<{}>) => {
   const headerId = kebabCase(children?.toString());
   return (
     <Link href={`#${headerId}`} passHref>
       <StyledAnchor id={headerId}>
-        <LinkContent>
-          {children}
-        </LinkContent>
+        <LinkContent>{children}</LinkContent>
         <StyledIcon glyph="Link" fill={palette.gray.light1} />
       </StyledAnchor>
     </Link>
-  )
-}
+  );
+};
 
 export default HeaderContent;

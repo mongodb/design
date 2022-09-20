@@ -24,6 +24,7 @@ function NavigationContent({
 }) {
   const router = useRouter();
   const activePage = router.asPath.split('/')[2];
+  const activeTab = router.asPath.split('/')[3];
   const { components, contentPageGroups } = useAppContext();
 
   const renderGroup = () => {
@@ -96,11 +97,16 @@ function NavigationContent({
           {components.map((component: Entry<ComponentFields>) => {
             const componentKebabCaseName = kebabCase(component.fields.name);
             const componentName = component.fields.name;
+
             return (
               <SideNavItem
                 key={componentKebabCaseName}
                 onClick={() =>
-                  router.push(`/component/${componentKebabCaseName}/example`)
+                  router.push(
+                    `/component/${componentKebabCaseName}/${
+                      activeTab ?? 'example'
+                    }`,
+                  )
                 }
                 active={componentKebabCaseName === activePage}
               >

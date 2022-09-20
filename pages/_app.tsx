@@ -37,10 +37,7 @@ function MyApp({
     >
       <Head>
         <title>{getFullPageTitle('Home')}</title>
-        <meta
-          property="og:title"
-          content={getFullPageTitle('Home')}
-        />
+        <meta property="og:title" content={getFullPageTitle('Home')} />
       </Head>
       <Global styles={globalStyles} />
       <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
