@@ -2,7 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import util from 'util';
 import markdownToHtml from 'utils/markdownToHtml';
-import type { BaseLayoutProps } from 'utils/types';
 import { CustomComponentDoc } from 'components/pages/documentation/TSDocPropTable';
 
 // eslint-disable-next-line import/no-anonymous-default-export, react/display-name
