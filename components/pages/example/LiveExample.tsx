@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { kebabCase } from 'lodash';
 import Card from '@leafygreen-ui/card';
 import { css } from '@leafygreen-ui/emotion';
@@ -6,11 +6,11 @@ import { getComponentStory } from 'utils/getComponentStory';
 import { ComponentStoryFn, Meta } from '@storybook/react';
 import { BaseLayoutProps } from 'utils/types';
 import { getComponentProps } from 'utils/tsdoc.utils';
-import { H3 } from '@leafygreen-ui/typography';
+import { KnobRow } from './KnobRow';
 
-interface LiveExampleState {
+export interface LiveExampleState {
   meta?: Meta<any>;
-  args?: Object;
+  args?: { [arg: string]: any };
   StoryFn?: ComponentStoryFn<any>;
 }
 
@@ -32,6 +32,16 @@ export const LiveExample = ({
     } as LiveExampleState,
   );
 
+  // const setArg = (key: string, value: any) => {
+  //   console.log({ key, value });
+
+  //   setState({
+  //     meta,
+  //     StoryFn,
+  //     args: { ...args, [key]: value },
+  //   });
+  // };
+
   // Fetch Story if/when component changes
   useEffect(() => {
     const kebabName = kebabCase(componentName);
@@ -43,38 +53,53 @@ export const LiveExample = ({
     });
   }, [componentName]);
 
-  const StoryComponent: JSX.Element = useMemo(
-    () => (StoryFn ? StoryFn?.bind({})(args) : null),
-    [StoryFn, args],
-  );
-
   const { props } = tsDoc?.find(doc => doc.displayName === componentName) || {
     props: undefined,
   };
-  const componentProps = getComponentProps(props);
+  const knobProps = getComponentProps(props).filter(prop => {
+    return !meta?.parameters?.controls.exclude?.includes(prop.name);
+  });
 
-  console.log(componentProps);
+  const darkMode = args?.darkMode;
 
   return (
     <>
       <Card
+        darkMode={darkMode}
         className={css`
-          display: flex;
-          align-items: center;
-          justify-content: center;
           margin-block: 2em;
-          min-height: 25vh;
         `}
       >
-        {StoryComponent}
+        <div
+          className={css`
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 33vh;
+          `}
+        >
+          {StoryFn && <StoryFn {...args} />}
+        </div>
+        <div>
+          {knobProps &&
+            knobProps.map(prop => (
+              <KnobRow
+                key={prop.name}
+                prop={prop}
+                darkMode={darkMode}
+                args={args}
+                setArg={(key: string, value: any) => {
+                  setState({
+                    meta,
+                    StoryFn,
+                    args: { ...args, [key]: value },
+                  });
+                }}
+                meta={meta}
+              />
+            ))}
+        </div>
       </Card>
-      {componentProps &&
-        componentProps.map(prop => (
-          <H3 key={prop.name}>
-            {prop.name} &nbsp;
-            <code>{prop.type.name}</code>
-          </H3>
-        ))}
     </>
   );
 };
