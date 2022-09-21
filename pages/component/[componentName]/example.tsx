@@ -39,7 +39,7 @@ ComponentExample.getLayout = function getLayout(page: ReactElement) {
   );
 };
 
-export const getStaticPaths = getStaticComponentPaths;
 export const getStaticProps = getStaticComponentProps;
+export const getStaticPaths = getStaticComponentPaths;
 
 export default ComponentExample;

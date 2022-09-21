@@ -5,7 +5,6 @@ import Document, {
   NextScript,
   DocumentContext,
 } from 'next/document';
-import * as React from 'react';
 import { renderStatic } from 'utils/renderer';
 
 /**

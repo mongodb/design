@@ -1,5 +1,3 @@
-import React from 'react';
-
 function ReactIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg

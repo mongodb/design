@@ -1,4 +1,3 @@
-import React, { Key } from 'react';
 import { useRouter } from 'next/router';
 import { SideNavGroup, SideNavItem } from '@leafygreen-ui/side-nav';
 import Icon from '@leafygreen-ui/icon';
@@ -32,15 +31,15 @@ function NavigationContent({
       return (
         <>
           <MobileNavigationGroup header="Foundations">
-            {foundations.map((componentKebabCaseName: string) => (
+            {foundations.map((foundationPageName: string) => (
               <MobileNavigationItem
-                key={componentKebabCaseName as Key}
+                key={foundationPageName}
                 onClick={() =>
-                  router.push(`/foundation/${componentKebabCaseName}`)
+                  router.push(`/foundation/${foundationPageName}`)
                 }
-                active={componentKebabCaseName === activePage}
+                active={foundationPageName === activePage}
               >
-                {componentKebabCaseName.split('-').join(' ')}
+                {foundationPageName.split('-').join(' ')}
               </MobileNavigationItem>
             ))}
           </MobileNavigationGroup>
@@ -103,8 +102,7 @@ function NavigationContent({
                 key={componentKebabCaseName}
                 onClick={() =>
                   router.push(
-                    `/component/${componentKebabCaseName}/${
-                      activeTab ?? 'example'
+                    `/component/${componentKebabCaseName}/${activeTab ?? 'example'
                     }`,
                   )
                 }

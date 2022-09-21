@@ -1,4 +1,3 @@
-import React from 'react';
 import { BaseLayoutProps } from 'utils/types';
 import { InstallInstructions } from './InstallInstructions';
 import { CodeExample } from './CodeExample';

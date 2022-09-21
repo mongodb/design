@@ -1,7 +1,7 @@
 // eslint complaining that we don't have propType definitions for LiveExample component
 /* eslint react/prop-types: 0 */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { transparentize } from 'polished';
 import { enforceExhaustive } from '@leafygreen-ui/lib';
 import { cx, css } from '@leafygreen-ui/emotion';
@@ -11,6 +11,8 @@ import { palette } from '@leafygreen-ui/palette';
 import { Knob, Boolean, Text, Area, Number, Select } from './Knobs';
 import { mq } from 'utils/mediaQuery';
 import { pageContainerWidth } from 'styles/constants';
+import { useViewportSize } from '@leafygreen-ui/hooks';
+import { breakpoints } from '@leafygreen-ui/tokens';
 
 const baseBoxShadow = `0 4px 10px -4px ${transparentize(0.7, palette.black)}`;
 
@@ -27,20 +29,23 @@ const backdrop = css`
 const previewStyle = css`
   display: flex;
   flex-direction: column;
-  margin-top: ${spacing[4]}px;
 
   ${mq({
-    boxShadow: ['none', baseBoxShadow],
-    borderRadius: ['0px', '7px'],
-    marginLeft: ['-24px', 'unset'],
-    marginRight: ['-24px', 'unset'],
-    width: [
-      'inherit',
-      'inherit',
-      'inherit',
-      `${pageContainerWidth.dataGraphic}px`,
-    ],
-  })}
+  boxShadow: ['none', baseBoxShadow],
+  borderRadius: ['0px', '7px'],
+  marginLeft: ['-24px', 'unset'],
+  marginRight: ['-24px', 'unset'],
+  width: [
+    'inherit',
+    'inherit',
+    'inherit',
+    `${pageContainerWidth.dataGraphic}px`,
+  ],
+})}
+`;
+
+const desktopMargin = css`
+margin-top: ${spacing[4]}px;
 `;
 
 const componentContainer = css`
@@ -53,9 +58,9 @@ const componentContainer = css`
   min-height: 400px;
 
   ${mq({
-    padding: [`${spacing[4]}px`, `${spacing[6]}px`],
-    minHeight: ['200px', '400px'],
-  })}
+  padding: [`${spacing[4]}px`, `${spacing[6]}px`],
+  minHeight: ['200px', '400px'],
+})}
 `;
 
 const componentContainerDarkMode = css`
@@ -117,14 +122,14 @@ interface ComponentPropsInterface {
 
 export type KnobsConfigInterface<
   ComponentProps extends ComponentPropsInterface,
-> = {
-  [K in keyof ComponentProps]: Extract<
-    PropsType<ComponentProps[K]>,
-    {
-      default: ComponentProps[K];
-    }
-  >;
-};
+  > = {
+    [K in keyof ComponentProps]: Extract<
+      PropsType<ComponentProps[K]>,
+      {
+        default: ComponentProps[K];
+      }
+    >;
+  };
 
 interface LiveExampleInterface<ComponentProps extends ComponentPropsInterface> {
   knobsConfig: KnobsConfigInterface<ComponentProps>;
@@ -135,6 +140,10 @@ function LiveExample<ComponentProps extends ComponentPropsInterface>({
   knobsConfig,
   children,
 }: LiveExampleInterface<ComponentProps>) {
+  const viewport = useViewportSize();
+  const isTouchDevice =
+    viewport !== null ? viewport.width < breakpoints.Tablet : false;
+
   const initialProps = Object.keys(knobsConfig).reduce(
     (acc: Partial<ComponentProps>, val) => {
       const value = val as keyof ComponentProps;
@@ -222,6 +231,7 @@ function LiveExample<ComponentProps extends ComponentPropsInterface>({
       <Card
         darkMode={props?.darkMode}
         className={cx(previewStyle, {
+          [desktopMargin]: !isTouchDevice,
           [css`
             background-color: ${palette.gray.dark3};
           `]: !!props.darkMode,
