@@ -34,8 +34,6 @@ const previewStyle = css`
   ${mq({
   boxShadow: ['none', baseBoxShadow],
   borderRadius: ['0px', '7px'],
-  marginLeft: ['-24px', 'unset'],
-  marginRight: ['-24px', 'unset'],
   width: [
     'inherit',
     'inherit',
@@ -59,7 +57,7 @@ const componentContainer = css`
   min-height: 400px;
 
   ${mq({
-  padding: [`${spacing[4]}px`, `${spacing[6]}px`],
+  padding: [`0px`, `${spacing[6]}px`],
   minHeight: ['200px', '400px'],
 })}
 `;
@@ -223,7 +221,7 @@ function LiveExample<ComponentProps extends ComponentPropsInterface>({
       }
     });
 
-    return <div className={containerPadding}>{knobs}</div>;
+    return <div>{knobs}</div>;
   };
 
   return (

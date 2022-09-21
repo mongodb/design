@@ -53,7 +53,7 @@ const backdrop = css`
   right: 0;
   bottom: 0;
   opacity: 0;
-  z-index: 2;
+  z-index: 3;
   transition: opacity 100ms ease-in-out;
 `;
 
@@ -120,7 +120,7 @@ function MobileNavigation({ children }: { children: React.ReactNode }) {
               push(HOME_PAGE);
             }}
           >
-            <MongoDBLogo />
+            <MongoDBLogo height={32} />
           </a>
         </div>
 
@@ -155,7 +155,7 @@ function MobileNavigation({ children }: { children: React.ReactNode }) {
                       setOpen(false);
                     }}
                   >
-                    <MongoDBLogo />
+                    <MongoDBLogo height={32} />
                   </a>
                 </div>
 
