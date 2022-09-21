@@ -75,8 +75,14 @@ export const Knob = ({
     case 'enum':
     case 'select':
     case 'radio': {
+      const argOptions = argType?.options
+        ? Array.isArray(argType.options)
+          ? argType.options
+          : Object.values(argType.options)
+        : null;
+
       const options = (
-        argType?.options?.map(opt => opt?.toString()) ??
+        argOptions?.map(opt => opt?.toString()) ??
         prop?.type?.value?.map(({ value }) =>
           value.toString().replace(/"/g, ''),
         ) ??

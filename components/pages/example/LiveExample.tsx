@@ -63,8 +63,12 @@ export const LiveExample = ({
       .then(module => {
         if (module) {
           const { default: meta, ...stories } = module;
-          const StoryFn = Object.values(stories)[0];
+          const defaultStoryName = meta?.parameters?.default;
+          const StoryFn = defaultStoryName
+            ? stories[defaultStoryName]
+            : Object.values(stories)[0];
           const args = { ...meta.args, ...StoryFn?.args };
+
           setState({ meta, args, StoryFn });
         }
       })
@@ -80,7 +84,7 @@ export const LiveExample = ({
   };
   const knobProps = getComponentProps(props).filter(prop => {
     const isIgnored = ignoreProps.includes(prop.name);
-    const isExcludedBySB = meta?.parameters?.controls.exclude?.includes(
+    const isExcludedBySB = meta?.parameters?.controls?.exclude?.includes(
       prop.name,
     );
     const isControlNone = ['none', false].includes(
