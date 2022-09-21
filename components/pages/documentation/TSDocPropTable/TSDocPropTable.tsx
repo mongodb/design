@@ -1,86 +1,33 @@
-import React from 'react';
-import { PropItemType, PropItem } from 'react-docgen-typescript';
+import { PropItemType } from 'react-docgen-typescript';
 import { Cell, Row, Table, TableHeader } from '@leafygreen-ui/table';
-import {
-  Description,
-  InlineCode,
-  Label,
-  Link,
-} from '@leafygreen-ui/typography';
+import { InlineCode, Link } from '@leafygreen-ui/typography';
 import { css } from '@leafygreen-ui/emotion';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import InlineDefinition from '@leafygreen-ui/inline-definition';
 import { isUndefined } from 'lodash';
 import { palette } from '@leafygreen-ui/palette';
 import { Markdown } from 'components/Markdown';
-import { spacing, typeScales } from '@leafygreen-ui/tokens';
 import {
   CustomComponentDoc,
   getComponentProps,
   getInheritedProps,
   isPropItem,
 } from 'utils/tsdoc.utils';
+import { PropTableTooltipContent } from './PropTableTooltipContent';
 
-const PropTableTooltipContent = ({ prop }: { prop: PropItem }) => (
-  <div
-    className={css`
-      * {
-        margin-block: ${typeScales.body1.lineHeight / 8}px;
-      }
-    `}
-  >
-    <InlineCode
-      darkMode
-      className={css`
-        font-size: ${typeScales.code2.fontSize}px;
-        display: inline-block;
-      `}
-    >
-      {prop.name}
-    </InlineCode>
+const propDefinitionTooltipStyle = css`
+  min-width: min-content;
+  max-width: 384px;
+`;
 
-    <div>
-      <Label htmlFor={`${prop.name}-type`} darkMode>
-        Type: &nbsp;
-      </Label>
-      <InlineCode
-        id={`${prop.name}-type`}
-        className={css`
-          display: inline;
-        `}
-        darkMode
-      >
-        {getTypeString(prop.type)}
-      </InlineCode>
-    </div>
+const requiredHighlightStyle = css`
+  color: ${palette.red.base};
+`;
 
-    <div>
-      <Label htmlFor={`${prop.name}-default`} darkMode>
-        Default: &nbsp;
-      </Label>
-      <InlineCode
-        id={`${prop.name}-default`}
-        className={css`
-          display: inline;
-        `}
-        darkMode
-      >
-        {getDefaultValueString(prop.defaultValue) || '—'}
-      </InlineCode>
-    </div>
-
-    <hr
-      className={css`
-        border-color: ${palette.gray.dark1};
-        margin: ${spacing[2]}px -${spacing[3]}px;
-      `}
-    />
-
-    <Description darkMode>
-      <Markdown darkMode>{prop.description}</Markdown>
-    </Description>
-  </div>
-);
+const typeCellStyle = css`
+  display: inline;
+  max-width: 40ch;
+`;
 
 export const TSDocPropTable = ({
   tsDoc,
@@ -116,20 +63,13 @@ export const TSDocPropTable = ({
                 <Row key={datum.name}>
                   <Cell>
                     <InlineDefinition
-                      tooltipClassName={css`
-                        min-width: min-content;
-                        max-width: 384px;
-                      `}
+                      tooltipClassName={propDefinitionTooltipStyle}
                       definition={<PropTableTooltipContent prop={datum} />}
                     >
                       <InlineCode>{datum.name}</InlineCode>
                     </InlineDefinition>
                     {datum.required && (
-                      <sup
-                        className={css`
-                          color: ${palette.red.base};
-                        `}
-                      >
+                      <sup className={requiredHighlightStyle}>
                         &nbsp; (REQUIRED)
                       </sup>
                     )}
@@ -138,12 +78,7 @@ export const TSDocPropTable = ({
                     <Markdown>{datum.description}</Markdown>
                   </Cell>
                   <Cell>
-                    <InlineCode
-                      className={css`
-                        display: inline;
-                        max-width: 40ch;
-                      `}
-                    >
+                    <InlineCode className={typeCellStyle}>
                       {getTypeString(datum.type)}
                     </InlineCode>
                   </Cell>
@@ -182,24 +117,6 @@ export const TSDocPropTable = ({
     </>
   );
 };
-
-export const TSDocPropTableSection = ({
-  tsDocArray,
-}: {
-  tsDocArray: Array<CustomComponentDoc>;
-}) => (
-  <>
-    {tsDocArray?.map(doc => (
-      <TSDocPropTable
-        key={doc.displayName}
-        tsDoc={doc}
-        className={css`
-          margin-block: 2em;
-        `}
-      />
-    ))}
-  </>
-);
 
 function getTypeString(propType: PropItemType): string | undefined {
   if (!propType || !propType.name) return;

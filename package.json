@@ -2,7 +2,6 @@
   "name": "website",
   "version": "0.4.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "rm -rf .next  && NEXT_TELEMETRY_DISABLED=1 next dev",
     "build": "NEXT_TELEMETRY_DISABLED=1 next build",
@@ -11,7 +10,8 @@
     "fix:prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx,json}\"",
     "fix:eslint": "eslint . --ext js,jsx,ts,tsx,md,mdx --fix",
     "fix": "npm-run-all --parallel fix:*",
-    "check:ts": "tsc --project tsconfig.json"
+    "check:ts": "tsc --project tsconfig.json",
+    "update-packages": "node ./scripts/update-packages.js"
   },
   "dependencies": {
     "@babel/core": "^7.18.9",

@@ -1,6 +1,5 @@
 // TODO: Remove this
 /* eslint-disable @next/next/no-html-link-for-pages */
-import React from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/css';
 import { spacing, breakpoints } from '@leafygreen-ui/tokens';
@@ -13,10 +12,26 @@ import NavigationContent from './NavigationContent';
 
 const sideNavStyles = css`
   z-index: 1;
+  div {
+    padding-top: 0;
+  }
+  ul {
+    padding-top: 0;
+  }
 
   li {
-    margin: 6px 0;
+    margin: 0px;
+
+    &:first-of-type {
+      border-top: none;
+    }
+
+    &:last-of-type {
+      margin-bottom: 16px;
+    }
   }
+
+  
 `;
 
 const logoStyles = css`
@@ -25,8 +40,8 @@ const logoStyles = css`
 
 const logoLinkStyles = css`
   display: inline-block;
-  // adds back spacing that was already built into side nav
-  margin: 12px 0 ${spacing[4]}px ${spacing[3]}px;
+  margin-left: ${spacing[3]}px;
+  padding: 48px 0;
 `;
 
 function Navigation() {
@@ -57,13 +72,10 @@ function Navigation() {
       <CollapsedSideNavItem
         className={css`
           background-color: #09804c;
-          // Some CSS trickery to make the item not respect the overall padding in the side navigation.
-          // 1px pixel-pushing for aesthetics.
-          margin-top: -${spacing[3] + 1}px;
-          height: calc(25px + ${spacing[4] * 2}px + ${spacing[3]}px);
+          padding: 64px 0;
         `}
       >
-        <MongoDBLogoMark color="white" height={24} />
+        <MongoDBLogoMark color="white" height={32} />
       </CollapsedSideNavItem>
       <NavigationContent />
     </SideNav>

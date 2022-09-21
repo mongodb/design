@@ -2,7 +2,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsxImportSource": "@emotion/react",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,

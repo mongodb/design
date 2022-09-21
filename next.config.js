@@ -14,6 +14,9 @@ const nextConfig = withMDX({
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'tsx', 'ts'],
   trailingSlash: true,
+  images: {
+    domains: ['images.ctfassets.net'],
+  },
   webpack: (config, options) => {
     // Since Next.js 8.1.0, config.externals is undefined
     if (Array.isArray(config.externals)) {
