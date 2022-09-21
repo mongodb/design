@@ -2,7 +2,7 @@ import { BaseLayoutProps } from 'utils/types';
 import { InstallInstructions } from './InstallInstructions';
 import { CodeExample } from './CodeExample';
 import { Subtitle } from '@leafygreen-ui/typography';
-import { TSDocPropTableSection } from './TSDocPropTable/TSDocPropTable';
+import { TSDocPropTableSection } from './TSDocPropTable/PropTableSection';
 
 function CodeDocs({
   componentName,
