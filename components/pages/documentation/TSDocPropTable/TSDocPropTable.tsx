@@ -16,6 +16,20 @@ import {
 import { Markdown } from 'components/Markdown';
 import { PropTableTooltipContent } from './PropTableTooltipContent';
 
+const propDefinitionTooltipStyle = css`
+  min-width: min-content;
+  max-width: 384px;
+`;
+
+const requiredHighlightStyle = css`
+  color: ${palette.red.base};
+`;
+
+const typeCellStyle = css`
+  display: inline;
+  max-width: 40ch;
+`;
+
 export const TSDocPropTable = ({
   tsDoc,
   className,
@@ -63,20 +77,13 @@ export const TSDocPropTable = ({
                 <Row key={datum.name}>
                   <Cell>
                     <InlineDefinition
-                      tooltipClassName={css`
-                        min-width: min-content;
-                        max-width: 384px;
-                      `}
+                      tooltipClassName={propDefinitionTooltipStyle}
                       definition={<PropTableTooltipContent prop={datum} />}
                     >
                       <InlineCode>{datum.name}</InlineCode>
                     </InlineDefinition>
                     {datum.required && (
-                      <sup
-                        className={css`
-                          color: ${palette.red.base};
-                        `}
-                      >
+                      <sup className={requiredHighlightStyle}>
                         &nbsp; (REQUIRED)
                       </sup>
                     )}
@@ -85,12 +92,7 @@ export const TSDocPropTable = ({
                     <Markdown>{datum.description}</Markdown>
                   </Cell>
                   <Cell>
-                    <InlineCode
-                      className={css`
-                        display: inline;
-                        max-width: 40ch;
-                      `}
-                    >
+                    <InlineCode className={typeCellStyle}>
                       {getTypeString(datum.type)}
                     </InlineCode>
                   </Cell>

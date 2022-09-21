@@ -6,21 +6,25 @@ import { isUndefined } from 'lodash';
 import { palette } from '@leafygreen-ui/palette';
 import { Markdown } from 'components/Markdown';
 
+const globalMarginStyle = css`
+  * {
+    margin-block: ${typeScales.body1.lineHeight / 8}px;
+  }
+`;
+
+const propNameStyle = css`
+  font-size: ${typeScales.code2.fontSize}px;
+  display: inline-block;
+`;
+
+const dividerStyle = css`
+  border-color: ${palette.gray.dark1};
+  margin: ${spacing[2]}px -${spacing[3]}px;
+`;
+
 export const PropTableTooltipContent = ({ prop }: { prop: PropItem }) => (
-  <div
-    className={css`
-      * {
-        margin-block: ${typeScales.body1.lineHeight / 8}px;
-      }
-    `}
-  >
-    <InlineCode
-      darkMode
-      className={css`
-        font-size: ${typeScales.code2.fontSize}px;
-        display: inline-block;
-      `}
-    >
+  <div className={globalMarginStyle}>
+    <InlineCode darkMode className={propNameStyle}>
       {prop.name}
     </InlineCode>
 
@@ -31,6 +35,7 @@ export const PropTableTooltipContent = ({ prop }: { prop: PropItem }) => (
       <InlineCode
         id={`${prop.name}-type`}
         className={css`
+          // This should be default
           display: inline;
         `}
         darkMode
@@ -46,6 +51,7 @@ export const PropTableTooltipContent = ({ prop }: { prop: PropItem }) => (
       <InlineCode
         id={`${prop.name}-default`}
         className={css`
+          // This should be default
           display: inline;
         `}
         darkMode
@@ -54,12 +60,7 @@ export const PropTableTooltipContent = ({ prop }: { prop: PropItem }) => (
       </InlineCode>
     </div>
 
-    <hr
-      className={css`
-        border-color: ${palette.gray.dark1};
-        margin: ${spacing[2]}px -${spacing[3]}px;
-      `}
-    />
+    <hr className={dividerStyle} />
 
     <Description darkMode>
       <Markdown darkMode>{prop.description}</Markdown>
