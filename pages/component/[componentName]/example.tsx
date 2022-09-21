@@ -6,7 +6,7 @@ import {
   getStaticComponentProps,
 } from 'utils/getStaticComponent';
 import kebabCase from 'lodash/kebabCase';
-import { css, cx } from '@emotion/css';
+import { css } from '@emotion/css';
 
 // This might be useful later when moving over to generating live examples from Storybook files.
 // const getStoryFile = (component) => dynamic(() => import(`node_modules/${component.fields.packageName}/src/${component.fields.name}.story.tsx`), {
