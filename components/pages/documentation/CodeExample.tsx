@@ -1,4 +1,3 @@
-import React from 'react';
 import { Tab, Tabs } from '@leafygreen-ui/tabs';
 import Code from '@leafygreen-ui/code';
 

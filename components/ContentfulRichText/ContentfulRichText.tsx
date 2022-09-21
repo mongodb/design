@@ -1,3 +1,7 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+// @ts-ignore unused import
+import { jsx } from '@emotion/react'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import {
@@ -18,32 +22,20 @@ import {
   TableCellBlock,
   TableHeaderCellBlock,
 } from './Tables';
+import { GlobalStyles, ListItemStyles, SubtitleStyles } from './styles';
 
-const ContentfulRichText = ({ document }) =>
+const ContentfulRichText = ({ document }) => (
   documentToReactComponents(document, {
     renderNode: {
-      [BLOCKS.PARAGRAPH]: (node, children) => <Body>{children}</Body>,
-      [BLOCKS.HEADING_1]: (node, children) => (
-        <H1>
-          <HeaderContent>{children}</HeaderContent>
-        </H1>
-      ),
-      [BLOCKS.HEADING_2]: (node, children) => (
-        <H2>
-          <HeaderContent>{children}</HeaderContent>
-        </H2>
-      ),
-      [BLOCKS.HEADING_3]: (node, children) => (
-        <H3>
-          <HeaderContent>{children}</HeaderContent>
-        </H3>
-      ),
-      [BLOCKS.HEADING_4]: (node, children) => (
-        <Subtitle>
-          <HeaderContent>{children}</HeaderContent>
-        </Subtitle>
-      ),
-      [BLOCKS.HEADING_5]: (node, children) => <Overline>{children}</Overline>,
+      [BLOCKS.PARAGRAPH]: (node, children) => <Body css={GlobalStyles}>{children}</Body>,
+      [BLOCKS.HEADING_1]: (node, children) => <H1 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H1>,
+      [BLOCKS.HEADING_2]: (node, children) => <H2 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H2>,
+      [BLOCKS.HEADING_3]: (node, children) => <H3 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H3>,
+      [BLOCKS.HEADING_4]: (node, children) => <Subtitle css={[GlobalStyles, SubtitleStyles]}><HeaderContent>{children}</HeaderContent></Subtitle>,
+      [BLOCKS.HEADING_5]: (node, children) => <Overline css={GlobalStyles}>{children}</Overline>,
+      [BLOCKS.OL_LIST]: (node, children) => <ol css={GlobalStyles}>{children}</ol>,
+      [BLOCKS.UL_LIST]: (node, children) => <ul css={GlobalStyles}>{children}</ul>,
+      [BLOCKS.LIST_ITEM]: (node, children) => <li css={ListItemStyles}>{children}</li>,
       [BLOCKS.TABLE]: TableBlock,
       [BLOCKS.TABLE_ROW]: TableRowBlock,
       [BLOCKS.TABLE_CELL]: TableCellBlock,
@@ -59,6 +51,7 @@ const ContentfulRichText = ({ document }) =>
       ),
       [INLINES.ASSET_HYPERLINK]: EmbeddedAsset,
     },
-  }) as JSX.Element;
+  }) as JSX.Element
+)
 
 export default ContentfulRichText;
