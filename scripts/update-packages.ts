@@ -22,7 +22,7 @@ try {
 
   if (exists(updatesArray) && isValidUpdatesArray(updatesArray)) {
     updatesArray.forEach(({ name, version }: ComponentUpdateObject) => {
-      let cmd = spawn('yarn', ['upgrade', name])
+      let cmd = spawn('yarn', ['upgrade', `${name}@^${version}`])
       cmd.on('close', code => {
         console.log(
           code === 0
