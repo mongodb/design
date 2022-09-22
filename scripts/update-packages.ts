@@ -36,8 +36,8 @@ try {
   }
 
   let gitAddCmd = spawnSync('git', ['add', '.'])
-  if (gitAddCmd.stderr) {
-    console.error(gitAddCmd.stderr)
+  if (gitAddCmd.error) {
+    console.error(gitAddCmd.error)
   } else if (gitAddCmd.stdout) {
     console.log(
       chalk.green.bold(
@@ -47,8 +47,8 @@ try {
   }
 
   let gitCommitCmd = spawnSync('git', ['commit', '-m', `${"Updating released @leafygreen-ui package versions"}`])
-  if (gitCommitCmd.stderr) {
-    console.error(gitCommitCmd.stderr)
+  if (gitCommitCmd.error) {
+    console.error(gitCommitCmd.error)
   } else if (gitCommitCmd.stdout) {
     console.log(
       chalk.green.bold(
