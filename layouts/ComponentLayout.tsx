@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { css } from '@emotion/css';
 import IconButton from '@leafygreen-ui/icon-button';
 import { useViewportSize } from '@leafygreen-ui/hooks';
 import { palette } from '@leafygreen-ui/palette';
@@ -17,14 +16,14 @@ import { pageContainerWidth } from 'styles/constants';
 import { ComponentFields } from 'utils/types';
 import kebabCase from 'lodash/kebabCase';
 import getFullPageTitle from 'utils/getFullPageTitle';
-import { cx } from '@leafygreen-ui/emotion';
+import { css, cx } from '@leafygreen-ui/emotion';
 
 const layout = css`
   ${mq({
-  // 51px is a magic number for baseline alignment with the first SideNavGroup header
-  marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
-  width: ['100%', '100%', '100%', `${pageContainerWidth.dataGraphic}px`],
-})}
+    // 51px is a magic number for baseline alignment with the first SideNavGroup header
+    marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
+    width: ['100%', '100%', '100%', `${pageContainerWidth.dataGraphic}px`],
+  })}
 `;
 
 const margin4 = css`
@@ -35,6 +34,14 @@ const flexContainer = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const mainContentStyle = css`
+  position: relative;
+`;
+
+const tabContentStyle = css`
+  flex-grow: 1;
 `;
 
 const caps = css`
@@ -49,17 +56,18 @@ const componentGuidelineStyles = css`
 `;
 
 const codeDocsWrapper = css`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   overflow: hidden;
+  align-self: center;
+  justify-self: center;
 `;
 
 const linksContainer = css`
-  align-self: flex-start;
-  flex: 1;
-  justify-content: flex-end;
-  border-bottom: 1px solid ${palette.gray.light2};
-  padding-bottom: 11px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-bottom: 12px;
 `;
 
 const reactIconStyle = css`
@@ -111,22 +119,30 @@ function ComponentLayout({
           {componentFields.name}
         </H2>
       </div>
-      <div className={flexContainer}>
+
+      <div className={mainContentStyle}>
         <Tabs
+          className={css`
+            flex-grow: 10;
+          `}
           selected={selected}
           setSelected={setSelected}
           aria-label={`Information on LeafyGreen UI ${componentFields.name} component`}
         >
           <Tab
             name="Live Example"
+            className={cx(tabContentStyle, 'tabContentStyle')}
             onClick={() =>
-              router.push(`/component/${kebabCase(componentFields.name)}/example`)
+              router.push(
+                `/component/${kebabCase(componentFields.name)}/example`,
+              )
             }
           >
             {children}
           </Tab>
           <Tab
             name="Design Guidelines"
+            className={cx(tabContentStyle, 'tabContentStyle')}
             onClick={() =>
               router.push(
                 `/component/${kebabCase(componentFields.name)}/guidelines`,
@@ -144,6 +160,7 @@ function ComponentLayout({
                 Code Docs
               </div>
             }
+            className={cx(tabContentStyle, 'tabContentStyle')}
             onClick={() =>
               router.push(
                 `/component/${kebabCase(componentFields.name)}/documentation`,
@@ -156,7 +173,7 @@ function ComponentLayout({
         {!isMobile && (
           <div className={cx([flexContainer, linksContainer])}>
             <IconButton
-              // @ts-expect-error
+              aria-label="Open in GitHub"
               as="a"
               target="_blank"
               rel="noopener noreferrer"
@@ -168,7 +185,7 @@ function ComponentLayout({
               <GithubIcon />
             </IconButton>
             <IconButton
-              // @ts-expect-error
+              aria-label="Open in Figma"
               as="a"
               href={componentFields.figmaUrl}
               target="_blank"
@@ -179,7 +196,7 @@ function ComponentLayout({
           </div>
         )}
       </div>
-    </div >
+    </div>
   );
 }
 
