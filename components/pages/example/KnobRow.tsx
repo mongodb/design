@@ -7,25 +7,25 @@ import { Markdown } from 'components/Markdown';
 import { css } from '@leafygreen-ui/emotion';
 import { HTMLElementProps } from '@leafygreen-ui/lib';
 import { PropItem } from 'react-docgen-typescript';
-import { Meta } from '@storybook/react';
+import { InputType } from '@storybook/csf';
+
 import InlineDefinition from '@leafygreen-ui/inline-definition';
 
 interface KnobRowProps extends HTMLElementProps<'div'> {
   prop: PropItem;
   darkMode: boolean;
-  meta?: Meta<any>;
+  argType: InputType;
   args?: { [arg: string]: any };
   setArg: (key: string, value: any) => void;
 }
 
 export const KnobRow = ({
-  meta,
   prop,
   args,
   darkMode,
+  argType,
   setArg,
 }: KnobRowProps) => {
-  const argType = meta?.argTypes?.[prop.name];
   const knobValue = args?.[prop.name] ?? prop.defaultValue;
 
   return (

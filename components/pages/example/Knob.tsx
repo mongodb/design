@@ -13,7 +13,7 @@ const inputStyle = css`
 `;
 
 interface KnobProps extends HTMLElementProps<'input'> {
-  argType?: InputType;
+  argType: InputType;
   prop: PropItem;
   value: any;
   onChange: (val: any) => void;

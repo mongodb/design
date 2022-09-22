@@ -69,6 +69,7 @@ export const LiveExample = ({
             : Object.values(stories)[0];
           const args = { ...meta.args, ...StoryFn?.args };
 
+          // console.log({ meta, args, StoryFn });
           setState({ meta, args, StoryFn });
         }
       })
@@ -119,6 +120,10 @@ export const LiveExample = ({
               key={prop.name}
               prop={prop}
               darkMode={darkMode}
+              argType={{
+                ...meta?.argTypes?.[prop.name],
+                ...StoryFn?.argTypes?.[prop.name],
+              }}
               args={args}
               setArg={(key: string, value: any) => {
                 setState({
@@ -127,7 +132,6 @@ export const LiveExample = ({
                   args: { ...args, [key]: value },
                 });
               }}
-              meta={meta}
             />
           ))}
       </div>
