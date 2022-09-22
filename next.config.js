@@ -1,16 +1,4 @@
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import nextMdx from '@next/mdx';
-
-const withMDX = nextMdx({
-  extension: /\.mdx?$/,
-  options: {
-    rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'wrap' }]],
-    providerImportSource: '@mdx-js/react',
-  },
-});
-
-const nextConfig = withMDX({
+const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'tsx', 'ts'],
   trailingSlash: true,
@@ -41,26 +29,39 @@ const nextConfig = withMDX({
     }
 
     config.resolve.symlinks = true;
+
+    // Allows dynamic loading of stories
     config.module.rules.push({
-      // test: /.+\.story.tsx?$/,
       test: /\.+(js|jsx|mjs|ts|tsx)$/,
       use: options.defaultLoaders.babel,
-      // Include packages (or symlinks) that include `leafygreen-ui`,
-      // but omit those modules their own node_modules
-      include: filePath => {
-        if (
-          (filePath.match(/node_modules/g) || []).length > 1 ||
-          (filePath.match(/leafygreen-ui/g) || []).length > 1
-        )
-          return false;
-        return /.+(node_modules)*\/@*leafygreen-ui\/(?!node_modules).+/g.test(
-          filePath,
-        );
-      },
+      include: isPathInLeafygreen,
       type: 'javascript/auto',
     });
+
+    // Allow <Icon /> to dynamically import the svg files
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+      include: isPathInLeafygreen,
+    })
+
     return config;
   },
-});
+};
 
-export default nextConfig;
+module.exports = nextConfig
+
+/**
+ * Include packages (or symlinks) that include `leafygreen-ui`,
+ * but omit those modules their own node_modules
+ */
+function isPathInLeafygreen (filePath) {
+  if (
+    (filePath.match(/node_modules/g) || []).length > 1 ||
+    (filePath.match(/leafygreen-ui/g) || []).length > 1
+  )
+    return false;
+  return /.+(node_modules)*\/@*leafygreen-ui\/(?!node_modules).+/g.test(
+    filePath,
+  );
+}

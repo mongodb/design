@@ -1,5 +1,5 @@
 import ComponentLayout from 'layouts/ComponentLayout';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import { getComponent } from 'utils/getContentfulResources';
 import { LiveExample } from 'components/pages/example/LiveExample';
