@@ -1214,7 +1214,7 @@
     "@leafygreen-ui/typography" "^13.1.2"
     lodash "^4.17.21"
 
-"@leafygreen-ui/typography@13.1.2", "@leafygreen-ui/typography@^13.0.1", "@leafygreen-ui/typography@^13.1.2":
+"@leafygreen-ui/typography@13.1.2", "@leafygreen-ui/typography@^13.1.2":
   version "13.1.2"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/typography/-/typography-13.1.2.tgz#2686c3a449a4fd30fbb356b78cbedcc60cfb83fe"
   integrity sha512-XkxCo4JqcMY4njXCB8K3mVnCPgkEwqFJvbYgftKcCI8qih+k8a8b9DmM1oeKuE/AYLfyKCE320Xhi3dMma4I7g==
@@ -1229,6 +1229,17 @@
   version "11.0.2"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/typography/-/typography-11.0.2.tgz#b4747b85e1b4c5c8175698b9378a24861f884290"
   integrity sha512-JXPpZRgwFrlIgpTWnh53i7m9OsMVLBj/jfMBCP1kpZJ+o/6Rs/OOsTbyLz8SX5WHq+HboOqlLL8PcIEk14GL3g==
+  dependencies:
+    "@leafygreen-ui/box" "^3.0.7"
+    "@leafygreen-ui/icon" "^11.9.0"
+    "@leafygreen-ui/lib" "^9.3.0"
+    "@leafygreen-ui/palette" "^3.4.0"
+    "@leafygreen-ui/tokens" "^1.3.1"
+
+"@leafygreen-ui/typography@^12.0.0":
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/@leafygreen-ui/typography/-/typography-12.0.0.tgz#e41919d44a2cf536f08ccf6fa19ce843b715ab97"
+  integrity sha512-SMsqKby3wSt7JmNWOe2U3aspKwCBoszTI8ivmFqnEus+ItCbBNqSd7TDdDyi8XOLuafDiioUZUn3H1wSuRl/AQ==
   dependencies:
     "@leafygreen-ui/box" "^3.0.7"
     "@leafygreen-ui/icon" "^11.9.0"

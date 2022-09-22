@@ -34,6 +34,29 @@ try {
       })
     })
   }
+
+  let gitAddCmd = spawn('git', ['add', '.'])
+  gitAddCmd.on('close', code => {
+    console.log(
+      code === 0
+        ? chalk.green.bold(
+          `\n✅ Added updated package versions to git.`,
+        )
+        : chalk.red.bold(`\nExit code ${code}\n`),
+    );
+  })
+
+  let gitCommitCmd = spawn('git', ['commit', '-m', `${"Updating released @leafygreen-ui package versions"}`])
+  gitCommitCmd.on('close', code => {
+    console.log(
+      code === 0
+        ? chalk.green.bold(
+          `\n✅ Committed updated package versions to git.`,
+        )
+        : chalk.red.bold(`\nExit code ${code}\n`),
+    );
+  })
+
 } catch (error) {
   console.error(error)
 }
