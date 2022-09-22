@@ -1,4 +1,4 @@
-import { spawn } from 'child_process';
+import { spawnSync } from 'child_process';
 import chalk from 'chalk';
 
 interface ComponentUpdateObject {
@@ -22,40 +22,40 @@ try {
 
   if (exists(updatesArray) && isValidUpdatesArray(updatesArray)) {
     updatesArray.forEach(({ name, version }: ComponentUpdateObject) => {
-      let cmd = spawn('yarn', ['upgrade', `${name}@^${version}`])
-      cmd.on('close', code => {
+      let { stdout, stderr } = spawnSync('yarn', ['upgrade', `${name}@^${version}`])
+      if (stderr) {
+        console.error(stderr)
+      } else if (stdout) {
         console.log(
-          code === 0
-            ? chalk.green.bold(
-              `\n✅ Upgraded ${name} to ${version}.`,
-            )
-            : chalk.red.bold(`\nExit code ${code}\n`),
+          chalk.green.bold(
+            `\n✅ Upgraded ${name} to ${version}.`
+          )
         );
-      })
+      }
     })
   }
 
-  let gitAddCmd = spawn('git', ['add', '.'])
-  gitAddCmd.on('close', code => {
+  let gitAddCmd = spawnSync('git', ['add', '.'])
+  if (gitAddCmd.stderr) {
+    console.error(gitAddCmd.stderr)
+  } else if (gitAddCmd.stdout) {
     console.log(
-      code === 0
-        ? chalk.green.bold(
-          `\n✅ Added updated package versions to git.`,
-        )
-        : chalk.red.bold(`\nExit code ${code}\n`),
+      chalk.green.bold(
+        `\n✅ Added updated package versions to git.`,
+      )
     );
-  })
+  }
 
-  let gitCommitCmd = spawn('git', ['commit', '-m', `${"Updating released @leafygreen-ui package versions"}`])
-  gitCommitCmd.on('close', code => {
+  let gitCommitCmd = spawnSync('git', ['commit', '-m', `${"Updating released @leafygreen-ui package versions"}`])
+  if (gitCommitCmd.stderr) {
+    console.error(gitCommitCmd.stderr)
+  } else if (gitCommitCmd.stdout) {
     console.log(
-      code === 0
-        ? chalk.green.bold(
-          `\n✅ Committed updated package versions to git.`,
-        )
-        : chalk.red.bold(`\nExit code ${code}\n`),
+      chalk.green.bold(
+        `\n✅ Committed updated package versions to git.`,
+      )
     );
-  })
+  }
 
 } catch (error) {
   console.error(error)
