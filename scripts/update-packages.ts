@@ -22,9 +22,9 @@ try {
 
   if (exists(updatesArray) && isValidUpdatesArray(updatesArray)) {
     updatesArray.forEach(({ name, version }: ComponentUpdateObject) => {
-      let { stdout, stderr } = spawnSync('yarn', ['upgrade', `${name}@^${version}`])
-      if (stderr) {
-        console.error(stderr)
+      let { stdout, error } = spawnSync('yarn', ['upgrade', `${name}@^${version}`])
+      if (error) {
+        console.error(error)
       } else if (stdout) {
         console.log(
           chalk.green.bold(
