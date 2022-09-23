@@ -6,9 +6,8 @@ import { useViewportSize } from '@leafygreen-ui/hooks';
 import { palette } from '@leafygreen-ui/palette';
 import { Tabs, Tab } from '@leafygreen-ui/tabs';
 import { spacing, breakpoints } from '@leafygreen-ui/tokens';
-import { H2 } from '@leafygreen-ui/typography';
+import { H1 } from '@leafygreen-ui/typography';
 import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
-import ReactIcon from 'components/icons/ReactIcon';
 import FigmaIcon from 'components/icons/FigmaIcon';
 import GithubIcon from 'components/icons/GithubIcon';
 import { mq } from 'utils/mediaQuery';
@@ -22,35 +21,29 @@ const layout = css`
   ${mq({
     // 51px is a magic number for baseline alignment with the first SideNavGroup header
     marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
-    width: ['100%', '100%', '100%', `${pageContainerWidth.dataGraphic}px`],
   })}
 `;
 
-const margin4 = css`
+const pageHeaderStyle = css`
   margin-bottom: ${spacing[4]}px;
+  text-transform: capitalize;
 `;
 
 const mainContentStyle = css`
   position: relative;
 `;
 
-const caps = css`
-  text-transform: capitalize;
+const liveExamplePageStyles = css`
+  margin: ${spacing[4]}px 0px;
+  max-width: ${pageContainerWidth.dataGraphic}px;
 `;
+const codeDocsPageStyles = liveExamplePageStyles;
 
-const componentGuidelineStyles = css`
+const componentGuidelinePageStyles = css`
   overflow-wrap: anywhere;
   color: ${palette.gray.dark3};
   margin: ${spacing[4]}px 0px;
   max-width: ${pageContainerWidth.default}px;
-`;
-
-const codeDocsWrapper = css`
-  display: inline-flex;
-  align-items: center;
-  overflow: hidden;
-  align-self: center;
-  justify-self: center;
 `;
 
 const linksContainer = css`
@@ -59,10 +52,6 @@ const linksContainer = css`
   right: 0;
   display: flex;
   gap: ${spacing[2]}px;
-`;
-
-const reactIconStyle = css`
-  margin-right: 4px;
 `;
 
 function ComponentLayout({
@@ -105,11 +94,7 @@ function ComponentLayout({
         <meta name="keywords" content={componentFields.name} />
       </Head>
 
-      <div className={margin4}>
-        <H2 as="h1" className={caps}>
-          {componentFields.name}
-        </H2>
-      </div>
+      <H1 className={pageHeaderStyle}>{componentFields.name}</H1>
 
       <div className={mainContentStyle}>
         <Tabs
@@ -125,7 +110,7 @@ function ComponentLayout({
               )
             }
           >
-            {children}
+            <div className={liveExamplePageStyles}>{children}</div>
           </Tab>
           <Tab
             name="Design Guidelines"
@@ -136,23 +121,18 @@ function ComponentLayout({
             }
           >
             <LeafyGreenProvider baseFontSize={16}>
-              <div className={componentGuidelineStyles}>{children}</div>
+              <div className={componentGuidelinePageStyles}>{children}</div>
             </LeafyGreenProvider>
           </Tab>
           <Tab
-            name={
-              <div className={codeDocsWrapper}>
-                <ReactIcon className={reactIconStyle} />
-                Code Docs
-              </div>
-            }
+            name="Code Docs"
             onClick={() =>
               router.push(
                 `/component/${kebabCase(componentFields.name)}/documentation`,
               )
             }
           >
-            {children}
+            <div className={codeDocsPageStyles}>{children}</div>
           </Tab>
         </Tabs>
         {!isMobile && (
