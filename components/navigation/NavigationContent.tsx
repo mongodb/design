@@ -34,9 +34,7 @@ function NavigationContent({
             {foundations.map((foundationPageName: string) => (
               <MobileNavigationItem
                 key={foundationPageName}
-                onClick={() =>
-                  router.push(`/foundation/${foundationPageName}`)
-                }
+                onClick={() => router.push(`/foundation/${foundationPageName}`)}
                 active={foundationPageName === activePage}
               >
                 {foundationPageName.split('-').join(' ')}
@@ -47,9 +45,8 @@ function NavigationContent({
             header="Components"
             initialCollapsed={false} // Always false until we add more sections to navigation
           >
-            {components.map((component: Entry<ComponentFields>) => {
-              const componentKebabCaseName = kebabCase(component.fields.name);
-              const componentName = component.fields.name;
+            {components.map((componentName: string) => {
+              const componentKebabCaseName = kebabCase(componentName);
               return (
                 <MobileNavigationItem
                   key={componentKebabCaseName}
@@ -93,16 +90,16 @@ function NavigationContent({
           </SideNavGroup>
         ))}
         <SideNavGroup header="Components" glyph={<Icon glyph="Apps" />}>
-          {components.map((component: Entry<ComponentFields>) => {
-            const componentKebabCaseName = kebabCase(component.fields.name);
-            const componentName = component.fields.name;
+          {components.map((componentName: string) => {
+            const componentKebabCaseName = kebabCase(componentName);
 
             return (
               <SideNavItem
                 key={componentKebabCaseName}
                 onClick={() =>
                   router.push(
-                    `/component/${componentKebabCaseName}/${activeTab ?? 'example'
+                    `/component/${componentKebabCaseName}/${
+                      activeTab ?? 'example'
                     }`,
                   )
                 }
