@@ -4,9 +4,7 @@ import Icon from '@leafygreen-ui/icon';
 import MobileNavigationGroup from './MobileNavigationGroup';
 import MobileNavigationItem from './MobileNavigationItem';
 import { useAppContext } from 'contexts/AppContext';
-import { Entry } from 'contentful';
 import kebabCase from 'lodash/kebabCase';
-import { ComponentFields } from 'utils/types';
 
 const foundations: Array<String> = [
   'accessibility',
