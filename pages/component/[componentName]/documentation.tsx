@@ -24,6 +24,7 @@ const ComponentDocumentation = ({
 }: DocsPageProps) => {
   return (
     <CodeDocs
+      componentName={fields.name}
       componentKebabCaseName={componentName}
       changelog={changelog}
       readme={readme}
