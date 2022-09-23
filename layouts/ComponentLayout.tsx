@@ -16,7 +16,7 @@ import { pageContainerWidth } from 'styles/constants';
 import { ComponentFields } from 'utils/types';
 import kebabCase from 'lodash/kebabCase';
 import getFullPageTitle from 'utils/getFullPageTitle';
-import { css, cx } from '@leafygreen-ui/emotion';
+import { css } from '@leafygreen-ui/emotion';
 
 const layout = css`
   ${mq({
@@ -30,18 +30,8 @@ const margin4 = css`
   margin-bottom: ${spacing[4]}px;
 `;
 
-const flexContainer = css`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 const mainContentStyle = css`
   position: relative;
-`;
-
-const tabContentStyle = css`
-  flex-grow: 1;
 `;
 
 const caps = css`
@@ -65,9 +55,10 @@ const codeDocsWrapper = css`
 
 const linksContainer = css`
   position: absolute;
-  top: 0;
+  top: ${spacing[2]}px;
   right: 0;
-  padding-bottom: 12px;
+  display: flex;
+  gap: ${spacing[2]}px;
 `;
 
 const reactIconStyle = css`
@@ -122,16 +113,12 @@ function ComponentLayout({
 
       <div className={mainContentStyle}>
         <Tabs
-          className={css`
-            flex-grow: 10;
-          `}
           selected={selected}
           setSelected={setSelected}
           aria-label={`Information on LeafyGreen UI ${componentFields.name} component`}
         >
           <Tab
             name="Live Example"
-            className={cx(tabContentStyle, 'tabContentStyle')}
             onClick={() =>
               router.push(
                 `/component/${kebabCase(componentFields.name)}/example`,
@@ -142,7 +129,6 @@ function ComponentLayout({
           </Tab>
           <Tab
             name="Design Guidelines"
-            className={cx(tabContentStyle, 'tabContentStyle')}
             onClick={() =>
               router.push(
                 `/component/${kebabCase(componentFields.name)}/guidelines`,
@@ -160,7 +146,6 @@ function ComponentLayout({
                 Code Docs
               </div>
             }
-            className={cx(tabContentStyle, 'tabContentStyle')}
             onClick={() =>
               router.push(
                 `/component/${kebabCase(componentFields.name)}/documentation`,
@@ -171,13 +156,12 @@ function ComponentLayout({
           </Tab>
         </Tabs>
         {!isMobile && (
-          <div className={cx([flexContainer, linksContainer])}>
+          <div className={linksContainer}>
             <IconButton
               aria-label="Open in GitHub"
               as="a"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ marginRight: '8px' }}
               href={`https://github.com/mongodb/leafygreen-ui/tree/main/packages/${kebabCase(
                 componentFields.name,
               )}`}
