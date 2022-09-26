@@ -3,5 +3,5 @@ module.exports = {
   trailingSlash: true,
   images: {
     domains: ['images.ctfassets.net'],
-  }
+  },
 };

@@ -12,9 +12,9 @@ const footerContainerStyle = css`
   width: 100%;
 
   ${mq({
-  marginTop: ['0px', `${spacing[7]}px`],
-  paddingLeft: ['0px', `${spacing[9]}px`]
-})}
+    marginTop: ['0px', `${spacing[7]}px`],
+    paddingLeft: ['0px', `${spacing[9]}px`],
+  })}
 `;
 
 const desktopFooterContainerStyle = css`
@@ -46,9 +46,9 @@ const linksContainer = css`
   margin-top: 5px;
 
   ${mq({
-  marginLeft: [`${spacing[4]}px`, `${spacing[6]}px`],
-  marginRight: [`${spacing[4]}px`, `${spacing[6]}px`],
-})}
+    marginLeft: [`${spacing[4]}px`, `${spacing[6]}px`],
+    marginRight: [`${spacing[4]}px`, `${spacing[6]}px`],
+  })}
 `;
 
 const mobileLinksContainer = css`
@@ -103,18 +103,21 @@ function Footer() {
         footerContainerStyle,
         {
           [desktopFooterContainerStyle]: !isTouchDevice,
-          [mobileFooterContainerStyle]: isTouchDevice
-        }
-      ])}>
+          [mobileFooterContainerStyle]: isTouchDevice,
+        },
+      ])}
+    >
       <a href="https://mongodb.com" target="_blank" rel="noopener noreferrer">
         <MongoDBLogo height={spacing[4]} aria-hidden="true" />
       </a>
-      <div className={cx([
-        linksContainer,
-        {
-          [mobileLinksContainer]: isTouchDevice
-        }
-      ])}>
+      <div
+        className={cx([
+          linksContainer,
+          {
+            [mobileLinksContainer]: isTouchDevice,
+          },
+        ])}
+      >
         <FooterLink href="https://www.mongodb.com/blog/post/meet-our-product-design-team-part-1">
           About design at MongoDB
         </FooterLink>

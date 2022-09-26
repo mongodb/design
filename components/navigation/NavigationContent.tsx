@@ -34,9 +34,7 @@ function NavigationContent({
             {foundations.map((foundationPageName: string) => (
               <MobileNavigationItem
                 key={foundationPageName}
-                onClick={() =>
-                  router.push(`/foundation/${foundationPageName}`)
-                }
+                onClick={() => router.push(`/foundation/${foundationPageName}`)}
                 active={foundationPageName === activePage}
               >
                 {foundationPageName.split('-').join(' ')}
@@ -102,7 +100,8 @@ function NavigationContent({
                 key={componentKebabCaseName}
                 onClick={() =>
                   router.push(
-                    `/component/${componentKebabCaseName}/${activeTab ?? 'example'
+                    `/component/${componentKebabCaseName}/${
+                      activeTab ?? 'example'
                     }`,
                   )
                 }
