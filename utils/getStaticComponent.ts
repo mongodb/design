@@ -19,5 +19,6 @@ export async function getStaticComponentProps({ params }) {
     props: {
       component: await getComponent(params.componentName), // this is in kebabCase
     },
+    revalidate: 300, // in seconds
   };
 }
