@@ -477,7 +477,7 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@humanwhocodes/config-array@^0.10.4":
+"@humanwhocodes/config-array@^0.10.5":
   version "0.10.5"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.10.5.tgz#bb679745224745fff1e9a41961c1d45a49f81c04"
   integrity sha512-XVVDtp+dVvRxMoxSiSfasYaG02VEe1qH5cKgMQJWhol6HwzbcqoCMJi8dAGoYAO57jhUyhI6cWuRiTcRaDaYug==
@@ -1534,9 +1534,9 @@
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
 "@types/node@*", "@types/node@^18.0.6":
-  version "18.7.18"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.18.tgz#633184f55c322e4fb08612307c274ee6d5ed3154"
-  integrity sha512-m+6nTEOadJZuTPkKR/SYK3A2d7FZrgElol9UP1Kae90VVU4a6mxnPuLiIW1m4Cq4gZ/nWb9GrdVXJCoCazDAbg==
+  version "18.7.22"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.22.tgz#76f7401362ad63d9d7eefa7dcdfa5fcd9baddff3"
+  integrity sha512-TsmoXYd4zrkkKjJB0URF/mTIKPl+kVcbqClB2F/ykU7vil1BfWZVndOnpEIozPv4fURD28gyPFeIkW2G+KXOvw==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -1654,25 +1654,25 @@
     "@typescript-eslint/types" "5.38.0"
     eslint-visitor-keys "^3.3.0"
 
-"@vercel/build-utils@5.4.4":
-  version "5.4.4"
-  resolved "https://registry.yarnpkg.com/@vercel/build-utils/-/build-utils-5.4.4.tgz#f660cba2d1418e87ebccd162804a7e222673ad52"
-  integrity sha512-8p5gQA2ge/x8slRLPo7vsJrPiIctD4dDGx4mweZ+l1+NTMad6nqi+BSH/v3t8apBFtVWZpicUgWql7s/tlWtPA==
+"@vercel/build-utils@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@vercel/build-utils/-/build-utils-5.5.0.tgz#aadfd219b17ce7d2eb3dba7995ce73edd597a6b4"
+  integrity sha512-nkRtGTu3VGUBETJAKiPJr1g6P6PeaZlquOArIsP0k9p6c04LXKVJvfBbMNyZzIp7xRYtt7xubj7msBC74464QQ==
 
-"@vercel/go@2.2.7":
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/@vercel/go/-/go-2.2.7.tgz#4c00d31002d9df58e75f2fb0c25fa2eebc44e1cb"
-  integrity sha512-xs+w3y+I4osctt5GKHzhRNYYHbyVxx5OvkayT3dV731lLTniy7rEqSZtrlKnQuz3iF6+AT1GgluqY+ACBT2zlg==
+"@vercel/go@2.2.8":
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/@vercel/go/-/go-2.2.8.tgz#7a278cd3e01df10081d4efa884c6e478b810ae18"
+  integrity sha512-E8GT+QTR2HM/uuNiibxvkZ5eZ5nxgyqUruR8lzq2TQU0Zv2MemmeG5K9lwrPbAh+a3XzBiwg4vatQ3mN9e4CBg==
 
-"@vercel/hydrogen@0.0.20":
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/@vercel/hydrogen/-/hydrogen-0.0.20.tgz#55d0ee0e93a70abc278e5c294f2286018711120d"
-  integrity sha512-o4uBK34GYBPahAT25s5eb1pGq37KEe82QQHyFfcaTqL0Dqa2bVZntweg4WJvklCZs0my6wLc1sGiOUNY1HCxOg==
+"@vercel/hydrogen@0.0.21":
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/@vercel/hydrogen/-/hydrogen-0.0.21.tgz#c61eb94b1a364b6eaa4b5ce844899874a89cc1f2"
+  integrity sha512-PR83fiXYuRud1OrEWhK9jk7k4OveJEDVncTet5/oyUHF7dAU+fW/5Fnm20PI5X640ss7CK8ZjmwRl2IbP8FAhA==
 
-"@vercel/next@3.1.28":
-  version "3.1.28"
-  resolved "https://registry.yarnpkg.com/@vercel/next/-/next-3.1.28.tgz#3635ece69229ff14ecd89b8430e6c801ed68edaa"
-  integrity sha512-zx7B7uagpN8iH3FtUIhA88/JWU8vX6puHoUeIoez6i2szkKKRjVaA8E8PdsBXH+JAKQ4HjAAk0wyXQv0xCJMkQ==
+"@vercel/next@3.1.29":
+  version "3.1.29"
+  resolved "https://registry.yarnpkg.com/@vercel/next/-/next-3.1.29.tgz#b7078aace963443a53e5dd33d50c2b1542d43a47"
+  integrity sha512-cB1WAtfypyrefGcpzl5ict9oBB6QpwJnNw97/AwIAHPSfJVdxkpjFfpJgRxlqlqESwODEDIw4ioT2FpcZDUzWA==
 
 "@vercel/nft@0.22.1":
   version "0.22.1"
@@ -1696,14 +1696,14 @@
   resolved "https://registry.yarnpkg.com/@vercel/node-bridge/-/node-bridge-3.0.0.tgz#443655b74713ec65531726fb5a30c5c528c804bf"
   integrity sha512-TNQK6cufwrhd8ASDk5YHHenH8Xhp9sY8xUjOTKnQQI37KLk+Sw2HlHhT5rzUFN23ahosUlkY8InwtYUmSNb9kw==
 
-"@vercel/node@2.5.17":
-  version "2.5.17"
-  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-2.5.17.tgz#54f15cd9424f2896c7898436c26a0d5cd2ecd440"
-  integrity sha512-EVg2PyBZrAbEL60GbRry8TnCvrCVC02fD1MLdU95kprbeOuI5OilWF6YIFhZyh262Y54semWyuInNe/sfRI73Q==
+"@vercel/node@2.5.18":
+  version "2.5.18"
+  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-2.5.18.tgz#abb28f06af9f164077a33b89f44176a2cc9cdf2e"
+  integrity sha512-x0ao/JtNaHNdMWTfMXzyoX3s80xQQM8vE9Bexurmpmkqyq80ZHlBVvtppFGoSzWPw0AkZoJIdQsBmbkdlTV3lg==
   dependencies:
     "@edge-runtime/vm" "1.1.0-beta.32"
     "@types/node" "*"
-    "@vercel/build-utils" "5.4.4"
+    "@vercel/build-utils" "5.5.0"
     "@vercel/node-bridge" "3.0.0"
     "@vercel/static-config" "2.0.3"
     edge-runtime "1.1.0-beta.32"
@@ -1713,24 +1713,24 @@
     ts-node "8.9.1"
     typescript "4.3.4"
 
-"@vercel/python@3.1.16":
-  version "3.1.16"
-  resolved "https://registry.yarnpkg.com/@vercel/python/-/python-3.1.16.tgz#ea78e55cd56194a28f6b061093c5e3f982c35332"
-  integrity sha512-1Q3sti9+D9t51iflqm5HUg4eGSg/uH+g5B05lJ/AF62/jMVOwWLkCImQcHWdsC2Qhy9Vw/F55Dx0osSjkoUw9g==
+"@vercel/python@3.1.17":
+  version "3.1.17"
+  resolved "https://registry.yarnpkg.com/@vercel/python/-/python-3.1.17.tgz#e0c6a7eac1e3bcaa34d416209734aecf3d20254d"
+  integrity sha512-xMvsXQZ55qomikCFS5O2QDHLdEOjQHIEjbf2QuNJSYTnPkw4RytSsrVZ+7CePH49yLsjxhE1Un+szjz1tXrduw==
 
-"@vercel/redwood@1.0.25":
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/@vercel/redwood/-/redwood-1.0.25.tgz#527db787585d406b498e235992ceb7b83efc8bbd"
-  integrity sha512-s47uke3NhAjnBQ0wF0LrHy6Y0PlfIAAOAoj4RFmWZ4W9T5cBndnbKdXdZXDSNVTdMQf8ll/kQ2AvCY3azuljRg==
+"@vercel/redwood@1.0.26":
+  version "1.0.26"
+  resolved "https://registry.yarnpkg.com/@vercel/redwood/-/redwood-1.0.26.tgz#47605c8c76e2fbd0440403648d5f60c48f0e6950"
+  integrity sha512-gtox2Xt3BSzHNhQnQKY6DCpoBQNRAFtl3vAwkX+ZHZ5kmttyJenCqD+g1VhBW5vFZtH6wfUiVll0XGmoEJyguw==
   dependencies:
     "@vercel/nft" "0.22.1"
     "@vercel/routing-utils" "2.0.2"
     semver "6.1.1"
 
-"@vercel/remix@1.0.26":
-  version "1.0.26"
-  resolved "https://registry.yarnpkg.com/@vercel/remix/-/remix-1.0.26.tgz#d2f6ea608e64290fd2fcc8c05f5ecffee069b7a4"
-  integrity sha512-xqrFLU0TF11vySio2rP6GyPoroDNOothTOZjf46UMKi0SlrnJ1kRQQODNn1Ae163hWzk5QHJxLGkT7Z2Yg3fjA==
+"@vercel/remix@1.0.27":
+  version "1.0.27"
+  resolved "https://registry.yarnpkg.com/@vercel/remix/-/remix-1.0.27.tgz#a6f2dda9aff0a822babed22483d1b657ba78d7bb"
+  integrity sha512-Oxd1NTIuuu5ZC94L4UWnw1IyR+4aANQWVnqcRLN6tlzDwsRf46zHmeo4dbaofMQbTqroPrCBbfGkvSK2jGLE6w==
   dependencies:
     "@vercel/nft" "0.22.1"
 
@@ -1743,15 +1743,15 @@
   optionalDependencies:
     ajv "^6.0.0"
 
-"@vercel/ruby@1.3.33":
-  version "1.3.33"
-  resolved "https://registry.yarnpkg.com/@vercel/ruby/-/ruby-1.3.33.tgz#389707cc62bbe5198aa9bc815b422f9d81d58dad"
-  integrity sha512-T7oXwbUPFiKiH4d1AxZ1kfpq/S0UsHpqrKSdA5q3q0Xt+n6qn/nEME4qANfVQ/KhTK2OQkwttRWgA4EBZfrE2w==
+"@vercel/ruby@1.3.34":
+  version "1.3.34"
+  resolved "https://registry.yarnpkg.com/@vercel/ruby/-/ruby-1.3.34.tgz#2fef39d61f3eb09bd65954facc228f958701577f"
+  integrity sha512-6KscsUfDoMBeVG1qHbYPK8sL6aQ/tgd9M2LEqYtyf5MdTROJu15ZhiSWyeFAP+U/uG3/iu+ToEATn4hW/jz9GA==
 
-"@vercel/static-build@1.0.25":
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/@vercel/static-build/-/static-build-1.0.25.tgz#61704389bda8d43f10e4df963183dc3a7b73d7e4"
-  integrity sha512-pG4rb3pGVLqxwIWt7uLmN1BiIknKJTizioHT/zAL4wyOaPgLgJYaYC/SSNo/kDf1clG3mUgT+ax73Ee/xEKtqg==
+"@vercel/static-build@1.0.26":
+  version "1.0.26"
+  resolved "https://registry.yarnpkg.com/@vercel/static-build/-/static-build-1.0.26.tgz#03e727a314bcb5eefa56390e4461d2f2516250a5"
+  integrity sha512-owW/DdZq3mr0WiuUzjtq5jzTf4gIvCmeTPnHDdAQbTRkoSfkLMMaObcv/5gX+mqpxbvn0By19ZK7RFetdbJXjg==
 
 "@vercel/static-config@2.0.3":
   version "2.0.3"
@@ -2207,9 +2207,9 @@ camelcase@^6.2.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001400, caniuse-lite@^1.0.30001406:
-  version "1.0.30001409"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001409.tgz#6135da9dcab34cd9761d9cdb12a68e6740c5e96e"
-  integrity sha512-V0mnJ5dwarmhYv8/MzhJ//aW68UpvnQBXv8lJ2QUsvn2pHcmAuNtu8hQEDz37XnA1iE+lRR9CIfGWWpgJ5QedQ==
+  version "1.0.30001412"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001412.tgz#30f67d55a865da43e0aeec003f073ea8764d5d7c"
+  integrity sha512-+TeEIee1gS5bYOiuf+PS/kp2mrXic37Hl66VY6EAfxasIk5fELTktK2oOezYed12H8w7jt3s512PpulQidPjwA==
 
 ccount@^2.0.0:
   version "2.0.1"
@@ -2363,9 +2363,9 @@ console-control-strings@^1.0.0, console-control-strings@^1.1.0:
   integrity sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==
 
 contentful-resolve-response@^1.3.0:
-  version "1.3.8"
-  resolved "https://registry.yarnpkg.com/contentful-resolve-response/-/contentful-resolve-response-1.3.8.tgz#58835a1d0894a97ab42541a47f4175d11adaa978"
-  integrity sha512-y3ttLqttxAN8yh3KfXNF+5kbnJa/01VFV/Rr1GNCaTWEVp6S9VGsTa1GH1cSf5czrK4nM4LUG5r6SzgNg3OkWw==
+  version "1.3.10"
+  resolved "https://registry.yarnpkg.com/contentful-resolve-response/-/contentful-resolve-response-1.3.10.tgz#034eebbd1ac948fbe0bcda3eb6c0b8215976bcef"
+  integrity sha512-ljUbV+4WFRalcAy4TxpbVVd1mUz67p2lMBkrngseAc3E1NhWnI0OGFoV/AwffOhI1M2rcwCtepBput8eEpXyQw==
   dependencies:
     fast-copy "^2.1.3"
 
@@ -2381,9 +2381,9 @@ contentful-sdk-core@^7.0.1:
     qs "^6.9.4"
 
 contentful@^9.1.32:
-  version "9.2.4"
-  resolved "https://registry.yarnpkg.com/contentful/-/contentful-9.2.4.tgz#458698122cfdce9dd98806264f4644a8a1a13225"
-  integrity sha512-9PXfzVMjTfOxjOOtwp0rw9OBdEFL1MRniELJhri2ax0NiOPFenblpBxRtWKahjXR8IeWxmQPoLjgVmwtAmqaMA==
+  version "9.2.5"
+  resolved "https://registry.yarnpkg.com/contentful/-/contentful-9.2.5.tgz#64279fd347670c2add7d25690890799427f7c00d"
+  integrity sha512-BXDmO5oWubZsKVHcXxPBCEcAH6bhtgfav3uMXCS7NBtSmFVSiAFbJjR/yJyLs7fNHJP9Ktq2F7qAznwwnyOTjQ==
   dependencies:
     axios "^0.27.0"
     contentful-resolve-response "^1.3.0"
@@ -2404,9 +2404,9 @@ convert-source-map@^1.5.0, convert-source-map@^1.7.0:
     safe-buffer "~5.1.1"
 
 core-js-pure@^3.25.1:
-  version "3.25.2"
-  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.25.2.tgz#44a4fd873bdd4fecf6ca11512bcefedbe87e744a"
-  integrity sha512-ItD7YpW1cUB4jaqFLZXe1AXkyqIxz6GqPnsDV4uF4hVcWh/WAGIqSqw5p0/WdsILM0Xht9s3Koyw05R3K6RtiA==
+  version "3.25.3"
+  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.25.3.tgz#66ac5bfa5754b47fdfd14f3841c5ed21c46db608"
+  integrity sha512-T/7qvgv70MEvRkZ8p6BasLZmOVYKzOaWNBEHAU8FmveCJkl4nko2quqPQOmy6AJIp5MBanhz9no3A94NoRb0XA==
 
 core-util-is@~1.0.0:
   version "1.0.3"
@@ -2621,9 +2621,9 @@ edge-runtime@1.1.0-beta.32:
     time-span "4.0.0"
 
 electron-to-chromium@^1.4.251:
-  version "1.4.257"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.257.tgz#895dc73c6bb58d1235dc80879ecbca0bcba96e2c"
-  integrity sha512-C65sIwHqNnPC2ADMfse/jWTtmhZMII+x6ADI9gENzrOiI7BpxmfKFE84WkIEl5wEg+7+SfIkwChDlsd1Erju2A==
+  version "1.4.262"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.262.tgz#25715dfbae4c2e0640517cba184715241ecd8e63"
+  integrity sha512-Ckn5haqmGh/xS8IbcgK3dnwAVnhDyo/WQnklWn6yaMucYTq7NNxwlGE8ElzEOnonzRLzUCo2Ot3vUb2GYUF2Hw==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -2658,21 +2658,21 @@ error-ex@^1.3.1:
     is-arrayish "^0.2.1"
 
 es-abstract@^1.19.0, es-abstract@^1.19.1, es-abstract@^1.19.2, es-abstract@^1.19.5:
-  version "1.20.2"
-  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.20.2.tgz#8495a07bc56d342a3b8ea3ab01bd986700c2ccb3"
-  integrity sha512-XxXQuVNrySBNlEkTYJoDNFe5+s2yIOpzq80sUHEdPdQr0S5nTLz4ZPPPswNIpKseDDUS5yghX1gfLIHQZ1iNuQ==
+  version "1.20.3"
+  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.20.3.tgz#90b143ff7aedc8b3d189bcfac7f1e3e3f81e9da1"
+  integrity sha512-AyrnaKVpMzljIdwjzrj+LxGmj8ik2LckwXacHqrJJ/jxz6dDDBcZ7I7nlHM0FvEW8MfbWJwOd+yT2XzYW49Frw==
   dependencies:
     call-bind "^1.0.2"
     es-to-primitive "^1.2.1"
     function-bind "^1.1.1"
     function.prototype.name "^1.1.5"
-    get-intrinsic "^1.1.2"
+    get-intrinsic "^1.1.3"
     get-symbol-description "^1.0.0"
     has "^1.0.3"
     has-property-descriptors "^1.0.0"
     has-symbols "^1.0.3"
     internal-slot "^1.0.3"
-    is-callable "^1.2.4"
+    is-callable "^1.2.6"
     is-negative-zero "^2.0.2"
     is-regex "^1.1.4"
     is-shared-array-buffer "^1.0.2"
@@ -2682,6 +2682,7 @@ es-abstract@^1.19.0, es-abstract@^1.19.1, es-abstract@^1.19.2, es-abstract@^1.19
     object-keys "^1.1.1"
     object.assign "^4.1.4"
     regexp.prototype.flags "^1.4.3"
+    safe-regex-test "^1.0.0"
     string.prototype.trimend "^1.0.5"
     string.prototype.trimstart "^1.0.5"
     unbox-primitive "^1.0.2"
@@ -3006,12 +3007,12 @@ eslint-visitor-keys@^3.3.0:
   integrity sha512-mQ+suqKJVyeuwGYHAdjMFqjCyfl8+Ldnxuyp3ldiMBFKkvytrXUZWaiPCEav8qDHKty44bD+qV1IP4T+w+xXRA==
 
 eslint@^8.23.1:
-  version "8.23.1"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.23.1.tgz#cfd7b3f7fdd07db8d16b4ac0516a29c8d8dca5dc"
-  integrity sha512-w7C1IXCc6fNqjpuYd0yPlcTKKmHlHHktRkzmBPZ+7cvNBQuiNjx0xaMTjAJGCafJhQkrFJooREv0CtrVzmHwqg==
+  version "8.24.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.24.0.tgz#489516c927a5da11b3979dbfb2679394523383c8"
+  integrity sha512-dWFaPhGhTAiPcCgm3f6LI2MBWbogMnTJzFBbhXVRQDJPkr9pGZvVjlVfXd+vyDcWPA2Ic9L2AXPIQM0+vk/cSQ==
   dependencies:
     "@eslint/eslintrc" "^1.3.2"
-    "@humanwhocodes/config-array" "^0.10.4"
+    "@humanwhocodes/config-array" "^0.10.5"
     "@humanwhocodes/gitignore-to-minimatch" "^1.0.2"
     "@humanwhocodes/module-importer" "^1.0.1"
     ajv "^6.10.0"
@@ -3174,9 +3175,9 @@ facepaint@^1.2.1:
   integrity sha512-oNvBekbhsm/0PNSOWca5raHNAi6dG960Bx6LJgxDPNF59WpuspgQ17bN5MKwOr7JcFdQYc7StW3VZ28DBZLavQ==
 
 fast-copy@^2.1.0, fast-copy@^2.1.3:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/fast-copy/-/fast-copy-2.1.4.tgz#a7a626e8a3c7f55f84334fba0f7eee8d706560a3"
-  integrity sha512-LDoQhGp2Gv/+s62dvqS5fnstUECOr72e7RxZTFMs0UhH/W2umXpaXorH0sCa7kmo/JNvoVAptndNic5da4WRXw==
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/fast-copy/-/fast-copy-2.1.7.tgz#affc9475cb4b555fb488572b2a44231d0c9fa39e"
+  integrity sha512-ozrGwyuCTAy7YgFCua8rmqmytECYk/JYAMXcswOcm0qvGoE3tPb7ivBeIHTOK2DiapBhDZgacIhzhQIKU5TCfA==
 
 fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   version "3.1.3"
@@ -3336,7 +3337,7 @@ gensync@^1.0.0-beta.2:
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"
   integrity sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==
 
-get-intrinsic@^1.0.2, get-intrinsic@^1.1.0, get-intrinsic@^1.1.1, get-intrinsic@^1.1.2:
+get-intrinsic@^1.0.2, get-intrinsic@^1.1.0, get-intrinsic@^1.1.1, get-intrinsic@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.1.3.tgz#063c84329ad93e83893c7f4f243ef63ffa351385"
   integrity sha512-QJVz1Tj7MS099PevUG5jvnt9tSkXN8K14dxQlikJuPt4uD9hHAHjLyLBiLR5zELelBdD9QNRAXZzsJx0WaDL9A==
@@ -3776,10 +3777,10 @@ is-buffer@^2.0.0:
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-2.0.5.tgz#ebc252e400d22ff8d77fa09888821a24a658c191"
   integrity sha512-i2R6zNFDwgEHJyQUtJEk0XFi1i0dPFn/oqjK3/vPCcDeJvW5NQ83V8QbicfF1SupOaB0h8ntgBC2YiE7dfyctQ==
 
-is-callable@^1.1.4, is-callable@^1.2.4:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.2.6.tgz#fd6170b0b8c7e2cc73de342ef8284a2202023c44"
-  integrity sha512-krO72EO2NptOGAX2KYyqbP9vYMlNAXdB53rq6f8LXY6RY7JdSR/3BD6wLUlPHSAesmY9vstNrjvqGaCiRK/91Q==
+is-callable@^1.1.4, is-callable@^1.2.6:
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.2.7.tgz#3bc2a85ea742d9e36205dcacdd72ca1fdc51b055"
+  integrity sha512-1BC0BVFhS/p0qtw6enp8e+8OD0UrK0oFLztSjNzhcKA3WDuJxxAPXzPuPtKkjEY9UUoEWlX/8fgKeu2S8i9JTA==
 
 is-ci@^2.0.0:
   version "2.0.0"
@@ -5602,6 +5603,15 @@ safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
 
+safe-regex-test@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/safe-regex-test/-/safe-regex-test-1.0.0.tgz#793b874d524eb3640d1873aad03596db2d4f2295"
+  integrity sha512-JBUUzyOgEwXQY1NuPtvcj/qcBDbDmEvWufhlnXZIm75DEHp+afM1r1ujJpJsV/gSM4t59tpDyPi1sd6ZaPFfsA==
+  dependencies:
+    call-bind "^1.0.2"
+    get-intrinsic "^1.1.3"
+    is-regex "^1.1.4"
+
 scheduler@^0.23.0:
   version "0.23.0"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.23.0.tgz#ba8041afc3d30eb206a487b6b384002e4e61fdfe"
@@ -6309,20 +6319,20 @@ validate-npm-package-license@^3.0.1:
     spdx-expression-parse "^3.0.0"
 
 vercel@^28.4.1:
-  version "28.4.1"
-  resolved "https://registry.yarnpkg.com/vercel/-/vercel-28.4.1.tgz#67052cf4bbf9e9be8070107f5733ee1698097dcc"
-  integrity sha512-RWFSTQyp9PIFnEYwqacCVV4H9JU094JKioGaiSWMfMqCsrP/RTCFdWsNePkUTiMLYa1Gqbpa5YvbUL1XiD93xQ==
+  version "28.4.2"
+  resolved "https://registry.yarnpkg.com/vercel/-/vercel-28.4.2.tgz#524387f542b2617fe1cf68282e26a1be31f43f04"
+  integrity sha512-mI7XvVeiqtZXea0/6Xm1oRCXP7dYKqImgLkYiI4aRv5H639PtmiVTN4QKI4FjcutzhxYnHBWBgkfw0qm4fGasA==
   dependencies:
-    "@vercel/build-utils" "5.4.4"
-    "@vercel/go" "2.2.7"
-    "@vercel/hydrogen" "0.0.20"
-    "@vercel/next" "3.1.28"
-    "@vercel/node" "2.5.17"
-    "@vercel/python" "3.1.16"
-    "@vercel/redwood" "1.0.25"
-    "@vercel/remix" "1.0.26"
-    "@vercel/ruby" "1.3.33"
-    "@vercel/static-build" "1.0.25"
+    "@vercel/build-utils" "5.5.0"
+    "@vercel/go" "2.2.8"
+    "@vercel/hydrogen" "0.0.21"
+    "@vercel/next" "3.1.29"
+    "@vercel/node" "2.5.18"
+    "@vercel/python" "3.1.17"
+    "@vercel/redwood" "1.0.26"
+    "@vercel/remix" "1.0.27"
+    "@vercel/ruby" "1.3.34"
+    "@vercel/static-build" "1.0.26"
     update-notifier "5.1.0"
 
 vfile-location@^4.0.0:
