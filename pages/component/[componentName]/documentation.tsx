@@ -61,7 +61,7 @@ export async function getStaticProps({ params: { componentName } }) {
       fields: meta,
       changelog,
       readme,
-      tsDoc, //: JSON.stringify(tsDoc),
+      tsDoc,
     },
   };
 }

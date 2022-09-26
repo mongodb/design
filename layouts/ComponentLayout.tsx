@@ -21,10 +21,10 @@ import { cx } from '@leafygreen-ui/emotion';
 
 const layout = css`
   ${mq({
-  // 51px is a magic number for baseline alignment with the first SideNavGroup header
-  marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
-  width: ['100%', '100%', '100%', `${pageContainerWidth.dataGraphic}px`],
-})}
+    // 51px is a magic number for baseline alignment with the first SideNavGroup header
+    marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
+    width: ['100%', '100%', '100%', `${pageContainerWidth.dataGraphic}px`],
+  })}
 `;
 
 const margin4 = css`
@@ -120,7 +120,9 @@ function ComponentLayout({
           <Tab
             name="Live Example"
             onClick={() =>
-              router.push(`/component/${kebabCase(componentFields.name)}/example`)
+              router.push(
+                `/component/${kebabCase(componentFields.name)}/example`,
+              )
             }
           >
             {children}
@@ -156,7 +158,7 @@ function ComponentLayout({
         {!isMobile && (
           <div className={cx([flexContainer, linksContainer])}>
             <IconButton
-              // @ts-expect-error
+              aria-label="Open in Github"
               as="a"
               target="_blank"
               rel="noopener noreferrer"
@@ -168,7 +170,7 @@ function ComponentLayout({
               <GithubIcon />
             </IconButton>
             <IconButton
-              // @ts-expect-error
+              aria-label="Open in Figma"
               as="a"
               href={componentFields.figmaUrl}
               target="_blank"
@@ -179,7 +181,7 @@ function ComponentLayout({
           </div>
         )}
       </div>
-    </div >
+    </div>
   );
 }
 
