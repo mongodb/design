@@ -164,6 +164,7 @@ function getDefaultValueString(defaultValue: any): string {
   return defaultValue.value.toString();
 }
 
+// TODO: this link is now available in the tsdoc.json. Use that string instead
 function getHTMLAttributesLink(groupName: string) {
   if (groupName === 'HTMLAttributes')
     return 'https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes';
