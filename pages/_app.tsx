@@ -46,9 +46,22 @@ function MyApp({
 }
 
 MyApp.getInitialProps = async () => {
-  // todo: make these graphQL requests to retrieve only titles
-  const components = await getComponents();
-  const contentPageGroups = await getContentPageGroups();
+  // TODO: make these graphQL requests
+
+  const components = (await getComponents()).map(
+    ({ fields: { name } }) => name,
+  );
+
+  const contentPageGroups = (await getContentPageGroups()).map(group => ({
+    fields: {
+      ...group.fields,
+      contentPages: group.fields.contentPages.map(page => ({
+        fields: {
+          title: page.fields.title,
+        },
+      })),
+    },
+  }));
   return { components, contentPageGroups };
 };
 
