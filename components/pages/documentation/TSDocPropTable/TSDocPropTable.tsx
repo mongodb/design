@@ -12,6 +12,7 @@ import {
   PropCategory,
   PropGroup,
   CustomComponentDoc,
+  PropItem,
 } from './TSDocPropsTable.types';
 import { Markdown } from 'components/Markdown';
 import { PropTableTooltipContent } from './PropTableTooltipContent';
@@ -49,7 +50,11 @@ export const TSDocPropTable = ({
   const _componentProps: PropCategory = omitBy(tsDoc.props, isInheritableGroup);
   const componentProps = Object.values(_componentProps)
     .flatMap((prop: Props) => Object.values(prop))
-    .sort((a, z) => a.name.localeCompare(z.name));
+    .sort((a, z) => {
+      if (isRequired(a) && !isRequired(z)) return -1;
+      if (isRequired(z)) return 1;
+      else return a.name.localeCompare(z.name);
+    });
 
   const _inheritedProps: PropCategory = pickBy(tsDoc.props, isInheritableGroup);
   const inheritedProps: Array<PropGroup> = Object.entries(_inheritedProps).map(
@@ -92,7 +97,7 @@ export const TSDocPropTable = ({
                     >
                       <InlineCode>{datum.name}</InlineCode>
                     </InlineDefinition>
-                    {datum.required && (
+                    {isRequired(datum) && (
                       <sup className={requiredHighlightStyle}>required</sup>
                     )}
                   </Cell>
@@ -189,4 +194,8 @@ function getHTMLAttributesLink(groupName: string) {
 
   tag = tag == 'anchor' ? 'a' : tag;
   return `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${tag}`;
+}
+
+function isRequired(prop: PropItem): boolean {
+  return prop.required || !isUndefined(prop.tags?.required);
 }
