@@ -1,7 +1,5 @@
-import { Entry } from 'contentful';
 import kebabCase from 'lodash/kebabCase';
 import { getComponent, getComponents } from './getContentfulResources';
-import { ComponentFields } from './types';
 
 export async function getStaticComponentPaths() {
   const components = await getComponents();
@@ -16,12 +14,7 @@ export async function getStaticComponentPaths() {
   return { paths, fallback: false };
 }
 
-export interface StaticComponentProps {
-  component?: Entry<ComponentFields>;
-}
-export async function getStaticComponentProps({
-  params,
-}): Promise<{ props: StaticComponentProps }> {
+export async function getStaticComponentProps({params}) {
   return {
     props: {
       component: await getComponent(params.componentName), // this is in kebabCase
