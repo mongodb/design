@@ -1,4 +1,4 @@
-import { ComponentDoc, PropItem, Props } from 'react-docgen-typescript';
+import { ComponentDoc, PropItem as TSDocPropItem } from 'react-docgen-typescript';
 import { isUndefined } from 'lodash';
 
 export const InheritablePropGroup = [
@@ -12,6 +12,9 @@ export type InheritablePropGroup = keyof typeof InheritablePropGroup;
 
 export const isInheritableGroup = (_: never, key: any) =>
   InheritablePropGroup.includes(key) || key.endsWith('HTMLAttributes');
+
+export type PropItem = TSDocPropItem & {tags?: Record<string, any>}
+export type Props = Record<string, PropItem>
 export type PropCategory = Record<string, Props>;
 
 export type CustomComponentDoc = Omit<ComponentDoc, 'props'> & {
