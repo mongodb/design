@@ -67,7 +67,8 @@ export const TSDocPropTable = ({
     <>
       <ExpandableCard
         title={`${tsDoc?.displayName} props`}
-        description={tsDoc?.description}
+        /// @ts-ignore
+        // description={<Markdown>{tsDoc?.description}</Markdown>}
         defaultOpen
         className={className}
       >
