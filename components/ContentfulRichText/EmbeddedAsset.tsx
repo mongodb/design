@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 // @ts-ignore unused import
-import { jsx } from '@emotion/react'
+import { jsx } from '@emotion/react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import prependUrl from 'utils/prependUrl';
@@ -12,7 +12,7 @@ const ImageWrapper = styled.div`
   max-width: 100%;
 `;
 
-const EmbeddedAsset = (node) => {
+const EmbeddedAsset = node => {
   if (!node.data.target.fields) {
     return <>Invalid asset.</>;
   }
@@ -24,7 +24,17 @@ const EmbeddedAsset = (node) => {
 
   switch (mimeGroup) {
     case 'image':
-      return <ImageWrapper css={{ width }}><Image alt={title} src={prependUrl(file.url)} layout="responsive" width={width} height={height} /></ImageWrapper>;
+      return (
+        <ImageWrapper css={{ width }}>
+          <Image
+            alt={title}
+            src={prependUrl(file.url)}
+            layout="responsive"
+            width={width}
+            height={height}
+          />
+        </ImageWrapper>
+      );
     default:
       return <h1>Unsupported embedded-asset-block mimeGroup: ${mimeGroup!}</h1>;
   }
