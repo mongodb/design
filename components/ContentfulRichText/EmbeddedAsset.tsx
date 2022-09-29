@@ -10,6 +10,7 @@ import { GlobalStyles } from './styles';
 const ImageWrapper = styled.div`
   ${GlobalStyles}
   max-width: 100%;
+  width: -webkit-fill-available;
 `;
 
 const EmbeddedAsset = (node) => {
@@ -24,7 +25,13 @@ const EmbeddedAsset = (node) => {
 
   switch (mimeGroup) {
     case 'image':
-      return <ImageWrapper css={{ width }}><Image alt={title} src={prependUrl(file.url)} layout="responsive" width={width} height={height} /></ImageWrapper>;
+      return (
+        <ImageWrapper
+        // css={{ width }}
+        >
+          <Image alt={title} src={prependUrl(file.url)} layout="responsive" width={width} height={height} />
+        </ImageWrapper>
+      );
     default:
       return <h1>Unsupported embedded-asset-block mimeGroup: ${mimeGroup!}</h1>;
   }

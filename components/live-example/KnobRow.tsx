@@ -19,9 +19,10 @@ const knobContainerStyle = css`
 `;
 
 const mobileKnobContainerStyle = css`
+  margin: 12px 0;
   > * {
     display: block;
-    margin: 8px 0;
+    margin: 12px 0;
   }
 
   > *:not(label) {

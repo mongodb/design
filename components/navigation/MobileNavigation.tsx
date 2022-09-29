@@ -12,6 +12,7 @@ import { MongoDBLogo } from '@leafygreen-ui/logo';
 import { borderColor, leftRightPadding, ulStyleOverrides } from './styles';
 import MobileNavigationProvider from './NavigationContext';
 import { HOME_PAGE } from 'utils/routes';
+import { containerPadding } from 'styles/globals';
 
 const resetButtonStyle = css`
   background-color: white;
@@ -103,7 +104,7 @@ function MobileNavigation({ children }: { children: React.ReactNode }) {
           padding-top: ${spacing[5]}px;
         `}
       >
-        <div className={closedContainer}>
+        <div className={cx(closedContainer, containerPadding)}>
           <IconButton
             aria-label="menu"
             onClick={() => setOpen(true)}

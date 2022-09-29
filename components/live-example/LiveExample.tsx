@@ -13,6 +13,7 @@ import { mq } from 'utils/mediaQuery';
 import { pageContainerWidth } from 'styles/constants';
 import { useViewportSize } from '@leafygreen-ui/hooks';
 import { breakpoints } from '@leafygreen-ui/tokens';
+import { containerPadding } from 'styles/globals';
 
 const baseBoxShadow = `0 4px 10px -4px ${transparentize(0.7, palette.black)}`;
 
@@ -222,7 +223,7 @@ function LiveExample<ComponentProps extends ComponentPropsInterface>({
       }
     });
 
-    return <div>{knobs}</div>;
+    return <div className={containerPadding}>{knobs}</div>;
   };
 
   return (

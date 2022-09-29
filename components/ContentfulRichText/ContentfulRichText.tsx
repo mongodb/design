@@ -1,6 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 // @ts-ignore unused import
+import React from 'react';
 import { jsx } from '@emotion/react'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
@@ -24,10 +25,14 @@ import {
 } from './Tables';
 import { GlobalStyles, ListItemStyles, SubtitleStyles } from './styles';
 
+const childrenAreNotEmpty = (children) => (
+  React.Children.count(children) && (children.toString()).trim() !== ''
+)
+
 const ContentfulRichText = ({ document }) => (
   documentToReactComponents(document, {
     renderNode: {
-      [BLOCKS.PARAGRAPH]: (node, children) => <Body css={GlobalStyles}>{children}</Body>,
+      [BLOCKS.PARAGRAPH]: (node, children) => childrenAreNotEmpty(children) && <Body css={GlobalStyles}>{children}</Body>,
       [BLOCKS.HEADING_1]: (node, children) => <H1 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H1>,
       [BLOCKS.HEADING_2]: (node, children) => <H2 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H2>,
       [BLOCKS.HEADING_3]: (node, children) => <H3 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H3>,
