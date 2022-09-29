@@ -32,8 +32,6 @@ const layout = css`
 const padding = `${spacing[5]}px`;
 
 export const childrenWrapper = css`
-  // min-height: 100vh;
-
   ${mq({
   paddingLeft: [0, 0, padding, padding],
   paddingRight: [0, 0, padding, padding],
