@@ -7,7 +7,7 @@ const FlexContainer = styled('div')`
   gap: 32px;
   * {
     max-width: 100%;
-    width: -webkit-fill-available;
+    width: fill-available;
   }
 `;
 

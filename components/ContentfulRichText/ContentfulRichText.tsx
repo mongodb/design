@@ -32,7 +32,7 @@ const childrenAreNotEmpty = (children) => (
 const ContentfulRichText = ({ document }) => (
   documentToReactComponents(document, {
     renderNode: {
-      [BLOCKS.PARAGRAPH]: (node, children) => childrenAreNotEmpty(children) && <Body css={GlobalStyles}>{children}</Body>,
+      [BLOCKS.PARAGRAPH]: (node, children) => childrenAreNotEmpty(children) ? <Body css={GlobalStyles}>{children}</Body> : null,
       [BLOCKS.HEADING_1]: (node, children) => <H1 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H1>,
       [BLOCKS.HEADING_2]: (node, children) => <H2 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H2>,
       [BLOCKS.HEADING_3]: (node, children) => <H3 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H3>,

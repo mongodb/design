@@ -26,7 +26,6 @@ const layoutProperties = css`
     '100%',
     `${pageContainerWidth.dataGraphic}px`,
   ],
-  // marginLeft: [`-${spacing[4]}px`, '0px', '0px', '0px'],
 })}
 `;
 
