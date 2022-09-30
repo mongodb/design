@@ -35,4 +35,4 @@ export const ListItemStyles = css`
 export const SubtitleStyles = css`
   ${GlobalStyles};
   margin-top: 8px;
-`
+`;
