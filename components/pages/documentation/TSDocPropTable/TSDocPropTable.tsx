@@ -15,7 +15,7 @@ import {
 } from './TSDocPropsTable.types';
 import { Markdown } from 'components/Markdown';
 import { PropTableTooltipContent } from './PropTableTooltipContent';
-import { getTypeString } from 'utils/tsdoc.utils';
+import { getDefaultValueString, getTypeString } from 'utils/tsdoc.utils';
 
 const propDefinitionTooltipStyle = css`
   min-width: min-content;
@@ -48,7 +48,7 @@ export const TSDocPropTable = ({
   className?: string;
 }) => {
   const componentProps = Object.values(omitBy(tsDoc.props, isInheritableGroup))
-    .flatMap((prop: Props) => Object.values(prop))
+    .flatMap(Object.values)
     .sort((a, z) => {
       if (isRequired(a) && !isRequired(z)) return -1;
       if (isRequired(z)) return 1;
@@ -57,19 +57,17 @@ export const TSDocPropTable = ({
 
   const inheritedProps: Array<PropGroup> = Object.entries(
     pickBy(tsDoc.props, isInheritableGroup),
-  ).map(([groupName, props]: [string, Props]) => {
-    return {
-      groupName,
-      props: Object.values(props).flatMap(prop => prop),
-    };
-  });
+  ).map(([groupName, props]: [string, Props]) => ({
+    groupName,
+    props: Object.values(props).flatMap(prop => prop),
+  }));
 
   const props = [...componentProps, ...inheritedProps];
 
   return (
     <>
       <ExpandableCard
-        title={`${tsDoc?.displayName} props`}
+        title={`${tsDoc.displayName} props`}
         defaultOpen
         className={className}
       >
@@ -139,18 +137,6 @@ export const TSDocPropTable = ({
     </>
   );
 };
-
-function getDefaultValueString(defaultValue: any): string {
-  if (!defaultValue) {
-    return '—';
-  }
-
-  if (isUndefined(defaultValue.value)) {
-    return JSON.stringify(defaultValue);
-  }
-
-  return defaultValue.value.toString();
-}
 
 function getHTMLAttributesLink(groupName: string) {
   if (groupName === 'HTMLAttributes')

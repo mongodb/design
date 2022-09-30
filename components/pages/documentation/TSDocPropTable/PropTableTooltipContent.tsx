@@ -2,10 +2,10 @@ import { css } from '@leafygreen-ui/emotion';
 import { spacing, typeScales } from '@leafygreen-ui/tokens';
 import { Description, InlineCode, Label } from '@leafygreen-ui/typography';
 import { PropItem } from 'react-docgen-typescript';
-import { isUndefined } from 'lodash';
 import { palette } from '@leafygreen-ui/palette';
 import { Markdown } from 'components/Markdown';
-import { getTypeString } from 'utils/tsdoc.utils';
+import { getDefaultValueString, getTypeString } from 'utils/tsdoc.utils';
+import { useIdAllocator } from '@leafygreen-ui/hooks';
 
 const globalMarginStyle = css`
   > * {
@@ -20,73 +20,65 @@ const propNameStyle = css`
 
 const dividerStyle = css`
   border-color: ${palette.gray.dark1};
+  // Negative margin ensures divider spans to edge of tooltip
   margin: ${spacing[2]}px -${spacing[3]}px;
+`;
+
+const inlineLabelStyle = css`
+  padding-right: 1ch;
 `;
 
 export const PropTableTooltipContent = ({
   propItem,
 }: {
   propItem: PropItem;
-}) => (
-  <div className={globalMarginStyle}>
-    <InlineCode darkMode className={propNameStyle}>
-      {propItem.name}
-    </InlineCode>
+}) => {
+  const itemTypeId = useIdAllocator({ prefix: 'prop-table-tooltip-type' });
+  const itemDefaultId = useIdAllocator({
+    prefix: 'prop-table-tooltip-default',
+  });
 
-    <div>
-      <Label htmlFor={`${propItem.name}-type`} darkMode>
-        Type: &nbsp;
-      </Label>
-      <InlineCode
-        id={`${propItem.name}-type`}
-        className={css`
-          // This should be default
-          display: inline;
-        `}
-        darkMode
-      >
-        {getTypeString(propItem.type)}
+  return (
+    <div className={globalMarginStyle}>
+      <InlineCode darkMode className={propNameStyle}>
+        {propItem.name}
       </InlineCode>
+
+      <div>
+        <Label className={inlineLabelStyle} htmlFor={itemTypeId} darkMode>
+          Type:
+        </Label>
+        <InlineCode
+          id={itemTypeId}
+          className={css`
+            display: inline; // This should be default. Waiting on https://jira.mongodb.org/browse/PD-2424
+          `}
+          darkMode
+        >
+          {getTypeString(propItem.type)}
+        </InlineCode>
+      </div>
+
+      <div>
+        <Label className={inlineLabelStyle} htmlFor={itemDefaultId} darkMode>
+          Default:
+        </Label>
+        <InlineCode
+          id={itemDefaultId}
+          className={css`
+            display: inline; // This should be default. Waiting on https://jira.mongodb.org/browse/PD-2424
+          `}
+          darkMode
+        >
+          {getDefaultValueString(propItem.defaultValue) || '—'}
+        </InlineCode>
+      </div>
+
+      <hr className={dividerStyle} />
+
+      <Description darkMode>
+        <Markdown darkMode>{propItem.description}</Markdown>
+      </Description>
     </div>
-
-    <div>
-      <Label htmlFor={`${propItem.name}-default`} darkMode>
-        Default: &nbsp;
-      </Label>
-      <InlineCode
-        id={`${propItem.name}-default`}
-        className={css`
-          // This should be default
-          display: inline;
-        `}
-        darkMode
-      >
-        {getDefaultValueString(propItem.defaultValue) || '—'}
-      </InlineCode>
-    </div>
-
-    <hr className={dividerStyle} />
-
-    <Description darkMode>
-      <Markdown darkMode>{propItem.description}</Markdown>
-    </Description>
-  </div>
-);
-
-/**
- * Temporarily duplicating this function
- *
- * TODO: Move this to TSDoc utils
- */
-
-function getDefaultValueString(defaultValue: any): string {
-  if (!defaultValue) {
-    return '—';
-  }
-
-  if (isUndefined(defaultValue.value)) {
-    return JSON.stringify(defaultValue);
-  }
-
-  return defaultValue.value.toString();
-}
+  );
+};

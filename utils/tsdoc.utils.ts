@@ -1,4 +1,5 @@
-import { PropItemType } from 'react-docgen-typescript';
+import { PropItem, PropItemType } from 'react-docgen-typescript';
+import { isUndefined } from 'lodash';
 
 export function getTypeString(propType: PropItemType): string | undefined {
   if (!propType || !propType.name) return;
@@ -20,4 +21,16 @@ export function getTypeString(propType: PropItemType): string | undefined {
   }
 
   return propType.name;
+}
+
+export function getDefaultValueString(defaultValue: PropItem['defaultValue']): string {
+  if (!defaultValue) {
+    return '—';
+  }
+
+  if (isUndefined(defaultValue.value)) {
+    return JSON.stringify(defaultValue);
+  }
+
+  return defaultValue.value.toString();
 }
