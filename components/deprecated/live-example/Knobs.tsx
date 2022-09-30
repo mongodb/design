@@ -28,8 +28,8 @@ const textAreaClassName = css`
 
 const inputClassName = css`
   ${mq({
-  width: ['200px', `${knobsWidth}px`],
-})}
+    width: ['200px', `${knobsWidth}px`],
+  })}
 `;
 
 const labelDarkMode = css`

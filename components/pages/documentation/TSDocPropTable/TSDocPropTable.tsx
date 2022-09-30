@@ -1,4 +1,4 @@
-import { PropItemType } from 'react-docgen-typescript';
+import { Props } from 'react-docgen-typescript';
 import { Cell, Row, Table, TableHeader } from '@leafygreen-ui/table';
 import { InlineCode, Link } from '@leafygreen-ui/typography';
 import { css } from '@leafygreen-ui/emotion';
@@ -6,12 +6,16 @@ import ExpandableCard from '@leafygreen-ui/expandable-card';
 import InlineDefinition from '@leafygreen-ui/inline-definition';
 import { isUndefined } from 'lodash';
 import { palette } from '@leafygreen-ui/palette';
+import { isInheritableGroup, PropGroup } from './TSDocPropsTable.types';
 import { Markdown } from 'components/Markdown';
 import {
   CustomComponentDoc,
+  isPropItem,
   getComponentProps,
   getInheritedProps,
-  isPropItem,
+  getDefaultValueString,
+  getTypeString,
+  isRequired,
 } from 'utils/tsdoc.utils';
 import { PropTableTooltipContent } from './PropTableTooltipContent';
 
@@ -47,13 +51,13 @@ export const TSDocPropTable = ({
 }) => {
   const componentProps = getComponentProps(tsDoc.props);
   const inheritedProps = getInheritedProps(tsDoc.props);
+
   const props = [...componentProps, ...inheritedProps];
 
   return (
     <>
       <ExpandableCard
-        title={`${tsDoc?.displayName} props`}
-        description={tsDoc?.description}
+        title={`${tsDoc.displayName} props`}
         defaultOpen
         className={className}
       >
@@ -73,11 +77,11 @@ export const TSDocPropTable = ({
                   <Cell>
                     <InlineDefinition
                       tooltipClassName={propDefinitionTooltipStyle}
-                      definition={<PropTableTooltipContent prop={datum} />}
+                      definition={<PropTableTooltipContent propItem={datum} />}
                     >
                       <InlineCode>{datum.name}</InlineCode>
                     </InlineDefinition>
-                    {datum.required && (
+                    {isRequired(datum) && (
                       <sup className={requiredHighlightStyle}>required</sup>
                     )}
                   </Cell>
@@ -100,7 +104,6 @@ export const TSDocPropTable = ({
                   {datum.groupName.endsWith('HTMLAttributes') && (
                     <Row key={datum.groupName}>
                       <Cell>...</Cell>
-                      <></>
                       <Cell colSpan={3}>
                         {datum.groupName === 'HTMLAttributes'
                           ? 'Global'
@@ -125,46 +128,6 @@ export const TSDocPropTable = ({
   );
 };
 
-function getTypeString(propType: PropItemType): string | undefined {
-  if (!propType || !propType.name) return;
-
-  const staticEnums = [
-    'boolean',
-    'ReactNode',
-    'keyof IntrinsicElements',
-    'keyof IntrinsicElements | ComponentType<{}>',
-  ];
-
-  switch (propType.name) {
-    case 'enum':
-      if (staticEnums.includes(propType.raw as string)) {
-        return propType.raw;
-      } else {
-        return propType.value.map(val => val.value).join(' | ');
-      }
-
-    case 'string':
-    case 'number':
-    case 'undefined':
-    case 'null':
-    default:
-      return propType.name;
-  }
-}
-
-function getDefaultValueString(defaultValue: any): string {
-  if (!defaultValue) {
-    return '—';
-  }
-
-  if (isUndefined(defaultValue.value)) {
-    return JSON.stringify(defaultValue);
-  }
-
-  return defaultValue.value.toString();
-}
-
-// TODO: this link is now available in the tsdoc.json. Use that string instead
 function getHTMLAttributesLink(groupName: string) {
   if (groupName === 'HTMLAttributes')
     return 'https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes';

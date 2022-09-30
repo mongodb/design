@@ -51,7 +51,7 @@ export async function getStaticProps({ params: { componentName } }) {
   // Here we pull out the designGuidelines to ensure we're not passing that to this page unnecessarily
   const {
     fields: { designGuidelines, ...meta },
-  } = (await getComponent(componentName)) || {
+  } = (await getComponent(componentName)) ?? {
     fields: { designGuidelines: null },
   };
 
