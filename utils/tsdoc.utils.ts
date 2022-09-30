@@ -40,7 +40,7 @@ export function isRequired(prop: PropItem): boolean {
   return prop.required || !isUndefined(prop.tags?.required);
 }
 
-export const getComponentProps = (props: PropCategories): Array<PropItem> => {
+export const getComponentProps = (props?: PropCategories): Array<PropItem> => {
   return Object.values(omitBy(props, isInheritableGroup))
     .flatMap(Object.values)
     .sort((a, z) => {
