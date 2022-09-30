@@ -26,12 +26,10 @@ export interface PropGroup {
   props: Array<PropItem>;
 }
 
-export const isPropItem = (obj: any): obj is PropItem => {
-  return (
-    !isUndefined(obj.name) &&
-    !isUndefined(obj.required) &&
-    !isUndefined(obj.type) &&
-    !isUndefined(obj.description) &&
-    !isUndefined(obj.defaultValue)
-  );
-};
+export const isPropItem = (obj: any): obj is PropItem => [
+  obj.name,
+  obj.required,
+  obj.type,
+  obj.description,
+  obj.defaultValue,
+].every(property => !isUndefined(property));

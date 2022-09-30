@@ -16,6 +16,7 @@ import {
 } from './TSDocPropsTable.types';
 import { Markdown } from 'components/Markdown';
 import { PropTableTooltipContent } from './PropTableTooltipContent';
+import { getTypeString } from 'utils/tsdoc.utils';
 
 const propDefinitionTooltipStyle = css`
   min-width: min-content;
@@ -47,24 +48,22 @@ export const TSDocPropTable = ({
   tsDoc: CustomComponentDoc;
   className?: string;
 }) => {
-  const _componentProps: PropCategory = omitBy(tsDoc.props, isInheritableGroup);
-  const componentProps = Object.values(_componentProps)
+  const componentProps = Object.values(omitBy(tsDoc.props, isInheritableGroup))
     .flatMap((prop: Props) => Object.values(prop))
     .sort((a, z) => {
       if (isRequired(a) && !isRequired(z)) return -1;
       if (isRequired(z)) return 1;
-      else return a.name.localeCompare(z.name);
+      return a.name.localeCompare(z.name);
     });
 
-  const _inheritedProps: PropCategory = pickBy(tsDoc.props, isInheritableGroup);
-  const inheritedProps: Array<PropGroup> = Object.entries(_inheritedProps).map(
-    ([groupName, props]: [string, Props]) => {
-      return {
-        groupName,
-        props: Object.values(props).flatMap(prop => prop),
-      };
-    },
-  );
+  const inheritedProps: Array<PropGroup> = Object.entries(
+    pickBy(tsDoc.props, isInheritableGroup),
+  ).map(([groupName, props]: [string, Props]) => {
+    return {
+      groupName,
+      props: Object.values(props).flatMap(prop => prop),
+    };
+  });
 
   const props = [...componentProps, ...inheritedProps];
 
@@ -72,8 +71,6 @@ export const TSDocPropTable = ({
     <>
       <ExpandableCard
         title={`${tsDoc?.displayName} props`}
-        /// @ts-ignore
-        // description={<Markdown>{tsDoc?.description}</Markdown>}
         defaultOpen
         className={className}
       >
@@ -93,7 +90,7 @@ export const TSDocPropTable = ({
                   <Cell>
                     <InlineDefinition
                       tooltipClassName={propDefinitionTooltipStyle}
-                      definition={<PropTableTooltipContent prop={datum} />}
+                      definition={<PropTableTooltipContent propItem={datum} />}
                     >
                       <InlineCode>{datum.name}</InlineCode>
                     </InlineDefinition>
@@ -120,7 +117,6 @@ export const TSDocPropTable = ({
                   {datum.groupName.endsWith('HTMLAttributes') && (
                     <Row key={datum.groupName}>
                       <Cell>...</Cell>
-                      <></>
                       <Cell colSpan={3}>
                         {datum.groupName === 'HTMLAttributes'
                           ? 'Global'
@@ -144,33 +140,6 @@ export const TSDocPropTable = ({
     </>
   );
 };
-
-function getTypeString(propType: PropItemType): string | undefined {
-  if (!propType || !propType.name) return;
-
-  const staticEnums = [
-    'boolean',
-    'ReactNode',
-    'keyof IntrinsicElements',
-    'keyof IntrinsicElements | ComponentType<{}>',
-  ];
-
-  switch (propType.name) {
-    case 'enum':
-      if (staticEnums.includes(propType.raw as string)) {
-        return propType.raw;
-      } else {
-        return propType.value.map(val => val.value).join(' | ');
-      }
-
-    case 'string':
-    case 'number':
-    case 'undefined':
-    case 'null':
-    default:
-      return propType.name;
-  }
-}
 
 function getDefaultValueString(defaultValue: any): string {
   if (!defaultValue) {
