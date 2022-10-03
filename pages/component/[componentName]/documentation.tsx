@@ -4,13 +4,27 @@ import { getDependencyDocumentation } from 'utils/_getComponentResources';
 import { ReactElement } from 'react';
 import { getComponent } from 'utils/getContentfulResources';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
-import kebabCase from 'lodash/kebabCase';
 import { CustomComponentDoc } from 'components/pages/documentation/TSDocPropTable';
+import { ComponentFields } from 'utils/types';
 import { containerPadding } from 'styles/globals';
 import { css, cx } from '@emotion/css';
 import { spacing } from '@leafygreen-ui/tokens';
 
-const ComponentDocumentation = ({ component, changelog, readme, tsDoc }) => {
+interface DocsPageProps {
+  componentName: string;
+  fields: Omit<ComponentFields, 'designGuidelines'>;
+  changelog: string;
+  readme: string;
+  tsDoc: Array<CustomComponentDoc>;
+}
+
+const ComponentDocumentation = ({
+  componentName,
+  fields,
+  changelog,
+  readme,
+  tsDoc,
+}: DocsPageProps) => {
   return (
     <div
       className={cx(
@@ -21,11 +35,11 @@ const ComponentDocumentation = ({ component, changelog, readme, tsDoc }) => {
       )}
     >
       <CodeDocs
-        componentName={component.fields.name}
-        componentKebabCaseName={kebabCase(component.fields.name)}
+        componentName={fields.name}
+        componentKebabCaseName={componentName}
         changelog={changelog}
         readme={readme}
-        tsDoc={JSON.parse(tsDoc) as Array<CustomComponentDoc>}
+        tsDoc={tsDoc}
       />
     </div>
   );
@@ -33,7 +47,7 @@ const ComponentDocumentation = ({ component, changelog, readme, tsDoc }) => {
 
 ComponentDocumentation.getLayout = function getLayout(page: ReactElement) {
   return (
-    <ComponentLayout componentFields={page.props.component.fields}>
+    <ComponentLayout componentFields={page.props.fields}>
       {page}
     </ComponentLayout>
   );
@@ -41,17 +55,25 @@ ComponentDocumentation.getLayout = function getLayout(page: ReactElement) {
 
 export const getStaticPaths = getStaticComponentPaths;
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params: { componentName } }) {
   const {
     props: { changelog, readme, tsDoc },
-  } = await getDependencyDocumentation(params.componentName);
+  } = await getDependencyDocumentation(componentName);
+
+  // Here we pull out the designGuidelines to ensure we're not passing that to this page unnecessarily
+  const {
+    fields: { designGuidelines, ...meta },
+  } = (await getComponent(componentName)) ?? {
+    fields: { designGuidelines: null },
+  };
 
   return {
     props: {
-      component: await getComponent(params.componentName),
+      componentName,
+      fields: meta,
       changelog,
       readme,
-      tsDoc: JSON.stringify(tsDoc),
+      tsDoc,
     },
   };
 }
