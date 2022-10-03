@@ -12,7 +12,14 @@ import { spacing } from '@leafygreen-ui/tokens';
 
 const ComponentDocumentation = ({ component, changelog, readme, tsDoc }) => {
   return (
-    <div className={cx(containerPadding, css`padding-bottom: ${spacing[6]}px;`)}>
+    <div
+      className={cx(
+        containerPadding,
+        css`
+          padding-bottom: ${spacing[6]}px;
+        `,
+      )}
+    >
       <CodeDocs
         componentName={component.fields.name}
         componentKebabCaseName={kebabCase(component.fields.name)}

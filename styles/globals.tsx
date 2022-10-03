@@ -193,7 +193,7 @@ export const globalStyles = EmotionReactCss`
 
 export const containerPadding = css`
   ${mq({
-  paddingLeft: [`${spacing[4]}px`, `${spacing[4]}px`, '0px'],
-  paddingRight: [`${spacing[4]}px`, `${spacing[4]}px`, '0px'],
-})}
+    paddingLeft: [`${spacing[4]}px`, `${spacing[4]}px`, '0px'],
+    paddingRight: [`${spacing[4]}px`, `${spacing[4]}px`, '0px'],
+  })}
 `;

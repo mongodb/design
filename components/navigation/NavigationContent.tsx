@@ -96,7 +96,9 @@ function NavigationContent({
                 key={componentKebabCaseName}
                 onClick={() =>
                   router.push(
-                    `/component/${componentKebabCaseName}/${activeTab ? activeTab : 'example'}`,
+                    `/component/${componentKebabCaseName}/${
+                      activeTab ? activeTab : 'example'
+                    }`,
                   )
                 }
                 active={componentKebabCaseName === activePage}
