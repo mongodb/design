@@ -63,4 +63,4 @@ try {
   console.error(error);
 }
 
-export { };
+export {};

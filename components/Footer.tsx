@@ -12,9 +12,9 @@ const footerContainerStyle = css`
   width: 100%;
 
   ${mq({
-  marginTop: ['0px', `${spacing[7]}px`],
-  marginLeft: ['0px', `${spacing[5]}px`],
-})}
+    marginTop: ['0px', `${spacing[7]}px`],
+    marginLeft: ['0px', `${spacing[5]}px`],
+  })}
 `;
 
 const desktopFooterContainerStyle = css`
@@ -46,9 +46,9 @@ const linksContainer = css`
   margin-top: 5px;
 
   ${mq({
-  marginLeft: ['0px', `${spacing[6]}px`],
-  marginRight: [`${spacing[4]}px`, `${spacing[6]}px`],
-})}
+    marginLeft: ['0px', `${spacing[6]}px`],
+    marginRight: [`${spacing[4]}px`, `${spacing[6]}px`],
+  })}
 `;
 
 const mobileLinksContainer = css`

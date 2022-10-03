@@ -9,10 +9,10 @@ import getFullPageTitle from 'utils/getFullPageTitle';
 
 const layout = css`
   ${mq({
-  // 51px is a magic number for baseline alignment with the first SideNavGroup header
-  marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
-  maxWidth: ['100%', '100%', '700px', '700px'],
-})}
+    // 51px is a magic number for baseline alignment with the first SideNavGroup header
+    marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
+    maxWidth: ['100%', '100%', '700px', '700px'],
+  })}
 `;
 
 function ContentPageLayout({
