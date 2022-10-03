@@ -21,7 +21,7 @@ import { containerPadding } from 'styles/globals';
 const layout = css`
   ${mq({
   // 51px is a magic number for baseline alignment with the first SideNavGroup header
-  marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
+  marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '0'],
 })}
 `;
 
@@ -77,7 +77,7 @@ const tabStyles = css`
     max-width: 100%;
     overflow-x: scroll;
     ${mq({
-  padding: [`0px 8px`, `0px`]
+  padding: ['0px 8px', '0px']
 })}
   }
 `;

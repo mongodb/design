@@ -56,7 +56,7 @@ const componentContainer = css`
   min-height: 400px;
 
   ${mq({
-  padding: [`0px`, `${spacing[6]}px`],
+  padding: ['0px', `${spacing[6]}px`],
   minHeight: ['200px', '400px'],
 })}
 `;

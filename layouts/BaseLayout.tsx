@@ -8,6 +8,7 @@ import { LayoutContext } from 'components/LayoutContext';
 import { mq } from 'utils/mediaQuery';
 import Footer from '../components/Footer';
 import { useRouter } from 'next/router';
+import Searchbar from 'components/SearchBar';
 
 const containerStyle = css`
   width: 100%;
@@ -35,6 +36,7 @@ export const childrenWrapper = css`
   ${mq({
   paddingLeft: [0, 0, padding, padding],
   paddingRight: [0, 0, padding, padding],
+  paddingTop: '16px', // leaving room for the top bar
   width: [
     '100%',
     '100%',
@@ -71,10 +73,9 @@ function BaseLayout({ children }: { children: React.ReactNode }) {
       <LayoutContext.Provider value={bodyContainerRef}>
         <div className={containerStyle}>
           <Navigation />
-
           <div className={layout} ref={setBodyContainerRef}>
+            <Searchbar />
             <div className={childrenWrapper}>{children}</div>
-
             <Footer />
           </div>
         </div>

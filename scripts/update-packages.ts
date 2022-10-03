@@ -22,7 +22,8 @@ try {
 
   if (exists(updatesArray) && isValidUpdatesArray(updatesArray)) {
     updatesArray.forEach(({ name, version }: ComponentUpdateObject) => {
-      let { stdout, error } = spawnSync('yarn', ['upgrade', `${name}@^${version}`])
+      const { stdout, error } = spawnSync('yarn', ['upgrade', `${name}@^${version}`])
+
       if (error) {
         console.error(error)
       } else if (stdout) {
@@ -35,24 +36,26 @@ try {
     })
   }
 
-  let gitAddCmd = spawnSync('git', ['add', '.'])
+  const gitAddCmd = spawnSync('git', ['add', '.'])
+
   if (gitAddCmd.error) {
     console.error(gitAddCmd.error)
   } else if (gitAddCmd.stdout) {
     console.log(
       chalk.green.bold(
-        `\n✅ Added updated package versions to git.`,
+        '\n✅ Added updated package versions to git.',
       )
     );
   }
 
-  let gitCommitCmd = spawnSync('git', ['commit', '-m', `${"Updating released @leafygreen-ui package versions"}`])
+  const gitCommitCmd = spawnSync('git', ['commit', '-m', `${'Updating released @leafygreen-ui package versions'}`])
+
   if (gitCommitCmd.error) {
     console.error(gitCommitCmd.error)
   } else if (gitCommitCmd.stdout) {
     console.log(
       chalk.green.bold(
-        `\n✅ Committed updated package versions to git.`,
+        '\n✅ Committed updated package versions to git.',
       )
     );
   }

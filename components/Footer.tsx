@@ -46,7 +46,7 @@ const linksContainer = css`
   margin-top: 5px;
 
   ${mq({
-  marginLeft: [`0px`, `${spacing[6]}px`],
+  marginLeft: ['0px', `${spacing[6]}px`],
   marginRight: [`${spacing[4]}px`, `${spacing[6]}px`],
 })}
 `;
