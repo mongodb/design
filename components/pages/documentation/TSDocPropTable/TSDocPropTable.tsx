@@ -25,14 +25,6 @@ const propDefinitionTooltipStyle = css`
 const requiredHighlightStyle = css`
   padding-left: 1ch;
   color: ${palette.red.base};
-  text-transform: uppercase;
-
-  &::before {
-    content: '(';
-  }
-  &::after {
-    content: ')';
-  }
 `;
 
 const typeCellStyle = css`
@@ -92,7 +84,7 @@ export const TSDocPropTable = ({
                       <InlineCode>{datum.name}</InlineCode>
                     </InlineDefinition>
                     {isRequired(datum) && (
-                      <sup className={requiredHighlightStyle}>required</sup>
+                      <sup className={requiredHighlightStyle}>(REQUIRED)</sup>
                     )}
                   </Cell>
                   <Cell>
