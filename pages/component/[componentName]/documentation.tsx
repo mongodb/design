@@ -6,6 +6,9 @@ import { getComponent } from 'utils/getContentfulResources';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import { CustomComponentDoc } from 'components/pages/documentation/TSDocPropTable';
 import { ComponentFields } from 'utils/types';
+import { containerPadding } from 'styles/globals';
+import { css, cx } from '@emotion/css';
+import { spacing } from '@leafygreen-ui/tokens';
 
 interface DocsPageProps {
   componentName: string;
@@ -23,13 +26,22 @@ const ComponentDocumentation = ({
   tsDoc,
 }: DocsPageProps) => {
   return (
-    <CodeDocs
-      componentName={fields.name}
-      componentKebabCaseName={componentName}
-      changelog={changelog}
-      readme={readme}
-      tsDoc={tsDoc}
-    />
+    <div
+      className={cx(
+        containerPadding,
+        css`
+          padding-bottom: ${spacing[6]}px;
+        `,
+      )}
+    >
+      <CodeDocs
+        componentName={fields.name}
+        componentKebabCaseName={componentName}
+        changelog={changelog}
+        readme={readme}
+        tsDoc={tsDoc}
+      />
+    </div>
   );
 };
 

@@ -18,8 +18,8 @@ const containerStyle = css`
   ${mq({
     height: ['auto', 'auto', '100vh'],
     display: ['block', 'block', 'grid'],
-    paddingLeft: [`${spacing[4]}px`, `${spacing[4]}px`, '0px'],
-    paddingRight: [`${spacing[4]}px`, `${spacing[4]}px`, '0px'],
+    paddingLeft: [`${spacing[4]}px`, `${spacing[4]} px`, '0px'],
+    paddingRight: [`${spacing[4]} px`, `${spacing[4]} px`, '0px'],
   })}
 `;
 
@@ -33,9 +33,7 @@ const layout = css`
 
 const padding = `${spacing[5]}px`;
 
-const childrenWrapper = css`
-  min-height: 100vh;
-
+export const childrenWrapper = css`
   ${mq({
     paddingLeft: [0, 0, padding, padding],
     paddingRight: [0, 0, padding, padding],
@@ -44,6 +42,7 @@ const childrenWrapper = css`
       '100%',
       `calc(100% - (${padding} * 2))', 'calc(1440px - 270px - (${padding} * 2))`,
     ],
+    minHeight: ['unset', 'unset', '100vh'],
   })}
 `;
 
