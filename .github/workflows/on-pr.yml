@@ -24,8 +24,8 @@ jobs:
         run: yarn install
       - name: Build NextJS
         run: yarn build
-      - name: Deploy to Staging 
-        id: deploy-vercel-staging
+      - name: Deploy to Preview 
+        id: deploy-vercel-preview
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
