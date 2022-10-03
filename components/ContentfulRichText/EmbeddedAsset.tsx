@@ -10,6 +10,7 @@ import { GlobalStyles } from './styles';
 const ImageWrapper = styled.div`
   ${GlobalStyles}
   max-width: 100%;
+  width: fill-available;
 `;
 
 const EmbeddedAsset = node => {

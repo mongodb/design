@@ -2,6 +2,7 @@ import ComingSoon from 'components/ComingSoon';
 import ContentfulRichText from 'components/ContentfulRichText';
 import ComponentLayout from 'layouts/ComponentLayout';
 import { ReactElement } from 'react';
+import { containerPadding } from 'styles/globals';
 import {
   getStaticComponentPaths,
   getStaticComponentProps,
@@ -12,7 +13,9 @@ const ComponentGuidelines = ({ component }) => {
   return !guidelines || guidelines.content.length == 0 ? (
     <ComingSoon />
   ) : (
-    <ContentfulRichText document={guidelines} />
+    <div className={containerPadding}>
+      <ContentfulRichText document={guidelines} />
+    </div>
   );
 };
 

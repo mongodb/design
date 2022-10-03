@@ -5,9 +5,9 @@ const FlexContainer = styled('div')`
   display: flex;
   align-items: stretch;
   gap: 32px;
-  > * > * {
-    // first element inside column
-    width: 100%;
+  * {
+    max-width: 100%;
+    width: fill-available;
   }
 `;
 
