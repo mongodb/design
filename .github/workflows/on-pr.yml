@@ -26,13 +26,13 @@ jobs:
         run: yarn build
   deploy-to-preview:
     runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - name: Deploy to Preview 
-          id: deploy-vercel-preview
-          uses: amondnet/vercel-action@v25
-          with:
-            vercel-token: ${{ secrets.VERCEL_TOKEN }}
-            vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-            vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-            scope: ${{ secrets.VERCEL_ORG_ID }} 
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Preview 
+        id: deploy-vercel-preview
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          scope: ${{ secrets.VERCEL_ORG_ID }} 
