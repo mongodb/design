@@ -41,7 +41,7 @@ export interface LiveExampleState {
 export const LiveExample = ({
   componentName,
   tsDoc,
-}: Partial<BaseLayoutProps>) => {
+}: Pick<BaseLayoutProps, 'componentName' | 'tsDoc'>) => {
   const [{ meta, args, StoryFn }, setState] = useReducer(
     (state: LiveExampleState, newState: LiveExampleState) => {
       return {
@@ -80,7 +80,7 @@ export const LiveExample = ({
 
   const { props } = tsDoc?.find(
     doc => doc.displayName === pascalcase(componentName),
-  ) || {
+  ) ?? {
     props: undefined,
   };
   const knobProps = getComponentProps(props).filter(prop => {

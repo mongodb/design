@@ -1,23 +1,24 @@
 import ComponentLayout from 'layouts/ComponentLayout';
 import { ReactElement } from 'react';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
-import { getComponent } from 'utils/getContentfulResources';
 import { LiveExample } from 'components/pages/example/LiveExample';
 import { getTSDoc } from 'utils/_getComponentResources';
+import { getComponent } from 'utils/getContentfulResources';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
-const ComponentExample = ({ component, tsDoc }) => {
-  return (
-    <LiveExample
-      componentName={component.fields.name}
-      tsDoc={JSON.parse(tsDoc) as Array<CustomComponentDoc>}
-    />
-  );
+const ComponentExample = ({
+  componentName,
+  tsDoc,
+}: {
+  componentName: string;
+  tsDoc: Array<CustomComponentDoc>;
+}) => {
+  return <LiveExample componentName={componentName} tsDoc={tsDoc} />;
 };
 
 ComponentExample.getLayout = function getLayout(page: ReactElement) {
   return (
-    <ComponentLayout componentFields={page.props.component.fields}>
+    <ComponentLayout componentFields={page.props.fields}>
       {page}
     </ComponentLayout>
   );
@@ -27,12 +28,20 @@ export const getStaticPaths = getStaticComponentPaths;
 
 export const getStaticProps = async ({ params }) => {
   const { componentName } = params;
+
+  // Here we pull out the designGuidelines to ensure we're not passing that to this page unnecessarily
+  const {
+    fields: { designGuidelines, ...meta },
+  } = (await getComponent(componentName)) ?? {
+    fields: { designGuidelines: null },
+  };
   const tsDoc = await getTSDoc(componentName);
 
   return {
     props: {
-      component: await getComponent(componentName), // this is in kebabCase
-      tsDoc: JSON.stringify(tsDoc),
+      componentName,
+      fields: meta,
+      tsDoc,
     },
   };
 };
