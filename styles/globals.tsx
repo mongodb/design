@@ -1,9 +1,12 @@
-import { css } from '@emotion/react';
+import { css } from '@emotion/css';
+import { css as EmotionReactCss } from '@emotion/react';
+import { spacing } from '@leafygreen-ui/tokens';
+import { mq } from 'utils/mediaQuery';
 import { CDN } from 'utils/routes';
 
 const fontsURL = `${CDN}/fonts`;
 
-export const globalStyles = css`
+export const globalStyles = EmotionReactCss`
   @font-face {
     font-family: 'Akzidenz';
     font-weight: normal;
@@ -186,4 +189,11 @@ export const globalStyles = css`
   *:after {
     box-sizing: border-box;
   }
+`;
+
+export const containerPadding = css`
+  ${mq({
+    paddingLeft: [`${spacing[4]}px`, `${spacing[4]}px`, '0px'],
+    paddingRight: [`${spacing[4]}px`, `${spacing[4]}px`, '0px'],
+  })}
 `;

@@ -97,7 +97,7 @@ function NavigationContent({
                 onClick={() =>
                   router.push(
                     `/component/${componentKebabCaseName}/${
-                      activeTab ?? 'example'
+                      activeTab ? activeTab : 'example'
                     }`,
                   )
                 }

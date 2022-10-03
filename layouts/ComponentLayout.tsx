@@ -6,7 +6,7 @@ import { useViewportSize } from '@leafygreen-ui/hooks';
 import { palette } from '@leafygreen-ui/palette';
 import { Tabs, Tab } from '@leafygreen-ui/tabs';
 import { spacing, breakpoints } from '@leafygreen-ui/tokens';
-import { H1 } from '@leafygreen-ui/typography';
+import { H2 } from '@leafygreen-ui/typography';
 import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
 import FigmaIcon from 'components/icons/FigmaIcon';
 import GithubIcon from 'components/icons/GithubIcon';
@@ -15,7 +15,8 @@ import { pageContainerWidth } from 'styles/constants';
 import { ComponentFields } from 'utils/types';
 import kebabCase from 'lodash/kebabCase';
 import getFullPageTitle from 'utils/getFullPageTitle';
-import { css } from '@leafygreen-ui/emotion';
+import { css, cx } from '@leafygreen-ui/emotion';
+import { containerPadding } from 'styles/globals';
 
 const layout = css`
   ${mq({
@@ -27,6 +28,14 @@ const layout = css`
 const pageHeaderStyle = css`
   margin-bottom: ${spacing[4]}px;
   text-transform: capitalize;
+`;
+
+const flexContainer = css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
 `;
 
 const mainContentStyle = css`
@@ -46,13 +55,58 @@ const componentGuidelinePageStyles = css`
   max-width: ${pageContainerWidth.default}px;
 `;
 
-const linksContainer = css`
-  position: absolute;
-  top: ${spacing[2]}px;
-  right: 0;
-  display: flex;
-  gap: ${spacing[2]}px;
+const mobileLinksContainer = css`
+  flex: 1;
+  justify-content: flex-end;
+  align-self: center;
 `;
+
+const desktopLinksContainer = css`
+  border-bottom: 1px solid ${palette.gray.light2};
+  padding-bottom: 11px;
+  align-self: flex-start;
+  flex: 1;
+  justify-content: flex-end;
+`;
+
+const tabStyles = css`
+  width: 100%;
+  max-width: 100%;
+  [role='tablist'] {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: scroll;
+    ${mq({
+      padding: ['0px 8px', '0px'],
+    })}
+  }
+`;
+
+const ComponentLinks = ({ componentFields, ...rest }) => (
+  <div {...rest}>
+    <IconButton
+      aria-label="View in Github"
+      as="a"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ marginRight: '8px' }}
+      href={`https://github.com/mongodb/leafygreen-ui/tree/main/packages/${kebabCase(
+        componentFields.name,
+      )}`}
+    >
+      <GithubIcon />
+    </IconButton>
+    <IconButton
+      aria-label="View in Figma"
+      as="a"
+      href={componentFields.figmaUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <FigmaIcon />
+    </IconButton>
+  </div>
+);
 
 function ComponentLayout({
   componentFields,
@@ -94,71 +148,65 @@ function ComponentLayout({
         <meta name="keywords" content={componentFields.name} />
       </Head>
 
-      <H1 className={pageHeaderStyle}>{componentFields.name}</H1>
-
       <div className={mainContentStyle}>
-        <Tabs
-          selected={selected}
-          setSelected={setSelected}
-          aria-label={`Information on LeafyGreen UI ${componentFields.name} component`}
-        >
-          <Tab
-            name="Live Example"
-            onClick={() =>
-              router.push(
-                `/component/${kebabCase(componentFields.name)}/example`,
-              )
-            }
+        <div className={cx([flexContainer, containerPadding])}>
+          <H2 as="h1" className={pageHeaderStyle}>
+            {componentFields.name}
+          </H2>
+          {isMobile && (
+            <ComponentLinks
+              componentFields={componentFields}
+              className={cx([flexContainer, mobileLinksContainer])}
+            />
+          )}
+        </div>
+        <div className={flexContainer}>
+          <Tabs
+            selected={selected}
+            setSelected={setSelected}
+            aria-label={`Information on LeafyGreen UI ${componentFields.name} component`}
+            className={tabStyles}
           >
-            <div className={liveExamplePageStyles}>{children}</div>
-          </Tab>
-          <Tab
-            name="Design Guidelines"
-            onClick={() =>
-              router.push(
-                `/component/${kebabCase(componentFields.name)}/guidelines`,
-              )
-            }
-          >
-            <LeafyGreenProvider baseFontSize={16}>
-              <div className={componentGuidelinePageStyles}>{children}</div>
-            </LeafyGreenProvider>
-          </Tab>
-          <Tab
-            name="Code Docs"
-            onClick={() =>
-              router.push(
-                `/component/${kebabCase(componentFields.name)}/documentation`,
-              )
-            }
-          >
-            <div className={codeDocsPageStyles}>{children}</div>
-          </Tab>
-        </Tabs>
-        {!isMobile && (
-          <div className={linksContainer}>
-            <IconButton
-              aria-label="Open in Github"
-              as="a"
-              target="_blank"
-              rel="noopener noreferrer"
-              href={`https://github.com/mongodb/leafygreen-ui/tree/main/packages/${kebabCase(
-                componentFields.name,
-              )}`}
+            <Tab
+              name="Live Example"
+              onClick={() =>
+                router.push(
+                  `/component/${kebabCase(componentFields.name)}/example`,
+                )
+              }
             >
-              <GithubIcon />
-            </IconButton>
-            <IconButton
-              aria-label="Open in Figma"
-              as="a"
-              href={componentFields.figmaUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              <div className={liveExamplePageStyles}>{children}</div>
+            </Tab>
+            <Tab
+              name="Design Guidelines"
+              onClick={() =>
+                router.push(
+                  `/component/${kebabCase(componentFields.name)}/guidelines`,
+                )
+              }
             >
-              <FigmaIcon />
-            </IconButton>
-          </div>
-        )}
+              <LeafyGreenProvider baseFontSize={16}>
+                <div className={componentGuidelinePageStyles}>{children}</div>
+              </LeafyGreenProvider>
+            </Tab>
+            <Tab
+              name="Code Docs"
+              onClick={() =>
+                router.push(
+                  `/component/${kebabCase(componentFields.name)}/documentation`,
+                )
+              }
+            >
+              <div className={codeDocsPageStyles}>{children}</div>
+            </Tab>
+          </Tabs>
+          {!isMobile && (
+            <ComponentLinks
+              componentFields={componentFields}
+              className={cx([flexContainer, desktopLinksContainer])}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
