@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { spawnSync } from 'child_process';
 import chalk from 'chalk';
 
@@ -22,46 +23,44 @@ try {
 
   if (exists(updatesArray) && isValidUpdatesArray(updatesArray)) {
     updatesArray.forEach(({ name, version }: ComponentUpdateObject) => {
-      const { stdout, error } = spawnSync('yarn', ['upgrade', `${name}@^${version}`])
+      const { stdout, error } = spawnSync('yarn', [
+        'upgrade',
+        `${name}@^${version}`,
+      ]);
 
       if (error) {
-        console.error(error)
+        console.error(error);
       } else if (stdout) {
-        console.log(
-          chalk.green.bold(
-            `\n✅ Upgraded ${name} to ${version}.`
-          )
-        );
+        console.log(chalk.green.bold(`\n✅ Upgraded ${name} to ${version}.`));
       }
-    })
+    });
   }
 
-  const gitAddCmd = spawnSync('git', ['add', '.'])
+  const gitAddCmd = spawnSync('git', ['add', '.']);
 
   if (gitAddCmd.error) {
-    console.error(gitAddCmd.error)
+    console.error(gitAddCmd.error);
   } else if (gitAddCmd.stdout) {
     console.log(
-      chalk.green.bold(
-        '\n✅ Added updated package versions to git.',
-      )
+      chalk.green.bold('\n✅ Added updated package versions to git.'),
     );
   }
 
-  const gitCommitCmd = spawnSync('git', ['commit', '-m', `${'Updating released @leafygreen-ui package versions'}`])
+  const gitCommitCmd = spawnSync('git', [
+    'commit',
+    '-m',
+    `${'Updating released @leafygreen-ui package versions'}`,
+  ]);
 
   if (gitCommitCmd.error) {
-    console.error(gitCommitCmd.error)
+    console.error(gitCommitCmd.error);
   } else if (gitCommitCmd.stdout) {
     console.log(
-      chalk.green.bold(
-        '\n✅ Committed updated package versions to git.',
-      )
+      chalk.green.bold('\n✅ Committed updated package versions to git.'),
     );
   }
-
 } catch (error) {
-  console.error(error)
+  console.error(error);
 }
 
-export { }
+export { };

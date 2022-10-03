@@ -30,7 +30,15 @@ const ComponentExample = ({ component }) => {
   // todo: replace with Storybook generated live examples
   const ExampleFile = getExampleFile(component);
   return (
-    <div className={css`* { max-width: 100% }`}><ExampleFile /></div>
+    <div
+      className={css`
+        * {
+          max-width: 100%;
+        }
+      `}
+    >
+      <ExampleFile />
+    </div>
   );
 };
 

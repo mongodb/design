@@ -19,6 +19,8 @@ const containerStyle = css`
   ${mq({
   height: ['auto', 'auto', '100vh'],
   display: ['block', 'block', 'grid'],
+  paddingLeft: [`${spacing[4]}px`, `${spacing[4]} px`, '0px'],
+  paddingRight: [`${spacing[4]} px`, `${spacing[4]} px`, '0px'],
 })}
 `;
 

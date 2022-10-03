@@ -13,7 +13,7 @@ const footerContainerStyle = css`
 
   ${mq({
   marginTop: ['0px', `${spacing[7]}px`],
-  marginLeft: ['0px', `${spacing[5]}px`]
+  marginLeft: ['0px', `${spacing[5]}px`],
 })}
 `;
 
@@ -99,23 +99,22 @@ function Footer() {
   return (
     <div
       role="contentinfo"
-      className={cx(
-        footerContainerStyle,
-        containerPadding,
-        {
-          [desktopFooterContainerStyle]: !isTouchDevice,
-          [mobileFooterContainerStyle]: isTouchDevice
-        }
-      )}>
+      className={cx(footerContainerStyle, containerPadding, {
+        [desktopFooterContainerStyle]: !isTouchDevice,
+        [mobileFooterContainerStyle]: isTouchDevice,
+      })}
+    >
       <a href="https://mongodb.com" target="_blank" rel="noopener noreferrer">
         <MongoDBLogo height={spacing[4]} aria-hidden="true" />
       </a>
-      <div className={cx([
-        linksContainer,
-        {
-          [mobileLinksContainer]: isTouchDevice
-        }
-      ])}>
+      <div
+        className={cx([
+          linksContainer,
+          {
+            [mobileLinksContainer]: isTouchDevice,
+          },
+        ])}
+      >
         <FooterLink href="https://www.mongodb.com/blog/post/meet-our-product-design-team-part-1">
           About design at MongoDB
         </FooterLink>
@@ -127,7 +126,9 @@ function Footer() {
           GitHub
         </FooterLink>
         <FooterLink href="https://www.mongodb.com/careers">Careers</FooterLink>
-        <p className={trademarkStyle}>© {new Date().getFullYear()} MongoDB, Inc.</p>
+        <p className={trademarkStyle}>
+          © {new Date().getFullYear()} MongoDB, Inc.
+        </p>
       </div>
     </div>
   );

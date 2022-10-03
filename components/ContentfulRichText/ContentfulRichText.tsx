@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import React from 'react';
 // @ts-ignore unused import
-import { jsx } from '@emotion/react'
+import { jsx } from '@emotion/react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import {
@@ -25,22 +25,48 @@ import {
 } from './Tables';
 import { GlobalStyles, ListItemStyles, SubtitleStyles } from './styles';
 
-const childrenAreNotEmpty = (children) => (
-  React.Children.count(children) && (children.toString()).trim() !== ''
-)
+const childrenAreNotEmpty = children =>
+  React.Children.count(children) && children.toString().trim() !== '';
 
-const ContentfulRichText = ({ document }) => (
+const ContentfulRichText = ({ document }) =>
   documentToReactComponents(document, {
     renderNode: {
-      [BLOCKS.PARAGRAPH]: (node, children) => childrenAreNotEmpty(children) ? <Body css={GlobalStyles}>{children}</Body> : null,
-      [BLOCKS.HEADING_1]: (node, children) => <H1 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H1>,
-      [BLOCKS.HEADING_2]: (node, children) => <H2 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H2>,
-      [BLOCKS.HEADING_3]: (node, children) => <H3 css={GlobalStyles}><HeaderContent>{children}</HeaderContent></H3>,
-      [BLOCKS.HEADING_4]: (node, children) => <Subtitle css={[GlobalStyles, SubtitleStyles]}><HeaderContent>{children}</HeaderContent></Subtitle>,
-      [BLOCKS.HEADING_5]: (node, children) => <Overline css={GlobalStyles}>{children}</Overline>,
-      [BLOCKS.OL_LIST]: (node, children) => <ol css={GlobalStyles}>{children}</ol>,
-      [BLOCKS.UL_LIST]: (node, children) => <ul css={GlobalStyles}>{children}</ul>,
-      [BLOCKS.LIST_ITEM]: (node, children) => <li css={ListItemStyles}>{children}</li>,
+      [BLOCKS.PARAGRAPH]: (node, children) =>
+        childrenAreNotEmpty(children) ? (
+          <Body css={GlobalStyles}>{children}</Body>
+        ) : null,
+      [BLOCKS.HEADING_1]: (node, children) => (
+        <H1 css={GlobalStyles}>
+          <HeaderContent>{children}</HeaderContent>
+        </H1>
+      ),
+      [BLOCKS.HEADING_2]: (node, children) => (
+        <H2 css={GlobalStyles}>
+          <HeaderContent>{children}</HeaderContent>
+        </H2>
+      ),
+      [BLOCKS.HEADING_3]: (node, children) => (
+        <H3 css={GlobalStyles}>
+          <HeaderContent>{children}</HeaderContent>
+        </H3>
+      ),
+      [BLOCKS.HEADING_4]: (node, children) => (
+        <Subtitle css={[GlobalStyles, SubtitleStyles]}>
+          <HeaderContent>{children}</HeaderContent>
+        </Subtitle>
+      ),
+      [BLOCKS.HEADING_5]: (node, children) => (
+        <Overline css={GlobalStyles}>{children}</Overline>
+      ),
+      [BLOCKS.OL_LIST]: (node, children) => (
+        <ol css={GlobalStyles}>{children}</ol>
+      ),
+      [BLOCKS.UL_LIST]: (node, children) => (
+        <ul css={GlobalStyles}>{children}</ul>
+      ),
+      [BLOCKS.LIST_ITEM]: (node, children) => (
+        <li css={ListItemStyles}>{children}</li>
+      ),
       [BLOCKS.TABLE]: TableBlock,
       [BLOCKS.TABLE_ROW]: TableRowBlock,
       [BLOCKS.TABLE_CELL]: TableCellBlock,
@@ -56,7 +82,6 @@ const ContentfulRichText = ({ document }) => (
       ),
       [INLINES.ASSET_HYPERLINK]: EmbeddedAsset,
     },
-  }) as JSX.Element
-)
+  }) as JSX.Element;
 
 export default ContentfulRichText;

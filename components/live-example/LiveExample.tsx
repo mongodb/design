@@ -33,6 +33,8 @@ const previewStyle = css`
   ${mq({
   boxShadow: ['none', baseBoxShadow],
   borderRadius: ['0px', '7px'],
+  marginLeft: ['-24px', 'unset'],
+  marginRight: ['-24px', 'unset'],
   width: [
     'inherit',
     'inherit',
@@ -43,7 +45,7 @@ const previewStyle = css`
 `;
 
 const desktopMargin = css`
-margin-top: ${spacing[4]}px;
+  margin-top: ${spacing[4]}px;
 `;
 
 const componentContainer = css`

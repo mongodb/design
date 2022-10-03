@@ -21,7 +21,7 @@ import { containerPadding } from 'styles/globals';
 const layout = css`
   ${mq({
   // 51px is a magic number for baseline alignment with the first SideNavGroup header
-  marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '0'],
+  marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
 })}
 `;
 
@@ -72,12 +72,12 @@ const desktopLinksContainer = css`
 const tabStyles = css`
   width: 100%;
   max-width: 100%;
-  [role=tablist] {
+  [role='tablist'] {
     width: 100%;
     max-width: 100%;
     overflow-x: scroll;
     ${mq({
-  padding: ['0px 8px', '0px']
+  padding: ['0px 8px', '0px'],
 })}
   }
 `;
@@ -106,7 +106,7 @@ const ComponentLinks = ({ componentFields, ...rest }) => (
       <FigmaIcon />
     </IconButton>
   </div>
-)
+);
 
 function ComponentLayout({
   componentFields,
@@ -154,7 +154,10 @@ function ComponentLayout({
             {componentFields.name}
           </H2>
           {isMobile && (
-            <ComponentLinks componentFields={componentFields} className={cx([flexContainer, mobileLinksContainer])} />
+            <ComponentLinks
+              componentFields={componentFields}
+              className={cx([flexContainer, mobileLinksContainer])}
+            />
           )}
         </div>
         <div className={flexContainer}>
@@ -198,7 +201,10 @@ function ComponentLayout({
             </Tab>
           </Tabs>
           {!isMobile && (
-            <ComponentLinks componentFields={componentFields} className={cx([flexContainer, desktopLinksContainer])} />
+            <ComponentLinks
+              componentFields={componentFields}
+              className={cx([flexContainer, desktopLinksContainer])}
+            />
           )}
         </div>
       </div>
