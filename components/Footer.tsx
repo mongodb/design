@@ -110,12 +110,14 @@ function Footer() {
       <a href="https://mongodb.com" target="_blank" rel="noopener noreferrer">
         <MongoDBLogo height={spacing[4]} aria-hidden="true" />
       </a>
-      <div className={cx([
-        linksContainer,
-        {
-          [mobileLinksContainer]: isTouchDevice
-        }
-      ])}>
+      <div
+        className={cx([
+          linksContainer,
+          {
+            [mobileLinksContainer]: isTouchDevice,
+          },
+        ])}
+      >
         <FooterLink href="https://www.mongodb.com/blog/post/meet-our-product-design-team-part-1">
           About design at MongoDB
         </FooterLink>

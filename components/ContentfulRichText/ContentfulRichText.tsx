@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import React from 'react';
 // @ts-ignore unused import
-import { jsx } from '@emotion/react'
+import { jsx } from '@emotion/react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import {
@@ -57,6 +57,6 @@ const ContentfulRichText = ({ document }) => (
       [INLINES.ASSET_HYPERLINK]: EmbeddedAsset,
     },
   }) as JSX.Element
-)
+);
 
 export default ContentfulRichText;
