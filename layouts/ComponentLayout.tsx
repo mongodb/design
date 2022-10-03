@@ -6,7 +6,7 @@ import { useViewportSize } from '@leafygreen-ui/hooks';
 import { palette } from '@leafygreen-ui/palette';
 import { Tabs, Tab } from '@leafygreen-ui/tabs';
 import { spacing, breakpoints } from '@leafygreen-ui/tokens';
-import { H1, H2 } from '@leafygreen-ui/typography';
+import { H2 } from '@leafygreen-ui/typography';
 import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
 import FigmaIcon from 'components/icons/FigmaIcon';
 import GithubIcon from 'components/icons/GithubIcon';
@@ -20,9 +20,9 @@ import { containerPadding } from 'styles/globals';
 
 const layout = css`
   ${mq({
-    // 51px is a magic number for baseline alignment with the first SideNavGroup header
-    marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
-  })}
+  // 51px is a magic number for baseline alignment with the first SideNavGroup header
+  marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
+})}
 `;
 
 const pageHeaderStyle = css`
@@ -77,8 +77,8 @@ const tabStyles = css`
     max-width: 100%;
     overflow-x: scroll;
     ${mq({
-      padding: ['0px 8px', '0px'],
-    })}
+  padding: ['0px 8px', '0px'],
+})}
   }
 `;
 
