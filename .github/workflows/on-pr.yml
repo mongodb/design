@@ -9,15 +9,25 @@ env:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    name: Yarn Lint
+    name: Lint
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependencies
         run: yarn install
       - name: Lint
         run: yarn lint
+  types:
+    runs-on: ubuntu-latest
+    name: Types
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: yarn install
+      - name: TypeCheck
+        run: yarn check:ts
   build:
     runs-on: ubuntu-latest
+    name: Build
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependencies
