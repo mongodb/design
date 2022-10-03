@@ -51,16 +51,27 @@ export async function getComponents(): Promise<
   }
 }
 
-export async function getComponent(kebabCaseName: string) {
+export async function getComponent(kebabCaseName: string): Promise<Entry<ComponentFields> | undefined> {
   try {
     const components = (await getComponents()) ?? [];
     const component = components.find(
       item => item?.fields?.name === startCase(kebabCaseName),
     );
-    return component;
+    return component
   } catch (error) {
     console.error(error);
   }
+}
+
+export async function getComponentFields(kebabCaseName: string): Promise<ComponentFields> {
+  const {fields} = (await getComponent(kebabCaseName)) ?? {
+    fields: {
+      name: '',
+      description: '',
+      designGuidelines: undefined
+    }
+  }
+  return fields
 }
 
 export async function getContentPageGroups(): Promise<
