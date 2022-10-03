@@ -2,7 +2,7 @@ import CodeDocs from 'components/pages/documentation/CodeDocs';
 import ComponentLayout from 'layouts/ComponentLayout';
 import { getDependencyDocumentation } from 'utils/_getComponentResources';
 import { ReactElement } from 'react';
-import { getComponent, getComponentFields } from 'utils/getContentfulResources';
+import { getComponentFields } from 'utils/getContentfulResources';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 import { ComponentFields } from 'utils/types';

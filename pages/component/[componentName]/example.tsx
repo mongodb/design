@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import { LiveExample } from 'components/pages/example/LiveExample';
 import { getTSDoc } from 'utils/_getComponentResources';
-import { getComponent, getComponentFields } from 'utils/getContentfulResources';
+import { getComponentFields } from 'utils/getContentfulResources';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 const ComponentExample = ({
