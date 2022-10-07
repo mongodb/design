@@ -50,7 +50,7 @@ export const Knob = ({
           {...(rest as TextInputProps)}
           type="number"
           placeholder={propName}
-          value={value}
+          value={value?.toString() ?? value}
           onChange={onChange}
           className={cx(inputStyle, rest.className)}
         />

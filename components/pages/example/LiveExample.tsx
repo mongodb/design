@@ -113,9 +113,7 @@ export const LiveExample = ({
 
           // Format TSDoc defaults in the same format as SB args
           const defaultValues = knobProps.reduce((defaults, currProp) => {
-            defaults[currProp.name] = getDefaultValueValue(
-              currProp.defaultValue,
-            );
+            defaults[currProp.name] = getDefaultValueValue(currProp);
             return defaults;
           }, {} as { [x: string]: any });
 
@@ -169,7 +167,7 @@ export const LiveExample = ({
                 SBArgTypes?.[componentProp.name],
               )}
               description={
-                SBArgTypes?.[componentProp.name]?.description ||
+                SBArgTypes?.[componentProp.name]?.description ??
                 componentProp.description
               }
               knobValue={knobValues?.[componentProp.name]}

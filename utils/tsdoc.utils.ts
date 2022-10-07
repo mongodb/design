@@ -124,14 +124,27 @@ export function getDefaultValueString(
   return defaultValue.value.toString().replace(/['"`]/g, '');
 }
 
-export function getDefaultValueValue(
-  defaultValue: PropItem['defaultValue'],
-): any {
-  const valueString = getDefaultValueString(defaultValue);
+export function getDefaultValueValue({ defaultValue, type }: PropItem): any {
+  if (isUndefined(defaultValue) || isNull(defaultValue)) return undefined;
+  const value = defaultValue.value ?? defaultValue;
+  const typeString = getTypeString(type)
 
-  if (valueString === '—') return undefined;
-  if (valueString === 'true') return true;
-  if (valueString === 'false') return false;
-  // TODO: parse Enums (e.g. `BaseFontSize.Body1`)
-  return valueString;
+  /* eslint-disable no-fallthrough */
+  switch (typeString) {
+    case 'boolean':
+      if (value === 'true') return true;
+      if (value === 'false') return false;
+      return value
+
+    case 'string':
+    case 'text':
+      return value?.toString() ?? value
+
+    case 'number':
+      return Number(value);
+
+    default:
+      // TODO: parse Enums (e.g. `BaseFontSize.Body1`)
+      return value;
+  }
 }
