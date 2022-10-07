@@ -6,32 +6,29 @@ import { palette } from '@leafygreen-ui/palette';
 import { Markdown } from 'components/Markdown';
 import { css } from '@leafygreen-ui/emotion';
 import { HTMLElementProps } from '@leafygreen-ui/lib';
-import { PropItem } from 'react-docgen-typescript';
-import { InputType } from '@storybook/csf';
 
 import InlineDefinition from '@leafygreen-ui/inline-definition';
-import { getControlType, getKnobOptions } from './utils';
+import { TypeString } from './utils';
 
 interface KnobRowProps extends HTMLElementProps<'div'> {
-  componentProp: PropItem;
+  propName: string;
+  knobType: TypeString;
+  knobOptions: Array<string>;
   darkMode: boolean;
-  /**
-   * Corresponds to the `argType` property on Storybook.Meta
-   */
-  SBArgType: InputType;
+  description: string;
   knobValue?: any;
   setKnobValue: (key: string, value: any) => void;
 }
 
 export const KnobRow = ({
-  componentProp,
+  propName,
+  knobType,
+  knobOptions,
   darkMode,
-  SBArgType,
+  description,
   knobValue,
   setKnobValue,
 }: KnobRowProps) => {
-  const { description } = SBArgType || componentProp;
-
   return (
     <div
       className={css`
@@ -54,34 +51,31 @@ export const KnobRow = ({
       `}
     >
       <div>
-        <Subtitle
-          darkMode={darkMode}
-          id={`${kebabCase()}-knob-${componentProp.name}`}
-        >
+        <Subtitle darkMode={darkMode} id={`${kebabCase()}-knob-${propName}`}>
           <InlineDefinition
             align="right"
             spacing={spacing[4]}
             darkMode={darkMode}
             definition={<Markdown darkMode={!darkMode}>{description}</Markdown>}
           >
-            {componentProp.name}
+            {propName}
           </InlineDefinition>
         </Subtitle>
       </div>
       <Knob
-        propName={componentProp.name}
-        knobType={getControlType(componentProp.type, SBArgType)}
-        knobOptions={getKnobOptions(componentProp.type, SBArgType)}
+        propName={propName}
+        knobType={knobType}
+        knobOptions={knobOptions}
         value={knobValue}
         onChange={eventOrVal => {
           const value = eventOrVal.target?.value ?? eventOrVal;
-          setKnobValue(componentProp.name, value);
+          setKnobValue(propName, value);
         }}
         className={css`
           display: inline-flex;
           justify-content: end;
         `}
-        aria-labelledby={`knob-${componentProp.name}`}
+        aria-labelledby={`knob-${propName}`}
         darkMode={darkMode}
       />
     </div>

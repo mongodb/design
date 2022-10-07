@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useMemo, useReducer } from 'react';
-import { kebabCase, defaults, isUndefined } from 'lodash';
+import { useCallback, useEffect, useReducer } from 'react';
+import { kebabCase, defaults, defaultsDeep } from 'lodash';
 import Card from '@leafygreen-ui/card';
 import { css } from '@leafygreen-ui/emotion';
-import { ComponentStoryFn, Meta } from '@storybook/react';
+import { ArgTypes, ComponentStoryFn, Meta } from '@storybook/react';
 import { getComponentStory } from 'utils/getComponentStory';
 import { BaseLayoutProps } from 'utils/types';
 import {
@@ -14,6 +14,7 @@ import { KnobRow } from './KnobRow';
 import { H2 } from '@leafygreen-ui/typography';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { PropItem } from 'react-docgen-typescript';
+import { getControlType, getKnobOptions } from './utils';
 
 const ignoreProps = [
   'className',
@@ -42,6 +43,7 @@ export interface LiveExampleState {
   knobValues?: { [arg: string]: any };
   knobProps?: Array<PropItem>;
   StoryFn?: ComponentStoryFn<any>;
+  SBArgTypes?: Partial<ArgTypes<any>>;
 }
 
 const initialLiveExampleState: LiveExampleState = {
@@ -49,6 +51,7 @@ const initialLiveExampleState: LiveExampleState = {
   knobValues: undefined,
   knobProps: undefined,
   StoryFn: undefined,
+  SBArgTypes: undefined,
 };
 
 export const LiveExample = ({
@@ -56,15 +59,13 @@ export const LiveExample = ({
   tsDoc,
 }: Pick<BaseLayoutProps, 'componentName' | 'tsDoc'>) => {
   // Establish a page state
-  const [{ meta, knobValues, knobProps, StoryFn }, setState] = useReducer(
-    (state: LiveExampleState, newState: LiveExampleState) => {
+  const [{ meta, knobValues, knobProps, StoryFn, SBArgTypes }, setState] =
+    useReducer((state: LiveExampleState, newState: LiveExampleState) => {
       return {
         ...state,
         ...newState,
       };
-    },
-    initialLiveExampleState,
-  );
+    }, initialLiveExampleState);
 
   // Updates the value of a knob
   const updateValue = useCallback(
@@ -73,10 +74,11 @@ export const LiveExample = ({
         meta,
         StoryFn,
         knobProps,
+        SBArgTypes,
         knobValues: { ...knobValues, [propName]: value },
       });
     },
-    [StoryFn, knobProps, knobValues, meta],
+    [SBArgTypes, StoryFn, knobProps, knobValues, meta],
   );
 
   const { darkMode } = useDarkMode(knobValues?.darkMode);
@@ -124,7 +126,9 @@ export const LiveExample = ({
             defaultValues,
           );
 
-          setState({ meta, knobValues, knobProps, StoryFn });
+          const SBArgTypes = defaultsDeep({}, meta.argTypes, StoryFn.argTypes);
+
+          setState({ meta, knobValues, knobProps, StoryFn, SBArgTypes });
         }
       })
       .catch(err => {
@@ -155,11 +159,19 @@ export const LiveExample = ({
             <KnobRow
               key={componentProp.name}
               darkMode={darkMode}
-              componentProp={componentProp}
-              SBArgType={{
-                ...meta?.argTypes?.[componentProp.name],
-                ...StoryFn?.argTypes?.[componentProp.name],
-              }}
+              propName={componentProp.name}
+              knobType={getControlType(
+                componentProp.type,
+                SBArgTypes?.[componentProp.name],
+              )}
+              knobOptions={getKnobOptions(
+                componentProp.type,
+                SBArgTypes?.[componentProp.name],
+              )}
+              description={
+                SBArgTypes?.[componentProp.name]?.description ||
+                componentProp.description
+              }
               knobValue={knobValues?.[componentProp.name]}
               setKnobValue={updateValue}
             />
