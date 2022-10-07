@@ -9,18 +9,40 @@ env:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    name: Yarn Lint
+    name: Lint
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependencies
         run: yarn install
       - name: Lint
         run: yarn lint
+  types:
+    runs-on: ubuntu-latest
+    name: Types
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: yarn install
+      - name: TypeCheck
+        run: yarn check:ts
   build:
     runs-on: ubuntu-latest
+    name: Build
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependencies
         run: yarn install
       - name: Build NextJS
         run: yarn build
+  deploy-to-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Preview 
+        id: deploy-vercel-preview
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          scope: ${{ secrets.VERCEL_ORG_ID }} 
