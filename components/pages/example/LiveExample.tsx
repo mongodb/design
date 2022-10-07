@@ -9,6 +9,7 @@ import { BaseLayoutProps } from 'utils/types';
 import { getComponentProps } from 'utils/tsdoc.utils';
 import { KnobRow } from './KnobRow';
 import { H2 } from '@leafygreen-ui/typography';
+import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 
 const ignoreProps = [
   'className',
@@ -34,29 +35,43 @@ const ignoreProps = [
 ];
 export interface LiveExampleState {
   meta?: Meta<any>;
-  args?: { [arg: string]: any };
+  knobValues?: { [arg: string]: any };
   StoryFn?: ComponentStoryFn<any>;
 }
+
+const initialLiveExampleState: LiveExampleState = {
+  meta: undefined,
+  knobValues: undefined,
+  StoryFn: undefined,
+};
 
 export const LiveExample = ({
   componentName,
   tsDoc,
 }: Pick<BaseLayoutProps, 'componentName' | 'tsDoc'>) => {
-  const [{ meta, args, StoryFn }, setState] = useReducer(
+  const [{ meta, knobValues, StoryFn }, setState] = useReducer(
     (state: LiveExampleState, newState: LiveExampleState) => {
       return {
         ...state,
         ...newState,
       };
     },
-    {
-      meta: undefined,
-      args: undefined,
-      StoryFn: undefined,
-    } as LiveExampleState,
+    initialLiveExampleState,
   );
 
-  // Fetch Story if/when component changes
+  // Updates the value of a knob
+  const updateValue = (key: string, value: any) => {
+    setState({
+      meta,
+      StoryFn,
+      knobValues: { ...knobValues, [key]: value },
+    });
+  };
+
+  const { darkMode } = useDarkMode(knobValues?.darkMode);
+
+  // Fetch Story if/when component changes.
+  // This should only happen once
   useEffect(() => {
     const kebabName = kebabCase(componentName);
     getComponentStory(kebabName)
@@ -67,10 +82,11 @@ export const LiveExample = ({
           const StoryFn = defaultStoryName
             ? stories[defaultStoryName]
             : Object.values(stories)[0];
-          const args = { ...meta.args, ...StoryFn?.args };
+          const knobValues = { ...meta.args, ...StoryFn?.args };
 
+          // TODO: Remove comment
           // console.log({ meta, args, StoryFn });
-          setState({ meta, args, StoryFn });
+          setState({ meta, knobValues, StoryFn });
         }
       })
       .catch(err => {
@@ -83,6 +99,9 @@ export const LiveExample = ({
   ) ?? {
     props: undefined,
   };
+
+  // Filter out component props we don't want knobs for.
+  // These are the props we display in the Knobs
   const componentProps = getComponentProps(props).filter(prop => {
     const isIgnored = ignoreProps.includes(prop.name);
     const isExcludedBySB = meta?.parameters?.controls?.exclude?.includes(
@@ -93,8 +112,6 @@ export const LiveExample = ({
     );
     return !isIgnored && !isExcludedBySB && !isControlNone;
   });
-
-  const darkMode = args?.darkMode;
 
   return (
     <Card
@@ -111,27 +128,23 @@ export const LiveExample = ({
           min-height: 33vh;
         `}
       >
-        {StoryFn ? <StoryFn {...args} /> : <H2>No Story found</H2>}
+        {StoryFn ? <StoryFn {...knobValues} /> : <H2>No Story found</H2>}
       </div>
       <div>
         {componentProps &&
-          componentProps.map(prop => (
+          componentProps.map(componentProp => (
             <KnobRow
-              key={prop.name}
-              componentProp={prop}
+              key={componentProp.name}
               darkMode={darkMode}
+              componentProp={componentProp}
               SBArgType={{
-                ...meta?.argTypes?.[prop.name],
-                ...StoryFn?.argTypes?.[prop.name],
+                ...meta?.argTypes?.[componentProp.name],
+                ...StoryFn?.argTypes?.[componentProp.name],
               }}
-              args={args}
-              setArg={(key: string, value: any) => {
-                setState({
-                  meta,
-                  StoryFn,
-                  args: { ...args, [key]: value },
-                });
-              }}
+              knobValue={
+                knobValues?.[componentProp.name] ?? componentProp.defaultValue
+              }
+              setKnobValue={updateValue}
             />
           ))}
       </div>

@@ -18,23 +18,21 @@ interface KnobRowProps extends HTMLElementProps<'div'> {
    * Corresponds to the `argType` property on Storybook.Meta
    */
   SBArgType: InputType;
-  args?: { [arg: string]: any };
-  setArg: (key: string, value: any) => void;
+  knobValue?: any;
+  setKnobValue: (key: string, value: any) => void;
 }
 
 export const KnobRow = ({
   componentProp,
-  args,
   darkMode,
   SBArgType,
-  setArg,
+  knobValue,
+  setKnobValue,
 }: KnobRowProps) => {
-  const description = SBArgType?.description || componentProp.description;
-  const knobValue = args?.[componentProp.name] ?? componentProp.defaultValue;
+  const { description } = SBArgType || componentProp;
 
   return (
     <div
-      key={componentProp.name}
       className={css`
         display: flex;
         width: 100%;
@@ -73,9 +71,9 @@ export const KnobRow = ({
         SBArgType={SBArgType}
         componentProp={componentProp}
         value={knobValue}
-        onChange={arg => {
-          const value = arg.target?.value ?? arg;
-          setArg(componentProp.name, value);
+        onChange={eventOrVal => {
+          const value = eventOrVal.target?.value ?? eventOrVal;
+          setKnobValue(componentProp.name, value);
         }}
         className={css`
           display: inline-flex;
