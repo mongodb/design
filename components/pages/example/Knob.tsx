@@ -28,12 +28,6 @@ export const Knob = ({
   knobOptions,
   ...rest
 }: KnobProps) => {
-  // console.log({
-  //   propName,
-  //   knobType,
-  //   value,
-  // });
-
   switch (knobType) {
     case 'string':
     case 'text':
