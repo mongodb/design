@@ -13,8 +13,8 @@ export async function getComponentStory(
   try {
     return import(
       `@leafygreen-ui/${kebabName}/src/${pascalcase(kebabName)}.story`
-      );
-    } catch(err) {
-    return
+    );
+  } catch (err) {
+    return;
   }
 }

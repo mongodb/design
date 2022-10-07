@@ -10,6 +10,7 @@ import { PropItem } from 'react-docgen-typescript';
 import { InputType } from '@storybook/csf';
 
 import InlineDefinition from '@leafygreen-ui/inline-definition';
+import { getControlType, getKnobOptions } from './utils';
 
 interface KnobRowProps extends HTMLElementProps<'div'> {
   componentProp: PropItem;
@@ -68,8 +69,9 @@ export const KnobRow = ({
         </Subtitle>
       </div>
       <Knob
-        SBArgType={SBArgType}
-        componentProp={componentProp}
+        propName={componentProp.name}
+        knobType={getControlType(componentProp.type, SBArgType)}
+        knobOptions={getKnobOptions(componentProp.type, SBArgType)}
         value={knobValue}
         onChange={eventOrVal => {
           const value = eventOrVal.target?.value ?? eventOrVal;
