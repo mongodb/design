@@ -83,7 +83,7 @@ export const LiveExample = ({
   ) ?? {
     props: undefined,
   };
-  const knobProps = getComponentProps(props).filter(prop => {
+  const componentProps = getComponentProps(props).filter(prop => {
     const isIgnored = ignoreProps.includes(prop.name);
     const isExcludedBySB = meta?.parameters?.controls?.exclude?.includes(
       prop.name,
@@ -114,13 +114,13 @@ export const LiveExample = ({
         {StoryFn ? <StoryFn {...args} /> : <H2>No Story found</H2>}
       </div>
       <div>
-        {knobProps &&
-          knobProps.map(prop => (
+        {componentProps &&
+          componentProps.map(prop => (
             <KnobRow
               key={prop.name}
-              prop={prop}
+              componentProp={prop}
               darkMode={darkMode}
-              argType={{
+              SBArgType={{
                 ...meta?.argTypes?.[prop.name],
                 ...StoryFn?.argTypes?.[prop.name],
               }}

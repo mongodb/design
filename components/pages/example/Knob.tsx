@@ -13,8 +13,11 @@ const inputStyle = css`
 `;
 
 interface KnobProps extends HTMLElementProps<'input'> {
-  argType: InputType;
-  prop: PropItem;
+  /**
+   * Corresponds to the `argType` property on Storybook.Meta
+   */
+  SBArgType: InputType;
+  componentProp: PropItem;
   value: any;
   onChange: (val: any) => void;
   darkMode?: boolean;
@@ -29,13 +32,13 @@ type TypeString =
   | 'radio';
 
 export const Knob = ({
-  argType,
-  prop,
+  SBArgType,
+  componentProp,
   value,
   onChange,
   ...rest
 }: KnobProps) => {
-  const controlType = getControlType(prop.type, argType);
+  const controlType = getControlType(componentProp.type, SBArgType);
 
   switch (controlType) {
     case 'string':
@@ -44,7 +47,7 @@ export const Knob = ({
         /// @ts-ignore
         <TextInput
           {...(rest as TextInputProps)}
-          placeholder={prop.name}
+          placeholder={componentProp.name}
           value={value}
           onChange={onChange}
           className={cx(inputStyle, rest.className)}
@@ -58,7 +61,7 @@ export const Knob = ({
         <TextInput
           {...(rest as TextInputProps)}
           type="number"
-          placeholder={prop.name}
+          placeholder={componentProp.name}
           value={value}
           onChange={onChange}
           className={cx(inputStyle, rest.className)}
@@ -75,15 +78,15 @@ export const Knob = ({
     case 'enum':
     case 'select':
     case 'radio': {
-      const argOptions = argType?.options
-        ? Array.isArray(argType.options)
-          ? argType.options
-          : Object.values(argType.options)
+      const argOptions = SBArgType?.options
+        ? Array.isArray(SBArgType.options)
+          ? SBArgType.options
+          : Object.values(SBArgType.options)
         : null;
 
       const options = (
         argOptions?.map(opt => opt?.toString()) ??
-        prop?.type?.value?.map(({ value }) =>
+        componentProp?.type?.value?.map(({ value }) =>
           value.toString().replace(/"/g, ''),
         ) ??
         []
@@ -128,9 +131,9 @@ export const Knob = ({
   }
 };
 
-function getControlType(type: PropItemType, argType?: InputType): TypeString {
-  if (argType && argType.control) {
-    return argType.control.type ?? argType.control;
+function getControlType(type: PropItemType, SBArgType?: InputType): TypeString {
+  if (SBArgType && SBArgType.control) {
+    return SBArgType.control.type ?? SBArgType.control;
   }
 
   switch (type.name) {

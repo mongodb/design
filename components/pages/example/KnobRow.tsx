@@ -12,25 +12,29 @@ import { InputType } from '@storybook/csf';
 import InlineDefinition from '@leafygreen-ui/inline-definition';
 
 interface KnobRowProps extends HTMLElementProps<'div'> {
-  prop: PropItem;
+  componentProp: PropItem;
   darkMode: boolean;
-  argType: InputType;
+  /**
+   * Corresponds to the `argType` property on Storybook.Meta
+   */
+  SBArgType: InputType;
   args?: { [arg: string]: any };
   setArg: (key: string, value: any) => void;
 }
 
 export const KnobRow = ({
-  prop,
+  componentProp,
   args,
   darkMode,
-  argType,
+  SBArgType,
   setArg,
 }: KnobRowProps) => {
-  const knobValue = args?.[prop.name] ?? prop.defaultValue;
+  const description = SBArgType?.description || componentProp.description;
+  const knobValue = args?.[componentProp.name] ?? componentProp.defaultValue;
 
   return (
     <div
-      key={prop.name}
+      key={componentProp.name}
       className={css`
         display: flex;
         width: 100%;
@@ -51,34 +55,33 @@ export const KnobRow = ({
       `}
     >
       <div>
-        <Subtitle darkMode={darkMode} id={`${kebabCase()}-knob-${prop.name}`}>
+        <Subtitle
+          darkMode={darkMode}
+          id={`${kebabCase()}-knob-${componentProp.name}`}
+        >
           <InlineDefinition
             align="right"
             spacing={spacing[4]}
             darkMode={darkMode}
-            definition={
-              <Markdown darkMode={!darkMode}>
-                {argType?.description || prop.description}
-              </Markdown>
-            }
+            definition={<Markdown darkMode={!darkMode}>{description}</Markdown>}
           >
-            {prop.name}
+            {componentProp.name}
           </InlineDefinition>
         </Subtitle>
       </div>
       <Knob
-        argType={argType}
-        prop={prop}
+        SBArgType={SBArgType}
+        componentProp={componentProp}
         value={knobValue}
         onChange={arg => {
           const value = arg.target?.value ?? arg;
-          setArg(prop.name, value);
+          setArg(componentProp.name, value);
         }}
         className={css`
           display: inline-flex;
           justify-content: end;
         `}
-        aria-labelledby={`knob-${prop.name}`}
+        aria-labelledby={`knob-${componentProp.name}`}
         darkMode={darkMode}
       />
     </div>
