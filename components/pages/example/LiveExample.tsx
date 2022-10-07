@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useReducer } from 'react';
-import { kebabCase, defaults, defaultsDeep } from 'lodash';
+import { kebabCase, defaults, defaultsDeep, mapValues } from 'lodash';
 import Card from '@leafygreen-ui/card';
 import { css } from '@leafygreen-ui/emotion';
 import { ArgTypes, ComponentStoryFn, Meta } from '@storybook/react';
@@ -111,22 +111,35 @@ export const LiveExample = ({
             return !isIgnored && !isExcludedBySB && !isControlNone;
           });
 
+          const SBArgs = defaults({}, meta.args, StoryFn.args);
+
+          const SBArgTypes: Partial<ArgTypes<any>> = defaultsDeep(
+            {},
+            meta.argTypes,
+            StoryFn.argTypes,
+          );
+
           // Format TSDoc defaults in the same format as SB args
-          const defaultValues = knobProps.reduce((defaults, currProp) => {
+          const TSDocDefaultValues = knobProps.reduce((defaults, currProp) => {
             defaults[currProp.name] = getDefaultValueValue(currProp);
             return defaults;
           }, {} as { [x: string]: any });
 
-          const knobValues = defaults(
-            {},
-            meta.args,
-            StoryFn.args,
-            defaultValues,
+          const SBDefaultValues = mapValues(
+            SBArgTypes,
+            argType => argType?.default,
           );
 
-          const SBArgTypes = defaultsDeep({}, meta.argTypes, StoryFn.argTypes);
+          const knobValues = defaults(
+            {},
+            SBArgs,
+            SBDefaultValues,
+            TSDocDefaultValues,
+          );
 
           setState({ meta, knobValues, knobProps, StoryFn, SBArgTypes });
+        } else {
+          setState(initialLiveExampleState);
         }
       })
       .catch(err => {
@@ -150,7 +163,7 @@ export const LiveExample = ({
           min-height: 33vh;
         `}
       >
-        {StoryFn ? <StoryFn {...knobValues} /> : <H2>No example found 😢</H2>}
+        {StoryFn ? <StoryFn {...knobValues} /> : <H2>No example found 🕵️</H2>}
       </div>
       <div>
         {knobProps &&
