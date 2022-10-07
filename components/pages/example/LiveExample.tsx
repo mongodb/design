@@ -131,6 +131,7 @@ export const LiveExample = ({
       })
       .catch(err => {
         console.warn(err);
+        setState(initialLiveExampleState);
       });
   }, [componentName, tsDoc]);
 
@@ -149,7 +150,7 @@ export const LiveExample = ({
           min-height: 33vh;
         `}
       >
-        {StoryFn ? <StoryFn {...knobValues} /> : <H2>No Story found</H2>}
+        {StoryFn ? <StoryFn {...knobValues} /> : <H2>No example found 😢</H2>}
       </div>
       <div>
         {knobProps &&
