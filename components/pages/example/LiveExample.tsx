@@ -12,7 +12,8 @@ import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { PropItem } from 'react-docgen-typescript';
 import {
   getControlType,
-  getInitialKnobValue,
+  getDefaultValue,
+  getInitialKnobValues,
   getKnobDescription,
   getKnobOptions,
   getPropItemFilterFunction,
@@ -93,7 +94,7 @@ export const LiveExample = ({
                   options: getKnobOptions({ meta, StoryFn, TSDocProp }),
                   type: getControlType({ meta, StoryFn, TSDocProp }),
                   description: getKnobDescription({ meta, StoryFn, TSDocProp }),
-                  defaultValue: getInitialKnobValue({
+                  defaultValue: getDefaultValue({
                     meta,
                     StoryFn,
                     TSDocProp,
@@ -101,15 +102,9 @@ export const LiveExample = ({
                 } as KnobType),
             );
 
-          // Extract the default Knob Values.
+          // Extract the default Knob Values, and include any props not explicitly included in TSDoc
           // This state object will be modified whenever a user interacts with a knob
-          const knobValues = knobsArray.reduce(
-            (values, { name, defaultValue }) => {
-              values[name] = defaultValue;
-              return values;
-            },
-            {} as Record<'string', any>,
-          );
+          const knobValues = getInitialKnobValues(knobsArray, meta, StoryFn);
 
           setState({ meta, knobValues, knobsArray, StoryFn });
         } else {
