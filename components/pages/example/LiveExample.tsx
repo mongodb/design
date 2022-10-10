@@ -20,6 +20,13 @@ import {
   KnobType,
 } from './utils';
 
+const storyWrapperStyle = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 33vh;
+`;
+
 export interface LiveExampleState {
   meta?: Meta<any>;
   knobValues?: { [arg: string]: any };
@@ -124,14 +131,7 @@ export const LiveExample = ({
         margin-block: 2em;
       `}
     >
-      <div
-        className={css`
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 33vh;
-        `}
-      >
+      <div className={storyWrapperStyle}>
         {StoryFn ? <StoryFn {...knobValues} /> : <H2>No example found 🕵️</H2>}
       </div>
       <div>

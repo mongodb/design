@@ -10,6 +10,30 @@ import { HTMLElementProps } from '@leafygreen-ui/lib';
 import InlineDefinition from '@leafygreen-ui/inline-definition';
 import { TypeString } from './utils';
 
+const knobRowWrapperStyle = (darkMode: boolean) => css`
+  display: flex;
+  width: 100%;
+  min-height: ${spacing[5]}px;
+  justify-content: space-between;
+  align-items: center;
+  padding: ${spacing[3]}px ${spacing[4]}px;
+  gap: ${spacing[2]}px;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid
+      ${darkMode ? palette.gray.dark2 : palette.gray.light2};
+  }
+
+  & * p {
+    margin: unset;
+  }
+`;
+
+const knobControlStyle = css`
+  display: inline-flex;
+  justify-content: end;
+`;
+
 interface KnobRowProps extends HTMLElementProps<'div'> {
   propName: string;
   knobType: TypeString;
@@ -30,26 +54,7 @@ export const KnobRow = ({
   setKnobValue,
 }: KnobRowProps) => {
   return (
-    <div
-      className={css`
-        display: flex;
-        width: 100%;
-        min-height: ${spacing[5]}px;
-        justify-content: space-between;
-        align-items: center;
-        padding: ${spacing[3]}px ${spacing[4]}px;
-        gap: ${spacing[2]}px;
-
-        &:not(:last-of-type) {
-          border-bottom: 1px solid
-            ${darkMode ? palette.gray.dark2 : palette.gray.light2};
-        }
-
-        & * p {
-          margin: unset;
-        }
-      `}
-    >
+    <div className={knobRowWrapperStyle(darkMode)}>
       <div>
         <Subtitle darkMode={darkMode} id={`${kebabCase()}-knob-${propName}`}>
           <InlineDefinition
@@ -71,10 +76,7 @@ export const KnobRow = ({
           const value = eventOrVal.target?.value ?? eventOrVal;
           setKnobValue(propName, value);
         }}
-        className={css`
-          display: inline-flex;
-          justify-content: end;
-        `}
+        className={knobControlStyle}
         aria-labelledby={`knob-${propName}`}
         darkMode={darkMode}
       />
