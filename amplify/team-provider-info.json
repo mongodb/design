@@ -1,0 +1,36 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mdbdesign-dev-113300-authRole",
+      "UnauthRoleArn": "arn:aws:iam::459298361502:role/amplify-mdbdesign-dev-113300-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::459298361502:role/amplify-mdbdesign-dev-113300-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-mdbdesign-dev-113300-deployment",
+      "UnauthRoleName": "amplify-mdbdesign-dev-113300-unauthRole",
+      "StackName": "amplify-mdbdesign-dev-113300",
+      "StackId": "arn:aws:cloudformation:us-east-1:459298361502:stack/amplify-mdbdesign-dev-113300/d35dd7a0-48b0-11ed-999a-128f1ee6aeeb",
+      "AmplifyAppId": "d2s8dq3hdil2xd"
+    }
+  },
+  "test": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mdbdesign-test-141014-authRole",
+      "UnauthRoleArn": "arn:aws:iam::459298361502:role/amplify-mdbdesign-test-141014-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::459298361502:role/amplify-mdbdesign-test-141014-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-mdbdesign-test-141014-deployment",
+      "UnauthRoleName": "amplify-mdbdesign-test-141014-unauthRole",
+      "StackName": "amplify-mdbdesign-test-141014",
+      "StackId": "arn:aws:cloudformation:us-east-1:459298361502:stack/amplify-mdbdesign-test-141014/ca13e7a0-48c6-11ed-972b-0a4fa701b79d",
+      "AmplifyAppId": "d2s8dq3hdil2xd"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2s8dq3hdil2xd",
+          "type": "manual"
+        }
+      }
+    }
+  }
+}

@@ -14,6 +14,7 @@
     "update-packages": "./scripts/tsnode ./scripts/update-packages.ts"
   },
   "dependencies": {
+    "@aws-amplify/ui-react": "^3.5.7",
     "@babel/core": "^7.18.9",
     "@babel/eslint-parser": "^7.19.1",
     "@babel/preset-react": "^7.18.6",
@@ -77,6 +78,7 @@
     "@next/mdx": "^12.3.1",
     "@types/node": "^18.0.6",
     "@types/react": "^18.0.21",
+    "aws-amplify": "^4.3.37",
     "clipboard": "^2.0.6",
     "contentful": "^9.1.32",
     "eslint": "^8.23.1",
