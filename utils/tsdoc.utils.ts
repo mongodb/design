@@ -125,7 +125,6 @@ export function getDefaultValueString(
 }
 
 export function getDefaultValueValue({
-  name,
   defaultValue,
   type,
 }: PropItem): any {
