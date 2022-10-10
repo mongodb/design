@@ -124,11 +124,14 @@ export function getDefaultValueString(
   return defaultValue.value.toString().replace(/['"`]/g, '');
 }
 
-export function getDefaultValueValue({ name, defaultValue, type }: PropItem): any {
+export function getDefaultValueValue({
+  name,
+  defaultValue,
+  type,
+}: PropItem): any {
   if (isUndefined(defaultValue) || isNull(defaultValue)) return undefined;
   const value = defaultValue.value ?? defaultValue;
-  const typeString = getTypeString(type);
-  
+
   /* eslint-disable no-fallthrough */
   switch (type.name) {
     case 'boolean':
@@ -144,15 +147,17 @@ export function getDefaultValueValue({ name, defaultValue, type }: PropItem): an
       return Number(value);
 
     case 'enum': {
-      const valueString = value?.toString()
-      const [enumId, defaultKey] = valueString.split('.')
+      const valueString = value?.toString();
+      const [enumId, defaultKey] = valueString.split('.');
 
       if (enumId === type.raw) {
-        const enumValues = type.value.map(v => v.value.replace(/["'`]/g, ''))
-        return enumValues.find(val => val === defaultKey.toLowerCase()) ?? value;
+        const enumValues = type.value.map(v => v.value.replace(/["'`]/g, ''));
+        return (
+          enumValues.find(val => val === defaultKey.toLowerCase()) ?? value
+        );
       }
 
-      return value
+      return value;
     }
 
     default:

@@ -1,5 +1,5 @@
 import { PropItem } from 'react-docgen-typescript';
-import {defaults} from 'lodash'
+import { defaults } from 'lodash';
 import { SBType, SBScalarType } from '@storybook/csf';
 import { getDefaultValueValue } from 'utils/tsdoc.utils';
 import { ComponentStoryFn, Meta } from '@storybook/react';
@@ -53,7 +53,14 @@ interface MetadataSources {
 /**
  * @returns the input array, or values of the input Record
  */
-const valuesArrayFrom = (ArrayLike?: Array<any> | Record<string, any>): Array<any> | undefined => ArrayLike ? Array.isArray(ArrayLike) ? ArrayLike : Object.values(ArrayLike) : undefined
+const valuesArrayFrom = (
+  ArrayLike?: Array<any> | Record<string, any>,
+): Array<any> | undefined =>
+  ArrayLike
+    ? Array.isArray(ArrayLike)
+      ? ArrayLike
+      : Object.values(ArrayLike)
+    : undefined;
 
 /**
  * A custom type based on TSDoc PropItem
@@ -69,8 +76,11 @@ export type KnobType = Omit<PropItem, 'type'> & {
 /**
  * Utility to get the `argTypes` object for a given prop
  */
-export const getSBInputType = ({ meta, StoryFn, TSDocProp: { name } }: MetadataSources) =>
-meta?.argTypes?.[name] ?? StoryFn?.argTypes?.[name]
+export const getSBInputType = ({
+  meta,
+  StoryFn,
+  TSDocProp: { name },
+}: MetadataSources) => meta?.argTypes?.[name] ?? StoryFn?.argTypes?.[name];
 
 export function getPropItemFilterFunction({
   meta,
@@ -79,12 +89,9 @@ export function getPropItemFilterFunction({
   return (TSDocProp: PropItem) => {
     const isIgnored = ignoreProps.includes(TSDocProp.name);
     const SBInputType = getSBInputType({ meta, StoryFn, TSDocProp });
-    const isExcludedBySB: boolean =  meta?.parameters?.controls?.exclude?.includes(
-      TSDocProp.name,
-    );
-    const isControlNone = ['none', false].includes(
-      SBInputType?.control,
-    );
+    const isExcludedBySB: boolean =
+      meta?.parameters?.controls?.exclude?.includes(TSDocProp.name);
+    const isControlNone = ['none', false].includes(SBInputType?.control);
     return !isIgnored && !isExcludedBySB && !isControlNone;
   };
 }
@@ -136,8 +143,12 @@ export function getKnobOptions({
   const type = TSDocProp.type;
   const SBInputType = getSBInputType({ meta, StoryFn, TSDocProp });
 
-  const argOptions: Array<any> | undefined = valuesArrayFrom(SBInputType?.options)?.map(opt => opt?.toString())
-  const controlOptions: Array<any> | undefined = valuesArrayFrom(SBInputType?.control.options)?.map(opt => opt?.toString())
+  const argOptions: Array<any> | undefined = valuesArrayFrom(
+    SBInputType?.options,
+  )?.map(opt => opt?.toString());
+  const controlOptions: Array<any> | undefined = valuesArrayFrom(
+    SBInputType?.control.options,
+  )?.map(opt => opt?.toString());
 
   const options: Array<string> = (
     argOptions ??
@@ -164,15 +175,16 @@ export function getDefaultValue({
   return SBArg ?? SBDefaultValue ?? TSDefaultValue;
 }
 
-export function getInitialKnobValues(knobsArray: Array<KnobType>, meta: Meta<any>, StoryFn: ComponentStoryFn<any>) {
-  const knobDefaults = knobsArray.reduce(
-    (values, { name, defaultValue }) => {
-      values[name] = defaultValue;
-      return values;
-    },
-    {} as Record<'string', any>,
-  )
-  return defaults(knobDefaults, meta.args, StoryFn.args)
+export function getInitialKnobValues(
+  knobsArray: Array<KnobType>,
+  meta: Meta<any>,
+  StoryFn: ComponentStoryFn<any>,
+) {
+  const knobDefaults = knobsArray.reduce((values, { name, defaultValue }) => {
+    values[name] = defaultValue;
+    return values;
+  }, {} as Record<'string', any>);
+  return defaults(knobDefaults, meta.args, StoryFn.args);
 }
 
 /**
