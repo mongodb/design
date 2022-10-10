@@ -113,6 +113,7 @@ export const LiveExample = ({
           // This state object will be modified whenever a user interacts with a knob
           const knobValues = getInitialKnobValues(knobsArray, meta, StoryFn);
 
+          console.log({ meta, knobValues, knobsArray, StoryFn });
           setState({ meta, knobValues, knobsArray, StoryFn });
         } else {
           setState(initialLiveExampleState);

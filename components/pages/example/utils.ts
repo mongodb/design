@@ -15,11 +15,14 @@ export const ignoreProps = [
   'onClick',
   'onChange',
   'onBlur',
+  'onFocus',
+  'onClose',
   'handleValidation',
   'aria-label',
   'aria-labelledby',
   'aria-controls',
   'popoverClassName',
+  'popoverZIndex',
   'portalClassName',
   'portalContainer',
   'shouldTooltipUsePortal',
@@ -46,6 +49,11 @@ interface MetadataSources {
   StoryFn: ComponentStoryFn<any>;
   TSDocProp: PropItem;
 }
+
+/**
+ * @returns the input array, or values of the input Record
+ */
+const valuesArrayFrom = (ArrayLike?: Array<any> | Record<string, any>): Array<any> | undefined => ArrayLike ? Array.isArray(ArrayLike) ? ArrayLike : Object.values(ArrayLike) : undefined
 
 /**
  * A custom type based on TSDoc PropItem
@@ -128,15 +136,16 @@ export function getKnobOptions({
   const type = TSDocProp.type;
   const SBInputType = getSBInputType({ meta, StoryFn, TSDocProp });
 
-  const argOptions: Array<any> | undefined = SBInputType?.options ? Array.from(SBInputType?.options) : undefined
-  const controlOptions: Array<any> | undefined = SBInputType?.control.options ? Array.from(SBInputType?.control.options) : undefined
+  const argOptions: Array<any> | undefined = valuesArrayFrom(SBInputType?.options)?.map(opt => opt?.toString())
+  const controlOptions: Array<any> | undefined = valuesArrayFrom(SBInputType?.control.options)?.map(opt => opt?.toString())
 
   const options: Array<string> = (
-    argOptions?.map(opt => opt?.toString()) ??
-    controlOptions?.map(opt => opt?.toString()) ??
+    argOptions ??
+    controlOptions ??
     type?.value?.map(({ value }) => value.toString().replace(/"/g, '')) ??
     []
   ).filter((opt: string) => !!opt);
+
   return options;
 }
 
@@ -163,9 +172,7 @@ export function getInitialKnobValues(knobsArray: Array<KnobType>, meta: Meta<any
     },
     {} as Record<'string', any>,
   )
-
   return defaults(knobDefaults, meta.args, StoryFn.args)
-
 }
 
 /**
