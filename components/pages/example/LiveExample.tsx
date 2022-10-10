@@ -1,57 +1,36 @@
 import { useCallback, useEffect, useReducer } from 'react';
-import { kebabCase, defaults, defaultsDeep, mapValues } from 'lodash';
+import { kebabCase } from 'lodash';
 import Card from '@leafygreen-ui/card';
 import { css } from '@leafygreen-ui/emotion';
-import { ArgTypes, ComponentStoryFn, Meta } from '@storybook/react';
+import { ComponentStoryFn, Meta } from '@storybook/react';
 import { getComponentStory } from 'utils/getComponentStory';
 import { BaseLayoutProps } from 'utils/types';
-import {
-  findComponentDoc,
-  getComponentPropsArray,
-  getDefaultValueValue,
-} from 'utils/tsdoc.utils';
+import { findComponentDoc, getComponentPropsArray } from 'utils/tsdoc.utils';
 import { KnobRow } from './KnobRow';
 import { H2 } from '@leafygreen-ui/typography';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { PropItem } from 'react-docgen-typescript';
-import { getControlType, getKnobOptions } from './utils';
+import {
+  getControlType,
+  getInitialKnobValue,
+  getKnobDescription,
+  getKnobOptions,
+  getPropItemFilterFunction,
+  KnobType,
+} from './utils';
 
-const ignoreProps = [
-  'className',
-  'tooltipClassName',
-  'contentClassName',
-  'id',
-  'onClick',
-  'onChange',
-  'onBlur',
-  'handleValidation',
-  'aria-label',
-  'aria-labelledby',
-  'aria-controls',
-  'popoverClassName',
-  'portalClassName',
-  'portalContainer',
-  'shouldTooltipUsePortal',
-  'adjustOnMutation',
-  'refEl',
-  'scrollContainer',
-  'setOpen',
-  'shouldClose',
-];
 export interface LiveExampleState {
   meta?: Meta<any>;
   knobValues?: { [arg: string]: any };
-  knobProps?: Array<PropItem>;
+  knobsArray?: Array<KnobType>;
   StoryFn?: ComponentStoryFn<any>;
-  SBArgTypes?: Partial<ArgTypes<any>>;
 }
 
 const initialLiveExampleState: LiveExampleState = {
   meta: undefined,
   knobValues: undefined,
-  knobProps: undefined,
+  knobsArray: undefined,
   StoryFn: undefined,
-  SBArgTypes: undefined,
 };
 
 export const LiveExample = ({
@@ -59,13 +38,15 @@ export const LiveExample = ({
   tsDoc,
 }: Pick<BaseLayoutProps, 'componentName' | 'tsDoc'>) => {
   // Establish a page state
-  const [{ meta, knobValues, knobProps, StoryFn, SBArgTypes }, setState] =
-    useReducer((state: LiveExampleState, newState: LiveExampleState) => {
+  const [{ meta, knobValues, knobsArray, StoryFn }, setState] = useReducer(
+    (state: LiveExampleState, newState: LiveExampleState) => {
       return {
         ...state,
         ...newState,
       };
-    }, initialLiveExampleState);
+    },
+    initialLiveExampleState,
+  );
 
   // Updates the value of a knob
   const updateValue = useCallback(
@@ -73,12 +54,11 @@ export const LiveExample = ({
       setState({
         meta,
         StoryFn,
-        knobProps,
-        SBArgTypes,
+        knobsArray,
         knobValues: { ...knobValues, [propName]: value },
       });
     },
-    [SBArgTypes, StoryFn, knobProps, knobValues, meta],
+    [StoryFn, knobsArray, knobValues, meta],
   );
 
   const { darkMode } = useDarkMode(knobValues?.darkMode);
@@ -97,47 +77,41 @@ export const LiveExample = ({
             ? stories[defaultStoryName]
             : Object.values(stories)[0];
 
-          // Filter out component props we don't want knobs for.
-          // These are the props we display in the Knobs
-          const knobProps = getComponentPropsArray(
+          const knobsArray: Array<KnobType> = getComponentPropsArray(
             findComponentDoc(componentName, tsDoc),
-          ).filter((prop: PropItem) => {
-            const isIgnored = ignoreProps.includes(prop.name);
-            const isExcludedBySB =
-              meta?.parameters?.controls?.exclude?.includes(prop.name);
-            const isControlNone = ['none', false].includes(
-              meta?.argTypes?.[prop.name]?.control,
+          )
+            // Filter out component props we don't want knobs for.
+            // These are the props we display in the Knobs
+            .filter(getPropItemFilterFunction({ meta, StoryFn }))
+            // Convert to custom KnobType by adding additional properties,
+            // and updating other props
+            .map(
+              (TSDocProp: PropItem) =>
+                ({
+                  ...TSDocProp,
+                  name: TSDocProp.name,
+                  options: getKnobOptions({ meta, StoryFn, TSDocProp }),
+                  type: getControlType({ meta, StoryFn, TSDocProp }),
+                  description: getKnobDescription({ meta, StoryFn, TSDocProp }),
+                  defaultValue: getInitialKnobValue({
+                    meta,
+                    StoryFn,
+                    TSDocProp,
+                  }),
+                } as KnobType),
             );
-            return !isIgnored && !isExcludedBySB && !isControlNone;
-          });
 
-          const SBArgs = defaults({}, meta.args, StoryFn.args);
-
-          const SBArgTypes: Partial<ArgTypes<any>> = defaultsDeep(
-            {},
-            meta.argTypes,
-            StoryFn.argTypes,
+          // Extract the default Knob Values.
+          // This state object will be modified whenever a user interacts with a knob
+          const knobValues = knobsArray.reduce(
+            (values, { name, defaultValue }) => {
+              values[name] = defaultValue;
+              return values;
+            },
+            {} as Record<'string', any>,
           );
 
-          // Format TSDoc defaults in the same format as SB args
-          const TSDocDefaultValues = knobProps.reduce((defaults, currProp) => {
-            defaults[currProp.name] = getDefaultValueValue(currProp);
-            return defaults;
-          }, {} as { [x: string]: any });
-
-          const SBDefaultValues = mapValues(
-            SBArgTypes,
-            argType => argType?.default,
-          );
-
-          const knobValues = defaults(
-            {},
-            SBArgs,
-            SBDefaultValues,
-            TSDocDefaultValues,
-          );
-
-          setState({ meta, knobValues, knobProps, StoryFn, SBArgTypes });
+          setState({ meta, knobValues, knobsArray, StoryFn });
         } else {
           setState(initialLiveExampleState);
         }
@@ -166,25 +140,16 @@ export const LiveExample = ({
         {StoryFn ? <StoryFn {...knobValues} /> : <H2>No example found 🕵️</H2>}
       </div>
       <div>
-        {knobProps &&
-          knobProps.map(componentProp => (
+        {knobsArray &&
+          knobsArray.map(knob => (
             <KnobRow
-              key={componentProp.name}
+              key={knob.name}
               darkMode={darkMode}
-              propName={componentProp.name}
-              knobType={getControlType(
-                componentProp.type,
-                SBArgTypes?.[componentProp.name],
-              )}
-              knobOptions={getKnobOptions(
-                componentProp.type,
-                SBArgTypes?.[componentProp.name],
-              )}
-              description={
-                SBArgTypes?.[componentProp.name]?.description ??
-                componentProp.description
-              }
-              knobValue={knobValues?.[componentProp.name]}
+              propName={knob.name}
+              knobType={knob.type}
+              knobOptions={knob.options}
+              description={knob.description}
+              knobValue={knobValues?.[knob.name]}
               setKnobValue={updateValue}
             />
           ))}

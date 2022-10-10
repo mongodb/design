@@ -127,18 +127,18 @@ export function getDefaultValueString(
 export function getDefaultValueValue({ defaultValue, type }: PropItem): any {
   if (isUndefined(defaultValue) || isNull(defaultValue)) return undefined;
   const value = defaultValue.value ?? defaultValue;
-  const typeString = getTypeString(type)
+  const typeString = getTypeString(type);
 
   /* eslint-disable no-fallthrough */
   switch (typeString) {
     case 'boolean':
       if (value === 'true') return true;
       if (value === 'false') return false;
-      return value
+      return value;
 
     case 'string':
     case 'text':
-      return value?.toString() ?? value
+      return value?.toString() ?? value;
 
     case 'number':
       return Number(value);
