@@ -5,46 +5,37 @@ import { SelectProps } from '@leafygreen-ui/select/dist/types';
 import TextInput, { TextInputProps } from '@leafygreen-ui/text-input';
 import { RadioBoxGroup, RadioBox } from '@leafygreen-ui/radio-box-group';
 import Toggle from '@leafygreen-ui/toggle';
-import { InputType, SBType, SBScalarType } from '@storybook/csf';
-import { PropItem, PropItemType } from 'react-docgen-typescript';
+import { TypeString } from './utils';
 
 const inputStyle = css`
   min-width: 256px;
 `;
 
 interface KnobProps extends HTMLElementProps<'input'> {
-  argType: InputType;
-  prop: PropItem;
+  propName: string;
+  knobType: TypeString;
+  knobOptions: Array<string>;
   value: any;
   onChange: (val: any) => void;
   darkMode?: boolean;
 }
 
-type TypeString =
-  | SBScalarType['name']
-  | SBType['name']
-  | 'text'
-  | 'select'
-  | 'range'
-  | 'radio';
-
 export const Knob = ({
-  argType,
-  prop,
+  propName,
+  knobType,
   value,
   onChange,
+  knobOptions,
   ...rest
 }: KnobProps) => {
-  const controlType = getControlType(prop.type, argType);
-
-  switch (controlType) {
+  switch (knobType) {
     case 'string':
     case 'text':
       return (
         /// @ts-ignore
         <TextInput
           {...(rest as TextInputProps)}
-          placeholder={prop.name}
+          placeholder={propName}
           value={value}
           onChange={onChange}
           className={cx(inputStyle, rest.className)}
@@ -58,8 +49,8 @@ export const Knob = ({
         <TextInput
           {...(rest as TextInputProps)}
           type="number"
-          placeholder={prop.name}
-          value={value}
+          placeholder={propName}
+          value={value?.toString() ?? value}
           onChange={onChange}
           className={cx(inputStyle, rest.className)}
         />
@@ -75,80 +66,45 @@ export const Knob = ({
     case 'enum':
     case 'select':
     case 'radio': {
-      const argOptions = argType?.options
-        ? Array.isArray(argType.options)
-          ? argType.options
-          : Object.values(argType.options)
-        : null;
+      if (knobOptions) {
+        if (knobOptions.length <= 3) {
+          return (
+            <RadioBoxGroup
+              {...rest}
+              onChange={onChange}
+              value={value}
+              size="compact"
+            >
+              {knobOptions.map((opt: string) => (
+                <RadioBox key={opt} value={opt}>
+                  {opt}
+                </RadioBox>
+              ))}
+            </RadioBoxGroup>
+          );
+        }
 
-      const options = (
-        argOptions?.map(opt => opt?.toString()) ??
-        prop?.type?.value?.map(({ value }) =>
-          value.toString().replace(/"/g, ''),
-        ) ??
-        []
-      ).filter(opt => !!opt);
-
-      if (options.length <= 3) {
         return (
-          <RadioBoxGroup
-            {...rest}
-            onChange={onChange}
+          /// @ts-expect-error
+          <Select
+            {...(rest as SelectProps)}
             value={value}
-            size="compact"
+            onChange={onChange}
+            className={cx(inputStyle, rest.className)}
           >
-            {options.map((opt: string) => (
-              <RadioBox key={opt} value={opt}>
+            {knobOptions.map((opt: string) => (
+              <Option key={opt} value={opt}>
                 {opt}
-              </RadioBox>
+              </Option>
             ))}
-          </RadioBoxGroup>
+          </Select>
         );
       }
 
-      return (
-        /// @ts-expect-error
-        <Select
-          {...(rest as SelectProps)}
-          value={value}
-          onChange={onChange}
-          className={cx(inputStyle, rest.className)}
-        >
-          {options.map((opt: string) => (
-            <Option key={opt} value={opt}>
-              {opt}
-            </Option>
-          ))}
-        </Select>
-      );
+      return <>knobType</>;
     }
 
     default:
-      return <>{controlType}</>;
+      return <>{knobType}</>;
   }
 };
-
-function getControlType(type: PropItemType, argType?: InputType): TypeString {
-  if (argType && argType.control) {
-    return argType.control.type ?? argType.control;
-  }
-
-  switch (type.name) {
-    case 'enum':
-      switch (type.raw) {
-        case 'boolean':
-          return 'boolean';
-        case 'ReactNode':
-          return 'string';
-      }
-
-      return 'array';
-
-    case 'string':
-    case 'number':
-      return type.name;
-
-    default:
-      return 'other';
-  }
-}

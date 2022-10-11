@@ -8,7 +8,7 @@ import { Markdown } from 'components/Markdown';
 import {
   CustomComponentDoc,
   isPropItem,
-  getComponentProps,
+  getComponentPropsArray,
   getInheritedProps,
   getDefaultValueString,
   getTypeString,
@@ -38,7 +38,7 @@ export const TSDocPropTable = ({
   tsDoc: CustomComponentDoc;
   className?: string;
 }) => {
-  const componentProps = getComponentProps(tsDoc.props);
+  const componentProps = getComponentPropsArray(tsDoc.props);
   const inheritedProps = getInheritedProps(tsDoc.props);
 
   const props = [...componentProps, ...inheritedProps];

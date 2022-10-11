@@ -55,19 +55,19 @@ const nextConfig = {
       test: /\.svg$/,
       use: ['@svgr/webpack'],
       include: isPathInLeafygreen,
-    })
+    });
 
     return config;
   },
 };
 
-module.exports = nextConfig
+module.exports = nextConfig;
 
 /**
  * Include packages (or symlinks) that include `leafygreen-ui`,
  * but omit those modules their own node_modules
  */
-function isPathInLeafygreen (filePath) {
+function isPathInLeafygreen(filePath) {
   if (
     (filePath.match(/node_modules/g) || []).length > 1 ||
     (filePath.match(/leafygreen-ui/g) || []).length > 1
