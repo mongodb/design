@@ -11,7 +11,6 @@ export function getTypeString(propType: PropItemType): string | undefined {
     'keyof IntrinsicElements | ComponentType<{}>',
   ];
 
-
   if (propType.name === 'enum') {
     if (staticEnums.includes(propType.raw as string)) {
       return propType.raw;
@@ -23,7 +22,9 @@ export function getTypeString(propType: PropItemType): string | undefined {
   return propType.name;
 }
 
-export function getDefaultValueString(defaultValue: PropItem['defaultValue']): string {
+export function getDefaultValueString(
+  defaultValue: PropItem['defaultValue'],
+): string {
   if (!defaultValue) {
     return '—';
   }
