@@ -24,15 +24,15 @@ const dividerStyle = css`
   margin: ${spacing[2]}px -${spacing[3]}px;
 `;
 
+const tooltipRow = css`
+  white-space: nowrap;
+`;
+
 const inlineLabelStyle = css`
   padding-right: 1ch;
 `;
 
-export const PropTableTooltipContent = ({
-  propItem,
-}: {
-  propItem: PropItem;
-}) => {
+export const PropTooltipContent = ({ propItem }: { propItem: PropItem }) => {
   const itemTypeId = useIdAllocator({ prefix: 'prop-table-tooltip-type' });
   const itemDefaultId = useIdAllocator({
     prefix: 'prop-table-tooltip-default',
@@ -44,7 +44,7 @@ export const PropTableTooltipContent = ({
         {propItem.name}
       </InlineCode>
 
-      <div>
+      <div className={tooltipRow}>
         <Label className={inlineLabelStyle} htmlFor={itemTypeId} darkMode>
           Type:
         </Label>
@@ -59,7 +59,7 @@ export const PropTableTooltipContent = ({
         </InlineCode>
       </div>
 
-      <div>
+      <div className={tooltipRow}>
         <Label className={inlineLabelStyle} htmlFor={itemDefaultId} darkMode>
           Default:
         </Label>

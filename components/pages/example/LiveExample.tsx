@@ -202,7 +202,7 @@ export const LiveExample = ({
                   ...TSDocProp,
                   name: TSDocProp.name,
                   options: getKnobOptions({ meta, StoryFn, TSDocProp }),
-                  type: getControlType({ meta, StoryFn, TSDocProp }),
+                  controlType: getControlType({ meta, StoryFn, TSDocProp }),
                   description: getKnobDescription({ meta, StoryFn, TSDocProp }),
                   defaultValue: getDefaultValue({
                     meta,
@@ -286,10 +286,7 @@ export const LiveExample = ({
             <KnobRow
               key={knob.name}
               darkMode={darkMode}
-              propName={knob.name}
-              knobType={knob.type}
-              knobOptions={knob.options}
-              description={knob.description}
+              knob={knob}
               knobValue={knobValues?.[knob.name]}
               setKnobValue={updateValue}
             />
