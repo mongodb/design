@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useReducer, ReactNode } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useReducer,
+  ReactNode,
+  useState,
+} from 'react';
 import { kebabCase } from 'lodash';
 import pascalcase from 'pascalcase';
 import { PropItem } from 'react-docgen-typescript';
@@ -7,7 +13,7 @@ import { ComponentStoryFn, Meta } from '@storybook/react';
 import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
 import Code from '@leafygreen-ui/code';
-import { css } from '@leafygreen-ui/emotion';
+import { css, cx } from '@leafygreen-ui/emotion';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { spacing } from '@leafygreen-ui/tokens';
 import { H2 } from '@leafygreen-ui/typography';
@@ -44,7 +50,6 @@ const liveExampleWrapperStyle = css`
 const storyWrapperStyle = css`
   flex: 2;
   padding: ${spacing[4]}px;
-  padding-right: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -54,11 +59,11 @@ const storyWrapperStyle = css`
 
 const codeExampleWrapperStyle = css`
   position: relative;
-  flex: 2;
+  flex: 0;
   max-height: 100%;
   margin-top: -1px;
 
-  & > * {
+  & > div {
     height: 100%;
     border-radius: 0 24px 0 0;
 
@@ -77,6 +82,7 @@ const showHideCodeButtonStyle = css`
   position: absolute;
   bottom: ${spacing[3]}px;
   right: ${spacing[5] + spacing[4]}px;
+  white-space: nowrap;
 `;
 
 export interface LiveExampleState {
@@ -99,6 +105,7 @@ export const LiveExample = ({
   componentName,
   tsDoc,
 }: Pick<BaseLayoutProps, 'componentName' | 'tsDoc'>) => {
+  const [showCode, setShowCode] = useState(true);
   // Establish a page state
   const [{ meta, knobValues, knobsArray, StoryFn, storyCode }, setState] =
     useReducer((state: LiveExampleState, newState: LiveExampleState) => {
@@ -207,17 +214,26 @@ export const LiveExample = ({
         <div className={storyWrapperStyle}>
           {StoryFn ? <StoryFn {...knobValues} /> : <H2>No example found 🕵️</H2>}
         </div>
-        <div className={codeExampleWrapperStyle}>
-          <Code className={codeStyle} darkMode={darkMode} language="js">
-            {storyCode ?? 'No code found'}
-          </Code>
+        <div
+          className={cx(codeExampleWrapperStyle, {
+            [css`
+              flex: 2;
+            `]: showCode,
+          })}
+        >
+          {showCode && (
+            <Code className={codeStyle} darkMode={darkMode} language="js">
+              {storyCode ?? 'No code found'}
+            </Code>
+          )}
           <Button
-            darkMode={!darkMode}
+            darkMode={darkMode}
             className={showHideCodeButtonStyle}
             variant="default"
             size="xsmall"
+            onClick={() => setShowCode(!showCode)}
           >
-            Hide Code
+            {showCode ? 'Hide' : 'Show'} Code
           </Button>
         </div>
       </div>
