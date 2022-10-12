@@ -1,14 +1,9 @@
-import React, {
-  useCallback,
-  useEffect,
-  useReducer,
-  ReactNode,
-  useState,
-} from 'react';
+import { useCallback, useEffect, useReducer, ReactNode, useState } from 'react';
 import { kebabCase } from 'lodash';
 import pascalcase from 'pascalcase';
 import { PropItem } from 'react-docgen-typescript';
 import reactElementToJSXString from 'react-element-to-jsx-string';
+import { Transition, TransitionStatus } from 'react-transition-group';
 import { ComponentStoryFn, Meta } from '@storybook/react';
 import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
@@ -40,6 +35,7 @@ const getStoryJSX = (element: ReactNode, displayName: string) =>
   });
 
 const liveExampleWrapperStyle = css`
+  position: relative;
   display: flex;
   margin: -${spacing[4]}px;
   margin-bottom: initial;
@@ -48,6 +44,7 @@ const liveExampleWrapperStyle = css`
 `;
 
 const storyWrapperStyle = css`
+  position: relative;
   flex: 2;
   padding: ${spacing[4]}px;
   display: inline-flex;
@@ -63,15 +60,54 @@ const codeExampleWrapperStyle = css`
   max-height: 100%;
   margin-top: -1px;
 
+  transition: 200ms ease-in-out;
+  transition-property: flex transform opacity;
+  transform-origin: 100% 0%;
+
   & > div {
     height: 100%;
     border-radius: 0 24px 0 0;
+    opacity: 1;
+    transition: 200ms ease-in-out opacity;
 
     & > * {
       height: 100%;
     }
   }
 `;
+
+const codeWrapperStateStyle: Record<TransitionStatus, string> = {
+  entering: css`
+    flex: 2;
+    transform: scaleX(1);
+    & > div {
+      opacity: 1;
+      display: block;
+    }
+  `,
+  entered: css`
+    flex: 2;
+    transform: scaleX(1);
+    & > div {
+      opacity: 1;
+    }
+  `,
+  exiting: css`
+    transform: scaleX(1);
+    & > div {
+      opacity: 0;
+    }
+  `,
+  exited: css`
+    flex: 0;
+    transform: scaleX(1);
+    & > div {
+      opacity: 0;
+      display: none;
+    }
+  `,
+  unmounted: '',
+};
 
 const codeStyle = css`
   height: 100%;
@@ -188,11 +224,13 @@ export const LiveExample = ({
           setState({ meta, knobValues, knobsArray, StoryFn, storyCode });
         } else {
           setState(initialLiveExampleState);
+          setShowCode(true);
         }
       })
       .catch(err => {
         console.warn(err);
         setState(initialLiveExampleState);
+        setShowCode(true);
       });
   }, [componentName, tsDoc]);
 
@@ -214,28 +252,29 @@ export const LiveExample = ({
         <div className={storyWrapperStyle}>
           {StoryFn ? <StoryFn {...knobValues} /> : <H2>No example found 🕵️</H2>}
         </div>
-        <div
-          className={cx(codeExampleWrapperStyle, {
-            [css`
-              flex: 2;
-            `]: showCode,
-          })}
-        >
-          {showCode && (
-            <Code className={codeStyle} darkMode={darkMode} language="js">
-              {storyCode ?? 'No code found'}
-            </Code>
+        <Transition in={showCode} timeout={200}>
+          {state => (
+            <div
+              className={cx(
+                codeExampleWrapperStyle,
+                codeWrapperStateStyle[state],
+              )}
+            >
+              <Code className={codeStyle} darkMode={darkMode} language="js">
+                {storyCode ?? 'No code found'}
+              </Code>
+            </div>
           )}
-          <Button
-            darkMode={darkMode}
-            className={showHideCodeButtonStyle}
-            variant="default"
-            size="xsmall"
-            onClick={() => setShowCode(!showCode)}
-          >
-            {showCode ? 'Hide' : 'Show'} Code
-          </Button>
-        </div>
+        </Transition>
+        <Button
+          darkMode={darkMode}
+          className={showHideCodeButtonStyle}
+          variant="default"
+          size="xsmall"
+          onClick={() => setShowCode(!showCode)}
+        >
+          {showCode ? 'Hide' : 'Show'} Code
+        </Button>
       </div>
       <div>
         {knobsArray &&
