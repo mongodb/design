@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useReducer, ReactNode, useState } from 'react';
-import { kebabCase } from 'lodash';
+import { kebabCase, pickBy, isUndefined } from 'lodash';
 import pascalcase from 'pascalcase';
 import { PropItem } from 'react-docgen-typescript';
 import reactElementToJSXString from 'react-element-to-jsx-string';
@@ -82,7 +82,7 @@ const codeWrapperStateStyle: Record<TransitionStatus, string> = {
     transform: scaleX(1);
     & > div {
       opacity: 1;
-      display: block;
+      width: 100%;
     }
   `,
   entered: css`
@@ -103,7 +103,7 @@ const codeWrapperStateStyle: Record<TransitionStatus, string> = {
     transform: scaleX(1);
     & > div {
       opacity: 0;
-      display: none;
+      width: 0;
     }
   `,
   unmounted: '',
@@ -213,8 +213,12 @@ export const LiveExample = ({
             );
 
           // Extract the default Knob Values, and include any props not explicitly included in TSDoc
-          // This state object will be modified whenever a user interacts with a knob
-          const knobValues = getInitialKnobValues(knobsArray, meta, StoryFn);
+          // This state object will be modified whenever a user interacts with a knob.
+          const knobValues = pickBy(
+            getInitialKnobValues(knobsArray, meta, StoryFn),
+            // Filter out values that are explicitly undefined
+            val => !isUndefined(val),
+          );
 
           const storyCode = getStoryJSX(
             <StoryFn {...knobValues} />,
