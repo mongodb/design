@@ -30,8 +30,6 @@ const sideNavStyles = css`
       margin-bottom: 16px;
     }
   }
-
-  
 `;
 
 const logoStyles = css`

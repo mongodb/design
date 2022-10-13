@@ -11,17 +11,18 @@ const knobContainerStyle = css`
   flex-grow: 1;
 
   ${mq({
-  padding: [
-    `${spacing[3]}px ${spacing[4]}px`,
-    `${spacing[3]}px ${spacing[5]}px`,
-  ],
-})}
+    padding: [
+      `${spacing[3]}px ${spacing[4]}px`,
+      `${spacing[3]}px ${spacing[5]}px`,
+    ],
+  })}
 `;
 
 const mobileKnobContainerStyle = css`
+  margin: 12px 0;
   > * {
     display: block;
-    margin: 8px 0;
+    margin: 12px 0;
   }
 
   > *:not(label) {
@@ -45,7 +46,7 @@ function KnobRow({ children, className, darkMode = false }: KnobRowProps) {
       className={cx(
         {
           [knobContainerStyle]: !isTouchDevice,
-          [mobileKnobContainerStyle]: isTouchDevice
+          [mobileKnobContainerStyle]: isTouchDevice,
         },
         css`
           border-top: 1px solid

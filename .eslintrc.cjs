@@ -1,5 +1,5 @@
 module.exports = {
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   plugins: ['@emotion'],
   ignorePatterns: ['**/*.md', '**/*.mdx'],
   extends: [
@@ -7,7 +7,6 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'prettier',
-    'prettier/react',
     'plugin:jsx-a11y/recommended',
     'plugin:@next/next/recommended',
     'next',

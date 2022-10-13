@@ -20,14 +20,14 @@ const layoutProperties = css`
   margin-right: 0;
 
   ${mq({
-  width: [
-    'calc(100% + 48px)',
-    '100%',
-    '100%',
-    `${pageContainerWidth.dataGraphic}px`,
-  ],
-  marginLeft: [`-${spacing[4]}px`, '0px', '0px', '0px'],
-})}
+    width: [
+      'calc(100% + 48px)',
+      '100%',
+      '100%',
+      `${pageContainerWidth.dataGraphic}px`,
+    ],
+    marginLeft: [`-${spacing[4]}px`, '0px', '0px', '0px'],
+  })}
 `;
 
 const boxShadow = css`
@@ -78,13 +78,13 @@ const overlineContainer = css`
   transition: all 150ms ease-in-out;
 
   ${mq({
-  opacity: [1, 1, 0],
-  transform: [
-    'none',
-    'none',
-    `translate3d(0, ${spacing[3]}px, 0) scale(0.95)`,
-  ],
-})}
+    opacity: [1, 1, 0],
+    transform: [
+      'none',
+      'none',
+      `translate3d(0, ${spacing[3]}px, 0) scale(0.95)`,
+    ],
+  })}
 `;
 
 const overlineColor = css`
@@ -114,29 +114,29 @@ const textWrapper = css`
   overflow: hidden;
 
   ${mq({
-  paddingTop: [`${spacing[3]}px`, `${spacing[4]}px`],
-  paddingLeft: [`${spacing[3]}px`, `${spacing[4]}px`],
-  paddingRight: [`${spacing[3]}px`, `${spacing[4]}px`],
-  fontSize: ['24px', '60px', '60px', '60px'],
-})}
+    paddingTop: [`${spacing[3]}px`, `${spacing[4]}px`],
+    paddingLeft: [`${spacing[3]}px`, `${spacing[4]}px`],
+    paddingRight: [`${spacing[3]}px`, `${spacing[4]}px`],
+    fontSize: ['24px', '60px', '60px', '60px'],
+  })}
 `;
 
 const newsContainer = css`
   ${mq({
-  height: ['unset', '350px'],
-})}
+    height: ['unset', '350px'],
+  })}
 `;
 
 const largeHeight = css`
   ${mq({
-  height: ['50vw', '350px'],
-})}
+    height: ['50vw', '350px'],
+  })}
 `;
 
 const smallHeight = css`
   ${mq({
-  height: ['50vw', '175px'],
-})}
+    height: ['50vw', '175px'],
+  })}
 `;
 
 const halfWidth = css`

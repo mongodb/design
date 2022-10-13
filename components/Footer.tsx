@@ -1,10 +1,10 @@
-import { css } from '@emotion/css';
-import { cx } from '@leafygreen-ui/emotion';
+import { cx, css } from '@emotion/css';
 import { useViewportSize } from '@leafygreen-ui/hooks';
 import { MongoDBLogo } from '@leafygreen-ui/logo';
 import { palette } from '@leafygreen-ui/palette';
 import { breakpoints } from '@leafygreen-ui/tokens';
 import { spacing } from '@leafygreen-ui/tokens';
+import { containerPadding } from 'styles/globals';
 import { mq } from 'utils/mediaQuery';
 
 const footerContainerStyle = css`
@@ -12,9 +12,9 @@ const footerContainerStyle = css`
   width: 100%;
 
   ${mq({
-  marginTop: ['0px', `${spacing[7]}px`],
-  paddingLeft: ['0px', `${spacing[9]}px`]
-})}
+    marginTop: ['0px', `${spacing[7]}px`],
+    marginLeft: ['0px', `${spacing[5]}px`],
+  })}
 `;
 
 const desktopFooterContainerStyle = css`
@@ -46,9 +46,9 @@ const linksContainer = css`
   margin-top: 5px;
 
   ${mq({
-  marginLeft: [`${spacing[4]}px`, `${spacing[6]}px`],
-  marginRight: [`${spacing[4]}px`, `${spacing[6]}px`],
-})}
+    marginLeft: ['0px', `${spacing[6]}px`],
+    marginRight: [`${spacing[4]}px`, `${spacing[6]}px`],
+  })}
 `;
 
 const mobileLinksContainer = css`
@@ -99,22 +99,22 @@ function Footer() {
   return (
     <div
       role="contentinfo"
-      className={cx([
-        footerContainerStyle,
-        {
-          [desktopFooterContainerStyle]: !isTouchDevice,
-          [mobileFooterContainerStyle]: isTouchDevice
-        }
-      ])}>
+      className={cx(footerContainerStyle, containerPadding, {
+        [desktopFooterContainerStyle]: !isTouchDevice,
+        [mobileFooterContainerStyle]: isTouchDevice,
+      })}
+    >
       <a href="https://mongodb.com" target="_blank" rel="noopener noreferrer">
         <MongoDBLogo height={spacing[4]} aria-hidden="true" />
       </a>
-      <div className={cx([
-        linksContainer,
-        {
-          [mobileLinksContainer]: isTouchDevice
-        }
-      ])}>
+      <div
+        className={cx([
+          linksContainer,
+          {
+            [mobileLinksContainer]: isTouchDevice,
+          },
+        ])}
+      >
         <FooterLink href="https://www.mongodb.com/blog/post/meet-our-product-design-team-part-1">
           About design at MongoDB
         </FooterLink>
@@ -126,7 +126,9 @@ function Footer() {
           GitHub
         </FooterLink>
         <FooterLink href="https://www.mongodb.com/careers">Careers</FooterLink>
-        <p className={trademarkStyle}>© 2021 MongoDB, Inc.</p>
+        <p className={trademarkStyle}>
+          © {new Date().getFullYear()} MongoDB, Inc.
+        </p>
       </div>
     </div>
   );
