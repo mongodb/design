@@ -100,8 +100,7 @@
     "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",
     "remark-html": "^15.0.1",
-    "ts-node": "^10.9.1",
-    "vercel": "^28.4.1"
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.10.2",
