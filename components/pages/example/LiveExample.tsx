@@ -228,7 +228,7 @@ export const LiveExample = ({
           setState({ meta, knobValues, knobsArray, StoryFn, storyCode });
         } else {
           setState(initialLiveExampleState);
-          setShowCode(true);
+          setShowCode(false);
         }
       })
       .catch(err => {
