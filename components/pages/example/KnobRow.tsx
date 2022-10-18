@@ -3,14 +3,12 @@ import { Subtitle } from '@leafygreen-ui/typography';
 import { Knob } from './Knob';
 import { spacing } from '@leafygreen-ui/tokens';
 import { palette } from '@leafygreen-ui/palette';
-import { Markdown } from 'components/Markdown';
 import { css } from '@leafygreen-ui/emotion';
 import { HTMLElementProps } from '@leafygreen-ui/lib';
 
 import InlineDefinition from '@leafygreen-ui/inline-definition';
-import { KnobType, TypeString } from './utils';
+import { KnobType } from './utils';
 import { PropTooltipContent } from 'components/PropTooltipContent';
-import { PropItem } from 'react-docgen-typescript';
 
 const knobRowWrapperStyle = (darkMode: boolean) => css`
   display: flex;
@@ -55,7 +53,7 @@ export const KnobRow = ({
             align="right"
             spacing={spacing[4]}
             darkMode={darkMode}
-            definition={<PropTooltipContent propItem={knob as PropItem} />}
+            definition={<PropTooltipContent propItem={knob} />}
           >
             {name}
           </InlineDefinition>

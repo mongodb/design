@@ -65,7 +65,7 @@ const valuesArrayFrom = (
 /**
  * A custom type based on TSDoc PropItem
  */
-export type KnobType = Omit<PropItem, 'type'> & {
+export type KnobType = PropItem & {
   controlType: TypeString;
   /**
    * For types with options. Set to an empty array for irrelevant types
