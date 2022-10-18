@@ -124,10 +124,7 @@ export function getDefaultValueString(
   return defaultValue.value.toString().replace(/['"`]/g, '');
 }
 
-export function getDefaultValueValue({
-  defaultValue,
-  type,
-}: PropItem): any {
+export function getDefaultValueValue({ defaultValue, type }: PropItem): any {
   if (isUndefined(defaultValue) || isNull(defaultValue)) return undefined;
   const value = defaultValue.value ?? defaultValue;
 
