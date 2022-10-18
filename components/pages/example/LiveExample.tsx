@@ -234,7 +234,7 @@ export const LiveExample = ({
       .catch(err => {
         console.warn(err);
         setState(initialLiveExampleState);
-        setShowCode(true);
+        setShowCode(false);
       });
   }, [componentName, tsDoc]);
 
