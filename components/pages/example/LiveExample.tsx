@@ -141,7 +141,7 @@ export const LiveExample = ({
   componentName,
   tsDoc,
 }: Pick<BaseLayoutProps, 'componentName' | 'tsDoc'>) => {
-  const [showCode, setShowCode] = useState(true);
+  const [showCode, setShowCode] = useState(false);
   // Establish a page state
   const [{ meta, knobValues, knobsArray, StoryFn, storyCode }, setState] =
     useReducer((state: LiveExampleState, newState: LiveExampleState) => {
