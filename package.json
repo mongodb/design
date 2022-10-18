@@ -63,7 +63,7 @@
     "@leafygreen-ui/side-nav": "^10.0.2",
     "@leafygreen-ui/stepper": "^3.0.4",
     "@leafygreen-ui/table": "^6.0.0",
-    "@leafygreen-ui/tabs": "^9.0.2",
+    "@leafygreen-ui/tabs": "^9.2.1",
     "@leafygreen-ui/testing-lib": "^0.2.1",
     "@leafygreen-ui/text-area": "^6.1.2",
     "@leafygreen-ui/text-input": "^10.1.3",
