@@ -29,5 +29,8 @@
     "utils/*.tsx",
     "pages/*.tsx"
   ],
-  "exclude": ["node_modules", "deprecated"]
+  "exclude": [
+    "node_modules",
+    "deprecated"
+  ]
 }
