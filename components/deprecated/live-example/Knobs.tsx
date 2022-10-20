@@ -8,7 +8,7 @@ import TextInput from '@leafygreen-ui/text-input';
 import TextArea from '@leafygreen-ui/text-area';
 import Toggle from '@leafygreen-ui/toggle';
 import { mq } from 'utils/mediaQuery';
-import { useBodyContainerRef } from '../LayoutContext';
+import { useBodyContainerRef } from '../../LayoutContext';
 import KnobRow from './KnobRow';
 
 const knobsWidth = 326; // totalWidth (700px) - padding on both sides (24px on each side) / 2

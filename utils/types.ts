@@ -1,5 +1,5 @@
 import { EntryFields } from 'contentful';
-import { CustomComponentDoc } from 'components/pages/documentation/TSDocPropTable';
+import { CustomComponentDoc } from './tsdoc.utils';
 
 export interface ContentPageFields {
   title: EntryFields.Text;
