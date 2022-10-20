@@ -44,7 +44,7 @@ const mainContentStyle = css`
 
 const liveExamplePageStyles = css`
   margin: ${spacing[4]}px 0px;
-  max-width: ${pageContainerWidth.dataGraphic}px;
+  max-width: 100%;
 `;
 const codeDocsPageStyles = liveExamplePageStyles;
 
@@ -166,6 +166,14 @@ function ComponentLayout({
             setSelected={setSelected}
             aria-label={`Information on LeafyGreen UI ${componentFields.name} component`}
             className={tabStyles}
+            inlineChildren={
+              !isMobile && (
+                <ComponentLinks
+                  componentFields={componentFields}
+                  className={cx([flexContainer, desktopLinksContainer])}
+                />
+              )
+            }
           >
             <Tab
               name="Live Example"
@@ -200,12 +208,6 @@ function ComponentLayout({
               <div className={codeDocsPageStyles}>{children}</div>
             </Tab>
           </Tabs>
-          {!isMobile && (
-            <ComponentLinks
-              componentFields={componentFields}
-              className={cx([flexContainer, desktopLinksContainer])}
-            />
-          )}
         </div>
       </div>
     </div>
