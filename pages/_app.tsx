@@ -1,16 +1,18 @@
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode, useEffect } from 'react';
+import { NextPage } from 'next';
+import Head from 'next/head';
 import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router'
 import { Global } from '@emotion/react';
 import { globalStyles } from 'styles/globals';
 import BaseLayout from 'layouts/BaseLayout';
-import { NextPage } from 'next';
-import Head from 'next/head';
 import { AppContextProvider } from 'contexts/AppContext';
 import {
   getComponents,
   getContentPageGroups,
 } from 'utils/getContentfulResources';
 import getFullPageTitle from 'utils/getFullPageTitle';
+import * as ga from 'utils/googleAnalytics';
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -29,6 +31,22 @@ function MyApp({
   contentPageGroups,
 }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? (page => page);
+  const router = useRouter()
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      ga.pageview(url)
+    }
+    //When the component is mounted, subscribe to router changes
+    //and log those page views
+    router.events.on('routeChangeComplete', handleRouteChange)
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
 
   return (
     <AppContextProvider
