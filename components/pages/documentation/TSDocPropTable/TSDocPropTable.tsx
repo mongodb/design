@@ -14,7 +14,7 @@ import {
   getTypeString,
   isRequired,
 } from 'utils/tsdoc.utils';
-import { PropTableTooltipContent } from './PropTableTooltipContent';
+import { PropTooltipContent } from '../../../PropTooltipContent';
 
 const propDefinitionTooltipStyle = css`
   min-width: min-content;
@@ -66,7 +66,7 @@ export const TSDocPropTable = ({
                   <Cell>
                     <InlineDefinition
                       tooltipClassName={propDefinitionTooltipStyle}
-                      definition={<PropTableTooltipContent propItem={datum} />}
+                      definition={<PropTooltipContent propItem={datum} />}
                     >
                       <InlineCode>{datum.name}</InlineCode>
                     </InlineDefinition>
