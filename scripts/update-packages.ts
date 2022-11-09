@@ -48,10 +48,10 @@ if (verbose) {
   updateCommands.forEach(cmd => console.log(chalk.bold(`\t${cmd}`)))
 }
 
-spawnSync('yarn', ['upgrade', ...updateCommands]);
+spawnSync('yarn', ['upgrade', ...updateCommands], { stdio: 'inherit' });
 
 if (commit) {
-  const gitAddCmd = spawnSync('git', ['add', '.']);
+  const gitAddCmd = spawnSync('git', ['add', '.'], { stdio: 'inherit' });
 
   if (gitAddCmd.error) {
     console.error(gitAddCmd.error);
@@ -65,7 +65,7 @@ if (commit) {
     'commit',
     '-m',
     `${'Updating released @leafygreen-ui package versions'}`,
-  ]);
+  ], { stdio: 'inherit' });
 
   if (gitCommitCmd.error) {
     console.error(gitCommitCmd.error);
