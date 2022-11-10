@@ -20,9 +20,9 @@ import { containerPadding } from 'styles/globals';
 
 const layout = css`
   ${mq({
-    // 51px is a magic number for baseline alignment with the first SideNavGroup header
-    marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
-  })}
+  // 51px is a magic number for baseline alignment with the first SideNavGroup header
+  marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
+})}
 `;
 
 const pageHeaderStyle = css`
@@ -77,12 +77,12 @@ const tabStyles = css`
     max-width: 100%;
     overflow-x: scroll;
     ${mq({
-      padding: ['0px 8px', '0px'],
-    })}
+  padding: ['0px 8px', '0px'],
+})}
   }
 `;
 
-const ComponentLinks = ({ componentFields, ...rest }) => (
+const ComponentLinks = ({ component, ...rest }) => (
   <div {...rest}>
     <IconButton
       aria-label="View in Github"
@@ -91,7 +91,7 @@ const ComponentLinks = ({ componentFields, ...rest }) => (
       rel="noopener noreferrer"
       style={{ marginRight: '8px' }}
       href={`https://github.com/mongodb/leafygreen-ui/tree/main/packages/${kebabCase(
-        componentFields.name,
+        component.name,
       )}`}
     >
       <GithubIcon />
@@ -99,7 +99,7 @@ const ComponentLinks = ({ componentFields, ...rest }) => (
     <IconButton
       aria-label="View in Figma"
       as="a"
-      href={componentFields.figmaUrl}
+      href={component.figmaUrl}
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -109,13 +109,13 @@ const ComponentLinks = ({ componentFields, ...rest }) => (
 );
 
 function ComponentLayout({
-  componentFields,
+  component,
   children,
 }: {
-  componentFields: ComponentFields;
+  component: ComponentFields;
   children: React.ReactNode;
 }) {
-  const pageTitle = getFullPageTitle(componentFields.name);
+  const pageTitle = getFullPageTitle(component.name);
 
   const router = useRouter();
   const viewport = useViewportSize();
@@ -135,27 +135,25 @@ function ComponentLayout({
     <div role="main" className={layout}>
       <Head>
         <title>{pageTitle}</title>
-
         <meta property="og:title" content={pageTitle} />
-
         {/* If the description field doesn't exist, it will default to a description of the site, defined in _document. */}
-        {componentFields.description && (
+        {component.description && (
           <meta
             property="og:description"
-            content={componentFields.description}
+            content={component.description}
           />
         )}
-        <meta name="keywords" content={componentFields.name} />
+        <meta name="keywords" content={component.name} />
       </Head>
 
       <div className={mainContentStyle}>
         <div className={cx([flexContainer, containerPadding])}>
           <H2 as="h1" className={pageHeaderStyle}>
-            {componentFields.name}
+            {component.name}
           </H2>
           {isMobile && (
             <ComponentLinks
-              componentFields={componentFields}
+              component={component}
               className={cx([flexContainer, mobileLinksContainer])}
             />
           )}
@@ -164,12 +162,12 @@ function ComponentLayout({
           <Tabs
             selected={selected}
             setSelected={setSelected}
-            aria-label={`Information on LeafyGreen UI ${componentFields.name} component`}
+            aria-label={`Information on LeafyGreen UI ${component.name} component`}
             className={tabStyles}
             inlineChildren={
               !isMobile && (
                 <ComponentLinks
-                  componentFields={componentFields}
+                  component={component}
                   className={cx([flexContainer, desktopLinksContainer])}
                 />
               )
@@ -179,7 +177,7 @@ function ComponentLayout({
               name="Live Example"
               onClick={() =>
                 router.push(
-                  `/component/${kebabCase(componentFields.name)}/example`,
+                  `/component/${kebabCase(component.name)}/example`,
                 )
               }
             >
@@ -189,7 +187,7 @@ function ComponentLayout({
               name="Design Guidelines"
               onClick={() =>
                 router.push(
-                  `/component/${kebabCase(componentFields.name)}/guidelines`,
+                  `/component/${kebabCase(component.name)}/guidelines`,
                 )
               }
             >
@@ -201,7 +199,7 @@ function ComponentLayout({
               name="Code Docs"
               onClick={() =>
                 router.push(
-                  `/component/${kebabCase(componentFields.name)}/documentation`,
+                  `/component/${kebabCase(component.name)}/documentation`,
                 )
               }
             >

@@ -5,6 +5,7 @@ import MobileNavigationGroup from './MobileNavigationGroup';
 import MobileNavigationItem from './MobileNavigationItem';
 import { useAppContext } from 'contexts/AppContext';
 import kebabCase from 'lodash/kebabCase';
+import { ComponentFields } from 'utils/types';
 
 const foundations: Array<String> = [
   'accessibility',
@@ -23,10 +24,15 @@ function NavigationContent({
   const activePage = router.asPath.split('/')[2];
   const activeTab = router.asPath.split('/')[3];
   const { components, contentPageGroups } = useAppContext();
+  console.log(components)
 
-  const renderGroup = () => {
-    if (isTouchDevice) {
-      return (
+  if (!components || !contentPageGroups) {
+    return <>Loading...</>;
+  }
+
+  return (
+    <>
+      {isTouchDevice ? (
         <>
           <MobileNavigationGroup header="Foundations">
             {foundations.map((foundationPageName: string) => (
@@ -59,60 +65,55 @@ function NavigationContent({
             })}
           </MobileNavigationGroup>
         </>
-      );
-    }
+      ) : (
+        <>
+          {contentPageGroups.map(contentPageGroup => (
+            <SideNavGroup
+              key={contentPageGroup.id}
+              header={contentPageGroup.title}
+              glyph={<Icon glyph={contentPageGroup.iconname} />}
+            >
+              {contentPageGroup.contentpages.map(contentPage => (
+                <SideNavItem
+                  key={contentPage.title}
+                  onClick={() =>
+                    router.push(
+                      `/${kebabCase(contentPageGroup.title)}/${kebabCase(
+                        contentPage.title,
+                      )}`,
+                    )
+                  }
+                  active={contentPage.title === activePage}
+                >
+                  {contentPage.title}
+                </SideNavItem>
+              ))}
+            </SideNavGroup>
+          ))}
+          <SideNavGroup header="Components" glyph={<Icon glyph="Apps" />}>
+            {components.map((component: ComponentFields) => {
+              const componentKebabCaseName = kebabCase(component.name);
 
-    return (
-      <>
-        {contentPageGroups.map(contentPageGroup => (
-          <SideNavGroup
-            key={contentPageGroup.id}
-            header={contentPageGroup.fields.title}
-            glyph={<Icon glyph={contentPageGroup.fields.iconName} />}
-          >
-            {contentPageGroup.fields.contentPages.map(contentPage => (
-              <SideNavItem
-                key={contentPage.fields.title}
-                onClick={() =>
-                  router.push(
-                    `/${kebabCase(contentPageGroup.fields.title)}/${kebabCase(
-                      contentPage.fields.title,
-                    )}`,
-                  )
-                }
-                active={contentPage.fields.title === activePage}
-              >
-                {contentPage.fields.title}
-              </SideNavItem>
-            ))}
+              return (
+                <SideNavItem
+                  key={componentKebabCaseName}
+                  onClick={() =>
+                    router.push(
+                      `/component/${componentKebabCaseName}/${activeTab ? activeTab : 'example'
+                      }`,
+                    )
+                  }
+                  active={componentKebabCaseName === activePage}
+                >
+                  {component.name}
+                </SideNavItem>
+              );
+            })}
           </SideNavGroup>
-        ))}
-        <SideNavGroup header="Components" glyph={<Icon glyph="Apps" />}>
-          {components.map((componentName: string) => {
-            const componentKebabCaseName = kebabCase(componentName);
-
-            return (
-              <SideNavItem
-                key={componentKebabCaseName}
-                onClick={() =>
-                  router.push(
-                    `/component/${componentKebabCaseName}/${
-                      activeTab ? activeTab : 'example'
-                    }`,
-                  )
-                }
-                active={componentKebabCaseName === activePage}
-              >
-                {componentName}
-              </SideNavItem>
-            );
-          })}
-        </SideNavGroup>
-      </>
-    );
-  };
-
-  return renderGroup();
+        </>
+      )}
+    </>
+  )
 }
 
 NavigationContent.displayName = 'NavigationContent';

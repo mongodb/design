@@ -9,8 +9,10 @@ import {
 } from 'utils/getStaticComponent';
 
 const ComponentGuidelines = ({ component }) => {
-  const guidelines = component.fields?.designGuidelines;
-  return !guidelines || guidelines.content.length == 0 ? (
+  const guidelines = component.designguidelines;
+  console.log(guidelines)
+  // return <></>
+  return !guidelines ? (
     <ComingSoon />
   ) : (
     <div className={containerPadding}>
@@ -21,7 +23,7 @@ const ComponentGuidelines = ({ component }) => {
 
 ComponentGuidelines.getLayout = function getLayout(page: ReactElement) {
   return (
-    <ComponentLayout componentFields={page.props.component.fields}>
+    <ComponentLayout component={page.props.component}>
       {page}
     </ComponentLayout>
   );

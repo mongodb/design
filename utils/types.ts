@@ -15,7 +15,7 @@ export interface ComponentFields {
   name: EntryFields.Text;
   description: EntryFields.Text;
   figmaUrl?: EntryFields.Text;
-  designGuidelines?: EntryFields.RichText;
+  designguidelines?: EntryFields.RichText;
 }
 
 export interface BaseLayoutProps {

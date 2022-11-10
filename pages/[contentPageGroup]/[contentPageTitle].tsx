@@ -1,22 +1,22 @@
 import ContentfulRichText from 'components/ContentfulRichText';
-import { Entry } from 'contentful';
 import ContentPageLayout from 'layouts/ContentPageLayout';
 import { ReactElement } from 'react';
 import {
   getContentPage,
   getContentPageGroups,
-} from 'utils/getContentfulResources';
+} from 'utils/getContentstackResources';
 import { ContentPageFields } from 'utils/types';
 import kebabCase from 'lodash/kebabCase';
 import startCase from 'lodash/startCase';
+import { Entry } from 'contentstack';
 
 const ContentPage = ({ contentPage }) => {
-  return <ContentfulRichText document={contentPage.fields?.content} />;
+  return <ContentfulRichText document={contentPage?.content} />;
 };
 
 ContentPage.getLayout = function getLayout(page: ReactElement) {
   return (
-    <ContentPageLayout contentPageTitle={page.props.contentPage.fields.title}>
+    <ContentPageLayout contentPageTitle={page.props.contentPage.title}>
       {page}
     </ContentPageLayout>
   );
@@ -28,12 +28,12 @@ export async function getStaticPaths() {
     params: { contentPageGroup: string; contentPageTitle: string };
   }> = [];
   contentPageGroups.forEach(pageGroup => {
-    pageGroup.fields.contentPages.forEach(
-      (contentPage: Entry<ContentPageFields>) => {
+    pageGroup.contentpages.forEach(
+      (contentPage: any) => {
         const newPath = {
           params: {
-            contentPageGroup: kebabCase(pageGroup.fields.title),
-            contentPageTitle: kebabCase(contentPage.fields.title),
+            contentPageGroup: kebabCase(pageGroup.title),
+            contentPageTitle: kebabCase(contentPage.title),
           },
         };
         paths.push(newPath);

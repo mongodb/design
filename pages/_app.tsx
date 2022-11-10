@@ -8,9 +8,8 @@ import { globalStyles } from 'styles/globals';
 import BaseLayout from 'layouts/BaseLayout';
 import { AppContextProvider } from 'contexts/AppContext';
 import {
-  getComponents,
-  getContentPageGroups,
-} from 'utils/getContentfulResources';
+  getComponents, getContentPageGroups
+} from 'utils/getContentstackResources';
 import getFullPageTitle from 'utils/getFullPageTitle';
 import * as ga from 'utils/googleAnalytics';
 
@@ -64,22 +63,8 @@ function MyApp({
 }
 
 MyApp.getInitialProps = async () => {
-  // TODO: make these graphQL requests
-
-  const components = (await getComponents()).map(
-    ({ fields: { name } }) => name,
-  );
-
-  const contentPageGroups = (await getContentPageGroups()).map(group => ({
-    fields: {
-      ...group.fields,
-      contentPages: group.fields.contentPages.map(page => ({
-        fields: {
-          title: page.fields.title,
-        },
-      })),
-    },
-  }));
+  const components = await getComponents()
+  const contentPageGroups = await getContentPageGroups()
   return { components, contentPageGroups };
 };
 

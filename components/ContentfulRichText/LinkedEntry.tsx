@@ -1,6 +1,6 @@
 import { Entry } from 'contentful';
 import { useEffect, useState } from 'react';
-import { getEntryById } from 'utils/getContentfulResources';
+import { getEntryById } from 'utils/getContentstackResources';
 import EmbeddedEntry from './EmbeddedEntry';
 
 const LinkedEntry = ({ sysId }) => {

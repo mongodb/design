@@ -1,13 +1,14 @@
 import kebabCase from 'lodash/kebabCase';
-import { getComponent, getComponents } from './getContentfulResources';
+import { getComponent, getComponents } from './getContentstackResources';
 
 export async function getStaticComponentPaths() {
   const components = await getComponents();
+  console.log(components)
 
   const paths = components.map(component => ({
     params: {
-      id: component.sys.id,
-      componentName: kebabCase(component.fields.name),
+      id: component.id,
+      componentName: kebabCase(component.name),
     },
   }));
 
