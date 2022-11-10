@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import { spawnSync } from 'child_process';
+import { Command } from 'commander';
 import chalk from 'chalk';
+import PkgJson from '../package.json';
 
 interface ComponentUpdateObject {
   name: string;
@@ -18,25 +20,38 @@ function exists(arg?: string | Array<any>) {
   return arg !== undefined && arg.length > 0;
 }
 
-try {
-  const updatesArray = process.argv[2] ? JSON.parse(process.argv[2]) : [];
+const cli = new Command('upgrade-packages')
+  .arguments('[updatesArray]')
+  .option('-c, --commit', 'commit upgrades to git', false)
+  .option('-v, --verbose', 'List all package updates', false)
+  .parse(process.argv);
 
-  if (exists(updatesArray) && isValidUpdatesArray(updatesArray)) {
-    updatesArray.forEach(({ name, version }: ComponentUpdateObject) => {
-      const { stdout, error } = spawnSync('yarn', [
-        'upgrade',
-        `${name}@^${version}`,
-      ]);
+const { commit, verbose } = cli.opts();
 
-      if (error) {
-        console.error(error);
-      } else if (stdout) {
-        console.log(chalk.green.bold(`\n✅ Upgraded ${name} to ${version}.`));
-      }
-    });
-  }
+const updatesArray = cli.args[0] ? JSON.parse(cli.args[0]) : [];
+let updateCommands: Array<string>;
 
-  const gitAddCmd = spawnSync('git', ['add', '.']);
+if (exists(updatesArray) && isValidUpdatesArray(updatesArray)) {
+  updateCommands = updatesArray.map(
+    ({ name, version }: ComponentUpdateObject) => `${name}@^${version}`,
+  );
+  console.log(chalk.green(`Upgrading ${updateCommands.length} packages`))
+} else {
+  const allLGPkgs = Object.keys(PkgJson.dependencies).filter(pkg =>
+    pkg.startsWith('@leafygreen-ui'),
+  );
+  updateCommands = allLGPkgs.map(pkg => `${pkg}@latest`);
+  console.log(chalk.green('Upgrading all packages'))
+}
+
+if (verbose) {
+  updateCommands.forEach(cmd => console.log(chalk.bold(`\t${cmd}`)))
+}
+
+spawnSync('yarn', ['upgrade', ...updateCommands], { stdio: 'inherit' });
+
+if (commit) {
+  const gitAddCmd = spawnSync('git', ['add', '.'], { stdio: 'inherit' });
 
   if (gitAddCmd.error) {
     console.error(gitAddCmd.error);
@@ -50,7 +65,7 @@ try {
     'commit',
     '-m',
     `${'Updating released @leafygreen-ui package versions'}`,
-  ]);
+  ], { stdio: 'inherit' });
 
   if (gitCommitCmd.error) {
     console.error(gitCommitCmd.error);
@@ -59,8 +74,4 @@ try {
       chalk.green.bold('\n✅ Committed updated package versions to git.'),
     );
   }
-} catch (error) {
-  console.error(error);
 }
-
-export {};
