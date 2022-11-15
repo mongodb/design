@@ -1,5 +1,6 @@
 import ComingSoon from 'components/ComingSoon';
-import ContentfulRichText from 'components/ContentfulRichText';
+import ContentstackRichText from 'components/ContentstackRichText';
+// import ContentfulRichText from 'components/ContentfulRichText';
 import ComponentLayout from 'layouts/ComponentLayout';
 import { ReactElement } from 'react';
 import { containerPadding } from 'styles/globals';
@@ -10,22 +11,18 @@ import {
 
 const ComponentGuidelines = ({ component }) => {
   const guidelines = component.designguidelines;
-  console.log(guidelines)
-  // return <></>
   return !guidelines ? (
     <ComingSoon />
   ) : (
     <div className={containerPadding}>
-      <ContentfulRichText document={guidelines} />
+      {<ContentstackRichText content={guidelines} />}
     </div>
   );
 };
 
 ComponentGuidelines.getLayout = function getLayout(page: ReactElement) {
   return (
-    <ComponentLayout component={page.props.component}>
-      {page}
-    </ComponentLayout>
+    <ComponentLayout component={page.props.component}>{page}</ComponentLayout>
   );
 };
 

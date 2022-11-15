@@ -17,11 +17,8 @@ const ComponentExample = ({
 };
 
 ComponentExample.getLayout = function getLayout(page: ReactElement) {
-  console.log(page.props.component)
   return (
-    <ComponentLayout component={page.props.component}>
-      {page}
-    </ComponentLayout>
+    <ComponentLayout component={page.props.component}>{page}</ComponentLayout>
   );
 };
 

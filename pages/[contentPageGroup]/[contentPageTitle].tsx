@@ -1,17 +1,15 @@
-import ContentfulRichText from 'components/ContentfulRichText';
 import ContentPageLayout from 'layouts/ContentPageLayout';
 import { ReactElement } from 'react';
 import {
   getContentPage,
   getContentPageGroups,
 } from 'utils/getContentstackResources';
-import { ContentPageFields } from 'utils/types';
 import kebabCase from 'lodash/kebabCase';
 import startCase from 'lodash/startCase';
-import { Entry } from 'contentstack';
+import ContentstackRichText from 'components/ContentstackRichText';
 
 const ContentPage = ({ contentPage }) => {
-  return <ContentfulRichText document={contentPage?.content} />;
+  return <ContentstackRichText content={contentPage?.content} />;
 };
 
 ContentPage.getLayout = function getLayout(page: ReactElement) {
@@ -28,17 +26,15 @@ export async function getStaticPaths() {
     params: { contentPageGroup: string; contentPageTitle: string };
   }> = [];
   contentPageGroups.forEach(pageGroup => {
-    pageGroup.contentpages.forEach(
-      (contentPage: any) => {
-        const newPath = {
-          params: {
-            contentPageGroup: kebabCase(pageGroup.title),
-            contentPageTitle: kebabCase(contentPage.title),
-          },
-        };
-        paths.push(newPath);
-      },
-    );
+    pageGroup.content_pages.forEach((contentPage: any) => {
+      const newPath = {
+        params: {
+          contentPageGroup: kebabCase(pageGroup.title),
+          contentPageTitle: kebabCase(contentPage.title),
+        },
+      };
+      paths.push(newPath);
+    });
   });
   return { paths, fallback: false };
 }

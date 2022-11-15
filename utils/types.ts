@@ -12,7 +12,7 @@ export interface ContentPageGroupFields {
   contentPages: any; // todo: replace with correct reference type
 }
 export interface ComponentFields {
-  name: EntryFields.Text;
+  title: EntryFields.Text;
   description: EntryFields.Text;
   figmaUrl?: EntryFields.Text;
   designguidelines?: EntryFields.RichText;

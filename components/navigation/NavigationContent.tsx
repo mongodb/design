@@ -24,7 +24,6 @@ function NavigationContent({
   const activePage = router.asPath.split('/')[2];
   const activeTab = router.asPath.split('/')[3];
   const { components, contentPageGroups } = useAppContext();
-  console.log(components)
 
   if (!components || !contentPageGroups) {
     return <>Loading...</>;
@@ -73,47 +72,51 @@ function NavigationContent({
               header={contentPageGroup.title}
               glyph={<Icon glyph={contentPageGroup.iconname} />}
             >
-              {contentPageGroup.contentpages.map(contentPage => (
-                <SideNavItem
-                  key={contentPage.title}
-                  onClick={() =>
-                    router.push(
-                      `/${kebabCase(contentPageGroup.title)}/${kebabCase(
-                        contentPage.title,
-                      )}`,
-                    )
-                  }
-                  active={contentPage.title === activePage}
-                >
-                  {contentPage.title}
-                </SideNavItem>
-              ))}
+              {contentPageGroup.content_pages &&
+                contentPageGroup.content_pages.map(contentPage => (
+                  <SideNavItem
+                    key={contentPage.title}
+                    onClick={() =>
+                      router.push(
+                        `/${kebabCase(contentPageGroup.title)}/${kebabCase(
+                          contentPage.title,
+                        )}`,
+                      )
+                    }
+                    active={contentPage.title === activePage}
+                  >
+                    {contentPage.title}
+                  </SideNavItem>
+                ))}
             </SideNavGroup>
           ))}
           <SideNavGroup header="Components" glyph={<Icon glyph="Apps" />}>
-            {components.map((component: ComponentFields) => {
-              const componentKebabCaseName = kebabCase(component.name);
+            {components
+              .sort((a, b) => a.title.localeCompare(b.title))
+              .map((component: ComponentFields) => {
+                const componentKebabCaseName = kebabCase(component.title);
 
-              return (
-                <SideNavItem
-                  key={componentKebabCaseName}
-                  onClick={() =>
-                    router.push(
-                      `/component/${componentKebabCaseName}/${activeTab ? activeTab : 'example'
-                      }`,
-                    )
-                  }
-                  active={componentKebabCaseName === activePage}
-                >
-                  {component.name}
-                </SideNavItem>
-              );
-            })}
+                return (
+                  <SideNavItem
+                    key={componentKebabCaseName}
+                    onClick={() =>
+                      router.push(
+                        `/component/${componentKebabCaseName}/${
+                          activeTab ? activeTab : 'example'
+                        }`,
+                      )
+                    }
+                    active={componentKebabCaseName === activePage}
+                  >
+                    {component.title}
+                  </SideNavItem>
+                );
+              })}
           </SideNavGroup>
         </>
       )}
     </>
-  )
+  );
 }
 
 NavigationContent.displayName = 'NavigationContent';

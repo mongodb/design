@@ -47,9 +47,7 @@ const ComponentDocumentation = ({
 
 ComponentDocumentation.getLayout = function getLayout(page: ReactElement) {
   return (
-    <ComponentLayout component={page.props.component}>
-      {page}
-    </ComponentLayout>
+    <ComponentLayout component={page.props.component}>{page}</ComponentLayout>
   );
 };
 
@@ -60,8 +58,8 @@ export async function getStaticProps({ params: { componentName } }) {
     props: { changelog, readme, tsDoc },
   } = await getDependencyDocumentation(componentName);
 
-  const component = await getComponent(componentName,);
-  return { props: { componentName, component, changelog, readme, tsDoc } }
+  const component = await getComponent(componentName);
+  return { props: { componentName, component, changelog, readme, tsDoc } };
 }
 
 export default ComponentDocumentation;

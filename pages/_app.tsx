@@ -2,13 +2,14 @@ import { ReactElement, ReactNode, useEffect } from 'react';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import { Global } from '@emotion/react';
 import { globalStyles } from 'styles/globals';
 import BaseLayout from 'layouts/BaseLayout';
 import { AppContextProvider } from 'contexts/AppContext';
 import {
-  getComponents, getContentPageGroups
+  getComponents,
+  getContentPageGroups,
 } from 'utils/getContentstackResources';
 import getFullPageTitle from 'utils/getFullPageTitle';
 import * as ga from 'utils/googleAnalytics';
@@ -30,22 +31,22 @@ function MyApp({
   contentPageGroups,
 }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? (page => page);
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
-    const handleRouteChange = (url) => {
-      ga.pageview(url)
-    }
+    const handleRouteChange = url => {
+      ga.pageview(url);
+    };
     //When the component is mounted, subscribe to router changes
     //and log those page views
-    router.events.on('routeChangeComplete', handleRouteChange)
+    router.events.on('routeChangeComplete', handleRouteChange);
 
     // If the component is unmounted, unsubscribe
     // from the event with the `off` method
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
 
   return (
     <AppContextProvider
@@ -63,8 +64,8 @@ function MyApp({
 }
 
 MyApp.getInitialProps = async () => {
-  const components = await getComponents()
-  const contentPageGroups = await getContentPageGroups()
+  const components = await getComponents();
+  const contentPageGroups = await getContentPageGroups();
   return { components, contentPageGroups };
 };
 

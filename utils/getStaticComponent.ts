@@ -3,12 +3,11 @@ import { getComponent, getComponents } from './getContentstackResources';
 
 export async function getStaticComponentPaths() {
   const components = await getComponents();
-  console.log(components)
 
   const paths = components.map(component => ({
     params: {
       id: component.id,
-      componentName: kebabCase(component.name),
+      componentName: kebabCase(component.title),
     },
   }));
 

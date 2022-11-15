@@ -91,7 +91,7 @@ const ComponentLinks = ({ component, ...rest }) => (
       rel="noopener noreferrer"
       style={{ marginRight: '8px' }}
       href={`https://github.com/mongodb/leafygreen-ui/tree/main/packages/${kebabCase(
-        component.name,
+        component.title,
       )}`}
     >
       <GithubIcon />
@@ -115,7 +115,7 @@ function ComponentLayout({
   component: ComponentFields;
   children: React.ReactNode;
 }) {
-  const pageTitle = getFullPageTitle(component.name);
+  const pageTitle = getFullPageTitle(component.title);
 
   const router = useRouter();
   const viewport = useViewportSize();
@@ -138,18 +138,15 @@ function ComponentLayout({
         <meta property="og:title" content={pageTitle} />
         {/* If the description field doesn't exist, it will default to a description of the site, defined in _document. */}
         {component.description && (
-          <meta
-            property="og:description"
-            content={component.description}
-          />
+          <meta property="og:description" content={component.description} />
         )}
-        <meta name="keywords" content={component.name} />
+        <meta name="keywords" content={component.title} />
       </Head>
 
       <div className={mainContentStyle}>
         <div className={cx([flexContainer, containerPadding])}>
           <H2 as="h1" className={pageHeaderStyle}>
-            {component.name}
+            {component.title}
           </H2>
           {isMobile && (
             <ComponentLinks
@@ -162,7 +159,7 @@ function ComponentLayout({
           <Tabs
             selected={selected}
             setSelected={setSelected}
-            aria-label={`Information on LeafyGreen UI ${component.name} component`}
+            aria-label={`Information on LeafyGreen UI ${component.title} component`}
             className={tabStyles}
             inlineChildren={
               !isMobile && (
@@ -176,9 +173,7 @@ function ComponentLayout({
             <Tab
               name="Live Example"
               onClick={() =>
-                router.push(
-                  `/component/${kebabCase(component.name)}/example`,
-                )
+                router.push(`/component/${kebabCase(component.title)}/example`)
               }
             >
               <div className={liveExamplePageStyles}>{children}</div>
@@ -187,7 +182,7 @@ function ComponentLayout({
               name="Design Guidelines"
               onClick={() =>
                 router.push(
-                  `/component/${kebabCase(component.name)}/guidelines`,
+                  `/component/${kebabCase(component.title)}/guidelines`,
                 )
               }
             >
@@ -199,7 +194,7 @@ function ComponentLayout({
               name="Code Docs"
               onClick={() =>
                 router.push(
-                  `/component/${kebabCase(component.name)}/documentation`,
+                  `/component/${kebabCase(component.title)}/documentation`,
                 )
               }
             >
