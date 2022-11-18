@@ -7,6 +7,7 @@ import HorizontalLayoutColumn from './HorizontalLayoutColumn';
 import { useEffect, useState } from 'react';
 import { getEntryById } from 'utils/getContentstackResources';
 import ContentstackRichText from '.';
+import { css } from '@emotion/react';
 
 const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
   const [entry, setEntry] = useState<any>();
@@ -23,7 +24,7 @@ const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
   switch (contentTypeUid) {
     case 'button_block':
       return (
-        <Button variant={entry.variant} href={entry.link}>
+        <Button variant={entry.variant} href={entry.link} css={css`margin: 0; // remove default Safari margin`}>
           {entry.content}
         </Button>
       );

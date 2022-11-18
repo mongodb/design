@@ -3,7 +3,7 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'tsx', 'ts'],
   trailingSlash: true,
   images: {
-    domains: ['images.ctfassets.net'],
+    domains: ['images.contentstack.io'],
   },
   webpack: (config, options) => {
     // Since Next.js 8.1.0, config.externals is undefined
@@ -20,7 +20,7 @@ const nextConfig = {
               const resolved = await resolve(options.context, options.request);
               if (modulesPaths.some(mod => resolved.startsWith(mod))) return;
               // eslint-disable-next-line no-empty
-            } catch (e) {}
+            } catch (e) { }
           }
 
           return externalResult;

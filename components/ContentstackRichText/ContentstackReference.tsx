@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import ContentstackEntry from './ContentstackEntry';
 
 const ContentstackReference = ({ content }) => {
@@ -5,11 +6,14 @@ const ContentstackReference = ({ content }) => {
 
   if (attrs.type === 'asset') {
     return (
-      <img
-        src={attrs['asset-link']}
-        width={attrs['width']}
-        height={attrs['height']}
-      />
+      <div>
+        <Image
+          src={attrs['asset-link']}
+          layout="responsive"
+          width={attrs['width']}
+          height={attrs['height']}
+        />
+      </div>
     );
   } else if (attrs.type === 'entry') {
     return (

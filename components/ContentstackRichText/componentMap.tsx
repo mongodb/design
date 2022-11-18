@@ -7,6 +7,7 @@ import {
   Overline,
   Link,
 } from '@leafygreen-ui/typography';
+import { css } from '@emotion/react';
 import ContentstackChildren from './ContentstackChildren';
 import ContentstackReference from './ContentstackReference';
 import HeaderContent from './HeaderContent';
@@ -14,20 +15,14 @@ import { BLOCKS } from './types';
 
 const componentMap = {
   [BLOCKS.DOCUMENT]: node => (
-    <ContentstackChildren nodeChildren={node.children} />
+    <div css={css`> *:not(:first-child) {
+      margin-top: 40px;
+    }`}>
+      <ContentstackChildren nodeChildren={node.children} />
+    </div>
   ),
   [BLOCKS.FRAGMENT]: node => (
     <ContentstackChildren nodeChildren={node.children} />
-  ),
-  [BLOCKS.PARAGRAPH]: node => (
-    <Body {...node.attrs}>
-      <ContentstackChildren nodeChildren={node.children} />
-    </Body>
-  ),
-  [BLOCKS.ANCHOR]: node => (
-    <Link {...node.attrs}>
-      <ContentstackChildren nodeChildren={node.children} />
-    </Link>
   ),
   [BLOCKS.HEADING_1]: node => (
     <H1>
@@ -51,7 +46,7 @@ const componentMap = {
     </H3>
   ),
   [BLOCKS.HEADING_4]: node => (
-    <Subtitle>
+    <Subtitle css={css`margin-top: 8px;`}>
       <HeaderContent>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
@@ -62,7 +57,18 @@ const componentMap = {
       <ContentstackChildren nodeChildren={node.children} />
     </Overline>
   ),
-  [BLOCKS.REFERENCE]: node => <ContentstackReference content={node} />,
+  [BLOCKS.PARAGRAPH]: node => (
+    <Body {...node.attrs} css={css`& {
+      margin-top: 16px;
+    }`}>
+      <ContentstackChildren nodeChildren={node.children} />
+    </Body>
+  ),
+  [BLOCKS.ANCHOR]: node => (
+    <Link {...node.attrs} css={css`line-height: 28px;`}>
+      <ContentstackChildren nodeChildren={node.children} />
+    </Link>
+  ),
   [BLOCKS.OL_LIST]: node => (
     <ol {...node.attrs}>
       <ContentstackChildren nodeChildren={node.children} />
@@ -74,7 +80,12 @@ const componentMap = {
     </ul>
   ),
   [BLOCKS.LIST_ITEM]: node => (
-    <li {...node.attrs}>
+    <li {...node.attrs} css={css`
+      margin: 24px 0;
+      & > * {
+        margin: 0;
+      }
+    `}>
       <ContentstackChildren nodeChildren={node.children} />
     </li>
   ),
@@ -83,6 +94,7 @@ const componentMap = {
       <ContentstackChildren nodeChildren={node.children} />
     </span>
   ),
+  [BLOCKS.REFERENCE]: node => <ContentstackReference content={node} />,
 };
 
 export default componentMap;
