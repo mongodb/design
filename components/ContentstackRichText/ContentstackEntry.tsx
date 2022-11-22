@@ -37,22 +37,35 @@ const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
 
     case 'callout_block':
       return (
-        <Callout variant={Variant[entry.variant]}>
-          <ContentstackRichText content={entry.content} />
+        <Callout variant={Variant[entry.variant]} className="nested-entry">
+          <ContentstackRichText
+            content={entry.content}
+            options={{ isNested: true }}
+          />
         </Callout>
       );
 
     case 'card_block':
       return (
-        <Card>
-          <ContentstackRichText content={entry.content} />
+        <Card className="nested-entry">
+          <ContentstackRichText
+            content={entry.content}
+            options={{ isNested: true }}
+          />
         </Card>
       );
 
     case 'expandable_card_block':
       return (
-        <ExpandableCard title={entry.title} description={entry.description}>
-          <ContentstackRichText content={entry.content} />
+        <ExpandableCard
+          title={entry.title}
+          description={entry.description}
+          className="nested-entry"
+        >
+          <ContentstackRichText
+            content={entry.content}
+            options={{ isNested: true }}
+          />
         </ExpandableCard>
       );
     case 'horizontal_layout':

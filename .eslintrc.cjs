@@ -28,11 +28,10 @@ module.exports = {
     },
   },
   rules: {
-    // '@emotion/jsx-import': 'error',
     '@emotion/pkg-renaming': 'error',
     'jest/no-conditional-expect': 'off',
     'jest/valid-title': 'off',
-    // 'react/jsx-key': 1,
+    'react/jsx-key': 1,
     // can't detect titles that are string variables
     'react/jsx-filename-extension': [
       'error',
