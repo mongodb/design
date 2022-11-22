@@ -1,6 +1,5 @@
 import ComingSoon from 'components/ComingSoon';
 import ContentstackRichText from 'components/ContentstackRichText';
-// import ContentfulRichText from 'components/ContentfulRichText';
 import ComponentLayout from 'layouts/ComponentLayout';
 import { ReactElement } from 'react';
 import { containerPadding } from 'styles/globals';
@@ -8,10 +7,11 @@ import {
   getStaticComponentPaths,
   getStaticComponentProps,
 } from 'utils/getStaticComponent';
+import isEmptyRichText from 'utils/isEmptyRichText';
 
 const ComponentGuidelines = ({ component }) => {
   const guidelines = component.designguidelines;
-  return !guidelines ? (
+  return !guidelines || isEmptyRichText(guidelines) ? (
     <ComingSoon />
   ) : (
     <div className={containerPadding}>
