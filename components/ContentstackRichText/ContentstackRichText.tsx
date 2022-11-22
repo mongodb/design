@@ -1,4 +1,5 @@
 import componentMap from './componentMap';
+import ContentstackText from './ContentstackText';
 
 const ContentstackRichText = ({
   content,
@@ -8,7 +9,7 @@ const ContentstackRichText = ({
   options?: any;
 }) => {
   if ('text' in content) {
-    return content.text;
+    return <ContentstackText node={content} />;
   } else {
     return content.type && componentMap[content.type] ? (
       componentMap[content.type](content, options)

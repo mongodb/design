@@ -18,13 +18,14 @@ export enum BLOCKS {
   LIST_ITEM = 'li',
   ENTRY = 'entry',
   SPAN = 'span',
-
   HR = 'hr',
   QUOTE = 'blockquote',
   EMBEDDED_ENTRY = 'embedded-entry-block',
   EMBEDDED_ASSET = 'embedded-asset-block',
   TABLE = 'table',
-  TABLE_ROW = 'table-row',
-  TABLE_CELL = 'table-cell',
-  TABLE_HEADER_CELL = 'table-header-cell',
+  TABLE_HEAD = 'thead',
+  TABLE_BODY = 'tbody',
+  TABLE_ROW = 'tr',
+  TABLE_CELL = 'td',
+  TABLE_HEADER_CELL = 'th',
 }

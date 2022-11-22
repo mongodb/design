@@ -1,5 +1,6 @@
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import Callout, { Variant } from '@leafygreen-ui/callout';
+import Badge from '@leafygreen-ui/badge';
 import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
 import HorizontalLayout from './HorizontalLayout';
@@ -22,6 +23,18 @@ const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
   }
 
   switch (contentTypeUid) {
+    case 'badge_block':
+      return (
+        <Badge
+          variant={entry.variant}
+          css={css`
+            margin: 0; // remove default Safari margin
+          `}
+        >
+          {entry.title}
+        </Badge>
+      );
+
     case 'button_block':
       return (
         <Button

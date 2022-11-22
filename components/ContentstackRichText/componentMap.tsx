@@ -7,11 +7,13 @@ import {
   Overline,
   Link,
 } from '@leafygreen-ui/typography';
+import Card from '@leafygreen-ui/card';
 import { css } from '@emotion/react';
 import ContentstackChildren from './ContentstackChildren';
 import ContentstackReference from './ContentstackReference';
 import HeaderContent from './HeaderContent';
 import { BLOCKS } from './types';
+import { palette } from '@leafygreen-ui/palette';
 
 const componentMap = {
   [BLOCKS.DOCUMENT]: (node, options) => {
@@ -119,6 +121,92 @@ const componentMap = {
     <span {...node.attrs}>
       <ContentstackChildren nodeChildren={node.children} />
     </span>
+  ),
+  [BLOCKS.TABLE]: node => {
+    const colWidths = node.attrs.colWidths ? node.attrs.colWidths : [];
+    return (
+      <Card
+        css={css`
+          padding: 16px 0;
+        `}
+      >
+        <table
+          css={css`
+            border-spacing: 0;
+            ${colWidths.map(
+              (colWidth: number, index: number) => `
+            td:nth-of-type(${index + 1}),
+            th:nth-of-type(${index + 1}) {
+              width: ${colWidth}px;
+            }
+          `,
+            )}
+          `}
+        >
+          <ContentstackChildren nodeChildren={node.children} />
+        </table>
+      </Card>
+    );
+  },
+  [BLOCKS.TABLE_HEAD]: node => (
+    <thead
+      css={css`
+        border-bottom: 3px solid ${palette.gray.light1};
+        margin-top: 16px;
+      `}
+    >
+      <ContentstackChildren nodeChildren={node.children} />
+    </thead>
+  ),
+  [BLOCKS.TABLE_BODY]: node => (
+    <tbody>
+      <ContentstackChildren nodeChildren={node.children} />
+    </tbody>
+  ),
+  [BLOCKS.TABLE_ROW]: node => (
+    <tr
+      css={css`
+        > td:first-child,
+        > th:first-child {
+          padding-left: 32px;
+        }
+
+        > td:last-child,
+        > th:last-child {
+          padding-right: 32px;
+        }
+      `}
+    >
+      <ContentstackChildren nodeChildren={node.children} />
+    </tr>
+  ),
+  [BLOCKS.TABLE_HEADER_CELL]: node => (
+    <th
+      css={css`
+        > * {
+          font-weight: 700;
+          margin: 0;
+        }
+        text-align: left;
+        // min-width: 140px;
+        padding: 8px;
+        vertical-align: middle;
+        border-bottom: 3px solid ${palette.gray.light2};
+      `}
+    >
+      <ContentstackChildren nodeChildren={node.children} />
+    </th>
+  ),
+  [BLOCKS.TABLE_CELL]: node => (
+    <td
+      css={css`
+        vertical-align: middle;
+        padding: 4px;
+        padding-bottom: 16px;
+      `}
+    >
+      <ContentstackChildren nodeChildren={node.children} />
+    </td>
   ),
   [BLOCKS.REFERENCE]: node => <ContentstackReference content={node} />,
 };
