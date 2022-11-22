@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/react';
 import {
   Body,
   H1,
@@ -15,9 +17,13 @@ import { BLOCKS } from './types';
 
 const componentMap = {
   [BLOCKS.DOCUMENT]: node => (
-    <div css={css`> *:not(:first-child) {
-      margin-top: 40px;
-    }`}>
+    <div
+      css={css`
+        > *:not(:first-child) {
+          margin-top: 40px;
+        }
+      `}
+    >
       <ContentstackChildren nodeChildren={node.children} />
     </div>
   ),
@@ -26,28 +32,32 @@ const componentMap = {
   ),
   [BLOCKS.HEADING_1]: node => (
     <H1>
-      <HeaderContent>
+      <HeaderContent headerId={node.children[0].text ?? node.uid}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H1>
   ),
   [BLOCKS.HEADING_2]: node => (
     <H2>
-      <HeaderContent>
+      <HeaderContent headerId={node.children[0].text ?? node.uid}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H2>
   ),
   [BLOCKS.HEADING_3]: node => (
     <H3>
-      <HeaderContent>
+      <HeaderContent headerId={node.children[0].text ?? node.uid}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H3>
   ),
   [BLOCKS.HEADING_4]: node => (
-    <Subtitle css={css`margin-top: 8px;`}>
-      <HeaderContent>
+    <Subtitle
+      css={css`
+        margin-top: 8px;
+      `}
+    >
+      <HeaderContent headerId={node.children[0].text ?? node.uid}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </Subtitle>
@@ -58,14 +68,24 @@ const componentMap = {
     </Overline>
   ),
   [BLOCKS.PARAGRAPH]: node => (
-    <Body {...node.attrs} css={css`& {
-      margin-top: 16px;
-    }`}>
+    <Body
+      {...node.attrs}
+      css={css`
+        & {
+          margin-top: 16px;
+        }
+      `}
+    >
       <ContentstackChildren nodeChildren={node.children} />
     </Body>
   ),
   [BLOCKS.ANCHOR]: node => (
-    <Link {...node.attrs} css={css`line-height: 28px;`}>
+    <Link
+      {...node.attrs}
+      css={css`
+        line-height: 28px;
+      `}
+    >
       <ContentstackChildren nodeChildren={node.children} />
     </Link>
   ),
@@ -80,12 +100,15 @@ const componentMap = {
     </ul>
   ),
   [BLOCKS.LIST_ITEM]: node => (
-    <li {...node.attrs} css={css`
-      margin: 24px 0;
-      & > * {
-        margin: 0;
-      }
-    `}>
+    <li
+      {...node.attrs}
+      css={css`
+        margin: 24px 0;
+        & > * {
+          margin: 0;
+        }
+      `}
+    >
       <ContentstackChildren nodeChildren={node.children} />
     </li>
   ),

@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/react';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import Callout, { Variant } from '@leafygreen-ui/callout';
 import Button from '@leafygreen-ui/button';
@@ -24,35 +26,43 @@ const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
   switch (contentTypeUid) {
     case 'button_block':
       return (
-        <Button variant={entry.variant} href={entry.link} css={css`margin: 0; // remove default Safari margin`}>
+        <Button
+          variant={entry.variant}
+          href={entry.link}
+          css={css`
+            margin: 0; // remove default Safari margin
+          `}
+        >
           {entry.content}
         </Button>
       );
+
     case 'callout_block':
       return (
         <Callout variant={Variant[entry.variant]}>
           <ContentstackRichText content={entry.content} />
         </Callout>
       );
+
     case 'card_block':
       return (
         <Card>
           <ContentstackRichText content={entry.content} />
         </Card>
       );
+
     case 'expandable_card_block':
       return (
         <ExpandableCard title={entry.title} description={entry.description}>
           <ContentstackRichText content={entry.content} />
         </ExpandableCard>
       );
-    case 'horizontal_layout': {
+    case 'horizontal_layout':
       return <HorizontalLayout columns={entry.columns} />;
-    }
 
-    case 'horizontal_layout_column': {
+    case 'horizontal_layout_column':
       return <HorizontalLayoutColumn {...entry} />;
-    }
+
     default:
       return <>Unknown reference entry: {contentTypeUid}.</>;
   }

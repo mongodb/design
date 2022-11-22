@@ -20,7 +20,7 @@ const nextConfig = {
               const resolved = await resolve(options.context, options.request);
               if (modulesPaths.some(mod => resolved.startsWith(mod))) return;
               // eslint-disable-next-line no-empty
-            } catch (e) { }
+            } catch (e) {}
           }
 
           return externalResult;

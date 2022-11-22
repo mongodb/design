@@ -45,16 +45,16 @@ const StyledIcon = styled(Icon)`
   opacity: 0; // overridden on LinkContent hover
 `;
 
-const HeaderContent = ({ children }: PropsWithChildren<{}>) => {
-  const headerId = kebabCase(children?.toString());
-  return (
-    <Link href={`#${headerId}`} passHref>
-      <StyledAnchor id={headerId}>
-        <LinkContent>{children}</LinkContent>
-        <StyledIcon glyph="Link" fill={palette.gray.light1} />
-      </StyledAnchor>
-    </Link>
-  );
-};
+const HeaderContent = ({
+  children,
+  headerId,
+}: PropsWithChildren<{ headerId: string }>) => (
+  <Link href={`#${headerId}`} passHref>
+    <StyledAnchor id={headerId}>
+      <LinkContent>{children}</LinkContent>
+      <StyledIcon glyph="Link" fill={palette.gray.light1} />
+    </StyledAnchor>
+  </Link>
+);
 
 export default HeaderContent;

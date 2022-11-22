@@ -77,7 +77,7 @@ function News({ updates }: { updates: Array<UpdateProps> }) {
   return (
     <div className={newsContainer}>
       <H2 as="h1">What&rsquo;s New</H2>
-      {updates.map(update => (
+      {updates.slice(0, 3).map(update => (
         <Update
           key={update.story}
           date={update.date}
