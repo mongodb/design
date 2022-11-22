@@ -4,12 +4,12 @@ import { useState } from 'react';
 
 const ContentstackImage = ({ content }) => {
   const attrs = content.attrs;
-  const [width, setWidth] = useState<number>(attrs['width']);
-  const [height, setHeight] = useState<number>(attrs['height']);
+  const [width, setWidth] = useState<number>(attrs['width'] ?? 700);
+  const [height, setHeight] = useState<number>(attrs['height'] ?? 300);
 
   const handleLoadingComplete = img => {
-    setWidth(img.naturalWidth);
-    setHeight(img.naturalHeight);
+    if (img.naturalWidth) setWidth(img.naturalWidth);
+    if (img.naturalHeight) setHeight(img.naturalHeight);
   };
 
   return (
