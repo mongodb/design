@@ -1,5 +1,3 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/react';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import Callout, { Variant } from '@leafygreen-ui/callout';
 import Button from '@leafygreen-ui/button';
@@ -17,7 +15,7 @@ const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
     getEntryById(contentTypeUid, entryUid).then(res => {
       if (res) setEntry(res);
     });
-  }, []);
+  }, [contentTypeUid, entryUid]);
 
   if (!entry) {
     return <>Loading embedded entry...</>;

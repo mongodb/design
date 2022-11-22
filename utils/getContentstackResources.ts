@@ -1,11 +1,4 @@
-// import startCase from 'lodash/startCase';
-// import { ContentfulClientApi, Entry, EntryCollection } from 'contentful';
-// import {
-//   ComponentFields,
-//   ContentPageFields,
-//   ContentPageGroupFields,
-// } from './types';
-import Contentstack, { Entry } from 'contentstack';
+import Contentstack from 'contentstack';
 import startCase from 'lodash/startCase';
 
 const Stack = Contentstack.Stack({

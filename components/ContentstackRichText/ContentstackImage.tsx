@@ -1,5 +1,3 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/react';
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -23,6 +21,7 @@ const ContentstackImage = ({ content }) => {
       <Image
         src={attrs['asset-link']}
         layout="intrinsic"
+        alt={attrs['asset-name']}
         onLoadingComplete={handleLoadingComplete}
         width={width}
         height={height}

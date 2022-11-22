@@ -5,14 +5,12 @@ import { ReactElement } from 'react';
 import { getComponent } from 'utils/getContentstackResources';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
-import { ComponentFields } from 'utils/types';
 import { containerPadding } from 'styles/globals';
 import { css, cx } from '@emotion/css';
 import { spacing } from '@leafygreen-ui/tokens';
 
 interface DocsPageProps {
   componentName: string;
-  fields: Omit<ComponentFields, 'designguidelines'>;
   changelog: string;
   readme: string;
   tsDoc: Array<CustomComponentDoc>;
@@ -20,7 +18,6 @@ interface DocsPageProps {
 
 const ComponentDocumentation = ({
   componentName,
-  fields,
   changelog,
   readme,
   tsDoc,
