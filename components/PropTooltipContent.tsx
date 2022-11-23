@@ -8,7 +8,6 @@ import { palette } from '@leafygreen-ui/palette';
 import { Markdown } from 'components/Markdown';
 import { getDefaultValueString, getTypeString } from 'utils/tsdoc.utils';
 
-
 const globalMarginStyle = css`
   > * {
     margin-block: ${typeScales.body1.lineHeight / 8}px;
@@ -44,12 +43,10 @@ export const PropTooltipContent = ({ propItem }: { propItem: PropItem }) => {
 
   return (
     <div className={globalMarginStyle}>
-      <InlineCode className={propNameStyle}>
-        {propItem.name}
-      </InlineCode>
+      <InlineCode className={propNameStyle}>{propItem.name}</InlineCode>
 
       <div className={tooltipRow}>
-        <Label className={inlineLabelStyle} htmlFor={itemTypeId} >
+        <Label className={inlineLabelStyle} htmlFor={itemTypeId}>
           Type:
         </Label>
         <InlineCode
@@ -63,7 +60,7 @@ export const PropTooltipContent = ({ propItem }: { propItem: PropItem }) => {
       </div>
 
       <div className={tooltipRow}>
-        <Label className={inlineLabelStyle} htmlFor={itemDefaultId} >
+        <Label className={inlineLabelStyle} htmlFor={itemDefaultId}>
           Default:
         </Label>
         <InlineCode
@@ -78,8 +75,8 @@ export const PropTooltipContent = ({ propItem }: { propItem: PropItem }) => {
 
       <hr className={dividerStyle(darkMode)} />
 
-      <Description >
-        <Markdown >{propItem.description}</Markdown>
+      <Description>
+        <Markdown>{propItem.description}</Markdown>
       </Description>
     </div>
   );

@@ -44,6 +44,9 @@ const StyledIcon = styled(Icon)`
   opacity: 0; // overridden on LinkContent hover
 `;
 
+/**
+ * Content of headers in rich text markup need to be wrapped in links and anchors for hashed links.
+ */
 const HeaderContent = ({
   children,
   headerId,

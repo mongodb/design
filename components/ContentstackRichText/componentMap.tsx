@@ -97,12 +97,12 @@ const componentMap = {
       <ContentstackChildren nodeChildren={node.children} />
     </Link>
   ),
-  [BLOCKS.OL_LIST]: node => (
+  [BLOCKS.ORDERED_LIST]: node => (
     <ol {...node.attrs}>
       <ContentstackChildren nodeChildren={node.children} />
     </ol>
   ),
-  [BLOCKS.UL_LIST]: node => (
+  [BLOCKS.UNORDERED_LIST]: node => (
     <ul {...node.attrs}>
       <ContentstackChildren nodeChildren={node.children} />
     </ul>

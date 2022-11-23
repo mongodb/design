@@ -11,7 +11,6 @@ export async function getComponents(): Promise<any> {
   try {
     const results = await Stack.ContentType('component')
       .Query()
-      .limit(100)
       .toJSON()
       .find();
     return results[0].sort((a, b) => a.title.localeCompare(b.title));
@@ -32,7 +31,7 @@ export async function getComponent(componentName: string): Promise<any> {
       .find();
     return result[0][0];
   } catch (error) {
-    console.error(error);
+    console.error('Component page not found', error);
   }
 }
 
@@ -61,7 +60,7 @@ export async function getContentPage(contentPageName: string) {
       .find();
     return result[0][0];
   } catch (error) {
-    console.error(error);
+    console.error('Content page not found', error);
   }
 }
 
@@ -71,6 +70,6 @@ export async function getEntryById(content_type_uid: string, uid: string) {
     const result = await query.includeEmbeddedItems().toJSON().fetch();
     return result;
   } catch (error) {
-    console.error(error);
+    console.error('Entry not found', error);
   }
 }
