@@ -1,11 +1,13 @@
+import { PropItem } from 'react-docgen-typescript';
 import { css } from '@leafygreen-ui/emotion';
+import { useIdAllocator } from '@leafygreen-ui/hooks';
+import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { spacing, typeScales } from '@leafygreen-ui/tokens';
 import { Description, InlineCode, Label } from '@leafygreen-ui/typography';
-import { PropItem } from 'react-docgen-typescript';
 import { palette } from '@leafygreen-ui/palette';
 import { Markdown } from 'components/Markdown';
 import { getDefaultValueString, getTypeString } from 'utils/tsdoc.utils';
-import { useIdAllocator } from '@leafygreen-ui/hooks';
+
 
 const globalMarginStyle = css`
   > * {
@@ -18,8 +20,9 @@ const propNameStyle = css`
   display: inline-block;
 `;
 
-const dividerStyle = css`
-  border-color: ${palette.gray.dark1};
+const dividerStyle = (darkMode: boolean) => css`
+  border-color: ${darkMode ? palette.gray.light1 : palette.gray.dark1};
+  border-width: 1px;
   // Negative margin ensures divider spans to edge of tooltip
   margin: ${spacing[2]}px -${spacing[3]}px;
 `;
@@ -37,15 +40,16 @@ export const PropTooltipContent = ({ propItem }: { propItem: PropItem }) => {
   const itemDefaultId = useIdAllocator({
     prefix: 'prop-table-tooltip-default',
   });
+  const { darkMode } = useDarkMode();
 
   return (
     <div className={globalMarginStyle}>
-      <InlineCode darkMode className={propNameStyle}>
+      <InlineCode className={propNameStyle}>
         {propItem.name}
       </InlineCode>
 
       <div className={tooltipRow}>
-        <Label className={inlineLabelStyle} htmlFor={itemTypeId} darkMode>
+        <Label className={inlineLabelStyle} htmlFor={itemTypeId} >
           Type:
         </Label>
         <InlineCode
@@ -53,14 +57,13 @@ export const PropTooltipContent = ({ propItem }: { propItem: PropItem }) => {
           className={css`
             display: inline; // This should be default. Waiting on https://jira.mongodb.org/browse/PD-2424
           `}
-          darkMode
         >
           {getTypeString(propItem.type)}
         </InlineCode>
       </div>
 
       <div className={tooltipRow}>
-        <Label className={inlineLabelStyle} htmlFor={itemDefaultId} darkMode>
+        <Label className={inlineLabelStyle} htmlFor={itemDefaultId} >
           Default:
         </Label>
         <InlineCode
@@ -68,16 +71,15 @@ export const PropTooltipContent = ({ propItem }: { propItem: PropItem }) => {
           className={css`
             display: inline; // This should be default. Waiting on https://jira.mongodb.org/browse/PD-2424
           `}
-          darkMode
         >
           {getDefaultValueString(propItem.defaultValue) || '—'}
         </InlineCode>
       </div>
 
-      <hr className={dividerStyle} />
+      <hr className={dividerStyle(darkMode)} />
 
-      <Description darkMode>
-        <Markdown darkMode>{propItem.description}</Markdown>
+      <Description >
+        <Markdown >{propItem.description}</Markdown>
       </Description>
     </div>
   );
