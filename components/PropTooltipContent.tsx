@@ -21,7 +21,8 @@ const propNameStyle = css`
 `;
 
 const dividerStyle = (darkMode: boolean) => css`
-  border-color: ${darkMode ? palette.gray.light1 : palette.black};
+  border-color: ${darkMode ? palette.gray.light1 : palette.gray.dark1};
+  border-width: 1px;
   // Negative margin ensures divider spans to edge of tooltip
   margin: ${spacing[2]}px -${spacing[3]}px;
 `;
@@ -40,7 +41,6 @@ export const PropTooltipContent = ({ propItem }: { propItem: PropItem }) => {
     prefix: 'prop-table-tooltip-default',
   });
   const { darkMode } = useDarkMode();
-  console.log({ darkMode })
 
   return (
     <div className={globalMarginStyle}>
