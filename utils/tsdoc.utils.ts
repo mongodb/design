@@ -130,11 +130,6 @@ export function getDefaultValueValue({ defaultValue, type }: PropItem): any {
 
   /* eslint-disable no-fallthrough */
   switch (type.name) {
-    case 'boolean':
-      if (value === 'true') return true;
-      if (value === 'false') return false;
-      return value;
-
     case 'string':
     case 'text':
       return value?.toString() ?? value;
@@ -143,6 +138,13 @@ export function getDefaultValueValue({ defaultValue, type }: PropItem): any {
       return Number(value);
 
     case 'enum': {
+
+      if (type.raw === 'boolean'){
+          if (value === 'true') return true;
+          if (value === 'false') return false;
+          return value;
+      }
+
       const valueString = value?.toString();
       const [enumId, defaultKey] = valueString.split('.');
 
