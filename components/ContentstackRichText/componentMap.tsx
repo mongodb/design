@@ -89,6 +89,9 @@ const componentMap = {
       {...node.attrs}
       css={css`
         line-height: 28px;
+        & span:after {
+          bottom: 2px;
+        }
       `}
     >
       <ContentstackChildren nodeChildren={node.children} />
