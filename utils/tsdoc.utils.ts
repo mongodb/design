@@ -138,10 +138,9 @@ export function getDefaultValueValue({ defaultValue, type }: PropItem): any {
       return Number(value);
 
     case 'enum': {
-
-      if (type.raw === 'boolean'){
-          if (value === 'true') return true;
-          return false;
+      if (type.raw === 'boolean') {
+        if (value === 'true') return true;
+        return false;
       }
 
       const valueString = value?.toString();
