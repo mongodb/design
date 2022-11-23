@@ -48,8 +48,8 @@ function NavigationContent({
             header="Components"
             initialCollapsed={false} // Always false until we add more sections to navigation
           >
-            {components.map((componentName: string) => {
-              const componentKebabCaseName = kebabCase(componentName);
+            {components.map((component: ComponentFields) => {
+              const componentKebabCaseName = kebabCase(component.title);
               return (
                 <MobileNavigationItem
                   key={componentKebabCaseName}
@@ -58,7 +58,7 @@ function NavigationContent({
                   }
                   active={componentKebabCaseName === activePage}
                 >
-                  {componentName}
+                  {component.title}
                 </MobileNavigationItem>
               );
             })}
@@ -91,27 +91,25 @@ function NavigationContent({
             </SideNavGroup>
           ))}
           <SideNavGroup header="Components" glyph={<Icon glyph="Apps" />}>
-            {components
-              .sort((a, b) => a.title.localeCompare(b.title))
-              .map((component: ComponentFields) => {
-                const componentKebabCaseName = kebabCase(component.title);
+            {components.map((component: ComponentFields) => {
+              const componentKebabCaseName = kebabCase(component.title);
 
-                return (
-                  <SideNavItem
-                    key={componentKebabCaseName}
-                    onClick={() =>
-                      router.push(
-                        `/component/${componentKebabCaseName}/${
-                          activeTab ? activeTab : 'example'
-                        }`,
-                      )
-                    }
-                    active={componentKebabCaseName === activePage}
-                  >
-                    {component.title}
-                  </SideNavItem>
-                );
-              })}
+              return (
+                <SideNavItem
+                  key={componentKebabCaseName}
+                  onClick={() =>
+                    router.push(
+                      `/component/${componentKebabCaseName}/${
+                        activeTab ? activeTab : 'example'
+                      }`,
+                    )
+                  }
+                  active={componentKebabCaseName === activePage}
+                >
+                  {component.title}
+                </SideNavItem>
+              );
+            })}
           </SideNavGroup>
         </>
       )}

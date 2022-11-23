@@ -8,7 +8,7 @@ export interface ContentPageFields {
 export interface ContentPageGroupFields {
   title: string;
   iconName: string;
-  contentPages: any; // todo: replace with correct reference type
+  contentPages: Array<unknown>;
 }
 export interface ComponentFields {
   title: string;

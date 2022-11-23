@@ -14,7 +14,7 @@ export async function getComponents(): Promise<any> {
       .limit(100)
       .toJSON()
       .find();
-    return results[0];
+    return results[0].sort((a, b) => a.title.localeCompare(b.title));
   } catch (error) {
     console.error('No Component pages found', error);
     // Return no component pages
@@ -31,18 +31,6 @@ export async function getComponent(componentName: string): Promise<any> {
       .toJSON()
       .find();
     return result[0][0];
-    // const cdaUrl = `https://cdn.contentstack.io/v3/content_types/component/entries?environment=main&query=\{\"title\":\"${startCase(componentName)}\"\}&includeEmbeddedEntries[]=BASE`
-    // const request = await fetch(cdaUrl, {
-    //   method: 'GET',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'api_key': process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string,
-    //     'access_token': process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN as string,
-    //     'branch': 'main',
-    //   },
-    // })
-    // const result = await request.json()
-    // return result.entries[0];
   } catch (error) {
     console.error(error);
   }
