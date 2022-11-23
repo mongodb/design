@@ -141,8 +141,7 @@ export function getDefaultValueValue({ defaultValue, type }: PropItem): any {
 
       if (type.raw === 'boolean'){
           if (value === 'true') return true;
-          if (value === 'false') return false;
-          return value;
+          return false;
       }
 
       const valueString = value?.toString();
