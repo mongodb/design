@@ -9,7 +9,7 @@ module.exports = {
     'prettier',
     'plugin:jsx-a11y/recommended',
     'plugin:@next/next/recommended',
-    'next',
+    'next'
   ],
   parserOptions: {
     sourceType: 'module',
@@ -28,7 +28,6 @@ module.exports = {
     },
   },
   rules: {
-    '@emotion/jsx-import': 'error',
     '@emotion/pkg-renaming': 'error',
     'jest/no-conditional-expect': 'off',
     'jest/valid-title': 'off',

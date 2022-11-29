@@ -1,21 +1,20 @@
-import { EntryFields } from 'contentful';
 import { CustomComponentDoc } from './tsdoc.utils';
 
 export interface ContentPageFields {
-  title: EntryFields.Text;
-  content: EntryFields.RichText;
+  title: string;
+  content: unknown;
 }
 
 export interface ContentPageGroupFields {
-  title: EntryFields.Text;
-  iconName: EntryFields.Text;
-  contentPages: any; // todo: replace with correct reference type
+  title: string;
+  iconName: string;
+  contentPages: Array<unknown>;
 }
 export interface ComponentFields {
-  name: EntryFields.Text;
-  description: EntryFields.Text;
-  figmaUrl?: EntryFields.Text;
-  designGuidelines?: EntryFields.RichText;
+  title: string;
+  description: string;
+  figmaUrl?: string;
+  designguidelines?: unknown;
 }
 
 export interface BaseLayoutProps {

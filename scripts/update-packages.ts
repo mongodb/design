@@ -35,17 +35,17 @@ if (exists(updatesArray) && isValidUpdatesArray(updatesArray)) {
   updateCommands = updatesArray.map(
     ({ name, version }: ComponentUpdateObject) => `${name}@^${version}`,
   );
-  console.log(chalk.green(`Upgrading ${updateCommands.length} packages`))
+  console.log(chalk.green(`Upgrading ${updateCommands.length} packages`));
 } else {
   const allLGPkgs = Object.keys(PkgJson.dependencies).filter(pkg =>
     pkg.startsWith('@leafygreen-ui'),
   );
   updateCommands = allLGPkgs.map(pkg => `${pkg}@latest`);
-  console.log(chalk.green('Upgrading all packages'))
+  console.log(chalk.green('Upgrading all packages'));
 }
 
 if (verbose) {
-  updateCommands.forEach(cmd => console.log(chalk.bold(`\t${cmd}`)))
+  updateCommands.forEach(cmd => console.log(chalk.bold(`\t${cmd}`)));
 }
 
 spawnSync('yarn', ['upgrade', ...updateCommands], { stdio: 'inherit' });
@@ -61,11 +61,11 @@ if (commit) {
     );
   }
 
-  const gitCommitCmd = spawnSync('git', [
-    'commit',
-    '-m',
-    `${'Updating released @leafygreen-ui package versions'}`,
-  ], { stdio: 'inherit' });
+  const gitCommitCmd = spawnSync(
+    'git',
+    ['commit', '-m', `${'Updating released @leafygreen-ui package versions'}`],
+    { stdio: 'inherit' },
+  );
 
   if (gitCommitCmd.error) {
     console.error(gitCommitCmd.error);
