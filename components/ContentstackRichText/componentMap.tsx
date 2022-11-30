@@ -98,12 +98,22 @@ const componentMap = {
     </Link>
   ),
   [BLOCKS.ORDERED_LIST]: node => (
-    <ol {...node.attrs}>
+    <ol
+      {...node.attrs}
+      css={css`
+        padding-inline-start: 32px;
+      `}
+    >
       <ContentstackChildren nodeChildren={node.children} />
     </ol>
   ),
   [BLOCKS.UNORDERED_LIST]: node => (
-    <ul {...node.attrs}>
+    <ul
+      {...node.attrs}
+      css={css`
+        padding-inline-start: 32px;
+      `}
+    >
       <ContentstackChildren nodeChildren={node.children} />
     </ul>
   ),
@@ -114,6 +124,9 @@ const componentMap = {
         margin: 24px 0;
         & > * {
           margin: 0;
+        }
+        &::marker {
+          color: ${palette.gray.dark1};
         }
       `}
     >
