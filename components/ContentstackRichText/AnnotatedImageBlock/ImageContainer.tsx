@@ -5,15 +5,30 @@ const ImageContainer = styled('div')`
   background: ${palette.gray.light3};
   display: flex;
   justify-content: center;
-  align-items: middle;
+  align-items: center;
   min-height: 240px;
   border-radius: 16px;
   border: none;
-  border-bottom: 6px solid ${palette.gray.light1};
   margin-bottom: 16px;
+  position: relative;
 
   > img {
     max-width: 90%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: 32px;
+    width: 100%;
+    bottom: 0px;
+    left: 0;
+    border-radius: 0 0 16px 16px;
+    background: linear-gradient(
+      to bottom,
+      transparent 24px,
+      ${palette.gray.light1} 8px
+    );
   }
 `;
 

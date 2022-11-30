@@ -14,11 +14,11 @@ const StyledListItem = ({ title, description }) => {
           display: inline-flex;
           justify-content: center;
           align-items: center;
-          border: 1px solid ${palette.black};
+          border: 0.5px solid ${palette.black};
           border-radius: 50%;
-          width: 17px;
-          height: 17px;
-          line-height: 17px;
+          width: 18px;
+          height: 18px;
+          line-height: 18px;
           font-size: 13px;
           font-weight: 600;
           box-shadow: 1px 1px 0px ${palette.black};
@@ -27,9 +27,10 @@ const StyledListItem = ({ title, description }) => {
     >
       <Body
         css={css`
-          display: inline-flex;
+          display: inline;
           margin-left: 4px;
           font-size: 13px;
+          line-height: 24px;
         `}
       >
         <b>
