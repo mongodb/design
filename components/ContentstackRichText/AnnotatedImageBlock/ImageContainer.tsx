@@ -6,7 +6,7 @@ const ImageContainer = styled('div')`
   display: flex;
   justify-content: center;
   align-items: middle;
-  min-height: 300px;
+  min-height: 240px;
   border-radius: 16px;
   border: none;
   border-bottom: 6px solid ${palette.gray.light1};

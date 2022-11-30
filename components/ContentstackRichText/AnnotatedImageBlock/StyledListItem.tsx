@@ -14,7 +14,7 @@ const StyledListItem = ({ title, description }) => {
           display: inline-flex;
           justify-content: center;
           align-items: center;
-          border: 1px solid black;
+          border: 1px solid ${palette.black};
           border-radius: 50%;
           width: 17px;
           height: 17px;
