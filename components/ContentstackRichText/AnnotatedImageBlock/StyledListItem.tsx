@@ -32,7 +32,10 @@ const StyledListItem = ({ title, description }) => {
           font-size: 13px;
         `}
       >
-        <b>{title}:&nbsp;</b>
+        <b>
+          {title}
+          {description ? ':' : ''}&nbsp;
+        </b>
         <span
           css={css`
             color: ${palette.gray.dark1};
