@@ -10,6 +10,7 @@ import { getEntryById } from 'utils/getContentstackResources';
 import ContentstackRichText from '.';
 import { css } from '@emotion/react';
 import AnnotatedImageBlock from './AnnotatedImageBlock';
+import BasicUsageBlock from './BasicUsageBlock';
 
 const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
   const [entry, setEntry] = useState<any>();
@@ -38,6 +39,9 @@ const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
           {entry.title}
         </Badge>
       );
+
+    case 'basic_usage_block':
+      return <BasicUsageBlock entry={entry} />;
 
     case 'button_block':
       return (
