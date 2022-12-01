@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { palette } from '@leafygreen-ui/palette';
-import { spacing } from '@leafygreen-ui/tokens';
+import { BaseFontSize, spacing } from '@leafygreen-ui/tokens';
 
 const StyledListItem = styled('li')`
   counter-increment: step-counter;
@@ -20,7 +20,7 @@ const StyledListItem = styled('li')`
     flex-shrink: 0;
     height: 18px;
     line-height: 18px;
-    font-size: 13px;
+    font-size: ${BaseFontSize.Body1}px;
     font-weight: 600;
     box-shadow: 1px 1px 0px ${palette.black};
     margin-top: 3px;
