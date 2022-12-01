@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { palette } from '@leafygreen-ui/palette';
 import { Body } from '@leafygreen-ui/typography';
-import IconDo from 'components/ContentstackRichText/BasicUsageBlock/IconDo';
-import IconDont from 'components/ContentstackRichText/BasicUsageBlock/IconDont';
+import IconDo from 'components/icons/IconDo';
+import IconDont from 'components/icons/IconDont';
 import ContentstackRichText from '..';
 
 const HeadingWrapper = styled('div')`
