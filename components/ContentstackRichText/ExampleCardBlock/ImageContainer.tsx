@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
 import { palette } from '@leafygreen-ui/palette';
 
-// Same as AnnotatedImageBlock except for the color prop
-
 const ImageContainer = styled('div')`
   background: ${palette.gray.light3};
   display: flex;

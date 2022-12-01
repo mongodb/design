@@ -4,6 +4,25 @@ import { BaseFontSize, spacing, typeScales } from '@leafygreen-ui/tokens';
 import { Body } from '@leafygreen-ui/typography';
 import ImageContainer from './ImageContainer';
 import { BorderColors, IconColors, Icons, TextColors } from './constants';
+import styled from '@emotion/styled';
+
+const TextContainer = styled('div')`
+  display: flex;
+  align-items: start;
+  margin-left: ${spacing[2]}px;
+`;
+
+const HeaderText = styled(Body)`
+  color: ${props => props.color};
+  font-size: ${BaseFontSize.Body1}px;
+  line-height: ${typeScales.body1.lineHeight}px;
+`;
+
+const Subtext = styled(Body)`
+  color: ${palette.gray.dark1};
+  font-size: ${BaseFontSize.Body1}px;
+  line-height: ${typeScales.body1.lineHeight}px;
+`;
 
 const ExampleCardBlock = ({ entry }) => {
   const IconComponent = Icons[entry.variant];
@@ -12,13 +31,7 @@ const ExampleCardBlock = ({ entry }) => {
       <ImageContainer color={BorderColors[entry.variant]}>
         <img src={entry.image.url} alt={entry.title} />
       </ImageContainer>
-      <div
-        css={css`
-          display: flex;
-          align-items: start;
-          margin-left: ${spacing[2]}px;
-        `}
-      >
+      <TextContainer>
         <IconComponent
           fill={IconColors[entry.variant]}
           width={spacing[4]}
@@ -29,26 +42,12 @@ const ExampleCardBlock = ({ entry }) => {
             margin: 2px ${spacing[1]}px;
           `}
         >
-          <Body
-            css={css`
-              color: ${TextColors[entry.variant]};
-              font-size: ${BaseFontSize.Body1}px;
-              line-height: ${typeScales.body1.lineHeight}px;
-            `}
-          >
+          <HeaderText color={TextColors[entry.variant]}>
             <b>{entry.header_text}</b>
-          </Body>
-          <Body
-            css={css`
-              color: ${palette.gray.dark1};
-              font-size: ${BaseFontSize.Body1}px;
-              line-height: ${typeScales.body1.lineHeight}px;
-            `}
-          >
-            {entry.subtext}
-          </Body>
+          </HeaderText>
+          <Subtext>{entry.subtext}</Subtext>
         </div>
-      </div>
+      </TextContainer>
     </div>
   );
 };
