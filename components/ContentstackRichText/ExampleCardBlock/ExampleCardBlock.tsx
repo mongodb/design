@@ -16,25 +16,24 @@ const ExampleCardBlock = ({ entry }) => {
         css={css`
           display: flex;
           align-items: start;
+          margin-left: ${spacing[2]}px;
         `}
       >
         <IconComponent
           fill={IconColors[entry.variant]}
-          width={24}
-          height={24}
-          css={css`
-            margin-top: 2px;
-          `}
+          width={spacing[4]}
+          height={spacing[4]}
         />
         <div
           css={css`
-            margin-left: ${spacing[1]}px;
+            margin: 2px ${spacing[1]}px;
           `}
         >
           <Body
             css={css`
               color: ${TextColors[entry.variant]};
               font-size: ${BaseFontSize.Body1}px;
+              line-height: 20px;
             `}
           >
             <b>{entry.header_text}</b>
@@ -43,6 +42,7 @@ const ExampleCardBlock = ({ entry }) => {
             css={css`
               color: ${palette.gray.dark1};
               font-size: ${BaseFontSize.Body1}px;
+              line-height: 20px;
             `}
           >
             {entry.subtext}

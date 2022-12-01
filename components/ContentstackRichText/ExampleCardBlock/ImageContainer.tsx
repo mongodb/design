@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { palette } from '@leafygreen-ui/palette';
-import { spacing } from '@leafygreen-ui/tokens';
 
 // Same as AnnotatedImageBlock except for the color prop
 
@@ -9,10 +8,10 @@ const ImageContainer = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 240px;
+  padding: 60px 0;
   border-radius: 16px;
   border: none;
-  margin-bottom: ${spacing[3]}px;
+  margin-bottom: 10px;
   position: relative;
   > img {
     max-width: 90%;
