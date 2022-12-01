@@ -7,28 +7,28 @@ import { Variant } from './types';
 
 export const Icons: Record<Variant, React.ComponentType<any>> = {
   [Variant.Info]: InfoWithCircleIcon,
-  [Variant.Warning]: ImportantWithCircleIcon,
-  [Variant.Danger]: XWithCircle,
-  [Variant.Success]: CheckmarkWithCircleIcon,
+  [Variant.Caution]: ImportantWithCircleIcon,
+  [Variant.Dont]: XWithCircle,
+  [Variant.Do]: CheckmarkWithCircleIcon,
 };
 
 export const BorderColors: Record<Variant, string> = {
   [Variant.Info]: palette.blue.base,
-  [Variant.Warning]: palette.yellow.base,
-  [Variant.Danger]: palette.red.base,
-  [Variant.Success]: palette.green.dark1,
+  [Variant.Caution]: palette.yellow.base,
+  [Variant.Dont]: palette.red.base,
+  [Variant.Do]: palette.green.dark1,
 };
 
 export const IconColors: Record<Variant, string> = {
   [Variant.Info]: palette.blue.base,
-  [Variant.Warning]: palette.yellow.dark2,
-  [Variant.Danger]: palette.red.base,
-  [Variant.Success]: palette.green.dark1,
+  [Variant.Caution]: palette.yellow.dark2,
+  [Variant.Dont]: palette.red.base,
+  [Variant.Do]: palette.green.dark1,
 };
 
 export const TextColors: Record<Variant, string> = {
   [Variant.Info]: palette.blue.dark2,
-  [Variant.Warning]: palette.yellow.dark2,
-  [Variant.Danger]: palette.red.base,
-  [Variant.Success]: palette.green.dark2,
+  [Variant.Caution]: palette.yellow.dark2,
+  [Variant.Dont]: palette.red.base,
+  [Variant.Do]: palette.green.dark2,
 };
