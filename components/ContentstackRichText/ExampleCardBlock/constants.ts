@@ -29,6 +29,6 @@ export const IconColors: Record<Variant, string> = {
 export const TextColors: Record<Variant, string> = {
   [Variant.Info]: palette.blue.dark2,
   [Variant.Warning]: palette.yellow.dark2,
-  [Variant.Danger]: palette.red.dark2,
+  [Variant.Danger]: palette.red.base,
   [Variant.Success]: palette.green.dark2,
 };
