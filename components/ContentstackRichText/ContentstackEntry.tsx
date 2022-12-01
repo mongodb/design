@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react';
 import { getEntryById } from 'utils/getContentstackResources';
 import ContentstackRichText from '.';
 import { css } from '@emotion/react';
+import AnnotatedImageBlock from './AnnotatedImageBlock';
+import BasicUsageBlock from './BasicUsageBlock';
 import ExampleCardBlock from './ExampleCardBlock';
 
 const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
@@ -24,6 +26,9 @@ const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
   }
 
   switch (contentTypeUid) {
+    case 'annotated_image_block':
+      return <AnnotatedImageBlock entry={entry} />;
+
     case 'badge_block':
       return (
         <Badge
@@ -35,6 +40,9 @@ const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
           {entry.title}
         </Badge>
       );
+
+    case 'basic_usage_block':
+      return <BasicUsageBlock entry={entry} />;
 
     case 'button_block':
       return (
@@ -85,6 +93,7 @@ const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
           />
         </ExpandableCard>
       );
+
     case 'horizontal_layout':
       return <HorizontalLayout columns={entry.columns} />;
 
