@@ -1,3 +1,3 @@
-import ExampleCardBlock from "./ExampleCardBlock";
+import ExampleCardBlock from './ExampleCardBlock';
 
 export default ExampleCardBlock;

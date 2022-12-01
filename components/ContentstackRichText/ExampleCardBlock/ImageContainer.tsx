@@ -8,11 +8,11 @@ const ImageContainer = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 60px 32px 66px;
   border-radius: 16px;
   border: none;
   margin-bottom: 10px;
   position: relative;
+  overflow: hidden;
   > img {
     max-width: 100%;
   }
@@ -23,7 +23,6 @@ const ImageContainer = styled('div')`
     width: 100%;
     bottom: 0px;
     left: 0;
-    border-radius: 0 0 16px 16px;
     background: linear-gradient(
       to bottom,
       transparent 26px,
