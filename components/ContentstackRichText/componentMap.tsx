@@ -102,7 +102,7 @@ const componentMap = {
     <ol
       {...node.attrs}
       css={css`
-        padding-inline-start: ${spacing[4]}px;
+        padding-inline-start: 25px;
       `}
     >
       <ContentstackChildren nodeChildren={node.children} />
@@ -112,7 +112,9 @@ const componentMap = {
     <ul
       {...node.attrs}
       css={css`
-        padding-inline-start: ${spacing[4]}px;
+        margin-top: 0px;
+        margin-bottom: ${spacing[3]}px;
+        padding-inline-start: 25px;
       `}
     >
       <ContentstackChildren nodeChildren={node.children} />
@@ -122,12 +124,13 @@ const componentMap = {
     <li
       {...node.attrs}
       css={css`
-        margin: ${spacing[4]}px 0;
+        line-height: 28px;
+        padding-left: 5px;
         & > * {
           margin: 0;
         }
         &::marker {
-          color: ${palette.gray.dark1};
+          color: ${palette.gray.base};
         }
       `}
     >
@@ -151,13 +154,13 @@ const componentMap = {
           css={css`
             border-spacing: 0;
             ${colWidths.map(
-              (colWidth: number, index: number) => `
+            (colWidth: number, index: number) => `
             td:nth-of-type(${index + 1}),
             th:nth-of-type(${index + 1}) {
               width: ${colWidth}px;
             }
           `,
-            )}
+          )}
           `}
         >
           <ContentstackChildren nodeChildren={node.children} />

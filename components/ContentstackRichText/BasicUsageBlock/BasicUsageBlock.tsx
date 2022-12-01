@@ -28,7 +28,7 @@ const BasicUsageBlock = ({ entry }) => {
       <ContentstackRichText content={entry.do_s} />
       <HeadingWrapper>
         <IconDont />
-        <StyledBody color={palette.red.dark2}>
+        <StyledBody color={palette.red.base}>
           <b>Don&apos;t</b>
         </StyledBody>
       </HeadingWrapper>
