@@ -26,7 +26,7 @@ const ImageContainer = styled('div')`
     border-radius: 0 0 16px 16px;
     background: linear-gradient(
       to bottom,
-      transparent 24px,
+      transparent 26px,
       ${palette.gray.light1} 8px
     );
   }
