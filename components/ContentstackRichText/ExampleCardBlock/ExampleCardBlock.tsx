@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { palette } from '@leafygreen-ui/palette';
-import { BaseFontSize, spacing } from '@leafygreen-ui/tokens';
+import { BaseFontSize, spacing, typeScales } from '@leafygreen-ui/tokens';
 import { Body } from '@leafygreen-ui/typography';
 import ImageContainer from './ImageContainer';
 import { BorderColors, IconColors, Icons, TextColors } from './constants';
@@ -33,7 +33,7 @@ const ExampleCardBlock = ({ entry }) => {
             css={css`
               color: ${TextColors[entry.variant]};
               font-size: ${BaseFontSize.Body1}px;
-              line-height: 20px;
+              line-height: ${typeScales.body1.lineHeight}px;
             `}
           >
             <b>{entry.header_text}</b>
@@ -42,7 +42,7 @@ const ExampleCardBlock = ({ entry }) => {
             css={css`
               color: ${palette.gray.dark1};
               font-size: ${BaseFontSize.Body1}px;
-              line-height: 20px;
+              line-height: ${typeScales.body1.lineHeight}px;
             `}
           >
             {entry.subtext}
