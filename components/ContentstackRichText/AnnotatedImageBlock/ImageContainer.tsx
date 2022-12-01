@@ -7,14 +7,14 @@ const ImageContainer = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 240px;
+  padding: 60px 32px 66px;
   border-radius: 16px;
   border: none;
   margin-bottom: ${spacing[3]}px;
   position: relative;
 
   > img {
-    max-width: 90%;
+    max-width: 100%;
   }
 
   &::after {
