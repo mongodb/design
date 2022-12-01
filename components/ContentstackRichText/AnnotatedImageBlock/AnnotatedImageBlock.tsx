@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { palette } from '@leafygreen-ui/palette';
+import { BaseFontSize, spacing } from '@leafygreen-ui/tokens';
 import { Body } from '@leafygreen-ui/typography';
 import ImageContainer from './ImageContainer';
 import StyledList from './StyledList';
@@ -17,8 +18,8 @@ const AnnotatedImageBlock = ({ entry }) => {
             <Body
               css={css`
                 display: inline;
-                margin-left: 4px;
-                font-size: 13px;
+                margin-left: ${spacing[1]}px;
+                font-size: ${BaseFontSize.Body1};
                 line-height: 24px;
               `}
             >

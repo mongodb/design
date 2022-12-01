@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 import { palette } from '@leafygreen-ui/palette';
+import { spacing } from '@leafygreen-ui/tokens';
 
 const StyledListItem = styled('li')`
   counter-increment: step-counter;
-  margin-bottom: 4px;
+  margin-bottom: ${spacing[1]}px;
   position: relative;
   display: flex;
   align-items: baseline;

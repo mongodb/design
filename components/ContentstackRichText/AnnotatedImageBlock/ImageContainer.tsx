@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { palette } from '@leafygreen-ui/palette';
+import { spacing } from '@leafygreen-ui/tokens';
 
 const ImageContainer = styled('div')`
   background: ${palette.gray.light3};
@@ -9,7 +10,7 @@ const ImageContainer = styled('div')`
   min-height: 240px;
   border-radius: 16px;
   border: none;
-  margin-bottom: 16px;
+  margin-bottom: ${spacing[3]}px;
   position: relative;
 
   > img {
