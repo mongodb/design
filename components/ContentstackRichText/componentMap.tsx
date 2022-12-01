@@ -14,6 +14,7 @@ import ContentstackReference from './ContentstackReference';
 import HeaderContent from './HeaderContent';
 import { BLOCKS } from './types';
 import { palette } from '@leafygreen-ui/palette';
+import { spacing } from '@leafygreen-ui/tokens';
 
 const componentMap = {
   [BLOCKS.DOCUMENT]: (node, options) => {
@@ -59,7 +60,7 @@ const componentMap = {
   [BLOCKS.HEADING_4]: node => (
     <Subtitle
       css={css`
-        margin-top: 8px;
+        margin-top: ${spacing[2]}px;
       `}
     >
       <HeaderContent headerId={node.children[0].text ?? node.uid}>
@@ -77,7 +78,7 @@ const componentMap = {
       {...node.attrs}
       css={css`
         & {
-          margin-top: 16px;
+          margin-top: ${spacing[3]}px;
         }
       `}
     >
@@ -101,7 +102,7 @@ const componentMap = {
     <ol
       {...node.attrs}
       css={css`
-        padding-inline-start: 24px;
+        padding-inline-start: ${spacing[4]}px;
       `}
     >
       <ContentstackChildren nodeChildren={node.children} />
@@ -111,7 +112,7 @@ const componentMap = {
     <ul
       {...node.attrs}
       css={css`
-        padding-inline-start: 24px;
+        padding-inline-start: ${spacing[4]}px;
       `}
     >
       <ContentstackChildren nodeChildren={node.children} />
@@ -121,7 +122,7 @@ const componentMap = {
     <li
       {...node.attrs}
       css={css`
-        margin: 24px 0;
+        margin: ${spacing[4]}px 0;
         & > * {
           margin: 0;
         }
@@ -143,7 +144,7 @@ const componentMap = {
     return (
       <Card
         css={css`
-          padding: 16px 0;
+          padding: ${spacing[3]}px 0;
         `}
       >
         <table
@@ -168,7 +169,7 @@ const componentMap = {
     <thead
       css={css`
         border-bottom: 3px solid ${palette.gray.light1};
-        margin-top: 16px;
+        margin-top: ${spacing[3]}px;
       `}
     >
       <ContentstackChildren nodeChildren={node.children} />
@@ -184,12 +185,12 @@ const componentMap = {
       css={css`
         > td:first-child,
         > th:first-child {
-          padding-left: 32px;
+          padding-left: ${spacing[5]}px;
         }
 
         > td:last-child,
         > th:last-child {
-          padding-right: 32px;
+          padding-right: ${spacing[5]}px;
         }
       `}
     >
@@ -205,7 +206,7 @@ const componentMap = {
         }
         text-align: left;
         // min-width: 140px;
-        padding: 8px;
+        padding: ${spacing[2]}px;
         vertical-align: middle;
         border-bottom: 3px solid ${palette.gray.light2};
       `}
@@ -217,8 +218,8 @@ const componentMap = {
     <td
       css={css`
         vertical-align: middle;
-        padding: 4px;
-        padding-bottom: 16px;
+        padding: ${spacing[1]}px;
+        padding-bottom: ${spacing[3]}px;
       `}
     >
       <ContentstackChildren nodeChildren={node.children} />
