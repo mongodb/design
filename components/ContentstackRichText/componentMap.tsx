@@ -101,7 +101,7 @@ const componentMap = {
     <ol
       {...node.attrs}
       css={css`
-        padding-inline-start: 32px;
+        padding-inline-start: 24px;
       `}
     >
       <ContentstackChildren nodeChildren={node.children} />
@@ -111,7 +111,7 @@ const componentMap = {
     <ul
       {...node.attrs}
       css={css`
-        padding-inline-start: 32px;
+        padding-inline-start: 24px;
       `}
     >
       <ContentstackChildren nodeChildren={node.children} />
