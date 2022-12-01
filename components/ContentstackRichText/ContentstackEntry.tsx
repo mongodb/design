@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { getEntryById } from 'utils/getContentstackResources';
 import ContentstackRichText from '.';
 import { css } from '@emotion/react';
+import ExampleCardBlock from './ExampleCardBlock/ExampleCardBlock';
 
 const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
   const [entry, setEntry] = useState<any>();
@@ -67,6 +68,9 @@ const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
           />
         </Card>
       );
+
+    case 'example_card_block':
+      return <ExampleCardBlock entry={entry} />;
 
     case 'expandable_card_block':
       return (
