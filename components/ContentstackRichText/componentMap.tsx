@@ -154,13 +154,13 @@ const componentMap = {
           css={css`
             border-spacing: 0;
             ${colWidths.map(
-            (colWidth: number, index: number) => `
+              (colWidth: number, index: number) => `
             td:nth-of-type(${index + 1}),
             th:nth-of-type(${index + 1}) {
               width: ${colWidth}px;
             }
           `,
-          )}
+            )}
           `}
         >
           <ContentstackChildren nodeChildren={node.children} />
@@ -208,7 +208,6 @@ const componentMap = {
           margin: 0;
         }
         text-align: left;
-        // min-width: 140px;
         padding: ${spacing[2]}px;
         vertical-align: middle;
         border-bottom: 3px solid ${palette.gray.light2};

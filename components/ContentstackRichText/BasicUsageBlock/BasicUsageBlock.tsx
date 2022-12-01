@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 import { palette } from '@leafygreen-ui/palette';
 import { Body } from '@leafygreen-ui/typography';
-import IconDo from 'components/icons/IconDo';
-import IconDont from 'components/icons/IconDont';
+import CheckmarkWithCircleIcon from '@leafygreen-ui/icon/dist/CheckmarkWithCircle';
+import XWithCircle from '@leafygreen-ui/icon/dist/XWithCircle';
 import ContentstackRichText from '..';
+import { spacing } from '@leafygreen-ui/tokens';
 
 const HeadingWrapper = styled('div')`
   align-items: center;
@@ -20,14 +21,22 @@ const BasicUsageBlock = ({ entry }) => {
   return (
     <div>
       <HeadingWrapper>
-        <IconDo />
+        <CheckmarkWithCircleIcon
+          fill={palette.green.dark1}
+          width={spacing[4]}
+          height={spacing[4]}
+        />
         <StyledBody color={palette.green.dark2}>
           <b>Do</b>
         </StyledBody>
       </HeadingWrapper>
       <ContentstackRichText content={entry.do_s} />
       <HeadingWrapper>
-        <IconDont />
+        <XWithCircle
+          fill={palette.red.base}
+          width={spacing[4]}
+          height={spacing[4]}
+        />
         <StyledBody color={palette.red.base}>
           <b>Don&apos;t</b>
         </StyledBody>
