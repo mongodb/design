@@ -7,7 +7,7 @@ const StyledListItem = styled('li')`
   margin-bottom: ${spacing[1]}px;
   position: relative;
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   &::before {
     content: counter(step-counter);
     display: inline-flex;
@@ -23,6 +23,7 @@ const StyledListItem = styled('li')`
     font-size: 13px;
     font-weight: 600;
     box-shadow: 1px 1px 0px ${palette.black};
+    margin-top: 3px;
   }
 `;
 
