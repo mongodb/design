@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { getEntryById } from 'utils/getContentstackResources';
 import ContentstackRichText from '.';
 import { css } from '@emotion/react';
-import ExampleCardBlock from './ExampleCardBlock/ExampleCardBlock';
+import ExampleCardBlock from './ExampleCardBlock';
 
 const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
   const [entry, setEntry] = useState<any>();
