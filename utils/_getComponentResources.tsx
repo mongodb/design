@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import util from 'util';
 import markdownToHtml from 'utils/markdownToHtml';
-import { CustomComponentDoc } from 'components/pages/documentation/TSDocPropTable';
+import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 // eslint-disable-next-line import/no-anonymous-default-export, react/display-name
 export default function () {
@@ -81,6 +81,8 @@ export async function getReadme(componentName: string): Promise<string | null> {
 export async function getTSDoc(
   componentName: string,
 ): Promise<Array<CustomComponentDoc> | null> {
+  if (typeof componentName !== 'string') return null;
+
   try {
     return JSON.parse(
       await getFileContent(

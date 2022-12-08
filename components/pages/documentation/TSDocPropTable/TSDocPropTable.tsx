@@ -1,21 +1,20 @@
-import { Props } from 'react-docgen-typescript';
 import { Cell, Row, Table, TableHeader } from '@leafygreen-ui/table';
 import { InlineCode, Link } from '@leafygreen-ui/typography';
 import { css } from '@leafygreen-ui/emotion';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import InlineDefinition from '@leafygreen-ui/inline-definition';
-import { isUndefined, omitBy, pickBy } from 'lodash';
 import { palette } from '@leafygreen-ui/palette';
-import {
-  isInheritableGroup,
-  isPropItem,
-  PropGroup,
-  CustomComponentDoc,
-  PropItem,
-} from './TSDocPropsTable.types';
 import { Markdown } from 'components/Markdown';
-import { PropTableTooltipContent } from './PropTableTooltipContent';
-import { getDefaultValueString, getTypeString } from 'utils/tsdoc.utils';
+import {
+  CustomComponentDoc,
+  isPropItem,
+  getComponentPropsArray,
+  getInheritedProps,
+  getDefaultValueString,
+  getTypeString,
+  isRequired,
+} from 'utils/tsdoc.utils';
+import { PropTooltipContent } from '../../../PropTooltipContent';
 
 const propDefinitionTooltipStyle = css`
   min-width: min-content;
@@ -39,20 +38,8 @@ export const TSDocPropTable = ({
   tsDoc: CustomComponentDoc;
   className?: string;
 }) => {
-  const componentProps = Object.values(omitBy(tsDoc.props, isInheritableGroup))
-    .flatMap(Object.values)
-    .sort((a, z) => {
-      if (isRequired(a) && !isRequired(z)) return -1;
-      if (isRequired(z)) return 1;
-      return a.name.localeCompare(z.name);
-    });
-
-  const inheritedProps: Array<PropGroup> = Object.entries(
-    pickBy(tsDoc.props, isInheritableGroup),
-  ).map(([groupName, props]: [string, Props]) => ({
-    groupName,
-    props: Object.values(props).flatMap(prop => prop),
-  }));
+  const componentProps = getComponentPropsArray(tsDoc.props);
+  const inheritedProps = getInheritedProps(tsDoc.props);
 
   const props = [...componentProps, ...inheritedProps];
 
@@ -79,7 +66,7 @@ export const TSDocPropTable = ({
                   <Cell>
                     <InlineDefinition
                       tooltipClassName={propDefinitionTooltipStyle}
-                      definition={<PropTableTooltipContent propItem={datum} />}
+                      definition={<PropTooltipContent propItem={datum} />}
                     >
                       <InlineCode>{datum.name}</InlineCode>
                     </InlineDefinition>
@@ -140,8 +127,4 @@ function getHTMLAttributesLink(groupName: string) {
 
   tag = tag == 'anchor' ? 'a' : tag;
   return `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${tag}`;
-}
-
-function isRequired(prop: PropItem): boolean {
-  return prop.required || !isUndefined(prop.tags?.required);
 }

@@ -1,5 +1,5 @@
 import ComingSoon from 'components/ComingSoon';
-import ContentfulRichText from 'components/ContentfulRichText';
+import ContentstackRichText from 'components/ContentstackRichText';
 import ComponentLayout from 'layouts/ComponentLayout';
 import { ReactElement } from 'react';
 import { containerPadding } from 'styles/globals';
@@ -7,23 +7,22 @@ import {
   getStaticComponentPaths,
   getStaticComponentProps,
 } from 'utils/getStaticComponent';
+import isEmptyRichText from 'utils/isEmptyRichText';
 
 const ComponentGuidelines = ({ component }) => {
-  const guidelines = component.fields?.designGuidelines;
-  return !guidelines || guidelines.content.length == 0 ? (
+  const guidelines = component.designguidelines;
+  return !guidelines || isEmptyRichText(guidelines) ? (
     <ComingSoon />
   ) : (
     <div className={containerPadding}>
-      <ContentfulRichText document={guidelines} />
+      {<ContentstackRichText content={guidelines} />}
     </div>
   );
 };
 
 ComponentGuidelines.getLayout = function getLayout(page: ReactElement) {
   return (
-    <ComponentLayout componentFields={page.props.component.fields}>
-      {page}
-    </ComponentLayout>
+    <ComponentLayout component={page.props.component}>{page}</ComponentLayout>
   );
 };
 
