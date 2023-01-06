@@ -68,12 +68,11 @@ module.exports = nextConfig;
  * but omit those modules their own node_modules
  */
 function isPathInLeafygreen(filePath) {
-  if (
-    (filePath.match(/node_modules/g) || []).length > 1 ||
-    (filePath.match(/leafygreen-ui/g) || []).length > 1
-  )
-    return false;
-  return /.+(node_modules)*\/@*leafygreen-ui\/(?!node_modules).+/g.test(
-    filePath,
-  );
+  // This regex excludes any nested modules
+  // const LGModuleRegex = /^(?!.*(node_modules).*(node_modules)).*(node_modules\/@leafygreen-ui).*$/g
+
+  // We need to include any nested leafygreen modules in the transpilation.
+  // Returning `true` here overrides `exclude` in the tsconfig
+  const LGModuleRegex = /.+(node_modules\/@leafygreen-ui)/g;
+  return LGModuleRegex.test(filePath);
 }
