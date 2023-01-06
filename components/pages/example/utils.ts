@@ -1,8 +1,11 @@
 import { PropItem } from 'react-docgen-typescript';
 import { defaults } from 'lodash';
+import pascalcase from 'pascalcase';
 import { SBType, SBScalarType } from '@storybook/csf';
 import { getDefaultValueValue } from 'utils/tsdoc.utils';
 import { ComponentStoryFn, Meta } from '@storybook/react';
+import React, { ReactNode } from 'react';
+import reactElementToJSXString from 'react-element-to-jsx-string';
 
 /**
  * A list of Prop names that should not appear in Knobs
@@ -199,4 +202,58 @@ export function getKnobDescription({
     (meta.argTypes?.[TSDocProp.name] || StoryFn.argTypes?.[TSDocProp.name])
       ?.description ?? TSDocProp.description
   );
+}
+
+export function getStoryCode({
+  componentName,
+  meta,
+  StoryFn,
+  knobValues,
+}: {
+  componentName: string;
+  meta?: Meta<any>;
+  StoryFn?: ComponentStoryFn<any>;
+  knobValues?: { [arg: string]: any };
+}): string | undefined {
+
+  const useStorySourceForComponents = ['typography']
+
+  const getStoryJSX = (element: ReactNode, displayName: string) =>
+    reactElementToJSXString(element, {
+      displayName: _ => pascalcase(displayName),
+      showFunctions: true,
+      useBooleanShorthandSyntax: false,
+    });
+
+  const getStorySourceCode = (meta?: Meta<any>) => {
+    if (meta && meta.parameters) {
+      const {
+        parameters: { default: defaultStoryName, storySource },
+      } = meta;
+
+      const locationsMap = defaultStoryName
+        ? storySource.locationsMap[defaultStoryName]
+        : Object.values(storySource.locationsMap)[0];
+
+      const lines = (storySource.source as string).match(/^.*$/gm);
+      const storyCode = lines
+        ?.slice(locationsMap.startLoc.line - 1, locationsMap.endLoc.line - 1)
+        .join('\n');
+      return storyCode;
+    }
+  };
+
+  /**
+   * If this is the Typography component,
+   * we use the original story code,
+   * otherwise we convert the component to JSX
+   */
+  if (useStorySourceForComponents.includes(componentName)) {
+    return getStorySourceCode(meta);
+  } else {
+    const renderedStory = StoryFn
+      ? React.createElement(StoryFn, {...knobValues})
+      : undefined;
+    return getStoryJSX(renderedStory, componentName);
+  }
 }
