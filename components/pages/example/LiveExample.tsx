@@ -12,7 +12,7 @@ import { H2 } from '@leafygreen-ui/typography';
 import { getComponentStory } from 'utils/getComponentStory';
 import { BaseLayoutProps } from 'utils/types';
 import { findComponentDoc, getComponentPropsArray } from 'utils/tsdoc.utils';
-import { KnobRow } from './KnobRow';
+import { KnobRow } from './KnobRow/KnobRow';
 import {
   getControlType,
   getDefaultValue,
@@ -162,6 +162,7 @@ export const LiveExample = ({
       });
   }, [componentName, tsDoc]);
 
+  // Update source code
   useEffect(() => {
     setCode(
       getStoryCode({

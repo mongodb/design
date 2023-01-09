@@ -11,7 +11,6 @@ export const liveExampleWrapperStyle = css`
   max-height: 50vh;
 `;
 
-
 export const storyWrapperStyle = css`
   position: relative;
   flex: 2;
