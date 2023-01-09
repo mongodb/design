@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useReducer, useState } from 'react';
-import { kebabCase, pickBy, isUndefined } from 'lodash';
-import { PropItem } from 'react-docgen-typescript';
+import { kebabCase } from 'lodash';
 import { Transition } from 'react-transition-group';
-import { ComponentStoryFn, Meta } from '@storybook/react';
 import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
 import Code from '@leafygreen-ui/code';
@@ -11,18 +9,9 @@ import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { H2 } from '@leafygreen-ui/typography';
 import { getComponentStory } from 'utils/getComponentStory';
 import { BaseLayoutProps } from 'utils/types';
-import { findComponentDoc, getComponentPropsArray } from 'utils/tsdoc.utils';
 import { KnobRow } from './KnobRow/KnobRow';
-import {
-  getControlType,
-  getDefaultValue,
-  getInitialKnobValues,
-  getKnobDescription,
-  getKnobOptions,
-  getPropItemFilterFunction,
-  getStoryCode,
-  KnobType,
-} from './utils';
+import { LiveExampleState } from './types';
+import { getLiveExampleState, getStoryCode } from './utils';
 import {
   codeExampleWrapperStyle,
   codeStyle,
@@ -32,14 +21,6 @@ import {
   storyWrapperStyle,
   typographyWrapperStyle,
 } from './LiveExample.styles';
-
-export interface LiveExampleState {
-  meta?: Meta<any>;
-  knobValues?: { [arg: string]: any };
-  knobsArray?: Array<KnobType>;
-  StoryFn?: ComponentStoryFn<any>;
-  storyCode?: string;
-}
 
 const initialLiveExampleState: LiveExampleState = {
   meta: undefined,
@@ -93,63 +74,14 @@ export const LiveExample = ({
         if (module) {
           const { default: meta, ...stories } = module;
 
-          const defaultStoryName =
-            meta.parameters?.default ?? Object.keys(stories)[0];
-
-          const StoryFn = defaultStoryName
-            ? stories[defaultStoryName]
-            : Object.values(stories)[0];
-
-          const knobsArray: Array<KnobType> = getComponentPropsArray(
-            findComponentDoc(componentName, tsDoc),
-          )
-            // Filter out component props we don't want knobs for.
-            // These are the props we display in the Knobs
-            .filter(getPropItemFilterFunction({ meta, StoryFn }))
-            // Convert to custom KnobType by adding additional properties,
-            // and updating other props
-            .map(
-              (TSDocProp: PropItem) =>
-                ({
-                  ...TSDocProp,
-                  name: TSDocProp.name,
-                  options: getKnobOptions({ meta, StoryFn, TSDocProp }),
-                  controlType: getControlType({ meta, StoryFn, TSDocProp }),
-                  description: getKnobDescription({
-                    meta,
-                    StoryFn,
-                    TSDocProp,
-                  }),
-                  defaultValue: getDefaultValue({
-                    meta,
-                    StoryFn,
-                    TSDocProp,
-                  }),
-                } as KnobType),
-            );
-
-          // Extract the default Knob Values, and include any props not explicitly included in TSDoc
-          // This state object will be modified whenever a user interacts with a knob.
-          const knobValues = pickBy(
-            getInitialKnobValues(knobsArray, meta, StoryFn),
-            // Filter out values that are explicitly undefined
-            val => !isUndefined(val),
-          );
-
-          const storyCode = getStoryCode({
+          const state = getLiveExampleState({
             componentName,
             meta,
-            StoryFn,
-            knobValues,
+            stories,
+            tsDoc,
           });
 
-          setState({
-            meta,
-            knobValues,
-            knobsArray,
-            StoryFn,
-            storyCode,
-          });
+          setState(state);
         } else {
           setState(initialLiveExampleState);
           setShowCode(false);

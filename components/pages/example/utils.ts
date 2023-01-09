@@ -1,11 +1,11 @@
 import { PropItem } from 'react-docgen-typescript';
-import { defaults } from 'lodash';
+import { defaults, pickBy, isUndefined } from 'lodash';
 import pascalcase from 'pascalcase';
-import { SBType, SBScalarType } from '@storybook/csf';
-import { getDefaultValueValue } from 'utils/tsdoc.utils';
+import { CustomComponentDoc, findComponentDoc, getComponentPropsArray, getDefaultValueValue } from 'utils/tsdoc.utils';
 import { ComponentStoryFn, Meta } from '@storybook/react';
 import React, { ReactNode } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
+import { KnobType, LiveExampleState, MetadataSources, TypeString } from './types';
 
 /**
  * A list of Prop names that should not appear in Knobs
@@ -36,22 +36,6 @@ export const ignoreProps = [
   'shouldClose',
 ];
 
-export type TypeString =
-  | SBScalarType['name']
-  | SBType['name']
-  | 'text'
-  | 'select'
-  | 'range'
-  | 'radio';
-
-/**
- * Sources of prop metadata. Includes Storybook and TSDoc
- */
-interface MetadataSources {
-  meta: Meta<any>;
-  StoryFn: ComponentStoryFn<any>;
-  TSDocProp: PropItem;
-}
 
 /**
  * @returns the input array, or values of the input Record
@@ -65,16 +49,7 @@ const valuesArrayFrom = (
       : Object.values(ArrayLike)
     : undefined;
 
-/**
- * A custom type based on TSDoc PropItem
- */
-export type KnobType = PropItem & {
-  controlType: TypeString;
-  /**
-   * For types with options. Set to an empty array for irrelevant types
-   */
-  options: Array<string>;
-};
+
 
 /**
  * Utility to get the `argTypes` object for a given prop
@@ -85,7 +60,11 @@ export const getSBInputType = ({
   TSDocProp: { name },
 }: MetadataSources) => meta?.argTypes?.[name] ?? StoryFn?.argTypes?.[name];
 
-export function getPropItemFilterFunction({
+/**
+ * Returns a filter function for PropItems
+ * with `meta` and `StoryFn` in the closure
+ */
+export function getPropItemFilterFn({
   meta,
   StoryFn,
 }: Omit<MetadataSources, 'TSDocProp'>) {
@@ -97,6 +76,32 @@ export function getPropItemFilterFunction({
     const isControlNone = ['none', false].includes(SBInputType?.control);
     return !isIgnored && !isExcludedBySB && !isControlNone;
   };
+}
+
+/**
+ * Returns a map function that maps a PropItem to KnobValue,
+ * with `meta` and `StoryFn` in the closure
+ */
+export function getPropItemToKnobTypeMapFn({
+  meta,
+  StoryFn,
+}: Omit<MetadataSources, 'TSDocProp'>) {
+  return (TSDocProp: PropItem): KnobType => ({
+    ...TSDocProp,
+    name: TSDocProp.name,
+    options: getKnobOptions({ meta, StoryFn, TSDocProp }),
+    controlType: getControlType({ meta, StoryFn, TSDocProp }),
+    description: getKnobDescription({
+      meta,
+      StoryFn,
+      TSDocProp,
+    }),
+    defaultValue: getDefaultValue({
+      meta,
+      StoryFn,
+      TSDocProp,
+    }),
+  } as KnobType)
 }
 
 /**
@@ -204,6 +209,9 @@ export function getKnobDescription({
   );
 }
 
+/**
+ * Returns example code for the given component data
+ */
 export function getStoryCode({
   componentName,
   meta,
@@ -255,5 +263,61 @@ export function getStoryCode({
       ? React.createElement(StoryFn, {...knobValues})
       : undefined;
     return getStoryJSX(renderedStory, componentName);
+  }
+}
+
+/**
+ * Given component metadata
+ * returns a LiveExampleState object
+ */
+export function getLiveExampleState({
+  componentName,
+  meta,
+  stories,
+  tsDoc
+}: {
+  componentName:string,
+  meta: Meta<any>,
+  stories: { [key: string]: ComponentStoryFn<any>},
+  tsDoc: Array<CustomComponentDoc> | null
+}): LiveExampleState {
+  const defaultStoryName =
+  meta.parameters?.default ?? Object.keys(stories)[0];
+
+  const StoryFn = defaultStoryName
+    ? stories[defaultStoryName]
+    : Object.values(stories)[0];
+
+  const knobsArray: Array<KnobType> = getComponentPropsArray(
+    findComponentDoc(componentName, tsDoc),
+  )
+    // Filter out component props we don't want knobs for.
+    // i.e. `@ignore` tags, excluded in SB.parameters.controls
+    .filter(getPropItemFilterFn({ meta, StoryFn }))
+    // Convert to custom KnobType by adding additional properties,
+    // and updating other properties
+    .map(getPropItemToKnobTypeMapFn({ meta, StoryFn }));
+
+  // Extract the default Knob Values, and include any props not explicitly included in TSDoc
+  // This state object will be modified whenever a user interacts with a knob.
+  const knobValues = pickBy(
+    getInitialKnobValues(knobsArray, meta, StoryFn),
+    // Filter out values that are explicitly undefined
+    val => !isUndefined(val),
+  );
+
+  const storyCode = getStoryCode({
+    componentName,
+    meta,
+    StoryFn,
+    knobValues,
+  });
+
+  return {
+    meta,
+    knobValues,
+    knobsArray,
+    StoryFn,
+    storyCode,
   }
 }

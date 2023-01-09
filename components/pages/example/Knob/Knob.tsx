@@ -5,7 +5,7 @@ import { SelectProps } from '@leafygreen-ui/select/dist/types';
 import TextInput, { TextInputProps } from '@leafygreen-ui/text-input';
 import { RadioBoxGroup, RadioBox } from '@leafygreen-ui/radio-box-group';
 import Toggle from '@leafygreen-ui/toggle';
-import { TypeString } from '../utils';
+import { TypeString } from '../types';
 
 const inputStyle = css`
   min-width: 256px;
