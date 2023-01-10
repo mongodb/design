@@ -11,7 +11,7 @@ import { getComponentStory } from 'utils/getComponentStory';
 import { BaseLayoutProps } from 'utils/types';
 import { KnobRow } from './KnobRow/KnobRow';
 import { LiveExampleState } from './types';
-import { getLiveExampleState, getStoryCode } from './utils';
+import { getLiveExampleState, getStoryCode, matchTypes } from './utils';
 import {
   codeExampleWrapperStyle,
   codeStyle,
@@ -53,16 +53,13 @@ export const LiveExample = ({
 
   // Updates the value of a knob
   const updateValue = useCallback(
-    (propName: string, value: any) => {
+    (propName: string, newValue: any) => {
+      const value = matchTypes(knobValues?.[propName], newValue);
       setState({
-        meta,
-        StoryFn,
-        storyCode,
-        knobsArray,
         knobValues: { ...knobValues, [propName]: value },
       });
     },
-    [meta, StoryFn, storyCode, knobsArray, knobValues],
+    [knobValues],
   );
 
   // Fetch Story if/when component changes.

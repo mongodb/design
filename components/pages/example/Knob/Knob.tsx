@@ -66,7 +66,7 @@ export const Knob = ({
     case 'enum':
     case 'select':
     case 'radio': {
-      if (knobOptions) {
+      if (knobOptions && knobOptions.length) {
         if (knobOptions.length <= 3) {
           return (
             <RadioBoxGroup
@@ -101,10 +101,10 @@ export const Knob = ({
         );
       }
 
-      return <>knobType</>;
+      return <>{`${value}`}</>;
     }
 
     default:
-      return <>{knobType}</>;
+      return <>{`${value}`}</>;
   }
 };
