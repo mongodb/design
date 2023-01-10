@@ -220,7 +220,7 @@ export function getKnobOptions({
       // otherwise, keep it as a string, and remove quotes
 
       if (typeof value === 'number') return value;
-      value = value.replace(/["']/g, '');
+      value = value.replace(/["'`]/g, '');
       if (!isNaN(Number(value))) {
         return Number(value);
       } else {
