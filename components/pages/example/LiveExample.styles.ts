@@ -24,7 +24,7 @@ export const storyWrapperStyle = css`
 
 export const typographyWrapperStyle = css`
   display: inline-block;
-`
+`;
 
 export const codeExampleWrapperStyle = css`
   position: relative;
@@ -47,7 +47,6 @@ export const codeExampleWrapperStyle = css`
     }
   }
 `;
-
 
 export const codeWrapperStateStyle: Record<TransitionStatus, string> = {
   entering: css`
@@ -82,12 +81,10 @@ export const codeWrapperStateStyle: Record<TransitionStatus, string> = {
   unmounted: '',
 };
 
-
 export const codeStyle = css`
   height: 100%;
   overflow: auto;
 `;
-
 
 export const showHideCodeButtonStyle = css`
   position: absolute;

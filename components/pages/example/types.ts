@@ -19,6 +19,7 @@ export interface MetadataSources {
   TSDocProp: PropItem;
 }
 
+export type KnobOptionType = string | number;
 /**
  * A custom type based on TSDoc PropItem
  */
@@ -27,7 +28,7 @@ export type KnobType = PropItem & {
   /**
    * For types with options. Set to an empty array for irrelevant types
    */
-  options: Array<string>;
+  options: Array<KnobOptionType>;
 };
 
 export interface LiveExampleState {
