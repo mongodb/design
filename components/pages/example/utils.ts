@@ -8,7 +8,7 @@ import {
   getDefaultValueValue,
 } from 'utils/tsdoc.utils';
 import { ComponentStoryFn, Meta } from '@storybook/react';
-import React, { ReactNode } from 'react';
+import React, { JSXElementConstructor, ReactElement, ReactNode } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import {
   KnobOptionType,
@@ -45,6 +45,8 @@ export const ignoreProps = [
   'refEl',
   'scrollContainer',
   'setOpen',
+  'setClosed',
+  'setCollapsed',
   'shouldClose',
 ];
 
@@ -313,9 +315,12 @@ export function getStoryCode({
   const getStoryJSX = (element: ReactNode, displayName: string): string =>
     element
       ? reactElementToJSXString(element, {
-          displayName: _ => pascalcase(displayName),
+          // @ts-expect-error - correct type for `child` is too verbose
+          displayName: child => child?.type?.displayName ?? pascalcase(displayName),
           showFunctions: true,
+          showDefaultProps: true,
           useBooleanShorthandSyntax: false,
+          useFragmentShortSyntax: true
         })
       : '';
 
