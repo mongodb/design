@@ -7,8 +7,6 @@ import { BorderColors, IconColors, Icons, TextColors } from './constants';
 import styled from '@emotion/styled';
 
 const TextContainer = styled('div')`
-  display: flex;
-  align-items: start;
   margin-left: ${spacing[2]}px;
 `;
 
