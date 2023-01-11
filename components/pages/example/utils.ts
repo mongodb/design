@@ -8,7 +8,7 @@ import {
   getDefaultValueValue,
 } from 'utils/tsdoc.utils';
 import { ComponentStoryFn, Meta } from '@storybook/react';
-import React, { JSXElementConstructor, ReactElement, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import {
   KnobOptionType,
