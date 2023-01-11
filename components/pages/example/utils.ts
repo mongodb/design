@@ -316,11 +316,12 @@ export function getStoryCode({
     element
       ? reactElementToJSXString(element, {
           // @ts-expect-error - correct type for `child` is too verbose
-          displayName: child => child?.type?.displayName ?? pascalcase(displayName),
+          displayName: child =>
+            child?.type?.displayName ?? pascalcase(displayName),
           showFunctions: true,
           showDefaultProps: true,
           useBooleanShorthandSyntax: false,
-          useFragmentShortSyntax: true
+          useFragmentShortSyntax: true,
         })
       : '';
 
