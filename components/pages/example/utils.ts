@@ -81,10 +81,14 @@ function getPropItemFilterFn({
 }: Omit<MetadataSources, 'TSDocProp'>) {
   return (TSDocProp: PropItem) => {
     const isIgnored = ignoreProps.includes(TSDocProp.name);
-    const SBInputType = getSBInputType({ meta, StoryFn, TSDocProp });
+    const metaSBInput = meta?.argTypes?.[TSDocProp.name];
+    const localSBInput = StoryFn?.argTypes?.[TSDocProp.name];
+
     const isExcludedBySB: boolean =
       meta?.parameters?.controls?.exclude?.includes(TSDocProp.name);
-    const isControlNone = ['none', false].includes(SBInputType?.control);
+    const isControlNone =
+      ['none', false].includes(metaSBInput?.control) ||
+      ['none', false].includes(localSBInput?.control);
     return !isIgnored && !isExcludedBySB && !isControlNone;
   };
 }
@@ -119,16 +123,20 @@ function getPropItemToKnobTypeMapFn({
 /**
  * Returns a filter function for SB InputTypes
  */
-function getSBInputTypeFilterFn({ meta, TSPropsArray }) {
+function getSBInputTypeFilterFn({ meta, StoryFn, TSPropsArray }) {
   return (input: InputType) => {
     if (!input.name) return false;
+    const localInput: InputType | undefined = StoryFn.argTypes[input.name]
+
     const isIgnored = ignoreProps.includes(input.name);
     const isAlreadyInKnobs = TSPropsArray.find(
       ({ name }) => name === input.name,
     );
-    const isControlNone = ['none', false].includes(input.control);
+    const isControlNone = ['none', false].includes(input.control) || ['none', false].includes(localInput?.control)
+
     const isExcludedByMeta: boolean =
       meta?.parameters?.controls?.exclude?.includes(input.name);
+
     return (
       !isIgnored && !isAlreadyInKnobs && !isControlNone && !isExcludedByMeta
     );
@@ -389,10 +397,10 @@ export function getLiveExampleState({
     // and updating other properties
     .map(getPropItemToKnobTypeMapFn({ meta, StoryFn }));
 
-  const SBArgsArray: Array<KnobType> = Object.entries(meta.argTypes ?? {})
+  const SBArgsArray: Array<KnobType> = Object.entries({...meta.argTypes, ...StoryFn.argTypes} ?? {})
     .map(arg => ({ name: arg[0], ...arg[1] }))
     // Same filters as above, but also filter out values already in TSPropsArray
-    .filter(getSBInputTypeFilterFn({ meta, TSPropsArray }))
+    .filter(getSBInputTypeFilterFn({ meta, StoryFn, TSPropsArray }))
     // Convert SB InputType to KnobType
     .map(mapSBArgTypeToKnobType);
 
