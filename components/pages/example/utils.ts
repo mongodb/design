@@ -315,8 +315,8 @@ export function getStoryCode({
   const getStoryJSX = (element: ReactNode, displayName: string): string =>
     element
       ? reactElementToJSXString(element, {
-          // @ts-expect-error - correct type for `child` is too verbose
-          displayName: child =>
+          displayName: (child: ReactNode) =>
+            // @ts-expect-error - correct type for `child` is too verbose
             child?.type?.displayName ?? pascalcase(displayName),
           showFunctions: true,
           showDefaultProps: true,
