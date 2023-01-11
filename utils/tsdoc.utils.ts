@@ -58,6 +58,10 @@ export function findComponentDoc(
   return tsDocArray?.find(doc => doc.displayName === pascalcase(componentName));
 }
 
+/**
+ * Given a TSDoc object,
+ * return an array of component Props
+ */
 export function getComponentPropsArray(
   tsDoc?: CustomComponentDoc,
 ): Array<PropItem>;

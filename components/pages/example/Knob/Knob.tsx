@@ -5,7 +5,7 @@ import { SelectProps } from '@leafygreen-ui/select/dist/types';
 import TextInput, { TextInputProps } from '@leafygreen-ui/text-input';
 import { RadioBoxGroup, RadioBox } from '@leafygreen-ui/radio-box-group';
 import Toggle from '@leafygreen-ui/toggle';
-import { TypeString } from './utils';
+import { KnobOptionType, TypeString } from '../types';
 
 const inputStyle = css`
   min-width: 256px;
@@ -14,7 +14,7 @@ const inputStyle = css`
 interface KnobProps extends HTMLElementProps<'input'> {
   propName: string;
   knobType: TypeString;
-  knobOptions: Array<string>;
+  knobOptions: Array<KnobOptionType>;
   value: any;
   onChange: (val: any) => void;
   darkMode?: boolean;
@@ -66,7 +66,7 @@ export const Knob = ({
     case 'enum':
     case 'select':
     case 'radio': {
-      if (knobOptions) {
+      if (knobOptions && knobOptions.length) {
         if (knobOptions.length <= 3) {
           return (
             <RadioBoxGroup
@@ -101,10 +101,10 @@ export const Knob = ({
         );
       }
 
-      return <>knobType</>;
+      return <>{`${value}`}</>;
     }
 
     default:
-      return <>{knobType}</>;
+      return <>{`${value}`}</>;
   }
 };
