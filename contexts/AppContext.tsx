@@ -1,7 +1,6 @@
 import { createContext, useContext } from 'react';
 import { ComponentFields, ContentPageGroup } from 'utils/types';
 
-// TODO: TS type
 interface AppContextValue {
   components: Array<ComponentFields>;
   contentPageGroups: Array<ContentPageGroup>;
