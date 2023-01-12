@@ -1,7 +1,15 @@
 import { createContext, useContext } from 'react';
+import { ComponentFields, ContentPageGroup } from 'utils/types';
 
 // TODO: TS type
-const AppContext = createContext<any>({});
+interface AppContextValue {
+  components: Array<ComponentFields>;
+  contentPageGroups: Array<ContentPageGroup>;
+}
+const AppContext = createContext<AppContextValue>({
+  components: [],
+  contentPageGroups: [],
+});
 
 export function AppContextProvider({
   components,

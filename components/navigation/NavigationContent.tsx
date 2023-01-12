@@ -67,7 +67,7 @@ function NavigationContent({
         <>
           {contentPageGroups.map(contentPageGroup => (
             <SideNavGroup
-              key={contentPageGroup.id}
+              key={contentPageGroup.uid}
               header={contentPageGroup.title}
               glyph={<Icon glyph={contentPageGroup.iconname} />}
             >

@@ -1,15 +1,19 @@
 import { CustomComponentDoc } from './tsdoc.utils';
 
-export interface ContentPageFields {
+export interface ContentPageGroup extends Object {
+  uid: string;
   title: string;
+  url: string;
+  iconname: string;
+  content_pages: Array<ContentPage>;
+}
+
+export interface ContentPage {
+  title: string;
+  url: string;
   content: unknown;
 }
 
-export interface ContentPageGroupFields {
-  title: string;
-  iconName: string;
-  contentPages: Array<unknown>;
-}
 export interface ComponentFields {
   title: string;
   description: string;
