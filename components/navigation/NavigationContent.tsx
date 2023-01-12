@@ -98,11 +98,7 @@ function NavigationContent({
                 <SideNavItem
                   key={componentKebabCaseName}
                   onClick={() =>
-                    router.push(
-                      `/component/${componentKebabCaseName}/${
-                        activeTab ? activeTab : 'example'
-                      }`,
-                    )
+                    router.push(`/component/${componentKebabCaseName}/example`)
                   }
                   active={componentKebabCaseName === activePage}
                 >
