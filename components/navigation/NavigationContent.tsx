@@ -22,7 +22,6 @@ function NavigationContent({
 }) {
   const router = useRouter();
   const activePage = router.asPath.split('/')[2];
-  const activeTab = router.asPath.split('/')[3];
   const { components, contentPageGroups } = useAppContext();
 
   if (!components || !contentPageGroups) {
