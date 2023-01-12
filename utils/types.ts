@@ -15,8 +15,10 @@ export interface ContentPage {
 }
 
 export interface ComponentFields {
+  uid: string;
   title: string;
   description: string;
+  url: string;
   figmaUrl?: string;
   designguidelines?: unknown;
 }

@@ -10,10 +10,9 @@ const Stack = Contentstack.Stack({
 
 export async function getComponents(): Promise<Array<ComponentFields>> {
   try {
-    const results: Array<ComponentFields> = (await Stack.ContentType('component')
-      .Query()
-      .toJSON()
-      .find())[0]
+    const results: Array<ComponentFields> = (
+      await Stack.ContentType('component').Query().toJSON().find()
+    )[0];
     return results.sort((a, b) => a.title.localeCompare(b.title));
   } catch (error) {
     console.error('No Component pages found', error);
@@ -22,7 +21,9 @@ export async function getComponents(): Promise<Array<ComponentFields>> {
   }
 }
 
-export async function getComponent(componentName: string): Promise<ComponentFields | undefined> {
+export async function getComponent(
+  componentName: string,
+): Promise<ComponentFields | undefined> {
   try {
     const query = Stack.ContentType('component').Query();
     const result = await query
@@ -39,14 +40,13 @@ export async function getComponent(componentName: string): Promise<ComponentFiel
 export async function getContentPageGroups(): Promise<Array<ContentPageGroup>> {
   try {
     const query = Stack.ContentType('content_page_group').Query();
-    const pageGroups: Array<ContentPageGroup> = (await query
-      .includeReference('content_pages')
-      .toJSON()
-      .find())[0];
+    const pageGroups: Array<ContentPageGroup> = (
+      await query.includeReference('content_pages').toJSON().find()
+    )[0];
     pageGroups.forEach(pageGroup => {
       pageGroup.content_pages.sort((a, b) => a.title.localeCompare(b.title));
-    })
-    return pageGroups
+    });
+    return pageGroups;
   } catch (error) {
     console.error('No Content Page Groups found', error);
     // Return no component pages
@@ -54,7 +54,9 @@ export async function getContentPageGroups(): Promise<Array<ContentPageGroup>> {
   }
 }
 
-export async function getContentPage(contentPageName: string): Promise<ContentPage | undefined> {
+export async function getContentPage(
+  contentPageName: string,
+): Promise<ContentPage | undefined> {
   try {
     const query = Stack.ContentType('content_page').Query();
     const result = await query
