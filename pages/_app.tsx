@@ -13,6 +13,7 @@ import {
 } from 'utils/getContentstackResources';
 import getFullPageTitle from 'utils/getFullPageTitle';
 import * as ga from 'utils/googleAnalytics';
+import { ContentPageGroup } from 'utils/types';
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -21,7 +22,7 @@ export type NextPageWithLayout = NextPage & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
   components: any;
-  contentPageGroups: any;
+  contentPageGroups: Array<ContentPageGroup>;
 };
 
 function MyApp({

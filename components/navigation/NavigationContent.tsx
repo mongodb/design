@@ -22,7 +22,6 @@ function NavigationContent({
 }) {
   const router = useRouter();
   const activePage = router.asPath.split('/')[2];
-  const activeTab = router.asPath.split('/')[3];
   const { components, contentPageGroups } = useAppContext();
 
   if (!components || !contentPageGroups) {
@@ -68,7 +67,7 @@ function NavigationContent({
         <>
           {contentPageGroups.map(contentPageGroup => (
             <SideNavGroup
-              key={contentPageGroup.id}
+              key={contentPageGroup.uid}
               header={contentPageGroup.title}
               glyph={<Icon glyph={contentPageGroup.iconname} />}
             >
@@ -98,11 +97,7 @@ function NavigationContent({
                 <SideNavItem
                   key={componentKebabCaseName}
                   onClick={() =>
-                    router.push(
-                      `/component/${componentKebabCaseName}/${
-                        activeTab ? activeTab : 'example'
-                      }`,
-                    )
+                    router.push(`/component/${componentKebabCaseName}/example`)
                   }
                   active={componentKebabCaseName === activePage}
                 >

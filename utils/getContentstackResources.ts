@@ -1,5 +1,6 @@
 import Contentstack from 'contentstack';
 import startCase from 'lodash/startCase';
+import { ComponentFields, ContentPage, ContentPageGroup } from './types';
 
 const Stack = Contentstack.Stack({
   api_key: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string,
@@ -7,13 +8,12 @@ const Stack = Contentstack.Stack({
   environment: 'main',
 });
 
-export async function getComponents(): Promise<any> {
+export async function getComponents(): Promise<Array<ComponentFields>> {
   try {
-    const results = await Stack.ContentType('component')
-      .Query()
-      .toJSON()
-      .find();
-    return results[0].sort((a, b) => a.title.localeCompare(b.title));
+    const results: Array<ComponentFields> = (
+      await Stack.ContentType('component').Query().toJSON().find()
+    )[0];
+    return results.sort((a, b) => a.title.localeCompare(b.title));
   } catch (error) {
     console.error('No Component pages found', error);
     // Return no component pages
@@ -21,7 +21,9 @@ export async function getComponents(): Promise<any> {
   }
 }
 
-export async function getComponent(componentName: string): Promise<any> {
+export async function getComponent(
+  componentName: string,
+): Promise<ComponentFields | undefined> {
   try {
     const query = Stack.ContentType('component').Query();
     const result = await query
@@ -35,14 +37,16 @@ export async function getComponent(componentName: string): Promise<any> {
   }
 }
 
-export async function getContentPageGroups(): Promise<any> {
+export async function getContentPageGroups(): Promise<Array<ContentPageGroup>> {
   try {
     const query = Stack.ContentType('content_page_group').Query();
-    const pageGroups = await query
-      .includeReference('content_pages')
-      .toJSON()
-      .find();
-    return pageGroups[0];
+    const pageGroups: Array<ContentPageGroup> = (
+      await query.includeReference('content_pages').toJSON().find()
+    )[0];
+    pageGroups.forEach(pageGroup => {
+      pageGroup.content_pages.sort((a, b) => a.title.localeCompare(b.title));
+    });
+    return pageGroups;
   } catch (error) {
     console.error('No Content Page Groups found', error);
     // Return no component pages
@@ -50,7 +54,9 @@ export async function getContentPageGroups(): Promise<any> {
   }
 }
 
-export async function getContentPage(contentPageName: string) {
+export async function getContentPage(
+  contentPageName: string,
+): Promise<ContentPage | undefined> {
   try {
     const query = Stack.ContentType('content_page').Query();
     const result = await query
