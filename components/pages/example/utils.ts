@@ -79,6 +79,8 @@ function getPropItemFilterFn({
   meta,
   StoryFn,
 }: Omit<MetadataSources, 'TSDocProp'>) {
+  if (isUndefined(meta) || isUndefined(StoryFn)) return () => false;
+
   return (TSDocProp: PropItem) => {
     const isIgnored = ignoreProps.includes(TSDocProp.name);
     const metaSBInput = meta?.argTypes?.[TSDocProp.name];
@@ -123,16 +125,25 @@ function getPropItemToKnobTypeMapFn({
 /**
  * Returns a filter function for SB InputTypes
  */
-function getSBInputTypeFilterFn({ meta, StoryFn, TSPropsArray }) {
+function getSBInputTypeFilterFn({
+  meta,
+  StoryFn,
+  TSPropsArray,
+}: Omit<MetadataSources, 'TSDocProp'> & { TSPropsArray: Array<KnobType> }) {
+  if (isUndefined(meta) || isUndefined(StoryFn) || isUndefined(TSPropsArray))
+    return () => false;
+
   return (input: InputType) => {
-    if (!input.name) return false;
-    const localInput: InputType | undefined = StoryFn.argTypes[input.name]
+    if (isUndefined(input.name)) return false;
+    const localInput: InputType | undefined = StoryFn?.argTypes?.[input.name];
 
     const isIgnored = ignoreProps.includes(input.name);
     const isAlreadyInKnobs = TSPropsArray.find(
       ({ name }) => name === input.name,
     );
-    const isControlNone = ['none', false].includes(input.control) || ['none', false].includes(localInput?.control)
+    const isControlNone =
+      ['none', false].includes(input.control) ||
+      ['none', false].includes(localInput?.control);
 
     const isExcludedByMeta: boolean =
       meta?.parameters?.controls?.exclude?.includes(input.name);
@@ -397,7 +408,9 @@ export function getLiveExampleState({
     // and updating other properties
     .map(getPropItemToKnobTypeMapFn({ meta, StoryFn }));
 
-  const SBArgsArray: Array<KnobType> = Object.entries({...meta.argTypes, ...StoryFn.argTypes} ?? {})
+  const SBArgsArray: Array<KnobType> = Object.entries(
+    { ...meta.argTypes, ...StoryFn.argTypes } ?? {},
+  )
     .map(arg => ({ name: arg[0], ...arg[1] }))
     // Same filters as above, but also filter out values already in TSPropsArray
     .filter(getSBInputTypeFilterFn({ meta, StoryFn, TSPropsArray }))
