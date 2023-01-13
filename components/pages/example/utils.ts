@@ -297,7 +297,7 @@ function createDefaultValue(knob: KnobType) {
     case 'enum':
     case 'select':
     case 'radio':
-      return knob.options[0];
+      return knob.options.find(opt => opt === 'default') ?? knob.options[0];
   }
 }
 
