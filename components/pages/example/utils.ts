@@ -1,5 +1,5 @@
 import { PropItem } from 'react-docgen-typescript';
-import { defaults, pickBy, isUndefined, isString } from 'lodash';
+import { defaults, pickBy, isUndefined, isString, kebabCase, camelCase, snakeCase  } from 'lodash';
 import pascalcase from 'pascalcase';
 import {
   CustomComponentDoc,
@@ -177,7 +177,7 @@ export function getControlType({
           return 'string';
       }
 
-      return 'array';
+      return 'enum';
 
     case 'string':
     case 'number':
@@ -252,11 +252,35 @@ export function getInitialKnobValues(
   StoryFn: ComponentStoryFn<any>,
 ) {
   const knobDefaults = knobsArray.reduce((values, knob) => {
-    values[knob.name] =
-      knob.defaultValue ??
-      meta.args?.[knob.name] ??
-      StoryFn.args?.[knob.name] ??
-      createDefaultValue(knob);
+
+    // If the type is an enum, and the defaultValue is the enum key, not the value
+    // we need to get the enum value
+    if (knob.controlType === 'enum') {
+      if (!knob.options.includes(knob.defaultValue)) {
+        const enumName = knob.type.raw
+        const enumValue = knob.defaultValue.replace(enumName, '')
+        const defaultOption = knob.options.find(opt => (
+          [
+            // We don't have access to the enum mapping,
+            // so we have to hope the option value matches the enum value
+            enumValue.toLowerCase(),
+            kebabCase(enumValue),
+            camelCase(enumValue),
+            snakeCase(enumValue)
+          ].includes(opt) ?? ''
+        ))
+
+      values[knob.name] = defaultOption
+      }
+    } else {
+      values[knob.name] =
+        knob.defaultValue ??
+        meta.args?.[knob.name] ??
+        StoryFn.args?.[knob.name] ??
+        createDefaultValue(knob);
+    }
+
+
     return values;
   }, {} as Record<'string', any>);
   return defaults(knobDefaults, meta.args, StoryFn.args);
@@ -367,7 +391,8 @@ export function getLiveExampleState({
   stories: { [key: string]: ComponentStoryFn<any> };
   tsDoc: Array<CustomComponentDoc> | null;
 }): LiveExampleState {
-  const defaultStoryName = meta.parameters?.default ?? Object.keys(stories)[0];
+  const defaultStoryName = meta
+  .parameters?.default ?? Object.keys(stories)[0];
 
   const StoryFn = defaultStoryName
     ? stories[defaultStoryName]
