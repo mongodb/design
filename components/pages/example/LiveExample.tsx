@@ -78,8 +78,6 @@ export const LiveExample = ({
             tsDoc,
           });
 
-          console.log(state);
-
           setState(state);
         } else {
           setState(initialLiveExampleState);
