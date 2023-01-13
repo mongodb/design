@@ -262,24 +262,26 @@ export function getInitialKnobValues(
   const knobDefaults = knobsArray.reduce((values, knob) => {
     // If the type is an enum, and the defaultValue is the enum key, not the value
     // we need to get the enum value
-    if (knob.controlType === 'enum') {
-      if (!knob.options.includes(knob.defaultValue)) {
-        const enumName = knob.type.raw;
-        const enumValue = knob.defaultValue.replace(enumName, '');
-        const defaultOption = knob.options.find(
-          opt =>
-            [
-              // We don't have access to the enum mapping,
-              // so we have to hope the option value matches the enum value
-              enumValue.toLowerCase(),
-              kebabCase(enumValue),
-              camelCase(enumValue),
-              snakeCase(enumValue),
-            ].includes(opt) ?? '',
-        );
+    if (
+      knob.controlType === 'enum' &&
+      knob.defaultValue &&
+      !knob.options.includes(knob.defaultValue)
+    ) {
+      const enumName = knob.type.raw;
+      const enumValue = knob.defaultValue.replace(enumName, '');
+      const defaultOption =
+        knob.options.find(opt =>
+          [
+            // We don't have access to the enum mapping,
+            // so we have to hope the option value matches the enum value
+            enumValue.toLowerCase(),
+            kebabCase(enumValue),
+            camelCase(enumValue),
+            snakeCase(enumValue),
+          ].includes(opt),
+        ) ?? createDefaultValue(knob);
 
-        values[knob.name] = defaultOption;
-      }
+      values[knob.name] = defaultOption;
     } else {
       values[knob.name] =
         knob.defaultValue ??
