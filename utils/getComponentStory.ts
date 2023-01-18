@@ -18,6 +18,7 @@ export async function getComponentStory(
       `@leafygreen-ui/${kebabName}/src/${pascalcase(kebabName)}.story`
     );
   } catch (err) {
+    console.warn(err);
     return;
   }
 }
