@@ -31,6 +31,17 @@ const typeCellStyle = css`
   max-width: 40ch;
 `;
 
+const inheritedAttrNameStyle = css`
+  &:not(:last-child) {
+    &:after {
+      content: ',';
+      color: ${palette.black};
+      margin-left: -0.25ch;
+      margin-right: 1ch;
+    }
+  }
+`;
+
 export const TSDocPropTable = ({
   tsDoc,
   className,
@@ -102,15 +113,14 @@ export const TSDocPropTable = ({
                       <Cell colSpan={3}>
                         Native attributes inherited from &nbsp;
                         {datum.map(({ groupName }) => (
-                          <>
-                            <Link
-                              key={groupName}
-                              target="_blank"
-                              href={getHTMLAttributesLink(groupName)}
-                            >
-                              <InlineCode>{groupName};</InlineCode>
-                            </Link>
-                          </>
+                          <Link
+                            key={groupName}
+                            target="_blank"
+                            href={getHTMLAttributesLink(groupName)}
+                            className={inheritedAttrNameStyle}
+                          >
+                            <InlineCode>{groupName}</InlineCode>
+                          </Link>
                         ))}
                       </Cell>
                     </Row>
