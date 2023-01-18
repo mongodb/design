@@ -74,5 +74,7 @@ function isPathInLeafygreen(filePath) {
   // We need to include any nested leafygreen modules in the transpilation.
   // Returning `true` here overrides `exclude` in the tsconfig
   const LGModuleRegex = /.+(node_modules\/@leafygreen-ui)/g;
-  return LGModuleRegex.test(filePath);
+  // Also include linked packages
+  const LinkedModuleRegex = /[A-Za-z_/\-.]+leafygreen-ui\/packages/g
+  return LGModuleRegex.test(filePath) || LinkedModuleRegex.test(filePath);
 }
