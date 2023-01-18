@@ -22,7 +22,7 @@ export const storyWrapperStyle = css`
   overflow: auto;
 `;
 
-export const typographyWrapperStyle = css`
+export const blockWrapperStyle = css`
   display: inline-block;
 `;
 
