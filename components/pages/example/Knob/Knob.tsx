@@ -59,7 +59,12 @@ export const Knob = ({
     case 'boolean':
       return (
         /// @ts-expect-error
-        <Toggle {...rest} checked={!!value as boolean} onChange={onChange} />
+        <Toggle
+          {...rest}
+          checked={!!value as boolean}
+          onChange={onChange}
+          size="small"
+        />
       );
 
     case 'array':

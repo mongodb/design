@@ -8,7 +8,7 @@ export const liveExampleWrapperStyle = css`
   margin: -${spacing[4]}px;
   margin-bottom: initial;
   min-height: 33vh;
-  max-height: 50vh;
+  max-height: 100vh;
 `;
 
 export const storyWrapperStyle = css`
@@ -24,6 +24,7 @@ export const storyWrapperStyle = css`
 
 export const blockWrapperStyle = css`
   display: inline-block;
+  height: min-content;
 `;
 
 export const codeExampleWrapperStyle = css`
