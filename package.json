@@ -41,6 +41,7 @@
     "@leafygreen-ui/emotion": "^4.0.3",
     "@leafygreen-ui/expandable-card": "^3.0.4",
     "@leafygreen-ui/form-footer": "^3.0.1",
+    "@leafygreen-ui/guide-cue": "^3.0.1",
     "@leafygreen-ui/hooks": "^7.4.0",
     "@leafygreen-ui/icon": "^11.12.3",
     "@leafygreen-ui/icon-button": "^15.0.3",
