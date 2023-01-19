@@ -31,6 +31,17 @@ const typeCellStyle = css`
   max-width: 40ch;
 `;
 
+const inheritedAttrNameStyle = css`
+  &:not(:last-child) {
+    &:after {
+      content: ',';
+      color: ${palette.black};
+      margin-left: -0.25ch;
+      margin-right: 1ch;
+    }
+  }
+`;
+
 export const TSDocPropTable = ({
   tsDoc,
   className,
@@ -39,9 +50,13 @@ export const TSDocPropTable = ({
   className?: string;
 }) => {
   const componentProps = getComponentPropsArray(tsDoc.props);
-  const inheritedProps = getInheritedProps(tsDoc.props);
+  const inheritedProps = getInheritedProps(tsDoc.props).filter(
+    ({ groupName }) =>
+      groupName.endsWith('HTMLAttributes') ||
+      groupName.endsWith('SVGAttributes'),
+  );
 
-  const props = [...componentProps, ...inheritedProps];
+  const props = [...componentProps, inheritedProps];
 
   return (
     <>
@@ -90,20 +105,23 @@ export const TSDocPropTable = ({
                 </Row>
               ) : (
                 <>
-                  {datum.groupName.endsWith('HTMLAttributes') && (
-                    <Row key={datum.groupName}>
-                      <Cell>...</Cell>
+                  {datum.length > 0 && (
+                    <Row key="inherited">
+                      <Cell>
+                        <InlineCode>...rest</InlineCode>
+                      </Cell>
                       <Cell colSpan={3}>
-                        {datum.groupName === 'HTMLAttributes'
-                          ? 'Global'
-                          : 'Native attributes inherited from'}
-                        &nbsp;
-                        <Link
-                          target="_blank"
-                          href={getHTMLAttributesLink(datum.groupName)}
-                        >
-                          <InlineCode>{datum.groupName}</InlineCode>
-                        </Link>
+                        Native attributes inherited from &nbsp;
+                        {datum.map(({ groupName }) => (
+                          <Link
+                            key={groupName}
+                            target="_blank"
+                            href={getHTMLAttributesLink(groupName)}
+                            className={inheritedAttrNameStyle}
+                          >
+                            <InlineCode>{groupName}</InlineCode>
+                          </Link>
+                        ))}
                       </Cell>
                     </Row>
                   )}
@@ -118,13 +136,19 @@ export const TSDocPropTable = ({
 };
 
 function getHTMLAttributesLink(groupName: string) {
-  if (groupName === 'HTMLAttributes')
-    return 'https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes';
+  switch (groupName) {
+    case 'SVGAttributes':
+      return 'https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute';
+    case 'HTMLAttributes':
+      return 'https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes';
 
-  let tag = groupName
-    .slice(0, groupName.indexOf('HTMLAttributes'))
-    .toLowerCase();
+    default: {
+      let tag = groupName
+        .slice(0, groupName.indexOf('HTMLAttributes'))
+        .toLowerCase();
 
-  tag = tag == 'anchor' ? 'a' : tag;
-  return `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${tag}`;
+      tag = tag == 'anchor' ? 'a' : tag;
+      return `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${tag}`;
+    }
+  }
 }
