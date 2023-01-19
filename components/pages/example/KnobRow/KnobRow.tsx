@@ -1,5 +1,5 @@
 import { kebabCase } from 'lodash';
-import { Subtitle } from '@leafygreen-ui/typography';
+import { Body } from '@leafygreen-ui/typography';
 import { spacing } from '@leafygreen-ui/tokens';
 import { palette } from '@leafygreen-ui/palette';
 import { css } from '@leafygreen-ui/emotion';
@@ -48,16 +48,20 @@ export const KnobRow = ({
   return (
     <div className={knobRowWrapperStyle(darkMode)}>
       <div>
-        <Subtitle darkMode={darkMode} id={`${kebabCase()}-knob-${name}`}>
+        <Body
+          baseFontSize={16}
+          darkMode={darkMode}
+          id={`${kebabCase()}-knob-${name}`}
+        >
           <InlineDefinition
             align="right"
             spacing={spacing[4]}
             darkMode={darkMode}
             definition={<PropTooltipContent propItem={knob} />}
           >
-            {name}
+            <strong>{name}</strong>
           </InlineDefinition>
-        </Subtitle>
+        </Body>
       </div>
       <Knob
         propName={name}
