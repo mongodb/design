@@ -53,14 +53,7 @@ export const KnobRow = ({
           darkMode={darkMode}
           id={`${kebabCase()}-knob-${name}`}
         >
-          <InlineDefinition
-            align="right"
-            spacing={spacing[4]}
-            darkMode={darkMode}
-            definition={<PropTooltipContent propItem={knob} />}
-          >
-            <strong>{name}</strong>
-          </InlineDefinition>
+          <strong>{name}</strong>
         </Body>
       </div>
       <Knob
