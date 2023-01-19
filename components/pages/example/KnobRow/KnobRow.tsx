@@ -4,11 +4,9 @@ import { spacing } from '@leafygreen-ui/tokens';
 import { palette } from '@leafygreen-ui/palette';
 import { css } from '@leafygreen-ui/emotion';
 import { HTMLElementProps } from '@leafygreen-ui/lib';
-import InlineDefinition from '@leafygreen-ui/inline-definition';
 
 import { Knob } from '../Knob/Knob';
 import { KnobType } from '../types';
-import { PropTooltipContent } from 'components/PropTooltipContent';
 
 const knobRowWrapperStyle = (darkMode: boolean) => css`
   display: flex;
