@@ -23,7 +23,7 @@ import {
 } from './LiveExample.styles';
 
 const useBlockWrapperFor = ['palette', 'side-nav', 'tokens', 'typography']; // Use standard block flow for these packages
-const disableCodeExampleFor = ['palette', 'tokens'];
+const disableCodeExampleFor = ['icon', 'palette', 'tokens'];
 
 const initialLiveExampleState: LiveExampleState = {
   meta: undefined,
