@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, useState } from 'react';
+import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { kebabCase } from 'lodash';
 import { Transition } from 'react-transition-group';
 import Button from '@leafygreen-ui/button';
@@ -17,8 +17,8 @@ import {
   codeStyle,
   codeWrapperStateStyle,
   liveExampleWrapperStyle,
-  storyWrapperStyle,
-  blockWrapperStyle,
+  storyContainerStyle,
+  blockContainerStyle,
   exampleCodeButtonStyle,
   exampleCodeButtonRowStyle,
 } from './LiveExample.styles';
@@ -49,6 +49,9 @@ export const LiveExample = ({
     }, initialLiveExampleState);
 
   const { darkMode } = useDarkMode(knobValues?.darkMode);
+  const storyContainerRef = useRef<HTMLDivElement>(null);
+  const storyWrapperRef = useRef<HTMLDivElement>(null);
+
   const setCode = useCallback(
     (newCode: LiveExampleState['storyCode']) =>
       setState({ meta, knobValues, knobsArray, StoryFn, storyCode: newCode }),
@@ -107,6 +110,9 @@ export const LiveExample = ({
     );
   }, [StoryFn, componentName, knobValues, meta, setCode]);
 
+  const storyHeight = storyWrapperRef.current?.clientHeight;
+  const storyContainerHeight = storyContainerRef.current?.clientHeight;
+
   return (
     <Card
       darkMode={darkMode}
@@ -116,11 +122,25 @@ export const LiveExample = ({
     >
       <div className={liveExampleWrapperStyle} id="live-example">
         <div
-          className={cx(storyWrapperStyle, {
-            [blockWrapperStyle]: useBlockWrapperFor.includes(componentName),
-          })}
+          id="story-container"
+          ref={storyContainerRef}
+          className={cx(
+            storyContainerStyle,
+            {
+              [blockContainerStyle]: useBlockWrapperFor.includes(componentName),
+            },
+            css`
+              min-height: ${storyHeight ?? 0}px;
+            `,
+          )}
         >
-          {StoryFn ? <StoryFn {...knobValues} /> : <H2>No example found 🕵️</H2>}
+          {StoryFn ? (
+            <div ref={storyWrapperRef}>
+              <StoryFn {...knobValues} />
+            </div>
+          ) : (
+            <H2>No example found 🕵️</H2>
+          )}
         </div>
         {!disableCodeExampleFor.includes(componentName) && (
           <Transition in={showCode} timeout={200}>
@@ -129,6 +149,9 @@ export const LiveExample = ({
                 className={cx(
                   codeExampleWrapperStyle,
                   codeWrapperStateStyle[state],
+                  css`
+                    height: ${storyContainerHeight ?? 0 + 48}px;
+                  `,
                 )}
                 id="example-code"
               >

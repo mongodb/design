@@ -9,21 +9,21 @@ export const liveExampleWrapperStyle = css`
   margin-bottom: initial;
   min-height: 33vh;
   max-height: 100vh;
-  overflow: auto;
+  overflow: hidden;
 `;
 
-export const storyWrapperStyle = css`
+export const storyContainerStyle = css`
   position: relative;
   flex: 2;
   padding: ${spacing[4]}px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  max-height: 100%;
+  max-height: 100vh;
   overflow: auto;
 `;
 
-export const blockWrapperStyle = css`
+export const blockContainerStyle = css`
   display: inline-block;
   height: min-content;
 `;
@@ -31,7 +31,7 @@ export const blockWrapperStyle = css`
 export const codeExampleWrapperStyle = css`
   position: relative;
   flex: 0;
-  max-height: 50vh;
+  max-height: 100%;
   margin-top: -1px;
 
   transition: 200ms ease-in-out;
