@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import TextArea from '@leafygreen-ui/text-area';
 import { css } from '@leafygreen-ui/emotion';
 import Code from '@leafygreen-ui/code';
@@ -30,9 +30,16 @@ export const RawKnob = ({
   onChange,
   darkMode,
 }: Pick<KnobProps, 'propName' | 'value' | 'onChange' | 'darkMode'>) => {
-  const valueString = JSON.stringify(value);
   const [editing, setEditing] = useState(false);
   const [isError, setError] = useState(false);
+  const valueString = useMemo(() => {
+    try {
+      const val = JSON.stringify(value);
+      return val;
+    } catch {
+      return '';
+    }
+  }, [value]);
   const [intermediateValue, setInterValue] = useState(valueString);
 
   // Show just raw code
