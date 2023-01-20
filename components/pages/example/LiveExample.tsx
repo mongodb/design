@@ -17,9 +17,10 @@ import {
   codeStyle,
   codeWrapperStateStyle,
   liveExampleWrapperStyle,
-  showHideCodeButtonStyle,
   storyWrapperStyle,
   blockWrapperStyle,
+  exampleCodeButtonStyle,
+  exampleCodeButtonRowStyle,
 } from './LiveExample.styles';
 
 const useBlockWrapperFor = ['palette', 'side-nav', 'tokens', 'typography']; // Use standard block flow for these packages
@@ -113,7 +114,7 @@ export const LiveExample = ({
         margin-block: 2em;
       `}
     >
-      <div className={liveExampleWrapperStyle}>
+      <div className={liveExampleWrapperStyle} id="live-example">
         <div
           className={cx(storyWrapperStyle, {
             [blockWrapperStyle]: useBlockWrapperFor.includes(componentName),
@@ -122,34 +123,35 @@ export const LiveExample = ({
           {StoryFn ? <StoryFn {...knobValues} /> : <H2>No example found 🕵️</H2>}
         </div>
         {!disableCodeExampleFor.includes(componentName) && (
-          <>
-            <Transition in={showCode} timeout={200}>
-              {state => (
-                <div
-                  className={cx(
-                    codeExampleWrapperStyle,
-                    codeWrapperStateStyle[state],
-                  )}
-                >
-                  <Code className={codeStyle} darkMode={darkMode} language="js">
-                    {storyCode ?? 'No code found'}
-                  </Code>
-                </div>
-              )}
-            </Transition>
-            <Button
-              darkMode={darkMode}
-              className={showHideCodeButtonStyle}
-              variant="default"
-              size="xsmall"
-              onClick={() => setShowCode(!showCode)}
-            >
-              {showCode ? 'Hide' : 'Show'} Code
-            </Button>
-          </>
+          <Transition in={showCode} timeout={200}>
+            {state => (
+              <div
+                className={cx(
+                  codeExampleWrapperStyle,
+                  codeWrapperStateStyle[state],
+                )}
+                id="example-code"
+              >
+                <Code className={codeStyle} darkMode={darkMode} language="js">
+                  {storyCode ?? 'No code found'}
+                </Code>
+              </div>
+            )}
+          </Transition>
         )}
       </div>
-      <div>
+      <div id="knobs">
+        <div className={exampleCodeButtonRowStyle}>
+          <Button
+            darkMode={darkMode}
+            className={exampleCodeButtonStyle}
+            variant="default"
+            size="xsmall"
+            onClick={() => setShowCode(!showCode)}
+          >
+            {showCode ? 'Hide' : 'Show'} Code
+          </Button>
+        </div>
         {knobsArray &&
           knobsArray.map(knob => (
             <KnobRow

@@ -9,6 +9,7 @@ export const liveExampleWrapperStyle = css`
   margin-bottom: initial;
   min-height: 33vh;
   max-height: 100vh;
+  overflow: auto;
 `;
 
 export const storyWrapperStyle = css`
@@ -87,9 +88,11 @@ export const codeStyle = css`
   overflow: auto;
 `;
 
-export const showHideCodeButtonStyle = css`
-  position: absolute;
-  bottom: ${spacing[3]}px;
-  right: ${spacing[5] + spacing[4]}px;
+export const exampleCodeButtonRowStyle = css`
+  text-align: right;
+  padding: 16px 24px;
+`
+
+export const exampleCodeButtonStyle = css`
   white-space: nowrap;
 `;
