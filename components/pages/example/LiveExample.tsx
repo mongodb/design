@@ -130,12 +130,13 @@ export const LiveExample = ({
               [blockContainerStyle]: useBlockWrapperFor.includes(componentName),
             },
             css`
-              min-height: ${storyHeight ?? 0}px;
+              // at least as big as the story, but no more than 100vh
+              min-height: min(${storyHeight ?? 0}px, 100vh);
             `,
           )}
         >
           {StoryFn ? (
-            <div ref={storyWrapperRef}>
+            <div id="story-wrapper" ref={storyWrapperRef}>
               <StoryFn {...knobValues} />
             </div>
           ) : (
@@ -150,6 +151,7 @@ export const LiveExample = ({
                   codeExampleWrapperStyle,
                   codeWrapperStateStyle[state],
                   css`
+                    // should match the height of the story container
                     height: ${storyContainerHeight ?? 0 + 48}px;
                   `,
                 )}
