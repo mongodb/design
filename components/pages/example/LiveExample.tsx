@@ -62,6 +62,7 @@ export const LiveExample = ({
   const updateValue = useCallback(
     (propName: string, newValue: any) => {
       const value = matchTypes(knobValues?.[propName], newValue);
+
       setState({
         knobValues: { ...knobValues, [propName]: value },
       });

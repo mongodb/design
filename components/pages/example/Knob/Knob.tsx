@@ -1,25 +1,16 @@
 import { css, cx } from '@leafygreen-ui/emotion';
-import { HTMLElementProps } from '@leafygreen-ui/lib';
 import { Option, Select } from '@leafygreen-ui/select';
 import { SelectProps } from '@leafygreen-ui/select/dist/types';
 import TextInput, { TextInputProps } from '@leafygreen-ui/text-input';
 import { RadioBoxGroup, RadioBox } from '@leafygreen-ui/radio-box-group';
 import Toggle from '@leafygreen-ui/toggle';
-import { KnobOptionType, TypeString } from '../types';
 import { RadioBoxOverrideStyle } from './Knob.styles';
+import { KnobProps } from './types';
+import { RawKnob } from './RawKnob';
 
 const inputStyle = css`
   min-width: 256px;
 `;
-
-interface KnobProps extends HTMLElementProps<'input'> {
-  propName: string;
-  knobType: TypeString;
-  knobOptions: Array<KnobOptionType>;
-  value: any;
-  onChange: (val: any) => void;
-  darkMode?: boolean;
-}
 
 export const Knob = ({
   propName,
@@ -33,9 +24,9 @@ export const Knob = ({
     case 'string':
     case 'text':
       return (
-        /// @ts-ignore
         <TextInput
           {...(rest as TextInputProps)}
+          aria-label={propName}
           placeholder={propName}
           value={value}
           onChange={onChange}
@@ -46,9 +37,9 @@ export const Knob = ({
     case 'number':
     case 'range':
       return (
-        /// @ts-ignore
         <TextInput
           {...(rest as TextInputProps)}
+          aria-label={propName}
           type="number"
           placeholder={propName}
           value={value?.toString() ?? value}
@@ -115,6 +106,6 @@ export const Knob = ({
     }
 
     default:
-      return <>{`${value}`}</>;
+      return <RawKnob propName={propName} value={value} onChange={onChange} />;
   }
 };
