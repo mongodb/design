@@ -386,10 +386,10 @@ export function getStoryCode({
       const locationsMap = defaultStoryName
         ? storySource.locationsMap[defaultStoryName]
         : Object.values(storySource.locationsMap)[0];
-
       const lines = (storySource.source as string).match(/^.*$/gm);
+
       const storyCode = lines
-        ?.slice(locationsMap.startLoc.line - 1, locationsMap.endLoc.line - 1)
+        ?.slice(locationsMap?.startLoc?.line - 1, locationsMap?.endLoc?.line - 1)
         .join('\n');
       return storyCode;
     }
