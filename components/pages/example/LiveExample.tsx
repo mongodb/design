@@ -118,8 +118,16 @@ export const LiveExample = ({
     );
   }, [StoryFn, componentName, knobValues, meta, setCode]);
 
-  const storyHeight = storyWrapperRef.current?.clientHeight;
-  const storyContainerHeight = storyContainerRef.current?.clientHeight;
+  const storyContainerHeight = Math.min(
+    Math.max(
+      storyWrapperRef.current?.clientHeight ?? 0,
+      document.body.clientHeight / 3,
+    ),
+    document.body.clientHeight,
+  );
+
+  // should match the total height of the story container
+  const exampleCodeHeight = storyContainerHeight + 48;
 
   return (
     <Card
@@ -139,7 +147,7 @@ export const LiveExample = ({
             },
             css`
               // at least as big as the story, but no more than 100vh
-              min-height: min(${storyHeight ?? 0}px, 100vh);
+              min-height: ${storyContainerHeight};
             `,
           )}
         >
@@ -159,8 +167,7 @@ export const LiveExample = ({
                   codeExampleWrapperStyle,
                   codeWrapperStateStyle[state],
                   css`
-                    // should match the height of the story container
-                    height: ${storyContainerHeight ?? 0 + 48}px;
+                    height: ${exampleCodeHeight}px;
                   `,
                 )}
                 id="example-code"
