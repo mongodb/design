@@ -30,7 +30,7 @@ export const blockWrapperStyle = css`
 export const codeExampleWrapperStyle = css`
   position: relative;
   flex: 0;
-  max-height: 100%;
+  max-height: 50vh;
   margin-top: -1px;
 
   transition: 200ms ease-in-out;
