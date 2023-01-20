@@ -8,7 +8,7 @@ export const liveExampleWrapperStyle = css`
   margin: -${spacing[4]}px;
   margin-bottom: initial;
   min-height: 33vh;
-  max-height: 100vh;
+  max-height: 80vh;
   overflow: hidden;
 `;
 
@@ -19,7 +19,7 @@ export const storyContainerStyle = css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  max-height: 100vh;
+  max-height: 80vh;
   overflow: auto;
 `;
 

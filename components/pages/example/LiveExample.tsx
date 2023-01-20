@@ -123,7 +123,7 @@ export const LiveExample = ({
       storyWrapperRef.current?.clientHeight ?? 0,
       document.body.clientHeight / 3,
     ),
-    document.body.clientHeight,
+    document.body.clientHeight * 0.8,
   );
 
   // should match the total height of the story container
