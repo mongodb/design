@@ -1,10 +1,9 @@
-import React, { useState, useMemo } from 'react';
+import { useState } from 'react';
 import TextArea from '@leafygreen-ui/text-area';
 import { css } from '@leafygreen-ui/emotion';
 import Code from '@leafygreen-ui/code';
 import IconButton from '@leafygreen-ui/icon-button';
 import Icon from '@leafygreen-ui/icon';
-import { palette } from '@leafygreen-ui/palette';
 import { KnobProps } from './types';
 
 const editModeWrapperStyle = css`
@@ -13,13 +12,10 @@ const editModeWrapperStyle = css`
   grid-template-columns: 1fr 40px;
   justify-items: center;
   align-items: center;
-  /* border: 1px solid ${palette.gray.light1}; */
-  /* border-radius: 8px; */
 `;
 
 const textAreaStyle = css`
   & > textarea {
-    /* border: unset; */
     margin: unset;
     padding: 8px 12px;
   }
