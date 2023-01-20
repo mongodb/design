@@ -23,7 +23,14 @@ import {
   exampleCodeButtonRowStyle,
 } from './LiveExample.styles';
 
-const useBlockWrapperFor = ['palette', 'side-nav', 'tokens', 'typography']; // Use standard block flow for these packages
+// Use standard block flow for these packages
+const useBlockWrapperFor = [
+  'icon',
+  'palette',
+  'side-nav',
+  'tokens',
+  'typography',
+];
 const disableCodeExampleFor = ['icon', 'palette', 'tokens'];
 
 const initialLiveExampleState: LiveExampleState = {
@@ -167,17 +174,19 @@ export const LiveExample = ({
         )}
       </div>
       <div id="knobs">
-        <div className={exampleCodeButtonRowStyle}>
-          <Button
-            darkMode={darkMode}
-            className={exampleCodeButtonStyle}
-            variant="default"
-            size="xsmall"
-            onClick={() => setShowCode(!showCode)}
-          >
-            {showCode ? 'Hide' : 'Show'} Code
-          </Button>
-        </div>
+        {!disableCodeExampleFor.includes(componentName) && (
+          <div className={exampleCodeButtonRowStyle}>
+            <Button
+              darkMode={darkMode}
+              className={exampleCodeButtonStyle}
+              variant="default"
+              size="xsmall"
+              onClick={() => setShowCode(!showCode)}
+            >
+              {showCode ? 'Hide' : 'Show'} Code
+            </Button>
+          </div>
+        )}
         {knobsArray &&
           knobsArray.map(knob => (
             <KnobRow
