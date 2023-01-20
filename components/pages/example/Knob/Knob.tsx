@@ -6,6 +6,7 @@ import TextInput, { TextInputProps } from '@leafygreen-ui/text-input';
 import { RadioBoxGroup, RadioBox } from '@leafygreen-ui/radio-box-group';
 import Toggle from '@leafygreen-ui/toggle';
 import { KnobOptionType, TypeString } from '../types';
+import { RadioBoxOverrideStyle } from './Knob.styles';
 
 const inputStyle = css`
   min-width: 256px;
@@ -81,7 +82,11 @@ export const Knob = ({
               size="compact"
             >
               {knobOptions.map((opt: string) => (
-                <RadioBox key={opt} value={opt}>
+                <RadioBox
+                  className={RadioBoxOverrideStyle}
+                  key={opt}
+                  value={opt}
+                >
                   {opt}
                 </RadioBox>
               ))}
