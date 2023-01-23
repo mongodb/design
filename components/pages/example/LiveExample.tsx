@@ -8,7 +8,6 @@ import { css, cx } from '@leafygreen-ui/emotion';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { H2 } from '@leafygreen-ui/typography';
 import { getComponentStory } from 'utils/getComponentStory';
-import { BaseLayoutProps } from 'utils/ContentStack/types';
 import { KnobRow } from './KnobRow/KnobRow';
 import { LiveExampleState } from './types';
 import { getLiveExampleState, getStoryCode, matchTypes } from './utils';
@@ -21,6 +20,7 @@ import {
   storyWrapperStyle,
   blockWrapperStyle,
 } from './LiveExample.styles';
+import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 const useBlockWrapperFor = ['palette', 'side-nav', 'tokens', 'typography']; // Use standard block flow for these packages
 const disableCodeExampleFor = ['palette', 'tokens'];
@@ -35,8 +35,11 @@ const initialLiveExampleState: LiveExampleState = {
 
 export const LiveExample = ({
   componentName,
-  tsDoc,
-}: Pick<BaseLayoutProps, 'componentName' | 'tsDoc'>) => {
+  componentDoc,
+}: {
+  componentName: string;
+  componentDoc?: CustomComponentDoc;
+}) => {
   const [showCode, setShowCode] = useState(false);
   // Establish a page state
   const [{ meta, knobValues, knobsArray, StoryFn, storyCode }, setState] =
@@ -78,7 +81,7 @@ export const LiveExample = ({
             componentName,
             meta,
             stories,
-            tsDoc,
+            componentDoc,
           });
 
           setState(state);
@@ -92,7 +95,7 @@ export const LiveExample = ({
         setState(initialLiveExampleState);
         setShowCode(false);
       });
-  }, [componentName, tsDoc]);
+  }, [componentName, componentDoc]);
 
   // Update source code
   useEffect(() => {
