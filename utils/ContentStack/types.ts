@@ -1,4 +1,4 @@
-import { CustomComponentDoc } from './tsdoc.utils';
+import { CustomComponentDoc } from '../tsdoc.utils';
 
 export interface ContentPageGroup extends Object {
   uid: string;

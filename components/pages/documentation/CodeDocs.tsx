@@ -1,4 +1,4 @@
-import { BaseLayoutProps } from 'utils/types';
+import { BaseLayoutProps } from 'utils/ContentStack/types';
 import { InstallInstructions } from './InstallInstructions';
 import { Subtitle } from '@leafygreen-ui/typography';
 import { TSDocPropTableSection } from './TSDocPropTable/PropTableSection';

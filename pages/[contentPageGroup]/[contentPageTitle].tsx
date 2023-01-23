@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 import {
   getContentPage,
   getContentPageGroups,
-} from 'utils/getContentstackResources';
+} from 'utils/ContentStack/getContentstackResources';
 import kebabCase from 'lodash/kebabCase';
 import startCase from 'lodash/startCase';
 import ContentstackRichText from 'components/ContentstackRichText';

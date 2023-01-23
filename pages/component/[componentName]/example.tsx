@@ -1,9 +1,9 @@
 import ComponentLayout from 'layouts/ComponentLayout';
 import { ReactElement } from 'react';
-import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import { LiveExample } from 'components/pages/example/LiveExample';
+import { getStaticComponentPaths } from 'utils/ContentStack/getStaticComponent';
+import { getComponent } from 'utils/ContentStack/getContentstackResources';
 import { getTSDoc } from 'utils/_getComponentResources';
-import { getComponent } from 'utils/getContentstackResources';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 const ComponentExample = ({

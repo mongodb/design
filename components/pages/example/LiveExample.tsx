@@ -8,7 +8,7 @@ import { css, cx } from '@leafygreen-ui/emotion';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { H2 } from '@leafygreen-ui/typography';
 import { getComponentStory } from 'utils/getComponentStory';
-import { BaseLayoutProps } from 'utils/types';
+import { BaseLayoutProps } from 'utils/ContentStack/types';
 import { KnobRow } from './KnobRow/KnobRow';
 import { LiveExampleState } from './types';
 import { getLiveExampleState, getStoryCode, matchTypes } from './utils';

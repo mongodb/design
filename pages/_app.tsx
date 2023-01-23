@@ -10,10 +10,10 @@ import { AppContextProvider } from 'contexts/AppContext';
 import {
   getComponents,
   getContentPageGroups,
-} from 'utils/getContentstackResources';
+} from 'utils/ContentStack/getContentstackResources';
 import getFullPageTitle from 'utils/getFullPageTitle';
 import * as ga from 'utils/googleAnalytics';
-import { ContentPageGroup } from 'utils/types';
+import { ContentPageGroup } from 'utils/ContentStack/types';
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;

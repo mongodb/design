@@ -5,7 +5,7 @@ import MobileNavigationGroup from './MobileNavigationGroup';
 import MobileNavigationItem from './MobileNavigationItem';
 import { useAppContext } from 'contexts/AppContext';
 import kebabCase from 'lodash/kebabCase';
-import { ComponentFields } from 'utils/types';
+import { ComponentFields } from 'utils/ContentStack/types';
 
 const foundations: Array<String> = [
   'accessibility',

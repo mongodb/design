@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { ComponentFields, ContentPageGroup } from 'utils/types';
+import { ComponentFields, ContentPageGroup } from 'utils/ContentStack/types';
 
 interface AppContextValue {
   components: Array<ComponentFields>;

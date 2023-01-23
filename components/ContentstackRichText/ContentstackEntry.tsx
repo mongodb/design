@@ -6,7 +6,7 @@ import Card from '@leafygreen-ui/card';
 import HorizontalLayout from './HorizontalLayout';
 import HorizontalLayoutColumn from './HorizontalLayoutColumn';
 import { useEffect, useState } from 'react';
-import { getEntryById } from 'utils/getContentstackResources';
+import { getEntryById } from 'utils/ContentStack/getContentstackResources';
 import ContentstackRichText from '.';
 import { css } from '@emotion/react';
 import AnnotatedImageBlock from './AnnotatedImageBlock';

@@ -12,7 +12,7 @@ import FigmaIcon from 'components/icons/FigmaIcon';
 import GithubIcon from 'components/icons/GithubIcon';
 import { mq } from 'utils/mediaQuery';
 import { pageContainerWidth } from 'styles/constants';
-import { ComponentFields } from 'utils/types';
+import { ComponentFields } from 'utils/ContentStack/types';
 import kebabCase from 'lodash/kebabCase';
 import getFullPageTitle from 'utils/getFullPageTitle';
 import { css, cx } from '@leafygreen-ui/emotion';
