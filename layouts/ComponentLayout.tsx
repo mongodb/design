@@ -17,6 +17,7 @@ import kebabCase from 'lodash/kebabCase';
 import getFullPageTitle from 'utils/getFullPageTitle';
 import { css, cx } from '@leafygreen-ui/emotion';
 import { containerPadding } from 'styles/globals';
+import { NextLinker } from 'components/NextLinker';
 
 const layout = css`
   ${mq({
@@ -169,22 +170,17 @@ function ComponentLayout({
                 />
               )
             }
+            as={NextLinker}
           >
             <Tab
               name="Live Example"
-              onClick={() =>
-                router.push(`/component/${kebabCase(component.title)}/example`)
-              }
+              href={`/component/${kebabCase(component.title)}/example`}
             >
               <div className={liveExamplePageStyles}>{children}</div>
             </Tab>
             <Tab
               name="Design Guidelines"
-              onClick={() =>
-                router.push(
-                  `/component/${kebabCase(component.title)}/guidelines`,
-                )
-              }
+              href={`/component/${kebabCase(component.title)}/guidelines`}
             >
               <LeafyGreenProvider baseFontSize={16}>
                 <div className={componentGuidelinePageStyles}>{children}</div>
@@ -192,11 +188,7 @@ function ComponentLayout({
             </Tab>
             <Tab
               name="Code Docs"
-              onClick={() =>
-                router.push(
-                  `/component/${kebabCase(component.title)}/documentation`,
-                )
-              }
+              href={`/component/${kebabCase(component.title)}/documentation`}
             >
               <div className={codeDocsPageStyles}>{children}</div>
             </Tab>

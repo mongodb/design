@@ -6,13 +6,7 @@ import MobileNavigationItem from './MobileNavigationItem';
 import { useAppContext } from 'contexts/AppContext';
 import kebabCase from 'lodash/kebabCase';
 import { ComponentFields } from 'utils/ContentStack/types';
-import NextLink from 'next/link';
-
-const NextLinker = ({ href, children, ...props }) => (
-  <NextLink href={href}>
-    <a {...props}>{children}</a>
-  </NextLink>
-);
+import { NextLinker } from 'components/NextLinker';
 
 function NavigationContent({
   isTouchDevice = false,
