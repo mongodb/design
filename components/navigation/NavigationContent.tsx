@@ -6,14 +6,13 @@ import MobileNavigationItem from './MobileNavigationItem';
 import { useAppContext } from 'contexts/AppContext';
 import kebabCase from 'lodash/kebabCase';
 import { ComponentFields } from 'utils/ContentStack/types';
+import NextLink from 'next/link';
 
-const foundations: Array<String> = [
-  'accessibility',
-  'forms',
-  'grid',
-  'icon-creation',
-  'refresh-guide',
-];
+const NextLinker = ({ href, children, ...props }) => (
+  <NextLink href={href}>
+    <a {...props}>{children}</a>
+  </NextLink>
+);
 
 function NavigationContent({
   isTouchDevice = false,
@@ -32,17 +31,22 @@ function NavigationContent({
     <>
       {isTouchDevice ? (
         <>
-          <MobileNavigationGroup header="Foundations">
-            {foundations.map((foundationPageName: string) => (
-              <MobileNavigationItem
-                key={foundationPageName}
-                onClick={() => router.push(`/foundation/${foundationPageName}`)}
-                active={foundationPageName === activePage}
-              >
-                {foundationPageName.split('-').join(' ')}
-              </MobileNavigationItem>
-            ))}
-          </MobileNavigationGroup>
+          {contentPageGroups.map(contentPageGroup => (
+            <MobileNavigationGroup
+              key={contentPageGroup.uid}
+              header={contentPageGroup.title}
+            >
+              {contentPageGroup.content_pages.map(({ title }) => (
+                <MobileNavigationItem
+                  key={title}
+                  onClick={() => router.push(`/foundation/${title}`)}
+                  active={title === activePage}
+                >
+                  {title.split('-').join(' ')}
+                </MobileNavigationItem>
+              ))}
+            </MobileNavigationGroup>
+          ))}
           <MobileNavigationGroup
             header="Components"
             initialCollapsed={false} // Always false until we add more sections to navigation
@@ -75,13 +79,10 @@ function NavigationContent({
                 contentPageGroup.content_pages.map(contentPage => (
                   <SideNavItem
                     key={contentPage.title}
-                    onClick={() =>
-                      router.push(
-                        `/${kebabCase(contentPageGroup.title)}/${kebabCase(
-                          contentPage.title,
-                        )}`,
-                      )
-                    }
+                    as={NextLinker}
+                    href={`/${kebabCase(contentPageGroup.title)}/${kebabCase(
+                      contentPage.title,
+                    )}`}
                     active={contentPage.title === activePage}
                   >
                     {contentPage.title}
@@ -96,9 +97,8 @@ function NavigationContent({
               return (
                 <SideNavItem
                   key={componentKebabCaseName}
-                  onClick={() =>
-                    router.push(`/component/${componentKebabCaseName}/example`)
-                  }
+                  href={`/component/${componentKebabCaseName}/example`}
+                  as={NextLinker}
                   active={componentKebabCaseName === activePage}
                 >
                   {component.title}
