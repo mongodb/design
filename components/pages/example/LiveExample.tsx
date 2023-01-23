@@ -136,7 +136,7 @@ export const LiveExample = ({
         margin-block: 2em;
       `}
     >
-      <div className={liveExampleWrapperStyle} id="live-example">
+      <div className={liveExampleWrapperStyle}>
         <div
           id="story-container"
           ref={storyContainerRef}
@@ -152,7 +152,7 @@ export const LiveExample = ({
           )}
         >
           {StoryFn ? (
-            <div id="story-wrapper" ref={storyWrapperRef}>
+            <div ref={storyWrapperRef}>
               <StoryFn {...knobValues} />
             </div>
           ) : (

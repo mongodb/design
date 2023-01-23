@@ -22,7 +22,10 @@ const textAreaStyle = css`
 `;
 
 /**
- * Enables users to edit & input valid JSON as a knob
+ * Enables users to edit & input valid JSON as a knob.
+ *
+ * A user can click the `edit` button to edit it the value
+ * And then click `save` to set the value in the example
  */
 export const RawKnob = ({
   propName,
@@ -41,10 +44,6 @@ export const RawKnob = ({
     }
   }, [value]);
   const [intermediateValue, setInterValue] = useState(valueString);
-
-  // Show just raw code
-  // Click edit button to edit it
-  // Click "save" to update the value
 
   const handleTextChange = ({ target }) => {
     const { value } = target;

@@ -4,7 +4,7 @@ import { SelectProps } from '@leafygreen-ui/select/dist/types';
 import TextInput, { TextInputProps } from '@leafygreen-ui/text-input';
 import { RadioBoxGroup, RadioBox } from '@leafygreen-ui/radio-box-group';
 import Toggle from '@leafygreen-ui/toggle';
-import { RadioBoxOverrideStyle } from './Knob.styles';
+import { radioBoxOverrideStyle } from './Knob.styles';
 import { KnobProps } from './types';
 import { RawKnob } from './RawKnob';
 
@@ -74,7 +74,7 @@ export const Knob = ({
             >
               {knobOptions.map((opt: string) => (
                 <RadioBox
-                  className={RadioBoxOverrideStyle}
+                  className={radioBoxOverrideStyle}
                   key={opt}
                   value={opt}
                 >
