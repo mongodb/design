@@ -431,9 +431,7 @@ export function getLiveExampleState({
     ? stories[defaultStoryName]
     : Object.values(stories)[0];
 
-  const TSPropsArray: Array<KnobType> = getTSDocPropsArray(
-    componentDoc
-  )
+  const TSPropsArray: Array<KnobType> = getTSDocPropsArray(componentDoc)
     // Filter out component props we don't want knobs for.
     // i.e. `@ignore` tags, excluded in SB.parameters.controls
     .filter(getPropItemFilterFn({ meta, StoryFn }))

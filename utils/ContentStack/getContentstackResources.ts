@@ -1,10 +1,6 @@
 import Contentstack from 'contentstack';
 import startCase from 'lodash/startCase';
-import {
-  ComponentFields,
-  ContentPage,
-  ContentPageGroup,
-} from './types';
+import { ComponentFields, ContentPage, ContentPageGroup } from './types';
 
 const Stack = Contentstack.Stack({
   api_key: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string,
@@ -74,22 +70,21 @@ export async function getContentPageGroups(): Promise<Array<ContentPageGroup>> {
   try {
     const query = Stack.ContentType('content_page_group').Query();
     const pageGroups: Array<ContentPageGroup> = (
-      await query.includeReference('content_pages')
-      .only(['content_pages', 'uid', 'title', 'url', 'iconname'])
-      .toJSON().find()
-    )[0]
-    .map(
-      ({ content_pages, ...meta }: ContentPageGroup) => {
-        return {
-          ...meta,
-          content_pages: content_pages
-            // TODO: strip fields in initial query
-            // Strip any additional fields
-            .map(({ uid, title, url }) => ({ uid, title, url }))
-            .sort((a, b) => a.title.localeCompare(b.title)),
-        };
-      },
-    );
+      await query
+        .includeReference('content_pages')
+        .only(['content_pages', 'uid', 'title', 'url', 'iconname'])
+        .toJSON()
+        .find()
+    )[0].map(({ content_pages, ...meta }: ContentPageGroup) => {
+      return {
+        ...meta,
+        content_pages: content_pages
+          // TODO: strip fields in initial query
+          // Strip any additional fields
+          .map(({ uid, title, url }) => ({ uid, title, url }))
+          .sort((a, b) => a.title.localeCompare(b.title)),
+      };
+    });
 
     return pageGroups;
   } catch (error) {
