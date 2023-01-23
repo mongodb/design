@@ -1,7 +1,20 @@
 import kebabCase from 'lodash/kebabCase';
 import { getComponent, getComponents } from './getContentstackResources';
+import { ComponentFields } from './types';
 
-export async function getStaticComponentPaths() {
+interface StaticComponentPaths {
+  paths: Array<{
+    params: {
+      id: string;
+      componentName: string;
+    };
+  }>;
+  fallback: boolean;
+}
+/**
+ * Retrieves the id & component names for all components
+ */
+export async function getStaticComponentPaths(): Promise<StaticComponentPaths> {
   const components = await getComponents();
 
   const paths = components.map(component => ({
@@ -14,7 +27,18 @@ export async function getStaticComponentPaths() {
   return { paths, fallback: false };
 }
 
-export async function getStaticComponentProps({ params }) {
+interface StaticComponentProps {
+  props: {
+    component?: ComponentFields;
+  };
+  revalidate: number;
+}
+/**
+ * Retrieves the {@link ComponentFields} for a given component name
+ */
+export async function getStaticComponentProps({
+  params,
+}): Promise<StaticComponentProps> {
   return {
     props: {
       component: await getComponent(params.componentName), // this is in kebabCase

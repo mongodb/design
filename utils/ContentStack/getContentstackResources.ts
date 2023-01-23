@@ -1,6 +1,11 @@
 import Contentstack from 'contentstack';
 import startCase from 'lodash/startCase';
-import { ComponentFields, ContentPage, ContentPageGroup } from './types';
+import {
+  ComponentFields,
+  ComponentPageMeta,
+  ContentPage,
+  ContentPageGroup,
+} from './types';
 
 const Stack = Contentstack.Stack({
   api_key: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string,
@@ -8,6 +13,9 @@ const Stack = Contentstack.Stack({
   environment: 'main',
 });
 
+/**
+ * @returns All component objects with all associated content (i.e. guidelines)
+ */
 export async function getComponents(): Promise<Array<ComponentFields>> {
   try {
     const results: Array<ComponentFields> = (
@@ -21,6 +29,33 @@ export async function getComponents(): Promise<Array<ComponentFields>> {
   }
 }
 
+/**
+ * @returns a list of all components, without any content attached
+ */
+export async function getComponentsList(): Promise<Array<ComponentPageMeta>> {
+  try {
+    const results = await getComponents();
+    // TODO: strip metadata from initial query
+    return (
+      results
+        // strip any heavy content out of this object
+        .map(({ uid, title, description, url }) => ({
+          uid,
+          title,
+          description,
+          url,
+        }))
+    );
+  } catch (error) {
+    console.error('No Component pages found', error);
+    // Return no component pages
+    return [];
+  }
+}
+
+/**
+ * @returns the component content for a given componentName
+ */
 export async function getComponent(
   componentName: string,
 ): Promise<ComponentFields | undefined> {
@@ -37,6 +72,9 @@ export async function getComponent(
   }
 }
 
+/**
+ * @returns All content page groups with
+ */
 export async function getContentPageGroups(): Promise<Array<ContentPageGroup>> {
   try {
     const query = Stack.ContentType('content_page_group').Query();

@@ -8,7 +8,7 @@ import { globalStyles } from 'styles/globals';
 import BaseLayout from 'layouts/BaseLayout';
 import { AppContextProvider } from 'contexts/AppContext';
 import {
-  getComponents,
+  getComponentsList,
   getContentPageGroups,
 } from 'utils/ContentStack/getContentstackResources';
 import getFullPageTitle from 'utils/getFullPageTitle';
@@ -89,7 +89,7 @@ function MyApp({
 }
 
 MyApp.getInitialProps = async () => {
-  const components = await getComponents();
+  const components = await getComponentsList();
   const contentPageGroups = await getContentPageGroups();
   return { components, contentPageGroups };
 };

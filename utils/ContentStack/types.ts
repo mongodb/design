@@ -8,17 +8,36 @@ export interface ContentPageGroup extends Object {
   content_pages: Array<ContentPage>;
 }
 
-export interface ContentPage {
+/**
+ * A content page with minimal metadata
+ */
+export interface ContentPageMeta {
   title: string;
   url: string;
+}
+
+/**
+ * A full content page including content
+ */
+export interface ContentPage extends ContentPageMeta {
   content: unknown;
 }
 
-export interface ComponentFields {
+/**
+ * Minimal metadata about a component
+ */
+export interface ComponentPageMeta {
   uid: string;
   title: string;
-  description: string;
   url: string;
+  description: string;
+}
+
+/**
+ * A {@link ComponentPageMeta} with additional data fields
+ * including `figmaUrl` & `designguidelines` content
+ */
+export interface ComponentFields extends ComponentPageMeta {
   figmaUrl?: string;
   designguidelines?: unknown;
 }
