@@ -55,7 +55,9 @@ export async function getStaticProps({ params: { componentName } }) {
     props: { changelog, readme, tsDoc },
   } = await getDependencyDocumentation(componentName);
 
-  const component = await getComponent(componentName);
+  const component = await getComponent(componentName, {
+    includeContent: false,
+  });
   return { props: { componentName, component, changelog, readme, tsDoc } };
 }
 

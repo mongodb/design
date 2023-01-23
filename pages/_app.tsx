@@ -8,7 +8,7 @@ import { globalStyles } from 'styles/globals';
 import BaseLayout from 'layouts/BaseLayout';
 import { AppContextProvider } from 'contexts/AppContext';
 import {
-  getComponentsList,
+  getComponents,
   getContentPageGroups,
 } from 'utils/ContentStack/getContentstackResources';
 import getFullPageTitle from 'utils/getFullPageTitle';
@@ -48,8 +48,6 @@ function MyApp({
       router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
-
-  // console.log(contentPageGroups[0].content_pages);
 
   return (
     <AppContextProvider
@@ -91,7 +89,7 @@ function MyApp({
 }
 
 MyApp.getInitialProps = async () => {
-  const components = await getComponentsList();
+  const components = await getComponents({ includeContent: false });
   const contentPageGroups = await getContentPageGroups();
   return { components, contentPageGroups };
 };

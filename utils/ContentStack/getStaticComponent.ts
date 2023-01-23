@@ -41,7 +41,9 @@ export async function getStaticComponentProps({
 }): Promise<StaticComponentProps> {
   return {
     props: {
-      component: await getComponent(params.componentName), // this is in kebabCase
+      component: await getComponent(params.componentName, {
+        includeContent: true,
+      }), // this is in kebabCase
     },
     revalidate: 300, // in seconds
   };

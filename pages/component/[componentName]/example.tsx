@@ -26,7 +26,9 @@ export const getStaticPaths = getStaticComponentPaths;
 
 export const getStaticProps = async ({ params }) => {
   const { componentName } = params;
-  const component = await getComponent(componentName);
+  const component = await getComponent(componentName, {
+    includeContent: false,
+  });
   const tsDoc = await getTSDoc(componentName);
 
   return {
