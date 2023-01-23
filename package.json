@@ -11,7 +11,7 @@
     "fix:eslint": "eslint . --ext js,jsx,ts,tsx,md,mdx --fix",
     "fix": "npm-run-all --parallel fix:*",
     "check:ts": "tsc --project tsconfig.json",
-    "ts-node": "ts-node -P './tsconfig.json' -O '{\"module\": \"commonjs\"}' --",
+    "ts-node": "npx ts-node -P './tsconfig.json' -O '{\"module\": \"commonjs\"}' --",
     "update-packages": "yarn ts-node ./scripts/update-packages.ts"
   },
   "dependencies": {
