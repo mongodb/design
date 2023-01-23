@@ -5,6 +5,7 @@ import {
   ComponentPageMeta,
   ContentPage,
   ContentPageGroup,
+  ContentPageMeta,
 } from './types';
 
 const Stack = Contentstack.Stack({
@@ -35,7 +36,7 @@ export async function getComponents(): Promise<Array<ComponentFields>> {
 export async function getComponentsList(): Promise<Array<ComponentPageMeta>> {
   try {
     const results = await getComponents();
-    // TODO: strip metadata from initial query
+    // TODO: strip fields from initial query
     return (
       results
         // strip any heavy content out of this object
@@ -78,12 +79,24 @@ export async function getComponent(
 export async function getContentPageGroups(): Promise<Array<ContentPageGroup>> {
   try {
     const query = Stack.ContentType('content_page_group').Query();
+
     const pageGroups: Array<ContentPageGroup> = (
       await query.includeReference('content_pages').toJSON().find()
-    )[0];
-    pageGroups.forEach(pageGroup => {
-      pageGroup.content_pages.sort((a, b) => a.title.localeCompare(b.title));
+    )[0]
+    .map(({ content_pages, uid, title, url, iconname }: ContentPageGroup) => {
+      return {
+        uid,
+        title,
+        url,
+        iconname,
+        content_pages: content_pages
+          // TODO: strip fields in initial query
+          // Strip any additional fields
+          .map(({ uid, title, url }) => ({ uid, title, url }))
+          .sort((a, b) => a.title.localeCompare(b.title)),
+      };
     });
+
     return pageGroups;
   } catch (error) {
     console.error('No Content Page Groups found', error);

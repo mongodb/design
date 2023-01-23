@@ -5,13 +5,14 @@ export interface ContentPageGroup extends Object {
   title: string;
   url: string;
   iconname: string;
-  content_pages: Array<ContentPage>;
+  content_pages: Array<ContentPageMeta>;
 }
 
 /**
  * A content page with minimal metadata
  */
 export interface ContentPageMeta {
+  uid: string;
   title: string;
   url: string;
 }

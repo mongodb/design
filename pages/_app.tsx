@@ -49,6 +49,8 @@ function MyApp({
     };
   }, [router.events]);
 
+  // console.log(contentPageGroups[0].content_pages);
+
   return (
     <AppContextProvider
       components={components}
