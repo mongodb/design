@@ -23,7 +23,7 @@ const componentMap = {
         css={
           (!options || !options.isNested) &&
           css`
-            & > *:not(:first-child) {
+            & > *:not(:first-of-type) {
               margin-top: 40px;
             }
           `
@@ -186,8 +186,8 @@ const componentMap = {
   [BLOCKS.TABLE_ROW]: node => (
     <tr
       css={css`
-        > td:first-child,
-        > th:first-child {
+        > td:first-of-type,
+        > th:first-of-type {
           padding-left: ${spacing[5]}px;
         }
 
