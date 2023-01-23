@@ -116,12 +116,17 @@ export const InstallInstructions = ({ componentKebabCaseName, changelog }) => {
             gap: ${spacing[2]}px;
           `}
         >
-          <SegmentedControl value={packageMgr} onChange={setPackageMgr}>
+          <SegmentedControl
+            value={packageMgr}
+            onChange={setPackageMgr}
+            aria-controls="install-instructions"
+          >
             <SegmentedControlOption value="yarn">yarn</SegmentedControlOption>
             <SegmentedControlOption value="npm">npm</SegmentedControlOption>
           </SegmentedControl>
 
           <Copyable
+            id="install-instructions"
             className={css`
               margin: unset;
             `}
