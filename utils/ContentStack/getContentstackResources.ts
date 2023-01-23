@@ -5,7 +5,6 @@ import {
   ComponentPageMeta,
   ContentPage,
   ContentPageGroup,
-  ContentPageMeta,
 } from './types';
 
 const Stack = Contentstack.Stack({
