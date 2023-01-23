@@ -48,5 +48,4 @@ export interface BaseLayoutProps {
   componentKebabCaseName: string;
   changelog: string;
   readme: string;
-  // tsDoc: Array<CustomComponentDoc> | null;
 }
