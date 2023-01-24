@@ -1,11 +1,11 @@
 import {
   ComponentDoc,
   PropItem,
-  Props,
   PropItemType,
+  Props,
 } from 'react-docgen-typescript';
+import { isNull, isUndefined, omitBy, pickBy } from 'lodash';
 import pascalcase from 'pascalcase';
-import { isUndefined, isNull, omitBy, pickBy } from 'lodash';
 
 /** PropGroup names that are inherited from elsewhere */
 export const InheritablePropGroup = [

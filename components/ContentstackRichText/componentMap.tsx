@@ -1,20 +1,22 @@
+import { css } from '@emotion/react';
+
+import Card from '@leafygreen-ui/card';
+import { palette } from '@leafygreen-ui/palette';
+import { spacing } from '@leafygreen-ui/tokens';
 import {
   Body,
   H1,
   H2,
   H3,
-  Subtitle,
-  Overline,
   Link,
+  Overline,
+  Subtitle,
 } from '@leafygreen-ui/typography';
-import Card from '@leafygreen-ui/card';
-import { css } from '@emotion/react';
+
 import ContentstackChildren from './ContentstackChildren';
 import ContentstackReference from './ContentstackReference';
 import HeaderContent from './HeaderContent';
 import { BLOCKS } from './types';
-import { palette } from '@leafygreen-ui/palette';
-import { spacing } from '@leafygreen-ui/tokens';
 
 const componentMap = {
   [BLOCKS.DOCUMENT]: (node, options) => {

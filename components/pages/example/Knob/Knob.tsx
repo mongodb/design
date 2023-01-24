@@ -1,10 +1,11 @@
 import { css, cx } from '@leafygreen-ui/emotion';
 import { HTMLElementProps } from '@leafygreen-ui/lib';
+import { RadioBox,RadioBoxGroup } from '@leafygreen-ui/radio-box-group';
 import { Option, Select } from '@leafygreen-ui/select';
 import { SelectProps } from '@leafygreen-ui/select/dist/types';
 import TextInput, { TextInputProps } from '@leafygreen-ui/text-input';
-import { RadioBoxGroup, RadioBox } from '@leafygreen-ui/radio-box-group';
 import Toggle from '@leafygreen-ui/toggle';
+
 import { KnobOptionType, TypeString } from '../types';
 
 const inputStyle = css`

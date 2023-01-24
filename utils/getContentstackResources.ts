@@ -1,5 +1,6 @@
 import Contentstack from 'contentstack';
 import startCase from 'lodash/startCase';
+
 import { ComponentFields, ContentPage, ContentPageGroup } from './types';
 
 const Stack = Contentstack.Stack({

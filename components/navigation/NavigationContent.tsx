@@ -1,11 +1,13 @@
-import { useRouter } from 'next/router';
-import { SideNavGroup, SideNavItem } from '@leafygreen-ui/side-nav';
-import Icon from '@leafygreen-ui/icon';
-import MobileNavigationGroup from './MobileNavigationGroup';
-import MobileNavigationItem from './MobileNavigationItem';
 import { useAppContext } from 'contexts/AppContext';
 import kebabCase from 'lodash/kebabCase';
+import { useRouter } from 'next/router';
 import { ComponentFields } from 'utils/types';
+
+import Icon from '@leafygreen-ui/icon';
+import { SideNavGroup, SideNavItem } from '@leafygreen-ui/side-nav';
+
+import MobileNavigationGroup from './MobileNavigationGroup';
+import MobileNavigationItem from './MobileNavigationItem';
 
 const foundations: Array<String> = [
   'accessibility',

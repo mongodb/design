@@ -1,4 +1,5 @@
 import kebabCase from 'lodash/kebabCase';
+
 import { getComponent, getComponents } from './getContentstackResources';
 
 export async function getStaticComponentPaths() {

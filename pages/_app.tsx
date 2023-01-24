@@ -1,12 +1,12 @@
 import { ReactElement, ReactNode, useEffect } from 'react';
-import { NextPage } from 'next';
-import Head from 'next/head';
-import type { AppProps } from 'next/app';
-import { useRouter } from 'next/router';
 import { Global } from '@emotion/react';
-import { globalStyles } from 'styles/globals';
-import BaseLayout from 'layouts/BaseLayout';
 import { AppContextProvider } from 'contexts/AppContext';
+import BaseLayout from 'layouts/BaseLayout';
+import { NextPage } from 'next';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { globalStyles } from 'styles/globals';
 import {
   getComponents,
   getContentPageGroups,
