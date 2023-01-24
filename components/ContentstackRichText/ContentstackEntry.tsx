@@ -97,7 +97,7 @@ const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
       );
 
     case 'horizontal_layout':
-      return <HorizontalLayout columns={entry.columns} />;
+      return <HorizontalLayout {...entry} />;
 
     case 'horizontal_layout_column':
       return <HorizontalLayoutColumn {...entry} />;
