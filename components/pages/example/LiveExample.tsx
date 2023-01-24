@@ -1,26 +1,28 @@
 import { useCallback, useEffect, useReducer, useState } from 'react';
-import { kebabCase } from 'lodash';
 import { Transition } from 'react-transition-group';
+import { kebabCase } from 'lodash';
+import { getComponentStory } from 'utils/getComponentStory';
+import { BaseLayoutProps } from 'utils/types';
+
 import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
 import Code from '@leafygreen-ui/code';
 import { css, cx } from '@leafygreen-ui/emotion';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { H2 } from '@leafygreen-ui/typography';
-import { getComponentStory } from 'utils/getComponentStory';
-import { BaseLayoutProps } from 'utils/types';
+
 import { KnobRow } from './KnobRow/KnobRow';
-import { LiveExampleState } from './types';
-import { getLiveExampleState, getStoryCode, matchTypes } from './utils';
 import {
+  blockWrapperStyle,
   codeExampleWrapperStyle,
   codeStyle,
   codeWrapperStateStyle,
   liveExampleWrapperStyle,
   showHideCodeButtonStyle,
   storyWrapperStyle,
-  blockWrapperStyle,
 } from './LiveExample.styles';
+import { LiveExampleState } from './types';
+import { getLiveExampleState, getStoryCode, matchTypes } from './utils';
 
 const useBlockWrapperFor = ['palette', 'side-nav', 'tokens', 'typography']; // Use standard block flow for these packages
 const disableCodeExampleFor = ['palette', 'tokens'];
