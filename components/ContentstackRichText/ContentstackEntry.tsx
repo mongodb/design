@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { getEntryById } from 'utils/getContentstackResources';
 

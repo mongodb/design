@@ -55,10 +55,18 @@ export enum BLOCKS {
  * Define custom Contentstack block interfaces
  */
 
+interface CSImage {
+  uid: string;
+  content_type: string;
+  url: string;
+  file_size: string;
+  file_name: string;
+}
+
 /** https://app.contentstack.com/#!/stack/bltee845ee8bbd3fe1a/content-type/annotated_image_block/content-type-builder?branch=main */
 export interface AnnotatedImageBlockProps {
   title: string;
-  image: any; // TODO: Image interface
+  image: CSImage;
   steps: Array<AnnotatedImageBlockStep>;
 }
 interface AnnotatedImageBlockStep {
@@ -109,7 +117,7 @@ export interface ExampleCardBlockProps {
   header_text: string;
   subtext?: string;
   variant: 'info' | 'caution' | 'do' | 'dont';
-  image: any; // TODO: image
+  image: CSImage;
 }
 
 /** */

@@ -29,10 +29,11 @@ const Subtext = styled(Body)`
 
 const ExampleCardBlock = ({ entry }: { entry: ExampleCardBlockProps }) => {
   const IconComponent = Icons[entry.variant];
+
   return (
     <div>
       <ImageContainer color={BorderColors[entry.variant]}>
-        <Image src={entry.image.url} alt={entry.title} layout="fill" />
+        <img src={entry.image.url} alt={entry.title} />
       </ImageContainer>
       <TextContainer>
         <IconComponent
