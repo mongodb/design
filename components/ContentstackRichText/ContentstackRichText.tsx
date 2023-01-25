@@ -1,20 +1,27 @@
 import componentMap from './componentMap';
 import ContentstackText from './ContentstackText';
+import { CSNode } from './types';
+import { isTextNode } from './utils';
 
+/**
+ * Renders a ContentStack Node
+ */
 const ContentstackRichText = ({
   content,
   options,
 }: {
-  content: any;
+  content?: CSNode;
   options?: any;
-}) => {
-  if ('text' in content) {
+}): JSX.Element => {
+  if (!content) return <>Content not found</>;
+
+  if (isTextNode(content)) {
     return <ContentstackText node={content} />;
   } else {
-    return content.type && componentMap[content.type] ? (
-      componentMap[content.type](content, options)
-    ) : (
-      <>Unknown node type: {JSON.stringify(content)}.</>
+    return (
+      componentMap[content.type]?.(content, options) ?? (
+        <>Unknown node type: {JSON.stringify(content)}.</>
+      )
     );
   }
 };
