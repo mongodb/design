@@ -1,9 +1,12 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import Image from 'next/image';
 
 import { palette } from '@leafygreen-ui/palette';
 import { BaseFontSize, spacing, typeScales } from '@leafygreen-ui/tokens';
 import { Body } from '@leafygreen-ui/typography';
+
+import { ExampleCardBlockProps } from '../types';
 
 import { BorderColors, IconColors, Icons, TextColors } from './constants';
 import ImageContainer from './ImageContainer';
@@ -24,12 +27,12 @@ const Subtext = styled(Body)`
   line-height: ${typeScales.body1.lineHeight}px;
 `;
 
-const ExampleCardBlock = ({ entry }) => {
+const ExampleCardBlock = ({ entry }: { entry: ExampleCardBlockProps }) => {
   const IconComponent = Icons[entry.variant];
   return (
     <div>
       <ImageContainer color={BorderColors[entry.variant]}>
-        <img src={entry.image.url} alt={entry.title} />
+        <Image src={entry.image.url} alt={entry.title} layout="fill" />
       </ImageContainer>
       <TextContainer>
         <IconComponent

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 import ContentstackRichText from './ContentstackRichText';
-import { CSNode } from './types';
+import { HorizontalLayoutBlockProps } from './types';
 
 const FlexContainer = styled('div')`
   display: flex;
@@ -13,26 +13,11 @@ const FlexContainer = styled('div')`
   }
 `;
 
-// Defined here: https://app.contentstack.com/#!/stack/bltee845ee8bbd3fe1a/content-type/horizontal_layout/content-type-builder?branch=main
-interface HorizontalLayoutProps {
-  url: string;
-  title: string;
-  column_1: CSNode; // richText
-  column_2: CSNode; // richText,
-  vertical_align:
-    | 'top'
-    | 'center'
-    | 'bottom'
-    | 'space-evenly'
-    | 'space-around'
-    | 'space-between';
-}
-
 const HorizontalLayout = ({
   column_1,
   column_2,
   vertical_align: verticalAlign,
-}: HorizontalLayoutProps) => {
+}: HorizontalLayoutBlockProps) => {
   return (
     <FlexContainer
       style={{
