@@ -1,17 +1,18 @@
-import ComponentLayout from 'layouts/ComponentLayout';
 import { ReactElement } from 'react';
-import { LiveExample } from 'components/pages/example/LiveExample';
-import { getStaticComponentPaths } from 'utils/ContentStack/getStaticComponent';
-import { getComponent } from 'utils/ContentStack/getContentstackResources';
 import { getTSDoc } from 'utils/_getComponentResources';
-import { CustomComponentDoc, findComponentDoc } from 'utils/tsdoc.utils';
+import { getComponent } from 'utils/ContentStack/getContentstackResources';
+import { getStaticComponentPaths } from 'utils/ContentStack/getStaticComponent';
 import { ComponentPageMeta } from 'utils/ContentStack/types';
+import { CustomComponentDoc, findComponentDoc } from 'utils/tsdoc.utils';
+
+import { LiveExample } from 'components/pages/example/LiveExample';
 
 interface ExamplePageProps {
   componentName: string;
   component?: ComponentPageMeta;
   componentDoc?: CustomComponentDoc;
 }
+import ComponentLayout from 'layouts/ComponentLayout';
 
 const ComponentExample = ({
   componentName,

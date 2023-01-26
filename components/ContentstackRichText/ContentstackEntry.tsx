@@ -1,17 +1,19 @@
-import ExpandableCard from '@leafygreen-ui/expandable-card';
-import Callout, { Variant } from '@leafygreen-ui/callout';
+import { useEffect, useState } from 'react';
+import { css } from '@emotion/react';
+import { getEntryById } from 'utils/ContentStack/getContentstackResources';
+
 import Badge from '@leafygreen-ui/badge';
 import Button from '@leafygreen-ui/button';
+import Callout, { Variant } from '@leafygreen-ui/callout';
 import Card from '@leafygreen-ui/card';
-import HorizontalLayout from './HorizontalLayout';
-import HorizontalLayoutColumn from './HorizontalLayoutColumn';
-import { useEffect, useState } from 'react';
-import { getEntryById } from 'utils/ContentStack/getContentstackResources';
-import ContentstackRichText from '.';
-import { css } from '@emotion/react';
+import ExpandableCard from '@leafygreen-ui/expandable-card';
+
 import AnnotatedImageBlock from './AnnotatedImageBlock';
 import BasicUsageBlock from './BasicUsageBlock';
 import ExampleCardBlock from './ExampleCardBlock';
+import HorizontalLayout from './HorizontalLayout';
+import HorizontalLayoutColumn from './HorizontalLayoutColumn';
+import ContentstackRichText from '.';
 
 const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
   const [entry, setEntry] = useState<any>();
@@ -95,7 +97,7 @@ const ContentstackEntry = ({ contentTypeUid, entryUid }) => {
       );
 
     case 'horizontal_layout':
-      return <HorizontalLayout columns={entry.columns} />;
+      return <HorizontalLayout {...entry} />;
 
     case 'horizontal_layout_column':
       return <HorizontalLayoutColumn {...entry} />;

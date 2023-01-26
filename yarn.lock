@@ -1727,16 +1727,6 @@
     "@leafygreen-ui/palette" "^3.4.5"
     "@leafygreen-ui/tooltip" "^9.0.3"
 
-"@leafygreen-ui/interaction-ring@^7.0.2":
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/@leafygreen-ui/interaction-ring/-/interaction-ring-7.0.2.tgz#bc229b90dde0bb6d8e4e886001d6dc4e75c9b47a"
-  integrity sha512-QLA2WGzAqyZDJJC90eXJsVD/woryFKQzGeenbSfjVbV5R7Vcs9xJIu/1WiXCMDyOA57JTbuNZ+pBV7+Cv2+glA==
-  dependencies:
-    "@leafygreen-ui/emotion" "^4.0.3"
-    "@leafygreen-ui/lib" "^10.0.0"
-    "@leafygreen-ui/palette" "^3.4.5"
-    "@leafygreen-ui/tokens" "^1.4.1"
-
 "@leafygreen-ui/leafygreen-provider@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/leafygreen-provider/-/leafygreen-provider-3.1.0.tgz#5f36e5e6e6203e9cf64ba7bad342ed1fa433a32c"
@@ -5889,6 +5879,11 @@ eslint-plugin-react@^7.30.1, eslint-plugin-react@^7.31.7:
     resolve "^2.0.0-next.3"
     semver "^6.3.0"
     string.prototype.matchall "^4.0.8"
+
+eslint-plugin-simple-import-sort@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-simple-import-sort/-/eslint-plugin-simple-import-sort-9.0.0.tgz#04c97f06a2e526afd40e0ac694b70d1aaaec1aef"
+  integrity sha512-PtrLjyXP8kjRneWT1n0b99y/2Fyup37we7FVoWsI61/O7x4ztLohzhep/pxI/cYlECr/cQ2j6utckdvWpVwXNA==
 
 eslint-scope@5.1.1, eslint-scope@^5.1.1:
   version "5.1.1"

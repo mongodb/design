@@ -1,11 +1,15 @@
+import React, { ReactNode } from 'react';
 import { PropItem } from 'react-docgen-typescript';
+import reactElementToJSXString from 'react-element-to-jsx-string';
+import { InputType } from '@storybook/csf';
+import { ComponentStoryFn, Meta } from '@storybook/react';
 import {
-  defaults,
-  pickBy,
-  isUndefined,
-  isString,
-  kebabCase,
   camelCase,
+  defaults,
+  isString,
+  isUndefined,
+  kebabCase,
+  pickBy,
   snakeCase,
 } from 'lodash';
 import pascalcase from 'pascalcase';
@@ -14,9 +18,7 @@ import {
   getComponentPropsArray as getTSDocPropsArray,
   getDefaultValueValue,
 } from 'utils/tsdoc.utils';
-import { ComponentStoryFn, Meta } from '@storybook/react';
-import React, { ReactNode } from 'react';
-import reactElementToJSXString from 'react-element-to-jsx-string';
+
 import {
   KnobOptionType,
   KnobType,
@@ -24,7 +26,6 @@ import {
   MetadataSources,
   TypeString,
 } from './types';
-import { InputType } from '@storybook/csf';
 
 /**
  * A list of Prop names that should not appear in Knobs
@@ -385,10 +386,13 @@ export function getStoryCode({
       const locationsMap = defaultStoryName
         ? storySource.locationsMap[defaultStoryName]
         : Object.values(storySource.locationsMap)[0];
-
       const lines = (storySource.source as string).match(/^.*$/gm);
+
       const storyCode = lines
-        ?.slice(locationsMap.startLoc.line - 1, locationsMap.endLoc.line - 1)
+        ?.slice(
+          locationsMap?.startLoc?.line - 1,
+          locationsMap?.endLoc?.line - 1,
+        )
         .join('\n');
       return storyCode;
     }

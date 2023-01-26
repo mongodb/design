@@ -1,13 +1,14 @@
-import ComingSoon from 'components/ComingSoon';
-import ContentstackRichText from 'components/ContentstackRichText';
-import ComponentLayout from 'layouts/ComponentLayout';
 import { ReactElement } from 'react';
+import ComponentLayout from 'layouts/ComponentLayout';
 import { containerPadding } from 'styles/globals';
 import {
   getStaticComponentPaths,
   getStaticComponentProps,
 } from 'utils/ContentStack/getStaticComponent';
 import isEmptyRichText from 'utils/isEmptyRichText';
+
+import ComingSoon from 'components/ComingSoon';
+import ContentstackRichText from 'components/ContentstackRichText';
 
 const ComponentGuidelines = ({ component }) => {
   const guidelines = component.designguidelines;

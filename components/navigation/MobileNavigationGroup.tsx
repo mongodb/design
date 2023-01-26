@@ -1,9 +1,12 @@
-import React, { useState, useRef } from 'react';
-import { css, cx } from '@emotion/css';
+import React, { useRef, useState } from 'react';
 import { Transition } from 'react-transition-group';
+
 import ChevronRightIcon from '@leafygreen-ui/icon/dist/ChevronRight';
 import { palette } from '@leafygreen-ui/palette';
+
 import { borderColor, leftRightPadding, ulStyleOverrides } from './styles';
+
+import { css, cx } from '@emotion/css';
 
 const buttonResetStyles = css`
   background-color: transparent;

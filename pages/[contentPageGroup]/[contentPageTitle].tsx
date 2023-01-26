@@ -1,11 +1,12 @@
-import ContentPageLayout from 'layouts/ContentPageLayout';
 import { ReactElement } from 'react';
+import ContentPageLayout from 'layouts/ContentPageLayout';
+import kebabCase from 'lodash/kebabCase';
+import startCase from 'lodash/startCase';
 import {
   getContentPage,
   getContentPageGroups,
 } from 'utils/ContentStack/getContentstackResources';
-import kebabCase from 'lodash/kebabCase';
-import startCase from 'lodash/startCase';
+
 import ContentstackRichText from 'components/ContentstackRichText';
 
 const ContentPage = ({ contentPage }) => {

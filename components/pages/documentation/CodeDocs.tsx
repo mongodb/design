@@ -1,8 +1,10 @@
 import { BaseLayoutProps } from 'utils/ContentStack/types';
-import { InstallInstructions } from './InstallInstructions';
-import { Subtitle } from '@leafygreen-ui/typography';
-import { TSDocPropTableSection } from './TSDocPropTable/PropTableSection';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
+
+import { Subtitle } from '@leafygreen-ui/typography';
+
+import { TSDocPropTableSection } from './TSDocPropTable/PropTableSection';
+import { InstallInstructions } from './InstallInstructions';
 
 function CodeDocs({
   componentKebabCaseName,

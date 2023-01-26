@@ -1,12 +1,14 @@
 import { PropItem } from 'react-docgen-typescript';
+import { getDefaultValueString, getTypeString } from 'utils/tsdoc.utils';
+
+import { Markdown } from 'components/Markdown';
+
 import { css } from '@leafygreen-ui/emotion';
 import { useIdAllocator } from '@leafygreen-ui/hooks';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
+import { palette } from '@leafygreen-ui/palette';
 import { spacing, typeScales } from '@leafygreen-ui/tokens';
 import { Description, InlineCode, Label } from '@leafygreen-ui/typography';
-import { palette } from '@leafygreen-ui/palette';
-import { Markdown } from 'components/Markdown';
-import { getDefaultValueString, getTypeString } from 'utils/tsdoc.utils';
 
 const globalMarginStyle = css`
   > * {

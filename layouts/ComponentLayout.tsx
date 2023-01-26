@@ -1,23 +1,25 @@
 import React from 'react';
+import kebabCase from 'lodash/kebabCase';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import IconButton from '@leafygreen-ui/icon-button';
-import { useViewportSize } from '@leafygreen-ui/hooks';
-import { palette } from '@leafygreen-ui/palette';
-import { Tabs, Tab } from '@leafygreen-ui/tabs';
-import { spacing, breakpoints } from '@leafygreen-ui/tokens';
-import { H2 } from '@leafygreen-ui/typography';
-import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
+import { pageContainerWidth } from 'styles/constants';
+import { containerPadding } from 'styles/globals';
+import { ComponentFields } from 'utils/ContentStack/types';
+import getFullPageTitle from 'utils/getFullPageTitle';
+import { mq } from 'utils/mediaQuery';
+
 import FigmaIcon from 'components/icons/FigmaIcon';
 import GithubIcon from 'components/icons/GithubIcon';
-import { mq } from 'utils/mediaQuery';
-import { pageContainerWidth } from 'styles/constants';
-import { ComponentFields } from 'utils/ContentStack/types';
-import kebabCase from 'lodash/kebabCase';
-import getFullPageTitle from 'utils/getFullPageTitle';
-import { css, cx } from '@leafygreen-ui/emotion';
-import { containerPadding } from 'styles/globals';
 import { NextLinker } from 'components/NextLinker';
+
+import { css, cx } from '@leafygreen-ui/emotion';
+import { useViewportSize } from '@leafygreen-ui/hooks';
+import IconButton from '@leafygreen-ui/icon-button';
+import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
+import { palette } from '@leafygreen-ui/palette';
+import { Tab, Tabs } from '@leafygreen-ui/tabs';
+import { breakpoints, spacing } from '@leafygreen-ui/tokens';
+import { H2 } from '@leafygreen-ui/typography';
 
 const layout = css`
   ${mq({

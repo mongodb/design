@@ -1,14 +1,17 @@
 // TODO: Remove this
 /* eslint-disable @next/next/no-html-link-for-pages */
 import { useRouter } from 'next/router';
-import { css } from '@emotion/css';
-import { spacing, breakpoints } from '@leafygreen-ui/tokens';
-import { SideNav, CollapsedSideNavItem } from '@leafygreen-ui/side-nav';
+import { HOME_PAGE } from 'utils/routes';
+
 import { useViewportSize } from '@leafygreen-ui/hooks';
 import { MongoDBLogo, MongoDBLogoMark } from '@leafygreen-ui/logo';
-import { HOME_PAGE } from 'utils/routes';
+import { CollapsedSideNavItem, SideNav } from '@leafygreen-ui/side-nav';
+import { breakpoints, spacing } from '@leafygreen-ui/tokens';
+
 import MobileNavigation from './MobileNavigation';
 import NavigationContent from './NavigationContent';
+
+import { css } from '@emotion/css';
 
 const sideNavStyles = css`
   z-index: 1;

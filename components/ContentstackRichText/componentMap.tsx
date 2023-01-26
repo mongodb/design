@@ -1,22 +1,27 @@
+import { css } from '@emotion/react';
+
+import Card from '@leafygreen-ui/card';
+import { palette } from '@leafygreen-ui/palette';
+import { spacing } from '@leafygreen-ui/tokens';
 import {
   Body,
   H1,
   H2,
   H3,
-  Subtitle,
-  Overline,
   Link,
+  Overline,
+  Subtitle,
 } from '@leafygreen-ui/typography';
-import Card from '@leafygreen-ui/card';
-import { css } from '@emotion/react';
+
 import ContentstackChildren from './ContentstackChildren';
 import ContentstackReference from './ContentstackReference';
 import HeaderContent from './HeaderContent';
-import { BLOCKS } from './types';
-import { palette } from '@leafygreen-ui/palette';
-import { spacing } from '@leafygreen-ui/tokens';
+import { BLOCKS, CSNode, CSTextNode } from './types';
+import { getCSNodeTextContent } from './utils';
 
-const componentMap = {
+const componentMap: {
+  [key in BLOCKS]?: (node: CSNode | CSTextNode, options?: any) => JSX.Element;
+} = {
   [BLOCKS.DOCUMENT]: (node, options) => {
     return (
       <div
@@ -33,26 +38,23 @@ const componentMap = {
       </div>
     );
   },
-  [BLOCKS.FRAGMENT]: node => (
-    <ContentstackChildren nodeChildren={node.children} />
-  ),
   [BLOCKS.HEADING_1]: node => (
     <H1>
-      <HeaderContent headerId={node.children[0].text ?? node.uid}>
+      <HeaderContent headerId={getCSNodeTextContent(node)}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H1>
   ),
   [BLOCKS.HEADING_2]: node => (
     <H2>
-      <HeaderContent headerId={node.children[0].text ?? node.uid}>
+      <HeaderContent headerId={getCSNodeTextContent(node)}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H2>
   ),
   [BLOCKS.HEADING_3]: node => (
     <H3>
-      <HeaderContent headerId={node.children[0].text ?? node.uid}>
+      <HeaderContent headerId={getCSNodeTextContent(node)}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H3>
@@ -63,12 +65,17 @@ const componentMap = {
         margin-top: ${spacing[2]}px;
       `}
     >
-      <HeaderContent headerId={node.children[0].text ?? node.uid}>
+      <HeaderContent headerId={getCSNodeTextContent(node)}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </Subtitle>
   ),
   [BLOCKS.HEADING_5]: node => (
+    <Overline>
+      <ContentstackChildren nodeChildren={node.children} />
+    </Overline>
+  ),
+  [BLOCKS.HEADING_6]: node => (
     <Overline>
       <ContentstackChildren nodeChildren={node.children} />
     </Overline>
@@ -100,7 +107,7 @@ const componentMap = {
   ),
   [BLOCKS.ORDERED_LIST]: node => (
     <ol
-      {...node.attrs}
+      {...(node.attrs as any)}
       css={css`
         padding-inline-start: 25px;
       `}
@@ -228,6 +235,9 @@ const componentMap = {
     </td>
   ),
   [BLOCKS.REFERENCE]: node => <ContentstackReference content={node} />,
+  [BLOCKS.FRAGMENT]: node => (
+    <ContentstackChildren nodeChildren={node.children} />
+  ),
 };
 
 export default componentMap;

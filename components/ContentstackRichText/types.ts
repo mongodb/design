@@ -1,3 +1,18 @@
+import { Node, TextNode } from '@contentstack/utils';
+
+type AnyNode = CSNode | CSTextNode;
+
+/** Contentstack is missing props in their type definitions */
+export interface CSNode extends Node {
+  uid: string;
+  children: Array<AnyNode>;
+}
+
+export interface CSTextNode extends TextNode, CSNode {
+  children: Array<AnyNode>;
+}
+
+// TODO: consider extending `@contentstack/utils.NodeType`
 /**
  * Map of all Contentstack block types. Blocks contain inline or block nodes.
  */

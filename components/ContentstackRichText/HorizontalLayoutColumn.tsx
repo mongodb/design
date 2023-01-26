@@ -9,6 +9,7 @@ const verticalAlignments = {
   'space-evenly': 'space-evenly',
 };
 
+/** @deprecated */
 const HorizontalLayoutColumn = ({ widthRatio, verticalAlign, content }) => (
   <div
     style={{
