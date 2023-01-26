@@ -16,7 +16,7 @@ const FlexContainer = styled('div')`
 const HorizontalLayout = ({
   column_1,
   column_2,
-  vertical_align,
+  vertical_align = 'start',
 }: HorizontalLayoutBlockProps) => {
   return (
     <FlexContainer
