@@ -11,7 +11,7 @@ import News from 'components/News';
 import { VisuallyHidden } from '@leafygreen-ui/a11y';
 import { useViewportSize } from '@leafygreen-ui/hooks';
 import { palette } from '@leafygreen-ui/palette';
-import { breakpoints,spacing } from '@leafygreen-ui/tokens';
+import { breakpoints, spacing } from '@leafygreen-ui/tokens';
 import { Overline } from '@leafygreen-ui/typography';
 
 import { css, cx } from '@emotion/css';

@@ -5,8 +5,8 @@ import { HOME_PAGE } from 'utils/routes';
 
 import { useViewportSize } from '@leafygreen-ui/hooks';
 import { MongoDBLogo, MongoDBLogoMark } from '@leafygreen-ui/logo';
-import { CollapsedSideNavItem,SideNav } from '@leafygreen-ui/side-nav';
-import { breakpoints,spacing } from '@leafygreen-ui/tokens';
+import { CollapsedSideNavItem, SideNav } from '@leafygreen-ui/side-nav';
+import { breakpoints, spacing } from '@leafygreen-ui/tokens';
 
 import MobileNavigation from './MobileNavigation';
 import NavigationContent from './NavigationContent';

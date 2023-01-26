@@ -16,8 +16,8 @@ import { useViewportSize } from '@leafygreen-ui/hooks';
 import IconButton from '@leafygreen-ui/icon-button';
 import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
 import { palette } from '@leafygreen-ui/palette';
-import { Tab,Tabs } from '@leafygreen-ui/tabs';
-import { breakpoints,spacing } from '@leafygreen-ui/tokens';
+import { Tab, Tabs } from '@leafygreen-ui/tabs';
+import { breakpoints, spacing } from '@leafygreen-ui/tokens';
 import { H2 } from '@leafygreen-ui/typography';
 
 const layout = css`
