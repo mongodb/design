@@ -1,4 +1,4 @@
-import componentMap from './componentMap';
+import { nodeTypeToElementMap } from './componentMap';
 import ContentstackText from './ContentstackText';
 import { CSNode } from './types';
 import { isTextNode } from './utils';
@@ -19,7 +19,7 @@ const ContentstackRichText = ({
     return <ContentstackText node={content} />;
   } else {
     return (
-      componentMap[content.type]?.(content, options) ?? (
+      nodeTypeToElementMap[content.type]?.(content, options) ?? (
         <>Unknown node type: {JSON.stringify(content)}.</>
       )
     );

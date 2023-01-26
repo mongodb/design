@@ -22,7 +22,7 @@ export interface CSEntry extends EntryEmbedable {}
 /**
  * Map of all Contentstack block types. Blocks contain inline or block nodes.
  */
-export enum BLOCKS {
+export enum CSNodeType {
   DOCUMENT = 'doc',
   FRAGMENT = 'fragment',
   PARAGRAPH = 'p',
@@ -141,7 +141,7 @@ export interface HorizontalLayoutBlockProps {
     | 'baseline'
 }
 
-export interface ContentTypePropMap {
+export interface BlockPropsMap {
   annotated_image_block: AnnotatedImageBlockProps;
   badge_block: BadgeBlockProps;
   basic_usage_block: BasicUsageBlockProps;
@@ -153,4 +153,4 @@ export interface ContentTypePropMap {
   horizontal_layout: HorizontalLayoutBlockProps;
 }
 
-export type ContentTypeUID = keyof ContentTypePropMap;
+export type ContentTypeUID = keyof BlockPropsMap;

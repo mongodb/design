@@ -12,7 +12,7 @@ import AnnotatedImageBlock from './AnnotatedImageBlock';
 import BasicUsageBlock from './BasicUsageBlock';
 import ExampleCardBlock from './ExampleCardBlock';
 import HorizontalLayout from './HorizontalLayout';
-import { ContentTypePropMap, ContentTypeUID } from './types';
+import { BlockPropsMap, ContentTypeUID } from './types';
 import ContentstackRichText from '.';
 
 /**
@@ -20,14 +20,14 @@ import ContentstackRichText from '.';
  * to new function component.
  *
  * The new component accepts the relevant interface as props
- * (as defined by the key `contentTypeUid` in {@link ContentTypePropMap})
+ * (as defined by the key `contentTypeUid` in {@link BlockPropsMap})
  * and returns a JSX.Element.
  *
  * With this approach we can ensure that the value of `props` we're passing into
  * each component matches the expected interface
  */
-const ComponentMap: {
-  [K in ContentTypeUID]: (props: ContentTypePropMap[K]) => JSX.Element;
+const blockToElementMap: {
+  [K in ContentTypeUID]: (props: BlockPropsMap[K]) => JSX.Element;
 } = {
   annotated_image_block: props => <AnnotatedImageBlock entry={props} />,
   badge_block: props => (
@@ -95,7 +95,7 @@ const ContentstackEntry = <T extends ContentTypeUID>({
   entryUid: string;
 }) => {
   // Note: not using `useMemo` here, since `getEntryById` is async
-  const [entry, setEntry] = useState<ContentTypePropMap[T]>();
+  const [entry, setEntry] = useState<BlockPropsMap[T]>();
   useEffect(() => {
     getEntryById(contentTypeUid, entryUid).then(res => {
       if (res) setEntry(res);
@@ -106,7 +106,7 @@ const ContentstackEntry = <T extends ContentTypeUID>({
     return <>Loading embedded entry...</>;
   }
 
-  return ComponentMap[contentTypeUid](entry);
+  return blockToElementMap[contentTypeUid](entry);
 };
 
 export default ContentstackEntry;
