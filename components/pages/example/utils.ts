@@ -15,9 +15,9 @@ import {
 import pascalcase from 'pascalcase';
 import {
   CustomComponentDoc,
+  findComponentDoc,
   getComponentPropsArray as getTSDocPropsArray,
   getDefaultValueValue,
-  findComponentDoc,
 } from 'utils/tsdoc.utils';
 
 import {
