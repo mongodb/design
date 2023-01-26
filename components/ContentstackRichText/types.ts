@@ -135,12 +135,10 @@ export interface HorizontalLayoutBlockProps {
   column_1: CSNode; // richText
   column_2: CSNode; // richText,
   vertical_align:
-    | 'top'
+    | 'start'
     | 'center'
-    | 'bottom'
-    | 'space-evenly'
-    | 'space-around'
-    | 'space-between';
+    | 'end'
+    | 'baseline'
 }
 
 export interface ContentTypePropMap {
