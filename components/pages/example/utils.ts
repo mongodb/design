@@ -17,6 +17,7 @@ import {
   CustomComponentDoc,
   getComponentPropsArray as getTSDocPropsArray,
   getDefaultValueValue,
+  findComponentDoc,
 } from 'utils/tsdoc.utils';
 
 import {
@@ -421,12 +422,12 @@ export function getLiveExampleState({
   componentName,
   meta,
   stories,
-  componentDoc,
+  tsDoc,
 }: {
   componentName: string;
   meta: Meta<any>;
   stories: { [key: string]: ComponentStoryFn<any> };
-  componentDoc?: CustomComponentDoc;
+  tsDoc: Array<CustomComponentDoc> | null;
 }): LiveExampleState {
   const defaultStoryName = meta.parameters?.default ?? Object.keys(stories)[0];
 
@@ -434,7 +435,9 @@ export function getLiveExampleState({
     ? stories[defaultStoryName]
     : Object.values(stories)[0];
 
-  const TSPropsArray: Array<KnobType> = getTSDocPropsArray(componentDoc)
+  const TSPropsArray: Array<KnobType> = getTSDocPropsArray(
+    findComponentDoc(componentName, tsDoc),
+  )
     // Filter out component props we don't want knobs for.
     // i.e. `@ignore` tags, excluded in SB.parameters.controls
     .filter(getPropItemFilterFn({ meta, StoryFn }))

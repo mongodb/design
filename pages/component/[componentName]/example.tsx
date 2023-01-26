@@ -3,24 +3,19 @@ import { getTSDoc } from 'utils/_getComponentResources';
 import { getComponent } from 'utils/ContentStack/getContentstackResources';
 import { getStaticComponentPaths } from 'utils/ContentStack/getStaticComponent';
 import { ComponentPageMeta } from 'utils/ContentStack/types';
-import { CustomComponentDoc, findComponentDoc } from 'utils/tsdoc.utils';
+import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import { LiveExample } from 'components/pages/example/LiveExample';
 
 interface ExamplePageProps {
   componentName: string;
-  component?: ComponentPageMeta;
-  componentDoc?: CustomComponentDoc;
+  component: ComponentPageMeta | null;
+  tsDoc: Array<CustomComponentDoc> | null;
 }
 import ComponentLayout from 'layouts/ComponentLayout';
 
-const ComponentExample = ({
-  componentName,
-  componentDoc,
-}: ExamplePageProps) => {
-  return (
-    <LiveExample componentName={componentName} componentDoc={componentDoc} />
-  );
+const ComponentExample = ({ componentName, tsDoc }: ExamplePageProps) => {
+  return <LiveExample componentName={componentName} tsDoc={tsDoc} />;
 };
 
 ComponentExample.getLayout = function getLayout(page: ReactElement) {
@@ -35,21 +30,21 @@ export const getStaticProps = async ({
   params,
 }): Promise<{ props: ExamplePageProps }> => {
   const { componentName } = params;
-  const component = await getComponent(componentName, {
-    includeContent: false,
-  });
+  const component =
+    (await getComponent(componentName, {
+      includeContent: false,
+    })) ?? null;
 
   // Find the TSDoc object only for the primary component
-  const componentDoc = findComponentDoc(
-    componentName,
-    await getTSDoc(componentName),
-  );
+  // const componentDoc = findComponentDoc(componentName, await getTSDoc(componentName)) ?? null;
+
+  const tsDoc = await getTSDoc(componentName);
 
   return {
     props: {
       componentName,
       component,
-      componentDoc,
+      tsDoc,
     },
   };
 };

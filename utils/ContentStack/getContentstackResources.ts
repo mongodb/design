@@ -1,4 +1,5 @@
 import Contentstack from 'contentstack';
+import defaults from 'lodash/defaults'
 import startCase from 'lodash/startCase';
 
 import {
@@ -28,6 +29,9 @@ export async function getComponents(
   options?: QueryOptions,
 ): Promise<Array<ComponentFields>> {
   try {
+
+    options = defaults(options, {includeContent: false})
+
     const results: Array<ComponentFields> = (
       await Stack.ContentType('component')
         .Query()

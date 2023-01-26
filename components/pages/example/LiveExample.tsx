@@ -45,10 +45,10 @@ const initialLiveExampleState: LiveExampleState = {
 
 export const LiveExample = ({
   componentName,
-  componentDoc,
+  tsDoc,
 }: {
   componentName: string;
-  componentDoc?: CustomComponentDoc;
+  tsDoc: Array<CustomComponentDoc> | null;
 }) => {
   const [showCode, setShowCode] = useState(false);
   // Establish a page state
@@ -95,8 +95,10 @@ export const LiveExample = ({
             componentName,
             meta,
             stories,
-            componentDoc,
+            tsDoc,
           });
+
+          console.log(state);
 
           setState(state);
         } else {
@@ -109,7 +111,7 @@ export const LiveExample = ({
         setState(initialLiveExampleState);
         setShowCode(false);
       });
-  }, [componentName, componentDoc]);
+  }, [componentName, tsDoc]);
 
   // Update source code
   useEffect(() => {
