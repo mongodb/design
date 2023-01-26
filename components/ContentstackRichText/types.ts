@@ -144,15 +144,15 @@ export interface HorizontalLayoutBlockProps {
 }
 
 export interface ContentTypePropMap {
-  'annotated_image_block': AnnotatedImageBlockProps,
-  'badge_block': BadgeBlockProps,
-  'basic_usage_block': BasicUsageBlockProps,
-  'button_block': ButtonBlockProps,
-  'callout_block': CalloutBock,
-  'card_block': CardBlockProps,
-  'example_card_block': ExampleCardBlockProps,
-  'expandable_card_block': ExpandableCardBlockProps,
-  'horizontal_layout': HorizontalLayoutBlockProps,
+  annotated_image_block: AnnotatedImageBlockProps;
+  badge_block: BadgeBlockProps;
+  basic_usage_block: BasicUsageBlockProps;
+  button_block: ButtonBlockProps;
+  callout_block: CalloutBock;
+  card_block: CardBlockProps;
+  example_card_block: ExampleCardBlockProps;
+  expandable_card_block: ExpandableCardBlockProps;
+  horizontal_layout: HorizontalLayoutBlockProps;
 }
 
-export type ContentTypeUID = keyof ContentTypePropMap
+export type ContentTypeUID = keyof ContentTypePropMap;
