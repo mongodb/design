@@ -134,11 +134,7 @@ export interface HorizontalLayoutBlockProps {
   title: string;
   column_1: CSNode; // richText
   column_2: CSNode; // richText,
-  vertical_align:
-    | 'start'
-    | 'center'
-    | 'end'
-    | 'baseline'
+  vertical_align: 'start' | 'center' | 'end' | 'baseline';
 }
 
 export interface BlockPropsMap {
