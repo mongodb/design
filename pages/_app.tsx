@@ -11,9 +11,9 @@ import {
   getComponents,
   getContentPageGroups,
 } from 'utils/ContentStack/getContentstackResources';
+import { ContentPageGroup } from 'utils/ContentStack/types';
 import getFullPageTitle from 'utils/getFullPageTitle';
 import * as ga from 'utils/googleAnalytics';
-import { ContentPageGroup } from 'utils/ContentStack/types';
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
