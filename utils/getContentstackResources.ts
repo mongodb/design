@@ -2,7 +2,7 @@ import Contentstack from 'contentstack';
 import startCase from 'lodash/startCase';
 
 import {
-  ContentTypePropMap,
+  BlockPropsMap,
   ContentTypeUID,
 } from 'components/ContentstackRichText/types';
 
@@ -79,13 +79,13 @@ export async function getContentPage(
 export async function getEntryById<T extends ContentTypeUID>(
   content_type_uid: T,
   uid: string,
-): Promise<ContentTypePropMap[T]> {
+): Promise<BlockPropsMap[T]> {
   try {
     const query = Stack.ContentType(content_type_uid).Entry(uid);
     const result = await query.includeEmbeddedItems().toJSON().fetch();
-    return result as ContentTypePropMap[T];
+    return result as BlockPropsMap[T];
   } catch (error) {
     console.error('Entry not found', error);
-    return {} as ContentTypePropMap[T];
+    return {} as BlockPropsMap[T];
   }
 }
