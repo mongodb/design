@@ -5,10 +5,14 @@ import { palette } from '@leafygreen-ui/palette';
 import { BaseFontSize, spacing, typeScales } from '@leafygreen-ui/tokens';
 import { Body } from '@leafygreen-ui/typography';
 
+import { ExampleCardBlockProps } from '../types';
+
 import { BorderColors, IconColors, Icons, TextColors } from './constants';
 import ImageContainer from './ImageContainer';
 
 const TextContainer = styled('div')`
+  display: flex;
+  gap: 6px;
   margin-left: ${spacing[2]}px;
 `;
 
@@ -24,11 +28,20 @@ const Subtext = styled(Body)`
   line-height: ${typeScales.body1.lineHeight}px;
 `;
 
-const ExampleCardBlock = ({ entry }) => {
+const ExampleCardBlock = ({ entry }: { entry: ExampleCardBlockProps }) => {
   const IconComponent = Icons[entry.variant];
   return (
     <div>
       <ImageContainer color={BorderColors[entry.variant]}>
+        {/**
+         * TODO: fix this
+         * Contentstack doesn't send image sizes,
+         * so we can't appropriately size a Next/Image component.
+         *
+         * Also can't use `ContentstackImage`, since the `entry.image` object
+         * is not a `CSNode` type
+         */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={entry.image.url} alt={entry.title} />
       </ImageContainer>
       <TextContainer>
@@ -36,12 +49,11 @@ const ExampleCardBlock = ({ entry }) => {
           fill={IconColors[entry.variant]}
           width={spacing[4]}
           height={spacing[4]}
-        />
-        <div
           css={css`
-            margin: 2px ${spacing[1]}px;
+            width: auto;
           `}
-        >
+        />
+        <div>
           <HeaderText color={TextColors[entry.variant]}>
             <b>{entry.header_text}</b>
           </HeaderText>
