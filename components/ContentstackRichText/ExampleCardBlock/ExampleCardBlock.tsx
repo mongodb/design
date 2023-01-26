@@ -30,10 +30,15 @@ const Subtext = styled(Body)`
 
 const ExampleCardBlock = ({ entry }: { entry: ExampleCardBlockProps }) => {
   const IconComponent = Icons[entry.variant];
-
   return (
     <div>
       <ImageContainer color={BorderColors[entry.variant]}>
+        {/**
+         * TODO: fix this
+         * Contentstack doesn't send image sizes,
+         * so we can't appropriately size a Next/Image component
+         * */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={entry.image.url} alt={entry.title} />
       </ImageContainer>
       <TextContainer>
