@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { css } from '@emotion/react';
 import Image from 'next/image';
-import { useState } from 'react';
 
 const ContentstackImage = ({ content }) => {
   const attrs = content.attrs;

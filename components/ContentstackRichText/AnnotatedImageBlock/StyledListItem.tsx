@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import { palette } from '@leafygreen-ui/palette';
 import { BaseFontSize, spacing } from '@leafygreen-ui/tokens';
 

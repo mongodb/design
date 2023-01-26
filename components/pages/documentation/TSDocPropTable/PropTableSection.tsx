@@ -1,5 +1,7 @@
-import { css } from '@leafygreen-ui/emotion';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
+
+import { css } from '@leafygreen-ui/emotion';
+
 import { TSDocPropTable } from './TSDocPropTable';
 
 export const TSDocPropTableSection = ({

@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
+import chalk from 'chalk';
 import { spawnSync } from 'child_process';
 import { Command } from 'commander';
-import chalk from 'chalk';
+
 import PkgJson from '../package.json';
 
 interface ComponentUpdateObject {

@@ -1,10 +1,11 @@
-import ComponentLayout from 'layouts/ComponentLayout';
 import { ReactElement } from 'react';
-import { getStaticComponentPaths } from 'utils/getStaticComponent';
-import { LiveExample } from 'components/pages/example/LiveExample';
+import ComponentLayout from 'layouts/ComponentLayout';
 import { getTSDoc } from 'utils/_getComponentResources';
 import { getComponent } from 'utils/getContentstackResources';
+import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
+
+import { LiveExample } from 'components/pages/example/LiveExample';
 
 const ComponentExample = ({
   componentName,

@@ -1,8 +1,9 @@
-import styled from '@emotion/styled';
-import { palette } from '@leafygreen-ui/palette';
 import { PropsWithChildren } from 'react';
-import Icon from '@leafygreen-ui/icon';
+import styled from '@emotion/styled';
 import Link from 'next/link';
+
+import Icon from '@leafygreen-ui/icon';
+import { palette } from '@leafygreen-ui/palette';
 
 const StyledAnchor = styled('a')`
   color: inherit;

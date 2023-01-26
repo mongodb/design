@@ -1,9 +1,10 @@
 import { kebabCase } from 'lodash';
-import { Body } from '@leafygreen-ui/typography';
-import { spacing } from '@leafygreen-ui/tokens';
-import { palette } from '@leafygreen-ui/palette';
+
 import { css } from '@leafygreen-ui/emotion';
 import { HTMLElementProps } from '@leafygreen-ui/lib';
+import { palette } from '@leafygreen-ui/palette';
+import { spacing } from '@leafygreen-ui/tokens';
+import { Body } from '@leafygreen-ui/typography';
 
 import { Knob } from '../Knob/Knob';
 import { KnobType } from '../types';

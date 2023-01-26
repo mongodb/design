@@ -1,10 +1,12 @@
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+
 import { palette } from '@leafygreen-ui/palette';
 import { BaseFontSize, spacing, typeScales } from '@leafygreen-ui/tokens';
 import { Body } from '@leafygreen-ui/typography';
-import ImageContainer from './ImageContainer';
+
 import { BorderColors, IconColors, Icons, TextColors } from './constants';
-import styled from '@emotion/styled';
+import ImageContainer from './ImageContainer';
 
 const TextContainer = styled('div')`
   margin-left: ${spacing[2]}px;
