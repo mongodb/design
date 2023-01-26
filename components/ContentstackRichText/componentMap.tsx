@@ -16,13 +16,19 @@ import {
 import ContentstackChildren from './ContentstackChildren';
 import ContentstackReference from './ContentstackReference';
 import HeaderContent from './HeaderContent';
-import { BLOCKS, CSNode, CSTextNode } from './types';
+import { CSNode, CSNodeType, CSTextNode } from './types';
 import { getCSNodeTextContent } from './utils';
 
-const componentMap: {
-  [key in BLOCKS]?: (node: CSNode | CSTextNode, options?: any) => JSX.Element;
+/**
+ * Maps a NodeType to a ContentStack element
+ */
+export const nodeTypeToElementMap: {
+  [key in CSNodeType]?: (
+    node: CSNode | CSTextNode,
+    options?: any,
+  ) => JSX.Element;
 } = {
-  [BLOCKS.DOCUMENT]: (node, options) => {
+  [CSNodeType.DOCUMENT]: (node, options) => {
     return (
       <div
         css={
@@ -38,28 +44,28 @@ const componentMap: {
       </div>
     );
   },
-  [BLOCKS.HEADING_1]: node => (
+  [CSNodeType.HEADING_1]: node => (
     <H1>
       <HeaderContent headerId={getCSNodeTextContent(node)}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H1>
   ),
-  [BLOCKS.HEADING_2]: node => (
+  [CSNodeType.HEADING_2]: node => (
     <H2>
       <HeaderContent headerId={getCSNodeTextContent(node)}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H2>
   ),
-  [BLOCKS.HEADING_3]: node => (
+  [CSNodeType.HEADING_3]: node => (
     <H3>
       <HeaderContent headerId={getCSNodeTextContent(node)}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H3>
   ),
-  [BLOCKS.HEADING_4]: node => (
+  [CSNodeType.HEADING_4]: node => (
     <Subtitle
       css={css`
         margin-top: ${spacing[2]}px;
@@ -70,17 +76,17 @@ const componentMap: {
       </HeaderContent>
     </Subtitle>
   ),
-  [BLOCKS.HEADING_5]: node => (
+  [CSNodeType.HEADING_5]: node => (
     <Overline>
       <ContentstackChildren nodeChildren={node.children} />
     </Overline>
   ),
-  [BLOCKS.HEADING_6]: node => (
+  [CSNodeType.HEADING_6]: node => (
     <Overline>
       <ContentstackChildren nodeChildren={node.children} />
     </Overline>
   ),
-  [BLOCKS.PARAGRAPH]: node => (
+  [CSNodeType.PARAGRAPH]: node => (
     <Body
       {...node.attrs}
       css={css`
@@ -92,7 +98,7 @@ const componentMap: {
       <ContentstackChildren nodeChildren={node.children} />
     </Body>
   ),
-  [BLOCKS.ANCHOR]: node => (
+  [CSNodeType.ANCHOR]: node => (
     <Link
       {...node.attrs}
       css={css`
@@ -105,7 +111,7 @@ const componentMap: {
       <ContentstackChildren nodeChildren={node.children} />
     </Link>
   ),
-  [BLOCKS.ORDERED_LIST]: node => (
+  [CSNodeType.ORDERED_LIST]: node => (
     <ol
       {...(node.attrs as any)}
       css={css`
@@ -115,7 +121,7 @@ const componentMap: {
       <ContentstackChildren nodeChildren={node.children} />
     </ol>
   ),
-  [BLOCKS.UNORDERED_LIST]: node => (
+  [CSNodeType.UNORDERED_LIST]: node => (
     <ul
       {...node.attrs}
       css={css`
@@ -127,7 +133,7 @@ const componentMap: {
       <ContentstackChildren nodeChildren={node.children} />
     </ul>
   ),
-  [BLOCKS.LIST_ITEM]: node => (
+  [CSNodeType.LIST_ITEM]: node => (
     <li
       {...node.attrs}
       css={css`
@@ -144,12 +150,12 @@ const componentMap: {
       <ContentstackChildren nodeChildren={node.children} />
     </li>
   ),
-  [BLOCKS.SPAN]: node => (
+  [CSNodeType.SPAN]: node => (
     <span {...node.attrs}>
       <ContentstackChildren nodeChildren={node.children} />
     </span>
   ),
-  [BLOCKS.TABLE]: node => {
+  [CSNodeType.TABLE]: node => {
     const colWidths = node.attrs.colWidths ? node.attrs.colWidths : [];
     return (
       <Card
@@ -175,7 +181,7 @@ const componentMap: {
       </Card>
     );
   },
-  [BLOCKS.TABLE_HEAD]: node => (
+  [CSNodeType.TABLE_HEAD]: node => (
     <thead
       css={css`
         border-bottom: 3px solid ${palette.gray.light1};
@@ -185,12 +191,12 @@ const componentMap: {
       <ContentstackChildren nodeChildren={node.children} />
     </thead>
   ),
-  [BLOCKS.TABLE_BODY]: node => (
+  [CSNodeType.TABLE_BODY]: node => (
     <tbody>
       <ContentstackChildren nodeChildren={node.children} />
     </tbody>
   ),
-  [BLOCKS.TABLE_ROW]: node => (
+  [CSNodeType.TABLE_ROW]: node => (
     <tr
       css={css`
         > td:first-of-type,
@@ -207,7 +213,7 @@ const componentMap: {
       <ContentstackChildren nodeChildren={node.children} />
     </tr>
   ),
-  [BLOCKS.TABLE_HEADER_CELL]: node => (
+  [CSNodeType.TABLE_HEADER_CELL]: node => (
     <th
       css={css`
         > * {
@@ -223,7 +229,7 @@ const componentMap: {
       <ContentstackChildren nodeChildren={node.children} />
     </th>
   ),
-  [BLOCKS.TABLE_CELL]: node => (
+  [CSNodeType.TABLE_CELL]: node => (
     <td
       css={css`
         vertical-align: middle;
@@ -234,10 +240,8 @@ const componentMap: {
       <ContentstackChildren nodeChildren={node.children} />
     </td>
   ),
-  [BLOCKS.REFERENCE]: node => <ContentstackReference content={node} />,
-  [BLOCKS.FRAGMENT]: node => (
+  [CSNodeType.REFERENCE]: node => <ContentstackReference content={node} />,
+  [CSNodeType.FRAGMENT]: node => (
     <ContentstackChildren nodeChildren={node.children} />
   ),
 };
-
-export default componentMap;

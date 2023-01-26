@@ -1,43 +1,28 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 import ContentstackRichText from './ContentstackRichText';
-import { CSNode } from './types';
+import { HorizontalLayoutBlockProps } from './types';
 
 const FlexContainer = styled('div')`
   display: flex;
-  align-items: stretch;
   gap: 32px;
-  * {
+  > * {
     max-width: 100%;
-    width: fill-available;
+    flex: 1;
   }
 `;
-
-// Defined here: https://app.contentstack.com/#!/stack/bltee845ee8bbd3fe1a/content-type/horizontal_layout/content-type-builder?branch=main
-interface HorizontalLayoutProps {
-  url: string;
-  title: string;
-  column_1: CSNode; // richText
-  column_2: CSNode; // richText,
-  vertical_align:
-    | 'top'
-    | 'center'
-    | 'bottom'
-    | 'space-evenly'
-    | 'space-around'
-    | 'space-between';
-}
 
 const HorizontalLayout = ({
   column_1,
   column_2,
-  vertical_align: verticalAlign,
-}: HorizontalLayoutProps) => {
+  vertical_align = 'start',
+}: HorizontalLayoutBlockProps) => {
   return (
     <FlexContainer
-      style={{
-        verticalAlign,
-      }}
+      css={css`
+        align-items: ${vertical_align};
+      `}
     >
       <ContentstackRichText content={column_1} />
       <ContentstackRichText content={column_2} />
