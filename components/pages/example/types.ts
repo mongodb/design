@@ -1,5 +1,5 @@
 import { PropItem } from 'react-docgen-typescript';
-import { SBScalarType,SBType } from '@storybook/csf';
+import { SBScalarType, SBType } from '@storybook/csf';
 import { ComponentStoryFn, Meta } from '@storybook/react';
 
 export type TypeString =

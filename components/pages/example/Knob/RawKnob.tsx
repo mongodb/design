@@ -1,9 +1,11 @@
 import { useMemo, useState } from 'react';
-import TextArea from '@leafygreen-ui/text-area';
-import { css } from '@leafygreen-ui/emotion';
+
 import Code from '@leafygreen-ui/code';
-import IconButton from '@leafygreen-ui/icon-button';
+import { css } from '@leafygreen-ui/emotion';
 import Icon from '@leafygreen-ui/icon';
+import IconButton from '@leafygreen-ui/icon-button';
+import TextArea from '@leafygreen-ui/text-area';
+
 import { KnobProps } from './types';
 
 const editModeWrapperStyle = css`

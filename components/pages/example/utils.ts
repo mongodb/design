@@ -390,7 +390,10 @@ export function getStoryCode({
       const lines = (storySource.source as string).match(/^.*$/gm);
 
       const storyCode = lines
-        ?.slice(locationsMap?.startLoc?.line - 1, locationsMap?.endLoc?.line - 1)
+        ?.slice(
+          locationsMap?.startLoc?.line - 1,
+          locationsMap?.endLoc?.line - 1,
+        )
         .join('\n');
       return storyCode;
     }

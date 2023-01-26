@@ -7,7 +7,7 @@ import { palette } from '@leafygreen-ui/palette';
 import { breakpoints } from '@leafygreen-ui/tokens';
 import { spacing } from '@leafygreen-ui/tokens';
 
-import { css,cx } from '@emotion/css';
+import { css, cx } from '@emotion/css';
 
 const footerContainerStyle = css`
   border-top: 1px solid ${palette.gray.light2};
