@@ -1727,16 +1727,6 @@
     "@leafygreen-ui/palette" "^3.4.5"
     "@leafygreen-ui/tooltip" "^9.0.3"
 
-"@leafygreen-ui/interaction-ring@^7.0.2":
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/@leafygreen-ui/interaction-ring/-/interaction-ring-7.0.2.tgz#bc229b90dde0bb6d8e4e886001d6dc4e75c9b47a"
-  integrity sha512-QLA2WGzAqyZDJJC90eXJsVD/woryFKQzGeenbSfjVbV5R7Vcs9xJIu/1WiXCMDyOA57JTbuNZ+pBV7+Cv2+glA==
-  dependencies:
-    "@leafygreen-ui/emotion" "^4.0.3"
-    "@leafygreen-ui/lib" "^10.0.0"
-    "@leafygreen-ui/palette" "^3.4.5"
-    "@leafygreen-ui/tokens" "^1.4.1"
-
 "@leafygreen-ui/leafygreen-provider@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/leafygreen-provider/-/leafygreen-provider-3.1.0.tgz#5f36e5e6e6203e9cf64ba7bad342ed1fa433a32c"

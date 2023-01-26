@@ -9,21 +9,22 @@ export const liveExampleWrapperStyle = css`
   margin: -${spacing[4]}px;
   margin-bottom: initial;
   min-height: 33vh;
-  max-height: 100vh;
+  max-height: 80vh;
+  overflow: hidden;
 `;
 
-export const storyWrapperStyle = css`
+export const storyContainerStyle = css`
   position: relative;
   flex: 2;
   padding: ${spacing[4]}px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  max-height: 100%;
+  max-height: 80vh;
   overflow: auto;
 `;
 
-export const blockWrapperStyle = css`
+export const blockContainerStyle = css`
   display: inline-block;
   height: min-content;
 `;
@@ -88,9 +89,11 @@ export const codeStyle = css`
   overflow: auto;
 `;
 
-export const showHideCodeButtonStyle = css`
-  position: absolute;
-  bottom: ${spacing[3]}px;
-  right: ${spacing[5] + spacing[4]}px;
+export const exampleCodeButtonRowStyle = css`
+  text-align: right;
+  padding: 16px 24px;
+`;
+
+export const exampleCodeButtonStyle = css`
   white-space: nowrap;
 `;
