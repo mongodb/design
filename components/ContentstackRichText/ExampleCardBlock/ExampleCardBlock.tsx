@@ -36,8 +36,11 @@ const ExampleCardBlock = ({ entry }: { entry: ExampleCardBlockProps }) => {
         {/**
          * TODO: fix this
          * Contentstack doesn't send image sizes,
-         * so we can't appropriately size a Next/Image component
-         * */}
+         * so we can't appropriately size a Next/Image component.
+         *
+         * Also can't use `ContentstackImage`, since the `entry.image` object
+         * is not a `CSNode` type
+         */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={entry.image.url} alt={entry.title} />
       </ImageContainer>
