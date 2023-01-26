@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 import ContentstackRichText from './ContentstackRichText';
@@ -5,24 +6,23 @@ import { HorizontalLayoutBlockProps } from './types';
 
 const FlexContainer = styled('div')`
   display: flex;
-  align-items: stretch;
   gap: 32px;
-  * {
+  > * {
     max-width: 100%;
-    width: fill-available;
+    flex: 1;
   }
 `;
 
 const HorizontalLayout = ({
   column_1,
   column_2,
-  vertical_align: verticalAlign,
+  vertical_align,
 }: HorizontalLayoutBlockProps) => {
   return (
     <FlexContainer
-      style={{
-        verticalAlign,
-      }}
+      css={css`
+        align-items: ${vertical_align};
+      `}
     >
       <ContentstackRichText content={column_1} />
       <ContentstackRichText content={column_2} />

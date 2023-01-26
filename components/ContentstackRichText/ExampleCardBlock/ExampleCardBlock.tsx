@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import Image from 'next/image';
 
 import { palette } from '@leafygreen-ui/palette';
 import { BaseFontSize, spacing, typeScales } from '@leafygreen-ui/tokens';
@@ -12,6 +11,8 @@ import { BorderColors, IconColors, Icons, TextColors } from './constants';
 import ImageContainer from './ImageContainer';
 
 const TextContainer = styled('div')`
+  display: flex;
+  gap: 6px;
   margin-left: ${spacing[2]}px;
 `;
 
@@ -40,12 +41,11 @@ const ExampleCardBlock = ({ entry }: { entry: ExampleCardBlockProps }) => {
           fill={IconColors[entry.variant]}
           width={spacing[4]}
           height={spacing[4]}
-        />
-        <div
           css={css`
-            margin: 2px ${spacing[1]}px;
+            width: auto;
           `}
-        >
+        />
+        <div>
           <HeaderText color={TextColors[entry.variant]}>
             <b>{entry.header_text}</b>
           </HeaderText>
