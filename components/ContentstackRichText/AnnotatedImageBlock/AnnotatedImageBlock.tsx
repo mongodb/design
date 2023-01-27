@@ -1,7 +1,9 @@
 import { css } from '@emotion/react';
+
 import { palette } from '@leafygreen-ui/palette';
 import { BaseFontSize, spacing } from '@leafygreen-ui/tokens';
 import { Body } from '@leafygreen-ui/typography';
+
 import ImageContainer from './ImageContainer';
 import StyledList from './StyledList';
 import StyledListItem from './StyledListItem';

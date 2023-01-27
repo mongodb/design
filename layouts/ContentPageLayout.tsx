@@ -1,11 +1,13 @@
 import React from 'react';
-import Head from 'next/head';
-import { css } from '@emotion/css';
-import { spacing } from '@leafygreen-ui/tokens';
-import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
-import { mq } from 'utils/mediaQuery';
 import startCase from 'lodash/startCase';
+import Head from 'next/head';
 import getFullPageTitle from 'utils/getFullPageTitle';
+import { mq } from 'utils/mediaQuery';
+
+import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
+import { spacing } from '@leafygreen-ui/tokens';
+
+import { css } from '@emotion/css';
 
 const layout = css`
   ${mq({

@@ -1,18 +1,19 @@
 import { ReactElement, ReactNode, useEffect } from 'react';
-import { NextPage } from 'next';
-import Head from 'next/head';
-import type { AppProps } from 'next/app';
-import { useRouter } from 'next/router';
 import { Global } from '@emotion/react';
-import { globalStyles } from 'styles/globals';
-import BaseLayout from 'layouts/BaseLayout';
 import { AppContextProvider } from 'contexts/AppContext';
+import BaseLayout from 'layouts/BaseLayout';
+import { NextPage } from 'next';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { globalStyles } from 'styles/globals';
 import {
   getComponents,
   getContentPageGroups,
 } from 'utils/getContentstackResources';
 import getFullPageTitle from 'utils/getFullPageTitle';
 import * as ga from 'utils/googleAnalytics';
+import { ContentPageGroup } from 'utils/types';
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -21,7 +22,7 @@ export type NextPageWithLayout = NextPage & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
   components: any;
-  contentPageGroups: any;
+  contentPageGroups: Array<ContentPageGroup>;
 };
 
 function MyApp({

@@ -1,14 +1,13 @@
 import { kebabCase } from 'lodash';
-import { Subtitle } from '@leafygreen-ui/typography';
-import { Knob } from './Knob';
-import { spacing } from '@leafygreen-ui/tokens';
-import { palette } from '@leafygreen-ui/palette';
+
 import { css } from '@leafygreen-ui/emotion';
 import { HTMLElementProps } from '@leafygreen-ui/lib';
+import { palette } from '@leafygreen-ui/palette';
+import { spacing } from '@leafygreen-ui/tokens';
+import { Body } from '@leafygreen-ui/typography';
 
-import InlineDefinition from '@leafygreen-ui/inline-definition';
-import { KnobType } from './utils';
-import { PropTooltipContent } from 'components/PropTooltipContent';
+import { Knob } from '../Knob/Knob';
+import { KnobType } from '../types';
 
 const knobRowWrapperStyle = (darkMode: boolean) => css`
   display: flex;
@@ -48,16 +47,13 @@ export const KnobRow = ({
   return (
     <div className={knobRowWrapperStyle(darkMode)}>
       <div>
-        <Subtitle darkMode={darkMode} id={`${kebabCase()}-knob-${name}`}>
-          <InlineDefinition
-            align="right"
-            spacing={spacing[4]}
-            darkMode={darkMode}
-            definition={<PropTooltipContent propItem={knob} />}
-          >
-            {name}
-          </InlineDefinition>
-        </Subtitle>
+        <Body
+          baseFontSize={16}
+          darkMode={darkMode}
+          id={`${kebabCase()}-knob-${name}`}
+        >
+          <strong>{name}</strong>
+        </Body>
       </div>
       <Knob
         propName={name}

@@ -1,8 +1,10 @@
-import { css } from '@emotion/css';
 import { css as EmotionReactCss } from '@emotion/react';
-import { spacing } from '@leafygreen-ui/tokens';
 import { mq } from 'utils/mediaQuery';
 import { CDN } from 'utils/routes';
+
+import { spacing } from '@leafygreen-ui/tokens';
+
+import { css } from '@emotion/css';
 
 const fontsURL = `${CDN}/fonts`;
 

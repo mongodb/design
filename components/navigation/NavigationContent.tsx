@@ -1,11 +1,13 @@
-import { useRouter } from 'next/router';
-import { SideNavGroup, SideNavItem } from '@leafygreen-ui/side-nav';
-import Icon from '@leafygreen-ui/icon';
-import MobileNavigationGroup from './MobileNavigationGroup';
-import MobileNavigationItem from './MobileNavigationItem';
 import { useAppContext } from 'contexts/AppContext';
 import kebabCase from 'lodash/kebabCase';
+import { useRouter } from 'next/router';
 import { ComponentFields } from 'utils/types';
+
+import Icon from '@leafygreen-ui/icon';
+import { SideNavGroup, SideNavItem } from '@leafygreen-ui/side-nav';
+
+import MobileNavigationGroup from './MobileNavigationGroup';
+import MobileNavigationItem from './MobileNavigationItem';
 
 const foundations: Array<String> = [
   'accessibility',
@@ -22,7 +24,6 @@ function NavigationContent({
 }) {
   const router = useRouter();
   const activePage = router.asPath.split('/')[2];
-  const activeTab = router.asPath.split('/')[3];
   const { components, contentPageGroups } = useAppContext();
 
   if (!components || !contentPageGroups) {
@@ -68,7 +69,7 @@ function NavigationContent({
         <>
           {contentPageGroups.map(contentPageGroup => (
             <SideNavGroup
-              key={contentPageGroup.id}
+              key={contentPageGroup.uid}
               header={contentPageGroup.title}
               glyph={<Icon glyph={contentPageGroup.iconname} />}
             >
@@ -98,11 +99,7 @@ function NavigationContent({
                 <SideNavItem
                   key={componentKebabCaseName}
                   onClick={() =>
-                    router.push(
-                      `/component/${componentKebabCaseName}/${
-                        activeTab ? activeTab : 'example'
-                      }`,
-                    )
+                    router.push(`/component/${componentKebabCaseName}/example`)
                   }
                   active={componentKebabCaseName === activePage}
                 >

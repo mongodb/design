@@ -1,10 +1,12 @@
 // TODO: Remove this
 /* eslint-disable @next/next/no-img-element */
-import { css } from '@emotion/css';
-import { palette } from '@leafygreen-ui/palette';
-import { Subtitle } from '@leafygreen-ui/typography';
-import { spacing } from '@leafygreen-ui/tokens';
 import { CDN } from 'utils/routes';
+
+import { palette } from '@leafygreen-ui/palette';
+import { spacing } from '@leafygreen-ui/tokens';
+import { Subtitle } from '@leafygreen-ui/typography';
+
+import { css } from '@emotion/css';
 
 const containerStyle = css`
   width: 100%;

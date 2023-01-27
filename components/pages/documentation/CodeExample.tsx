@@ -1,7 +1,8 @@
-import { Tab, Tabs } from '@leafygreen-ui/tabs';
-import Code from '@leafygreen-ui/code';
-
 import { GridContainer, GridItem } from 'components/Grid';
+
+import Code from '@leafygreen-ui/code';
+import { Tab, Tabs } from '@leafygreen-ui/tabs';
+
 import { maxWidth, mt3, tabsPadding } from './documentationPageStyles';
 
 export const CodeExample = ({ componentName, readme }) => {

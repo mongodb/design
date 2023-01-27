@@ -1,13 +1,16 @@
-import CodeDocs from 'components/pages/documentation/CodeDocs';
-import ComponentLayout from 'layouts/ComponentLayout';
-import { getDependencyDocumentation } from 'utils/_getComponentResources';
 import { ReactElement } from 'react';
+import ComponentLayout from 'layouts/ComponentLayout';
+import { containerPadding } from 'styles/globals';
+import { getDependencyDocumentation } from 'utils/_getComponentResources';
 import { getComponent } from 'utils/getContentstackResources';
 import { getStaticComponentPaths } from 'utils/getStaticComponent';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
-import { containerPadding } from 'styles/globals';
-import { css, cx } from '@emotion/css';
+
+import CodeDocs from 'components/pages/documentation/CodeDocs';
+
 import { spacing } from '@leafygreen-ui/tokens';
+
+import { css, cx } from '@emotion/css';
 
 interface DocsPageProps {
   componentName: string;

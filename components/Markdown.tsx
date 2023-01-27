@@ -1,7 +1,8 @@
 import ReactMarkdown from 'react-markdown';
-import { InlineCode, Link } from '@leafygreen-ui/typography';
+
 import Code from '@leafygreen-ui/code';
 import { css } from '@leafygreen-ui/emotion';
+import { InlineCode, Link } from '@leafygreen-ui/typography';
 
 export const Markdown = ({ children, darkMode }: any) => (
   <span>

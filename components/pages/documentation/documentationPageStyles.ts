@@ -1,6 +1,7 @@
-import { spacing } from '@leafygreen-ui/tokens';
 import { pageContainerWidth } from 'styles/constants';
+
 import { css } from '@leafygreen-ui/emotion';
+import { spacing } from '@leafygreen-ui/tokens';
 
 export const tabsPadding = css`
   padding-top: ${spacing[4]}px;
