@@ -6,6 +6,7 @@ import XWithCircle from '@leafygreen-ui/icon/dist/XWithCircle';
 import { palette } from '@leafygreen-ui/palette';
 import { spacing } from '@leafygreen-ui/tokens';
 import { Body } from '@leafygreen-ui/typography';
+import { BodyProps } from '@leafygreen-ui/typography/dist/Body/Body.types';
 
 import ContentstackRichText from '..';
 
@@ -14,7 +15,7 @@ const HeadingWrapper = styled('div')`
   display: flex;
 `;
 
-const StyledBody = styled(Body)`
+const StyledBody = styled(Body)<BodyProps & { color: string }>`
   display: inline-flex;
   margin-left: 6px;
   color: ${props => props.color};

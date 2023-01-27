@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { palette } from '@leafygreen-ui/palette';
 import { BaseFontSize, spacing, typeScales } from '@leafygreen-ui/tokens';
 import { Body } from '@leafygreen-ui/typography';
+import { BodyProps } from '@leafygreen-ui/typography/dist/Body/Body.types';
 
 import { ExampleCardBlockProps } from '../types';
 
@@ -16,13 +17,13 @@ const TextContainer = styled('div')`
   margin-left: ${spacing[2]}px;
 `;
 
-const HeaderText = styled(Body)`
+const HeaderText = styled(Body)<BodyProps & { color: string }>`
   color: ${props => props.color};
   font-size: ${BaseFontSize.Body1}px;
   line-height: ${typeScales.body1.lineHeight}px;
 `;
 
-const Subtext = styled(Body)`
+const Subtext = styled(Body)<BodyProps>`
   color: ${palette.gray.dark1};
   font-size: ${BaseFontSize.Body1}px;
   line-height: ${typeScales.body1.lineHeight}px;
