@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { css } from '@emotion/react';
 import Image from 'next/image';
 
+import { spacing } from '@leafygreen-ui/tokens';
+
 import { CSNode } from './types';
 
 // TODO: restrict the type of `content` more (should assert it has certain attrs)
@@ -19,6 +21,8 @@ const ContentstackImage = ({ content }: { content: CSNode }) => {
     <div
       css={css`
         max-width: 100%;
+        margin-top: ${spacing[5]}px;
+        margin-bottom: ${spacing[4]}px;
       `}
     >
       <Image

@@ -10,7 +10,12 @@ import StyledListItem from './StyledListItem';
 
 const AnnotatedImageBlock = ({ entry }) => {
   return (
-    <div>
+    <div
+      css={css`
+        margin-top: ${spacing[4]}px;
+        margin-bottom: ${spacing[4]}px;
+      `}
+    >
       <ImageContainer>
         <img src={entry.image.url} alt={entry.title} />
       </ImageContainer>
