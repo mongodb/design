@@ -57,6 +57,9 @@ function MyApp({
       <Head>
         <title>{getFullPageTitle('Home')}</title>
         <meta property="og:title" content={getFullPageTitle('Home')} />
+
+        {/* Viewport meta tags should be in _app.tsx, not _document.tsx: https://nextjs.org/docs/messages/no-document-viewport-meta */}
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Global styles={globalStyles} />
       <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
