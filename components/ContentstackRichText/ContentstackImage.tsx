@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { css } from '@emotion/react';
 import Image from 'next/image';
-import {spacing} from '@leafygreen-ui/tokens';
+
+import { spacing } from '@leafygreen-ui/tokens';
 
 import { CSNode } from './types';
 

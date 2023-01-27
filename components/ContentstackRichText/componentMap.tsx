@@ -34,32 +34,38 @@ export const nodeTypeToElementMap: {
     </div>
   ),
   [CSNodeType.HEADING_1]: node => (
-    <H1 css={css`
-      margin-top: ${spacing[6]}px;
-      margin-bottom: ${spacing[3]}px;
-    `}>
+    <H1
+      css={css`
+        margin-top: ${spacing[6]}px;
+        margin-bottom: ${spacing[3]}px;
+      `}
+    >
       <HeaderContent headerId={getCSNodeTextContent(node)}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H1>
   ),
   [CSNodeType.HEADING_2]: node => (
-    <H2 css={css`
-      margin-bottom: ${spacing[2]}px;
-      
-      &:not(:first-child) {
-        margin-top: ${spacing[6]}px;
-      }
-    `}>
+    <H2
+      css={css`
+        margin-bottom: ${spacing[2]}px;
+
+        &:not(:first-child) {
+          margin-top: ${spacing[6]}px;
+        }
+      `}
+    >
       <HeaderContent headerId={getCSNodeTextContent(node)}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H2>
   ),
   [CSNodeType.HEADING_3]: node => (
-    <H3 css={css`
-      margin-top: ${spacing[5]}px;
-    `}>
+    <H3
+      css={css`
+        margin-top: ${spacing[5]}px;
+      `}
+    >
       <HeaderContent headerId={getCSNodeTextContent(node)}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
