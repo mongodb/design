@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import { useState } from 'react';
+import {spacing} from '@leafygreen-ui/tokens';
 
 const ContentstackImage = ({ content }) => {
   const attrs = content.attrs;
@@ -16,6 +17,8 @@ const ContentstackImage = ({ content }) => {
     <div
       css={css`
         max-width: 100%;
+        margin-top: ${spacing[5]}px;
+        margin-bottom: ${spacing[4]}px;
       `}
     >
       <Image

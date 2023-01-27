@@ -17,41 +17,41 @@ import { palette } from '@leafygreen-ui/palette';
 import { spacing } from '@leafygreen-ui/tokens';
 
 const componentMap = {
-  [BLOCKS.DOCUMENT]: (node, options) => {
-    return (
-      <div
-        css={
-          (!options || !options.isNested) &&
-          css`
-            & > *:not(:first-child) {
-              margin-top: 40px;
-            }
-          `
-        }
-      >
-        <ContentstackChildren nodeChildren={node.children} />
-      </div>
-    );
-  },
+  [BLOCKS.DOCUMENT]: (node, options) => (
+    <div>
+      <ContentstackChildren nodeChildren={node.children} />
+    </div>
+  ),
   [BLOCKS.FRAGMENT]: node => (
     <ContentstackChildren nodeChildren={node.children} />
   ),
   [BLOCKS.HEADING_1]: node => (
-    <H1>
+    <H1 css={css`
+      margin-top: ${spacing[6]}px;
+      margin-bottom: ${spacing[3]}px;
+    `}>
       <HeaderContent headerId={node.children[0].text ?? node.uid}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H1>
   ),
   [BLOCKS.HEADING_2]: node => (
-    <H2>
+    <H2 css={css`
+      margin-bottom: ${spacing[2]}px;
+      
+      &:not(:first-child) {
+        margin-top: ${spacing[6]}px;
+      }
+    `}>
       <HeaderContent headerId={node.children[0].text ?? node.uid}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H2>
   ),
   [BLOCKS.HEADING_3]: node => (
-    <H3>
+    <H3 css={css`
+      margin-top: ${spacing[5]}px;
+    `}>
       <HeaderContent headerId={node.children[0].text ?? node.uid}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
@@ -60,7 +60,7 @@ const componentMap = {
   [BLOCKS.HEADING_4]: node => (
     <Subtitle
       css={css`
-        margin-top: ${spacing[2]}px;
+        margin-top: ${spacing[4]}px;
       `}
     >
       <HeaderContent headerId={node.children[0].text ?? node.uid}>
@@ -78,7 +78,7 @@ const componentMap = {
       {...node.attrs}
       css={css`
         & {
-          margin-top: ${spacing[3]}px;
+          margin-top: ${spacing[2]}px;
         }
       `}
     >

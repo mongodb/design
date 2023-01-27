@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import {css} from '@emotion/react';
 import { palette } from '@leafygreen-ui/palette';
 import { Body } from '@leafygreen-ui/typography';
 import CheckmarkWithCircleIcon from '@leafygreen-ui/icon/dist/CheckmarkWithCircle';
@@ -19,7 +20,10 @@ const StyledBody = styled(Body)`
 
 const BasicUsageBlock = ({ entry }) => {
   return (
-    <div>
+    <div css={css`
+      margin-top: ${spacing[4]}px;
+      margin-bottom: ${spacing[4]}px;
+    `}>
       <HeadingWrapper>
         <CheckmarkWithCircleIcon
           fill={palette.green.dark1}
