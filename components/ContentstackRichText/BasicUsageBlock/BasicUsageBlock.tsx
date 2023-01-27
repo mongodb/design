@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 
+import { css } from '@leafygreen-ui/emotion';
 import CheckmarkWithCircleIcon from '@leafygreen-ui/icon/dist/CheckmarkWithCircle';
 import XWithCircle from '@leafygreen-ui/icon/dist/XWithCircle';
 import { palette } from '@leafygreen-ui/palette';
@@ -13,11 +14,18 @@ const HeadingWrapper = styled('div')`
   display: flex;
 `;
 
-const StyledBody = styled(Body)`
-  display: inline-flex;
-  margin-left: 6px;
-  color: ${props => props.color};
-`;
+// TODO: Convert this to use `styled`
+const StyledBody = ({ children, color }) => (
+  <Body
+    className={css`
+      display: inline-flex;
+      margin-left: 6px;
+      color: ${color};
+    `}
+  >
+    {children}
+  </Body>
+);
 
 const BasicUsageBlock = ({ entry }) => {
   return (
