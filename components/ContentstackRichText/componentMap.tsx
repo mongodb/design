@@ -107,6 +107,7 @@ export const nodeTypeToElementMap: {
   [CSNodeType.ANCHOR]: node => (
     <Link
       {...node.attrs}
+      href={node.attrs.url}
       css={css`
         line-height: 28px;
         & span:after {
