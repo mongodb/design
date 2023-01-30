@@ -120,6 +120,8 @@ export const LiveExample = ({
     );
   }, [StoryFn, componentName, knobValues, meta, setCode]);
 
+  const storyWrapperStyle = meta?.parameters?.wrapperStyle;
+
   const storyContainerHeight = Math.min(
     Math.max(
       storyWrapperRef.current?.clientHeight ?? 0,
@@ -154,7 +156,7 @@ export const LiveExample = ({
           )}
         >
           {StoryFn ? (
-            <div ref={storyWrapperRef}>
+            <div ref={storyWrapperRef} className={storyWrapperStyle}>
               <StoryFn {...knobValues} />
             </div>
           ) : (
