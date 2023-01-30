@@ -17,3 +17,11 @@ export const getCSNodeTextContent = (node: CSNode): string => {
       .trim();
   }
 };
+
+export const nodeHasAssets = (node: CSNode): boolean => {
+  if (['asset', 'entry', 'reference'].includes(node.type)) {
+    return true
+  } else {
+    return node.children && node.children.some(child => nodeHasAssets(child))
+  }
+}
