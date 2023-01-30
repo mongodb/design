@@ -113,8 +113,8 @@ function getPropItemToKnobTypeMapFn({
   meta,
   StoryFn,
 }: Omit<MetadataSources, 'TSDocProp'>) {
-  return (TSDocProp: PropItem): KnobType =>
-    ({
+  return (TSDocProp: PropItem): KnobType => {
+    return {
       ...TSDocProp,
       name: TSDocProp.name,
       options: getKnobOptions({ meta, StoryFn, TSDocProp }),
@@ -129,7 +129,9 @@ function getPropItemToKnobTypeMapFn({
         StoryFn,
         TSDocProp,
       }),
-    } as KnobType);
+      args: getOtherControlArgs({meta, StoryFn, TSDocProp})
+    } as KnobType
+  }
 }
 
 /**
@@ -221,6 +223,19 @@ export function getControlType({
 
     default:
       return 'other';
+  }
+}
+
+function getOtherControlArgs({
+  meta,
+  StoryFn,
+  TSDocProp,
+}: MetadataSources): object | undefined {
+  const SBInputType = getSBInputType({ meta, StoryFn, TSDocProp });
+
+  if (SBInputType && SBInputType.control) {
+    const {type, ...args} = SBInputType.control
+    return args
   }
 }
 

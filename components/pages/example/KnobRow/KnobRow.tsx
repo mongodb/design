@@ -42,7 +42,7 @@ export const KnobRow = ({
   knobValue,
   setKnobValue,
 }: KnobRowProps) => {
-  const { controlType, name, options } = knob;
+  const { controlType, name, options, args } = knob;
 
   return (
     <div className={knobRowWrapperStyle(darkMode)}>
@@ -67,6 +67,7 @@ export const KnobRow = ({
         className={knobControlStyle}
         aria-labelledby={`knob-${name}`}
         darkMode={darkMode}
+        {...args}
       />
     </div>
   );
