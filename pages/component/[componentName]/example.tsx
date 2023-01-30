@@ -35,9 +35,6 @@ export const getStaticProps = async ({
       includeContent: false,
     })) ?? null;
 
-  // Find the TSDoc object only for the primary component
-  // const componentDoc = findComponentDoc(componentName, await getTSDoc(componentName)) ?? null;
-
   const tsDoc = await getTSDoc(componentName);
 
   return {
