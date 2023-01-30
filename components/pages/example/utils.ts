@@ -96,7 +96,8 @@ function getPropItemFilterFn({
     const metaSBInput = meta?.argTypes?.[TSDocProp.name];
     const localSBInput = StoryFn?.argTypes?.[TSDocProp.name];
     const isExcludedBySB: boolean =
-      meta?.parameters?.controls?.exclude?.includes(TSDocProp.name);
+      meta?.parameters?.controls?.exclude?.includes(TSDocProp.name) ||
+      StoryFn?.parameters?.controls?.exclude?.includes(TSDocProp.name);
     const isControlNone =
       ['none', false].includes(metaSBInput?.control) ||
       ['none', false].includes(localSBInput?.control);
