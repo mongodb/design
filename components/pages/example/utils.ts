@@ -57,7 +57,7 @@ export const ignoreProps = [
   'setClosed',
   'setCollapsed',
   'shouldClose',
-  'lgProviderBaseFontSize'
+  'lgProviderBaseFontSize',
 ];
 
 /**
@@ -95,7 +95,6 @@ function getPropItemFilterFn({
     const isIgnored = ignoreProps.includes(TSDocProp.name);
     const metaSBInput = meta?.argTypes?.[TSDocProp.name];
     const localSBInput = StoryFn?.argTypes?.[TSDocProp.name];
-
     const isExcludedBySB: boolean =
       meta?.parameters?.controls?.exclude?.includes(TSDocProp.name);
     const isControlNone =
@@ -155,11 +154,16 @@ function getSBInputTypeFilterFn({
       ['none', false].includes(input.control) ||
       ['none', false].includes(localInput?.control);
 
+    const isSBOnly: boolean = meta?.argTypes?.[input.name]?.storybookOnly;
     const isExcludedByMeta: boolean =
       meta?.parameters?.controls?.exclude?.includes(input.name);
 
-    return (
-      !isIgnored && !isAlreadyInKnobs && !isControlNone && !isExcludedByMeta
+    return !(
+      isIgnored ||
+      isAlreadyInKnobs ||
+      isControlNone ||
+      isSBOnly ||
+      isExcludedByMeta
     );
   };
 }

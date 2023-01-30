@@ -28,7 +28,7 @@ export const nodeTypeToElementMap: {
     options?: any,
   ) => JSX.Element;
 } = {
-  [CSNodeType.DOCUMENT]: (node, options) => (
+  [CSNodeType.DOCUMENT]: node => (
     <div>
       <ContentstackChildren nodeChildren={node.children} />
     </div>
