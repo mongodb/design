@@ -57,6 +57,7 @@ export const ignoreProps = [
   'setClosed',
   'setCollapsed',
   'shouldClose',
+  'lgProviderBaseFontSize'
 ];
 
 /**
