@@ -8,3 +8,10 @@ This repository houses the NextJS application for mongoDB.design, the public doc
 ## Environment Variables
 
 The Contentstack tokens can be found under `Settings > Tokens > Delivery Tokens`.
+
+## Running with linked packages
+
+1. From `leafygreen-ui` directory, run `yarn run link <path/to/design>`
+2. Update `next.config.ts` to build linked files
+   - Change line 76 to: `const LGModuleRegex = /.+(leafygreen-ui\/packages)/g;`
+3. Run the dev server: `yarn dev`

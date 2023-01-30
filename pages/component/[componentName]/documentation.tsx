@@ -2,8 +2,8 @@ import { ReactElement } from 'react';
 import ComponentLayout from 'layouts/ComponentLayout';
 import { containerPadding } from 'styles/globals';
 import { getDependencyDocumentation } from 'utils/_getComponentResources';
-import { getComponent } from 'utils/getContentstackResources';
-import { getStaticComponentPaths } from 'utils/getStaticComponent';
+import { getComponent } from 'utils/ContentStack/getContentstackResources';
+import { getStaticComponentPaths } from 'utils/ContentStack/getStaticComponent';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import CodeDocs from 'components/pages/documentation/CodeDocs';
@@ -58,7 +58,9 @@ export async function getStaticProps({ params: { componentName } }) {
     props: { changelog, readme, tsDoc },
   } = await getDependencyDocumentation(componentName);
 
-  const component = await getComponent(componentName);
+  const component = await getComponent(componentName, {
+    includeContent: false,
+  });
   return { props: { componentName, component, changelog, readme, tsDoc } };
 }
 

@@ -5,7 +5,7 @@ import startCase from 'lodash/startCase';
 import {
   getContentPage,
   getContentPageGroups,
-} from 'utils/getContentstackResources';
+} from 'utils/ContentStack/getContentstackResources';
 
 import ContentstackRichText from 'components/ContentstackRichText';
 

@@ -206,8 +206,8 @@ export const nodeTypeToElementMap: {
   [CSNodeType.TABLE_ROW]: node => (
     <tr
       css={css`
-        > td:first-child,
-        > th:first-child {
+        > td:first-of-type,
+        > th:first-of-type {
           padding-left: ${spacing[5]}px;
         }
 

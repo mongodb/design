@@ -4,7 +4,7 @@ import { containerPadding } from 'styles/globals';
 import {
   getStaticComponentPaths,
   getStaticComponentProps,
-} from 'utils/getStaticComponent';
+} from 'utils/ContentStack/getStaticComponent';
 import isEmptyRichText from 'utils/isEmptyRichText';
 
 import ComingSoon from 'components/ComingSoon';

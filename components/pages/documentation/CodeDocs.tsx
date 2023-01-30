@@ -1,6 +1,6 @@
 import { kebabCase } from 'lodash';
+import { BaseLayoutProps } from 'utils/ContentStack/types';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
-import { BaseLayoutProps } from 'utils/types';
 
 import { Subtitle } from '@leafygreen-ui/typography';
 
@@ -11,7 +11,7 @@ function CodeDocs({
   componentKebabCaseName,
   changelog,
   tsDoc,
-}: BaseLayoutProps) {
+}: BaseLayoutProps & { tsDoc?: Array<CustomComponentDoc> }) {
   const tsDocArray = tsDoc?.sort(
     (
       { displayName: a }: CustomComponentDoc,
@@ -27,6 +27,7 @@ function CodeDocs({
       else return a.localeCompare(b);
     },
   );
+
   return (
     <>
       <InstallInstructions
