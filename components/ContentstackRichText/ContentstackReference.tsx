@@ -16,6 +16,7 @@ const ContentstackReference = ({ content }: { content: CSNode }) => {
       <ContentstackEntry contentTypeUid={contentTypeUid} entryUid={entryUid} />
     );
   } else {
+    console.warn(`Unknown reference type: ${type}.`);
     return <>Unknown reference type: {type}. </>;
   }
 };

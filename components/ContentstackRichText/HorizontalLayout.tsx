@@ -24,8 +24,8 @@ const HorizontalLayout = ({
         align-items: ${vertical_align};
       `}
     >
-      <ContentstackRichText content={column_1} />
-      <ContentstackRichText content={column_2} />
+      {column_1 ? <ContentstackRichText content={column_1} /> : <div />}
+      {column_2 ? <ContentstackRichText content={column_2} /> : <div />}
     </FlexContainer>
   );
 };
