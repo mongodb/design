@@ -20,7 +20,7 @@ interface QueryOptions {
 }
 
 const componentProperties = ['uid', 'title', 'description', 'url', 'figmaurl'];
-const optionalComponentProperties = [ 'designguidelines'];
+const optionalComponentProperties = ['designguidelines'];
 
 /**
  * @returns All component objects, optionally with all associated content (i.e. guidelines)

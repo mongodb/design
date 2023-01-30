@@ -10,7 +10,7 @@ import { mq } from 'utils/mediaQuery';
 
 import FigmaIcon from 'components/icons/FigmaIcon';
 import GithubIcon from 'components/icons/GithubIcon';
-import { NextLinker } from 'components/NextLinker';
+import { NextLinkWrapper } from 'components/NextLinkWrapper';
 
 import { css, cx } from '@leafygreen-ui/emotion';
 import { useViewportSize } from '@leafygreen-ui/hooks';
@@ -180,7 +180,7 @@ function ComponentLayout({
                 />
               )
             }
-            as={NextLinker}
+            as={NextLinkWrapper}
           >
             <Tab
               name="Live Example"

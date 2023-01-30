@@ -3,7 +3,7 @@ import kebabCase from 'lodash/kebabCase';
 import { useRouter } from 'next/router';
 import { ComponentFields } from 'utils/ContentStack/types';
 
-import { NextLinker } from 'components/NextLinker';
+import { NextLinkWrapper } from 'components/NextLinkWrapper';
 
 import Icon from '@leafygreen-ui/icon';
 import { SideNavGroup, SideNavItem } from '@leafygreen-ui/side-nav';
@@ -76,7 +76,7 @@ function NavigationContent({
                 contentPageGroup.content_pages.map(contentPage => (
                   <SideNavItem
                     key={contentPage.title}
-                    as={NextLinker}
+                    as={NextLinkWrapper}
                     href={`/${kebabCase(contentPageGroup.title)}/${kebabCase(
                       contentPage.title,
                     )}`}
@@ -95,7 +95,7 @@ function NavigationContent({
                 <SideNavItem
                   key={componentKebabCaseName}
                   href={`/component/${componentKebabCaseName}/example`}
-                  as={NextLinker}
+                  as={NextLinkWrapper}
                   active={componentKebabCaseName === activePage}
                 >
                   {component.title}
