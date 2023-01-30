@@ -9,12 +9,17 @@ import { CSNode } from './types';
 // TODO: restrict the type of `content` more (should assert it has certain attrs)
 const ContentstackImage = ({ content }: { content: CSNode }) => {
   const attrs = content.attrs;
+
   const [width, setWidth] = useState<number>(attrs['width'] ?? 700);
   const [height, setHeight] = useState<number>(attrs['height'] ?? 300);
 
-  const handleLoadingComplete = img => {
-    if (img.naturalWidth) setWidth(img.naturalWidth);
-    if (img.naturalHeight) setHeight(img.naturalHeight);
+  const handleLoadingComplete = (img: {
+    naturalWidth: number;
+    naturalHeight: number;
+  }) => {
+    // Multiply by 2 since we're using @2x
+    if (img.naturalWidth) setWidth(img.naturalWidth * 2);
+    if (img.naturalHeight) setHeight(img.naturalHeight * 2);
   };
 
   return (
