@@ -85,7 +85,13 @@ const tabStyles = css`
   }
 `;
 
-const ComponentLinks = ({ component, ...rest }) => (
+const ComponentLinks = ({
+  component,
+  ...rest
+}: {
+  component: ComponentFields;
+  [key: string]: any;
+}) => (
   <div {...rest}>
     <IconButton
       aria-label="View in Github"
@@ -99,15 +105,17 @@ const ComponentLinks = ({ component, ...rest }) => (
     >
       <GithubIcon />
     </IconButton>
-    <IconButton
-      aria-label="View in Figma"
-      as="a"
-      href={component.figmaUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <FigmaIcon />
-    </IconButton>
+    {component.figmaurl && (
+      <IconButton
+        aria-label="View in Figma"
+        as="a"
+        href={component.figmaurl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FigmaIcon />
+      </IconButton>
+    )}
   </div>
 );
 

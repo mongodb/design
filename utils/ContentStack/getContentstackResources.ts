@@ -19,8 +19,8 @@ interface QueryOptions {
   includeContent: boolean;
 }
 
-const componentProperties = ['uid', 'title', 'description', 'url'];
-const optionalComponentProperties = ['figmaUrl', 'designguidelines'];
+const componentProperties = ['uid', 'title', 'description', 'url', 'figmaurl'];
+const optionalComponentProperties = [ 'designguidelines'];
 
 /**
  * @returns All component objects, optionally with all associated content (i.e. guidelines)

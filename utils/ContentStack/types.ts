@@ -30,6 +30,7 @@ export interface ComponentPageMeta {
   title: string;
   url: string;
   description: string;
+  figmaurl?: string;
 }
 
 /**
@@ -37,7 +38,6 @@ export interface ComponentPageMeta {
  * including `figmaUrl` & `designguidelines` content
  */
 export interface ComponentFields extends ComponentPageMeta {
-  figmaUrl?: string;
   designguidelines?: unknown;
 }
 

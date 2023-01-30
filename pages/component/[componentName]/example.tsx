@@ -30,7 +30,7 @@ export const getStaticProps = async ({
   params,
 }): Promise<{ props: ExamplePageProps }> => {
   const { componentName } = params;
-  const component =
+  const component: ComponentPageMeta | null =
     (await getComponent(componentName, {
       includeContent: false,
     })) ?? null;
