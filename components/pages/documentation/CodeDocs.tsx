@@ -1,4 +1,5 @@
-import { BaseLayoutProps } from 'utils/types';
+import { BaseLayoutProps } from 'utils/ContentStack/types';
+import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import { Subtitle } from '@leafygreen-ui/typography';
 
@@ -9,7 +10,7 @@ function CodeDocs({
   componentKebabCaseName,
   changelog,
   tsDoc: tsDocArray,
-}: BaseLayoutProps) {
+}: BaseLayoutProps & { tsDoc?: Array<CustomComponentDoc> }) {
   return (
     <>
       <InstallInstructions

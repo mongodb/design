@@ -1,4 +1,5 @@
 import Contentstack from 'contentstack';
+import defaults from 'lodash/defaults';
 import startCase from 'lodash/startCase';
 
 import {
@@ -14,10 +15,31 @@ const Stack = Contentstack.Stack({
   environment: 'main',
 });
 
-export async function getComponents(): Promise<Array<ComponentFields>> {
+interface QueryOptions {
+  includeContent: boolean;
+}
+
+const componentProperties = ['uid', 'title', 'description', 'url', 'figmaurl'];
+const optionalComponentProperties = ['designguidelines'];
+
+/**
+ * @returns All component objects, optionally with all associated content (i.e. guidelines)
+ */
+export async function getComponents(
+  options?: QueryOptions,
+): Promise<Array<ComponentFields>> {
   try {
+    options = defaults(options, { includeContent: false });
+
     const results: Array<ComponentFields> = (
-      await Stack.ContentType('component').Query().toJSON().find()
+      await Stack.ContentType('component')
+        .Query()
+        .only([
+          ...componentProperties,
+          ...(options?.includeContent ? optionalComponentProperties : []),
+        ])
+        .toJSON()
+        .find()
     )[0];
     return results.sort((a, b) => a.title.localeCompare(b.title));
   } catch (error) {
@@ -27,14 +49,21 @@ export async function getComponents(): Promise<Array<ComponentFields>> {
   }
 }
 
+/**
+ * @returns the component meta & optionally content for a given componentName
+ */
 export async function getComponent(
   componentName: string,
+  options?: QueryOptions,
 ): Promise<ComponentFields | undefined> {
   try {
     const query = Stack.ContentType('component').Query();
     const result = await query
       .where('title', startCase(componentName))
-      .includeEmbeddedItems()
+      .only([
+        ...componentProperties,
+        ...(options?.includeContent ? optionalComponentProperties : []),
+      ])
       .toJSON()
       .find();
     return result[0][0];
@@ -43,15 +72,29 @@ export async function getComponent(
   }
 }
 
+/**
+ * @returns All content page groups with
+ */
 export async function getContentPageGroups(): Promise<Array<ContentPageGroup>> {
   try {
     const query = Stack.ContentType('content_page_group').Query();
     const pageGroups: Array<ContentPageGroup> = (
-      await query.includeReference('content_pages').toJSON().find()
-    )[0];
-    pageGroups.forEach(pageGroup => {
-      pageGroup.content_pages.sort((a, b) => a.title.localeCompare(b.title));
+      await query
+        .includeReference('content_pages')
+        .only(['content_pages', 'uid', 'title', 'url', 'iconname'])
+        .toJSON()
+        .find()
+    )[0].map(({ content_pages, ...meta }: ContentPageGroup) => {
+      return {
+        ...meta,
+        content_pages: content_pages
+          // TODO: strip fields in initial query
+          // Strip any additional fields
+          .map(({ uid, title, url }) => ({ uid, title, url }))
+          .sort((a, b) => a.title.localeCompare(b.title)),
+      };
     });
+
     return pageGroups;
   } catch (error) {
     console.error('No Content Page Groups found', error);

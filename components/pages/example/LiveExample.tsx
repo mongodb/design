@@ -2,7 +2,7 @@ import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { Transition } from 'react-transition-group';
 import { kebabCase } from 'lodash';
 import { getComponentStory } from 'utils/getComponentStory';
-import { BaseLayoutProps } from 'utils/types';
+import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
@@ -46,7 +46,10 @@ const initialLiveExampleState: LiveExampleState = {
 export const LiveExample = ({
   componentName,
   tsDoc,
-}: Pick<BaseLayoutProps, 'componentName' | 'tsDoc'>) => {
+}: {
+  componentName: string;
+  tsDoc: Array<CustomComponentDoc> | null;
+}) => {
   const [showCode, setShowCode] = useState(false);
   // Establish a page state
   const [{ meta, knobValues, knobsArray, StoryFn, storyCode }, setState] =

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
-import { getEntryById } from 'utils/getContentstackResources';
+import { getEntryById } from 'utils/ContentStack/getContentstackResources';
 
 import Badge from '@leafygreen-ui/badge';
 import Button from '@leafygreen-ui/button';

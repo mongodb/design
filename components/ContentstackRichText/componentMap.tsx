@@ -28,7 +28,7 @@ export const nodeTypeToElementMap: {
     options?: any,
   ) => JSX.Element;
 } = {
-  [CSNodeType.DOCUMENT]: (node, options) => (
+  [CSNodeType.DOCUMENT]: node => (
     <div>
       <ContentstackChildren nodeChildren={node.children} />
     </div>
@@ -205,8 +205,8 @@ export const nodeTypeToElementMap: {
   [CSNodeType.TABLE_ROW]: node => (
     <tr
       css={css`
-        > td:first-child,
-        > th:first-child {
+        > td:first-of-type,
+        > th:first-of-type {
           padding-left: ${spacing[5]}px;
         }
 

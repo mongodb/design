@@ -10,10 +10,10 @@ import { globalStyles } from 'styles/globals';
 import {
   getComponents,
   getContentPageGroups,
-} from 'utils/getContentstackResources';
+} from 'utils/ContentStack/getContentstackResources';
+import { ContentPageGroup } from 'utils/ContentStack/types';
 import getFullPageTitle from 'utils/getFullPageTitle';
 import * as ga from 'utils/googleAnalytics';
-import { ContentPageGroup } from 'utils/types';
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -68,7 +68,7 @@ function MyApp({
 }
 
 MyApp.getInitialProps = async () => {
-  const components = await getComponents();
+  const components = await getComponents({ includeContent: false });
   const contentPageGroups = await getContentPageGroups();
   return { components, contentPageGroups };
 };
