@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-import { isEmpty } from 'lodash';
 
 import { HTMLElementProps } from '@leafygreen-ui/lib';
 import { Polymorph } from '@leafygreen-ui/polymorphic';
@@ -11,9 +10,7 @@ interface CSRichTextProps extends HTMLElementProps<'span'> {
 }
 
 const ContentstackText = ({ node, ...rest }: CSRichTextProps) => {
-  const renderAs = node.bold ? 'b' : isEmpty(rest) ? Fragment : 'span';
-
-  console.log(node.text, rest);
+  const renderAs = node.bold ? 'b' : rest.className ? 'span' : Fragment;
 
   return (
     <Polymorph as={renderAs} {...rest}>

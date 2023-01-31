@@ -15,8 +15,6 @@ const ContentstackReference = ({
     'entry-uid': entryUid,
   } = content.attrs;
 
-  console.log(props);
-
   if (type === 'asset') {
     return <ContentstackImage content={content} {...props} />;
   } else if (type === 'entry') {
