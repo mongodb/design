@@ -7,6 +7,7 @@ import Button from '@leafygreen-ui/button';
 import Callout, { Variant } from '@leafygreen-ui/callout';
 import Card from '@leafygreen-ui/card';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
+import ArrowRight from '@leafygreen-ui/icon/dist/ArrowRight';
 
 import AnnotatedImageBlock from './AnnotatedImageBlock';
 import BasicUsageBlock from './BasicUsageBlock';
@@ -48,6 +49,7 @@ const blockToElementMap: {
       css={css`
         margin: 0; // remove default Safari margin
       `}
+      rightGlyph={props.link ? <ArrowRight /> : undefined}
     >
       {props.content}
     </Button>
@@ -57,18 +59,12 @@ const blockToElementMap: {
       variant={Variant[props.variant ?? Variant.Note]}
       className="nested-entry"
     >
-      <ContentstackRichText
-        content={props.content}
-        options={{ isNested: true }}
-      />
+      <ContentstackRichText content={props.content} isNested={true} />
     </Callout>
   ),
   card_block: props => (
     <Card className="nested-entry">
-      <ContentstackRichText
-        content={props.content}
-        options={{ isNested: true }}
-      />
+      <ContentstackRichText content={props.content} isNested={true} />
     </Card>
   ),
   example_card_block: props => <ExampleCardBlock entry={props} />,
@@ -78,10 +74,7 @@ const blockToElementMap: {
       description={props.description}
       className="nested-entry"
     >
-      <ContentstackRichText
-        content={props.content}
-        options={{ isNested: true }}
-      />
+      <ContentstackRichText content={props.content} isNested={true} />
     </ExpandableCard>
   ),
   horizontal_layout: props => <HorizontalLayout {...props} />,

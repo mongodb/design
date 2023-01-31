@@ -19,33 +19,47 @@ import HeaderContent from './HeaderContent';
 import { CSNode, CSNodeType, CSTextNode } from './types';
 import { getCSNodeTextContent } from './utils';
 
+type CSNodeTypeMapFunction = (
+  node: CSNode | CSTextNode,
+  props?: any,
+) => JSX.Element;
+
 /**
  * Maps a NodeType to a ContentStack element
  */
 export const nodeTypeToElementMap: {
-  [key in CSNodeType]?: (
-    node: CSNode | CSTextNode,
-    options?: any,
-  ) => JSX.Element;
+  [key in CSNodeType]?: CSNodeTypeMapFunction;
 } = {
-  [CSNodeType.DOCUMENT]: node => (
-    <div>
+  [CSNodeType.DOCUMENT]: (node, props) => (
+    <div
+      {...props}
+      css={
+        props.isNested &&
+        css`
+          & > * {
+            /* Remove margin for nested elements */
+            margin: 0;
+          }
+        `
+      }
+    >
       <ContentstackChildren nodeChildren={node.children} />
     </div>
   ),
-  [CSNodeType.HEADING_1]: node => (
+  [CSNodeType.HEADING_1]: (node, props) => (
     <H1
       css={css`
         margin-top: ${spacing[6]}px;
         margin-bottom: ${spacing[3]}px;
       `}
+      {...props}
     >
       <HeaderContent headerId={getCSNodeTextContent(node)}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H1>
   ),
-  [CSNodeType.HEADING_2]: node => (
+  [CSNodeType.HEADING_2]: (node, props) => (
     <H2
       css={css`
         margin-bottom: ${spacing[2]}px;
@@ -54,59 +68,62 @@ export const nodeTypeToElementMap: {
           margin-top: ${spacing[6]}px;
         }
       `}
+      {...props}
     >
       <HeaderContent headerId={getCSNodeTextContent(node)}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H2>
   ),
-  [CSNodeType.HEADING_3]: node => (
+  [CSNodeType.HEADING_3]: (node, props) => (
     <H3
       css={css`
         margin-top: ${spacing[5]}px;
       `}
+      {...props}
     >
       <HeaderContent headerId={getCSNodeTextContent(node)}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </H3>
   ),
-  [CSNodeType.HEADING_4]: node => (
+  [CSNodeType.HEADING_4]: (node, props) => (
     <Subtitle
       css={css`
         margin-top: ${spacing[4]}px;
       `}
+      {...props}
     >
       <HeaderContent headerId={getCSNodeTextContent(node)}>
         <ContentstackChildren nodeChildren={node.children} />
       </HeaderContent>
     </Subtitle>
   ),
-  [CSNodeType.HEADING_5]: node => (
-    <Overline>
+  [CSNodeType.HEADING_5]: (node, props) => (
+    <Overline {...props}>
       <ContentstackChildren nodeChildren={node.children} />
     </Overline>
   ),
-  [CSNodeType.HEADING_6]: node => (
-    <Overline>
+  [CSNodeType.HEADING_6]: (node, props) => (
+    <Overline {...props}>
       <ContentstackChildren nodeChildren={node.children} />
     </Overline>
   ),
-  [CSNodeType.PARAGRAPH]: node => (
+  [CSNodeType.PARAGRAPH]: (node, props) => (
     <Body
-      {...node.attrs}
       css={css`
         & {
           margin-top: ${spacing[2]}px;
         }
       `}
+      {...node.attrs}
+      {...props}
     >
       <ContentstackChildren nodeChildren={node.children} />
     </Body>
   ),
-  [CSNodeType.ANCHOR]: node => (
+  [CSNodeType.ANCHOR]: (node, props) => (
     <Link
-      {...node.attrs}
       href={node.attrs.url}
       css={css`
         line-height: 28px;
@@ -114,35 +131,38 @@ export const nodeTypeToElementMap: {
           bottom: 2px;
         }
       `}
+      {...node.attrs}
+      {...props}
     >
       <ContentstackChildren nodeChildren={node.children} />
     </Link>
   ),
-  [CSNodeType.ORDERED_LIST]: node => (
+  [CSNodeType.ORDERED_LIST]: (node, props) => (
     <ol
-      {...(node.attrs as any)}
       css={css`
         padding-inline-start: 25px;
       `}
+      {...(node.attrs as any)}
+      {...props}
     >
       <ContentstackChildren nodeChildren={node.children} />
     </ol>
   ),
-  [CSNodeType.UNORDERED_LIST]: node => (
+  [CSNodeType.UNORDERED_LIST]: (node, props) => (
     <ul
-      {...node.attrs}
       css={css`
         margin-top: 0px;
         margin-bottom: ${spacing[3]}px;
         padding-inline-start: 25px;
       `}
+      {...node.attrs}
+      {...props}
     >
       <ContentstackChildren nodeChildren={node.children} />
     </ul>
   ),
-  [CSNodeType.LIST_ITEM]: node => (
+  [CSNodeType.LIST_ITEM]: (node, props) => (
     <li
-      {...node.attrs}
       css={css`
         line-height: 28px;
         padding-left: 5px;
@@ -153,22 +173,25 @@ export const nodeTypeToElementMap: {
           color: ${palette.gray.base};
         }
       `}
+      {...node.attrs}
+      {...props}
     >
       <ContentstackChildren nodeChildren={node.children} />
     </li>
   ),
-  [CSNodeType.SPAN]: node => (
-    <span {...node.attrs}>
+  [CSNodeType.SPAN]: (node, props) => (
+    <span {...node.attrs} {...props}>
       <ContentstackChildren nodeChildren={node.children} />
     </span>
   ),
-  [CSNodeType.TABLE]: node => {
+  [CSNodeType.TABLE]: (node, props) => {
     const colWidths = node.attrs.colWidths ? node.attrs.colWidths : [];
     return (
       <Card
         css={css`
           padding: ${spacing[3]}px 0;
         `}
+        {...props}
       >
         <table
           css={css`
@@ -188,22 +211,23 @@ export const nodeTypeToElementMap: {
       </Card>
     );
   },
-  [CSNodeType.TABLE_HEAD]: node => (
+  [CSNodeType.TABLE_HEAD]: (node, props) => (
     <thead
       css={css`
         border-bottom: 3px solid ${palette.gray.light1};
         margin-top: ${spacing[3]}px;
       `}
+      {...props}
     >
       <ContentstackChildren nodeChildren={node.children} />
     </thead>
   ),
-  [CSNodeType.TABLE_BODY]: node => (
-    <tbody>
+  [CSNodeType.TABLE_BODY]: (node, props) => (
+    <tbody {...props}>
       <ContentstackChildren nodeChildren={node.children} />
     </tbody>
   ),
-  [CSNodeType.TABLE_ROW]: node => (
+  [CSNodeType.TABLE_ROW]: (node, props) => (
     <tr
       css={css`
         > td:first-of-type,
@@ -216,11 +240,12 @@ export const nodeTypeToElementMap: {
           padding-right: ${spacing[5]}px;
         }
       `}
+      {...props}
     >
       <ContentstackChildren nodeChildren={node.children} />
     </tr>
   ),
-  [CSNodeType.TABLE_HEADER_CELL]: node => (
+  [CSNodeType.TABLE_HEADER_CELL]: (node, props) => (
     <th
       css={css`
         > * {
@@ -232,23 +257,27 @@ export const nodeTypeToElementMap: {
         vertical-align: middle;
         border-bottom: 3px solid ${palette.gray.light2};
       `}
+      {...props}
     >
       <ContentstackChildren nodeChildren={node.children} />
     </th>
   ),
-  [CSNodeType.TABLE_CELL]: node => (
+  [CSNodeType.TABLE_CELL]: (node, props) => (
     <td
       css={css`
         vertical-align: middle;
         padding: ${spacing[1]}px;
         padding-bottom: ${spacing[3]}px;
       `}
+      {...props}
     >
       <ContentstackChildren nodeChildren={node.children} />
     </td>
   ),
-  [CSNodeType.REFERENCE]: node => <ContentstackReference content={node} />,
-  [CSNodeType.FRAGMENT]: node => (
-    <ContentstackChildren nodeChildren={node.children} />
+  [CSNodeType.REFERENCE]: (node, props) => (
+    <ContentstackReference content={node} {...props} />
+  ),
+  [CSNodeType.FRAGMENT]: (node, props) => (
+    <ContentstackChildren nodeChildren={node.children} {...props} />
   ),
 };
