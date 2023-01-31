@@ -128,9 +128,9 @@ export const LiveExample = ({
   const storyContainerHeight = Math.min(
     Math.max(
       storyWrapperRef.current?.clientHeight ?? 0,
-      document.body.clientHeight / 3,
+      window.innerHeight / 3,
     ),
-    document.body.clientHeight * 0.8,
+    window.innerHeight * 0.8,
   );
 
   // should match the total height of the story container
@@ -154,7 +154,7 @@ export const LiveExample = ({
             },
             css`
               // at least as big as the story, but no more than 100vh
-              min-height: ${storyContainerHeight};
+              min-height: ${storyContainerHeight}px;
             `,
           )}
         >

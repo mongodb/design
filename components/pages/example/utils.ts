@@ -79,7 +79,7 @@ export const getSBInputType = ({
   meta,
   StoryFn,
   TSDocProp: { name },
-}: MetadataSources) => meta?.argTypes?.[name] ?? StoryFn?.argTypes?.[name];
+}: MetadataSources) => StoryFn?.argTypes?.[name] ?? meta?.argTypes?.[name];
 
 /**
  * Returns a filter function for PropItems
@@ -233,7 +233,7 @@ function getOtherControlArgs({
 }: MetadataSources): object | undefined {
   const SBInputType = getSBInputType({ meta, StoryFn, TSDocProp });
 
-  if (SBInputType && SBInputType.control) {
+  if (SBInputType && SBInputType.control && typeof SBInputType.control === 'object') {
     const {type, ...args} = SBInputType.control
     return args
   }
@@ -291,7 +291,7 @@ export function getDefaultValue({
   TSDocProp,
 }: MetadataSources): any {
   const TSDefaultValue = getDefaultValueValue(TSDocProp);
-  const SBArg = meta.args?.[TSDocProp.name] ?? StoryFn.args?.[TSDocProp.name];
+  const SBArg = StoryFn.args?.[TSDocProp.name] ?? meta.args?.[TSDocProp.name];
   const SBInputType = getSBInputType({ meta, StoryFn, TSDocProp });
   const SBDefaultValue = SBInputType?.defaultValue;
   return SBArg ?? SBDefaultValue ?? TSDefaultValue;
@@ -328,8 +328,8 @@ export function getInitialKnobValues(
     } else {
       values[knob.name] =
         knob.defaultValue ??
-        meta.args?.[knob.name] ??
         StoryFn.args?.[knob.name] ??
+        meta.args?.[knob.name] ??
         createDefaultValue(knob);
     }
 

@@ -4,6 +4,7 @@ import { css } from '@leafygreen-ui/emotion';
 import { HTMLElementProps } from '@leafygreen-ui/lib';
 import { palette } from '@leafygreen-ui/palette';
 import { spacing } from '@leafygreen-ui/tokens';
+import Tooltip from '@leafygreen-ui/tooltip';
 import { Body } from '@leafygreen-ui/typography';
 
 import { Knob } from '../Knob/Knob';
@@ -44,6 +45,23 @@ export const KnobRow = ({
 }: KnobRowProps) => {
   const { controlType, name, options, args } = knob;
 
+  const renderedKnob = (
+    <Knob
+      propName={name}
+      knobType={controlType}
+      knobOptions={options}
+      value={knobValue}
+      onChange={eventOrVal => {
+        const value = eventOrVal.target?.value ?? eventOrVal;
+        setKnobValue(name, value);
+      }}
+      className={knobControlStyle}
+      aria-labelledby={`knob-${name}`}
+      darkMode={darkMode}
+      {...args}
+    />
+  );
+
   return (
     <div className={knobRowWrapperStyle(darkMode)}>
       <div>
@@ -55,20 +73,13 @@ export const KnobRow = ({
           <strong>{name}</strong>
         </Body>
       </div>
-      <Knob
-        propName={name}
-        knobType={controlType}
-        knobOptions={options}
-        value={knobValue}
-        onChange={eventOrVal => {
-          const value = eventOrVal.target?.value ?? eventOrVal;
-          setKnobValue(name, value);
-        }}
-        className={knobControlStyle}
-        aria-labelledby={`knob-${name}`}
-        darkMode={darkMode}
-        {...args}
-      />
+      {args?.disabled && args?.description ? (
+        <Tooltip trigger={<div>{renderedKnob}</div>}>
+          {args?.description}
+        </Tooltip>
+      ) : (
+        renderedKnob
+      )}
     </div>
   );
 };

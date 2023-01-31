@@ -38,6 +38,8 @@ export type KnobType = PropItem & {
     min?: number;
     max?: number;
     step?: number;
+    disabled?: boolean;
+    [key: string]: any
   }
 };
 

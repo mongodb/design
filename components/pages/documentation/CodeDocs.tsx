@@ -17,7 +17,7 @@ function CodeDocs({
       { displayName: a }: CustomComponentDoc,
       { displayName: b }: CustomComponentDoc,
     ) => {
-      // Display name that match the package name are sorted first
+      // Display names that match the package name are sorted first
       if (kebabCase(a) === componentKebabCaseName) return -1;
       else if (kebabCase(b) === componentKebabCaseName) return 1;
       // Next are display names that include the package name
