@@ -31,27 +31,19 @@ export const nodeTypeToElementMap: {
   [key in CSNodeType]?: CSNodeTypeMapFunction;
 } = {
   [CSNodeType.DOCUMENT]: (node, props) => (
-    <div
-      {...props}
-      css={
-        props.isNested &&
-        css`
-          & > * {
-            /* Remove margin for nested elements */
-            margin: 0;
-          }
-        `
-      }
-    >
-      <ContentstackChildren nodeChildren={node.children} />
+    <div {...props}>
+      <ContentstackChildren nodeChildren={node.children} {...props} />
     </div>
   ),
   [CSNodeType.HEADING_1]: (node, props) => (
     <H1
-      css={css`
-        margin-top: ${spacing[6]}px;
-        margin-bottom: ${spacing[3]}px;
-      `}
+      css={
+        !props.isNested &&
+        css`
+          margin-top: ${spacing[6]}px;
+          margin-bottom: ${spacing[3]}px;
+        `
+      }
       {...props}
     >
       <HeaderContent headerId={getCSNodeTextContent(node)}>
@@ -61,13 +53,16 @@ export const nodeTypeToElementMap: {
   ),
   [CSNodeType.HEADING_2]: (node, props) => (
     <H2
-      css={css`
-        margin-bottom: ${spacing[2]}px;
+      css={
+        !props.isNested &&
+        css`
+          margin-bottom: ${spacing[2]}px;
 
-        &:not(:first-child) {
-          margin-top: ${spacing[6]}px;
-        }
-      `}
+          &:not(:first-child) {
+            margin-top: ${spacing[6]}px;
+          }
+        `
+      }
       {...props}
     >
       <HeaderContent headerId={getCSNodeTextContent(node)}>
@@ -77,9 +72,12 @@ export const nodeTypeToElementMap: {
   ),
   [CSNodeType.HEADING_3]: (node, props) => (
     <H3
-      css={css`
-        margin-top: ${spacing[5]}px;
-      `}
+      css={
+        !props.isNested &&
+        css`
+          margin-top: ${spacing[5]}px;
+        `
+      }
       {...props}
     >
       <HeaderContent headerId={getCSNodeTextContent(node)}>
@@ -89,9 +87,12 @@ export const nodeTypeToElementMap: {
   ),
   [CSNodeType.HEADING_4]: (node, props) => (
     <Subtitle
-      css={css`
-        margin-top: ${spacing[4]}px;
-      `}
+      css={
+        !props.isNested &&
+        css`
+          margin-top: ${spacing[4]}px;
+        `
+      }
       {...props}
     >
       <HeaderContent headerId={getCSNodeTextContent(node)}>
@@ -111,15 +112,18 @@ export const nodeTypeToElementMap: {
   ),
   [CSNodeType.PARAGRAPH]: (node, props) => (
     <Body
-      css={css`
-        & {
-          margin-top: ${spacing[2]}px;
-        }
-      `}
+      css={
+        !props.isNested &&
+        css`
+          & {
+            margin-top: ${spacing[2]}px;
+          }
+        `
+      }
       {...node.attrs}
       {...props}
     >
-      <ContentstackChildren nodeChildren={node.children} />
+      <ContentstackChildren nodeChildren={node.children} {...props} />
     </Body>
   ),
   [CSNodeType.ANCHOR]: (node, props) => (
@@ -181,7 +185,7 @@ export const nodeTypeToElementMap: {
   ),
   [CSNodeType.SPAN]: (node, props) => (
     <span {...node.attrs} {...props}>
-      <ContentstackChildren nodeChildren={node.children} />
+      <ContentstackChildren nodeChildren={node.children} {...props} />
     </span>
   ),
   [CSNodeType.TABLE]: (node, props) => {

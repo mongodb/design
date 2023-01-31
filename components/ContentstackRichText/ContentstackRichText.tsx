@@ -7,6 +7,7 @@ import { getCSNodeTextContent, isTextNode, nodeHasAssets } from './utils';
 
 interface CSRichTextProps extends HTMLElementProps<'div'> {
   content?: CSNode;
+  isNested?: boolean;
   [key: string]: any;
 }
 
@@ -19,7 +20,7 @@ const ContentstackRichText = ({
 }: CSRichTextProps): JSX.Element => {
   if (!content) return <>Content not found</>;
 
-  if (isTextNode(content)) {
+  if (isTextNode(content) && getCSNodeTextContent(content)) {
     return <ContentstackText node={content} {...rest} />;
   } else {
     const textContent = getCSNodeTextContent(content);
