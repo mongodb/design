@@ -1,26 +1,63 @@
 import styled from '@emotion/styled';
-import ContentstackEntry from './ContentstackEntry';
+
+import { Polymorph } from '@leafygreen-ui/polymorphic';
+
+import ContentstackRichText from './ContentstackRichText';
+import { HorizontalLayoutBlockProps } from './types';
+
+import { css, cx } from '@emotion/css';
 
 const FlexContainer = styled('div')`
   display: flex;
-  align-items: stretch;
   gap: 32px;
-  * {
-    max-width: 100%;
-    width: fill-available;
-  }
+  align-items: stretch;
 `;
 
-const HorizontalLayout = ({ columns, ...rest }) => {
+/// Note: can't use `css` from `@emotion/react` with `cx`
+const flexColumnStyles = css`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-evenly;
+  max-width: 100%;
+`;
+
+const HorizontalLayout = ({
+  column_1,
+  column_2,
+  vertical_align = 'start',
+  flex_ratio,
+}: HorizontalLayoutBlockProps) => {
+  const [flex1, flex2] = flex_ratio?.match(/[0-9]+/g) ?? [1, 1];
   return (
-    <FlexContainer {...rest}>
-      {columns.map(column => (
-        <ContentstackEntry
-          key={column.uid}
-          contentTypeUid={column._content_type_uid}
-          entryUid={column.uid}
-        />
-      ))}
+    <FlexContainer>
+      <Polymorph
+        as={column_1 ? ContentstackRichText : 'div'}
+        // @ts-expect-error : content is not a valid attribute on `div`
+        content={column_1}
+        isNested={true}
+        className={cx(
+          flexColumnStyles,
+          css`
+            justify-content: ${vertical_align};
+            flex: ${flex1};
+          `,
+        )}
+      />
+
+      <Polymorph
+        as={column_2 ? ContentstackRichText : 'div'}
+        // @ts-expect-error : content is not a valid attribute on `div`
+        content={column_2}
+        isNested={true}
+        className={cx(
+          flexColumnStyles,
+          css`
+            justify-content: ${vertical_align};
+            flex: ${flex2};
+          `,
+        )}
+      />
     </FlexContainer>
   );
 };

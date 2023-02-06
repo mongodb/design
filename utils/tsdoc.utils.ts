@@ -1,11 +1,11 @@
 import {
   ComponentDoc,
   PropItem,
-  Props,
   PropItemType,
+  Props,
 } from 'react-docgen-typescript';
+import { isNull, isUndefined, omitBy, pickBy } from 'lodash';
 import pascalcase from 'pascalcase';
-import { isUndefined, isNull, omitBy, pickBy } from 'lodash';
 
 /** PropGroup names that are inherited from elsewhere */
 export const InheritablePropGroup = [
@@ -58,6 +58,10 @@ export function findComponentDoc(
   return tsDocArray?.find(doc => doc.displayName === pascalcase(componentName));
 }
 
+/**
+ * Given a TSDoc object,
+ * return an array of component Props
+ */
 export function getComponentPropsArray(
   tsDoc?: CustomComponentDoc,
 ): Array<PropItem>;
@@ -130,11 +134,6 @@ export function getDefaultValueValue({ defaultValue, type }: PropItem): any {
 
   /* eslint-disable no-fallthrough */
   switch (type.name) {
-    case 'boolean':
-      if (value === 'true') return true;
-      if (value === 'false') return false;
-      return value;
-
     case 'string':
     case 'text':
       return value?.toString() ?? value;
@@ -143,6 +142,11 @@ export function getDefaultValueValue({ defaultValue, type }: PropItem): any {
       return Number(value);
 
     case 'enum': {
+      if (type.raw === 'boolean') {
+        if (value === 'true') return true;
+        return false;
+      }
+
       const valueString = value?.toString();
       const [enumId, defaultKey] = valueString.split('.');
 

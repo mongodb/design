@@ -1,18 +1,19 @@
 import { useState } from 'react';
-import Copyable from '@leafygreen-ui/copyable';
-import { breakpoints, spacing } from '@leafygreen-ui/tokens';
-import { Subtitle } from '@leafygreen-ui/typography';
-import ActivityFeedIcon from '@leafygreen-ui/icon/dist/ActivityFeed';
+
 import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
+import Copyable from '@leafygreen-ui/copyable';
+import { css, cx } from '@leafygreen-ui/emotion';
+import { useViewportSize } from '@leafygreen-ui/hooks';
+import ActivityFeedIcon from '@leafygreen-ui/icon/dist/ActivityFeed';
 import Modal from '@leafygreen-ui/modal';
 import { palette } from '@leafygreen-ui/palette';
-import { useViewportSize } from '@leafygreen-ui/hooks';
-import { css, cx } from '@leafygreen-ui/emotion';
 import {
   SegmentedControl,
   SegmentedControlOption,
 } from '@leafygreen-ui/segmented-control';
+import { breakpoints, spacing } from '@leafygreen-ui/tokens';
+import { Subtitle } from '@leafygreen-ui/typography';
 
 const topAlignment = css`
   margin-top: ${spacing[4]}px;
@@ -116,12 +117,17 @@ export const InstallInstructions = ({ componentKebabCaseName, changelog }) => {
             gap: ${spacing[2]}px;
           `}
         >
-          <SegmentedControl value={packageMgr} onChange={setPackageMgr}>
+          <SegmentedControl
+            value={packageMgr}
+            onChange={setPackageMgr}
+            aria-controls="install-instructions"
+          >
             <SegmentedControlOption value="yarn">yarn</SegmentedControlOption>
             <SegmentedControlOption value="npm">npm</SegmentedControlOption>
           </SegmentedControl>
 
           <Copyable
+            id="install-instructions"
             className={css`
               margin: unset;
             `}

@@ -1,18 +1,20 @@
-import ComponentLayout from 'layouts/ComponentLayout';
 import { ReactElement } from 'react';
-import { getStaticComponentPaths } from 'utils/getStaticComponent';
-import { LiveExample } from 'components/pages/example/LiveExample';
 import { getTSDoc } from 'utils/_getComponentResources';
-import { getComponent } from 'utils/getContentstackResources';
+import { getComponent } from 'utils/ContentStack/getContentstackResources';
+import { getStaticComponentPaths } from 'utils/ContentStack/getStaticComponent';
+import { ComponentPageMeta } from 'utils/ContentStack/types';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
-const ComponentExample = ({
-  componentName,
-  tsDoc,
-}: {
+import { LiveExample } from 'components/pages/example/LiveExample';
+
+interface ExamplePageProps {
   componentName: string;
-  tsDoc: Array<CustomComponentDoc>;
-}) => {
+  component: ComponentPageMeta | null;
+  tsDoc: Array<CustomComponentDoc> | null;
+}
+import ComponentLayout from 'layouts/ComponentLayout';
+
+const ComponentExample = ({ componentName, tsDoc }: ExamplePageProps) => {
   return <LiveExample componentName={componentName} tsDoc={tsDoc} />;
 };
 
@@ -24,9 +26,15 @@ ComponentExample.getLayout = function getLayout(page: ReactElement) {
 
 export const getStaticPaths = getStaticComponentPaths;
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({
+  params,
+}): Promise<{ props: ExamplePageProps }> => {
   const { componentName } = params;
-  const component = await getComponent(componentName);
+  const component: ComponentPageMeta | null =
+    (await getComponent(componentName, {
+      includeContent: false,
+    })) ?? null;
+
   const tsDoc = await getTSDoc(componentName);
 
   return {

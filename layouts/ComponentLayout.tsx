@@ -1,22 +1,25 @@
 import React from 'react';
+import kebabCase from 'lodash/kebabCase';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import IconButton from '@leafygreen-ui/icon-button';
-import { useViewportSize } from '@leafygreen-ui/hooks';
-import { palette } from '@leafygreen-ui/palette';
-import { Tabs, Tab } from '@leafygreen-ui/tabs';
-import { spacing, breakpoints } from '@leafygreen-ui/tokens';
-import { H2 } from '@leafygreen-ui/typography';
-import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
+import { pageContainerWidth } from 'styles/constants';
+import { containerPadding } from 'styles/globals';
+import { ComponentFields } from 'utils/ContentStack/types';
+import getFullPageTitle from 'utils/getFullPageTitle';
+import { mq } from 'utils/mediaQuery';
+
 import FigmaIcon from 'components/icons/FigmaIcon';
 import GithubIcon from 'components/icons/GithubIcon';
-import { mq } from 'utils/mediaQuery';
-import { pageContainerWidth } from 'styles/constants';
-import { ComponentFields } from 'utils/types';
-import kebabCase from 'lodash/kebabCase';
-import getFullPageTitle from 'utils/getFullPageTitle';
+import { NextLinkWrapper } from 'components/NextLinkWrapper';
+
 import { css, cx } from '@leafygreen-ui/emotion';
-import { containerPadding } from 'styles/globals';
+import { useViewportSize } from '@leafygreen-ui/hooks';
+import IconButton from '@leafygreen-ui/icon-button';
+import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
+import { palette } from '@leafygreen-ui/palette';
+import { Tab, Tabs } from '@leafygreen-ui/tabs';
+import { breakpoints, spacing } from '@leafygreen-ui/tokens';
+import { H2 } from '@leafygreen-ui/typography';
 
 const layout = css`
   ${mq({
@@ -82,7 +85,13 @@ const tabStyles = css`
   }
 `;
 
-const ComponentLinks = ({ component, ...rest }) => (
+const ComponentLinks = ({
+  component,
+  ...rest
+}: {
+  component: ComponentFields;
+  [key: string]: any;
+}) => (
   <div {...rest}>
     <IconButton
       aria-label="View in Github"
@@ -96,15 +105,17 @@ const ComponentLinks = ({ component, ...rest }) => (
     >
       <GithubIcon />
     </IconButton>
-    <IconButton
-      aria-label="View in Figma"
-      as="a"
-      href={component.figmaUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <FigmaIcon />
-    </IconButton>
+    {component.figmaurl && (
+      <IconButton
+        aria-label="View in Figma"
+        as="a"
+        href={component.figmaurl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FigmaIcon />
+      </IconButton>
+    )}
   </div>
 );
 
@@ -169,22 +180,17 @@ function ComponentLayout({
                 />
               )
             }
+            as={NextLinkWrapper}
           >
             <Tab
               name="Live Example"
-              onClick={() =>
-                router.push(`/component/${kebabCase(component.title)}/example`)
-              }
+              href={`/component/${kebabCase(component.title)}/example`}
             >
               <div className={liveExamplePageStyles}>{children}</div>
             </Tab>
             <Tab
               name="Design Guidelines"
-              onClick={() =>
-                router.push(
-                  `/component/${kebabCase(component.title)}/guidelines`,
-                )
-              }
+              href={`/component/${kebabCase(component.title)}/guidelines`}
             >
               <LeafyGreenProvider baseFontSize={16}>
                 <div className={componentGuidelinePageStyles}>{children}</div>
@@ -192,11 +198,7 @@ function ComponentLayout({
             </Tab>
             <Tab
               name="Code Docs"
-              onClick={() =>
-                router.push(
-                  `/component/${kebabCase(component.title)}/documentation`,
-                )
-              }
+              href={`/component/${kebabCase(component.title)}/documentation`}
             >
               <div className={codeDocsPageStyles}>{children}</div>
             </Tab>

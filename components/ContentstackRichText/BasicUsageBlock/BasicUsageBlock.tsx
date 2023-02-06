@@ -1,17 +1,21 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { palette } from '@leafygreen-ui/palette';
-import { Body } from '@leafygreen-ui/typography';
+
 import CheckmarkWithCircleIcon from '@leafygreen-ui/icon/dist/CheckmarkWithCircle';
 import XWithCircle from '@leafygreen-ui/icon/dist/XWithCircle';
-import ContentstackRichText from '..';
+import { palette } from '@leafygreen-ui/palette';
 import { spacing } from '@leafygreen-ui/tokens';
+import { Body } from '@leafygreen-ui/typography';
+import { BodyProps } from '@leafygreen-ui/typography/dist/Body/Body.types';
+
+import ContentstackRichText from '..';
 
 const HeadingWrapper = styled('div')`
   align-items: center;
   display: flex;
 `;
 
-const StyledBody = styled(Body)`
+const StyledBody = styled(Body)<BodyProps & { color: string }>`
   display: inline-flex;
   margin-left: 6px;
   color: ${props => props.color};
@@ -19,7 +23,12 @@ const StyledBody = styled(Body)`
 
 const BasicUsageBlock = ({ entry }) => {
   return (
-    <div>
+    <div
+      css={css`
+        margin-top: ${spacing[4]}px;
+        margin-bottom: ${spacing[4]}px;
+      `}
+    >
       <HeadingWrapper>
         <CheckmarkWithCircleIcon
           fill={palette.green.dark1}

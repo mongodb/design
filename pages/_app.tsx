@@ -1,16 +1,17 @@
 import { ReactElement, ReactNode, useEffect } from 'react';
-import { NextPage } from 'next';
-import Head from 'next/head';
-import type { AppProps } from 'next/app';
-import { useRouter } from 'next/router';
 import { Global } from '@emotion/react';
-import { globalStyles } from 'styles/globals';
-import BaseLayout from 'layouts/BaseLayout';
 import { AppContextProvider } from 'contexts/AppContext';
+import BaseLayout from 'layouts/BaseLayout';
+import { NextPage } from 'next';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { globalStyles } from 'styles/globals';
 import {
   getComponents,
   getContentPageGroups,
-} from 'utils/getContentstackResources';
+} from 'utils/ContentStack/getContentstackResources';
+import { ContentPageGroup } from 'utils/ContentStack/types';
 import getFullPageTitle from 'utils/getFullPageTitle';
 import * as ga from 'utils/googleAnalytics';
 
@@ -21,7 +22,7 @@ export type NextPageWithLayout = NextPage & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
   components: any;
-  contentPageGroups: any;
+  contentPageGroups: Array<ContentPageGroup>;
 };
 
 function MyApp({
@@ -56,6 +57,9 @@ function MyApp({
       <Head>
         <title>{getFullPageTitle('Home')}</title>
         <meta property="og:title" content={getFullPageTitle('Home')} />
+
+        {/* Viewport meta tags should be in _app.tsx, not _document.tsx: https://nextjs.org/docs/messages/no-document-viewport-meta */}
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Global styles={globalStyles} />
       <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
@@ -64,7 +68,7 @@ function MyApp({
 }
 
 MyApp.getInitialProps = async () => {
-  const components = await getComponents();
+  const components = await getComponents({ includeContent: false });
   const contentPageGroups = await getContentPageGroups();
   return { components, contentPageGroups };
 };

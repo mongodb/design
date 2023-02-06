@@ -7,6 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: yarn update-packages
+      - run: yarn install
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
         with:
-          ref: ${{ github.event.client_payload.ref }}
-      - run: yarn update-packages --commit ${{ github.event.client_payload }}
+          destination_branch: "staging"
+          pr_title: "Automated PR: update packages"
+          github_token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,24 +1,17 @@
 import { css, cx } from '@leafygreen-ui/emotion';
-import { HTMLElementProps } from '@leafygreen-ui/lib';
+import { RadioBox, RadioBoxGroup } from '@leafygreen-ui/radio-box-group';
 import { Option, Select } from '@leafygreen-ui/select';
 import { SelectProps } from '@leafygreen-ui/select/dist/types';
 import TextInput, { TextInputProps } from '@leafygreen-ui/text-input';
-import { RadioBoxGroup, RadioBox } from '@leafygreen-ui/radio-box-group';
 import Toggle from '@leafygreen-ui/toggle';
-import { TypeString } from './utils';
+
+import { radioBoxOverrideStyle } from './Knob.styles';
+import { RawKnob } from './RawKnob';
+import { KnobProps } from './types';
 
 const inputStyle = css`
   min-width: 256px;
 `;
-
-interface KnobProps extends HTMLElementProps<'input'> {
-  propName: string;
-  knobType: TypeString;
-  knobOptions: Array<string>;
-  value: any;
-  onChange: (val: any) => void;
-  darkMode?: boolean;
-}
 
 export const Knob = ({
   propName,
@@ -32,9 +25,9 @@ export const Knob = ({
     case 'string':
     case 'text':
       return (
-        /// @ts-ignore
         <TextInput
           {...(rest as TextInputProps)}
+          aria-label={propName}
           placeholder={propName}
           value={value}
           onChange={onChange}
@@ -45,9 +38,9 @@ export const Knob = ({
     case 'number':
     case 'range':
       return (
-        /// @ts-ignore
         <TextInput
           {...(rest as TextInputProps)}
+          aria-label={propName}
           type="number"
           placeholder={propName}
           value={value?.toString() ?? value}
@@ -59,14 +52,19 @@ export const Knob = ({
     case 'boolean':
       return (
         /// @ts-expect-error
-        <Toggle {...rest} checked={!!value as boolean} onChange={onChange} />
+        <Toggle
+          {...rest}
+          checked={!!value as boolean}
+          onChange={onChange}
+          size="small"
+        />
       );
 
     case 'array':
     case 'enum':
     case 'select':
     case 'radio': {
-      if (knobOptions) {
+      if (knobOptions && knobOptions.length) {
         if (knobOptions.length <= 3) {
           return (
             <RadioBoxGroup
@@ -76,7 +74,11 @@ export const Knob = ({
               size="compact"
             >
               {knobOptions.map((opt: string) => (
-                <RadioBox key={opt} value={opt}>
+                <RadioBox
+                  className={radioBoxOverrideStyle}
+                  key={opt}
+                  value={opt}
+                >
                   {opt}
                 </RadioBox>
               ))}
@@ -101,10 +103,10 @@ export const Knob = ({
         );
       }
 
-      return <>knobType</>;
+      return <>{`${value}`}</>;
     }
 
     default:
-      return <>{knobType}</>;
+      return <RawKnob propName={propName} value={value} onChange={onChange} />;
   }
 };

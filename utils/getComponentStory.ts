@@ -7,6 +7,9 @@ type ModuleType = {
   [key: string]: ComponentStoryFn<any>;
 };
 
+/**
+ * Returns the Storybook module for a given package name
+ */
 export async function getComponentStory(
   kebabName: string,
 ): Promise<ModuleType | undefined> {
@@ -15,6 +18,7 @@ export async function getComponentStory(
       `@leafygreen-ui/${kebabName}/src/${pascalcase(kebabName)}.story`
     );
   } catch (err) {
+    console.warn(err);
     return;
   }
 }

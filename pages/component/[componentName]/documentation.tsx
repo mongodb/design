@@ -1,13 +1,16 @@
-import CodeDocs from 'components/pages/documentation/CodeDocs';
-import ComponentLayout from 'layouts/ComponentLayout';
-import { getDependencyDocumentation } from 'utils/_getComponentResources';
 import { ReactElement } from 'react';
-import { getComponent } from 'utils/getContentstackResources';
-import { getStaticComponentPaths } from 'utils/getStaticComponent';
-import { CustomComponentDoc } from 'utils/tsdoc.utils';
+import ComponentLayout from 'layouts/ComponentLayout';
 import { containerPadding } from 'styles/globals';
-import { css, cx } from '@emotion/css';
+import { getDependencyDocumentation } from 'utils/_getComponentResources';
+import { getComponent } from 'utils/ContentStack/getContentstackResources';
+import { getStaticComponentPaths } from 'utils/ContentStack/getStaticComponent';
+import { CustomComponentDoc } from 'utils/tsdoc.utils';
+
+import CodeDocs from 'components/pages/documentation/CodeDocs';
+
 import { spacing } from '@leafygreen-ui/tokens';
+
+import { css, cx } from '@emotion/css';
 
 interface DocsPageProps {
   componentName: string;
@@ -55,7 +58,9 @@ export async function getStaticProps({ params: { componentName } }) {
     props: { changelog, readme, tsDoc },
   } = await getDependencyDocumentation(componentName);
 
-  const component = await getComponent(componentName);
+  const component = await getComponent(componentName, {
+    includeContent: false,
+  });
   return { props: { componentName, component, changelog, readme, tsDoc } };
 }
 

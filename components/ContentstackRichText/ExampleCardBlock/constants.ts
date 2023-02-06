@@ -1,8 +1,9 @@
+import CheckmarkWithCircleIcon from '@leafygreen-ui/icon/dist/CheckmarkWithCircle';
 import ImportantWithCircleIcon from '@leafygreen-ui/icon/dist/ImportantWithCircle';
 import InfoWithCircleIcon from '@leafygreen-ui/icon/dist/InfoWithCircle';
 import XWithCircle from '@leafygreen-ui/icon/dist/XWithCircle';
-import CheckmarkWithCircleIcon from '@leafygreen-ui/icon/dist/CheckmarkWithCircle';
 import { palette } from '@leafygreen-ui/palette';
+
 import { Variant } from './types';
 
 export const Icons: Record<Variant, React.ComponentType<any>> = {
