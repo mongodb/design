@@ -9,4 +9,5 @@ export interface KnobProps extends HTMLElementProps<'input'> {
   value: any;
   onChange: (val: any) => void;
   darkMode?: boolean;
+  [key: string]: any
 }

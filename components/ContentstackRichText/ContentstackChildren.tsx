@@ -6,14 +6,23 @@ import ContentstackRichText from '.';
  */
 const ContentstackChildren = ({
   nodeChildren,
+  className, // don't spread parent's className
+  ...props
 }: {
   nodeChildren: CSNode['children'];
-}): JSX.Element => (
-  <>
-    {nodeChildren.map(childNode => (
-      <ContentstackRichText key={childNode.uid} content={childNode} />
-    ))}
-  </>
-);
+  [key: string]: any;
+}): JSX.Element => {
+  return (
+    <>
+      {nodeChildren.map(childNode => (
+        <ContentstackRichText
+          key={childNode.uid}
+          content={childNode}
+          {...props}
+        />
+      ))}
+    </>
+  );
+};
 
 export default ContentstackChildren;

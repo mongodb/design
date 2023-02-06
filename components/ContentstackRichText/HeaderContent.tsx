@@ -1,9 +1,13 @@
-import { PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
+import { kebabCase } from 'lodash';
 import Link from 'next/link';
 
 import Icon from '@leafygreen-ui/icon';
 import { palette } from '@leafygreen-ui/palette';
+
+import ContentstackChildren from './ContentstackChildren';
+import { CSNode } from './types';
+import { getCSNodeTextContent } from './utils';
 
 const StyledAnchor = styled('a')`
   color: inherit;
@@ -48,16 +52,19 @@ const StyledIcon = styled(Icon)`
 /**
  * Content of headers in rich text markup need to be wrapped in links and anchors for hashed links.
  */
-const HeaderContent = ({
-  children,
-  headerId,
-}: PropsWithChildren<{ headerId: string }>) => (
-  <Link href={`#${headerId}`} passHref>
-    <StyledAnchor id={headerId}>
-      <LinkContent>{children}</LinkContent>
-      <StyledIcon glyph="Link" fill={palette.gray.light1} />
-    </StyledAnchor>
-  </Link>
-);
+const HeaderContent = ({ node }: { node: CSNode }) => {
+  const headerId = kebabCase(getCSNodeTextContent(node));
+
+  return (
+    <Link href={`#${headerId}`} passHref>
+      <StyledAnchor id={headerId}>
+        <LinkContent>
+          <ContentstackChildren nodeChildren={node.children} />
+        </LinkContent>
+        <StyledIcon glyph="Link" fill={palette.gray.light1} />
+      </StyledAnchor>
+    </Link>
+  );
+};
 
 export default HeaderContent;

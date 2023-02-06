@@ -1,28 +1,35 @@
+import { HTMLElementProps } from '@leafygreen-ui/lib';
+
 import { nodeTypeToElementMap } from './componentMap';
 import ContentstackText from './ContentstackText';
 import { CSNode } from './types';
-import { isTextNode } from './utils';
+import { getCSNodeTextContent, isTextNode, nodeHasAssets } from './utils';
+
+interface CSRichTextProps extends HTMLElementProps<'div'> {
+  content?: CSNode;
+  isNested?: boolean;
+  [key: string]: any;
+}
 
 /**
  * Renders a ContentStack Node
  */
 const ContentstackRichText = ({
   content,
-  options,
-}: {
-  content?: CSNode;
-  options?: any;
-}): JSX.Element => {
+  ...rest
+}: CSRichTextProps): JSX.Element => {
   if (!content) return <>Content not found</>;
 
-  if (isTextNode(content)) {
-    return <ContentstackText node={content} />;
+  if (isTextNode(content) && getCSNodeTextContent(content)) {
+    return <ContentstackText node={content} {...rest} />;
   } else {
-    return (
-      nodeTypeToElementMap[content.type]?.(content, options) ?? (
-        <>Unknown node type: {JSON.stringify(content)}.</>
-      )
-    );
+    const textContent = getCSNodeTextContent(content);
+
+    if (textContent || nodeHasAssets(content)) {
+      return nodeTypeToElementMap[content.type]?.(content, rest);
+    } else {
+      return <></>;
+    }
   }
 };
 
