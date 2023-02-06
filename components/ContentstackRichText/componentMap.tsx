@@ -17,7 +17,6 @@ import ContentstackChildren from './ContentstackChildren';
 import ContentstackReference from './ContentstackReference';
 import HeaderContent from './HeaderContent';
 import { CSNode, CSNodeType, CSTextNode } from './types';
-import { getCSNodeTextContent } from './utils';
 
 type CSNodeTypeMapFunction = (
   node: CSNode | CSTextNode,
@@ -46,9 +45,7 @@ export const nodeTypeToElementMap: {
       }
       {...props}
     >
-      <HeaderContent headerId={getCSNodeTextContent(node)}>
-        <ContentstackChildren nodeChildren={node.children} />
-      </HeaderContent>
+      <HeaderContent node={node} />
     </H1>
   ),
   [CSNodeType.HEADING_2]: (node, props) => (
@@ -65,9 +62,7 @@ export const nodeTypeToElementMap: {
       }
       {...props}
     >
-      <HeaderContent headerId={getCSNodeTextContent(node)}>
-        <ContentstackChildren nodeChildren={node.children} />
-      </HeaderContent>
+      <HeaderContent node={node} />
     </H2>
   ),
   [CSNodeType.HEADING_3]: (node, props) => (
@@ -80,9 +75,7 @@ export const nodeTypeToElementMap: {
       }
       {...props}
     >
-      <HeaderContent headerId={getCSNodeTextContent(node)}>
-        <ContentstackChildren nodeChildren={node.children} />
-      </HeaderContent>
+      <HeaderContent node={node} />
     </H3>
   ),
   [CSNodeType.HEADING_4]: (node, props) => (
@@ -95,9 +88,8 @@ export const nodeTypeToElementMap: {
       }
       {...props}
     >
-      <HeaderContent headerId={getCSNodeTextContent(node)}>
-        <ContentstackChildren nodeChildren={node.children} />
-      </HeaderContent>
+      <HeaderContent node={node} />
+      <HeaderContent node={node} />
     </Subtitle>
   ),
   [CSNodeType.HEADING_5]: (node, props) => (
