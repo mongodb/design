@@ -184,6 +184,7 @@ export const nodeTypeToElementMap: {
     return (
       <Card
         css={css`
+          margin-block: ${spacing[5] + spacing[2]}px;
           padding: ${spacing[3]}px 0;
         `}
         {...props}
