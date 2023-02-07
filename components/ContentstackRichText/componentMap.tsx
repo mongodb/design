@@ -89,7 +89,6 @@ export const nodeTypeToElementMap: {
       {...props}
     >
       <HeaderContent node={node} />
-      <HeaderContent node={node} />
     </Subtitle>
   ),
   [CSNodeType.HEADING_5]: (node, props) => (
