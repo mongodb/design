@@ -11,7 +11,11 @@ import { ExampleCardBlockProps } from '../types';
 import { BorderColors, IconColors, Icons, TextColors } from './constants';
 import ImageContainer from './ImageContainer';
 
-const TextContainer = styled('div')`
+const ExampleCardBlockWrapper = styled.div`
+  margin-block: ${spacing[5] + spacing[2]}px;
+`;
+
+const TextContainer = styled.div`
   display: flex;
   gap: 6px;
   margin-left: ${spacing[2]}px;
@@ -32,7 +36,7 @@ const Subtext = styled(Body)<BodyProps>`
 const ExampleCardBlock = ({ entry }: { entry: ExampleCardBlockProps }) => {
   const IconComponent = Icons[entry.variant];
   return (
-    <div>
+    <ExampleCardBlockWrapper>
       <ImageContainer color={BorderColors[entry.variant]}>
         {/**
          * TODO: fix this
@@ -61,7 +65,7 @@ const ExampleCardBlock = ({ entry }: { entry: ExampleCardBlockProps }) => {
           <Subtext>{entry.subtext}</Subtext>
         </div>
       </TextContainer>
-    </div>
+    </ExampleCardBlockWrapper>
   );
 };
 
