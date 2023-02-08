@@ -80,9 +80,9 @@ function NavigationContent({
                     <SideNavItem
                       key={contentPage.title}
                       as={NextLinkWrapper}
-                      href={`/${kebabCase(contentPageGroup.title)}/${kebabCase(
-                        contentPage.title,
-                      )}`}
+                      href={`/${kebabCase(
+                        contentPageGroup.title,
+                      )}/${contentPageKebabCaseName}`}
                       active={contentPageKebabCaseName === activePage}
                     >
                       {contentPage.title}
