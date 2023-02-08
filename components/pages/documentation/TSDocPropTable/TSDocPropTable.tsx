@@ -15,7 +15,6 @@ import ExpandableCard from '@leafygreen-ui/expandable-card';
 import InlineDefinition from '@leafygreen-ui/inline-definition';
 import { palette } from '@leafygreen-ui/palette';
 import { Cell, Row, Table, TableHeader } from '@leafygreen-ui/table';
-import { typeScales } from '@leafygreen-ui/tokens';
 import { InlineCode, Link } from '@leafygreen-ui/typography';
 
 import { PropTooltipContent } from '../../../PropTooltipContent';
@@ -44,10 +43,6 @@ const inheritedAttrNameStyle = css`
       margin-right: 1ch;
     }
   }
-`;
-
-const increasedLineHeight = css`
-  line-height: ${typeScales.body2.lineHeight}px;
 `;
 
 export const TSDocPropTable = ({
@@ -97,7 +92,7 @@ export const TSDocPropTable = ({
                       <sup className={requiredHighlightStyle}>(REQUIRED)</sup>
                     )}
                   </Cell>
-                  <Cell className={increasedLineHeight}>
+                  <Cell>
                     <Markdown>{datum.description}</Markdown>
                   </Cell>
                   <Cell>
