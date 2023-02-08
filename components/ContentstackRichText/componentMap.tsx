@@ -89,7 +89,6 @@ export const nodeTypeToElementMap: {
       {...props}
     >
       <HeaderContent node={node} />
-      <HeaderContent node={node} />
     </Subtitle>
   ),
   [CSNodeType.HEADING_5]: (node, props) => (
@@ -185,6 +184,7 @@ export const nodeTypeToElementMap: {
     return (
       <Card
         css={css`
+          margin-block: ${spacing[5] + spacing[2]}px;
           padding: ${spacing[3]}px 0;
         `}
         {...props}
