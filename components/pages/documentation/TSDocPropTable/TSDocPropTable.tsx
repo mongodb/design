@@ -93,7 +93,14 @@ export const TSDocPropTable = ({
                     )}
                   </Cell>
                   <Cell>
-                    <Markdown>{datum.description}</Markdown>
+                    <span
+                      className={css`
+                        line-height: 28px;
+                      `}
+                    >
+                      {datum.description}
+                    </span>
+                    {/* <Markdown>{datum.description}</Markdown> */}
                   </Cell>
                   <Cell>
                     <InlineCode className={typeCellStyle}>
