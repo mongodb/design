@@ -57,6 +57,7 @@ export const ignoreProps = [
   'setClosed',
   'setCollapsed',
   'shouldClose',
+  'lgProviderBaseFontSize',
 ];
 
 /**
@@ -78,7 +79,7 @@ export const getSBInputType = ({
   meta,
   StoryFn,
   TSDocProp: { name },
-}: MetadataSources) => meta?.argTypes?.[name] ?? StoryFn?.argTypes?.[name];
+}: MetadataSources) => StoryFn?.argTypes?.[name] ?? meta?.argTypes?.[name];
 
 /**
  * Returns a filter function for PropItems
@@ -94,9 +95,9 @@ function getPropItemFilterFn({
     const isIgnored = ignoreProps.includes(TSDocProp.name);
     const metaSBInput = meta?.argTypes?.[TSDocProp.name];
     const localSBInput = StoryFn?.argTypes?.[TSDocProp.name];
-
     const isExcludedBySB: boolean =
-      meta?.parameters?.controls?.exclude?.includes(TSDocProp.name);
+      meta?.parameters?.controls?.exclude?.includes(TSDocProp.name) ||
+      StoryFn?.parameters?.controls?.exclude?.includes(TSDocProp.name);
     const isControlNone =
       ['none', false].includes(metaSBInput?.control) ||
       ['none', false].includes(localSBInput?.control);
@@ -112,8 +113,8 @@ function getPropItemToKnobTypeMapFn({
   meta,
   StoryFn,
 }: Omit<MetadataSources, 'TSDocProp'>) {
-  return (TSDocProp: PropItem): KnobType =>
-    ({
+  return (TSDocProp: PropItem): KnobType => {
+    return {
       ...TSDocProp,
       name: TSDocProp.name,
       options: getKnobOptions({ meta, StoryFn, TSDocProp }),
@@ -128,7 +129,9 @@ function getPropItemToKnobTypeMapFn({
         StoryFn,
         TSDocProp,
       }),
-    } as KnobType);
+      args: getOtherControlArgs({meta, StoryFn, TSDocProp})
+    } as KnobType
+  }
 }
 
 /**
@@ -154,11 +157,16 @@ function getSBInputTypeFilterFn({
       ['none', false].includes(input.control) ||
       ['none', false].includes(localInput?.control);
 
+    const isSBOnly: boolean = meta?.argTypes?.[input.name]?.storybookOnly;
     const isExcludedByMeta: boolean =
       meta?.parameters?.controls?.exclude?.includes(input.name);
 
-    return (
-      !isIgnored && !isAlreadyInKnobs && !isControlNone && !isExcludedByMeta
+    return !(
+      isIgnored ||
+      isAlreadyInKnobs ||
+      isControlNone ||
+      isSBOnly ||
+      isExcludedByMeta
     );
   };
 }
@@ -218,6 +226,19 @@ export function getControlType({
   }
 }
 
+function getOtherControlArgs({
+  meta,
+  StoryFn,
+  TSDocProp,
+}: MetadataSources): object | undefined {
+  const SBInputType = getSBInputType({ meta, StoryFn, TSDocProp });
+
+  if (SBInputType && SBInputType.control && typeof SBInputType.control === 'object') {
+    const {type, ...args} = SBInputType.control
+    return args
+  }
+}
+
 /**
  * @returns Options for enum type knobs, based on metadata from Storybook and TSDoc.
  * Returns an empty array if there are no options
@@ -270,7 +291,7 @@ export function getDefaultValue({
   TSDocProp,
 }: MetadataSources): any {
   const TSDefaultValue = getDefaultValueValue(TSDocProp);
-  const SBArg = meta.args?.[TSDocProp.name] ?? StoryFn.args?.[TSDocProp.name];
+  const SBArg = StoryFn.args?.[TSDocProp.name] ?? meta.args?.[TSDocProp.name];
   const SBInputType = getSBInputType({ meta, StoryFn, TSDocProp });
   const SBDefaultValue = SBInputType?.defaultValue;
   return SBArg ?? SBDefaultValue ?? TSDefaultValue;
@@ -307,8 +328,8 @@ export function getInitialKnobValues(
     } else {
       values[knob.name] =
         knob.defaultValue ??
-        meta.args?.[knob.name] ??
         StoryFn.args?.[knob.name] ??
+        meta.args?.[knob.name] ??
         createDefaultValue(knob);
     }
 

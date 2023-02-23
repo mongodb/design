@@ -7,23 +7,38 @@ import { spacing } from '@leafygreen-ui/tokens';
 import { CSNode } from './types';
 
 // TODO: restrict the type of `content` more (should assert it has certain attrs)
-const ContentstackImage = ({ content }: { content: CSNode }) => {
+const ContentstackImage = ({
+  content,
+  ...props
+}: {
+  content: CSNode;
+  [key: string]: any;
+}) => {
   const attrs = content.attrs;
+
   const [width, setWidth] = useState<number>(attrs['width'] ?? 700);
   const [height, setHeight] = useState<number>(attrs['height'] ?? 300);
 
-  const handleLoadingComplete = img => {
-    if (img.naturalWidth) setWidth(img.naturalWidth);
-    if (img.naturalHeight) setHeight(img.naturalHeight);
+  const handleLoadingComplete = (img: {
+    naturalWidth: number;
+    naturalHeight: number;
+  }) => {
+    // Multiply by 2 since we're using @2x
+    if (img.naturalWidth) setWidth(img.naturalWidth * 2);
+    if (img.naturalHeight) setHeight(img.naturalHeight * 2);
   };
 
   return (
     <div
-      css={css`
-        max-width: 100%;
-        margin-top: ${spacing[5]}px;
-        margin-bottom: ${spacing[4]}px;
-      `}
+      css={
+        !props.isNested &&
+        css`
+          max-width: 100%;
+          margin-top: ${spacing[5]}px;
+          margin-bottom: ${spacing[4]}px;
+        `
+      }
+      {...props}
     >
       <Image
         src={attrs['asset-link']}

@@ -1,13 +1,15 @@
 import { CSNode, CSTextNode } from './types';
 
 export const isTextNode = (node: CSNode): node is CSTextNode => {
-  return Object.hasOwn(node, 'text');
+  return node && Object.hasOwn(node, 'text');
 };
 
 /**
  * Loop through a node's children until we have all its text content
  */
-export const getCSNodeTextContent = (node: CSNode): string => {
+export const getCSNodeTextContent = (node?: CSNode): string => {
+  if (!node) return '';
+
   if (isTextNode(node)) {
     return node.text;
   } else {
@@ -17,3 +19,11 @@ export const getCSNodeTextContent = (node: CSNode): string => {
       .trim();
   }
 };
+
+export const nodeHasAssets = (node: CSNode): boolean => {
+  if (['asset', 'entry', 'reference'].includes(node.type)) {
+    return true
+  } else {
+    return node.children && node.children.some(child => nodeHasAssets(child))
+  }
+}

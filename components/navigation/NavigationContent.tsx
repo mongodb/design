@@ -73,18 +73,22 @@ function NavigationContent({
               glyph={<Icon glyph={contentPageGroup.iconname} />}
             >
               {contentPageGroup.content_pages &&
-                contentPageGroup.content_pages.map(contentPage => (
-                  <SideNavItem
-                    key={contentPage.title}
-                    as={NextLinkWrapper}
-                    href={`/${kebabCase(contentPageGroup.title)}/${kebabCase(
-                      contentPage.title,
-                    )}`}
-                    active={contentPage.title === activePage}
-                  >
-                    {contentPage.title}
-                  </SideNavItem>
-                ))}
+                contentPageGroup.content_pages.map(contentPage => {
+                  const contentPageKebabCaseName = kebabCase(contentPage.title);
+
+                  return (
+                    <SideNavItem
+                      key={contentPage.title}
+                      as={NextLinkWrapper}
+                      href={`/${kebabCase(
+                        contentPageGroup.title,
+                      )}/${contentPageKebabCaseName}`}
+                      active={contentPageKebabCaseName === activePage}
+                    >
+                      {contentPage.title}
+                    </SideNavItem>
+                  );
+                })}
             </SideNavGroup>
           ))}
           <SideNavGroup header="Components" glyph={<Icon glyph="Apps" />}>

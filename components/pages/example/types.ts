@@ -20,6 +20,7 @@ export interface MetadataSources {
 }
 
 export type KnobOptionType = string | number;
+
 /**
  * A custom type based on TSDoc PropItem
  */
@@ -29,6 +30,17 @@ export type KnobType = PropItem & {
    * For types with options. Set to an empty array for irrelevant types
    */
   options: Array<KnobOptionType>;
+
+  /**
+   * Any other args to pass into the knobs
+   */
+  args?: {
+    min?: number;
+    max?: number;
+    step?: number;
+    disabled?: boolean;
+    [key: string]: any
+  }
 };
 
 export interface LiveExampleState {
