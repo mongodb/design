@@ -52,6 +52,7 @@
     "@leafygreen-ui/marketing-modal": "^4.0.3",
     "@leafygreen-ui/menu": "^19.0.4",
     "@leafygreen-ui/modal": "^14.0.1",
+    "@leafygreen-ui/pagination": "^1.0.1",
     "@leafygreen-ui/palette": "^3.4.7",
     "@leafygreen-ui/pipeline": "^5.0.4",
     "@leafygreen-ui/popover": "^11.0.5",
