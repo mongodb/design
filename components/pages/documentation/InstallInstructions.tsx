@@ -139,7 +139,7 @@ export const InstallInstructions = ({ componentKebabCaseName, changelog }) => {
         </div>
       </Card>
 
-      <VersionCard version={version} changelog={changelog} />
+      {/* <VersionCard version={version} changelog={changelog} /> */}
     </div>
   );
 };
