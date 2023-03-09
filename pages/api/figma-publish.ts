@@ -1,13 +1,13 @@
 import axios from 'axios';
-import { getComponent, getLastComponentFigmaVersion } from 'utils/ContentStack/getContentstackResources';
+import { getLastComponentFigmaVersion } from 'utils/ContentStack/FigmaVersion';
 
 const WEBHOOK_ID = '494792';
 // const FILENAME = 'LeafyGreen Design System'
 const FILENAME = 'Skunkworks Test DS';
 
-const parseComponentUpdateDescription = async (description) => {
+export const parseComponentUpdateDescription = async (description) => {
   const versionUpdate = description.split(/\[(.*?)\]/)[1];
-  const componentName = description.split(/\](.*?)\-/)[1].trim();
+  const componentName = description.split(/\](.*?)-/)[1].trim();
 
   // 1. GET the URL to the second last publish from Figma's version history API
   // 2. PUT the Figma Link on the last FigmaVersion entry on Contentstack
