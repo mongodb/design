@@ -1,22 +1,26 @@
 import { ReactElement, useState } from 'react';
 import ComponentLayout from 'layouts/ComponentLayout';
 import { containerPadding } from 'styles/globals';
-import { getChangelog, getDependencyDocumentation } from 'utils/_getComponentResources';
-import { getComponent } from 'utils/ContentStack/getContentstackResources';
+import { getChangelog } from 'utils/_getComponentResources';
+import { getComponent, getComponentFigmaVersions } from 'utils/ContentStack/getContentstackResources';
 import { getStaticComponentPaths } from 'utils/ContentStack/getStaticComponent';
 
 import { spacing } from '@leafygreen-ui/tokens';
 
 import { css, cx } from '@emotion/css';
+import Button from '@leafygreen-ui/button';
 import { palette } from '@leafygreen-ui/palette';
 import { SegmentedControl, SegmentedControlOption } from '@leafygreen-ui/segmented-control';
 import FigmaIcon from 'components/icons/FigmaIcon';
 import ReactIcon from 'components/icons/ReactIcon';
+import { Body, H3, Link } from '@leafygreen-ui/typography';
+import Icon from '@leafygreen-ui/icon';
 
 interface DocsPageProps {
   componentName: string;
   changelog: string;
   reactVersion: string;
+  figmaChangelog: any;
 }
 
 const changelogStyles = css`
@@ -38,6 +42,7 @@ const ComponentChangelogs = ({
   componentName,
   changelog,
   reactVersion,
+  figmaChangelog,
 }: DocsPageProps) => {
   const [displayedLogs, setDisplayedLogs] = useState<string>('figma');
   return (
@@ -54,10 +59,10 @@ const ComponentChangelogs = ({
           onChange={setDisplayedLogs}
         >
           <SegmentedControlOption value="figma">
-            <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
               <FigmaIcon />
               <span style={{ marginLeft: '4px' }}>
-                Figma - v{'0.0.0'}
+                Figma - v{figmaChangelog[0].title}
               </span>
             </div>
           </SegmentedControlOption>
@@ -73,7 +78,54 @@ const ComponentChangelogs = ({
       </div>
       <div className={css`padding: ${spacing[3]}px 0;`}>
         {displayedLogs === 'figma' ? (
-          <>Figma logs</>
+          <>
+            {figmaChangelog.map(figmaVersion => (
+              <div className={css`margin-bottom: ${spacing[3]}px;`}>
+                <H3>{figmaVersion.title}</H3>
+                <Body
+                  className={css`
+                    margin-bottom: ${spacing[2]}px;
+                  `}
+                >
+                  {figmaVersion.description}
+                </Body>
+                <div>
+                  {figmaVersion.figma_link && (
+                    <Link
+                      target="_blank"
+                      href={figmaVersion.figma_link}
+                      className={
+                        css`
+                        span {
+                          display: inline-flex;
+                          align-items: center;
+                        }
+                      `}
+                    >
+                      <FigmaIcon />
+                      Figma Version v{figmaVersion.title}
+                    </Link>
+                  )}
+                  {figmaVersion.react_version && (
+                    <Link
+                      target="_blank"
+                      href={`https://github.com/mongodb/leafygreen-ui/blob/main/packages/${componentName}/CHANGELOG.md#${figmaVersion.react_version.replaceAll('.', '')}`}
+                      className={
+                        css`
+                        span {
+                          display: inline-flex;
+                          align-items: center;
+                        }
+                      `}
+                    >
+                      <ReactIcon />
+                      React Version v{figmaVersion.react_version}
+                    </Link>
+                  )}
+                </div>
+              </div>
+            ))}
+          </>
         ) : (
           <div
             className={changelogStyles}
@@ -100,7 +152,8 @@ export async function getStaticProps({ params: { componentName } }) {
   const component = await getComponent(componentName, {
     includeContent: false,
   });
-  return { props: { componentName, component, changelog, reactVersion } };
+  const figmaChangelog = await getComponentFigmaVersions(component ? component.uid : '')
+  return { props: { componentName, component, changelog, reactVersion, figmaChangelog } };
 }
 
 export default ComponentChangelogs;
