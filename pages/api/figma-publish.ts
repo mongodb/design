@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getLastComponentFigmaVersion } from 'utils/ContentStack/getContentstackResources';
+import { getComponent, getLastComponentFigmaVersion } from 'utils/ContentStack/getContentstackResources';
 
 const WEBHOOK_ID = '494792';
 // const FILENAME = 'LeafyGreen Design System'
@@ -9,11 +9,14 @@ const parseComponentUpdateDescription = async (description) => {
   const versionUpdate = description.split(/\[(.*?)\]/)[1];
   const componentName = description.split(/\](.*?)\-/)[1].trim();
 
-  // TODO for Adam!
-  // 1. GET last Figma version from Contentstack that has the component's name
-  // I've started the work in getContentstackResources/getLastComponentFigmaVersion.ts, but it doesn't quite work yet
-  // 2. Calculate the new version based on the latest Figma version and whether `versionUpdate` is a PATCH, MINOR, or MAJOR
-  // 3. POST a new entry to Contentstack with the new version, Component reference, and description
+  // 1. GET the URL to the second last publish from Figma's version history API
+  // 2. PUT the Figma Link on the last FigmaVersion entry on Contentstack
+  getComponent(componentName).then((component) => {
+    getLastComponentFigmaVersion(component ? component.uid : '').then((res) => {
+      // 3. Calculate the new version based on the last FigmaVersion and whether `versionUpdate` is a PATCH, MINOR, or MAJOR
+      // 4. POST a new entry to Contentstack with the new version, Component reference, and description
+    })
+  })
 }
 
 export default async function handler(req, res) {

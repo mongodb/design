@@ -153,6 +153,7 @@ export async function getStaticProps({ params: { componentName } }) {
     includeContent: false,
   });
   const figmaChangelog = await getComponentFigmaVersions(component ? component.uid : '')
+  console.log(figmaChangelog[0].component)
   return { props: { componentName, component, changelog, reactVersion, figmaChangelog } };
 }
 

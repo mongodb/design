@@ -95,12 +95,12 @@ export async function getComponentFigmaVersions(
  * @returns the last FigmaVersion for the given component
  */
 export async function getLastComponentFigmaVersion(
-  componentName: string,
+  componentUid: string,
 ): Promise<ComponentFields | undefined> {
   try {
     const query = Stack.ContentType('figma_version').Query();
     const result = await query
-      // .where('component.title', componentName)
+      .where('component.uid', componentUid)
       .descending('version')
       .limit(1)
       .toJSON()
