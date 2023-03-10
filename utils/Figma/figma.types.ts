@@ -32,7 +32,7 @@ export interface FigmaVersionEvent {
 }
 export interface FigmaComponentUpdate {
   type?: 'PATCH' | 'MINOR' | 'MAJOR';
-  component?: string;
+  component: string;
   description?: string;
 }
 
@@ -52,6 +52,11 @@ export interface FigmaVersionsMDBDocument extends Document {
    * What type of update this was
    */
   update_type?: FigmaComponentUpdate['type'];
+
+  /**
+   * When was this updated
+   */
+  updated_on: Date
 
   /**
    * Update description

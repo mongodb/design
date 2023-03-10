@@ -1,17 +1,13 @@
-import { startCase } from 'lodash';
-
 import { FigmaComponentUpdate, FigmaVersionsMDBDocument } from './figma.types';
 
 export function calcNewVersion({
-  component,
   update,
   doc,
 }: {
-  component: string;
   update: FigmaComponentUpdate;
-  doc: FigmaVersionsMDBDocument;
+  doc?: FigmaVersionsMDBDocument;
 }) {
-  let { major, minor, patch } = doc;
+  let { major, minor, patch } = doc || { major: 1, minor: 0, patch: 0 };
   if (update?.type === 'MAJOR') major++;
   else if (update?.type === 'MINOR') minor++;
   else if (update?.type === 'PATCH') patch++;
