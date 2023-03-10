@@ -135,7 +135,7 @@ export interface HorizontalLayoutBlockProps {
   column_1: CSNode; // richText
   column_2: CSNode; // richText,
   vertical_align: 'start' | 'center' | 'end' | 'baseline';
-  flex_ratio: `${number}:${number}`
+  flex_ratio: `${number}:${number}`;
 }
 
 export interface BlockPropsMap {
