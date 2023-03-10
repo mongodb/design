@@ -1,38 +1,21 @@
 import axios from 'axios';
-import {
-  getComponentFigmaVersions,
-} from 'utils/ContentStack/FigmaVersion';
-import { getComponent } from 'utils/ContentStack/getContentstackResources';
 
-import { FigmaVersionEvent, LibraryPublishEvent } from './figma.types';
+import {
+  FigmaVersionEvent,
+  LibraryPublishEvent,
+} from '../../utils/api/figma.types';
+import { getFigmaVersionHistory } from '../../utils/api/getFigmaVersionHistory';
+import {
+  connectToFigmaVersionsCollection,
+  getLatestEntries,
+  MDBClient,
+} from '../../utils/api/mdbConnect';
+import { parseUpdatesFromFigmaDescription } from '../../utils/api/parseDescription';
+import { getComponent } from '../../utils/ContentStack/getContentstackResources';
 
 const WEBHOOK_ID = '494792';
 // const FILENAME = 'LeafyGreen Design System'
 const FILENAME = 'Skunkworks Test DS';
-
-export const parseComponentUpdateDescription = async (description: string) => {
-  const versionUpdate = description.split(/\[(.*?)\]/)[1];
-  const componentName = description.split(/\](.*?)-/)[1].trim();
-  console.log({ versionUpdate, componentName });
-
-
-
-  const component = await getComponent(componentName, {
-    includeContent: false,
-  });
-
-  if (component) {
-    const { uid } = component;
-    const allVersions = await getComponentFigmaVersions(uid);
-
-    if (allVersions) {
-      const [current, previous, ...rest] = allVersions;
-      const { figma_link: prevUrl } = previous;
-      console.log(prevUrl);
-    }
-  }
-};
-
 
 export default async function handleFigmaPublish(
   req: {
@@ -41,35 +24,48 @@ export default async function handleFigmaPublish(
   },
   res,
 ) {
-
   if (req.method === 'POST') {
+    console.clear();
 
-    const body: LibraryPublishEvent = JSON.parse(req.body)
-
+    const body: LibraryPublishEvent = JSON.parse(req.body);
     const updatedFile = body.file_name;
     const requestWebhookId = body.webhook_id;
 
-    if (updatedFile !== FILENAME || requestWebhookId !== WEBHOOK_ID) {
+    const updates = parseUpdatesFromFigmaDescription(body.description);
+
+    if (
+      updatedFile !== FILENAME ||
+      requestWebhookId !== WEBHOOK_ID ||
+      !updates
+    ) {
       res.status(403);
       return;
     }
 
-    // 1. GET the URL to the second last publish from Figma's version history API
-    const {versions} = await fetch(`https://api.figma.com/v1/files/${body.file_key}/versions`, {
-      headers: {
-        'X-Figma-Token': 'figd_5ODeNnl6Vxrzxm_SlWoCPPhryHogBr7ilLxy8u17',
-      },
-    }).then(data => data.json())
+    // 1. GET the URL to the _second last_ publish from Figma's version history API
+    // (the _last_ publish is the current one)
+    const { versions, getVersionUrl } = await getFigmaVersionHistory(body);
+    const [_, prevVersion] = versions;
+    const prevVersionUrl = getVersionUrl(prevVersion);
 
-    const [_, prevVersion] = versions as Array<FigmaVersionEvent>
-    const prevVersionUrl = `https://www.figma.com/file/${body.file_key}/${body.file_name}?version-id=${prevVersion.id}`
+    // 2. PUT the previous Figma Link on the _last_ FigmaVersion entry for each updated component
+    const { collection, close } = await connectToFigmaVersionsCollection();
+    const entries = getLatestEntries({ collection, updates });
+    entries.forEach(doc => {
+      collection.updateOne(
+        { _id: doc.latest._id },
+        {
+          $set: {
+            figma_url: prevVersionUrl?.href,
+          },
+        },
+      );
+    });
 
-    // TODO: 2. PUT the previous Figma Link on the last FigmaVersion entry on Contentstack (we haven't updated that yet)
 
     // TODO: 3. Calculate the new version based on the last FigmaVersion and whether `versionUpdate` is a PATCH, MINOR, or MAJOR
 
     // TODO: 4. POST a new entry to Contentstack with the new version, Component reference, and description
-
 
     // process figma publish data
     const updateDescription = body.description;

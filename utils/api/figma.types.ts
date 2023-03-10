@@ -19,13 +19,18 @@ export interface LibraryPublishEvent {
 }
 
 export interface FigmaVersionEvent {
-  created_at: string,
-  description: string,
-  id: string,
-  label: string,
-  thumbnail_url: string,
+  created_at: string;
+  description: string;
+  id: string;
+  label: string;
+  thumbnail_url: string;
   user: {
     id: string;
     handle: string;
   };
+}
+export interface FigmaComponentUpdate {
+  type?: 'PATCH' | 'MINOR' | 'MAJOR';
+  component?: string;
+  description?: string;
 }

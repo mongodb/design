@@ -177,13 +177,11 @@ const ComponentChangelogs = ({
             ],
           });
 
-          fetch('../../../api/figma-publish', { method: 'POST', body })
-            .then(data => data.json())
-            .then(resp => {
-              console.log(resp);
-            });
-
-          // parseComponentUpdateDescription(description);
+          fetch('../../../api/figma-publish', { method: 'POST', body });
+          // .then(data => data.json())
+          // .then(resp => {
+          //   console.log(resp);
+          // });
         }}
       >
         Test publish
