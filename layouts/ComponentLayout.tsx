@@ -23,9 +23,9 @@ import { H2 } from '@leafygreen-ui/typography';
 
 const layout = css`
   ${mq({
-  // 51px is a magic number for baseline alignment with the first SideNavGroup header
-  marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
-})}
+    // 51px is a magic number for baseline alignment with the first SideNavGroup header
+    marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
+  })}
 `;
 
 const pageHeaderStyle = css`
@@ -80,8 +80,8 @@ const tabStyles = css`
     max-width: 100%;
     overflow-x: scroll;
     ${mq({
-  padding: ['0px 8px', '0px'],
-})}
+      padding: ['0px 8px', '0px'],
+    })}
   }
 `;
 
@@ -119,12 +119,7 @@ const ComponentLinks = ({
   </div>
 );
 
-const TABS = [
-  'example',
-  'guidelines',
-  'documentation',
-  'changelogs'
-]
+const TABS = ['example', 'guidelines', 'documentation', 'changelogs'];
 
 function ComponentLayout({
   component,
@@ -144,9 +139,7 @@ function ComponentLayout({
 
   React.useEffect(() => {
     const activeTab = router.pathname.split('/').filter(subStr => !!subStr)[2];
-    setSelected(
-      TABS.indexOf(activeTab)
-    );
+    setSelected(TABS.indexOf(activeTab));
   }, [router]);
 
   return (

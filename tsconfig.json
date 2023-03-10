@@ -26,8 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     "components/**/*.tsx",
-    "utils/*.tsx",
-    "pages/*.tsx"
+    "utils/**/*.ts(x)",
+    "pages/**/*.ts(x)"
   ],
   "exclude": ["node_modules", "deprecated"]
 }
