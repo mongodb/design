@@ -1,17 +1,19 @@
 import axios from 'axios';
+import { startCase } from 'lodash';
+import { type AggregationCursor } from 'mongodb';
+import { calcNewVersion } from 'utils/api/calcNewVersion';
 
 import {
-  FigmaVersionEvent,
+  FigmaVersionsMDBDocument,
   LibraryPublishEvent,
 } from '../../utils/api/figma.types';
 import { getFigmaVersionHistory } from '../../utils/api/getFigmaVersionHistory';
 import {
   connectToFigmaVersionsCollection,
   getLatestEntries,
-  MDBClient,
+  updateFigmaUrl,
 } from '../../utils/api/mdbConnect';
 import { parseUpdatesFromFigmaDescription } from '../../utils/api/parseDescription';
-import { getComponent } from '../../utils/ContentStack/getContentstackResources';
 
 const WEBHOOK_ID = '494792';
 // const FILENAME = 'LeafyGreen Design System'
@@ -48,33 +50,28 @@ export default async function handleFigmaPublish(
     const [_, prevVersion] = versions;
     const prevVersionUrl = getVersionUrl(prevVersion);
 
-    // 2. PUT the previous Figma Link on the _last_ FigmaVersion entry for each updated component
     const { collection, close } = await connectToFigmaVersionsCollection();
     const entries = getLatestEntries({ collection, updates });
-    entries.forEach(doc => {
-      collection.updateOne(
-        { _id: doc.latest._id },
-        {
-          $set: {
-            figma_url: prevVersionUrl?.href,
-          },
-        },
-      );
+
+    // For each updated component:
+
+    entries.forEach(group => {
+      const { _id: component, latest: doc } = group;
+
+      // 2. PUT the previous Figma Link on the _last_ FigmaVersion entry
+      if (prevVersionUrl && doc.figma_url !== prevVersionUrl?.href) {
+        updateFigmaUrl({collection, id: doc._id, url: prevVersionUrl})
+      }
+
+      // 3. Calculate the new version based on the last FigmaVersion
+      // and whether `versionUpdate` is a PATCH, MINOR, or MAJOR
+      const {major, minor, patch, version} = calcNewVersion({component, updates, doc})
+
+
+      // 4. POST a new entry to MDB with the new version, Component reference, and description
+
+
     });
-
-
-    // TODO: 3. Calculate the new version based on the last FigmaVersion and whether `versionUpdate` is a PATCH, MINOR, or MAJOR
-
-    // TODO: 4. POST a new entry to Contentstack with the new version, Component reference, and description
-
-    // process figma publish data
-    const updateDescription = body.description;
-    const componentUpdates = updateDescription.split(/\n\s*\n/);
-
-    // componentUpdates.forEach(async componentUpdate => {
-    //   // console.log(`Processing line: ${componentUpdate}`)
-    //   await parseComponentUpdateDescription(componentUpdate);
-    // });
 
     // send status code 200
     res.status(200).end();

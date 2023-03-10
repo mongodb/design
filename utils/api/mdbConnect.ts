@@ -1,11 +1,15 @@
 import {
-  type Collection,
   type Document,
+  type ObjectId,
+Collection,
   MongoClient,
   ServerApiVersion,
 } from 'mongodb';
 
-import type { FigmaComponentUpdate } from './figma.types';
+import type {
+  FigmaComponentUpdate,
+  FigmaVersionsMDBDocument,
+} from './figma.types';
 
 const uri = `mongodb+srv://${process.env.MDB_USER}:${process.env.MDB_PASSWORD}@figmaversions.fctbuvl.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -15,7 +19,7 @@ export const MDBClient = new MongoClient(uri, {
 
 export async function connectToFigmaVersionsCollection() {
   await MDBClient.connect();
-  const collection = MDBClient.db('FigmaVersions').collection('versions');
+  const collection: Collection<FigmaVersionsMDBDocument> = MDBClient.db('FigmaVersions').collection('versions');
   return {
     collection,
     close: () => MDBClient.close(),
@@ -26,11 +30,14 @@ export function getLatestEntries({
   collection,
   updates,
 }: {
-  collection: Collection<Document>;
+  collection: Collection<FigmaVersionsMDBDocument>;
   updates: Array<FigmaComponentUpdate>;
 }) {
   // Get the latest entries
-  const entries = collection.aggregate([
+  const entries = collection.aggregate<{
+    _id: string;
+    latest: FigmaVersionsMDBDocument;
+  }>([
     {
       $match: {
         component: {
@@ -54,4 +61,22 @@ export function getLatestEntries({
   ]);
 
   return entries;
+}
+
+export function updateFigmaUrl({
+  collection,
+  id, url
+}: {
+  collection: Collection<FigmaVersionsMDBDocument>,
+  id: ObjectId,
+  url: URL
+}): void {
+  collection.updateOne(
+    { _id: id },
+    {
+      $set: {
+        figma_url: url.href,
+      },
+    },
+  );
 }

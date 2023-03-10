@@ -1,3 +1,4 @@
+import { Document, ObjectId } from 'mongodb';
 export interface LibraryPublishEvent {
   created_components: Array<unknown>;
   created_styles: Array<unknown>;
@@ -33,4 +34,14 @@ export interface FigmaComponentUpdate {
   type?: 'PATCH' | 'MINOR' | 'MAJOR';
   component?: string;
   description?: string;
+}
+
+export interface FigmaVersionsMDBDocument extends Document {
+  _id: ObjectId;
+  component: string;
+  version: string;
+  major: number;
+  minor: number;
+  patch: number;
+  figma_url: string;
 }
