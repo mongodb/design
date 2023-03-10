@@ -5,6 +5,9 @@ import type {
   FigmaVersionsMDBDocument,
 } from '../Figma/figma.types';
 
+/**
+ * Retrieves the latest version entry for all updated components
+ */
 export function getLatestEntries({
   collection,
   updates,

@@ -1,6 +1,9 @@
 import { connectToFigmaVersionsCollection } from './connect';
 import type { FigmaVersionsMDBDocument } from './mongodb.types';
 
+/**
+ * Retrieves version entries for a given component
+ */
 export async function getComponentEntriesArray({
   component,
   limit = 10,

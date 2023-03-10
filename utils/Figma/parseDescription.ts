@@ -1,5 +1,13 @@
 import { FigmaComponentUpdate } from './figma.types';
 
+/**
+ * Convert the formatted update string to an array of update objects.
+ *
+ * Expected `desctiption` format:
+ * `[PATCH] <ComponentName> - Update text ...
+ *  [MINOR] <ComponentName> - Update text ...
+ *  ...etc`
+ */
 export function parseUpdatesFromFigmaDescription(
   description: string,
 ): Array<FigmaComponentUpdate> | undefined {
