@@ -1,6 +1,5 @@
 import { ReactElement, useState } from 'react';
 import ComponentLayout from 'layouts/ComponentLayout';
-import { parseComponentUpdateDescription } from 'pages/api/figma-publish';
 import { containerPadding } from 'styles/globals';
 import { getChangelog } from 'utils/_getComponentResources';
 import { getComponentFigmaVersions } from 'utils/ContentStack/FigmaVersion';
