@@ -1,6 +1,4 @@
-import {
-  Collection,
-} from 'mongodb';
+import { Collection } from 'mongodb';
 
 import type {
   FigmaComponentUpdate,

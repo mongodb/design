@@ -1,14 +1,12 @@
 import axios from 'axios';
-import {startCase} from 'lodash'
+import { startCase } from 'lodash';
 import { ObjectId } from 'mongodb';
 
 import { calcNewVersion } from '../../utils/Figma/calcNewVersion';
 import { LibraryPublishEvent } from '../../utils/Figma/figma.types';
 import { getFigmaVersionHistory } from '../../utils/Figma/getFigmaVersionHistory';
 import { parseUpdatesFromFigmaDescription } from '../../utils/Figma/parseDescription';
-import {
-  connectToFigmaVersionsCollection,
-} from '../../utils/MongoDB/connect';
+import { connectToFigmaVersionsCollection } from '../../utils/MongoDB/connect';
 import { getLatestEntries } from '../../utils/MongoDB/getLatestEntries';
 import { updateFigmaUrl } from '../../utils/MongoDB/updateFigmaUrl';
 
@@ -83,7 +81,7 @@ export default async function handleFigmaPublish(
           patch,
           version,
           figma_url: currVersionUrl?.href,
-        })
+        });
       }
     });
 

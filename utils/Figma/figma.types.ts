@@ -51,12 +51,12 @@ export interface FigmaVersionsMDBDocument extends Document {
   /**
    * What type of update this was
    */
-  update_type?:  FigmaComponentUpdate['type']
+  update_type?: FigmaComponentUpdate['type'];
 
   /**
    * Update description
    */
-  description?: string,
+  description?: string;
 
   /**
    * A direct link to the Figma version
@@ -66,5 +66,5 @@ export interface FigmaVersionsMDBDocument extends Document {
   /**
    * The associated React component version
    */
-  react_version?: string
+  react_version?: string;
 }

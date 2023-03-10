@@ -11,7 +11,6 @@ export function calcNewVersion({
   update: FigmaComponentUpdate;
   doc: FigmaVersionsMDBDocument;
 }) {
-
   let { major, minor, patch } = doc;
   if (update?.type === 'MAJOR') major++;
   else if (update?.type === 'MINOR') minor++;

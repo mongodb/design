@@ -1,8 +1,4 @@
-
-import {
-  type ObjectId,
-  Collection,
-} from 'mongodb';
+import { type ObjectId, Collection } from 'mongodb';
 
 import { FigmaVersionsMDBDocument } from './mongodb.types';
 
