@@ -42,6 +42,7 @@ function sortVersions(a: FigmaVersionField, z: FigmaVersionField) {
 
 /**
  * @returns all FigmaVersion entries for given component
+ * @deprecated
  */
 export async function getComponentFigmaVersions(
   componentUid: string,
@@ -60,6 +61,7 @@ export async function getComponentFigmaVersions(
 
 /**
  * @returns the last FigmaVersion for the given component
+ * @deprecated
  */
 export async function getLastComponentFigmaVersion(
   componentUid: string,

@@ -4,16 +4,14 @@ import { FigmaComponentUpdate, FigmaVersionsMDBDocument } from './figma.types';
 
 export function calcNewVersion({
   component,
-  updates,
+  update,
   doc,
 }: {
   component: string;
-  updates: Array<FigmaComponentUpdate>;
+  update: FigmaComponentUpdate;
   doc: FigmaVersionsMDBDocument;
 }) {
-  const update = updates.find(
-    up => startCase(up.component) === startCase(component),
-  );
+
   let { major, minor, patch } = doc;
   if (update?.type === 'MAJOR') major++;
   else if (update?.type === 'MINOR') minor++;

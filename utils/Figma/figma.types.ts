@@ -38,10 +38,33 @@ export interface FigmaComponentUpdate {
 
 export interface FigmaVersionsMDBDocument extends Document {
   _id: ObjectId;
+
+  /**
+   * The component name
+   */
   component: string;
   version: string;
   major: number;
   minor: number;
   patch: number;
+
+  /**
+   * What type of update this was
+   */
+  update_type?:  FigmaComponentUpdate['type']
+
+  /**
+   * Update description
+   */
+  description?: string,
+
+  /**
+   * A direct link to the Figma version
+   */
   figma_url?: string;
+
+  /**
+   * The associated React component version
+   */
+  react_version?: string
 }

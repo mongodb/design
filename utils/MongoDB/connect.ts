@@ -1,5 +1,4 @@
 import {
-  Collection,
   MongoClient,
   ServerApiVersion,
 } from 'mongodb';
@@ -16,10 +15,13 @@ export const MDBClient = new MongoClient(uri, {
 
 export async function connectToFigmaVersionsCollection() {
   await MDBClient.connect();
-  const collection: Collection<FigmaVersionsMDBDocument> =
-    MDBClient.db('FigmaVersions').collection('versions');
+  const collection = MDBClient
+    .db('FigmaVersions')
+    .collection<FigmaVersionsMDBDocument>('versions');
+
   return {
     collection,
     close: () => MDBClient.close(),
   };
+
 }

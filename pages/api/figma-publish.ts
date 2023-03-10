@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {startCase} from 'lodash'
 import { ObjectId } from 'mongodb';
 
 import { calcNewVersion } from '../../utils/Figma/calcNewVersion';
@@ -50,7 +51,6 @@ export default async function handleFigmaPublish(
     const entries = getLatestEntries({ collection, updates });
 
     // For each updated component:
-
     entries.forEach(group => {
       const { _id: component, latest: doc } = group;
 
@@ -61,25 +61,33 @@ export default async function handleFigmaPublish(
 
       // 3. Calculate the new version based on the last FigmaVersion
       // and whether `versionUpdate` is a PATCH, MINOR, or MAJOR
-      const { major, minor, patch, version } = calcNewVersion({
-        component,
-        updates,
-        doc,
-      });
+      const update = updates.find(
+        up => startCase(up.component) === startCase(component),
+      );
 
-      // 4. POST a new entry to MDB with the new version, Component, and description
-      collection.insertOne({
-        _id: new ObjectId(),
-        component,
-        major,
-        minor,
-        patch,
-        version,
-        figma_url: currVersionUrl?.href,
-      });
+      if (update) {
+        const { major, minor, patch, version } = calcNewVersion({
+          component,
+          update,
+          doc,
+        });
+
+        // 4. POST a new entry to MDB with the new version, Component, and description
+        collection.insertOne({
+          _id: new ObjectId(),
+          component,
+          update_type: update.type,
+          description: update.description,
+          major,
+          minor,
+          patch,
+          version,
+          figma_url: currVersionUrl?.href,
+        })
+      }
     });
 
-    closeDB();
+    // closeDB();
     // send status code 200
     res.status(200).end();
   } else if (req.method === 'GET') {
