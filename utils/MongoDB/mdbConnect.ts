@@ -8,7 +8,7 @@ import {
 import type {
   FigmaComponentUpdate,
   FigmaVersionsMDBDocument,
-} from './figma.types';
+} from '../Figma/figma.types';
 
 const uri = `mongodb+srv://${process.env.MDB_USER}:${process.env.MDB_PASSWORD}@figmaversions.fctbuvl.mongodb.net/?retryWrites=true&w=majority`;
 

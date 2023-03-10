@@ -1,4 +1,4 @@
-import { FigmaVersionEvent, LibraryPublishEvent } from 'utils/api/figma.types';
+import { FigmaVersionEvent, LibraryPublishEvent } from 'utils/Figma/figma.types';
 
 export async function getFigmaVersionHistory(requestBody: LibraryPublishEvent) {
   const { versions } = await fetch(
