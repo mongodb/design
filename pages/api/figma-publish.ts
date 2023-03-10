@@ -1,15 +1,15 @@
 import axios from 'axios';
 import { ObjectId } from 'mongodb';
-import { calcNewVersion } from 'utils/Figma/calcNewVersion';
 
+import { calcNewVersion } from '../../utils/Figma/calcNewVersion';
 import { LibraryPublishEvent } from '../../utils/Figma/figma.types';
 import { getFigmaVersionHistory } from '../../utils/Figma/getFigmaVersionHistory';
 import { parseUpdatesFromFigmaDescription } from '../../utils/Figma/parseDescription';
 import {
   connectToFigmaVersionsCollection,
-  getLatestEntries,
-  updateFigmaUrl,
-} from '../../utils/MongoDB/mdbConnect';
+} from '../../utils/MongoDB/connect';
+import { getLatestEntries } from '../../utils/MongoDB/getLatestEntries';
+import { updateFigmaUrl } from '../../utils/MongoDB/updateFigmaUrl';
 
 const WEBHOOK_ID = '494792';
 // const FILENAME = 'LeafyGreen Design System'
