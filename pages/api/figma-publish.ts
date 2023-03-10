@@ -1,45 +1,93 @@
 import axios from 'axios';
-import { getLastComponentFigmaVersion } from 'utils/ContentStack/FigmaVersion';
+import { startCase } from 'lodash';
+import { ObjectId } from 'mongodb';
+
+import { calcNewVersion } from '../../utils/Figma/calcNewVersion';
+import { LibraryPublishEvent } from '../../utils/Figma/figma.types';
+import { getFigmaVersionHistory } from '../../utils/Figma/getFigmaVersionHistory';
+import { parseUpdatesFromFigmaDescription } from '../../utils/Figma/parseDescription';
+import { connectToFigmaVersionsCollection } from '../../utils/MongoDB/connect';
+import { getLatestEntries } from '../../utils/MongoDB/getLatestEntries';
+import { updateFigmaUrl } from '../../utils/MongoDB/updateFigmaUrl';
 
 const WEBHOOK_ID = '494792';
 // const FILENAME = 'LeafyGreen Design System'
 const FILENAME = 'Skunkworks Test DS';
 
-export const parseComponentUpdateDescription = async description => {
-  const versionUpdate = description.split(/\[(.*?)\]/)[1];
-  const componentName = description.split(/\](.*?)-/)[1].trim();
-
-  // 1. GET the URL to the second last publish from Figma's version history API
-  // 2. PUT the Figma Link on the last FigmaVersion entry on Contentstack
-  getComponent(componentName).then(component => {
-    getLastComponentFigmaVersion(component ? component.uid : '').then(res => {
-      // 3. Calculate the new version based on the last FigmaVersion and whether `versionUpdate` is a PATCH, MINOR, or MAJOR
-      // 4. POST a new entry to Contentstack with the new version, Component reference, and description
-    });
-  });
-};
-
-export default async function handler(req, res) {
+export default async function handleFigmaPublish(
+  req: {
+    method: 'POST' | 'GET' | 'PUT';
+    body: string;
+  },
+  res,
+) {
   if (req.method === 'POST') {
-    const updatedFile = req.body.file_name;
-    const requestWebhookId = req.body.webhook_id;
+    const body: LibraryPublishEvent = JSON.parse(req.body);
+    const updatedFile = body.file_name;
+    const requestWebhookId = body.webhook_id;
 
-    if (updatedFile !== FILENAME || requestWebhookId !== WEBHOOK_ID) {
+    const updates = parseUpdatesFromFigmaDescription(body.description);
+
+    if (
+      updatedFile !== FILENAME ||
+      requestWebhookId !== WEBHOOK_ID ||
+      !updates
+    ) {
       res.status(403);
       return;
     }
 
-    // process figma publish data
-    const updateDescription = req.body.description;
-    const componentUpdates = updateDescription.split(/\n\s*\n/);
+    // 1. GET the URL to the _second last_ publish from Figma's version history API
+    // (the _last_ publish is the current one)
+    const { versions, getVersionUrl } = await getFigmaVersionHistory(body);
+    const [currentVersion, prevVersion] = versions;
+    const currVersionUrl = getVersionUrl(currentVersion);
+    const prevVersionUrl = getVersionUrl(prevVersion);
 
-    componentUpdates.forEach(async componentUpdate => {
-      console.log(`Processing line: ${componentUpdate}`);
-      await parseComponentUpdateDescription(componentUpdate);
+    const { collection, close: closeDB } =
+      await connectToFigmaVersionsCollection();
+    const entries = getLatestEntries({ collection, updates });
+
+    // For each updated component:
+    entries.forEach(group => {
+      const { _id: component, latest: doc } = group;
+
+      // 2. PUT the previous Figma Link on the _last_ FigmaVersion entry
+      if (prevVersionUrl && doc.figma_url !== prevVersionUrl?.href) {
+        updateFigmaUrl({ collection, id: doc._id, url: prevVersionUrl });
+      }
+
+      // 3. Calculate the new version based on the last FigmaVersion
+      // and whether `versionUpdate` is a PATCH, MINOR, or MAJOR
+      const update = updates.find(
+        up => startCase(up.component) === startCase(component),
+      );
+
+      if (update) {
+        const { major, minor, patch, version } = calcNewVersion({
+          component,
+          update,
+          doc,
+        });
+
+        // 4. POST a new entry to MDB with the new version, Component, and description
+        collection.insertOne({
+          _id: new ObjectId(),
+          component,
+          update_type: update.type,
+          description: update.description,
+          major,
+          minor,
+          patch,
+          version,
+          figma_url: currVersionUrl?.href,
+        });
+      }
     });
 
+    // closeDB();
     // send status code 200
-    res.status(200);
+    res.status(200).end();
   } else if (req.method === 'GET') {
     // get latest figma publish
     const figmaWebhooks = await axios.get(
