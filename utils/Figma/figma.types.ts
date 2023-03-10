@@ -56,7 +56,7 @@ export interface FigmaVersionsMDBDocument extends Document {
   /**
    * When was this updated
    */
-  updated_on: Date
+  updated_on: Date;
 
   /**
    * Update description

@@ -17,7 +17,7 @@ import {
   SegmentedControlOption,
 } from '@leafygreen-ui/segmented-control';
 import { spacing } from '@leafygreen-ui/tokens';
-import { Body, H2, H3, Link, Subtitle } from '@leafygreen-ui/typography';
+import { Body, H3, Link, Subtitle } from '@leafygreen-ui/typography';
 
 import { css, cx } from '@emotion/css';
 
