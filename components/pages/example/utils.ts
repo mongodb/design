@@ -129,9 +129,9 @@ function getPropItemToKnobTypeMapFn({
         StoryFn,
         TSDocProp,
       }),
-      args: getOtherControlArgs({meta, StoryFn, TSDocProp})
-    } as KnobType
-  }
+      args: getOtherControlArgs({ meta, StoryFn, TSDocProp }),
+    } as KnobType;
+  };
 }
 
 /**
@@ -233,9 +233,13 @@ function getOtherControlArgs({
 }: MetadataSources): object | undefined {
   const SBInputType = getSBInputType({ meta, StoryFn, TSDocProp });
 
-  if (SBInputType && SBInputType.control && typeof SBInputType.control === 'object') {
-    const {type, ...args} = SBInputType.control
-    return args
+  if (
+    SBInputType &&
+    SBInputType.control &&
+    typeof SBInputType.control === 'object'
+  ) {
+    const { type, ...args } = SBInputType.control;
+    return args;
   }
 }
 

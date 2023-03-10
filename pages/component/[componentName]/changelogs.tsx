@@ -2,19 +2,26 @@ import { ReactElement, useState } from 'react';
 import ComponentLayout from 'layouts/ComponentLayout';
 import { containerPadding } from 'styles/globals';
 import { getChangelog } from 'utils/_getComponentResources';
-import { getComponent, getComponentFigmaVersions } from 'utils/ContentStack/getContentstackResources';
+import {
+  getComponent,
+  getComponentFigmaVersions,
+} from 'utils/ContentStack/getContentstackResources';
 import { getStaticComponentPaths } from 'utils/ContentStack/getStaticComponent';
 
-import { spacing } from '@leafygreen-ui/tokens';
-
-import { css, cx } from '@emotion/css';
-import Button from '@leafygreen-ui/button';
-import { palette } from '@leafygreen-ui/palette';
-import { SegmentedControl, SegmentedControlOption } from '@leafygreen-ui/segmented-control';
 import FigmaIcon from 'components/icons/FigmaIcon';
 import ReactIcon from 'components/icons/ReactIcon';
-import { Body, H3, Link } from '@leafygreen-ui/typography';
+
+import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
+import { palette } from '@leafygreen-ui/palette';
+import {
+  SegmentedControl,
+  SegmentedControlOption,
+} from '@leafygreen-ui/segmented-control';
+import { spacing } from '@leafygreen-ui/tokens';
+import { Body, H3, Link } from '@leafygreen-ui/typography';
+
+import { css, cx } from '@emotion/css';
 
 interface DocsPageProps {
   componentName: string;
@@ -55,9 +62,7 @@ const ComponentChangelogs = ({
       )}
     >
       <div style={{ width: '400px' }}>
-        <SegmentedControl
-          onChange={setDisplayedLogs}
-        >
+        <SegmentedControl onChange={setDisplayedLogs}>
           <SegmentedControlOption value="figma">
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <FigmaIcon />
@@ -69,18 +74,24 @@ const ComponentChangelogs = ({
           <SegmentedControlOption value="react">
             <div style={{ display: 'inline-flex', alignItems: 'center' }}>
               <ReactIcon />
-              <span style={{ marginLeft: '4px' }}>
-                React - v{reactVersion}
-              </span>
+              <span style={{ marginLeft: '4px' }}>React - v{reactVersion}</span>
             </div>
           </SegmentedControlOption>
         </SegmentedControl>
       </div>
-      <div className={css`padding: ${spacing[3]}px 0;`}>
+      <div
+        className={css`
+          padding: ${spacing[3]}px 0;
+        `}
+      >
         {displayedLogs === 'figma' ? (
           <>
             {figmaChangelog.map(figmaVersion => (
-              <div className={css`margin-bottom: ${spacing[3]}px;`}>
+              <div
+                className={css`
+                  margin-bottom: ${spacing[3]}px;
+                `}
+              >
                 <H3>{figmaVersion.title}</H3>
                 <Body
                   className={css`
@@ -94,8 +105,7 @@ const ComponentChangelogs = ({
                     <Link
                       target="_blank"
                       href={figmaVersion.figma_link}
-                      className={
-                        css`
+                      className={css`
                         span {
                           display: inline-flex;
                           align-items: center;
@@ -109,9 +119,11 @@ const ComponentChangelogs = ({
                   {figmaVersion.react_version && (
                     <Link
                       target="_blank"
-                      href={`https://github.com/mongodb/leafygreen-ui/blob/main/packages/${componentName}/CHANGELOG.md#${figmaVersion.react_version.replaceAll('.', '')}`}
-                      className={
-                        css`
+                      href={`https://github.com/mongodb/leafygreen-ui/blob/main/packages/${componentName}/CHANGELOG.md#${figmaVersion.react_version.replaceAll(
+                        '.',
+                        '',
+                      )}`}
+                      className={css`
                         span {
                           display: inline-flex;
                           align-items: center;
@@ -152,9 +164,19 @@ export async function getStaticProps({ params: { componentName } }) {
   const component = await getComponent(componentName, {
     includeContent: false,
   });
-  const figmaChangelog = await getComponentFigmaVersions(component ? component.uid : '')
-  console.log(figmaChangelog[0].component)
-  return { props: { componentName, component, changelog, reactVersion, figmaChangelog } };
+  const figmaChangelog = await getComponentFigmaVersions(
+    component ? component.uid : '',
+  );
+  console.log(figmaChangelog[0].component);
+  return {
+    props: {
+      componentName,
+      component,
+      changelog,
+      reactVersion,
+      figmaChangelog,
+    },
+  };
 }
 
 export default ComponentChangelogs;
