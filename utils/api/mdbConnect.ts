@@ -1,7 +1,6 @@
 import {
-  type Document,
   type ObjectId,
-Collection,
+  Collection,
   MongoClient,
   ServerApiVersion,
 } from 'mongodb';
@@ -19,7 +18,8 @@ export const MDBClient = new MongoClient(uri, {
 
 export async function connectToFigmaVersionsCollection() {
   await MDBClient.connect();
-  const collection: Collection<FigmaVersionsMDBDocument> = MDBClient.db('FigmaVersions').collection('versions');
+  const collection: Collection<FigmaVersionsMDBDocument> =
+    MDBClient.db('FigmaVersions').collection('versions');
   return {
     collection,
     close: () => MDBClient.close(),
@@ -65,11 +65,12 @@ export function getLatestEntries({
 
 export function updateFigmaUrl({
   collection,
-  id, url
+  id,
+  url,
 }: {
-  collection: Collection<FigmaVersionsMDBDocument>,
-  id: ObjectId,
-  url: URL
+  collection: Collection<FigmaVersionsMDBDocument>;
+  id: ObjectId;
+  url: URL;
 }): void {
   collection.updateOne(
     { _id: id },

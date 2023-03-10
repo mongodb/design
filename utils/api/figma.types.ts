@@ -43,5 +43,5 @@ export interface FigmaVersionsMDBDocument extends Document {
   major: number;
   minor: number;
   patch: number;
-  figma_url: string;
+  figma_url?: string;
 }

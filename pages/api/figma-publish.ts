@@ -1,12 +1,8 @@
 import axios from 'axios';
-import { startCase } from 'lodash';
-import { type AggregationCursor } from 'mongodb';
+import { ObjectId } from 'mongodb';
 import { calcNewVersion } from 'utils/api/calcNewVersion';
 
-import {
-  FigmaVersionsMDBDocument,
-  LibraryPublishEvent,
-} from '../../utils/api/figma.types';
+import { LibraryPublishEvent } from '../../utils/api/figma.types';
 import { getFigmaVersionHistory } from '../../utils/api/getFigmaVersionHistory';
 import {
   connectToFigmaVersionsCollection,
@@ -27,8 +23,6 @@ export default async function handleFigmaPublish(
   res,
 ) {
   if (req.method === 'POST') {
-    console.clear();
-
     const body: LibraryPublishEvent = JSON.parse(req.body);
     const updatedFile = body.file_name;
     const requestWebhookId = body.webhook_id;
@@ -47,10 +41,12 @@ export default async function handleFigmaPublish(
     // 1. GET the URL to the _second last_ publish from Figma's version history API
     // (the _last_ publish is the current one)
     const { versions, getVersionUrl } = await getFigmaVersionHistory(body);
-    const [_, prevVersion] = versions;
+    const [currentVersion, prevVersion] = versions;
+    const currVersionUrl = getVersionUrl(currentVersion);
     const prevVersionUrl = getVersionUrl(prevVersion);
 
-    const { collection, close } = await connectToFigmaVersionsCollection();
+    const { collection, close: closeDB } =
+      await connectToFigmaVersionsCollection();
     const entries = getLatestEntries({ collection, updates });
 
     // For each updated component:
@@ -60,19 +56,30 @@ export default async function handleFigmaPublish(
 
       // 2. PUT the previous Figma Link on the _last_ FigmaVersion entry
       if (prevVersionUrl && doc.figma_url !== prevVersionUrl?.href) {
-        updateFigmaUrl({collection, id: doc._id, url: prevVersionUrl})
+        updateFigmaUrl({ collection, id: doc._id, url: prevVersionUrl });
       }
 
       // 3. Calculate the new version based on the last FigmaVersion
       // and whether `versionUpdate` is a PATCH, MINOR, or MAJOR
-      const {major, minor, patch, version} = calcNewVersion({component, updates, doc})
+      const { major, minor, patch, version } = calcNewVersion({
+        component,
+        updates,
+        doc,
+      });
 
-
-      // 4. POST a new entry to MDB with the new version, Component reference, and description
-
-
+      // 4. POST a new entry to MDB with the new version, Component, and description
+      collection.insertOne({
+        _id: new ObjectId(),
+        component,
+        major,
+        minor,
+        patch,
+        version,
+        figma_url: currVersionUrl?.href,
+      });
     });
 
+    closeDB();
     // send status code 200
     res.status(200).end();
   } else if (req.method === 'GET') {
