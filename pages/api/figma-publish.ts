@@ -31,18 +31,26 @@ export default async function handleFigmaPublish(
       requestWebhookId !== WEBHOOK_ID ||
       !figmaUpdateList
     ) {
-      res.status(403);
+      res.status(403).error('No updates found.');
       return;
     }
 
     // 1. GET the URL to the _second last_ publish from Figma's version history API
     // (the _last_ publish is the current one)
-    const { versions, getVersionUrl } = await getFigmaVersionHistory(body);
-    const [currentVersion] = versions;
+    const versionHistory = await getFigmaVersionHistory(body);
+
+    if (!versionHistory) {
+      res.status(403).error('Could not access Figma');
+      return;
+    }
+
+    const {
+      versions: [currentVersion],
+      getVersionUrl,
+    } = versionHistory;
     const currVersionUrl = getVersionUrl(currentVersion);
 
-    const { collection } =
-      await connectToFigmaVersionsCollection();
+    const { collection } = await connectToFigmaVersionsCollection();
     const entries = await getLatestEntries({
       collection,
       updates: figmaUpdateList,
@@ -76,7 +84,6 @@ export default async function handleFigmaPublish(
       });
     });
 
-    // closeDB();
     // send status code 200
     res.status(200);
   } else if (req.method === 'GET') {

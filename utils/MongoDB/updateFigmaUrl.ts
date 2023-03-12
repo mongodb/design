@@ -2,6 +2,9 @@ import { type ObjectId, Collection } from 'mongodb';
 
 import { FigmaVersionsMDBDocument } from './mongodb.types';
 
+/**
+ * Updates the `figma_url` field of an entry
+ */
 export function updateFigmaUrl({
   collection,
   id,
