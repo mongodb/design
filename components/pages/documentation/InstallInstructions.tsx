@@ -1,13 +1,9 @@
 import { useState } from 'react';
 
-import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
 import Copyable from '@leafygreen-ui/copyable';
 import { css, cx } from '@leafygreen-ui/emotion';
 import { useViewportSize } from '@leafygreen-ui/hooks';
-import ActivityFeedIcon from '@leafygreen-ui/icon/dist/ActivityFeed';
-import Modal from '@leafygreen-ui/modal';
-import { palette } from '@leafygreen-ui/palette';
 import {
   SegmentedControl,
   SegmentedControlOption,
@@ -30,68 +26,7 @@ const subtitlePadding = css`
   padding-bottom: ${spacing[3]}px;
 `;
 
-const changelogStyles = css`
-  color: ${palette.gray.dark3};
-  pointer-events: none;
-
-  & > h2 {
-    padding-top: ${spacing[3]}px;
-    border-top: 1px solid ${palette.gray.light2};
-  }
-
-  a {
-    color: ${palette.gray.dark3};
-    text-decoration: none;
-  }
-`;
-
-interface VersionCardProps {
-  version?: string;
-  changelog: string;
-  isMobile?: boolean;
-}
-function VersionCard({
-  version,
-  changelog,
-  isMobile = false,
-}: VersionCardProps) {
-  const [openModal, setOpenModal] = useState(false);
-
-  return (
-    <Card className={cx(topAlignment, cardStyle)}>
-      <Subtitle as="h2" className={subtitlePadding}>
-        Version {version}
-      </Subtitle>
-      <Button
-        size={isMobile ? 'large' : 'default'}
-        leftGlyph={<ActivityFeedIcon />}
-        onClick={() => setOpenModal(curr => !curr)}
-        className={cx({
-          [css`
-            width: 100%;
-          `]: isMobile,
-        })}
-      >
-        View Changelog
-      </Button>
-      <Modal
-        className={css`
-          z-index: 1;
-        `}
-        open={openModal}
-        setOpen={setOpenModal}
-      >
-        <div
-          className={changelogStyles}
-          dangerouslySetInnerHTML={{ __html: changelog }}
-        ></div>
-      </Modal>
-    </Card>
-  );
-}
-
-export const InstallInstructions = ({ componentKebabCaseName, changelog }) => {
-  const version = changelog?.split('h2')[1]?.replace(/[>/<]+/g, '');
+export const InstallInstructions = ({ componentKebabCaseName }) => {
   const viewport = useViewportSize();
   const isMobile = viewport?.width
     ? viewport?.width < breakpoints.Tablet
@@ -138,8 +73,6 @@ export const InstallInstructions = ({ componentKebabCaseName, changelog }) => {
           </Copyable>
         </div>
       </Card>
-
-      {/* <VersionCard version={version} changelog={changelog} /> */}
     </div>
   );
 };

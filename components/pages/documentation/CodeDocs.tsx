@@ -9,7 +9,6 @@ import { InstallInstructions } from './InstallInstructions';
 
 function CodeDocs({
   componentKebabCaseName,
-  changelog,
   tsDoc,
 }: BaseLayoutProps & { tsDoc?: Array<CustomComponentDoc> }) {
   const tsDocArray = tsDoc?.sort(
@@ -32,7 +31,6 @@ function CodeDocs({
     <>
       <InstallInstructions
         componentKebabCaseName={componentKebabCaseName}
-        changelog={changelog}
       />
       {tsDocArray && tsDocArray.length > 0 ? (
         <TSDocPropTableSection tsDocArray={tsDocArray} />

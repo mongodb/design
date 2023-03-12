@@ -54,9 +54,9 @@ export interface FigmaVersionsMDBDocument extends Document {
   update_type?: FigmaComponentUpdate['type'];
 
   /**
-   * When was this updated
+   * When the MDB document was created
    */
-  updated_on: Date
+  created_at: Date
 
   /**
    * Update description

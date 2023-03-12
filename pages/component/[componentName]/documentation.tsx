@@ -14,14 +14,12 @@ import { css, cx } from '@emotion/css';
 
 interface DocsPageProps {
   componentName: string;
-  changelog: string;
   readme: string;
   tsDoc: Array<CustomComponentDoc>;
 }
 
 const ComponentDocumentation = ({
   componentName,
-  changelog,
   readme,
   tsDoc,
 }: DocsPageProps) => {
@@ -37,7 +35,6 @@ const ComponentDocumentation = ({
       <CodeDocs
         componentName={componentName}
         componentKebabCaseName={componentName}
-        changelog={changelog}
         readme={readme}
         tsDoc={tsDoc}
       />
@@ -55,13 +52,13 @@ export const getStaticPaths = getStaticComponentPaths;
 
 export async function getStaticProps({ params: { componentName } }) {
   const {
-    props: { changelog, readme, tsDoc },
+    props: { readme, tsDoc },
   } = await getDependencyDocumentation(componentName);
 
   const component = await getComponent(componentName, {
     includeContent: false,
   });
-  return { props: { componentName, component, changelog, readme, tsDoc } };
+  return { props: { componentName, component, readme, tsDoc } };
 }
 
 export default ComponentDocumentation;

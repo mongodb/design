@@ -3,7 +3,11 @@
     "baseUrl": ".",
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
@@ -26,8 +30,11 @@
     "**/*.ts",
     "**/*.tsx",
     "components/**/*.tsx",
-    "utils/**/*.ts(x)",
-    "pages/**/*.ts(x)"
+    "utils/**/*.tsx",
+    "pages/**/*.tsx"
   ],
-  "exclude": ["node_modules", "deprecated"]
+  "exclude": [
+    "node_modules",
+    "deprecated"
+  ]
 }

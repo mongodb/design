@@ -41,7 +41,7 @@ export default async function handleFigmaPublish(
     const [currentVersion] = versions;
     const currVersionUrl = getVersionUrl(currentVersion);
 
-    const { collection, close: closeDB } =
+    const { collection } =
       await connectToFigmaVersionsCollection();
     const entries = await getLatestEntries({
       collection,
@@ -67,7 +67,7 @@ export default async function handleFigmaPublish(
         component: update.component,
         update_type: update.type,
         description: update.description,
-        updated_on: new Date(),
+        created_at: new Date(),
         major,
         minor,
         patch,
@@ -76,7 +76,7 @@ export default async function handleFigmaPublish(
       });
     });
 
-    closeDB();
+    // closeDB();
     // send status code 200
     res.status(200);
   } else if (req.method === 'GET') {
@@ -85,7 +85,7 @@ export default async function handleFigmaPublish(
       `https://api.figma.com/v2/webhooks/${WEBHOOK_ID}/requests`,
       {
         headers: {
-          'X-Figma-Token': 'figd_5ODeNnl6Vxrzxm_SlWoCPPhryHogBr7ilLxy8u17',
+          'X-Figma-Token': process.env.FIGMA_TOKEN,
         },
       },
     );
