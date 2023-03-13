@@ -55,7 +55,10 @@ const ComponentChangelogs = ({
         `}
       >
         {displayedLogs === 'figma' ? (
-          <FigmaChangelogs componentName={componentName} figmaEntries={figmaEntries} />
+          <FigmaChangelogs
+            componentName={componentName}
+            figmaEntries={figmaEntries}
+          />
         ) : (
           <ReactChangelogs reactChangelogs={reactChangelogs} />
         )}
