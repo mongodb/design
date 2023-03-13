@@ -55,8 +55,10 @@ export interface FigmaVersionsMDBDocument extends Document {
 
   /**
    * When the MDB document was created
+   *
+   * @type Date.toString();
    */
-  created_at: Date
+  created_at: string;
 
   /**
    * Update description

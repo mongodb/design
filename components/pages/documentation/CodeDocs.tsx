@@ -29,9 +29,7 @@ function CodeDocs({
 
   return (
     <>
-      <InstallInstructions
-        componentKebabCaseName={componentKebabCaseName}
-      />
+      <InstallInstructions componentKebabCaseName={componentKebabCaseName} />
       {tsDocArray && tsDocArray.length > 0 ? (
         <TSDocPropTableSection tsDocArray={tsDocArray} />
       ) : (
