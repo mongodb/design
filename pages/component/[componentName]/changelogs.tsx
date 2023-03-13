@@ -24,6 +24,7 @@ interface DocsPageProps {
 }
 
 const ComponentChangelogs = ({
+  componentName,
   reactChangelogs,
   reactVersion,
   figmaEntries: figmaEntriesString,
@@ -54,7 +55,7 @@ const ComponentChangelogs = ({
         `}
       >
         {displayedLogs === 'figma' ? (
-          <FigmaChangelogs figmaEntries={figmaEntries} />
+          <FigmaChangelogs componentName={componentName} figmaEntries={figmaEntries} />
         ) : (
           <ReactChangelogs reactChangelogs={reactChangelogs} />
         )}
@@ -87,6 +88,7 @@ export async function getStaticProps({ params: { componentName } }) {
 
   return {
     props: {
+      componentName,
       component,
       reactChangelogs,
       reactVersion,

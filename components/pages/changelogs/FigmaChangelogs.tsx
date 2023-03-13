@@ -15,7 +15,7 @@ import {
 
 import { css } from '@emotion/css';
 
-const FigmaChangelogs = ({ figmaEntries }) => {
+const FigmaChangelogs = ({ componentName, figmaEntries }) => {
   return (
     <>
       {figmaEntries &&

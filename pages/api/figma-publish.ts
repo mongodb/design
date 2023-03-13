@@ -75,7 +75,7 @@ export default async function handleFigmaPublish(
         component: update.component,
         update_type: update.type,
         description: update.description,
-        created_at: new Date(),
+        created_at: new Date().toString(),
         major,
         minor,
         patch,
