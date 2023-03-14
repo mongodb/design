@@ -39,8 +39,8 @@ export type KnobType = PropItem & {
     max?: number;
     step?: number;
     disabled?: boolean;
-    [key: string]: any
-  }
+    [key: string]: any;
+  };
 };
 
 export interface LiveExampleState {
