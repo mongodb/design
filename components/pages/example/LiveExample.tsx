@@ -163,7 +163,7 @@ export const LiveExample = ({
               <StoryFn {...knobValues} />
             </div>
           ) : (
-            <H2>No example found 🕵️</H2>
+            <H2>React Component coming soon ⚛️</H2>
           )}
         </div>
         {!disableCodeExampleFor.includes(componentName) && (
