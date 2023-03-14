@@ -17,7 +17,7 @@ const AnnotatedImageBlock = ({ entry }) => {
       `}
     >
       <ImageContainer>
-        <img src={entry.image.url} alt={entry.title} />
+        <img src={entry.image?.url} alt={entry.title} />
       </ImageContainer>
       <StyledList>
         {entry.steps.map(obj => (
