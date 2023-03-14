@@ -119,6 +119,8 @@ const ComponentLinks = ({
   </div>
 );
 
+const TABS = ['example', 'guidelines', 'documentation', 'changelogs'];
+
 function ComponentLayout({
   component,
   children,
@@ -137,9 +139,7 @@ function ComponentLayout({
 
   React.useEffect(() => {
     const activeTab = router.pathname.split('/').filter(subStr => !!subStr)[2];
-    setSelected(
-      activeTab === 'example' ? 0 : activeTab === 'guidelines' ? 1 : 2,
-    );
+    setSelected(TABS.indexOf(activeTab));
   }, [router]);
 
   return (
@@ -201,6 +201,12 @@ function ComponentLayout({
               href={`/component/${kebabCase(component.title)}/documentation`}
             >
               <div className={codeDocsPageStyles}>{children}</div>
+            </Tab>
+            <Tab
+              name="Changelogs"
+              href={`/component/${kebabCase(component.title)}/changelogs`}
+            >
+              <div>{children}</div>
             </Tab>
           </Tabs>
         </div>

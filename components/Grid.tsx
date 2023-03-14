@@ -32,10 +32,10 @@ const Wrap = {
   WrapReverse: 'wrap-reverse',
 };
 
-type Direction = typeof Direction[keyof typeof Direction];
-type Align = typeof Align[keyof typeof Align];
-type Justify = typeof Justify[keyof typeof Justify];
-type Wrap = typeof Wrap[keyof typeof Wrap];
+type Direction = (typeof Direction)[keyof typeof Direction];
+type Align = (typeof Align)[keyof typeof Align];
+type Justify = (typeof Justify)[keyof typeof Justify];
+type Wrap = (typeof Wrap)[keyof typeof Wrap];
 
 type GridContainerProps = JSX.IntrinsicElements['div'] & {
   direction?: Direction;

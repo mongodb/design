@@ -44,6 +44,5 @@ export interface ComponentFields extends ComponentPageMeta {
 export interface BaseLayoutProps {
   componentName: string;
   componentKebabCaseName: string;
-  changelog: string;
   readme: string;
 }

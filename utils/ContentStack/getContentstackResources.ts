@@ -66,6 +66,7 @@ export async function getComponent(
       ])
       .toJSON()
       .find();
+
     return result[0][0];
   } catch (error) {
     console.error('Component page not found', error);
