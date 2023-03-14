@@ -22,8 +22,8 @@ export const getCSNodeTextContent = (node?: CSNode): string => {
 
 export const nodeHasAssets = (node: CSNode): boolean => {
   if (['asset', 'entry', 'reference'].includes(node.type)) {
-    return true
+    return true;
   } else {
-    return node.children && node.children.some(child => nodeHasAssets(child))
+    return node.children && node.children.some(child => nodeHasAssets(child));
   }
-}
+};

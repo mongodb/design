@@ -47,7 +47,7 @@ const ExampleCardBlock = ({ entry }: { entry: ExampleCardBlockProps }) => {
          * is not a `CSNode` type
          */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={entry.image.url} alt={entry.title} />
+        <img src={entry.image?.url} alt={entry.title} />
       </ImageContainer>
       <TextContainer>
         <IconComponent

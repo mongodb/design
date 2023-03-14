@@ -32,7 +32,7 @@ interface StaticComponentProps {
   props: {
     component?: ComponentFields;
   };
-  revalidate: number;
+  // revalidate: number;
 }
 /**
  * Retrieves the {@link ComponentFields} for a given component name
@@ -46,6 +46,6 @@ export async function getStaticComponentProps({
         includeContent: true,
       }), // this is in kebabCase
     },
-    revalidate: 300, // in seconds
+    // revalidate: 300, // in seconds
   };
 }

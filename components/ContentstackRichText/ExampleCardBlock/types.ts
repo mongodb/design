@@ -7,6 +7,6 @@ const Variant = {
   Do: 'do',
 } as const;
 
-type Variant = typeof Variant[keyof typeof Variant];
+type Variant = (typeof Variant)[keyof typeof Variant];
 
 export { Variant };
