@@ -1702,6 +1702,13 @@
   dependencies:
     "@leafygreen-ui/emotion" "^4.0.3"
 
+"@leafygreen-ui/icon@^11.12.6":
+  version "11.12.6"
+  resolved "https://registry.yarnpkg.com/@leafygreen-ui/icon/-/icon-11.12.6.tgz#9dca03e4a48f821a7f757a25dc401d5fc9396440"
+  integrity sha512-0eVzQXNTXCspt+3PDgRA0IvUN551ibdsW1GxcyEx5AwnecKhDP5DVgMwuooGO3xRnzGcKP22t4klD0SLBdcRRQ==
+  dependencies:
+    "@leafygreen-ui/emotion" "^4.0.3"
+
 "@leafygreen-ui/inline-definition@^6.0.3":
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/inline-definition/-/inline-definition-6.0.3.tgz#b5db9baf441d536ff78f129b8df41ea25d6f9ed3"
@@ -1745,6 +1752,14 @@
   integrity sha512-VuG/O3N7s/dVa2yntLdVUGhsDEWHPp88SYWAbhEC54ZbGT6bviStwloJs65d0rOqwXdoLss+KWRZ3DFu1RrDLQ==
   dependencies:
     lodash "^4.17.21"
+
+"@leafygreen-ui/lib@^10.3.0":
+  version "10.3.0"
+  resolved "https://registry.yarnpkg.com/@leafygreen-ui/lib/-/lib-10.3.0.tgz#ec87d9665bd52bad64bedca6e0fef324e47a109a"
+  integrity sha512-nCNU25lbOGGfJJAkpdipIAwitD0h2rOZiHgCfERlwHsL4lr8K29qrPYKKEiE9JxbW8EBkoP2zJseY0RMd6Jq8A==
+  dependencies:
+    lodash "^4.17.21"
+    prop-types "^15.7.2"
 
 "@leafygreen-ui/logo@^8.0.1":
   version "8.0.1"
@@ -1989,14 +2004,14 @@
     polished "^4.2.2"
     react-transition-group "^4.4.5"
 
-"@leafygreen-ui/stepper@^3.1.8":
-  version "3.1.8"
-  resolved "https://registry.yarnpkg.com/@leafygreen-ui/stepper/-/stepper-3.1.8.tgz#a7218f8b260e0a66594313cf6cf28a7886f0a649"
-  integrity sha512-FQsGnBjbGxNgvBHiD8esyFEdwYxLkr7df7yeRCoYP4KtT2RkDlNDPhluL3A710ocBofTuKh2t2rQBxvRItoBMw==
+"@leafygreen-ui/stepper@^3.1.9":
+  version "3.1.9"
+  resolved "https://registry.yarnpkg.com/@leafygreen-ui/stepper/-/stepper-3.1.9.tgz#83180807ac0f73e17d06b06b1ffbeb3f88dd92bb"
+  integrity sha512-ENkKjdN2T8tPKayWV+e09UCs/tpA96MWXvAbXmW5aj8mYxG+VXsSFzXjDap7cYqEe/K4zEKwQgAlBUid2FTDPg==
   dependencies:
     "@leafygreen-ui/emotion" "^4.0.3"
-    "@leafygreen-ui/icon" "^11.12.5"
-    "@leafygreen-ui/lib" "^10.2.2"
+    "@leafygreen-ui/icon" "^11.12.6"
+    "@leafygreen-ui/lib" "^10.3.0"
     "@leafygreen-ui/palette" "^4.0.0"
     "@leafygreen-ui/tokens" "^2.0.1"
     "@leafygreen-ui/tooltip" "^9.1.6"
@@ -12523,10 +12538,10 @@ webpack@4:
     watchpack "^1.7.4"
     webpack-sources "^1.4.1"
 
-webpack@5.74.0:
-  version "5.74.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.74.0.tgz#02a5dac19a17e0bb47093f2be67c695102a55980"
-  integrity sha512-A2InDwnhhGN4LYctJj6M1JEaGL7Luj6LOmyBHjcI8529cm5p6VXiTIW2sn6ffvEAKmveLzvu4jrihwXtPojlAA==
+webpack@5.76.0:
+  version "5.76.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.76.0.tgz#f9fb9fb8c4a7dbdcd0d56a98e56b8a942ee2692c"
+  integrity sha512-l5sOdYBDunyf72HW8dF23rFtWq/7Zgvt/9ftMof71E/yUb1YLOBmTgA2K4vQthB3kotMrSj609txVE0dnr2fjA==
   dependencies:
     "@types/eslint-scope" "^3.7.3"
     "@types/estree" "^0.0.51"
