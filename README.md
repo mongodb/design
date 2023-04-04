@@ -12,7 +12,7 @@ The Contentstack tokens can be found under `Settings > Tokens > Delivery Tokens`
 ## Running with linked packages
 
 1. Run `yarn`
-2. If the package you want to link to has not been published as yet create an empty folder inside `node_modules/@leafygreen-ui/` with the name of the unpublished package you want to link to. E.g. `node_modules/@leafygreen-ui/unpublished-component-name`
+2. If the package you want to link to has not been published as yet create an empty folder inside `node_modules/@leafygreen-ui/` with the name of the unpublished package you want to link to. E.g. `node_modules/@leafygreen-ui/unpublished-package-name`
 3. From `leafygreen-ui` directory, run `yarn run link <path/to/design>`
 4. Update `next.config.ts` to build linked files
    - Change line 76 to: `const LGModuleRegex = /.+(leafygreen-ui\/packages)/g;`
