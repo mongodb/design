@@ -9,13 +9,24 @@ import {
 
 import { ComponentFields, ContentPage, ContentPageGroup } from './types';
 
+const ENV_MAP = {
+  'main': 'main',
+  'production': 'main',
+  'staging': 'staging',
+  'dev': 'staging',
+} as const
+
+const environment = ((): string => {
+  if (process.env.NEXT_PUBLIC_ENVIRONMENT && ENV_MAP[process.env.NEXT_PUBLIC_ENVIRONMENT]) {
+    return ENV_MAP[process.env.NEXT_PUBLIC_ENVIRONMENT]
+  }
+  throw new Error(`Could not find environment "${process.env.NEXT_PUBLIC_ENVIRONMENT}"`)
+})()
+
 const Stack = Contentstack.Stack({
   api_key: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string,
   delivery_token: process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN as string,
-  environment:
-    (process.env.NEXT_PUBLIC_ENVIRONMENT as string) === 'production'
-      ? 'main'
-      : 'staging',
+  environment,
 });
 
 interface QueryOptions {
