@@ -42,7 +42,7 @@ if (exists(updatesArray) && isValidUpdatesArray(updatesArray)) {
     pkg.startsWith('@leafygreen-ui'),
   );
   updateCommands = allLGPkgs.map(pkg => `${pkg}@latest`);
-  console.log(chalk.green('Upgrading all packages'));
+  console.log(chalk.green('Upgrading all leafygreen packages'));
 }
 
 if (verbose) {
