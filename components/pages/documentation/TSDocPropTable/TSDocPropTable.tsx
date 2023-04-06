@@ -14,7 +14,14 @@ import { css } from '@leafygreen-ui/emotion';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import InlineDefinition from '@leafygreen-ui/inline-definition';
 import { palette } from '@leafygreen-ui/palette';
-import { Cell, Row, Table, TableHeader } from '@leafygreen-ui/table';
+import {
+  V10Cell as Cell,
+  V10HeaderRow as HeaderRow,
+  V10Row as Row,
+  V10Table as Table,
+  V10TableHeader as TableHeader,
+  V11Adapter,
+} from '@leafygreen-ui/table';
 import { InlineCode, Link } from '@leafygreen-ui/typography';
 
 import { PropTooltipContent } from '../../../PropTooltipContent';
@@ -59,7 +66,10 @@ export const TSDocPropTable = ({
       groupName.endsWith('SVGAttributes'),
   );
 
-  const props = [...componentProps, inheritedProps];
+  const allComponentProps = [
+    ...componentProps,
+    // ...inheritedProps // temporarily omitting inherited props
+  ];
 
   return (
     <>
@@ -68,71 +78,75 @@ export const TSDocPropTable = ({
         defaultOpen
         className={className}
       >
-        <Table
-          data={props}
-          columns={[
-            <TableHeader label="Prop" key="Prop" />,
-            <TableHeader label="Description" key="Description" />,
-            <TableHeader label="Type" key="Type" />,
-            <TableHeader label="Default" key="Default" />,
-          ]}
-        >
-          {({ datum }) => (
-            <>
-              {isPropItem(datum) ? (
-                <Row key={datum.name}>
-                  <Cell>
-                    <InlineDefinition
-                      tooltipClassName={propDefinitionTooltipStyle}
-                      definition={<PropTooltipContent propItem={datum} />}
-                    >
-                      <InlineCode>{datum.name}</InlineCode>
-                    </InlineDefinition>
-                    {isRequired(datum) && (
-                      <sup className={requiredHighlightStyle}>(REQUIRED)</sup>
+        <V11Adapter shouldAlternateRowColor={false}>
+          <Table
+            data={allComponentProps}
+            columns={
+              <HeaderRow>
+                <TableHeader label="Prop" key="Prop" />
+                <TableHeader label="Description" key="Description" />
+                <TableHeader label="Type" key="Type" />
+                <TableHeader label="Default" key="Default" />
+              </HeaderRow>
+            }
+          >
+            {({ datum }) => (
+              <>
+                {isPropItem(datum) ? (
+                  <Row key={datum.name}>
+                    <Cell>
+                      <InlineDefinition
+                        tooltipClassName={propDefinitionTooltipStyle}
+                        definition={<PropTooltipContent propItem={datum} />}
+                      >
+                        <InlineCode>{datum.name}</InlineCode>
+                      </InlineDefinition>
+                      {isRequired(datum) && (
+                        <sup className={requiredHighlightStyle}>(REQUIRED)</sup>
+                      )}
+                    </Cell>
+                    <Cell>
+                      <Markdown>{datum.description}</Markdown>
+                    </Cell>
+                    <Cell>
+                      <InlineCode className={typeCellStyle}>
+                        {getTypeString(datum.type)}
+                      </InlineCode>
+                    </Cell>
+                    <Cell>
+                      <InlineCode>
+                        {getDefaultValueString(datum.defaultValue) || '—'}
+                      </InlineCode>
+                    </Cell>
+                  </Row>
+                ) : (
+                  <>
+                    {datum.length > 0 && (
+                      <Row key="inherited">
+                        <Cell>
+                          <InlineCode>...rest</InlineCode>
+                        </Cell>
+                        <Cell colSpan={3}>
+                          Native attributes inherited from &nbsp;
+                          {datum.map(({ groupName }) => (
+                            <Link
+                              key={groupName}
+                              target="_blank"
+                              href={getHTMLAttributesLink(groupName)}
+                              className={inheritedAttrNameStyle}
+                            >
+                              <InlineCode>{groupName}</InlineCode>
+                            </Link>
+                          ))}
+                        </Cell>
+                      </Row>
                     )}
-                  </Cell>
-                  <Cell>
-                    <Markdown>{datum.description}</Markdown>
-                  </Cell>
-                  <Cell>
-                    <InlineCode className={typeCellStyle}>
-                      {getTypeString(datum.type)}
-                    </InlineCode>
-                  </Cell>
-                  <Cell>
-                    <InlineCode>
-                      {getDefaultValueString(datum.defaultValue) || '—'}
-                    </InlineCode>
-                  </Cell>
-                </Row>
-              ) : (
-                <>
-                  {datum.length > 0 && (
-                    <Row key="inherited">
-                      <Cell>
-                        <InlineCode>...rest</InlineCode>
-                      </Cell>
-                      <Cell colSpan={3}>
-                        Native attributes inherited from &nbsp;
-                        {datum.map(({ groupName }) => (
-                          <Link
-                            key={groupName}
-                            target="_blank"
-                            href={getHTMLAttributesLink(groupName)}
-                            className={inheritedAttrNameStyle}
-                          >
-                            <InlineCode>{groupName}</InlineCode>
-                          </Link>
-                        ))}
-                      </Cell>
-                    </Row>
-                  )}
-                </>
-              )}
-            </>
-          )}
-        </Table>
+                  </>
+                )}
+              </>
+            )}
+          </Table>
+        </V11Adapter>
       </ExpandableCard>
     </>
   );
