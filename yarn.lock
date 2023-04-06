@@ -2137,7 +2137,7 @@
     "@leafygreen-ui/tooltip" "^9.1.6"
     "@leafygreen-ui/typography" "^16.1.0"
 
-"@leafygreen-ui/table@^10.0.0":
+"@leafygreen-ui/table@^10.0.3":
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/table/-/table-10.0.3.tgz#a24b5e0552347531bb974c13271974fe935531b2"
   integrity sha512-JuoUkcFvE/oV7qt0tIeXHQPehHGMSp4YCbm4JaWq76ExdUhP6lPP5nv/sfMsBPk1ICGkeOxMYcVHXi0e67XGWA==
