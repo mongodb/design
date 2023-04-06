@@ -52,6 +52,12 @@ const inheritedAttrNameStyle = css`
   }
 `;
 
+const cellStyles = css`
+  & > * {
+    max-height: unset;
+  }
+`;
+
 export const TSDocPropTable = ({
   tsDoc,
   className,
@@ -68,7 +74,10 @@ export const TSDocPropTable = ({
 
   const allComponentProps = [
     ...componentProps,
-    // ...inheritedProps // temporarily omitting inherited props
+    (inheritedProps && {
+      isInheritedProps: true,
+      props: inheritedProps,
+    })
   ];
 
   return (
@@ -94,7 +103,7 @@ export const TSDocPropTable = ({
               <>
                 {isPropItem(datum) ? (
                   <Row key={datum.name}>
-                    <Cell>
+                    <Cell className={cellStyles}>
                       <InlineDefinition
                         tooltipClassName={propDefinitionTooltipStyle}
                         definition={<PropTooltipContent propItem={datum} />}
@@ -105,15 +114,15 @@ export const TSDocPropTable = ({
                         <sup className={requiredHighlightStyle}>(REQUIRED)</sup>
                       )}
                     </Cell>
-                    <Cell>
+                    <Cell className={cellStyles}>
                       <Markdown>{datum.description}</Markdown>
                     </Cell>
-                    <Cell>
+                    <Cell className={cellStyles}>
                       <InlineCode className={typeCellStyle}>
                         {getTypeString(datum.type)}
                       </InlineCode>
                     </Cell>
-                    <Cell>
+                    <Cell className={cellStyles}>
                       <InlineCode>
                         {getDefaultValueString(datum.defaultValue) || '—'}
                       </InlineCode>
@@ -121,14 +130,14 @@ export const TSDocPropTable = ({
                   </Row>
                 ) : (
                   <>
-                    {datum.length > 0 && (
+                    {datum.isInheritedProps && (
                       <Row key="inherited">
-                        <Cell>
+                        <Cell className={cellStyles}>
                           <InlineCode>...rest</InlineCode>
                         </Cell>
-                        <Cell colSpan={3}>
+                        <Cell className={cellStyles} colSpan={3}>
                           Native attributes inherited from &nbsp;
-                          {datum.map(({ groupName }) => (
+                          {datum.props.map(({ groupName }) => (
                             <Link
                               key={groupName}
                               target="_blank"
