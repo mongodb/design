@@ -45,8 +45,8 @@ export type KnobType = PropItem & {
 
 export interface LiveExampleState {
   meta?: Meta<any>;
+  StoryFn?: ComponentStoryFn<any>;
   knobValues?: { [arg: string]: any };
   knobsArray?: Array<KnobType>;
-  StoryFn?: ComponentStoryFn<any>;
   storyCode?: string;
 }

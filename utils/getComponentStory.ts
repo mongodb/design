@@ -1,5 +1,4 @@
 import { ComponentStoryFn, Meta } from '@storybook/react';
-import pascalcase from 'pascalcase';
 
 type ModuleType = {
   default: Meta<any>;
@@ -15,7 +14,7 @@ export async function getComponentStory(
 ): Promise<ModuleType | undefined> {
   try {
     return import(
-      `@leafygreen-ui/${kebabName}/src/${pascalcase(kebabName)}.story`
+      `@leafygreen-ui/${kebabName}/story.js`
     );
   } catch (err) {
     console.warn(err);

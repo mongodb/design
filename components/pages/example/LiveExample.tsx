@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Transition } from 'react-transition-group';
-import { kebabCase } from 'lodash';
+import { cloneDeep, kebabCase } from 'lodash';
 import { getComponentStory } from 'utils/getComponentStory';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
@@ -22,7 +22,12 @@ import {
   liveExampleWrapperStyle,
   storyContainerStyle,
 } from './LiveExample.styles';
+import { LiveExampleDecorator } from './LiveExampleDecorator';
 import { LiveExampleState } from './types';
+import {
+  defaultLiveExampleState,
+  useLiveExampleState,
+} from './useLiveExampleState';
 import { getLiveExampleState, getStoryCode, matchTypes } from './utils';
 
 // Use standard block flow for these packages
@@ -35,14 +40,6 @@ const useBlockWrapperFor = [
 ];
 const disableCodeExampleFor = ['icon', 'palette', 'tokens'];
 
-const initialLiveExampleState: LiveExampleState = {
-  meta: undefined,
-  StoryFn: undefined,
-  storyCode: undefined,
-  knobValues: undefined,
-  knobsArray: undefined,
-};
-
 export const LiveExample = ({
   componentName,
   tsDoc,
@@ -51,79 +48,87 @@ export const LiveExample = ({
   tsDoc: Array<CustomComponentDoc> | null;
 }) => {
   const [showCode, setShowCode] = useState(false);
-  // Establish a page state
-  const [{ meta, knobValues, knobsArray, StoryFn, storyCode }, setState] =
-    useReducer((state: LiveExampleState, newState: LiveExampleState) => {
-      return {
-        ...state,
-        ...newState,
-      };
-    }, initialLiveExampleState);
-
-  const { darkMode } = useDarkMode(knobValues?.darkMode);
   const storyContainerRef = useRef<HTMLDivElement>(null);
   const storyWrapperRef = useRef<HTMLDivElement>(null);
 
-  const setCode = useCallback(
-    (newCode: LiveExampleState['storyCode']) =>
-      setState({ meta, knobValues, knobsArray, StoryFn, storyCode: newCode }),
-    [StoryFn, knobValues, knobsArray, meta],
-  );
+  // Establish a page state
+  // { meta, StoryFn, knobValues, knobsArray, storyCode }
+  const [state, setState] = useLiveExampleState();
 
-  // Updates the value of a knob
-  const updateValue = useCallback(
-    (propName: string, newValue: any) => {
-      const value = matchTypes(knobValues?.[propName], newValue);
-
-      setState({
-        knobValues: { ...knobValues, [propName]: value },
-      });
-    },
-    [knobValues],
-  );
+  const { darkMode } = useDarkMode(state.knobValues?.darkMode);
 
   // Fetch Story if/when component changes.
   // This should only happen once
+  // TODO: Convert to lg/hooks/useAsyncEffect
   useEffect(() => {
+    let isMounted = true;
     const kebabName = kebabCase(componentName);
     getComponentStory(kebabName)
       .then(module => {
-        if (module) {
-          const { default: meta, ...stories } = module;
+        if (isMounted) {
+          if (module) {
+            const { default: meta, ...stories } = module;
 
-          const state = getLiveExampleState({
-            componentName,
-            meta,
-            stories,
-            tsDoc,
-          });
+            const _state = cloneDeep(
+              getLiveExampleState({
+                componentName,
+                meta,
+                stories,
+                tsDoc: tsDoc,
+              }),
+            );
 
-          setState(state);
-        } else {
-          setState(initialLiveExampleState);
-          setShowCode(false);
+            setState(_state);
+          } else {
+            setState(defaultLiveExampleState);
+            setShowCode(false);
+          }
         }
       })
       .catch(err => {
         console.warn(err);
-        setState(initialLiveExampleState);
+        setState(defaultLiveExampleState);
         setShowCode(false);
       });
-  }, [componentName, tsDoc]);
 
-  // Update source code
-  useEffect(() => {
-    setCode(
-      getStoryCode({
-        componentName,
-        meta,
-        StoryFn,
-        knobValues,
-      }),
-    );
-  }, [StoryFn, componentName, knobValues, meta, setCode]);
+    return () => {
+      isMounted = false;
+    };
+  }, [componentName, tsDoc, setState]);
 
-  const storyWrapperStyle = meta?.parameters?.wrapperStyle;
+  const setCode = useCallback(
+    (newCode: LiveExampleState['storyCode']) => {
+      setState({ storyCode: newCode });
+    },
+    [setState],
+  );
+
+  // Updates the value of a knob
+  const updateKnobValue = useCallback(
+    (propName: string, newValue: any) => {
+      const value = matchTypes(state.knobValues?.[propName], newValue);
+      setState({
+        knobValues: { ...state.knobValues, [propName]: value },
+      });
+    },
+    [setState, state.knobValues],
+  );
+
+  const handleShowCodeClick = () => {
+    setShowCode(sc => !sc);
+    if (!state.storyCode) {
+      setCode(
+        getStoryCode({
+          componentName,
+          meta: state.meta,
+          StoryFn: state.StoryFn,
+          knobValues: state.knobValues,
+        }),
+      );
+    }
+  };
+
+  const storyWrapperStyle = state.meta?.parameters?.wrapperStyle;
 
   const storyContainerHeight = Math.min(
     Math.max(
@@ -158,13 +163,15 @@ export const LiveExample = ({
             `,
           )}
         >
-          {StoryFn ? (
-            <div ref={storyWrapperRef} className={storyWrapperStyle}>
-              <StoryFn {...knobValues} />
-            </div>
-          ) : (
-            <H2>React Component coming soon ⚛️</H2>
-          )}
+          <LiveExampleDecorator meta={state.meta}>
+            {state.StoryFn ? (
+              <div ref={storyWrapperRef} className={storyWrapperStyle}>
+                <state.StoryFn {...state.knobValues} />
+              </div>
+            ) : (
+              <H2>React Component coming soon ⚛️</H2>
+            )}
+          </LiveExampleDecorator>
         </div>
         {!disableCodeExampleFor.includes(componentName) && (
           <Transition in={showCode} timeout={200}>
@@ -180,7 +187,7 @@ export const LiveExample = ({
                 id="example-code"
               >
                 <Code className={codeStyle} darkMode={darkMode} language="js">
-                  {storyCode ?? 'No code found'}
+                  {state.storyCode ?? 'No code found'}
                 </Code>
               </div>
             )}
@@ -195,20 +202,20 @@ export const LiveExample = ({
               className={exampleCodeButtonStyle}
               variant="default"
               size="xsmall"
-              onClick={() => setShowCode(!showCode)}
+              onClick={handleShowCodeClick}
             >
               {showCode ? 'Hide' : 'Show'} Code
             </Button>
           </div>
         )}
-        {knobsArray &&
-          knobsArray.map(knob => (
+        {state.knobsArray &&
+          state.knobsArray.map(knob => (
             <KnobRow
               key={knob.name}
               darkMode={darkMode}
               knob={knob}
-              knobValue={knobValues?.[knob.name]}
-              setKnobValue={updateValue}
+              knobValue={state.knobValues?.[knob.name]}
+              setKnobValue={updateKnobValue}
             />
           ))}
       </div>
