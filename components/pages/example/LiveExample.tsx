@@ -53,10 +53,10 @@ export const LiveExample = ({
   const storyWrapperRef = useRef<HTMLDivElement>(null);
 
   // Establish a page state
-  // { meta, StoryFn, knobValues, knobsArray, storyCode }
-  const [state, setState] = useLiveExampleState();
+  const [{ meta, StoryFn, knobValues, knobsArray, storyCode }, setState] =
+    useLiveExampleState();
 
-  const { darkMode } = useDarkMode(state.knobValues?.darkMode);
+  const { darkMode } = useDarkMode(knobValues?.darkMode);
 
   // Fetch Story if/when component changes.
   // This should only happen once
@@ -100,12 +100,12 @@ export const LiveExample = ({
   // Updates the value of a knob
   const updateKnobValue = useCallback(
     (propName: string, newValue: any) => {
-      const value = matchTypes(state.knobValues?.[propName], newValue);
+      const value = matchTypes(knobValues?.[propName], newValue);
       setState({
-        knobValues: { ...state.knobValues, [propName]: value },
+        knobValues: { ...knobValues, [propName]: value },
       });
     },
-    [setState, state.knobValues],
+    [setState, knobValues],
   );
 
   const handleShowCodeClick = () => {
@@ -113,14 +113,14 @@ export const LiveExample = ({
     setCode(
       getStoryCode({
         componentName,
-        meta: state.meta,
-        StoryFn: state.StoryFn,
-        knobValues: state.knobValues,
+        meta: meta,
+        StoryFn: StoryFn,
+        knobValues: knobValues,
       }),
     );
   };
 
-  const storyWrapperStyle = state.meta?.parameters?.wrapperStyle;
+  const storyWrapperStyle = meta?.parameters?.wrapperStyle;
 
   const storyContainerHeight = Math.min(
     Math.max(
@@ -155,10 +155,10 @@ export const LiveExample = ({
             `,
           )}
         >
-          <LiveExampleDecorator meta={state.meta}>
-            {state.StoryFn ? (
+          <LiveExampleDecorator meta={meta}>
+            {StoryFn ? (
               <div ref={storyWrapperRef} className={storyWrapperStyle}>
-                <state.StoryFn {...state.knobValues} />
+                <StoryFn {...knobValues} />
               </div>
             ) : (
               <H2>React Component coming soon ⚛️</H2>
@@ -179,7 +179,7 @@ export const LiveExample = ({
                 id="example-code"
               >
                 <Code className={codeStyle} darkMode={darkMode} language="js">
-                  {state.storyCode ?? 'No code found'}
+                  {storyCode ?? 'No code found'}
                 </Code>
               </div>
             )}
@@ -200,13 +200,13 @@ export const LiveExample = ({
             </Button>
           </div>
         )}
-        {state.knobsArray &&
-          state.knobsArray.map(knob => (
+        {knobsArray &&
+          knobsArray.map(knob => (
             <KnobRow
               key={knob.name}
               darkMode={darkMode}
               knob={knob}
-              knobValue={state.knobValues?.[knob.name]}
+              knobValue={knobValues?.[knob.name]}
               setKnobValue={updateKnobValue}
             />
           ))}
