@@ -8,6 +8,10 @@ import {
 } from '@storybook/react';
 import { clone } from 'lodash';
 
+/**
+ * Extracts any Storybook `decorators` from the story meta,
+ * and renders `children` inside those components
+ */
 export const LiveExampleDecorator = ({
   meta,
   children,
@@ -23,7 +27,7 @@ export const LiveExampleDecorator = ({
   return Decorator;
 };
 
-/** Recursively iterates over the decorators array and nests them */
+/** Recursively iterates over the meta.decorators array and nests them */
 function recursiveRenderDecorators(
   meta?: Meta<any>,
   children?: React.ReactNode,
