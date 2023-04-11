@@ -76,6 +76,7 @@ function isPathInLeafygreen(filePath) {
   // const LGModuleRegex = /.+(node_modules\/@leafygreen-ui)/g;
 
   // Use this regex when debugging with linked packages
-  const LGModuleRegex = /(.+(node_modules\/@leafygreen-ui))|(.+(leafygreen-ui\/packages))/g;
+  const LGModuleRegex =
+    /(.+(node_modules\/@leafygreen-ui))|(.+(leafygreen-ui\/packages))/g;
   return LGModuleRegex.test(filePath);
 }

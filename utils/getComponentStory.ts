@@ -13,9 +13,7 @@ export async function getComponentStory(
   kebabName: string,
 ): Promise<ModuleType | undefined> {
   try {
-    return import(
-      `@leafygreen-ui/${kebabName}/story.js`
-    );
+    return import(`@leafygreen-ui/${kebabName}/story.js`);
   } catch (err) {
     console.warn(err);
     return;
