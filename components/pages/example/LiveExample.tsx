@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { Transition } from 'react-transition-group';
 import { cloneDeep, kebabCase } from 'lodash';
 import { getComponentStory } from 'utils/getComponentStory';
@@ -24,6 +24,7 @@ import {
 } from './LiveExample.styles';
 import { LiveExampleDecorator } from './LiveExampleDecorator';
 import { LiveExampleState } from './types';
+import { useAsyncEffect } from './useAsyncEffect';
 import {
   defaultLiveExampleState,
   useLiveExampleState,
@@ -59,42 +60,35 @@ export const LiveExample = ({
 
   // Fetch Story if/when component changes.
   // This should only happen once
-  // TODO: Convert to lg/hooks/useAsyncEffect
-  useEffect(() => {
-    let isMounted = true;
-    const kebabName = kebabCase(componentName);
-    getComponentStory(kebabName)
-      .then(module => {
-        if (isMounted) {
-          if (module) {
-            const { default: meta, ...stories } = module;
+  useAsyncEffect(
+    () => getComponentStory(kebabCase(componentName)),
+    module => {
+      if (module) {
+        const { default: meta, ...stories } = module;
 
-            const _state = cloneDeep(
-              getLiveExampleState({
-                componentName,
-                meta,
-                stories,
-                tsDoc: tsDoc,
-              }),
-            );
+        const _state = cloneDeep(
+          getLiveExampleState({
+            componentName,
+            meta,
+            stories,
+            tsDoc: tsDoc,
+          }),
+        );
 
-            setState(_state);
-          } else {
-            setState(defaultLiveExampleState);
-            setShowCode(false);
-          }
-        }
-      })
-      .catch(err => {
-        console.warn(err);
+        setState(_state);
+      } else {
         setState(defaultLiveExampleState);
         setShowCode(false);
-      });
-
-    return () => {
-      isMounted = false;
-    };
-  }, [componentName, tsDoc, setState]);
+      }
+    },
+    err => {
+      console.warn(err);
+      setState(defaultLiveExampleState);
+      setShowCode(false);
+    },
+    () => {},
+    [componentName, tsDoc, setState],
+  );
 
   const setCode = useCallback(
     (newCode: LiveExampleState['storyCode']) => {
@@ -116,16 +110,14 @@ export const LiveExample = ({
 
   const handleShowCodeClick = () => {
     setShowCode(sc => !sc);
-    if (!state.storyCode) {
-      setCode(
-        getStoryCode({
-          componentName,
-          meta: state.meta,
-          StoryFn: state.StoryFn,
-          knobValues: state.knobValues,
-        }),
-      );
-    }
+    setCode(
+      getStoryCode({
+        componentName,
+        meta: state.meta,
+        StoryFn: state.StoryFn,
+        knobValues: state.knobValues,
+      }),
+    );
   };
 
   const storyWrapperStyle = state.meta?.parameters?.wrapperStyle;
