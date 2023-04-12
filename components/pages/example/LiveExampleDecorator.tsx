@@ -8,6 +8,8 @@ import {
 } from '@storybook/react';
 import { clone } from 'lodash';
 
+import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
+
 /**
  * Extracts any Storybook `decorators` from the story meta,
  * and renders `children` inside those components
@@ -24,7 +26,14 @@ export const LiveExampleDecorator = ({
     return calculatedDecorator ?? Decorator;
   }, [children, meta]);
 
-  return Decorator;
+  return (
+    <LeafyGreenProvider
+      darkMode={meta?.args?.darkMode}
+      baseFontSize={meta?.args?.baseFontSize}
+    >
+      {Decorator}
+    </LeafyGreenProvider>
+  );
 };
 
 /** Recursively iterates over the meta.decorators array and nests them */
