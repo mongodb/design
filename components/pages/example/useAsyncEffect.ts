@@ -12,6 +12,7 @@ export function useAsyncEffect<T>(
   thenFn: (data: T) => void,
   catchFn: (err: any) => void,
   finallyFn: () => void,
+  cleanupFn: () => void,
   depsArr?: DependencyList,
 ) {
   const deps: DependencyList = depsArr ?? [];
@@ -39,6 +40,7 @@ export function useAsyncEffect<T>(
 
     return () => {
       isMounted = false;
+      cleanupFn();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...deps]);
