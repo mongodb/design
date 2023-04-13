@@ -4,11 +4,13 @@ module.exports = {
   ignorePatterns: ['**/*.md', '**/*.mdx'],
   extends: [
     'eslint:recommended',
+    'plugin:@next/next/recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'prettier',
-    'plugin:jsx-a11y/recommended',
-    'plugin:@next/next/recommended',
     'next'
   ],
   parserOptions: {
@@ -26,9 +28,15 @@ module.exports = {
     react: {
       version: '16.13.1',
     },
+    'import/resolver': {
+      typescript: true,
+      node: true
+    }
   },
   rules: {
     '@emotion/pkg-renaming': 'error',
+    'import/no-deprecated': 'error',
+    'import/no-named-as-default': 'off',
     'jest/no-conditional-expect': 'off',
     'jest/valid-title': 'off',
     'react/jsx-key': 1,
