@@ -1,6 +1,4 @@
-import React, { ComponentProps, ComponentType, ReactNode } from 'react';
 import { PropItem } from 'react-docgen-typescript';
-import reactElementToJSXString from 'react-element-to-jsx-string';
 import { InputType } from '@storybook/csf';
 import { ComponentStoryFn, Meta } from '@storybook/react';
 import {
@@ -12,8 +10,6 @@ import {
   pickBy,
   snakeCase,
 } from 'lodash';
-import pascalcase from 'pascalcase';
-import { ModuleType } from 'utils/fetchComponentStories';
 import {
   CustomComponentDoc,
   findComponentDoc,
@@ -21,10 +17,8 @@ import {
   getDefaultValueValue,
 } from 'utils/tsdoc.utils';
 
-import { getDefaultStory } from './utils/getDefaultStory';
 import { ignoreProps } from './utils/ignoreProps.const';
 import { KnobOptionType, KnobType, MetadataSources, TypeString } from './types';
-import { LiveExampleStateContext } from './useLiveExampleState';
 
 /**
  * @returns the input array, or values of the input Record
@@ -349,71 +343,6 @@ export function getKnobDescription({
   );
 }
 
-/**
- * Returns example code for the given component data
- */
-export function getStoryCode({
-  componentName,
-  meta,
-  StoryFn,
-  knobValues,
-}: {
-  componentName: string;
-  meta?: Meta<any>;
-  StoryFn?: ComponentStoryFn<any>;
-  knobValues?: { [arg: string]: any };
-}): string | undefined {
-  const useStorySourceForComponents = ['typography'];
-
-  const getStoryJSX = (element: ReactNode, displayName: string): string =>
-    element
-      ? reactElementToJSXString(element, {
-          displayName: (child: ReactNode) =>
-            // @ts-expect-error - correct type for `child` is too verbose
-            child?.type?.displayName ?? pascalcase(displayName),
-          showFunctions: true,
-          showDefaultProps: true,
-          useBooleanShorthandSyntax: false,
-          useFragmentShortSyntax: true,
-        })
-      : '';
-
-  const getStorySourceCode = (meta?: Meta<any>) => {
-    if (meta && meta.parameters) {
-      const {
-        parameters: { default: defaultStoryName, storySource },
-      } = meta;
-
-      const locationsMap = defaultStoryName
-        ? storySource.locationsMap[defaultStoryName]
-        : Object.values(storySource.locationsMap)[0];
-      const lines = (storySource.source as string).match(/^.*$/gm);
-
-      const storyCode = lines
-        ?.slice(
-          locationsMap?.startLoc?.line - 1,
-          locationsMap?.endLoc?.line - 1,
-        )
-        .join('\n');
-      return storyCode;
-    }
-  };
-
-  /**
-   * If this is the Typography component,
-   * we use the original story code,
-   * otherwise we convert the component to JSX
-   */
-  if (useStorySourceForComponents.includes(componentName)) {
-    return getStorySourceCode(meta);
-  } else {
-    const renderedStory = StoryFn
-      ? React.createElement(StoryFn, { ...knobValues })
-      : undefined;
-    return getStoryJSX(renderedStory, componentName);
-  }
-}
-
 export function getKnobsArray({
   componentName,
   meta,
@@ -447,52 +376,6 @@ export function getKnobsArray({
   const knobsArray = [...TSPropsArray, ...SBArgsArray];
 
   return knobsArray;
-}
-
-/**
- * Given component metadata
- * returns a LiveExampleState object
- *
- * @deprecated
- */
-export function getLiveExampleState({
-  componentName,
-  meta,
-  stories,
-  tsDoc,
-}: {
-  componentName: string;
-  meta: Meta<any>;
-  stories: { [key: string]: ComponentStoryFn<any> };
-  tsDoc: Array<CustomComponentDoc> | null;
-}): LiveExampleStateContext {
-  const StoryFn = getDefaultStory(meta, stories);
-
-  const knobsArray = getKnobsArray({
-    componentName,
-    meta,
-    StoryFn,
-    tsDoc,
-  });
-
-  // Extract the default Knob Values, and include any props not explicitly included in TSDoc
-  // This state object will be modified whenever a user interacts with a knob.
-  const knobValues = getInitialKnobValues(knobsArray, meta, StoryFn);
-
-  const storyCode = getStoryCode({
-    componentName,
-    meta,
-    StoryFn,
-    knobValues,
-  });
-
-  return {
-    meta,
-    // knobValues,
-    // knobsArray,
-    StoryFn,
-    // storyCode,
-  };
 }
 
 /**

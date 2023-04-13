@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Transition } from 'react-transition-group';
 import { isEmpty, isUndefined } from 'lodash';
@@ -10,8 +10,10 @@ import Code from '@leafygreen-ui/code';
 import { css, cx } from '@leafygreen-ui/emotion';
 import { usePrevious } from '@leafygreen-ui/hooks';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
+import { InlineCode } from '@leafygreen-ui/typography';
 
 import { KnobRow } from './KnobRow/KnobRow';
+import { getStoryCode } from './utils/getStoryCode';
 import {
   blockContainerStyle,
   codeExampleWrapperStyle,
@@ -22,7 +24,10 @@ import {
   liveExampleWrapperStyle,
   storyContainerStyle,
 } from './LiveExample.styles';
-import { useLiveExampleStateMachine } from './LiveExampleStateMachine';
+import {
+  isContextDefined,
+  useLiveExampleStateMachine,
+} from './LiveExampleStateMachine';
 import {
   LiveExampleDecorator,
   LiveExampleErrorBoundaryFallback,
@@ -50,7 +55,6 @@ export const LiveExample = ({
 }) => {
   const prevComponentName = usePrevious(componentName);
 
-  const [showCode, setShowCode] = useState(false);
   const storyContainerRef = useRef<HTMLDivElement>(null);
   const storyWrapperRef = useRef<HTMLDivElement>(null);
 
@@ -64,6 +68,8 @@ export const LiveExample = ({
     },
   );
 
+  const { darkMode } = useDarkMode(knobValues?.darkMode);
+
   // Reset when component name changes, or when state.value is unset
   useEffect(() => {
     if (state.matches('init') || componentName !== prevComponentName) {
@@ -72,25 +78,20 @@ export const LiveExample = ({
     }
   }, [componentName, prevComponentName, send, state, resetKnobs]);
 
-  const { darkMode } = useDarkMode(knobValues?.darkMode);
-
-  // const setCode = useCallback(
-  //   (newCode: LiveExampleState['storyCode']) => {
-  //     setState({ storyCode: newCode });
-  //   },
-  //   [setState],
-  // );
+  const [showCode, setShowCode] = useState(false);
+  const exampleCode = useMemo(() => {
+    if (showCode) {
+      return getStoryCode({
+        componentName,
+        meta,
+        StoryFn,
+        knobValues,
+      });
+    }
+  }, [componentName, meta, StoryFn, knobValues, showCode]);
 
   const handleShowCodeClick = () => {
-    // setShowCode(sc => !sc);
-    // setCode(
-    //   getStoryCode({
-    //     componentName,
-    //     meta: meta,
-    //     StoryFn: StoryFn,
-    //     knobValues: knobValues,
-    //   }),
-    // );
+    setShowCode(sc => !sc);
   };
 
   const storyWrapperStyle = meta?.parameters?.wrapperStyle;
@@ -113,6 +114,17 @@ export const LiveExample = ({
         margin-block: 2em;
       `}
     >
+      {/* @ts-expect-error - complex union */}
+      <InlineCode>state: {state.value}</InlineCode>
+      <br />
+      {/* @ts-expect-error - complex union */}
+      <InlineCode>
+        StoryFn: {isUndefined(StoryFn) ? 'undefined' : '(props) => {...}'}
+      </InlineCode>
+      <br />
+      {/* @ts-expect-error - complex union */}
+      <InlineCode>knobValues: {JSON.stringify(knobValues)}</InlineCode>
+
       <ErrorBoundary FallbackComponent={LiveExampleErrorBoundaryFallback}>
         <div className={liveExampleWrapperStyle}>
           <div
@@ -130,19 +142,19 @@ export const LiveExample = ({
               `,
             )}
           >
-            {state.matches('loaded') &&
-            !isUndefined(StoryFn) &&
-            !isEmpty(knobValues) ? (
-              <div ref={storyWrapperRef} className={storyWrapperStyle}>
+            <div ref={storyWrapperRef} className={storyWrapperStyle}>
+              {state.matches('loaded') &&
+              isContextDefined(state.context) &&
+              !isEmpty(knobValues) ? (
                 <LiveExampleDecorator meta={meta}>
                   <StoryFn {...knobValues} />
                 </LiveExampleDecorator>
-              </div>
-            ) : state.matches('error') ? (
-              <LiveExampleNotFound />
-            ) : (
-              <LiveExampleLoading />
-            )}
+              ) : state.matches('error') ? (
+                <LiveExampleNotFound />
+              ) : (
+                <LiveExampleLoading />
+              )}
+            </div>
           </div>
           {!disableCodeExampleFor.includes(componentName) && (
             <Transition in={showCode} timeout={200}>
@@ -158,7 +170,7 @@ export const LiveExample = ({
                   id="example-code"
                 >
                   <Code className={codeStyle} darkMode={darkMode} language="js">
-                    {'No code found'}
+                    {exampleCode ?? 'No code found'}
                   </Code>
                 </div>
               )}

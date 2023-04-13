@@ -4,8 +4,7 @@ import { mq } from 'utils/mediaQuery';
 import { useViewportSize } from '@leafygreen-ui/hooks';
 import { MongoDBLogo } from '@leafygreen-ui/logo';
 import { palette } from '@leafygreen-ui/palette';
-import { breakpoints } from '@leafygreen-ui/tokens';
-import { spacing } from '@leafygreen-ui/tokens';
+import { breakpoints, spacing } from '@leafygreen-ui/tokens';
 
 import { css, cx } from '@emotion/css';
 

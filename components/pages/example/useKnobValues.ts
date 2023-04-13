@@ -3,11 +3,15 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { getInitialKnobValues, getKnobsArray, matchTypes } from './utils';
 
 export function useKnobValues({
-  StoryFn, componentName, meta, tsDoc
-}: LiveExampleStateContext | {
-  tsDoc?: Array<CustomComponentDoc> | null;
-}) {
-
+  StoryFn,
+  componentName,
+  meta,
+  tsDoc,
+}:
+  | LiveExampleStateContext
+  | {
+      tsDoc?: Array<CustomComponentDoc> | null;
+    }) {
   /**
    * Reload the knobs array
    */
@@ -48,12 +52,12 @@ export function useKnobValues({
     [knobValues],
   );
 
-  const resetKnobs = () => setKnobs({})
+  const resetKnobs = () => setKnobs({});
 
   return {
     knobsArray,
     knobValues,
     updateKnobValue,
-    resetKnobs
-  }
+    resetKnobs,
+  };
 }
