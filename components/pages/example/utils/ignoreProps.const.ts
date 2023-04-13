@@ -1,0 +1,31 @@
+/**
+ * A list of Prop names that should not appear in Knobs
+ */
+export const ignoreProps = [
+  'className',
+  'tooltipClassName',
+  'contentClassName',
+  'id',
+  'onClick',
+  'onChange',
+  'onBlur',
+  'onFocus',
+  'onClose',
+  'handleValidation',
+  'aria-label',
+  'aria-labelledby',
+  'aria-controls',
+  'popoverClassName',
+  'popoverZIndex',
+  'portalClassName',
+  'portalContainer',
+  'shouldTooltipUsePortal',
+  'adjustOnMutation',
+  'refEl',
+  'scrollContainer',
+  'setOpen',
+  'setClosed',
+  'setCollapsed',
+  'shouldClose',
+  'lgProviderBaseFontSize',
+];

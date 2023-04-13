@@ -1,15 +1,15 @@
-import { useCallback, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { Transition } from 'react-transition-group';
-import { cloneDeep, kebabCase } from 'lodash';
-import { getComponentStory } from 'utils/getComponentStory';
+import { isEmpty, isUndefined } from 'lodash';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
 import Code from '@leafygreen-ui/code';
 import { css, cx } from '@leafygreen-ui/emotion';
+import { usePrevious } from '@leafygreen-ui/hooks';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
-import { H2 } from '@leafygreen-ui/typography';
 
 import { KnobRow } from './KnobRow/KnobRow';
 import {
@@ -22,14 +22,14 @@ import {
   liveExampleWrapperStyle,
   storyContainerStyle,
 } from './LiveExample.styles';
-import { LiveExampleDecorator } from './LiveExampleDecorator';
-import { LiveExampleState } from './types';
-import { useAsyncEffect } from './useAsyncEffect';
+import { useLiveExampleStateMachine } from './LiveExampleStateMachine';
 import {
-  defaultLiveExampleState,
-  useLiveExampleState,
-} from './useLiveExampleState';
-import { getLiveExampleState, getStoryCode, matchTypes } from './utils';
+  LiveExampleDecorator,
+  LiveExampleErrorBoundaryFallback,
+  LiveExampleLoading,
+  LiveExampleNotFound,
+} from './LiveExampleUtilityComponents';
+import { useKnobValues } from './useKnobValues';
 
 // Use standard block flow for these packages
 const useBlockWrapperFor = [
@@ -48,76 +48,49 @@ export const LiveExample = ({
   componentName: string;
   tsDoc: Array<CustomComponentDoc> | null;
 }) => {
+  const prevComponentName = usePrevious(componentName);
+
   const [showCode, setShowCode] = useState(false);
   const storyContainerRef = useRef<HTMLDivElement>(null);
   const storyWrapperRef = useRef<HTMLDivElement>(null);
 
-  // Establish a page state
-  const [{ meta, StoryFn, knobValues, knobsArray, storyCode }, setState] =
-    useLiveExampleState();
+  const [state, send] = useLiveExampleStateMachine({ componentName });
+  const { meta, StoryFn } = state.context;
+
+  const { knobsArray, knobValues, updateKnobValue, resetKnobs } = useKnobValues(
+    {
+      ...state.context,
+      tsDoc,
+    },
+  );
+
+  // Reset when component name changes, or when state.value is unset
+  useEffect(() => {
+    if (state.matches('init') || componentName !== prevComponentName) {
+      send('RESET', { componentName });
+      resetKnobs();
+    }
+  }, [componentName, prevComponentName, send, state, resetKnobs]);
 
   const { darkMode } = useDarkMode(knobValues?.darkMode);
 
-  // Fetch Story if/when component changes.
-  // This should only happen once
-  useAsyncEffect(
-    () => getComponentStory(kebabCase(componentName)),
-    module => {
-      if (module) {
-        const { default: meta, ...stories } = module;
-
-        const _state = cloneDeep(
-          getLiveExampleState({
-            componentName,
-            meta,
-            stories,
-            tsDoc: tsDoc,
-          }),
-        );
-
-        setState(_state);
-      } else {
-        setState(defaultLiveExampleState);
-        setShowCode(false);
-      }
-    },
-    err => {
-      console.warn(err);
-      setState(defaultLiveExampleState);
-      setShowCode(false);
-    },
-    () => {},
-    [componentName, tsDoc, setState],
-  );
-
-  const setCode = useCallback(
-    (newCode: LiveExampleState['storyCode']) => {
-      setState({ storyCode: newCode });
-    },
-    [setState],
-  );
-
-  // Updates the value of a knob
-  const updateKnobValue = useCallback(
-    (propName: string, newValue: any) => {
-      const value = matchTypes(knobValues?.[propName], newValue);
-      setState({
-        knobValues: { ...knobValues, [propName]: value },
-      });
-    },
-    [setState, knobValues],
-  );
+  // const setCode = useCallback(
+  //   (newCode: LiveExampleState['storyCode']) => {
+  //     setState({ storyCode: newCode });
+  //   },
+  //   [setState],
+  // );
 
   const handleShowCodeClick = () => {
-    setShowCode(sc => !sc);
-    setCode(
-      getStoryCode({
-        componentName,
-        meta: meta,
-        StoryFn: StoryFn,
-        knobValues: knobValues,
-      }),
-    );
+    // setShowCode(sc => !sc);
+    // setCode(
+    //   getStoryCode({
+    //     componentName,
+    //     meta: meta,
+    //     StoryFn: StoryFn,
+    //     knobValues: knobValues,
+    //   }),
+    // );
   };
 
   const storyWrapperStyle = meta?.parameters?.wrapperStyle;
@@ -140,77 +113,84 @@ export const LiveExample = ({
         margin-block: 2em;
       `}
     >
-      <div className={liveExampleWrapperStyle}>
-        <div
-          id="story-container"
-          ref={storyContainerRef}
-          className={cx(
-            storyContainerStyle,
-            {
-              [blockContainerStyle]: useBlockWrapperFor.includes(componentName),
-            },
-            css`
-              // at least as big as the story, but no more than 100vh
-              min-height: ${storyContainerHeight}px;
-            `,
-          )}
-        >
-          <LiveExampleDecorator meta={meta}>
-            {StoryFn ? (
+      <ErrorBoundary FallbackComponent={LiveExampleErrorBoundaryFallback}>
+        <div className={liveExampleWrapperStyle}>
+          <div
+            id="story-container"
+            ref={storyContainerRef}
+            className={cx(
+              storyContainerStyle,
+              {
+                [blockContainerStyle]:
+                  useBlockWrapperFor.includes(componentName),
+              },
+              css`
+                // at least as big as the story, but no more than 100vh
+                min-height: ${storyContainerHeight}px;
+              `,
+            )}
+          >
+            {state.matches('loaded') &&
+            !isUndefined(StoryFn) &&
+            !isEmpty(knobValues) ? (
               <div ref={storyWrapperRef} className={storyWrapperStyle}>
-                <StoryFn {...knobValues} />
+                <LiveExampleDecorator meta={meta}>
+                  <StoryFn {...knobValues} />
+                </LiveExampleDecorator>
               </div>
+            ) : state.matches('error') ? (
+              <LiveExampleNotFound />
             ) : (
-              <H2>React Component coming soon ⚛️</H2>
+              <LiveExampleLoading />
             )}
-          </LiveExampleDecorator>
-        </div>
-        {!disableCodeExampleFor.includes(componentName) && (
-          <Transition in={showCode} timeout={200}>
-            {state => (
-              <div
-                className={cx(
-                  codeExampleWrapperStyle,
-                  codeWrapperStateStyle[state],
-                  css`
-                    height: ${exampleCodeHeight}px;
-                  `,
-                )}
-                id="example-code"
-              >
-                <Code className={codeStyle} darkMode={darkMode} language="js">
-                  {storyCode ?? 'No code found'}
-                </Code>
-              </div>
-            )}
-          </Transition>
-        )}
-      </div>
-      <div id="knobs">
-        {!disableCodeExampleFor.includes(componentName) && (
-          <div className={exampleCodeButtonRowStyle}>
-            <Button
-              darkMode={darkMode}
-              className={exampleCodeButtonStyle}
-              variant="default"
-              size="xsmall"
-              onClick={handleShowCodeClick}
-            >
-              {showCode ? 'Hide' : 'Show'} Code
-            </Button>
           </div>
-        )}
-        {knobsArray &&
-          knobsArray.map(knob => (
-            <KnobRow
-              key={knob.name}
-              darkMode={darkMode}
-              knob={knob}
-              knobValue={knobValues?.[knob.name]}
-              setKnobValue={updateKnobValue}
-            />
-          ))}
-      </div>
+          {!disableCodeExampleFor.includes(componentName) && (
+            <Transition in={showCode} timeout={200}>
+              {state => (
+                <div
+                  className={cx(
+                    codeExampleWrapperStyle,
+                    codeWrapperStateStyle[state],
+                    css`
+                      height: ${exampleCodeHeight}px;
+                    `,
+                  )}
+                  id="example-code"
+                >
+                  <Code className={codeStyle} darkMode={darkMode} language="js">
+                    {'No code found'}
+                  </Code>
+                </div>
+              )}
+            </Transition>
+          )}
+        </div>
+        <div id="knobs">
+          {!disableCodeExampleFor.includes(componentName) && (
+            <div className={exampleCodeButtonRowStyle}>
+              <Button
+                darkMode={darkMode}
+                className={exampleCodeButtonStyle}
+                variant="default"
+                size="xsmall"
+                onClick={handleShowCodeClick}
+              >
+                {showCode ? 'Hide' : 'Show'} Code
+              </Button>
+            </div>
+          )}
+          {knobsArray &&
+            knobsArray.map(knob => (
+              <KnobRow
+                key={knob.name}
+                darkMode={darkMode}
+                knob={knob}
+                knobValue={knobValues?.[knob.name]}
+                setKnobValue={updateKnobValue}
+              />
+            ))}
+        </div>
+      </ErrorBoundary>
     </Card>
   );
 };
