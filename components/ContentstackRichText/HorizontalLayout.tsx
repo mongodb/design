@@ -18,7 +18,7 @@ const flexColumnStyles = css`
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   max-width: 100%;
 `;
 
