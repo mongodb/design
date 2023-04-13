@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
+import { LiveExampleStateContext } from './LiveExampleStateMachine/';
 import { getInitialKnobValues, getKnobsArray, matchTypes } from './utils';
 
 export function useKnobValues({
@@ -7,16 +9,14 @@ export function useKnobValues({
   componentName,
   meta,
   tsDoc,
-}:
-  | LiveExampleStateContext
-  | {
-      tsDoc?: Array<CustomComponentDoc> | null;
-    }) {
+}: LiveExampleStateContext & {
+  tsDoc?: Array<CustomComponentDoc> | null;
+}) {
   /**
    * Reload the knobs array
    */
   const knobsArray = useMemo(() => {
-    if (meta && StoryFn) {
+    if (meta && StoryFn && componentName && tsDoc) {
       return getKnobsArray({
         componentName,
         meta,

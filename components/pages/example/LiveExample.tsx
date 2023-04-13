@@ -117,12 +117,10 @@ export const LiveExample = ({
       {/* @ts-expect-error - complex union */}
       <InlineCode>state: {state.value}</InlineCode>
       <br />
-      {/* @ts-expect-error - complex union */}
       <InlineCode>
         StoryFn: {isUndefined(StoryFn) ? 'undefined' : '(props) => {...}'}
       </InlineCode>
       <br />
-      {/* @ts-expect-error - complex union */}
       <InlineCode>knobValues: {JSON.stringify(knobValues)}</InlineCode>
 
       <ErrorBoundary FallbackComponent={LiveExampleErrorBoundaryFallback}>

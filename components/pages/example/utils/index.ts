@@ -17,8 +17,13 @@ import {
   getDefaultValueValue,
 } from 'utils/tsdoc.utils';
 
-import { ignoreProps } from './utils/ignoreProps.const';
-import { KnobOptionType, KnobType, MetadataSources, TypeString } from './types';
+import {
+  KnobOptionType,
+  KnobType,
+  MetadataSources,
+  TypeString,
+} from '../types';
+import { ignoreProps } from '../utils/ignoreProps.const';
 
 /**
  * @returns the input array, or values of the input Record
