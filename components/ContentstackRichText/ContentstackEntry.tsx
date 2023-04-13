@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { css, cx } from '@emotion/react';
+import { css } from '@emotion/react';
 import { getEntryById } from 'utils/ContentStack/getContentstackResources';
 
 import Badge from '@leafygreen-ui/badge';
