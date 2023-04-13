@@ -1549,7 +1549,7 @@
     "@leafygreen-ui/tokens" "^2.0.1"
     polished "^4.2.2"
 
-"@leafygreen-ui/checkbox@^12.0.7":
+"@leafygreen-ui/checkbox@^12.0.0", "@leafygreen-ui/checkbox@^12.0.7":
   version "12.0.7"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/checkbox/-/checkbox-12.0.7.tgz#484b223cff80d70de095929c1a56beff72e93440"
   integrity sha512-9rJ9I7R7UMnIaK7Q7zPoK55JtHydmjj1bbpVofl3Pa+HcVvbriXIPk6WlMDVLsThQuO61jhgGwNeRfGEWgZ8cg==
@@ -2142,22 +2142,26 @@
     "@leafygreen-ui/tooltip" "^9.1.6"
     "@leafygreen-ui/typography" "^16.1.0"
 
-"@leafygreen-ui/table@^10.0.3":
-  version "10.0.3"
-  resolved "https://registry.yarnpkg.com/@leafygreen-ui/table/-/table-10.0.3.tgz#a24b5e0552347531bb974c13271974fe935531b2"
-  integrity sha512-JuoUkcFvE/oV7qt0tIeXHQPehHGMSp4YCbm4JaWq76ExdUhP6lPP5nv/sfMsBPk1ICGkeOxMYcVHXi0e67XGWA==
+"@leafygreen-ui/table@^11.0.1":
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/@leafygreen-ui/table/-/table-11.0.1.tgz#dcdaab1ea71f014d6e6abfa8bc0a1ea388fdd175"
+  integrity sha512-tm+gcU02DNTJna75zcEHJKKp5BGPO4/SQ1Cp7H0jhjl6Yhd3VhpoVCgFreC+7KXHapGiCRCJuwiXqTFalUh0ZQ==
   dependencies:
+    "@leafygreen-ui/checkbox" "^12.0.0"
     "@leafygreen-ui/emotion" "^4.0.3"
-    "@leafygreen-ui/hooks" "^7.5.0"
-    "@leafygreen-ui/icon" "^11.12.5"
-    "@leafygreen-ui/icon-button" "^15.0.7"
-    "@leafygreen-ui/lib" "^10.2.2"
-    "@leafygreen-ui/palette" "^4.0.0"
+    "@leafygreen-ui/hooks" "^7.7.0"
+    "@leafygreen-ui/icon" "^11.12.7"
+    "@leafygreen-ui/icon-button" "^15.0.8"
+    "@leafygreen-ui/lib" "^10.3.1"
+    "@leafygreen-ui/palette" "^4.0.1"
+    "@leafygreen-ui/polymorphic" "^1.3.0"
     "@leafygreen-ui/tokens" "^2.0.1"
-    "@leafygreen-ui/typography" "^16.1.0"
+    "@leafygreen-ui/typography" "^16.2.0"
     lodash "^4.17.21"
     polished "^4.2.2"
+    react-keyed-flatten-children "^1.3.0"
     react-transition-group "^4.4.1"
+    react-virtual "^2.10.4"
 
 "@leafygreen-ui/tabs@^11.0.6":
   version "11.0.6"
@@ -2518,6 +2522,11 @@
     loader-utils "^2.0.4"
     schema-utils "^3.0.0"
     source-map "^0.7.3"
+
+"@reach/observe-rect@^1.1.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@reach/observe-rect/-/observe-rect-1.2.0.tgz#d7a6013b8aafcc64c778a0ccb83355a11204d3b2"
+  integrity sha512-Ba7HmkFgfQxZqqaeIWWkNK0rEhpxVQHIoVyW1YDSkGsGIXzcaW4deC8B0pZrNSSyLTdIk7y+5olKt5+g0GmFIQ==
 
 "@rushstack/eslint-patch@^1.1.3":
   version "1.2.0"
@@ -10556,7 +10565,7 @@ react-is@18.1.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.1.0.tgz#61aaed3096d30eacf2a2127118b5b41387d32a67"
   integrity sha512-Fl7FuabXsJnV5Q1qIOQwx/sagGF18kogb4gpfcG4gjLBWO0WDiiz1ko/ExayuxE7InyQkBLkxRFG5oxY6Uu3Kg==
 
-react-is@^16.13.1, react-is@^16.7.0:
+react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.6:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -10565,6 +10574,13 @@ react-is@^18.0.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
+
+react-keyed-flatten-children@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/react-keyed-flatten-children/-/react-keyed-flatten-children-1.3.0.tgz#38d171582c6358909f430648a7a7d094aebae42a"
+  integrity sha512-qB7A6n+NHU0x88qTZGAJw6dsqwI941jcRPBB640c/CyWqjPQQ+YUmXOuzPziuHb7iqplM3xksWAbGYwkQT0tXA==
+  dependencies:
+    react-is "^16.8.6"
 
 react-markdown@^8.0.3:
   version "8.0.5"
@@ -10601,6 +10617,13 @@ react-transition-group@^4.4.1, react-transition-group@^4.4.5:
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
+
+react-virtual@^2.10.4:
+  version "2.10.4"
+  resolved "https://registry.yarnpkg.com/react-virtual/-/react-virtual-2.10.4.tgz#08712f0acd79d7d6f7c4726f05651a13b24d8704"
+  integrity sha512-Ir6+oPQZTVHfa6+JL9M7cvMILstFZH/H3jqeYeKI4MSUX+rIruVwFC6nGVXw9wqAw8L0Kg2KvfXxI85OvYQdpQ==
+  dependencies:
+    "@reach/observe-rect" "^1.1.0"
 
 react@^17.0.2:
   version "17.0.2"
