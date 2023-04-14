@@ -33,4 +33,4 @@ jobs:
       - name: Install Dependencies
         run: yarn install
       - name: Build NextJS
-        run: yarn build
+        run: NEXT_PUBLIC_ENVIRONMENT=main yarn build
