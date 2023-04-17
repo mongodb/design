@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import { Transition } from 'react-transition-group';
 import { cloneDeep, kebabCase } from 'lodash';
-import { getComponentStory } from 'utils/getComponentStory';
+import { getComponentStories } from 'utils/getComponentStories';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import Button from '@leafygreen-ui/button';
@@ -61,7 +61,7 @@ export const LiveExample = ({
   // Fetch Story if/when component changes.
   // This should only happen once
   useAsyncEffect(
-    () => getComponentStory(kebabCase(componentName)),
+    () => getComponentStories(kebabCase(componentName)),
     module => {
       if (module) {
         const { default: meta, ...stories } = module;
@@ -86,6 +86,7 @@ export const LiveExample = ({
       setState(defaultLiveExampleState);
       setShowCode(false);
     },
+    () => {},
     () => {},
     [componentName, tsDoc, setState],
   );
