@@ -51,6 +51,7 @@ export const LiveExample = ({
   tsDoc: Array<CustomComponentDoc> | null;
 }) => {
   const [showCode, setShowCode] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   // Establish a page state
   const [{ meta, knobValues, knobsArray, StoryFn, storyCode }, setState] =
     useReducer((state: LiveExampleState, newState: LiveExampleState) => {
@@ -86,6 +87,7 @@ export const LiveExample = ({
   // This should only happen once
   useEffect(() => {
     const kebabName = kebabCase(componentName);
+    setIsLoading(true);
     getComponentStory(kebabName)
       .then(module => {
         if (module) {
@@ -108,6 +110,9 @@ export const LiveExample = ({
         console.warn(err);
         setState(initialLiveExampleState);
         setShowCode(false);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [componentName, tsDoc]);
 
@@ -158,12 +163,18 @@ export const LiveExample = ({
             `,
           )}
         >
-          {StoryFn ? (
-            <div ref={storyWrapperRef} className={storyWrapperStyle}>
-              <StoryFn {...knobValues} />
-            </div>
+          {isLoading ? (
+            <H2>Loading...</H2>
           ) : (
-            <H2>React Component coming soon ⚛️</H2>
+            <>
+              {StoryFn ? (
+                <div ref={storyWrapperRef} className={storyWrapperStyle}>
+                  <StoryFn {...knobValues} />
+                </div>
+              ) : (
+                <H2>React Component coming soon ⚛️</H2>
+              )}
+            </>
           )}
         </div>
         {!disableCodeExampleFor.includes(componentName) && (
