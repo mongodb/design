@@ -8,6 +8,7 @@ import Callout, { Variant } from '@leafygreen-ui/callout';
 import Card from '@leafygreen-ui/card';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import ArrowRight from '@leafygreen-ui/icon/dist/ArrowRight';
+import { spacing } from '@leafygreen-ui/tokens';
 
 import AnnotatedImageBlock from './AnnotatedImageBlock';
 import BasicUsageBlock from './BasicUsageBlock';
@@ -58,6 +59,7 @@ const blockToElementMap: {
     <Callout
       variant={Variant[props.variant ?? Variant.Note]}
       className="nested-entry"
+      css={{ marginBottom: `${spacing[5]}px` }}
     >
       <ContentstackRichText content={props.content} isNested={true} />
     </Callout>

@@ -14,7 +14,7 @@ import { css } from '@leafygreen-ui/emotion';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
 import InlineDefinition from '@leafygreen-ui/inline-definition';
 import { palette } from '@leafygreen-ui/palette';
-import { Cell, Row, Table, TableHeader } from '@leafygreen-ui/table';
+import { V10Cell as Cell, V10Row as Row, V10Table as Table, V10TableHeader as TableHeader } from '@leafygreen-ui/table';
 import { InlineCode, Link } from '@leafygreen-ui/typography';
 
 import { PropTooltipContent } from '../../../PropTooltipContent';
