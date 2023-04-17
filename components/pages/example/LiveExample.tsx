@@ -24,10 +24,7 @@ import {
   liveExampleWrapperStyle,
   storyContainerStyle,
 } from './LiveExample.styles';
-import {
-  isContextDefined,
-  useLiveExampleStateMachine,
-} from './LiveExampleStateMachine';
+import { useLiveExampleStateMachine } from './LiveExampleStateMachine';
 import {
   LiveExampleDecorator,
   LiveExampleErrorBoundaryFallback,
@@ -58,43 +55,44 @@ export const LiveExample = ({
   const storyContainerRef = useRef<HTMLDivElement>(null);
   const storyWrapperRef = useRef<HTMLDivElement>(null);
 
-  const [state, send] = useLiveExampleStateMachine({ componentName });
-  const { meta, StoryFn } = state.context;
+  const [state, send] = useLiveExampleStateMachine({ componentName, tsDoc });
 
-  const { knobsArray, knobValues, updateKnobValue, resetKnobs } = useKnobValues(
-    {
-      ...state.context,
-      tsDoc,
-    },
-  );
+  // TODO: Move knobValues to machine context,
+  // Create `parsing` state that initializes knobsArray/knobValues
+  // Create an action that sets context when knobs values should change
+  // const { knobsArray, knobValues, updateKnobValue, resetKnobs } = useKnobValues(
+  //   {
+  //     ...state.context,
+  //     tsDoc,
+  //   },
+  // );
 
-  const { darkMode } = useDarkMode(knobValues?.darkMode);
+  const { darkMode } = useDarkMode(state.context.knobValues?.darkMode);
 
   // Reset when component name changes, or when state.value is unset
   useEffect(() => {
     if (state.matches('init') || componentName !== prevComponentName) {
       send('RESET', { componentName });
-      resetKnobs();
     }
-  }, [componentName, prevComponentName, send, state, resetKnobs]);
+  }, [componentName, prevComponentName, send, state]);
 
   const [showCode, setShowCode] = useState(false);
   const exampleCode = useMemo(() => {
     if (showCode) {
       return getStoryCode({
         componentName,
-        meta,
-        StoryFn,
-        knobValues,
+        meta: state.context.meta,
+        StoryFn: state.context.StoryFn,
+        knobValues: state.context.knobValues,
       });
     }
-  }, [componentName, meta, StoryFn, knobValues, showCode]);
+  }, [componentName, state.context, showCode]);
 
   const handleShowCodeClick = () => {
     setShowCode(sc => !sc);
   };
 
-  const storyWrapperStyle = meta?.parameters?.wrapperStyle;
+  const storyWrapperStyle = state.context?.meta?.parameters?.wrapperStyle;
 
   const storyContainerHeight = Math.min(
     Math.max(
@@ -114,14 +112,21 @@ export const LiveExample = ({
         margin-block: 2em;
       `}
     >
-      {/* @ts-expect-error - complex union */}
-      <InlineCode>state: {state.value}</InlineCode>
-      <br />
-      <InlineCode>
-        StoryFn: {isUndefined(StoryFn) ? 'undefined' : '(props) => {...}'}
-      </InlineCode>
-      <br />
-      <InlineCode>knobValues: {JSON.stringify(knobValues)}</InlineCode>
+      <>
+        {/* @ts-expect-error - complex union */}
+        <InlineCode>state: {state.value}</InlineCode>
+        <br />
+        <InlineCode>
+          StoryFn:{' '}
+          {isUndefined(state.context.StoryFn)
+            ? 'undefined'
+            : '(props) => {...}'}
+        </InlineCode>
+        <br />
+        <InlineCode>
+          knobValues: {JSON.stringify(state.context.knobValues)}
+        </InlineCode>
+      </>
 
       <ErrorBoundary FallbackComponent={LiveExampleErrorBoundaryFallback}>
         <div className={liveExampleWrapperStyle}>
@@ -141,11 +146,11 @@ export const LiveExample = ({
             )}
           >
             <div ref={storyWrapperRef} className={storyWrapperStyle}>
-              {state.matches('loaded') &&
-              isContextDefined(state.context) &&
+              {state.matches('ready') &&
+              // isContextDefined(state.context) &&
               !isEmpty(knobValues) ? (
-                <LiveExampleDecorator meta={meta}>
-                  <StoryFn {...knobValues} />
+                <LiveExampleDecorator meta={state.context.meta}>
+                  <state.context.StoryFn {...knobValues} />
                 </LiveExampleDecorator>
               ) : state.matches('error') ? (
                 <LiveExampleNotFound />
@@ -189,7 +194,7 @@ export const LiveExample = ({
               </Button>
             </div>
           )}
-          {knobsArray &&
+          {/* {knobsArray &&
             knobsArray.map(knob => (
               <KnobRow
                 key={knob.name}
@@ -198,7 +203,7 @@ export const LiveExample = ({
                 knobValue={knobValues?.[knob.name]}
                 setKnobValue={updateKnobValue}
               />
-            ))}
+            ))} */}
         </div>
       </ErrorBoundary>
     </Card>

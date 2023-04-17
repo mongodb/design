@@ -25,6 +25,117 @@ import {
 } from '../types';
 import { ignoreProps } from '../utils/ignoreProps.const';
 
+export function getInitialKnobValues(
+  knobsArray?: Array<KnobType>,
+  meta?: Meta<any>,
+  StoryFn?: ComponentStoryFn<any>,
+): Record<string, any> {
+  if (isUndefined(knobsArray) || isUndefined(meta) || isUndefined(StoryFn)) {
+    return {};
+  }
+
+  const knobDefaults = knobsArray.reduce((values, knob) => {
+    // If the type is an enum, and the defaultValue is the enum key, not the value
+    // we need to get the enum value
+    if (
+      knob.controlType === 'enum' &&
+      knob.defaultValue &&
+      !knob.options.includes(knob.defaultValue)
+    ) {
+      const enumName = knob.type.raw;
+      const enumValue = knob.defaultValue.replace(enumName, '');
+      const defaultOption =
+        knob.options.find(opt =>
+          [
+            // We don't have access to the enum mapping,
+            // so we have to hope the option value matches the enum value
+            enumValue.toLowerCase(),
+            kebabCase(enumValue),
+            camelCase(enumValue),
+            snakeCase(enumValue),
+          ].includes(opt),
+        ) ?? createDefaultValue(knob);
+
+      values[knob.name] = defaultOption;
+    } else {
+      values[knob.name] =
+        knob.defaultValue ??
+        StoryFn.args?.[knob.name] ??
+        meta.args?.[knob.name] ??
+        createDefaultValue(knob);
+    }
+
+    return values;
+  }, {} as Record<'string', any>);
+
+  return pickBy(
+    defaults(knobDefaults, meta?.args, StoryFn?.args),
+    // Filter out values that are explicitly undefined
+    val => !isUndefined(val),
+  );
+}
+
+export function getKnobsArray({
+  componentName,
+  meta,
+  StoryFn,
+  tsDoc,
+}: {
+  componentName: string;
+  meta: Meta<any>;
+  StoryFn: ComponentStoryFn<any>;
+  tsDoc: Array<CustomComponentDoc> | null;
+}) {
+  const TSPropsArray: Array<KnobType> = getTSDocPropsArray(
+    findComponentDoc(componentName, tsDoc),
+  )
+    // Filter out component props we don't want knobs for.
+    // i.e. `@ignore` tags, excluded in SB.parameters.controls
+    .filter(getPropItemFilterFn({ meta, StoryFn }))
+    // Convert to custom KnobType by adding additional properties,
+    // and updating other properties
+    .map(getPropItemToKnobTypeMapFn({ meta, StoryFn }));
+
+  const SBArgsArray: Array<KnobType> = Object.entries(
+    { ...meta?.argTypes, ...StoryFn?.argTypes } ?? {},
+  )
+    .map(arg => ({ name: arg[0], ...arg[1] }))
+    // Same filters as above, but also filter out values already in TSPropsArray
+    .filter(getSBInputTypeFilterFn({ meta, StoryFn, TSPropsArray }))
+    // Convert SB InputType to KnobType
+    .map(mapSBArgTypeToKnobType);
+
+  const knobsArray = [...TSPropsArray, ...SBArgsArray];
+
+  return knobsArray;
+}
+
+/**
+ * Ensures the types of prevVal and newVal match
+ */
+export function matchTypes<T extends any>(
+  prevVal: T,
+  newVal: any,
+): T | undefined {
+  if (typeof prevVal === typeof newVal) return newVal;
+
+  switch (typeof prevVal) {
+    case 'string':
+      return String(newVal) as T;
+    case 'number':
+    case 'bigint':
+      return Number(newVal) as T;
+    case 'boolean':
+      return Boolean(newVal) as T;
+    case 'function':
+    case 'object':
+    case 'symbol':
+      return newVal;
+    default:
+      return;
+  }
+}
+
 /**
  * @returns the input array, or values of the input Record
  */
@@ -40,7 +151,7 @@ const valuesArrayFrom = (
 /**
  * Utility to get the `argTypes` object for a given prop
  */
-export const getSBInputType = ({
+const getSBInputType = ({
   meta,
   StoryFn,
   TSDocProp: { name },
@@ -159,7 +270,7 @@ function mapSBArgTypeToKnobType(SBArg: Required<InputType>): KnobType {
 /**
  * @returns A Type string based on metadata from Storybook and TSDoc
  */
-export function getControlType({
+function getControlType({
   meta,
   StoryFn,
   TSDocProp,
@@ -212,7 +323,7 @@ function getOtherControlArgs({
  * @returns Options for enum type knobs, based on metadata from Storybook and TSDoc.
  * Returns an empty array if there are no options
  */
-export function getKnobOptions({
+function getKnobOptions({
   meta,
   StoryFn,
   TSDocProp,
@@ -254,66 +365,12 @@ export function getKnobOptions({
 /**
  * @returns the default value based on metadata from Storybook and TSDoc
  */
-export function getDefaultValue({
-  meta,
-  StoryFn,
-  TSDocProp,
-}: MetadataSources): any {
+function getDefaultValue({ meta, StoryFn, TSDocProp }: MetadataSources): any {
   const TSDefaultValue = getDefaultValueValue(TSDocProp);
   const SBArg = StoryFn.args?.[TSDocProp.name] ?? meta.args?.[TSDocProp.name];
   const SBInputType = getSBInputType({ meta, StoryFn, TSDocProp });
   const SBDefaultValue = SBInputType?.defaultValue;
   return SBArg ?? SBDefaultValue ?? TSDefaultValue;
-}
-
-export function getInitialKnobValues(
-  knobsArray?: Array<KnobType>,
-  meta?: Meta<any>,
-  StoryFn?: ComponentStoryFn<any>,
-): Record<string, any> {
-  if (isUndefined(knobsArray) || isUndefined(meta) || isUndefined(StoryFn)) {
-    return {};
-  }
-
-  const knobDefaults = knobsArray.reduce((values, knob) => {
-    // If the type is an enum, and the defaultValue is the enum key, not the value
-    // we need to get the enum value
-    if (
-      knob.controlType === 'enum' &&
-      knob.defaultValue &&
-      !knob.options.includes(knob.defaultValue)
-    ) {
-      const enumName = knob.type.raw;
-      const enumValue = knob.defaultValue.replace(enumName, '');
-      const defaultOption =
-        knob.options.find(opt =>
-          [
-            // We don't have access to the enum mapping,
-            // so we have to hope the option value matches the enum value
-            enumValue.toLowerCase(),
-            kebabCase(enumValue),
-            camelCase(enumValue),
-            snakeCase(enumValue),
-          ].includes(opt),
-        ) ?? createDefaultValue(knob);
-
-      values[knob.name] = defaultOption;
-    } else {
-      values[knob.name] =
-        knob.defaultValue ??
-        StoryFn.args?.[knob.name] ??
-        meta.args?.[knob.name] ??
-        createDefaultValue(knob);
-    }
-
-    return values;
-  }, {} as Record<'string', any>);
-
-  return pickBy(
-    defaults(knobDefaults, meta?.args, StoryFn?.args),
-    // Filter out values that are explicitly undefined
-    val => !isUndefined(val),
-  );
 }
 
 function createDefaultValue(knob: KnobType) {
@@ -337,74 +394,9 @@ function createDefaultValue(knob: KnobType) {
 /**
  * @returns the prop description based on metadata from Storybook and TSDoc
  */
-export function getKnobDescription({
-  meta,
-  StoryFn,
-  TSDocProp,
-}: MetadataSources) {
+function getKnobDescription({ meta, StoryFn, TSDocProp }: MetadataSources) {
   return (
     (meta.argTypes?.[TSDocProp.name] || StoryFn.argTypes?.[TSDocProp.name])
       ?.description ?? TSDocProp.description
   );
-}
-
-export function getKnobsArray({
-  componentName,
-  meta,
-  StoryFn,
-  tsDoc,
-}: {
-  componentName: string;
-  meta: Meta<any>;
-  StoryFn: ComponentStoryFn<any>;
-  tsDoc: Array<CustomComponentDoc> | null;
-}) {
-  const TSPropsArray: Array<KnobType> = getTSDocPropsArray(
-    findComponentDoc(componentName, tsDoc),
-  )
-    // Filter out component props we don't want knobs for.
-    // i.e. `@ignore` tags, excluded in SB.parameters.controls
-    .filter(getPropItemFilterFn({ meta, StoryFn }))
-    // Convert to custom KnobType by adding additional properties,
-    // and updating other properties
-    .map(getPropItemToKnobTypeMapFn({ meta, StoryFn }));
-
-  const SBArgsArray: Array<KnobType> = Object.entries(
-    { ...meta?.argTypes, ...StoryFn?.argTypes } ?? {},
-  )
-    .map(arg => ({ name: arg[0], ...arg[1] }))
-    // Same filters as above, but also filter out values already in TSPropsArray
-    .filter(getSBInputTypeFilterFn({ meta, StoryFn, TSPropsArray }))
-    // Convert SB InputType to KnobType
-    .map(mapSBArgTypeToKnobType);
-
-  const knobsArray = [...TSPropsArray, ...SBArgsArray];
-
-  return knobsArray;
-}
-
-/**
- * Ensures the types of prevVal and newVal match
- */
-export function matchTypes<T extends any>(
-  prevVal: T,
-  newVal: any,
-): T | undefined {
-  if (typeof prevVal === typeof newVal) return newVal;
-
-  switch (typeof prevVal) {
-    case 'string':
-      return String(newVal) as T;
-    case 'number':
-    case 'bigint':
-      return Number(newVal) as T;
-    case 'boolean':
-      return Boolean(newVal) as T;
-    case 'function':
-    case 'object':
-    case 'symbol':
-      return newVal;
-    default:
-      return;
-  }
 }
