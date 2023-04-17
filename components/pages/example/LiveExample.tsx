@@ -23,10 +23,11 @@ import {
   storyContainerStyle,
 } from './LiveExample.styles';
 import { LiveExampleDecorator } from './LiveExampleDecorator';
-import { LiveExampleState } from './types';
+import {} from './types';
 import { useAsyncEffect } from './useAsyncEffect';
 import {
-  defaultLiveExampleState,
+  defaultLiveExampleContext,
+  LiveExampleContext,
   useLiveExampleState,
 } from './useLiveExampleState';
 import { getLiveExampleState, getStoryCode, matchTypes } from './utils';
@@ -53,72 +54,73 @@ export const LiveExample = ({
   const storyWrapperRef = useRef<HTMLDivElement>(null);
 
   // Establish a page state
-  const [{ meta, StoryFn, knobValues, knobsArray, storyCode }, setState] =
-    useLiveExampleState();
+  const {
+    state: { meta, StoryFn, knobValues, knobsArray, storyCode },
+  } = useLiveExampleState({ componentName, tsDoc });
 
   const { darkMode } = useDarkMode(knobValues?.darkMode);
 
   // Fetch Story if/when component changes.
   // This should only happen once
-  useAsyncEffect(
-    () => getComponentStories(kebabCase(componentName)),
-    module => {
-      if (module) {
-        const { default: meta, ...stories } = module;
+  // useAsyncEffect(
+  //   () => getComponentStories(kebabCase(componentName)),
+  //   module => {
+  //     if (module) {
+  //       const { default: meta, ...stories } = module;
 
-        const _state = cloneDeep(
-          getLiveExampleState({
-            componentName,
-            meta,
-            stories,
-            tsDoc: tsDoc,
-          }),
-        );
+  //       const _state = cloneDeep(
+  //         getLiveExampleState({
+  //           componentName,
+  //           meta,
+  //           stories,
+  //           tsDoc: tsDoc,
+  //         }),
+  //       );
 
-        setState(_state);
-      } else {
-        setState(defaultLiveExampleState);
-        setShowCode(false);
-      }
-    },
-    err => {
-      console.warn(err);
-      setState(defaultLiveExampleState);
-      setShowCode(false);
-    },
-    () => {},
-    () => {},
-    [componentName, tsDoc, setState],
-  );
+  //       setState(_state);
+  //     } else {
+  //       setState(defaultLiveExampleContext);
+  //       setShowCode(false);
+  //     }
+  //   },
+  //   err => {
+  //     console.warn(err);
+  //     setState(defaultLiveExampleContext);
+  //     setShowCode(false);
+  //   },
+  //   () => {},
+  //   () => {},
+  //   [componentName, tsDoc, setState],
+  // );
 
-  const setCode = useCallback(
-    (newCode: LiveExampleState['storyCode']) => {
-      setState({ storyCode: newCode });
-    },
-    [setState],
-  );
+  // const setCode = useCallback(
+  //   (newCode: LiveExampleContext['storyCode']) => {
+  //     setState({ storyCode: newCode });
+  //   },
+  //   [setState],
+  // );
 
   // Updates the value of a knob
-  const updateKnobValue = useCallback(
-    (propName: string, newValue: any) => {
-      const value = matchTypes(knobValues?.[propName], newValue);
-      setState({
-        knobValues: { ...knobValues, [propName]: value },
-      });
-    },
-    [setState, knobValues],
-  );
+  // const updateKnobValue = useCallback(
+  //   (propName: string, newValue: any) => {
+  //     const value = matchTypes(knobValues?.[propName], newValue);
+  //     setState({
+  //       knobValues: { ...knobValues, [propName]: value },
+  //     });
+  //   },
+  //   [setState, knobValues],
+  // );
 
   const handleShowCodeClick = () => {
     setShowCode(sc => !sc);
-    setCode(
-      getStoryCode({
-        componentName,
-        meta: meta,
-        StoryFn: StoryFn,
-        knobValues: knobValues,
-      }),
-    );
+    // setCode(
+    //   getStoryCode({
+    //     componentName,
+    //     meta: meta,
+    //     StoryFn: StoryFn,
+    //     knobValues: knobValues,
+    //   }),
+    // );
   };
 
   const storyWrapperStyle = meta?.parameters?.wrapperStyle;
@@ -201,7 +203,7 @@ export const LiveExample = ({
             </Button>
           </div>
         )}
-        {knobsArray &&
+        {/* {knobsArray &&
           knobsArray.map(knob => (
             <KnobRow
               key={knob.name}
@@ -210,7 +212,7 @@ export const LiveExample = ({
               knobValue={knobValues?.[knob.name]}
               setKnobValue={updateKnobValue}
             />
-          ))}
+          ))} */}
       </div>
     </Card>
   );

@@ -42,11 +42,3 @@ export type KnobType = PropItem & {
     [key: string]: any;
   };
 };
-
-export interface LiveExampleState {
-  meta?: Meta<any>;
-  StoryFn?: ComponentStoryFn<any>;
-  knobValues?: { [arg: string]: any };
-  knobsArray?: Array<KnobType>;
-  storyCode?: string;
-}
