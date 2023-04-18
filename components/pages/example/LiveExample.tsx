@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Transition } from 'react-transition-group';
 import { cloneDeep, kebabCase } from 'lodash';
 import { getComponentStories } from 'utils/getComponentStories';
@@ -8,8 +8,9 @@ import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
 import Code from '@leafygreen-ui/code';
 import { css, cx } from '@leafygreen-ui/emotion';
+import { usePrevious } from '@leafygreen-ui/hooks';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
-import { H2 } from '@leafygreen-ui/typography';
+import { H2, InlineCode } from '@leafygreen-ui/typography';
 
 import { KnobRow } from './KnobRow/KnobRow';
 import {
@@ -49,16 +50,24 @@ export const LiveExample = ({
   componentName: string;
   tsDoc: Array<CustomComponentDoc> | null;
 }) => {
+  const prevComponentName = usePrevious(componentName);
   const [showCode, setShowCode] = useState(false);
   const storyContainerRef = useRef<HTMLDivElement>(null);
   const storyWrapperRef = useRef<HTMLDivElement>(null);
 
   // Establish a page state
-  const {
-    state: { meta, StoryFn, knobValues, knobsArray, storyCode },
-  } = useLiveExampleState({ componentName, tsDoc });
+  // { meta, StoryFn, knobValues, knobsArray, storyCode } =
+  const { state, updateKnobValue, reset, parse, notFound } =
+    useLiveExampleState(componentName, tsDoc);
 
-  const { darkMode } = useDarkMode(knobValues?.darkMode);
+  // knobValues?.darkMode
+  const { darkMode } = useDarkMode(state?.knobValues?.darkMode);
+
+  useEffect(() => {
+    if (componentName !== prevComponentName && tsDoc) {
+      reset(componentName, tsDoc);
+    }
+  }, [componentName, prevComponentName, reset, tsDoc]);
 
   // Fetch Story if/when component changes.
   // This should only happen once
@@ -66,31 +75,18 @@ export const LiveExample = ({
   //   () => getComponentStories(kebabCase(componentName)),
   //   module => {
   //     if (module) {
-  //       const { default: meta, ...stories } = module;
-
-  //       const _state = cloneDeep(
-  //         getLiveExampleState({
-  //           componentName,
-  //           meta,
-  //           stories,
-  //           tsDoc: tsDoc,
-  //         }),
-  //       );
-
-  //       setState(_state);
+  //       parse(module);
   //     } else {
-  //       setState(defaultLiveExampleContext);
-  //       setShowCode(false);
+  //       notFound(componentName);
   //     }
   //   },
   //   err => {
   //     console.warn(err);
-  //     setState(defaultLiveExampleContext);
-  //     setShowCode(false);
+  //     notFound(componentName);
   //   },
   //   () => {},
   //   () => {},
-  //   [componentName, tsDoc, setState],
+  //   [componentName, tsDoc, state.state],
   // );
 
   // const setCode = useCallback(
@@ -123,18 +119,18 @@ export const LiveExample = ({
     // );
   };
 
-  const storyWrapperStyle = meta?.parameters?.wrapperStyle;
+  // const storyWrapperStyle = meta?.parameters?.wrapperStyle;
 
-  const storyContainerHeight = Math.min(
-    Math.max(
-      storyWrapperRef.current?.clientHeight ?? 0,
-      window.innerHeight / 3,
-    ),
-    window.innerHeight * 0.8,
-  );
+  // const storyContainerHeight = Math.min(
+  //   Math.max(
+  //     storyWrapperRef.current?.clientHeight ?? 0,
+  //     window.innerHeight / 3,
+  //   ),
+  //   window.innerHeight * 0.8,
+  // );
 
-  // should match the total height of the story container
-  const exampleCodeHeight = storyContainerHeight + 48;
+  // // should match the total height of the story container
+  // const exampleCodeHeight = storyContainerHeight + 48;
 
   return (
     <Card
@@ -144,7 +140,8 @@ export const LiveExample = ({
       `}
     >
       <div className={liveExampleWrapperStyle}>
-        <div
+        <pre>{JSON.stringify(state)}</pre>
+        {/* <div
           id="story-container"
           ref={storyContainerRef}
           className={cx(
@@ -187,7 +184,7 @@ export const LiveExample = ({
               </div>
             )}
           </Transition>
-        )}
+        )} */}
       </div>
       <div id="knobs">
         {!disableCodeExampleFor.includes(componentName) && (

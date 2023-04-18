@@ -4,7 +4,6 @@ import { CustomComponentDoc } from 'utils/tsdoc.utils';
 import { KnobType } from '../types';
 
 export type LiveExampleState =
-  | 'idle'
   | 'loading'
   | 'parsing'
   | 'ready'
@@ -12,10 +11,10 @@ export type LiveExampleState =
   | 'not_found';
 
 export enum LiveExampleActionType {
-  LOAD = 'LOAD',
   PARSE = 'PARSE',
   READY = 'READY',
   ERROR = 'ERROR',
+  NOT_FOUND = 'NOT_FOUND',
   RESET = 'RESET',
   UPDATE = 'UPDATE',
 }
@@ -27,17 +26,15 @@ export interface LiveExampleContext {
   meta?: Meta<any>;
   StoryFn?: ComponentStoryFn<any>;
   knobValues?: { [arg: string]: any };
-  knobsArray?: Array<KnobType>;
-  storyCode?: string;
+  // knobsArray?: Array<KnobType>;
+  // storyCode?: string;
 }
 
 export type LiveExampleAction =
   | {
-      type: LiveExampleActionType.LOAD;
-      componentName: string;
-    }
-  | {
       type: LiveExampleActionType.PARSE;
+      meta: Meta<any>;
+      StoryFn: ComponentStoryFn<any>;
     }
   | {
       type: LiveExampleActionType.READY;
@@ -45,6 +42,7 @@ export type LiveExampleAction =
   | {
       type: LiveExampleActionType.RESET;
       componentName: string;
+      tsDoc: Array<CustomComponentDoc>;
     }
   | {
       type: LiveExampleActionType.UPDATE;
@@ -53,4 +51,8 @@ export type LiveExampleAction =
     }
   | {
       type: LiveExampleActionType.ERROR;
+    }
+  | {
+      type: LiveExampleActionType.NOT_FOUND;
+      componentName: string;
     };

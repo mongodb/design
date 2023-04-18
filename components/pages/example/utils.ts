@@ -20,13 +20,8 @@ import {
   getDefaultValueValue,
 } from 'utils/tsdoc.utils';
 
-import {
-  KnobOptionType,
-  KnobType,
-  LiveExampleState,
-  MetadataSources,
-  TypeString,
-} from './types';
+import { KnobOptionType, KnobType, MetadataSources, TypeString } from './types';
+import { LiveExampleContext } from './useLiveExampleState';
 
 /**
  * A list of Prop names that should not appear in Knobs
@@ -339,7 +334,14 @@ export function getInitialKnobValues(
 
     return values;
   }, {} as Record<'string', any>);
-  return defaults(knobDefaults, meta.args, StoryFn.args);
+
+  // Extract the default Knob Values, and include any props not explicitly included in TSDoc
+  // This state object will be modified whenever a user interacts with a knob.
+  return pickBy(
+    defaults(knobDefaults, meta.args, StoryFn.args),
+    // Filter out values that are explicitly undefined
+    val => !isUndefined(val),
+  );
 }
 
 function createDefaultValue(knob: KnobType) {
@@ -440,26 +442,32 @@ export function getStoryCode({
 }
 
 /**
- * Given component metadata
- * returns a LiveExampleState object
+ * Gets the default story from the meta
  */
-export function getLiveExampleState({
+export function getDefaultStoryFn(
+  meta: Meta<any>,
+  stories: { [key: string]: ComponentStoryFn<any> },
+) {
+  const defaultStoryName = meta.parameters?.default ?? Object.keys(stories)[0];
+  return defaultStoryName
+    ? stories[defaultStoryName]
+    : Object.values(stories)[0];
+}
+
+/**
+ * Returns an array of all knobs for the component
+ */
+export function getKnobsArray({
   componentName,
   meta,
-  stories,
+  StoryFn,
   tsDoc,
 }: {
   componentName: string;
   meta: Meta<any>;
-  stories: { [key: string]: ComponentStoryFn<any> };
+  StoryFn: ComponentStoryFn<any>;
   tsDoc: Array<CustomComponentDoc> | null;
-}): LiveExampleState {
-  const defaultStoryName = meta.parameters?.default ?? Object.keys(stories)[0];
-
-  const StoryFn = defaultStoryName
-    ? stories[defaultStoryName]
-    : Object.values(stories)[0];
-
+}) {
   const TSPropsArray: Array<KnobType> = getTSDocPropsArray(
     findComponentDoc(componentName, tsDoc),
   )
@@ -481,13 +489,35 @@ export function getLiveExampleState({
 
   const knobsArray = [...TSPropsArray, ...SBArgsArray];
 
-  // Extract the default Knob Values, and include any props not explicitly included in TSDoc
-  // This state object will be modified whenever a user interacts with a knob.
-  const knobValues = pickBy(
-    getInitialKnobValues(knobsArray, meta, StoryFn),
-    // Filter out values that are explicitly undefined
-    val => !isUndefined(val),
-  );
+  return knobsArray;
+}
+
+/**
+ * Given component metadata
+ * returns a LiveExampleState object
+ * @deprecated
+ */
+export function getLiveExampleState({
+  componentName,
+  meta,
+  stories,
+  tsDoc,
+}: {
+  componentName: string;
+  meta: Meta<any>;
+  stories: { [key: string]: ComponentStoryFn<any> };
+  tsDoc: Array<CustomComponentDoc> | null;
+}) {
+  const StoryFn = getDefaultStoryFn(meta, stories);
+
+  const knobsArray = getKnobsArray({
+    componentName,
+    meta,
+    StoryFn,
+    tsDoc,
+  });
+
+  const knobValues = getInitialKnobValues(knobsArray, meta, StoryFn);
 
   const storyCode = getStoryCode({
     componentName,
@@ -495,14 +525,6 @@ export function getLiveExampleState({
     StoryFn,
     knobValues,
   });
-
-  return {
-    meta,
-    knobValues,
-    knobsArray,
-    StoryFn,
-    storyCode,
-  };
 }
 
 /**
