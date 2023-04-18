@@ -33,3 +33,10 @@ export const TextColors: Record<Variant, string> = {
   [Variant.Dont]: palette.red.base,
   [Variant.Do]: palette.green.dark2,
 };
+
+export const VariantHeaders: Record<Variant, string> = {
+  [Variant.Info]: 'Info',
+  [Variant.Caution]: 'Use with caution',
+  [Variant.Dont]: "Don't",
+  [Variant.Do]: 'Do',
+};
