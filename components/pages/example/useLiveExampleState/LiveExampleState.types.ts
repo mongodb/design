@@ -26,18 +26,22 @@ export interface LiveExampleContext {
   meta?: Meta<any>;
   StoryFn?: ComponentStoryFn<any>;
   knobValues?: { [arg: string]: any };
-  // knobsArray?: Array<KnobType>;
+  knobsArray?: Array<KnobType>;
   // storyCode?: string;
 }
 
 export type LiveExampleAction =
-  | {
-      type: LiveExampleActionType.PARSE;
-      meta: Meta<any>;
-      StoryFn: ComponentStoryFn<any>;
-    }
+  // | {
+  //     type: LiveExampleActionType.PARSE;
+  //     meta: Meta<any>;
+  //     StoryFn: ComponentStoryFn<any>;
+  //   }
   | {
       type: LiveExampleActionType.READY;
+      meta: Meta<any>;
+      StoryFn: ComponentStoryFn<any>;
+      knobsArray: Array<KnobType>;
+      knobValues?: { [arg: string]: any };
     }
   | {
       type: LiveExampleActionType.RESET;

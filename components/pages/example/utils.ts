@@ -21,7 +21,6 @@ import {
 } from 'utils/tsdoc.utils';
 
 import { KnobOptionType, KnobType, MetadataSources, TypeString } from './types';
-import { LiveExampleContext } from './useLiveExampleState';
 
 /**
  * A list of Prop names that should not appear in Knobs

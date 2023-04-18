@@ -1,9 +1,10 @@
-import { Dispatch, useEffect, useReducer } from 'react';
-import { cloneDeep, kebabCase, merge } from 'lodash';
-import { isUndefined } from 'lodash';
+import { useReducer } from 'react';
+import { kebabCase, merge } from 'lodash';
+import { clone } from 'lodash';
 import { getComponentStories, ModuleType } from 'utils/getComponentStories';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
+import { useAsyncEffect } from '../useAsyncEffect';
 import {
   getDefaultStoryFn,
   getInitialKnobValues,
@@ -43,41 +44,43 @@ const liveExampleStateReducer = (
       break;
     }
 
-    case LiveExampleActionType.PARSE: {
-      const expectedContextProps = [
-        'state',
-        'meta',
-        'StoryFn',
-        'componentName',
-        'tsDoc',
-      ] as Array<keyof LiveExampleContext>;
+    // case LiveExampleActionType.PARSE: {
+    //   // Set 'state' to 'parsing'
+    //   ctx.state = 'parsing';
+    //   ctx.meta = action.meta;
+    //   ctx.StoryFn = action.StoryFn;
 
-      // Set 'state' to 'parsing'
-      ctx.state = 'parsing';
+    //   // Assert that context has the expected props
+    //   if (assertContext(ctx, expectedContextProps)) {
+    //     const knobsArray = getKnobsArray({
+    //       componentName: ctx.componentName,
+    //       tsDoc: ctx.tsDoc,
+    //       meta: ctx.meta,
+    //       StoryFn: ctx.StoryFn,
+    //     });
+
+    //     const knobValues = getInitialKnobValues(
+    //       knobsArray,
+    //       ctx.meta,
+    //       ctx.StoryFn,
+    //     );
+
+    //     ctx.state = 'ready';
+    //     ctx.knobValues = knobValues;
+    //   } else {
+    //     // TODO: Something went wrong
+    //     ctx.state = 'error';
+    //   }
+    //   break;
+    // }
+
+    case LiveExampleActionType.READY: {
+      ctx.state = 'ready';
       ctx.meta = action.meta;
       ctx.StoryFn = action.StoryFn;
+      ctx.knobValues = action.knobValues;
+      ctx.knobsArray = action.knobsArray;
 
-      // Assert that context has the expected props
-      if (assertContext(ctx, expectedContextProps)) {
-        const knobsArray = getKnobsArray({
-          componentName: ctx.componentName,
-          tsDoc: ctx.tsDoc,
-          meta: ctx.meta,
-          StoryFn: ctx.StoryFn,
-        });
-
-        const knobValues = getInitialKnobValues(
-          knobsArray,
-          ctx.meta,
-          ctx.StoryFn,
-        );
-
-        ctx.state = 'ready';
-        ctx.knobValues = knobValues;
-      } else {
-        // TODO: Something went wrong
-        ctx.state = 'error';
-      }
       break;
     }
 
@@ -102,22 +105,23 @@ const liveExampleStateReducer = (
     }
   }
 
-  return ctx;
+  // Clone
+  return clone(ctx);
 };
 
 export function useLiveExampleState(
-  componentName?: string,
+  componentName: string,
   tsDoc?: Array<CustomComponentDoc> | null,
 ) {
   const initialState = merge(
     { componentName, tsDoc },
     defaultLiveExampleContext,
   );
-  const [state, dispatch] = useReducer(liveExampleStateReducer, initialState);
+  const [context, dispatch] = useReducer(liveExampleStateReducer, initialState);
 
-  // Updates the value of a knob
+  /** Update the value of a knob */
   const updateKnobValue = (propName: string, newValue: any) => {
-    const value = matchTypes(state.knobValues?.[propName], newValue);
+    const value = matchTypes(context.knobValues?.[propName], newValue);
     dispatch({
       type: LiveExampleActionType.UPDATE,
       propName,
@@ -125,64 +129,80 @@ export function useLiveExampleState(
     });
   };
 
-  const reset = (componentName: string, tsDoc: Array<CustomComponentDoc>) => {
+  /** Reset the live example */
+  const RESET = (componentName: string, tsDoc: Array<CustomComponentDoc>) => {
     dispatch({
       type: LiveExampleActionType.RESET,
       componentName,
       tsDoc,
     });
+  };
 
-    getComponentStories(kebabCase(componentName))
-      // .then dispatch({'PARSE', meta, StoryFn})
-      .then(module => {
+  /**
+   * Parses the story module
+   * @internal
+   */
+  const parse = (module: ModuleType) => {
+    const { default: meta, ...stories } = module;
+    const StoryFn = getDefaultStoryFn(meta, stories);
+
+    if (assertContext(context, ['state', 'componentName', 'tsDoc'])) {
+      const knobsArray = getKnobsArray({
+        componentName: context.componentName,
+        tsDoc: context.tsDoc,
+        meta,
+        StoryFn,
+      });
+
+      const knobValues = getInitialKnobValues(knobsArray, meta, StoryFn);
+
+      dispatch({
+        type: LiveExampleActionType.READY,
+        meta,
+        StoryFn,
+        knobsArray,
+        knobValues,
+      });
+    } else {
+      dispatch({
+        type: LiveExampleActionType.ERROR,
+      });
+    }
+  };
+
+  /**
+   * When state changes to 'loading', kickoff the async call.
+   * We can't do this inside `RESET` since we have no way of knowing whether
+   * the component is still mounted outside this useAsyncEffect
+   */
+  useAsyncEffect(
+    () => getComponentStories(kebabCase(componentName)),
+    {
+      then: module => {
         if (module) {
           parse(module);
-          // const { default: meta, ...stories } = module;
-          // const StoryFn = getDefaultStoryFn(meta, stories);
-
-          // dispatch({
-          //   type: LiveExampleActionType.PARSE,
-          //   meta,
-          //   StoryFn,
-          // });
         } else {
           dispatch({
             type: LiveExampleActionType.NOT_FOUND,
             componentName,
           });
         }
-      })
-      .catch(() => {
+      },
+      catch: err => {
+        console.warn(err);
         dispatch({
           type: LiveExampleActionType.NOT_FOUND,
           componentName,
         });
-      });
-  };
-
-  const parse = (module: ModuleType) => {
-    const { default: meta, ...stories } = module;
-    const StoryFn = getDefaultStoryFn(meta, stories);
-
-    dispatch({
-      type: LiveExampleActionType.PARSE,
-      meta,
-      StoryFn,
-    });
-  };
-
-  const notFound = (componentName: string) => {
-    dispatch({
-      type: LiveExampleActionType.NOT_FOUND,
-      componentName,
-    });
-  };
+      },
+    },
+    context.state === 'loading',
+    [componentName, context.state],
+  );
 
   return {
-    state,
+    context,
     updateKnobValue,
-    reset,
-    parse,
-    notFound,
+    RESET,
   };
 }

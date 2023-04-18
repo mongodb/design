@@ -57,17 +57,19 @@ export const LiveExample = ({
 
   // Establish a page state
   // { meta, StoryFn, knobValues, knobsArray, storyCode } =
-  const { state, updateKnobValue, reset, parse, notFound } =
-    useLiveExampleState(componentName, tsDoc);
+  const {
+    context: { state, meta, StoryFn, knobValues, knobsArray },
+    updateKnobValue,
+    RESET,
+  } = useLiveExampleState(componentName, tsDoc);
 
-  // knobValues?.darkMode
-  const { darkMode } = useDarkMode(state?.knobValues?.darkMode);
+  const { darkMode } = useDarkMode(knobValues?.darkMode);
 
   useEffect(() => {
     if (componentName !== prevComponentName && tsDoc) {
-      reset(componentName, tsDoc);
+      RESET(componentName, tsDoc);
     }
-  }, [componentName, prevComponentName, reset, tsDoc]);
+  }, [componentName, prevComponentName, RESET, tsDoc]);
 
   // Fetch Story if/when component changes.
   // This should only happen once
@@ -119,18 +121,18 @@ export const LiveExample = ({
     // );
   };
 
-  // const storyWrapperStyle = meta?.parameters?.wrapperStyle;
+  const storyWrapperStyle = meta?.parameters?.wrapperStyle;
 
-  // const storyContainerHeight = Math.min(
-  //   Math.max(
-  //     storyWrapperRef.current?.clientHeight ?? 0,
-  //     window.innerHeight / 3,
-  //   ),
-  //   window.innerHeight * 0.8,
-  // );
+  const storyContainerHeight = Math.min(
+    Math.max(
+      storyWrapperRef.current?.clientHeight ?? 0,
+      window.innerHeight / 3,
+    ),
+    window.innerHeight * 0.8,
+  );
 
-  // // should match the total height of the story container
-  // const exampleCodeHeight = storyContainerHeight + 48;
+  // should match the total height of the story container
+  const exampleCodeHeight = storyContainerHeight + 48;
 
   return (
     <Card
@@ -140,8 +142,7 @@ export const LiveExample = ({
       `}
     >
       <div className={liveExampleWrapperStyle}>
-        <pre>{JSON.stringify(state)}</pre>
-        {/* <div
+        <div
           id="story-container"
           ref={storyContainerRef}
           className={cx(
@@ -155,15 +156,15 @@ export const LiveExample = ({
             `,
           )}
         >
-          <LiveExampleDecorator meta={meta}>
-            {StoryFn ? (
-              <div ref={storyWrapperRef} className={storyWrapperStyle}>
+          {StoryFn ? (
+            <div ref={storyWrapperRef} className={storyWrapperStyle}>
+              <LiveExampleDecorator meta={meta}>
                 <StoryFn {...knobValues} />
-              </div>
-            ) : (
-              <H2>React Component coming soon ⚛️</H2>
-            )}
-          </LiveExampleDecorator>
+              </LiveExampleDecorator>
+            </div>
+          ) : (
+            <H2>React Component coming soon ⚛️</H2>
+          )}
         </div>
         {!disableCodeExampleFor.includes(componentName) && (
           <Transition in={showCode} timeout={200}>
@@ -179,12 +180,15 @@ export const LiveExample = ({
                 id="example-code"
               >
                 <Code className={codeStyle} darkMode={darkMode} language="js">
-                  {storyCode ?? 'No code found'}
+                  {
+                    // storyCode ??
+                    'No code found'
+                  }
                 </Code>
               </div>
             )}
           </Transition>
-        )} */}
+        )}
       </div>
       <div id="knobs">
         {!disableCodeExampleFor.includes(componentName) && (
@@ -200,7 +204,7 @@ export const LiveExample = ({
             </Button>
           </div>
         )}
-        {/* {knobsArray &&
+        {knobsArray &&
           knobsArray.map(knob => (
             <KnobRow
               key={knob.name}
@@ -209,7 +213,7 @@ export const LiveExample = ({
               knobValue={knobValues?.[knob.name]}
               setKnobValue={updateKnobValue}
             />
-          ))} */}
+          ))}
       </div>
     </Card>
   );
