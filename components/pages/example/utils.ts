@@ -517,13 +517,6 @@ export function getLiveExampleState({
   });
 
   const knobValues = getInitialKnobValues(knobsArray, meta, StoryFn);
-
-  const storyCode = getStoryCode({
-    componentName,
-    meta,
-    StoryFn,
-    knobValues,
-  });
 }
 
 /**

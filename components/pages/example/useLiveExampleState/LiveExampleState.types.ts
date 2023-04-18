@@ -59,13 +59,3 @@ export interface ReadyStateContext extends LiveExampleContext {
   knobValues: { [arg: string]: any };
   knobsArray: Array<KnobType>;
 }
-
-interface LoadingStateContext extends LiveExampleContext {
-  state: 'ready';
-  componentName: string;
-  tsDoc: Array<CustomComponentDoc> | null;
-  meta: undefined;
-  StoryFn: undefined;
-  knobValues: undefined;
-  knobsArray: undefined;
-}
