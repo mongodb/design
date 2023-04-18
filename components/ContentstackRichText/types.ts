@@ -114,7 +114,6 @@ export interface CardBlockProps {
 /** */
 export interface ExampleCardBlockProps {
   title: string;
-  header_text: string;
   subtext?: string;
   variant: 'info' | 'caution' | 'do' | 'dont';
   image: CSImage;
