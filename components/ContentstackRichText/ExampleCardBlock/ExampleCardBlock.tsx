@@ -8,7 +8,13 @@ import { BodyProps } from '@leafygreen-ui/typography/dist/Body/Body.types';
 
 import { ExampleCardBlockProps } from '../types';
 
-import { BorderColors, IconColors, Icons, TextColors } from './constants';
+import {
+  BorderColors,
+  IconColors,
+  Icons,
+  TextColors,
+  VariantHeaders,
+} from './constants';
 import ImageContainer from './ImageContainer';
 
 const ExampleCardBlockWrapper = styled.div`
@@ -60,7 +66,7 @@ const ExampleCardBlock = ({ entry }: { entry: ExampleCardBlockProps }) => {
         />
         <div>
           <HeaderText color={TextColors[entry.variant]}>
-            <b>{entry.header_text}</b>
+            <b>{VariantHeaders[entry.variant]}</b>
           </HeaderText>
           <Subtext>{entry.subtext}</Subtext>
         </div>
