@@ -3,12 +3,7 @@ import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import { KnobType } from '../types';
 
-export type LiveExampleState =
-  | 'loading'
-  | 'parsing'
-  | 'ready'
-  | 'error'
-  | 'not_found';
+export type LiveExampleState = 'loading' | 'ready' | 'error' | 'not_found';
 
 export enum LiveExampleActionType {
   PARSE = 'PARSE',
@@ -27,26 +22,20 @@ export interface LiveExampleContext {
   StoryFn?: ComponentStoryFn<any>;
   knobValues?: { [arg: string]: any };
   knobsArray?: Array<KnobType>;
-  // storyCode?: string;
 }
 
 export type LiveExampleAction =
-  // | {
-  //     type: LiveExampleActionType.PARSE;
-  //     meta: Meta<any>;
-  //     StoryFn: ComponentStoryFn<any>;
-  //   }
+  | {
+      type: LiveExampleActionType.RESET;
+      componentName: string;
+      tsDoc: Array<CustomComponentDoc>;
+    }
   | {
       type: LiveExampleActionType.READY;
       meta: Meta<any>;
       StoryFn: ComponentStoryFn<any>;
       knobsArray: Array<KnobType>;
       knobValues?: { [arg: string]: any };
-    }
-  | {
-      type: LiveExampleActionType.RESET;
-      componentName: string;
-      tsDoc: Array<CustomComponentDoc>;
     }
   | {
       type: LiveExampleActionType.UPDATE;
@@ -60,3 +49,23 @@ export type LiveExampleAction =
       type: LiveExampleActionType.NOT_FOUND;
       componentName: string;
     };
+
+export interface ReadyStateContext extends LiveExampleContext {
+  state: 'ready';
+  componentName: string;
+  tsDoc: Array<CustomComponentDoc> | null;
+  meta: Meta<any>;
+  StoryFn: ComponentStoryFn<any>;
+  knobValues: { [arg: string]: any };
+  knobsArray: Array<KnobType>;
+}
+
+interface LoadingStateContext extends LiveExampleContext {
+  state: 'ready';
+  componentName: string;
+  tsDoc: Array<CustomComponentDoc> | null;
+  meta: undefined;
+  StoryFn: undefined;
+  knobValues: undefined;
+  knobsArray: undefined;
+}

@@ -44,36 +44,6 @@ const liveExampleStateReducer = (
       break;
     }
 
-    // case LiveExampleActionType.PARSE: {
-    //   // Set 'state' to 'parsing'
-    //   ctx.state = 'parsing';
-    //   ctx.meta = action.meta;
-    //   ctx.StoryFn = action.StoryFn;
-
-    //   // Assert that context has the expected props
-    //   if (assertContext(ctx, expectedContextProps)) {
-    //     const knobsArray = getKnobsArray({
-    //       componentName: ctx.componentName,
-    //       tsDoc: ctx.tsDoc,
-    //       meta: ctx.meta,
-    //       StoryFn: ctx.StoryFn,
-    //     });
-
-    //     const knobValues = getInitialKnobValues(
-    //       knobsArray,
-    //       ctx.meta,
-    //       ctx.StoryFn,
-    //     );
-
-    //     ctx.state = 'ready';
-    //     ctx.knobValues = knobValues;
-    //   } else {
-    //     // TODO: Something went wrong
-    //     ctx.state = 'error';
-    //   }
-    //   break;
-    // }
-
     case LiveExampleActionType.READY: {
       ctx.state = 'ready';
       ctx.meta = action.meta;

@@ -1,7 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Transition } from 'react-transition-group';
-import { cloneDeep, kebabCase } from 'lodash';
-import { getComponentStories } from 'utils/getComponentStories';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import Button from '@leafygreen-ui/button';
@@ -10,9 +8,9 @@ import Code from '@leafygreen-ui/code';
 import { css, cx } from '@leafygreen-ui/emotion';
 import { usePrevious } from '@leafygreen-ui/hooks';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
-import { H2, InlineCode } from '@leafygreen-ui/typography';
 
 import { KnobRow } from './KnobRow/KnobRow';
+import { isReady, isState } from './useLiveExampleState/utils';
 import {
   blockContainerStyle,
   codeExampleWrapperStyle,
@@ -24,14 +22,13 @@ import {
   storyContainerStyle,
 } from './LiveExample.styles';
 import { LiveExampleDecorator } from './LiveExampleDecorator';
-import {} from './types';
-import { useAsyncEffect } from './useAsyncEffect';
 import {
-  defaultLiveExampleContext,
-  LiveExampleContext,
-  useLiveExampleState,
-} from './useLiveExampleState';
-import { getLiveExampleState, getStoryCode, matchTypes } from './utils';
+  LiveExampleError,
+  LiveExampleLoading,
+  LiveExampleNotFound,
+} from './LiveExampleStateComponents';
+import {} from './types';
+import { useLiveExampleState } from './useLiveExampleState';
 
 // Use standard block flow for these packages
 const useBlockWrapperFor = [
@@ -57,13 +54,12 @@ export const LiveExample = ({
 
   // Establish a page state
   // { meta, StoryFn, knobValues, knobsArray, storyCode } =
-  const {
-    context: { state, meta, StoryFn, knobValues, knobsArray },
-    updateKnobValue,
-    RESET,
-  } = useLiveExampleState(componentName, tsDoc);
+  const { context, updateKnobValue, RESET } = useLiveExampleState(
+    componentName,
+    tsDoc,
+  );
 
-  const { darkMode } = useDarkMode(knobValues?.darkMode);
+  const { darkMode } = useDarkMode(context.knobValues?.darkMode);
 
   useEffect(() => {
     if (componentName !== prevComponentName && tsDoc) {
@@ -121,7 +117,7 @@ export const LiveExample = ({
     // );
   };
 
-  const storyWrapperStyle = meta?.parameters?.wrapperStyle;
+  const storyWrapperStyle = context.meta?.parameters?.wrapperStyle;
 
   const storyContainerHeight = Math.min(
     Math.max(
@@ -156,15 +152,16 @@ export const LiveExample = ({
             `,
           )}
         >
-          {StoryFn ? (
+          {isReady(context) && (
             <div ref={storyWrapperRef} className={storyWrapperStyle}>
-              <LiveExampleDecorator meta={meta}>
-                <StoryFn {...knobValues} />
+              <LiveExampleDecorator meta={context.meta}>
+                <context.StoryFn {...context.knobValues} />
               </LiveExampleDecorator>
             </div>
-          ) : (
-            <H2>React Component coming soon ⚛️</H2>
           )}
+          {isState('loading', context) && <LiveExampleLoading />}
+          {isState('not_found', context) && <LiveExampleNotFound />}
+          {isState('error', context) && <LiveExampleError />}
         </div>
         {!disableCodeExampleFor.includes(componentName) && (
           <Transition in={showCode} timeout={200}>
@@ -204,13 +201,13 @@ export const LiveExample = ({
             </Button>
           </div>
         )}
-        {knobsArray &&
-          knobsArray.map(knob => (
+        {isReady(context) &&
+          context.knobsArray.map(knob => (
             <KnobRow
               key={knob.name}
               darkMode={darkMode}
               knob={knob}
-              knobValue={knobValues?.[knob.name]}
+              knobValue={context.knobValues?.[knob.name]}
               setKnobValue={updateKnobValue}
             />
           ))}
