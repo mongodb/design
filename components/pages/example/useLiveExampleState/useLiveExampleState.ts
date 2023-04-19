@@ -1,6 +1,5 @@
 import { useReducer } from 'react';
 import { kebabCase, merge } from 'lodash';
-import { cloneDeep } from 'lodash';
 import { getComponentStories, ModuleType } from 'utils/getComponentStories';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
@@ -13,82 +12,11 @@ import {
 } from '../utils';
 
 import {
-  LiveExampleAction,
   LiveExampleActionType,
-  LiveExampleContext,
   LiveExampleState,
 } from './LiveExampleState.types';
-import { assertContext } from './utils';
-
-export const defaultLiveExampleContext: LiveExampleContext = {
-  state: 'loading',
-  componentName: undefined,
-  tsDoc: undefined,
-  meta: undefined,
-  StoryFn: undefined,
-  knobValues: undefined,
-  knobsArray: undefined,
-};
-
-const liveExampleStateReducer = (
-  ctx: LiveExampleContext,
-  action: LiveExampleAction,
-): LiveExampleContext => {
-  switch (action.type) {
-    case LiveExampleActionType.RESET: {
-      ctx = {
-        ...defaultLiveExampleContext,
-        state: 'loading',
-        componentName: action.componentName,
-        tsDoc: action.tsDoc,
-      };
-      break;
-    }
-
-    case LiveExampleActionType.READY: {
-      ctx.state = 'ready';
-      ctx.meta = action.meta;
-      ctx.StoryFn = action.StoryFn;
-      ctx.knobValues = action.knobValues;
-      ctx.knobsArray = action.knobsArray;
-
-      break;
-    }
-
-    case LiveExampleActionType.UPDATE: {
-      if (ctx.knobValues) {
-        ctx.knobValues[action.propName] = action.newValue;
-        break;
-      }
-
-      console.error(
-        `Error setting ${action.propName}. \`knobValues\` does not exist on page context`,
-      );
-      break;
-    }
-
-    case LiveExampleActionType.ERROR: {
-      // set 'state' to error
-      console.error('LiveExample error: ', action.message);
-      ctx.state = 'error';
-
-      break;
-    }
-
-    case LiveExampleActionType.NOT_FOUND: {
-      // set 'state' to not_found
-      ctx = {
-        ...defaultLiveExampleContext,
-        state: 'not_found',
-        componentName: action.componentName,
-      };
-      break;
-    }
-  }
-
-  // Clone
-  return cloneDeep(ctx);
-};
+import { liveExampleStateReducer } from './LiveExampleStateReducer';
+import { assertContext, defaultLiveExampleContext } from './utils';
 
 export function useLiveExampleState(
   componentName: string,

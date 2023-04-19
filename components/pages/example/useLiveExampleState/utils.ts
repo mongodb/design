@@ -6,6 +6,16 @@ import {
   LiveExampleState,
 } from './LiveExampleState.types';
 
+export const defaultLiveExampleContext: LiveExampleContext = {
+  state: 'loading',
+  componentName: undefined,
+  tsDoc: undefined,
+  meta: undefined,
+  StoryFn: undefined,
+  knobValues: undefined,
+  knobsArray: undefined,
+};
+
 export function invalidActionWarning(
   state: LiveExampleState,
   action: LiveExampleActionType,
