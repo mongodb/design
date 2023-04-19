@@ -9,38 +9,45 @@ import { DependencyList, useEffect } from 'react';
  */
 export function useAsyncEffect<T>(
   asyncFn: () => Promise<T>,
-  thenFn: (data: T) => void,
-  catchFn: (err: any) => void,
-  finallyFn: () => void,
-  cleanupFn: () => void,
+  functions?: {
+    then?: (data: T) => void;
+    catch?: (err: any) => void;
+    finally?: () => void;
+    cleanup?: () => void;
+  },
+  condition = true,
   depsArr?: DependencyList,
 ) {
   const deps: DependencyList = depsArr ?? [];
 
   useEffect(() => {
+    // initially this is mounted
     let isMounted = true;
 
-    asyncFn()
-      // By checking for `isMounted`, we avoid performing state updates on an unmounted component
-      .then(data => {
-        if (isMounted) {
-          thenFn(data);
-        }
-      })
-      .catch(err => {
-        if (isMounted) {
-          catchFn(err);
-        }
-      })
-      .finally(() => {
-        if (isMounted) {
-          finallyFn();
-        }
-      });
+    if (condition) {
+      asyncFn()
+        // By checking for `isMounted`, we avoid performing state updates on an unmounted component
+        .then(data => {
+          if (isMounted) {
+            functions?.then?.(data);
+          }
+        })
+        .catch(err => {
+          if (isMounted) {
+            functions?.catch?.(err);
+          }
+        })
+        .finally(() => {
+          if (isMounted) {
+            functions?.finally?.();
+          }
+        });
+    }
 
     return () => {
+      // on cleanup, set `isMounted` to false
       isMounted = false;
-      cleanupFn();
+      functions?.cleanup?.();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...deps]);
