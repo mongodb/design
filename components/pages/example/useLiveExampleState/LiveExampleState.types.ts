@@ -49,13 +49,3 @@ export type LiveExampleAction =
       type: LiveExampleActionType.NOT_FOUND;
       componentName: string;
     };
-
-export interface ReadyStateContext extends LiveExampleContext {
-  state: 'ready';
-  componentName: string;
-  tsDoc: Array<CustomComponentDoc> | null;
-  meta: Meta<any>;
-  StoryFn: ComponentStoryFn<any>;
-  knobValues: { [arg: string]: any };
-  knobsArray: Array<KnobType>;
-}

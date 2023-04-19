@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 import { kebabCase, merge } from 'lodash';
-import { clone } from 'lodash';
+import { cloneDeep } from 'lodash';
 import { getComponentStories, ModuleType } from 'utils/getComponentStories';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
@@ -16,6 +16,7 @@ import {
   LiveExampleAction,
   LiveExampleActionType,
   LiveExampleContext,
+  LiveExampleState,
 } from './LiveExampleState.types';
 import { assertContext } from './utils';
 
@@ -26,7 +27,7 @@ export const defaultLiveExampleContext: LiveExampleContext = {
   meta: undefined,
   StoryFn: undefined,
   knobValues: undefined,
-  // knobsArray: undefined,
+  knobsArray: undefined,
 };
 
 const liveExampleStateReducer = (
@@ -55,7 +56,14 @@ const liveExampleStateReducer = (
     }
 
     case LiveExampleActionType.UPDATE: {
-      // TODO use 'propName' & 'newValue' to update knobValues
+      if (ctx.knobValues) {
+        ctx.knobValues[action.propName] = action.newValue;
+        break;
+      }
+
+      console.error(
+        `Error setting ${action.propName}. \`knobValues\` does not exist on page context`,
+      );
       break;
     }
 
@@ -76,7 +84,7 @@ const liveExampleStateReducer = (
   }
 
   // Clone
-  return clone(ctx);
+  return cloneDeep(ctx);
 };
 
 export function useLiveExampleState(
@@ -90,29 +98,35 @@ export function useLiveExampleState(
   const [context, dispatch] = useReducer(liveExampleStateReducer, initialState);
 
   /** Update the value of a knob */
-  const updateKnobValue = (propName: string, newValue: any) => {
+  function updateKnobValue(propName: string, newValue: any) {
     const value = matchTypes(context.knobValues?.[propName], newValue);
+
     dispatch({
       type: LiveExampleActionType.UPDATE,
       propName,
       newValue: value,
     });
-  };
+  }
 
   /** Reset the live example */
-  const RESET = (componentName: string, tsDoc: Array<CustomComponentDoc>) => {
+  function RESET(componentName: string, tsDoc: Array<CustomComponentDoc>) {
     dispatch({
       type: LiveExampleActionType.RESET,
       componentName,
       tsDoc,
     });
-  };
+  }
+
+  /** Returns whether context.state matches the provided state */
+  function isState(state: LiveExampleState) {
+    return context.state === state;
+  }
 
   /**
    * Parses the story module
    * @internal
    */
-  const parse = (module: ModuleType) => {
+  function parse(module: ModuleType) {
     const { default: meta, ...stories } = module;
     const StoryFn = getDefaultStoryFn(meta, stories);
 
@@ -138,7 +152,7 @@ export function useLiveExampleState(
         type: LiveExampleActionType.ERROR,
       });
     }
-  };
+  }
 
   /**
    * When state changes to 'loading', kickoff the async call.
@@ -174,5 +188,6 @@ export function useLiveExampleState(
     context,
     updateKnobValue,
     RESET,
+    isState,
   };
 }

@@ -4,7 +4,6 @@ import {
   LiveExampleActionType,
   LiveExampleContext,
   LiveExampleState,
-  ReadyStateContext,
 } from './LiveExampleState.types';
 
 export function invalidActionWarning(
@@ -25,26 +24,24 @@ export function assertContext<P extends Array<keyof LiveExampleContext>>(
   return properties.every(prop => !isUndefined(context[prop]));
 }
 
-export function isReady(
+/** TS utility to assert that context has _all_ properties defined */
+export function assertCompleteContext(
   context: Partial<LiveExampleContext>,
-): context is ReadyStateContext {
-  return (
-    context.state === 'ready' &&
-    assertContext(context, [
-      'state',
-      'componentName',
-      'tsDoc',
-      'StoryFn',
-      'meta',
-      'knobsArray',
-      'knobValues',
-    ])
-  );
+): context is Required<LiveExampleContext> {
+  return assertContext(context, [
+    'state',
+    'componentName',
+    'tsDoc',
+    'StoryFn',
+    'meta',
+    'knobsArray',
+    'knobValues',
+  ]);
 }
 
-export function isState(
-  state: LiveExampleState,
+/** TS utility that correctly types `context` when state === 'ready' */
+export function isReady(
   context: Partial<LiveExampleContext>,
-): boolean {
-  return context.state === state;
+): context is Required<LiveExampleContext> {
+  return context.state === 'ready' && assertCompleteContext(context);
 }

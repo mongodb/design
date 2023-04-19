@@ -20,7 +20,9 @@ import {
   getDefaultValueValue,
 } from 'utils/tsdoc.utils';
 
+import { assertCompleteContext } from './useLiveExampleState/utils';
 import { KnobOptionType, KnobType, MetadataSources, TypeString } from './types';
+import { LiveExampleContext } from './useLiveExampleState';
 
 /**
  * A list of Prop names that should not appear in Knobs
@@ -378,33 +380,43 @@ export function getKnobDescription({
 /**
  * Returns example code for the given component data
  */
-export function getStoryCode({
-  componentName,
-  meta,
-  StoryFn,
-  knobValues,
-}: {
-  componentName: string;
-  meta?: Meta<any>;
-  StoryFn?: ComponentStoryFn<any>;
-  knobValues?: { [arg: string]: any };
-}): string | undefined {
+export function getStoryCode(context: LiveExampleContext): string | undefined {
+  /** Skip generation, and just use the story source code for these packages */
   const useStorySourceForComponents = ['typography'];
 
-  const getStoryJSX = (element: ReactNode, displayName: string): string =>
-    element
-      ? reactElementToJSXString(element, {
-          displayName: (child: ReactNode) =>
-            // @ts-expect-error - correct type for `child` is too verbose
-            child?.type?.displayName ?? pascalcase(displayName),
-          showFunctions: true,
-          showDefaultProps: true,
-          useBooleanShorthandSyntax: false,
-          useFragmentShortSyntax: true,
-        })
-      : '';
+  if (assertCompleteContext(context)) {
+    const { componentName, meta, StoryFn, knobValues } = context;
 
-  const getStorySourceCode = (meta?: Meta<any>) => {
+    /**
+     * If this is the Typography component,
+     * we use the original story code,
+     * otherwise we convert the component to JSX
+     */
+    if (useStorySourceForComponents.includes(componentName)) {
+      return getStorySourceCode(meta);
+    } else {
+      const renderedStory = React.createElement(StoryFn, { ...knobValues });
+      return getStoryJSX(renderedStory, componentName);
+    }
+  }
+
+  /** `getStoryCode` utility that returns a JSX string */
+  function getStoryJSX(element: ReactNode, displayName: string) {
+    if (element) {
+      return reactElementToJSXString(element, {
+        displayName: (child: ReactNode) =>
+          // @ts-expect-error - correct type for `child` is too verbose
+          child?.type?.displayName ?? pascalcase(displayName),
+        showFunctions: true,
+        showDefaultProps: true,
+        useBooleanShorthandSyntax: false,
+        useFragmentShortSyntax: true,
+      });
+    }
+  }
+
+  /** Extracts the story code from the meta `storySource` */
+  function getStorySourceCode(meta?: Meta<any>) {
     if (meta && meta.parameters) {
       const {
         parameters: { default: defaultStoryName, storySource },
@@ -423,20 +435,6 @@ export function getStoryCode({
         .join('\n');
       return storyCode;
     }
-  };
-
-  /**
-   * If this is the Typography component,
-   * we use the original story code,
-   * otherwise we convert the component to JSX
-   */
-  if (useStorySourceForComponents.includes(componentName)) {
-    return getStorySourceCode(meta);
-  } else {
-    const renderedStory = StoryFn
-      ? React.createElement(StoryFn, { ...knobValues })
-      : undefined;
-    return getStoryJSX(renderedStory, componentName);
   }
 }
 
@@ -489,34 +487,6 @@ export function getKnobsArray({
   const knobsArray = [...TSPropsArray, ...SBArgsArray];
 
   return knobsArray;
-}
-
-/**
- * Given component metadata
- * returns a LiveExampleState object
- * @deprecated
- */
-export function getLiveExampleState({
-  componentName,
-  meta,
-  stories,
-  tsDoc,
-}: {
-  componentName: string;
-  meta: Meta<any>;
-  stories: { [key: string]: ComponentStoryFn<any> };
-  tsDoc: Array<CustomComponentDoc> | null;
-}) {
-  const StoryFn = getDefaultStoryFn(meta, stories);
-
-  const knobsArray = getKnobsArray({
-    componentName,
-    meta,
-    StoryFn,
-    tsDoc,
-  });
-
-  const knobValues = getInitialKnobValues(knobsArray, meta, StoryFn);
 }
 
 /**
