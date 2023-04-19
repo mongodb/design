@@ -44,6 +44,7 @@ export type LiveExampleAction =
     }
   | {
       type: LiveExampleActionType.ERROR;
+      message?: string;
     }
   | {
       type: LiveExampleActionType.NOT_FOUND;

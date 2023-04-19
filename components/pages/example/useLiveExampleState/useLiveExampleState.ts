@@ -69,6 +69,9 @@ const liveExampleStateReducer = (
 
     case LiveExampleActionType.ERROR: {
       // set 'state' to error
+      console.error('LiveExample error: ', action.message);
+      ctx.state = 'error';
+
       break;
     }
 
@@ -117,6 +120,13 @@ export function useLiveExampleState(
     });
   }
 
+  function ERROR(message: string) {
+    dispatch({
+      type: LiveExampleActionType.ERROR,
+      message,
+    });
+  }
+
   /** Returns whether context.state matches the provided state */
   function isState(state: LiveExampleState) {
     return context.state === state;
@@ -148,9 +158,7 @@ export function useLiveExampleState(
         knobValues,
       });
     } else {
-      dispatch({
-        type: LiveExampleActionType.ERROR,
-      });
+      ERROR('');
     }
   }
 
@@ -188,6 +196,7 @@ export function useLiveExampleState(
     context,
     updateKnobValue,
     RESET,
+    ERROR,
     isState,
   };
 }

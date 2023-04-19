@@ -26,7 +26,7 @@ import {
   LiveExampleNotFound,
 } from './LiveExampleStateComponents';
 import {} from './types';
-import { useLiveExampleState } from './useLiveExampleState';
+import { LiveExampleContext, useLiveExampleState } from './useLiveExampleState';
 import { getStoryCode } from './utils';
 
 // Use standard block flow for these packages
@@ -54,21 +54,24 @@ export const LiveExample = ({
 
   // Establish a page state
   // { meta, StoryFn, knobValues, knobsArray, storyCode } =
-  const { context, updateKnobValue, RESET, isState } = useLiveExampleState(
-    componentName,
-    tsDoc,
-  );
+  const { context, updateKnobValue, RESET, ERROR, isState } =
+    useLiveExampleState(componentName, tsDoc);
 
   const { darkMode } = useDarkMode(context.knobValues?.darkMode);
 
+  /** When the component name changes, reset the page */
   useEffect(() => {
-    if (componentName !== prevComponentName && tsDoc) {
-      RESET(componentName, tsDoc);
+    if (componentName !== prevComponentName) {
+      if (tsDoc) {
+        RESET(componentName, tsDoc);
+      } else {
+        ERROR('TSDoc not found');
+      }
     }
-  }, [componentName, prevComponentName, RESET, tsDoc]);
+  }, [componentName, prevComponentName, tsDoc, RESET, ERROR]);
 
-  const handleShowCodeClick = () => {
-    setShowCode(sc => !sc);
+  /** Re-generates story example code from context */
+  const regenerateStoryCode = (context: Partial<LiveExampleContext>) => {
     if (assertCompleteContext(context)) {
       const code = getStoryCode(context);
 
@@ -76,6 +79,17 @@ export const LiveExample = ({
         setCode(code);
       }
     }
+  };
+
+  /** re-generate example code when the context changes */
+  useEffect(() => {
+    regenerateStoryCode(context);
+  }, [context]);
+
+  /** Triggered on button click */
+  const handleShowCodeClick = () => {
+    setShowCode(sc => !sc);
+    regenerateStoryCode(context);
   };
 
   const storyWrapperStyle = context.meta?.parameters?.wrapperStyle;
