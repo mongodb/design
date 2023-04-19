@@ -1,4 +1,6 @@
 import {
+  CustomComponentDoc,
+  getComponentPropsArray,
   getDefaultValueString,
   getInheritedProps,
   getTypeString,
@@ -16,10 +18,6 @@ import {
   HeaderCell,
   HeaderRow,
   Row,
-  //   V10Cell as Cell,
-  //   V10Row as Row,
-  //   V10Table as Table,
-  //   V10TableHeader as TableHeader,
   Table,
   TableBody,
   TableHead,
@@ -95,8 +93,8 @@ export const TSDocPropTable = ({
           <TableHead>
             <HeaderRow>
               <HeaderCell>Prop</HeaderCell>
-              <HeaderCell>Type</HeaderCell>
               <HeaderCell>Description</HeaderCell>
+              <HeaderCell>Type</HeaderCell>
               <HeaderCell>Default</HeaderCell>
             </HeaderRow>
           </TableHead>
