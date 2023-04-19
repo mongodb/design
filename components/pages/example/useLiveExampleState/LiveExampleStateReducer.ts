@@ -5,7 +5,7 @@ import {
   LiveExampleActionType,
   LiveExampleContext,
 } from './LiveExampleState.types';
-import { defaultLiveExampleContext } from '.';
+import { defaultLiveExampleContext } from './utils';
 
 export const liveExampleStateReducer = (
   ctx: LiveExampleContext,
