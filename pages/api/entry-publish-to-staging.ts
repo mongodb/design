@@ -24,13 +24,13 @@ export default async function handleEntryPublishToStaging(
     // 3. Add all embedded entries and this entry itself to the release to main
     const mainReleaseBody = {
       name: componentName,
-      description: `Publish component page for ${componentName}; triggered on ${new Date()}`,
+      description: `Publish component page for ${componentName} to main; created on ${new Date()}`,
     };
     // todo: create release and add relevant items
 
     const stagingReleaseBody = {
       name: componentName,
-      description: `Publish all embedded entries for ${componentName} guidelines to staging; triggered on ${new Date()}`,
+      description: `Publish all embedded entries for ${componentName} guidelines to staging; created on ${new Date()}`,
     };
     // todo: create release and add relevant items
 
