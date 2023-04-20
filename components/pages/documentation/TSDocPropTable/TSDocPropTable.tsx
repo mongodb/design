@@ -11,7 +11,6 @@ import { Markdown } from 'components/Markdown';
 
 import { css } from '@leafygreen-ui/emotion';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
-import InlineDefinition from '@leafygreen-ui/inline-definition';
 import { palette } from '@leafygreen-ui/palette';
 import {
   Cell,
@@ -24,13 +23,6 @@ import {
 } from '@leafygreen-ui/table';
 import { spacing } from '@leafygreen-ui/tokens';
 import { InlineCode, Link } from '@leafygreen-ui/typography';
-
-import { PropTooltipContent } from '../../../PropTooltipContent';
-
-const propDefinitionTooltipStyle = css`
-  min-width: min-content;
-  max-width: 384px;
-`;
 
 const requiredHighlightStyle = css`
   padding-left: 1ch;
@@ -103,12 +95,7 @@ export const TSDocPropTable = ({
               return (
                 <Row key={propItem.name}>
                   <Cell className={cellStyles}>
-                    <InlineDefinition
-                      tooltipClassName={propDefinitionTooltipStyle}
-                      definition={<PropTooltipContent propItem={propItem} />}
-                    >
-                      <InlineCode>{propItem.name}</InlineCode>
-                    </InlineDefinition>
+                    <InlineCode>{propItem.name}</InlineCode>
                     {isRequired(propItem) && (
                       <sup className={requiredHighlightStyle}>(REQUIRED)</sup>
                     )}
