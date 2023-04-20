@@ -157,7 +157,8 @@ function getSBInputTypeFilterFn({
       ['none', false].includes(input.control) ||
       ['none', false].includes(localInput?.control);
 
-    const isSBOnly: boolean = meta?.argTypes?.[input.name]?.displayedPlatforms === 'storybookOnly';
+    const isSBOnly: boolean =
+      meta?.argTypes?.[input.name]?.displayedPlatforms === 'storybookOnly';
     const isExcludedByMeta: boolean =
       meta?.parameters?.controls?.exclude?.includes(input.name);
 
