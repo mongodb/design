@@ -67,7 +67,6 @@ export const TSDocPropTable = ({
   const props = [...componentProps, inheritedProps];
 
   return (
-    <>
       <ExpandableCard
         title={`${tsDoc.displayName} props`}
         defaultOpen
@@ -139,7 +138,6 @@ export const TSDocPropTable = ({
           )}
         </Table>
       </ExpandableCard>
-    </>
   );
 };
 
