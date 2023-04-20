@@ -16,7 +16,7 @@ const knobRowWrapperStyle = (darkMode: boolean) => css`
   min-height: ${spacing[5]}px;
   justify-content: space-between;
   align-items: center;
-  padding: ${spacing[3]}px ${spacing[4]}px;
+  padding: ${spacing[4]}px;
   gap: ${spacing[2]}px;
   border-top: 1px solid ${darkMode ? palette.gray.dark2 : palette.gray.light2};
 

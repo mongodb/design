@@ -141,6 +141,7 @@ export const LiveExample = ({
       darkMode={darkMode}
       className={css`
         margin-block: 2em;
+        padding: 0;
       `}
     >
       <div className={liveExampleWrapperStyle}>
