@@ -1,6 +1,4 @@
-import React, { ReactNode } from 'react';
 import { PropItem } from 'react-docgen-typescript';
-import reactElementToJSXString from 'react-element-to-jsx-string';
 import { InputType } from '@storybook/csf';
 import { ComponentStoryFn, Meta } from '@storybook/react';
 import {
@@ -12,7 +10,6 @@ import {
   pickBy,
   snakeCase,
 } from 'lodash';
-import pascalcase from 'pascalcase';
 import {
   CustomComponentDoc,
   findComponentDoc,
@@ -20,9 +17,13 @@ import {
   getDefaultValueValue,
 } from 'utils/tsdoc.utils';
 
-import { assertCompleteContext } from './useLiveExampleState/utils';
-import { KnobOptionType, KnobType, MetadataSources, TypeString } from './types';
-import { LiveExampleContext } from './useLiveExampleState';
+import {
+  KnobOptionType,
+  KnobType,
+  MetadataSources,
+  TypeString,
+} from '../types';
+import { LiveExampleContext } from '../useLiveExampleState';
 
 /**
  * A list of Prop names that should not appear in Knobs
@@ -379,72 +380,11 @@ export function getKnobDescription({
 }
 
 /**
- * Returns example code for the given component data
- */
-export function getStoryCode(context: LiveExampleContext): string | undefined {
-  /** Skip generation, and just use the story source code for these packages */
-  const useStorySourceForComponents = ['typography'];
-
-  if (assertCompleteContext(context)) {
-    const { componentName, meta, StoryFn, knobValues } = context;
-
-    /**
-     * If this is the Typography component,
-     * we use the original story code,
-     * otherwise we convert the component to JSX
-     */
-    if (useStorySourceForComponents.includes(componentName)) {
-      return getStorySourceCode(meta);
-    } else {
-      const renderedStory = React.createElement(StoryFn, { ...knobValues });
-      return getStoryJSX(renderedStory, componentName);
-    }
-  }
-
-  /** `getStoryCode` utility that returns a JSX string */
-  function getStoryJSX(element: ReactNode, displayName: string) {
-    if (element) {
-      return reactElementToJSXString(element, {
-        displayName: (child: ReactNode) =>
-          // @ts-expect-error - correct type for `child` is too verbose
-          child?.type?.displayName ?? pascalcase(displayName),
-        showFunctions: true,
-        showDefaultProps: true,
-        useBooleanShorthandSyntax: false,
-        useFragmentShortSyntax: true,
-      });
-    }
-  }
-
-  /** Extracts the story code from the meta `storySource` */
-  function getStorySourceCode(meta?: Meta<any>) {
-    if (meta && meta.parameters) {
-      const {
-        parameters: { default: defaultStoryName, storySource },
-      } = meta;
-
-      const locationsMap = defaultStoryName
-        ? storySource.locationsMap[defaultStoryName]
-        : Object.values(storySource.locationsMap)[0];
-      const lines = (storySource.source as string).match(/^.*$/gm);
-
-      const storyCode = lines
-        ?.slice(
-          locationsMap?.startLoc?.line - 1,
-          locationsMap?.endLoc?.line - 1,
-        )
-        .join('\n');
-      return storyCode;
-    }
-  }
-}
-
-/**
  * Gets the default story from the meta
  */
 export function getDefaultStoryFn(
-  meta: Meta<any>,
-  stories: { [key: string]: ComponentStoryFn<any> },
+  meta: Required<LiveExampleContext>['meta'],
+  stories: { [key: string]: Required<LiveExampleContext>['StoryFn'] },
 ) {
   const defaultStoryName = meta.parameters?.default ?? Object.keys(stories)[0];
   return defaultStoryName

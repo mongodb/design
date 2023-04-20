@@ -19,7 +19,7 @@ export interface LiveExampleContext {
   componentName?: string;
   tsDoc?: Array<CustomComponentDoc> | null;
   meta?: Meta<any>;
-  StoryFn?: ComponentStoryFn<any>;
+  StoryFn?: ComponentStoryFn<any> & React.FunctionComponent<any>;
   knobValues?: { [arg: string]: any };
   knobsArray?: Array<KnobType>;
 }

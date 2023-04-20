@@ -11,6 +11,7 @@ import LeafyGreenProvider, {
 
 import { KnobRow } from './KnobRow/KnobRow';
 import { assertCompleteContext, isReady } from './useLiveExampleState/utils';
+import { getStoryCode } from './utils/getStoryCode';
 import { CodeExample } from './CodeExample';
 import {
   blockContainerStyle,
@@ -27,7 +28,6 @@ import {
 } from './LiveExampleStateComponents';
 import {} from './types';
 import { LiveExampleContext, useLiveExampleState } from './useLiveExampleState';
-import { getStoryCode } from './utils';
 
 // Use standard block flow for these packages
 const useBlockWrapperFor = [
@@ -73,11 +73,8 @@ export const LiveExample = ({
   /** Re-generates story example code from context */
   const regenerateStoryCode = (context: Partial<LiveExampleContext>) => {
     if (assertCompleteContext(context)) {
-      const code = getStoryCode(context);
-
-      if (code) {
-        setCode(code);
-      }
+      const code = getStoryCode(context) ?? 'No code found';
+      setCode(code);
     }
   };
 
