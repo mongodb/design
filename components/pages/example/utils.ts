@@ -423,18 +423,20 @@ export function getStoryCode(context: LiveExampleContext): string | undefined {
         parameters: { default: defaultStoryName, storySource },
       } = meta;
 
-      const locationsMap = defaultStoryName
-        ? storySource.locationsMap[defaultStoryName]
-        : Object.values(storySource.locationsMap)[0];
-      const lines = (storySource.source as string).match(/^.*$/gm);
+      if (storySource) {
+        const locationsMap = defaultStoryName
+          ? storySource.locationsMap[defaultStoryName]
+          : Object.values(storySource?.locationsMap)[0];
+        const lines = (storySource.source as string).match(/^.*$/gm);
 
-      const storyCode = lines
-        ?.slice(
-          locationsMap?.startLoc?.line - 1,
-          locationsMap?.endLoc?.line - 1,
-        )
-        .join('\n');
-      return storyCode;
+        const storyCode = lines
+          ?.slice(
+            locationsMap?.startLoc?.line - 1,
+            locationsMap?.endLoc?.line - 1,
+          )
+          .join('\n');
+        return storyCode;
+      }
     }
   }
 }
