@@ -22,6 +22,7 @@ export interface LiveExampleContext {
   StoryFn?: ComponentStoryFn<any>;
   knobValues?: { [arg: string]: any };
   knobsArray?: Array<KnobType>;
+  errorMessage?: string;
 }
 
 export type LiveExampleAction =

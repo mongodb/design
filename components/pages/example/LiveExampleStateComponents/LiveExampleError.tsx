@@ -1,5 +1,10 @@
-import { H2 } from '@leafygreen-ui/typography';
+import { H2, InlineCode } from '@leafygreen-ui/typography';
 
-export function LiveExampleError() {
-  return <H2>⚠️ Error loading live example</H2>;
+export function LiveExampleError({ message }: { message?: string }) {
+  return (
+    <>
+      <H2>⚠️ Error loading live example</H2>
+      <InlineCode>{message}</InlineCode>
+    </>
+  );
 }

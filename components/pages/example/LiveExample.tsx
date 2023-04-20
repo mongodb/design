@@ -137,7 +137,9 @@ export const LiveExample = ({
             )}
             {isState('loading') && <LiveExampleLoading />}
             {isState('not_found') && <LiveExampleNotFound />}
-            {isState('error') && <LiveExampleError />}
+            {isState('error') && (
+              <LiveExampleError message={context.errorMessage} />
+            )}
           </div>
           {!disableCodeExampleFor.includes(componentName) && (
             <CodeExample

@@ -48,6 +48,7 @@ export const liveExampleStateReducer = (
       // set 'state' to error
       console.error('LiveExample error: ', action.message);
       ctx.state = 'error';
+      ctx.errorMessage = action.message;
 
       break;
     }
