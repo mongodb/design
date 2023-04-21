@@ -44,7 +44,7 @@ export function getStoryCode(context: LiveExampleContext): string | undefined {
     let isRootSet = false;
     let componentRoot: ReactElement<any> = renderedStory;
 
-    // @ts-expect-error - prepass callback args are incorrectly typed. Need to explicitly re-type them
+    // @ts-expect-error - prepass callback args are incorrectly typed (see FormidableLabs/react-ssr-prepass#86). Need to explicitly re-type them here
     prepass(renderedStory, (element: ReactElement<any>) => {
       if (!isRootSet && isFunctionComponentElement(element)) {
         if (packageNameDoesNotMatchComponent.includes(componentName)) {
