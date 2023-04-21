@@ -105,6 +105,7 @@
     "react-dom": "^17.0.2",
     "react-element-to-jsx-string": "^15.0.0",
     "react-markdown": "^8.0.3",
+    "react-ssr-prepass": "^1.5.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.0.1",
     "remark": "^14.0.2",
