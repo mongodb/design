@@ -69,7 +69,7 @@ export function useLiveExampleState(
   function parse(module: ModuleType) {
     const { default: meta, ...stories } = module;
     const StoryFn = getDefaultStoryFn(meta, stories);
-    StoryFn.displayName = pascalcase(componentName);
+    StoryFn.displayName = pascalcase(componentName) + 'Story';
 
     if (assertContext(context, ['state', 'componentName', 'tsDoc'])) {
       const knobsArray = getKnobsArray({

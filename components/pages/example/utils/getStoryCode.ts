@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
+import React, { FunctionComponentElement, ReactElement } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import { Meta } from '@storybook/react';
-import { kebabCase } from 'lodash';
+import prepass from 'react-ssr-prepass'; // lets us traverse the react tree
+import pascalcase from 'pascalcase';
 
 import { LiveExampleContext } from '../useLiveExampleState';
 import { assertCompleteContext } from '../useLiveExampleState/utils';
@@ -10,89 +10,63 @@ import { assertCompleteContext } from '../useLiveExampleState/utils';
  * Returns example code for the given component data
  */
 export function getStoryCode(context: LiveExampleContext): string | undefined {
-  /** Skip generation, and just use the story source code for these packages */
-  const useStorySourceForComponents = ['typography'];
+  /** Treat these packages differently */
+  const packageNameDoesNotMatchComponent = ['typography'];
 
   if (assertCompleteContext(context)) {
-    const { componentName, meta, StoryFn, knobValues } = context;
+    const { componentName, StoryFn, knobValues, knobsArray } = context;
 
-    /**
-     * If this is the Typography component,
-     * we use the original story code,
-     * otherwise we convert the component to JSX
-     */
-    if (useStorySourceForComponents.includes(componentName)) {
-      // fetchStorySource(componentName).then(module => {
-      //   parseStorySource(module);
-      // });
-      return getStorySourceCode(meta);
-    } else {
-      const renderedStory = React.createElement(StoryFn, { ...knobValues });
-      return getStoryJSX(renderedStory);
-    }
-  }
+    const renderedStory: FunctionComponentElement<any> = React.createElement(
+      StoryFn,
+      { ...knobValues },
+    );
 
-  /** `getStoryCode` utility that returns a JSX string */
-  function getStoryJSX(element: ReactNode) {
-    if (element) {
-      return reactElementToJSXString(element, {
+    const componentRoot = getComponentRoot(renderedStory, componentName);
+
+    if (componentRoot) {
+      return reactElementToJSXString(componentRoot, {
         showFunctions: true,
         showDefaultProps: false,
         useBooleanShorthandSyntax: false,
         useFragmentShortSyntax: true,
+        filterProps: (_, propName) =>
+          // Only display props that we allow users to control in the example
+          knobsArray.map(knob => knob.name).includes(propName),
       });
     }
   }
 
-  /** Extracts the story code from the meta `storySource` */
-  function getStorySourceCode(meta?: Meta<any>) {
-    if (meta && meta.parameters) {
-      const {
-        parameters: { default: defaultStoryName, storySource },
-      } = meta;
+  /** Returns the component root we want to generate source code for */
+  function getComponentRoot(
+    renderedStory: FunctionComponentElement<any>,
+    componentName: string,
+  ) {
+    let isRootSet = false;
+    let componentRoot: ReactElement<any> = renderedStory;
 
-      if (storySource) {
-        const locationsMap = defaultStoryName
-          ? storySource.locationsMap[defaultStoryName]
-          : Object.values(storySource.locationsMap)[0];
-        const lines = (storySource.source as string).match(/^.*$/gm);
-
-        const storyCode = lines
-          ?.slice(
-            locationsMap?.startLoc?.line - 1,
-            locationsMap?.endLoc?.line - 1,
-          )
-          .join('\n');
-        return storyCode;
+    // @ts-expect-error - prepass callback args are incorrectly typed. Need to explicitly re-type them
+    prepass(renderedStory, (element: ReactElement<any>) => {
+      if (!isRootSet && isFunctionComponentElement(element)) {
+        if (packageNameDoesNotMatchComponent.includes(componentName)) {
+          // We take the first element that is not the Story element
+          if (!element.type.displayName?.includes('Story')) {
+            componentRoot = element;
+            isRootSet = true;
+          }
+        } else if (element.type.displayName === pascalcase(componentName)) {
+          componentRoot = element;
+          isRootSet = true;
+        }
       }
-    }
+    });
+
+    return componentRoot;
   }
 }
 
-async function fetchStorySource(componentName: string) {
-  try {
-    return import(`@leafygreen-ui/${kebabCase(componentName)}/stories.js.map`);
-  } catch (error) {
-    console.warn(error);
-  }
-}
-
-interface SourceMap {
-  file: 'stories.js';
-  mappings: string;
-  names: Array<string>;
-  sources: Array<string>;
-  sourcesContent: Array<string>;
-  version: number;
-}
-
-function parseStorySource(module: { default: string }) {
-  const { default: sourceString } = module;
-  const sourceMap: SourceMap = JSON.parse(sourceString);
-  const { sources, sourcesContent } = sourceMap;
-
-  const indexOfStorySource = sources.findIndex(src => !!src.match(/story/));
-  const storySource = sourcesContent[indexOfStorySource];
-
-  const storySourceLines = storySource.split('\n');
+/** Returns whether a React Element is a Component vs just an intrinsic element */
+function isFunctionComponentElement(
+  node: React.ReactElement<any>,
+): node is React.FunctionComponentElement<React.JSXElementConstructor<any>> {
+  return typeof node === 'object' && typeof node.type === 'function';
 }
