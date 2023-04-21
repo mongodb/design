@@ -50,7 +50,7 @@ export function assertCompleteContext(
 }
 
 /** TS utility that correctly types `context` when state === 'ready' */
-export function isReady(
+export function isStateReady(
   context: Partial<LiveExampleContext>,
 ): context is Required<LiveExampleContext> {
   return context.state === 'ready' && assertCompleteContext(context);
