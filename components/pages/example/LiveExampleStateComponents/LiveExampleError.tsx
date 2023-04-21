@@ -5,6 +5,7 @@ export function LiveExampleError({ message }: { message?: string }) {
     <>
       <H2>⚠️ Error loading live example</H2>
       <br />
+      {/* @ts-ignore - union too complex */}
       <InlineCode>{message}</InlineCode>
     </>
   );
