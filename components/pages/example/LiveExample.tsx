@@ -74,13 +74,10 @@ export const LiveExample = ({
 
   /** Re-generates story example code from context */
   const regenerateStoryCode = (context: Partial<LiveExampleContext>) => {
-    if (assertCompleteContext(context)) {
-      const code = getStoryCode(context);
-
-      if (code) {
-        setCode(code);
-      }
-    }
+    const code = assertCompleteContext(context)
+      ? getStoryCode(context) ?? 'No code found'
+      : 'No code found';
+    setCode(code);
   };
 
   /** re-generate example code when the context changes */
