@@ -41,7 +41,10 @@ export function useLiveExampleState(
   }
 
   /** Reset the live example */
-  function RESET(componentName: string, tsDoc: Array<CustomComponentDoc>) {
+  function resetContext(
+    componentName: string,
+    tsDoc: Array<CustomComponentDoc>,
+  ) {
     dispatch({
       type: LiveExampleActionType.RESET,
       componentName,
@@ -50,7 +53,7 @@ export function useLiveExampleState(
   }
 
   /** Log an error */
-  function ERROR(message: string) {
+  function setErrorState(message: string) {
     dispatch({
       type: LiveExampleActionType.ERROR,
       message,
@@ -89,13 +92,13 @@ export function useLiveExampleState(
         knobValues,
       });
     } else {
-      ERROR('');
+      setErrorState('Error parsing live example');
     }
   }
 
   /**
    * When state changes to 'loading', kickoff the async call.
-   * We can't do this inside `RESET` since we have no way of knowing whether
+   * We can't do this inside `resetContext` since we have no way of knowing whether
    * the component is still mounted outside this useAsyncEffect
    */
   useAsyncEffect(
@@ -126,8 +129,8 @@ export function useLiveExampleState(
   return {
     context,
     updateKnobValue,
-    RESET,
-    ERROR,
+    resetContext,
+    setErrorState,
     isState,
   };
 }

@@ -10,7 +10,10 @@ import LeafyGreenProvider, {
 } from '@leafygreen-ui/leafygreen-provider';
 
 import { KnobRow } from './KnobRow/KnobRow';
-import { assertCompleteContext, isReady } from './useLiveExampleState/utils';
+import {
+  assertCompleteContext,
+  isStateReady,
+} from './useLiveExampleState/utils';
 import { getStoryCode } from './utils/getStoryCode';
 import { CodeExample } from './CodeExample';
 import {
@@ -26,7 +29,6 @@ import {
   LiveExampleLoading,
   LiveExampleNotFound,
 } from './LiveExampleStateComponents';
-import {} from './types';
 import { LiveExampleContext, useLiveExampleState } from './useLiveExampleState';
 
 // Use standard block flow for these packages
@@ -54,7 +56,7 @@ export const LiveExample = ({
 
   // Establish a page state
   // { meta, StoryFn, knobValues, knobsArray, storyCode } =
-  const { context, updateKnobValue, RESET, ERROR, isState } =
+  const { context, updateKnobValue, resetContext, setErrorState, isState } =
     useLiveExampleState(componentName, tsDoc);
 
   const { darkMode } = useDarkMode(context.knobValues?.darkMode);
@@ -63,12 +65,12 @@ export const LiveExample = ({
   useEffect(() => {
     if (componentName !== prevComponentName) {
       if (tsDoc) {
-        RESET(componentName, tsDoc);
+        resetContext(componentName, tsDoc);
       } else {
-        ERROR('TSDoc not found');
+        setErrorState('TSDoc not found');
       }
     }
-  }, [componentName, prevComponentName, tsDoc, RESET, ERROR]);
+  }, [componentName, prevComponentName, tsDoc, resetContext, setErrorState]);
 
   /** Re-generates story example code from context */
   const regenerateStoryCode = (context: Partial<LiveExampleContext>) => {
@@ -125,7 +127,7 @@ export const LiveExample = ({
               `,
             )}
           >
-            {isReady(context) && (
+            {isStateReady(context) && (
               <div ref={storyWrapperRef} className={storyWrapperStyle}>
                 <LiveExampleDecorator meta={context.meta}>
                   <context.StoryFn {...context.knobValues} />
@@ -134,7 +136,9 @@ export const LiveExample = ({
             )}
             {isState('loading') && <LiveExampleLoading />}
             {isState('not_found') && <LiveExampleNotFound />}
-            {isState('error') && <LiveExampleError />}
+            {isState('error') && (
+              <LiveExampleError message={context.errorMessage} />
+            )}
           </div>
           {!disableCodeExampleFor.includes(componentName) && (
             <CodeExample
@@ -157,7 +161,7 @@ export const LiveExample = ({
               </Button>
             </div>
           )}
-          {isReady(context) &&
+          {isStateReady(context) &&
             context.knobsArray.map(knob => (
               <KnobRow
                 key={knob.name}

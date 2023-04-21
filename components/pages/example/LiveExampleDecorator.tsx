@@ -26,6 +26,7 @@ export const LiveExampleDecorator = ({
     return calculatedDecorator ?? Decorator;
   }, [children, meta]);
 
+  // This LGProvider decorator should mirror the decorator in in `leafygreen-ui/.storybook/main.js`
   return (
     <LeafyGreenProvider
       darkMode={meta?.args?.darkMode}
