@@ -20,13 +20,9 @@ import {
   getDefaultValueValue,
 } from 'utils/tsdoc.utils';
 
-import {
-  KnobOptionType,
-  KnobType,
-  LiveExampleState,
-  MetadataSources,
-  TypeString,
-} from './types';
+import { assertCompleteContext } from './useLiveExampleState/utils';
+import { KnobOptionType, KnobType, MetadataSources, TypeString } from './types';
+import { LiveExampleContext } from './useLiveExampleState';
 
 /**
  * A list of Prop names that should not appear in Knobs
@@ -340,7 +336,14 @@ export function getInitialKnobValues(
 
     return values;
   }, {} as Record<'string', any>);
-  return defaults(knobDefaults, meta.args, StoryFn.args);
+
+  // Extract the default Knob Values, and include any props not explicitly included in TSDoc
+  // This state object will be modified whenever a user interacts with a knob.
+  return pickBy(
+    defaults(knobDefaults, meta.args, StoryFn.args),
+    // Filter out values that are explicitly undefined
+    val => !isUndefined(val),
+  );
 }
 
 function createDefaultValue(knob: KnobType) {
@@ -378,89 +381,93 @@ export function getKnobDescription({
 /**
  * Returns example code for the given component data
  */
-export function getStoryCode({
-  componentName,
-  meta,
-  StoryFn,
-  knobValues,
-}: {
-  componentName: string;
-  meta?: Meta<any>;
-  StoryFn?: ComponentStoryFn<any>;
-  knobValues?: { [arg: string]: any };
-}): string | undefined {
+export function getStoryCode(context: LiveExampleContext): string | undefined {
+  /** Skip generation, and just use the story source code for these packages */
   const useStorySourceForComponents = ['typography'];
 
-  const getStoryJSX = (element: ReactNode, displayName: string): string =>
-    element
-      ? reactElementToJSXString(element, {
-          displayName: (child: ReactNode) =>
-            // @ts-expect-error - correct type for `child` is too verbose
-            child?.type?.displayName ?? pascalcase(displayName),
-          showFunctions: true,
-          showDefaultProps: true,
-          useBooleanShorthandSyntax: false,
-          useFragmentShortSyntax: true,
-        })
-      : '';
+  if (assertCompleteContext(context)) {
+    const { componentName, meta, StoryFn, knobValues } = context;
 
-  const getStorySourceCode = (meta?: Meta<any>) => {
+    /**
+     * If this is the Typography component,
+     * we use the original story code,
+     * otherwise we convert the component to JSX
+     */
+    if (useStorySourceForComponents.includes(componentName)) {
+      return getStorySourceCode(meta);
+    } else {
+      const renderedStory = React.createElement(StoryFn, { ...knobValues });
+      return getStoryJSX(renderedStory, componentName);
+    }
+  }
+
+  /** `getStoryCode` utility that returns a JSX string */
+  function getStoryJSX(element: ReactNode, displayName: string) {
+    if (element) {
+      return reactElementToJSXString(element, {
+        displayName: (child: ReactNode) =>
+          // @ts-expect-error - correct type for `child` is too verbose
+          child?.type?.displayName ?? pascalcase(displayName),
+        showFunctions: true,
+        showDefaultProps: true,
+        useBooleanShorthandSyntax: false,
+        useFragmentShortSyntax: true,
+      });
+    }
+  }
+
+  /** Extracts the story code from the meta `storySource` */
+  function getStorySourceCode(meta?: Meta<any>) {
     if (meta && meta.parameters) {
       const {
         parameters: { default: defaultStoryName, storySource },
       } = meta;
 
-      const locationsMap = defaultStoryName
-        ? storySource.locationsMap[defaultStoryName]
-        : Object.values(storySource.locationsMap)[0];
-      const lines = (storySource.source as string).match(/^.*$/gm);
+      if (storySource) {
+        const locationsMap = defaultStoryName
+          ? storySource.locationsMap[defaultStoryName]
+          : Object.values(storySource?.locationsMap)[0];
+        const lines = (storySource.source as string).match(/^.*$/gm);
 
-      const storyCode = lines
-        ?.slice(
-          locationsMap?.startLoc?.line - 1,
-          locationsMap?.endLoc?.line - 1,
-        )
-        .join('\n');
-      return storyCode;
+        const storyCode = lines
+          ?.slice(
+            locationsMap?.startLoc?.line - 1,
+            locationsMap?.endLoc?.line - 1,
+          )
+          .join('\n');
+        return storyCode;
+      }
     }
-  };
-
-  /**
-   * If this is the Typography component,
-   * we use the original story code,
-   * otherwise we convert the component to JSX
-   */
-  if (useStorySourceForComponents.includes(componentName)) {
-    return getStorySourceCode(meta);
-  } else {
-    const renderedStory = StoryFn
-      ? React.createElement(StoryFn, { ...knobValues })
-      : undefined;
-    return getStoryJSX(renderedStory, componentName);
   }
 }
 
 /**
- * Given component metadata
- * returns a LiveExampleState object
+ * Gets the default story from the meta
  */
-export function getLiveExampleState({
+export function getDefaultStoryFn(
+  meta: Meta<any>,
+  stories: { [key: string]: ComponentStoryFn<any> },
+) {
+  const defaultStoryName = meta.parameters?.default ?? Object.keys(stories)[0];
+  return defaultStoryName
+    ? stories[defaultStoryName]
+    : Object.values(stories)[0];
+}
+
+/**
+ * Returns an array of all knobs for the component
+ */
+export function getKnobsArray({
   componentName,
   meta,
-  stories,
+  StoryFn,
   tsDoc,
 }: {
   componentName: string;
   meta: Meta<any>;
-  stories: { [key: string]: ComponentStoryFn<any> };
+  StoryFn: ComponentStoryFn<any>;
   tsDoc: Array<CustomComponentDoc> | null;
-}): LiveExampleState {
-  const defaultStoryName = meta.parameters?.default ?? Object.keys(stories)[0];
-
-  const StoryFn = defaultStoryName
-    ? stories[defaultStoryName]
-    : Object.values(stories)[0];
-
+}) {
   const TSPropsArray: Array<KnobType> = getTSDocPropsArray(
     findComponentDoc(componentName, tsDoc),
   )
@@ -482,28 +489,7 @@ export function getLiveExampleState({
 
   const knobsArray = [...TSPropsArray, ...SBArgsArray];
 
-  // Extract the default Knob Values, and include any props not explicitly included in TSDoc
-  // This state object will be modified whenever a user interacts with a knob.
-  const knobValues = pickBy(
-    getInitialKnobValues(knobsArray, meta, StoryFn),
-    // Filter out values that are explicitly undefined
-    val => !isUndefined(val),
-  );
-
-  const storyCode = getStoryCode({
-    componentName,
-    meta,
-    StoryFn,
-    knobValues,
-  });
-
-  return {
-    meta,
-    knobValues,
-    knobsArray,
-    StoryFn,
-    storyCode,
-  };
+  return knobsArray;
 }
 
 /**

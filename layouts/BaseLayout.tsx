@@ -7,6 +7,7 @@ import Navigation from 'components/navigation';
 
 import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
 import { palette } from '@leafygreen-ui/palette';
+import { ToastProvider } from '@leafygreen-ui/toast';
 import { spacing } from '@leafygreen-ui/tokens';
 
 import Footer from '../components/Footer';
@@ -74,17 +75,24 @@ function BaseLayout({ children }: { children: React.ReactNode }) {
         portalContainer: bodyContainerRef,
       }}
     >
-      <LayoutContext.Provider value={bodyContainerRef}>
-        <div className={containerStyle}>
-          <Navigation />
+      <ToastProvider
+        portalClassName={css`
+          position: relative;
+          z-index: 1;
+        `}
+      >
+        <LayoutContext.Provider value={bodyContainerRef}>
+          <div className={containerStyle}>
+            <Navigation />
 
-          <div className={layout} ref={setBodyContainerRef}>
-            <div className={childrenWrapper}>{children}</div>
+            <div className={layout} ref={setBodyContainerRef}>
+              <div className={childrenWrapper}>{children}</div>
 
-            <Footer />
+              <Footer />
+            </div>
           </div>
-        </div>
-      </LayoutContext.Provider>
+        </LayoutContext.Provider>
+      </ToastProvider>
     </LeafyGreenProvider>
   );
 }
