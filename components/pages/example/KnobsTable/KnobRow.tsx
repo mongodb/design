@@ -8,8 +8,9 @@ import { spacing } from '@leafygreen-ui/tokens';
 import Tooltip from '@leafygreen-ui/tooltip';
 import { Body } from '@leafygreen-ui/typography';
 
-import { Knob } from '../Knob/Knob';
 import { KnobType } from '../types';
+
+import { Knob } from './Knob/Knob';
 
 const knobRowWrapperStyle = (darkMode: boolean) => css`
   display: flex;

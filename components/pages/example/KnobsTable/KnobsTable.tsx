@@ -3,12 +3,12 @@ import { MouseEventHandler } from 'react';
 import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
 
-import { KnobRow } from '../KnobRow/KnobRow';
 import {
   LiveExampleContext,
   LiveExampleStateReturnValue,
 } from '../useLiveExampleState';
 
+import { KnobRow } from './KnobRow';
 import {
   exampleCodeButtonRowStyle,
   exampleCodeButtonStyle,
