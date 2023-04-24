@@ -14,6 +14,7 @@ import {
   CustomComponentDoc,
   getDefaultValueValue,
   getPropsArrayForComponentName,
+  sortPropItems,
 } from 'utils/tsdoc.utils';
 
 import {
@@ -425,9 +426,7 @@ export function getKnobsArray({
     // Convert SB InputType to KnobType
     .map(mapSBArgTypeToKnobType);
 
-  const knobsArray = [...TSPropsArray, ...SBArgsArray].sort((a, z) =>
-    a.name.localeCompare(z.name),
-  );
+  const knobsArray = [...TSPropsArray, ...SBArgsArray].sort(sortPropItems);
 
   return knobsArray;
 }

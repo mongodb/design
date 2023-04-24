@@ -46,6 +46,12 @@ export function isRequired(prop: PropItem): boolean {
   return prop.required || !isUndefined(prop.tags?.required);
 }
 
+export function sortPropItems(a: PropItem, z: PropItem): number {
+  if (isRequired(a) && !isRequired(z)) return -1;
+  if (isRequired(z)) return 1;
+  return a.name.localeCompare(z.name);
+}
+
 /**
  * Finds the appropriate ComponentDoc given a componentName.
  * Useful when there are multiple docs for one component
@@ -77,11 +83,7 @@ export function getComponentPropsArray(
 
   return Object.values(omitBy(props, isInheritableGroup))
     .flatMap(Object.values)
-    .sort((a, z) => {
-      if (isRequired(a) && !isRequired(z)) return -1;
-      if (isRequired(z)) return 1;
-      return a.name.localeCompare(z.name);
-    });
+    .sort(sortPropItems);
 }
 
 export function getPropsArrayForComponentName(
