@@ -51,3 +51,11 @@ export type LiveExampleAction =
       type: LiveExampleActionType.NOT_FOUND;
       componentName: string;
     };
+
+export interface LiveExampleStateReturnValue {
+  context: LiveExampleContext;
+  updateKnobValue: (prop: string, val: any) => void;
+  resetContext: (name: string, tsDoc: Array<CustomComponentDoc>) => void;
+  setErrorState: (msg: string) => void;
+  isState: (state: LiveExampleState) => boolean;
+}
