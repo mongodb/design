@@ -6,7 +6,7 @@ import { HTMLElementProps } from '@leafygreen-ui/lib';
 import { palette } from '@leafygreen-ui/palette';
 import { spacing } from '@leafygreen-ui/tokens';
 import Tooltip from '@leafygreen-ui/tooltip';
-import { Body } from '@leafygreen-ui/typography';
+import { Body, Disclaimer } from '@leafygreen-ui/typography';
 
 import { KnobType } from '../types';
 
@@ -32,6 +32,13 @@ const knobControlStyle = css`
   justify-content: end;
 `;
 
+const requiredFlagStyle = css`
+  display: inline;
+  padding-left: 1ch;
+  color: ${palette.red.base};
+  text-transform: uppercase;
+`;
+
 interface KnobRowProps extends HTMLElementProps<'div'> {
   knob: KnobType;
   knobValue?: any;
@@ -39,7 +46,7 @@ interface KnobRowProps extends HTMLElementProps<'div'> {
 }
 
 export const KnobRow = ({ knob, knobValue, setKnobValue }: KnobRowProps) => {
-  const { controlType, name, options, args } = knob;
+  const { controlType, name, options, args, required } = knob;
   const { darkMode } = useDarkMode();
 
   const renderedKnob = (
@@ -67,6 +74,9 @@ export const KnobRow = ({ knob, knobValue, setKnobValue }: KnobRowProps) => {
           id={`${kebabCase()}-knob-${name}`}
         >
           <strong>{name}</strong>
+          {required && (
+            <Disclaimer className={requiredFlagStyle}>(required)</Disclaimer>
+          )}
         </Body>
       </div>
       {args?.disabled && args?.description ? (
