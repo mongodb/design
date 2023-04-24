@@ -1,4 +1,5 @@
 import { kebabCase } from 'lodash';
+import { isRequired } from 'utils/tsdoc.utils';
 
 import { css } from '@leafygreen-ui/emotion';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
@@ -74,7 +75,7 @@ export const KnobRow = ({ knob, knobValue, setKnobValue }: KnobRowProps) => {
           id={`${kebabCase()}-knob-${name}`}
         >
           <strong>{name}</strong>
-          {required && (
+          {isRequired(knob) && (
             <Disclaimer className={requiredFlagStyle}>(required)</Disclaimer>
           )}
         </Body>

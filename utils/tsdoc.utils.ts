@@ -41,6 +41,9 @@ export const isPropItem = (obj: any): obj is PropItem => {
   );
 };
 
+/**
+ * Whether a given prop item is required
+ */
 export function isRequired(prop: PropItem): boolean {
   // @ts-expect-error
   return prop.required || !isUndefined(prop.tags?.required);
