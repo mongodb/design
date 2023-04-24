@@ -12,9 +12,8 @@ import {
 } from 'lodash';
 import {
   CustomComponentDoc,
-  findComponentDoc,
-  getComponentPropsArray as getTSDocPropsArray,
   getDefaultValueValue,
+  getPropsArrayForComponentName,
 } from 'utils/tsdoc.utils';
 
 import {
@@ -406,8 +405,9 @@ export function getKnobsArray({
   StoryFn: ComponentStoryFn<any>;
   tsDoc: Array<CustomComponentDoc> | null;
 }) {
-  const TSPropsArray: Array<KnobType> = getTSDocPropsArray(
-    findComponentDoc(componentName, tsDoc),
+  const TSPropsArray: Array<KnobType> = getPropsArrayForComponentName(
+    componentName,
+    tsDoc,
   )
     // Filter out component props we don't want knobs for.
     // i.e. `@ignore` tags, excluded in SB.parameters.controls

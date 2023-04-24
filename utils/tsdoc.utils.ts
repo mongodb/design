@@ -84,6 +84,13 @@ export function getComponentPropsArray(
     });
 }
 
+export function getPropsArrayForComponentName(
+  componentName: string,
+  tsDoc: Array<CustomComponentDoc> | null,
+) {
+  return getComponentPropsArray(findComponentDoc(componentName, tsDoc));
+}
+
 export const getInheritedProps = (props: PropCategories): Array<PropGroup> => {
   return Object.entries(pickBy(props, isInheritableGroup)).map(
     ([groupName, props]: [string, Props]) => ({

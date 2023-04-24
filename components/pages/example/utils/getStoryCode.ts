@@ -2,19 +2,28 @@ import React, { FunctionComponentElement, ReactElement } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import prepass from 'react-ssr-prepass'; // lets us traverse the react tree
 import pascalcase from 'pascalcase';
+import {
+  getDefaultValueValue,
+  getPropsArrayForComponentName,
+} from 'utils/tsdoc.utils';
 
 import { LiveExampleContext } from '../useLiveExampleState';
 import { assertCompleteContext } from '../useLiveExampleState/utils';
 
+import { ignoreProps } from '.';
+
 /**
- * Returns example code for the given component data
+ * Returns example code for the given component data.
+ *
+ * Does not generate prop code for props that have the same value as the
+ * documented default (in TSDoc).
  */
 export function getStoryCode(context: LiveExampleContext): string | undefined {
-  /** Treat these packages differently */
+  /** Treat these packages differently. We use the entire story code, not just the component JSX */
   const packageNameDoesNotMatchComponent = ['typography'];
 
   if (assertCompleteContext(context)) {
-    const { componentName, StoryFn, knobValues, knobsArray } = context;
+    const { componentName, StoryFn, tsDoc, knobValues } = context;
 
     const renderedStory: FunctionComponentElement<any> = React.createElement(
       StoryFn,
@@ -24,14 +33,19 @@ export function getStoryCode(context: LiveExampleContext): string | undefined {
     const componentRoot = getComponentRoot(renderedStory, componentName);
 
     if (componentRoot) {
+      const TSPropsArray = getPropsArrayForComponentName(componentName, tsDoc);
       return reactElementToJSXString(componentRoot, {
         showFunctions: true,
         showDefaultProps: false,
         useBooleanShorthandSyntax: false,
         useFragmentShortSyntax: true,
-        filterProps: (_, propName) =>
-          // Only display props that we allow users to control in the example
-          knobsArray.map(knob => knob.name).includes(propName),
+        filterProps: (value, name) => {
+          const tsProp = TSPropsArray.find(p => p.name === name);
+          const tsDefault = tsProp ? getDefaultValueValue(tsProp) : null;
+          // Filter out explicitly ignored props
+          // and props that have the same value as the documented default
+          return !ignoreProps.includes(name) && value !== tsDefault;
+        },
       });
     }
   }
