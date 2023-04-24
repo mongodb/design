@@ -1,6 +1,7 @@
 import { MouseEventHandler } from 'react';
 
 import Button from '@leafygreen-ui/button';
+import Icon from '@leafygreen-ui/icon';
 
 import { KnobRow } from '../KnobRow/KnobRow';
 import {
@@ -39,6 +40,9 @@ export const KnobsTable = ({
             variant="default"
             size="xsmall"
             onClick={handleShowCodeClick}
+            leftGlyph={
+              <Icon glyph={showCode ? 'VisibilityOff' : 'Visibility'} />
+            }
           >
             {showCode ? 'Hide' : 'Show'} Code
           </Button>

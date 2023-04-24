@@ -425,7 +425,9 @@ export function getKnobsArray({
     // Convert SB InputType to KnobType
     .map(mapSBArgTypeToKnobType);
 
-  const knobsArray = [...TSPropsArray, ...SBArgsArray];
+  const knobsArray = [...TSPropsArray, ...SBArgsArray].sort((a, z) =>
+    a.name.localeCompare(z.name),
+  );
 
   return knobsArray;
 }
