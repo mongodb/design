@@ -46,6 +46,9 @@ export function isRequired(prop: PropItem): boolean {
   return prop.required || !isUndefined(prop.tags?.required);
 }
 
+/**
+ * Sorts prop items with required props first, then the rest alphabetically
+ */
 export function sortPropItems(a: PropItem, z: PropItem): number {
   if (isRequired(a) && !isRequired(z)) return -1;
   if (isRequired(z)) return 1;
