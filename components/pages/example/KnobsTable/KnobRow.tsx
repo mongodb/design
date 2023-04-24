@@ -47,7 +47,7 @@ interface KnobRowProps extends HTMLElementProps<'div'> {
 }
 
 export const KnobRow = ({ knob, knobValue, setKnobValue }: KnobRowProps) => {
-  const { controlType, name, options, args, required } = knob;
+  const { controlType, name, options, args } = knob;
   const { darkMode } = useDarkMode();
 
   const renderedKnob = (
