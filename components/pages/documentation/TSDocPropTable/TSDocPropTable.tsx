@@ -101,6 +101,7 @@ export const TSDocPropTable = ({
                     <Markdown>{datum.description}</Markdown>
                   </Cell>
                   <Cell>
+                    {/* @ts-ignore - too complex */}
                     <InlineCode className={typeCellStyle}>
                       {getTypeString(datum.type)}
                     </InlineCode>

@@ -1,6 +1,7 @@
 import { kebabCase } from 'lodash';
 
 import { css } from '@leafygreen-ui/emotion';
+import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { HTMLElementProps } from '@leafygreen-ui/lib';
 import { palette } from '@leafygreen-ui/palette';
 import { spacing } from '@leafygreen-ui/tokens';
@@ -32,18 +33,13 @@ const knobControlStyle = css`
 
 interface KnobRowProps extends HTMLElementProps<'div'> {
   knob: KnobType;
-  darkMode: boolean;
   knobValue?: any;
   setKnobValue: (key: string, value: any) => void;
 }
 
-export const KnobRow = ({
-  knob,
-  darkMode,
-  knobValue,
-  setKnobValue,
-}: KnobRowProps) => {
+export const KnobRow = ({ knob, knobValue, setKnobValue }: KnobRowProps) => {
   const { controlType, name, options, args } = knob;
+  const { darkMode } = useDarkMode();
 
   const renderedKnob = (
     <Knob
@@ -57,7 +53,6 @@ export const KnobRow = ({
       }}
       className={knobControlStyle}
       aria-labelledby={`knob-${name}`}
-      darkMode={darkMode}
       {...args}
     />
   );
