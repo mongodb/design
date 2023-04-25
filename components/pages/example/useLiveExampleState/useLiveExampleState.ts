@@ -1,5 +1,6 @@
 import { useReducer } from 'react';
 import { kebabCase, merge } from 'lodash';
+import pascalcase from 'pascalcase';
 import { getComponentStories, ModuleType } from 'utils/getComponentStories';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
@@ -14,6 +15,7 @@ import {
 import {
   LiveExampleActionType,
   LiveExampleState,
+  LiveExampleStateReturnValue,
 } from './LiveExampleState.types';
 import { liveExampleStateReducer } from './LiveExampleStateReducer';
 import { assertContext, defaultLiveExampleContext } from './utils';
@@ -21,7 +23,7 @@ import { assertContext, defaultLiveExampleContext } from './utils';
 export function useLiveExampleState(
   componentName: string,
   tsDoc?: Array<CustomComponentDoc> | null,
-) {
+): LiveExampleStateReturnValue {
   const initialState = merge(
     { componentName, tsDoc },
     defaultLiveExampleContext,
@@ -51,6 +53,7 @@ export function useLiveExampleState(
     });
   }
 
+  /** Log an error */
   function setErrorState(message: string) {
     dispatch({
       type: LiveExampleActionType.ERROR,
@@ -70,6 +73,7 @@ export function useLiveExampleState(
   function parse(module: ModuleType) {
     const { default: meta, ...stories } = module;
     const StoryFn = getDefaultStoryFn(meta, stories);
+    StoryFn.displayName = pascalcase(componentName) + 'Story';
 
     if (assertContext(context, ['state', 'componentName', 'tsDoc'])) {
       const knobsArray = getKnobsArray({

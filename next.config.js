@@ -38,18 +38,6 @@ const nextConfig = {
       type: 'javascript/auto',
     });
 
-    config.module.rules.push({
-      test: /\.+(stories|story)\.tsx?$/,
-      use: [
-        {
-          loader: require.resolve('@storybook/source-loader'),
-          options: { parser: 'typescript' },
-        },
-      ],
-      include: isPathInLeafygreen,
-      enforce: 'pre',
-    });
-
     // Allow <Icon /> to dynamically import the svg files
     config.module.rules.push({
       test: /\.svg$/,
