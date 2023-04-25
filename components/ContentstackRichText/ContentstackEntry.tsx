@@ -16,6 +16,7 @@ import ExampleCardBlock from './ExampleCardBlock';
 import HorizontalLayout from './HorizontalLayout';
 import { BlockPropsMap, ContentTypeUID } from './types';
 import ContentstackRichText from '.';
+import TwoColumnExampleCard from './TwoColumnExampleCard';
 
 /**
  * An object that maps keys of each `contentTypeUid`
@@ -70,6 +71,7 @@ const blockToElementMap: {
     </Card>
   ),
   example_card_block: props => <ExampleCardBlock entry={props} />,
+  example_card_block_2_column_: props => <TwoColumnExampleCard entry={props} />,
   expandable_card_block: props => (
     <ExpandableCard
       title={props.title}

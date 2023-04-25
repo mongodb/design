@@ -137,6 +137,16 @@ export interface HorizontalLayoutBlockProps {
   flex_ratio: `${number}:${number}`;
 }
 
+export interface TwoColumnExampleCardBlockProps {
+  title: string;
+  column_1_subtext: string;
+  column_1_variant: 'info' | 'caution' | 'do' | 'dont';
+  column_1_image: CSImage;
+  column_2_subtext: string;
+  column_2_variant: 'info' | 'caution' | 'do' | 'dont';
+  column_2_image: CSImage;
+}
+
 export interface BlockPropsMap {
   annotated_image_block: AnnotatedImageBlockProps;
   badge_block: BadgeBlockProps;
@@ -147,6 +157,7 @@ export interface BlockPropsMap {
   example_card_block: ExampleCardBlockProps;
   expandable_card_block: ExpandableCardBlockProps;
   horizontal_layout: HorizontalLayoutBlockProps;
+  example_card_block_2_column_: TwoColumnExampleCardBlockProps;
 }
 
 export type ContentTypeUID = keyof BlockPropsMap;
