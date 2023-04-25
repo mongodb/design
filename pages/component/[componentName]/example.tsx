@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+import ComponentLayout from 'layouts/ComponentLayout';
 import { getTSDoc } from 'utils/_getComponentResources';
 import { getComponent } from 'utils/ContentStack/getContentstackResources';
 import { getStaticComponentPaths } from 'utils/ContentStack/getStaticComponent';
@@ -12,7 +13,6 @@ interface ExamplePageProps {
   component: ComponentPageMeta | null;
   tsDoc: Array<CustomComponentDoc> | null;
 }
-import ComponentLayout from 'layouts/ComponentLayout';
 
 const ComponentExample = ({ componentName, tsDoc }: ExamplePageProps) => {
   return <LiveExample componentName={componentName} tsDoc={tsDoc} />;
