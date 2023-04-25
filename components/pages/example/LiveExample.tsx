@@ -93,6 +93,7 @@ export const LiveExample = ({
       <Card
         className={css`
           margin-block: 2em;
+          padding: 0;
         `}
       >
         <div className={liveExampleWrapperStyle}>
