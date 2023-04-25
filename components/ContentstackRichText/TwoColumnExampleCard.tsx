@@ -18,30 +18,35 @@ const FlexColumn = styled('div')`
   max-width: 100%;
 `;
 
-
 const TwoColumnExampleCard = ({
-  entry
-}: { entry: TwoColumnExampleCardBlockProps}) => {
+  entry,
+}: {
+  entry: TwoColumnExampleCardBlockProps;
+}) => {
   return (
     <FlexContainer>
       <FlexColumn>
-        <ExampleCardBlock entry={{
-          title: entry.title,
-          subtext: entry.column_1_subtext,
-          variant: entry.column_1_variant,
-          image: entry.column_1_image
-        }}/>
+        <ExampleCardBlock
+          entry={{
+            title: entry.title,
+            subtext: entry.column_1_subtext,
+            variant: entry.column_1_variant,
+            image: entry.column_1_image,
+          }}
+        />
       </FlexColumn>
       <FlexColumn>
-        <ExampleCardBlock entry={{
-          title: entry.title,
-          subtext: entry.column_2_subtext,
-          variant: entry.column_2_variant,
-          image: entry.column_2_image
-        }}/>
+        <ExampleCardBlock
+          entry={{
+            title: entry.title,
+            subtext: entry.column_2_subtext,
+            variant: entry.column_2_variant,
+            image: entry.column_2_image,
+          }}
+        />
       </FlexColumn>
     </FlexContainer>
-  )
-}
+  );
+};
 
 export default TwoColumnExampleCard;

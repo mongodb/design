@@ -14,9 +14,9 @@ import AnnotatedImageBlock from './AnnotatedImageBlock';
 import BasicUsageBlock from './BasicUsageBlock';
 import ExampleCardBlock from './ExampleCardBlock';
 import HorizontalLayout from './HorizontalLayout';
+import TwoColumnExampleCard from './TwoColumnExampleCard';
 import { BlockPropsMap, ContentTypeUID } from './types';
 import ContentstackRichText from '.';
-import TwoColumnExampleCard from './TwoColumnExampleCard';
 
 /**
  * An object that maps keys of each `contentTypeUid`
