@@ -48,6 +48,8 @@ const inheritedAttrNameStyle = css`
 const cellStyles = css`
   > * {
     max-height: unset !important;
+    padding-top: ${spacing[3]}px;
+    padding-bottom: ${spacing[3]}px;
   }
 
   // todo: remove once ui bug is fixed
@@ -61,8 +63,8 @@ const cellStyles = css`
 `;
 
 const expandableCardMarginOverride = css`
-  width: calc(100% + 48px);
-  margin: 0 -24px;
+  width: calc(100% + ${2 * spacing[4]}px);
+  margin: 0 -${spacing[4]}px;
 `;
 
 export const TSDocPropTable = ({
