@@ -1,12 +1,10 @@
 import { TransitionStatus } from 'react-transition-group';
 
 import { css } from '@leafygreen-ui/emotion';
-import { spacing } from '@leafygreen-ui/tokens';
 
 export const liveExampleWrapperStyle = css`
   position: relative;
   display: flex;
-  margin: -${spacing[4]}px;
   margin-bottom: initial;
   min-height: 33vh;
   max-height: 80vh;
@@ -16,7 +14,6 @@ export const liveExampleWrapperStyle = css`
 export const storyContainerStyle = css`
   position: relative;
   flex: 2;
-  padding: ${spacing[4]}px;
   display: inline-flex;
   align-items: center;
   justify-content: center;

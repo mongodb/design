@@ -15,6 +15,8 @@ import { ContentPageGroup } from 'utils/ContentStack/types';
 import getFullPageTitle from 'utils/getFullPageTitle';
 import * as ga from 'utils/googleAnalytics';
 
+import ErrorBoundary from 'components/ErrorBoundary';
+
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
@@ -61,8 +63,10 @@ function MyApp({
         {/* Viewport meta tags should be in _app.tsx, not _document.tsx: https://nextjs.org/docs/messages/no-document-viewport-meta */}
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Global styles={globalStyles} />
-      <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
+      <ErrorBoundary>
+        <Global styles={globalStyles} />
+        <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
+      </ErrorBoundary>
     </AppContextProvider>
   );
 }
