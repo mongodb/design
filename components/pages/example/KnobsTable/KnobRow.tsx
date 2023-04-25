@@ -1,4 +1,5 @@
 import { kebabCase } from 'lodash';
+import { isRequired } from 'utils/tsdoc.utils';
 
 import { css } from '@leafygreen-ui/emotion';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
@@ -6,10 +7,11 @@ import { HTMLElementProps } from '@leafygreen-ui/lib';
 import { palette } from '@leafygreen-ui/palette';
 import { spacing } from '@leafygreen-ui/tokens';
 import Tooltip from '@leafygreen-ui/tooltip';
-import { Body } from '@leafygreen-ui/typography';
+import { Body, Disclaimer } from '@leafygreen-ui/typography';
 
-import { Knob } from '../Knob/Knob';
 import { KnobType } from '../types';
+
+import { Knob } from './Knob/Knob';
 
 const knobRowWrapperStyle = (darkMode: boolean) => css`
   display: flex;
@@ -29,6 +31,13 @@ const knobRowWrapperStyle = (darkMode: boolean) => css`
 const knobControlStyle = css`
   display: inline-flex;
   justify-content: end;
+`;
+
+const requiredFlagStyle = css`
+  display: inline;
+  padding-left: 1ch;
+  color: ${palette.red.base};
+  text-transform: uppercase;
 `;
 
 interface KnobRowProps extends HTMLElementProps<'div'> {
@@ -66,6 +75,9 @@ export const KnobRow = ({ knob, knobValue, setKnobValue }: KnobRowProps) => {
           id={`${kebabCase()}-knob-${name}`}
         >
           <strong>{name}</strong>
+          {isRequired(knob) && (
+            <Disclaimer className={requiredFlagStyle}>(required)</Disclaimer>
+          )}
         </Body>
       </div>
       {args?.disabled && args?.description ? (

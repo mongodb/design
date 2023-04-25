@@ -15,6 +15,7 @@ import {
 import {
   LiveExampleActionType,
   LiveExampleState,
+  LiveExampleStateReturnValue,
 } from './LiveExampleState.types';
 import { liveExampleStateReducer } from './LiveExampleStateReducer';
 import { assertContext, defaultLiveExampleContext } from './utils';
@@ -22,7 +23,7 @@ import { assertContext, defaultLiveExampleContext } from './utils';
 export function useLiveExampleState(
   componentName: string,
   tsDoc?: Array<CustomComponentDoc> | null,
-) {
+): LiveExampleStateReturnValue {
   const initialState = merge(
     { componentName, tsDoc },
     defaultLiveExampleContext,

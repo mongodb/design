@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
-import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
 import { css, cx } from '@leafygreen-ui/emotion';
 import { usePrevious } from '@leafygreen-ui/hooks';
@@ -9,13 +8,11 @@ import LeafyGreenProvider, {
   useDarkMode,
 } from '@leafygreen-ui/leafygreen-provider';
 
-import { KnobRow } from './KnobRow/KnobRow';
+import { KnobsTable } from './KnobsTable/KnobsTable';
 import { isStateReady } from './useLiveExampleState/utils';
 import { CodeExample } from './CodeExample';
 import {
   blockContainerStyle,
-  exampleCodeButtonRowStyle,
-  exampleCodeButtonStyle,
   liveExampleWrapperStyle,
   storyContainerStyle,
 } from './LiveExample.styles';
@@ -71,7 +68,7 @@ export const LiveExample = ({
   const storyCode = useStoryCode(context, showCode);
 
   /** Triggered on button click */
-  const handleShowCodeClick = () => {
+  const toggleShowCode = () => {
     setShowCode(sc => !sc);
   };
 
@@ -87,6 +84,8 @@ export const LiveExample = ({
 
   // should match the total height of the story container
   const exampleCodeHeight = storyContainerHeight + 48;
+
+  const codeExampleEnabled = !disableCodeExampleFor.includes(componentName);
 
   return (
     <LeafyGreenProvider darkMode={darkMode}>
@@ -125,7 +124,7 @@ export const LiveExample = ({
               <LiveExampleError message={context.errorMessage} />
             )}
           </div>
-          {!disableCodeExampleFor.includes(componentName) && (
+          {codeExampleEnabled && (
             <CodeExample
               showCode={showCode}
               code={storyCode}
@@ -133,29 +132,16 @@ export const LiveExample = ({
             />
           )}
         </div>
-        <div id="knobs">
-          {!disableCodeExampleFor.includes(componentName) && (
-            <div className={exampleCodeButtonRowStyle}>
-              <Button
-                className={exampleCodeButtonStyle}
-                variant="default"
-                size="xsmall"
-                onClick={handleShowCodeClick}
-              >
-                {showCode ? 'Hide' : 'Show'} Code
-              </Button>
-            </div>
-          )}
-          {isStateReady(context) &&
-            context.knobsArray.map(knob => (
-              <KnobRow
-                key={knob.name}
-                knob={knob}
-                knobValue={context.knobValues?.[knob.name]}
-                setKnobValue={updateKnobValue}
-              />
-            ))}
-        </div>
+        {isStateReady(context) && (
+          <KnobsTable
+            showCode={showCode}
+            codeExampleEnabled={codeExampleEnabled}
+            handleShowCodeClick={toggleShowCode}
+            knobsArray={context.knobsArray}
+            knobValues={context.knobValues}
+            updateKnobValue={updateKnobValue}
+          />
+        )}
       </Card>
     </LeafyGreenProvider>
   );

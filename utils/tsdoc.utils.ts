@@ -41,9 +41,21 @@ export const isPropItem = (obj: any): obj is PropItem => {
   );
 };
 
+/**
+ * Whether a given prop item is required
+ */
 export function isRequired(prop: PropItem): boolean {
   // @ts-expect-error
   return prop.required || !isUndefined(prop.tags?.required);
+}
+
+/**
+ * Sorts prop items with required props first, then the rest alphabetically
+ */
+export function sortPropItems(a: PropItem, z: PropItem): number {
+  if (isRequired(a) && !isRequired(z)) return -1;
+  if (isRequired(z)) return 1;
+  return a.name.localeCompare(z.name);
 }
 
 /**
@@ -77,11 +89,7 @@ export function getComponentPropsArray(
 
   return Object.values(omitBy(props, isInheritableGroup))
     .flatMap(Object.values)
-    .sort((a, z) => {
-      if (isRequired(a) && !isRequired(z)) return -1;
-      if (isRequired(z)) return 1;
-      return a.name.localeCompare(z.name);
-    });
+    .sort(sortPropItems);
 }
 
 export function getPropsArrayForComponentName(
