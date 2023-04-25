@@ -43,13 +43,16 @@ export function getStoryCode(context: LiveExampleContext): string | undefined {
         filterProps: (value, name) => {
           const tsProp = TSPropsArray.find(p => p.name === name);
           const tsDefault = tsProp ? getDefaultValueValue(tsProp) : null;
+
+          const excludeProp =
+            ignoreAllPropsForComponents.includes(componentName) ||
+            ignoreProps.includes(name) ||
+            value === tsDefault ||
+            name === 'key';
+
           // Filter out explicitly ignored props
           // and props that have the same value as the documented default
-          return (
-            !ignoreAllPropsForComponents.includes(componentName) &&
-            !ignoreProps.includes(name) &&
-            value !== tsDefault
-          );
+          return !excludeProp;
         },
       });
 
