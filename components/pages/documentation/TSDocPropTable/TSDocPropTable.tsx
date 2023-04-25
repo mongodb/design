@@ -67,80 +67,78 @@ export const TSDocPropTable = ({
   const props = [...componentProps, inheritedProps];
 
   return (
-    <>
-      <ExpandableCard
-        title={`${tsDoc.displayName} props`}
-        defaultOpen
-        className={className}
+    <ExpandableCard
+      title={`${tsDoc.displayName} props`}
+      defaultOpen
+      className={className}
+    >
+      <Table
+        data={props}
+        columns={[
+          <TableHeader label="Prop" key="Prop" />,
+          <TableHeader label="Description" key="Description" />,
+          <TableHeader label="Type" key="Type" />,
+          <TableHeader label="Default" key="Default" />,
+        ]}
       >
-        <Table
-          data={props}
-          columns={[
-            <TableHeader label="Prop" key="Prop" />,
-            <TableHeader label="Description" key="Description" />,
-            <TableHeader label="Type" key="Type" />,
-            <TableHeader label="Default" key="Default" />,
-          ]}
-        >
-          {({ datum }) => (
-            <>
-              {isPropItem(datum) ? (
-                <Row key={datum.name}>
-                  <Cell>
-                    <InlineDefinition
-                      tooltipClassName={propDefinitionTooltipStyle}
-                      definition={<PropTooltipContent propItem={datum} />}
-                    >
-                      <InlineCode>{datum.name}</InlineCode>
-                    </InlineDefinition>
-                    {isRequired(datum) && (
-                      <sup className={requiredHighlightStyle}>(REQUIRED)</sup>
-                    )}
-                  </Cell>
-                  <Cell>
-                    <Markdown>{datum.description}</Markdown>
-                  </Cell>
-                  <Cell>
-                    {/* @ts-ignore - too complex */}
-                    <InlineCode className={typeCellStyle}>
-                      {getTypeString(datum.type)}
-                    </InlineCode>
-                  </Cell>
-                  <Cell>
-                    <InlineCode>
-                      {getDefaultValueString(datum.defaultValue) || '—'}
-                    </InlineCode>
-                  </Cell>
-                </Row>
-              ) : (
-                <>
-                  {datum.length > 0 && (
-                    <Row key="inherited">
-                      <Cell>
-                        <InlineCode>...rest</InlineCode>
-                      </Cell>
-                      <Cell colSpan={3}>
-                        Native attributes inherited from &nbsp;
-                        {datum.map(({ groupName }) => (
-                          <Link
-                            key={groupName}
-                            target="_blank"
-                            href={getHTMLAttributesLink(groupName)}
-                            className={inheritedAttrNameStyle}
-                          >
-                            <InlineCode>{groupName}</InlineCode>
-                          </Link>
-                        ))}
-                      </Cell>
-                    </Row>
+        {({ datum }) => (
+          <>
+            {isPropItem(datum) ? (
+              <Row key={datum.name}>
+                <Cell>
+                  <InlineDefinition
+                    tooltipClassName={propDefinitionTooltipStyle}
+                    definition={<PropTooltipContent propItem={datum} />}
+                  >
+                    <InlineCode>{datum.name}</InlineCode>
+                  </InlineDefinition>
+                  {isRequired(datum) && (
+                    <sup className={requiredHighlightStyle}>(REQUIRED)</sup>
                   )}
-                </>
-              )}
-            </>
-          )}
-        </Table>
-      </ExpandableCard>
-    </>
+                </Cell>
+                <Cell>
+                  <Markdown>{datum.description}</Markdown>
+                </Cell>
+                <Cell>
+                  {/* @ts-ignore too complex */}
+                  <InlineCode className={typeCellStyle}>
+                    {getTypeString(datum.type)}
+                  </InlineCode>
+                </Cell>
+                <Cell>
+                  <InlineCode>
+                    {getDefaultValueString(datum.defaultValue) || '—'}
+                  </InlineCode>
+                </Cell>
+              </Row>
+            ) : (
+              <>
+                {datum.length > 0 && (
+                  <Row key="inherited">
+                    <Cell>
+                      <InlineCode>...rest</InlineCode>
+                    </Cell>
+                    <Cell colSpan={3}>
+                      Native attributes inherited from &nbsp;
+                      {datum.map(({ groupName }) => (
+                        <Link
+                          key={groupName}
+                          target="_blank"
+                          href={getHTMLAttributesLink(groupName)}
+                          className={inheritedAttrNameStyle}
+                        >
+                          <InlineCode>{groupName}</InlineCode>
+                        </Link>
+                      ))}
+                    </Cell>
+                  </Row>
+                )}
+              </>
+            )}
+          </>
+        )}
+      </Table>
+    </ExpandableCard>
   );
 };
 
