@@ -47,8 +47,7 @@ export function getStoryCode(context: LiveExampleContext): string | undefined {
           const excludeProp =
             ignoreAllPropsForComponents.includes(componentName) ||
             ignoreProps.includes(name) ||
-            value === tsDefault ||
-            name === 'key';
+            value === tsDefault;
 
           // Filter out explicitly ignored props
           // and props that have the same value as the documented default

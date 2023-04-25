@@ -28,6 +28,7 @@ import { LiveExampleContext } from '../useLiveExampleState';
  * A list of Prop names that should not appear in Knobs
  */
 export const ignoreProps = [
+  'key',
   'className',
   'tooltipClassName',
   'contentClassName',
