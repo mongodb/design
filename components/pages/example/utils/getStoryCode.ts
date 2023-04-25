@@ -1,5 +1,6 @@
 import React, { FunctionComponentElement, ReactElement } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
+import { isElement } from 'react-is';
 import prepass from 'react-ssr-prepass'; // lets us traverse the react tree
 import pascalcase from 'pascalcase';
 import {
@@ -19,8 +20,8 @@ import { ignoreProps } from '.';
  * documented default (in TSDoc).
  */
 export function getStoryCode(context: LiveExampleContext): string | undefined {
-  /** Treat these packages differently. We use the entire story code, not just the component JSX */
-  const packageNameDoesNotMatchComponent = ['typography'];
+  // Some components have highly complex props, which crashes the browser when attempting to parse them
+  const ignoreAllPropsForComponents = ['table'];
 
   if (assertCompleteContext(context)) {
     const { componentName, StoryFn, tsDoc, knobValues } = context;
@@ -34,7 +35,7 @@ export function getStoryCode(context: LiveExampleContext): string | undefined {
 
     if (componentRoot) {
       const TSPropsArray = getPropsArrayForComponentName(componentName, tsDoc);
-      return reactElementToJSXString(componentRoot, {
+      const storyCode = reactElementToJSXString(componentRoot, {
         showFunctions: true,
         showDefaultProps: false,
         useBooleanShorthandSyntax: false,
@@ -42,11 +43,19 @@ export function getStoryCode(context: LiveExampleContext): string | undefined {
         filterProps: (value, name) => {
           const tsProp = TSPropsArray.find(p => p.name === name);
           const tsDefault = tsProp ? getDefaultValueValue(tsProp) : null;
+
+          const excludeProp =
+            ignoreAllPropsForComponents.includes(componentName) ||
+            ignoreProps.includes(name) ||
+            value === tsDefault;
+
           // Filter out explicitly ignored props
           // and props that have the same value as the documented default
-          return !ignoreProps.includes(name) && value !== tsDefault;
+          return !excludeProp;
         },
       });
+
+      return storyCode;
     }
   }
 
@@ -55,6 +64,9 @@ export function getStoryCode(context: LiveExampleContext): string | undefined {
     renderedStory: FunctionComponentElement<any>,
     componentName: string,
   ) {
+    /** Treat these packages differently. We use the entire story code, not just the component JSX */
+    const packageNameDoesNotMatchComponent = ['typography'];
+
     let isRootSet = false;
     let componentRoot: ReactElement<any> = renderedStory;
 
@@ -82,5 +94,5 @@ export function getStoryCode(context: LiveExampleContext): string | undefined {
 function isFunctionComponentElement(
   node: React.ReactElement<any>,
 ): node is React.FunctionComponentElement<React.JSXElementConstructor<any>> {
-  return typeof node === 'object' && typeof node.type === 'function';
+  return isElement(node) && typeof node.type === 'function';
 }

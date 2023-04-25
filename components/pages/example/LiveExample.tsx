@@ -9,11 +9,7 @@ import LeafyGreenProvider, {
 } from '@leafygreen-ui/leafygreen-provider';
 
 import { KnobsTable } from './KnobsTable/KnobsTable';
-import {
-  assertCompleteContext,
-  isStateReady,
-} from './useLiveExampleState/utils';
-import { getStoryCode } from './utils/getStoryCode';
+import { isStateReady } from './useLiveExampleState/utils';
 import { CodeExample } from './CodeExample';
 import {
   blockContainerStyle,
@@ -26,7 +22,8 @@ import {
   LiveExampleLoading,
   LiveExampleNotFound,
 } from './LiveExampleStateComponents';
-import { LiveExampleContext, useLiveExampleState } from './useLiveExampleState';
+import { useLiveExampleState } from './useLiveExampleState';
+import { useStoryCode } from './useStoryCode';
 
 // Use standard block flow for these packages
 const useBlockWrapperFor = [
@@ -47,7 +44,6 @@ export const LiveExample = ({
 }) => {
   const prevComponentName = usePrevious(componentName);
   const [showCode, setShowCode] = useState(false);
-  const [storyCode, setCode] = useState('No code found');
   const storyContainerRef = useRef<HTMLDivElement>(null);
   const storyWrapperRef = useRef<HTMLDivElement>(null);
 
@@ -69,23 +65,11 @@ export const LiveExample = ({
     }
   }, [componentName, prevComponentName, tsDoc, resetContext, setErrorState]);
 
-  /** Re-generates story example code from context */
-  const regenerateStoryCode = (context: Partial<LiveExampleContext>) => {
-    const code = assertCompleteContext(context)
-      ? getStoryCode(context) ?? 'No code found'
-      : 'No code found';
-    setCode(code);
-  };
-
-  /** re-generate example code when the context changes */
-  useEffect(() => {
-    regenerateStoryCode(context);
-  }, [context]);
+  const storyCode = useStoryCode(context, showCode);
 
   /** Triggered on button click */
   const toggleShowCode = () => {
     setShowCode(sc => !sc);
-    regenerateStoryCode(context);
   };
 
   const storyWrapperStyle = context.meta?.parameters?.wrapperStyle;
@@ -108,6 +92,7 @@ export const LiveExample = ({
       <Card
         className={css`
           margin-block: 2em;
+          padding: 0;
         `}
       >
         <div className={liveExampleWrapperStyle}>

@@ -4,7 +4,6 @@ import {
   getDefaultValueString,
   getInheritedProps,
   getTypeString,
-  isPropItem,
   isRequired,
 } from 'utils/tsdoc.utils';
 
@@ -12,22 +11,18 @@ import { Markdown } from 'components/Markdown';
 
 import { css } from '@leafygreen-ui/emotion';
 import ExpandableCard from '@leafygreen-ui/expandable-card';
-import InlineDefinition from '@leafygreen-ui/inline-definition';
 import { palette } from '@leafygreen-ui/palette';
 import {
-  V10Cell as Cell,
-  V10Row as Row,
-  V10Table as Table,
-  V10TableHeader as TableHeader,
+  Cell,
+  HeaderCell,
+  HeaderRow,
+  Row,
+  Table,
+  TableBody,
+  TableHead,
 } from '@leafygreen-ui/table';
+import { spacing } from '@leafygreen-ui/tokens';
 import { InlineCode, Link } from '@leafygreen-ui/typography';
-
-import { PropTooltipContent } from '../../../PropTooltipContent';
-
-const propDefinitionTooltipStyle = css`
-  min-width: min-content;
-  max-width: 384px;
-`;
 
 const requiredHighlightStyle = css`
   padding-left: 1ch;
@@ -50,6 +45,28 @@ const inheritedAttrNameStyle = css`
   }
 `;
 
+const cellStyles = css`
+  > * {
+    max-height: unset !important;
+    padding-top: ${spacing[3]}px;
+    padding-bottom: ${spacing[3]}px;
+  }
+
+  // todo: remove once ui bug is fixed
+  &:first-child {
+    padding-left: ${spacing[4]}px;
+  }
+
+  &:last-child {
+    padding-right: ${spacing[4]}px;
+  }
+`;
+
+const expandableCardMarginOverride = css`
+  width: calc(100% + ${2 * spacing[4]}px);
+  margin: 0 -${spacing[4]}px;
+`;
+
 export const TSDocPropTable = ({
   tsDoc,
   className,
@@ -64,83 +81,75 @@ export const TSDocPropTable = ({
       groupName.endsWith('SVGAttributes'),
   );
 
-  const props = [...componentProps, inheritedProps];
+  const shouldAlternateRowColor = componentProps.length > 10;
 
   return (
-    <>
-      <ExpandableCard
-        title={`${tsDoc.displayName} props`}
-        defaultOpen
-        className={className}
+    <ExpandableCard
+      title={`${tsDoc.displayName} props`}
+      defaultOpen
+      className={className}
+    >
+      <Table
+        shouldAlternateRowColor={shouldAlternateRowColor}
+        className={expandableCardMarginOverride}
       >
-        <Table
-          data={props}
-          columns={[
-            <TableHeader label="Prop" key="Prop" />,
-            <TableHeader label="Description" key="Description" />,
-            <TableHeader label="Type" key="Type" />,
-            <TableHeader label="Default" key="Default" />,
-          ]}
-        >
-          {({ datum }) => (
-            <>
-              {isPropItem(datum) ? (
-                <Row key={datum.name}>
-                  <Cell>
-                    <InlineDefinition
-                      tooltipClassName={propDefinitionTooltipStyle}
-                      definition={<PropTooltipContent propItem={datum} />}
-                    >
-                      <InlineCode>{datum.name}</InlineCode>
-                    </InlineDefinition>
-                    {isRequired(datum) && (
-                      <sup className={requiredHighlightStyle}>(REQUIRED)</sup>
-                    )}
-                  </Cell>
-                  <Cell>
-                    <Markdown>{datum.description}</Markdown>
-                  </Cell>
-                  <Cell>
-                    {/* @ts-ignore - too complex */}
-                    <InlineCode className={typeCellStyle}>
-                      {getTypeString(datum.type)}
-                    </InlineCode>
-                  </Cell>
-                  <Cell>
-                    <InlineCode>
-                      {getDefaultValueString(datum.defaultValue) || '—'}
-                    </InlineCode>
-                  </Cell>
-                </Row>
-              ) : (
-                <>
-                  {datum.length > 0 && (
-                    <Row key="inherited">
-                      <Cell>
-                        <InlineCode>...rest</InlineCode>
-                      </Cell>
-                      <Cell colSpan={3}>
-                        Native attributes inherited from &nbsp;
-                        {datum.map(({ groupName }) => (
-                          <Link
-                            key={groupName}
-                            target="_blank"
-                            href={getHTMLAttributesLink(groupName)}
-                            className={inheritedAttrNameStyle}
-                          >
-                            <InlineCode>{groupName}</InlineCode>
-                          </Link>
-                        ))}
-                      </Cell>
-                    </Row>
+        <TableHead>
+          <HeaderRow>
+            <HeaderCell>Prop</HeaderCell>
+            <HeaderCell>Description</HeaderCell>
+            <HeaderCell>Type</HeaderCell>
+            <HeaderCell>Default</HeaderCell>
+          </HeaderRow>
+        </TableHead>
+        <TableBody>
+          {componentProps.map(propItem => {
+            return (
+              <Row key={propItem.name}>
+                <Cell className={cellStyles}>
+                  <InlineCode>{propItem.name}</InlineCode>
+                  {isRequired(propItem) && (
+                    <sup className={requiredHighlightStyle}>(REQUIRED)</sup>
                   )}
-                </>
-              )}
-            </>
+                </Cell>
+                <Cell className={cellStyles}>
+                  <Markdown>{propItem.description}</Markdown>
+                </Cell>
+                <Cell className={cellStyles}>
+                  <InlineCode className={typeCellStyle}>
+                    {getTypeString(propItem.type)}
+                  </InlineCode>
+                </Cell>
+                <Cell className={cellStyles}>
+                  <InlineCode>
+                    {getDefaultValueString(propItem.defaultValue) || '—'}
+                  </InlineCode>
+                </Cell>
+              </Row>
+            );
+          })}
+          {inheritedProps && (
+            <Row key="inherited">
+              <Cell className={cellStyles}>
+                <InlineCode>...rest</InlineCode>
+              </Cell>
+              <Cell colSpan={3}>
+                Native attributes inherited from &nbsp;
+                {inheritedProps.map(({ groupName }) => (
+                  <Link
+                    key={groupName}
+                    target="_blank"
+                    href={getHTMLAttributesLink(groupName)}
+                    className={inheritedAttrNameStyle}
+                  >
+                    <InlineCode>{groupName}</InlineCode>
+                  </Link>
+                ))}
+              </Cell>
+            </Row>
           )}
-        </Table>
-      </ExpandableCard>
-    </>
+        </TableBody>
+      </Table>
+    </ExpandableCard>
   );
 };
 
