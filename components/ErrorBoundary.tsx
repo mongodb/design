@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 
-class ErrorBoundary extends React.Component {
+class ErrorBoundary extends React.Component<
+  PropsWithChildren<{}>,
+  { hasError: boolean }
+> {
   static getDerivedStateFromError(_) {
     // Update state so the next render will show the fallback UI
 
-    return { hasError: true }
+    return { hasError: true };
   }
   constructor(props) {
-    super(props)
+    super(props);
 
     // Define a state variable to track whether is an error or not
-    this.state = { hasError: false }
+    this.state = { hasError: false };
   }
   componentDidCatch(error, errorInfo) {
     // You can use your own error logging service here
-    console.error({ error, errorInfo })
+    console.error({ error, errorInfo });
   }
   render() {
     // Check if the error is thrown
@@ -30,12 +33,12 @@ class ErrorBoundary extends React.Component {
             Try again?
           </button>
         </div>
-      )
+      );
     }
 
     // Return children components in case of no error
-    return this.props.children
+    return this.props.children;
   }
 }
 
-export default ErrorBoundary
+export default ErrorBoundary;
