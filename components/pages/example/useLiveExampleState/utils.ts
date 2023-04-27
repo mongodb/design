@@ -55,3 +55,13 @@ export function isStateReady(
 ): context is Required<LiveExampleContext> {
   return context.state === 'ready' && assertCompleteContext(context);
 }
+
+export function getLocalStorageComponentKnobValues(componentName: string) {
+  const localStorageKnobValueString = localStorage.getItem(`${componentName}-live-example`) ?? '{}';
+  const localStorageKnobValues = JSON.parse(localStorageKnobValueString);
+  Object.keys(localStorageKnobValues).forEach(knob => {
+    const knobValue = localStorageKnobValues[knob]
+    localStorageKnobValues[knob] = knobValue
+  })
+  return localStorageKnobValues;
+}

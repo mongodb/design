@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import Card from '@leafygreen-ui/card';
@@ -42,13 +43,14 @@ export const LiveExample = ({
   componentName: string;
   tsDoc: Array<CustomComponentDoc> | null;
 }) => {
+  const router = useRouter();
+  console.log(Object.keys(router.query).length)
   const prevComponentName = usePrevious(componentName);
   const [showCode, setShowCode] = useState(false);
   const storyContainerRef = useRef<HTMLDivElement>(null);
   const storyWrapperRef = useRef<HTMLDivElement>(null);
 
   // Establish a page state
-  // { meta, StoryFn, knobValues, knobsArray, storyCode } =
   const { context, updateKnobValue, resetContext, setErrorState, isState } =
     useLiveExampleState(componentName, tsDoc);
 
@@ -56,14 +58,14 @@ export const LiveExample = ({
 
   /** When the component name changes, reset the page */
   useEffect(() => {
-    if (componentName !== prevComponentName) {
+    if(componentName !== prevComponentName) {
       if (tsDoc) {
         resetContext(componentName, tsDoc);
       } else {
         setErrorState('TSDoc not found');
       }
     }
-  }, [componentName, prevComponentName, tsDoc, resetContext, setErrorState]);
+  }, [componentName, tsDoc, resetContext, setErrorState]);
 
   const storyCode = useStoryCode(context, showCode);
 
