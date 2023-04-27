@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: yarn update-packages
       - run: yarn install
+      - run: yarn update-packages
       - name: pull-request
         uses: repo-sync/pull-request@v2
         with:

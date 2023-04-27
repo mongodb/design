@@ -1,6 +1,4 @@
-import React, { ReactNode } from 'react';
 import { PropItem } from 'react-docgen-typescript';
-import reactElementToJSXString from 'react-element-to-jsx-string';
 import { InputType } from '@storybook/csf';
 import { ComponentStoryFn, Meta } from '@storybook/react';
 import {
@@ -12,26 +10,26 @@ import {
   pickBy,
   snakeCase,
 } from 'lodash';
-import pascalcase from 'pascalcase';
 import {
   CustomComponentDoc,
-  findComponentDoc,
-  getComponentPropsArray as getTSDocPropsArray,
   getDefaultValueValue,
+  getPropsArrayForComponentName,
+  sortPropItems,
 } from 'utils/tsdoc.utils';
 
 import {
   KnobOptionType,
   KnobType,
-  LiveExampleState,
   MetadataSources,
   TypeString,
-} from './types';
+} from '../types';
+import { LiveExampleContext } from '../useLiveExampleState';
 
 /**
  * A list of Prop names that should not appear in Knobs
  */
 export const ignoreProps = [
+  'key',
   'className',
   'tooltipClassName',
   'contentClassName',
@@ -157,7 +155,8 @@ function getSBInputTypeFilterFn({
       ['none', false].includes(input.control) ||
       ['none', false].includes(localInput?.control);
 
-    const isSBOnly: boolean = meta?.argTypes?.[input.name]?.storybookOnly;
+    const isSBOnly: boolean =
+      meta?.argTypes?.[input.name]?.displayedPlatforms === 'storybookOnly';
     const isExcludedByMeta: boolean =
       meta?.parameters?.controls?.exclude?.includes(input.name);
 
@@ -339,7 +338,14 @@ export function getInitialKnobValues(
 
     return values;
   }, {} as Record<'string', any>);
-  return defaults(knobDefaults, meta.args, StoryFn.args);
+
+  // Extract the default Knob Values, and include any props not explicitly included in TSDoc
+  // This state object will be modified whenever a user interacts with a knob.
+  return pickBy(
+    defaults(knobDefaults, meta.args, StoryFn.args),
+    // Filter out values that are explicitly undefined
+    val => !isUndefined(val),
+  );
 }
 
 function createDefaultValue(knob: KnobType) {
@@ -375,93 +381,35 @@ export function getKnobDescription({
 }
 
 /**
- * Returns example code for the given component data
+ * Gets the default story from the meta
  */
-export function getStoryCode({
-  componentName,
-  meta,
-  StoryFn,
-  knobValues,
-}: {
-  componentName: string;
-  meta?: Meta<any>;
-  StoryFn?: ComponentStoryFn<any>;
-  knobValues?: { [arg: string]: any };
-}): string | undefined {
-  const useStorySourceForComponents = ['typography'];
-
-  const getStoryJSX = (element: ReactNode, displayName: string): string =>
-    element
-      ? reactElementToJSXString(element, {
-          displayName: (child: ReactNode) =>
-            // @ts-expect-error - correct type for `child` is too verbose
-            child?.type?.displayName ?? pascalcase(displayName),
-          showFunctions: true,
-          showDefaultProps: true,
-          useBooleanShorthandSyntax: false,
-          useFragmentShortSyntax: true,
-        })
-      : '';
-
-  const getStorySourceCode = (meta?: Meta<any>) => {
-    if (meta && meta.parameters) {
-      const {
-        parameters: { default: defaultStoryName, storySource },
-      } = meta;
-
-      const locationsMap = defaultStoryName
-        ? storySource.locationsMap[defaultStoryName]
-        : Object.values(storySource.locationsMap)[0];
-      const lines = (storySource.source as string).match(/^.*$/gm);
-
-      const storyCode = lines
-        ?.slice(
-          locationsMap?.startLoc?.line - 1,
-          locationsMap?.endLoc?.line - 1,
-        )
-        .join('\n');
-      return storyCode;
-    }
-  };
-
-  /**
-   * If this is the Typography component,
-   * we use the original story code,
-   * otherwise we convert the component to JSX
-   */
-  if (useStorySourceForComponents.includes(componentName)) {
-    return getStorySourceCode(meta);
-  } else {
-    const renderedStory = StoryFn
-      ? React.createElement(StoryFn, { ...knobValues })
-      : undefined;
-    return getStoryJSX(renderedStory, componentName);
-  }
+export function getDefaultStoryFn(
+  meta: Required<LiveExampleContext>['meta'],
+  stories: { [key: string]: Required<LiveExampleContext>['StoryFn'] },
+) {
+  const defaultStoryName = meta.parameters?.default ?? Object.keys(stories)[0];
+  return defaultStoryName
+    ? stories[defaultStoryName]
+    : Object.values(stories)[0];
 }
 
 /**
- * Given component metadata
- * returns a LiveExampleState object
+ * Returns an array of all knobs for the component
  */
-export function getLiveExampleState({
+export function getKnobsArray({
   componentName,
   meta,
-  stories,
+  StoryFn,
   tsDoc,
 }: {
   componentName: string;
   meta: Meta<any>;
-  stories: { [key: string]: ComponentStoryFn<any> };
+  StoryFn: ComponentStoryFn<any>;
   tsDoc: Array<CustomComponentDoc> | null;
-}): LiveExampleState {
-  const defaultStoryName = meta.parameters?.default ?? Object.keys(stories)[0];
-
-  const StoryFn = defaultStoryName
-    ? stories[defaultStoryName]
-    : Object.values(stories)[0];
-
-  const TSPropsArray: Array<KnobType> = getTSDocPropsArray(
-    findComponentDoc(componentName, tsDoc),
+}) {
+  const TSPropsArray: Array<KnobType> = getPropsArrayForComponentName(
+    componentName,
+    tsDoc,
   )
     // Filter out component props we don't want knobs for.
     // i.e. `@ignore` tags, excluded in SB.parameters.controls
@@ -479,30 +427,9 @@ export function getLiveExampleState({
     // Convert SB InputType to KnobType
     .map(mapSBArgTypeToKnobType);
 
-  const knobsArray = [...TSPropsArray, ...SBArgsArray];
+  const knobsArray = [...TSPropsArray, ...SBArgsArray].sort(sortPropItems);
 
-  // Extract the default Knob Values, and include any props not explicitly included in TSDoc
-  // This state object will be modified whenever a user interacts with a knob.
-  const knobValues = pickBy(
-    getInitialKnobValues(knobsArray, meta, StoryFn),
-    // Filter out values that are explicitly undefined
-    val => !isUndefined(val),
-  );
-
-  const storyCode = getStoryCode({
-    componentName,
-    meta,
-    StoryFn,
-    knobValues,
-  });
-
-  return {
-    meta,
-    knobValues,
-    knobsArray,
-    StoryFn,
-    storyCode,
-  };
+  return knobsArray;
 }
 
 /**

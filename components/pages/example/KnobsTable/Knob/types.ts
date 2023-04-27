@@ -1,6 +1,6 @@
 import { HTMLElementProps } from '@leafygreen-ui/lib';
 
-import { KnobOptionType, TypeString } from '../types';
+import { KnobOptionType, TypeString } from '../../types';
 
 export interface KnobProps extends HTMLElementProps<'input'> {
   propName: string;

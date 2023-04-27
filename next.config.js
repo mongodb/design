@@ -38,18 +38,6 @@ const nextConfig = {
       type: 'javascript/auto',
     });
 
-    config.module.rules.push({
-      test: /\.+(stories|story)\.tsx?$/,
-      use: [
-        {
-          loader: require.resolve('@storybook/source-loader'),
-          options: { parser: 'typescript' },
-        },
-      ],
-      include: isPathInLeafygreen,
-      enforce: 'pre',
-    });
-
     // Allow <Icon /> to dynamically import the svg files
     config.module.rules.push({
       test: /\.svg$/,
@@ -76,6 +64,6 @@ function isPathInLeafygreen(filePath) {
   const LGModuleRegex = /.+(node_modules\/@leafygreen-ui)/g;
 
   // Use this regex when debugging with linked packages
-  // const LGModuleRegex = /.+(leafygreen-ui\/packages)/g;
+  // const LGModuleRegex = /(.+(node_modules\/@leafygreen-ui))|(.+(leafygreen-ui\/packages))/g;
   return LGModuleRegex.test(filePath);
 }

@@ -14,6 +14,7 @@ import AnnotatedImageBlock from './AnnotatedImageBlock';
 import BasicUsageBlock from './BasicUsageBlock';
 import ExampleCardBlock from './ExampleCardBlock';
 import HorizontalLayout from './HorizontalLayout';
+import TwoColumnExampleCard from './TwoColumnExampleCard';
 import { BlockPropsMap, ContentTypeUID } from './types';
 import ContentstackRichText from '.';
 
@@ -70,6 +71,7 @@ const blockToElementMap: {
     </Card>
   ),
   example_card_block: props => <ExampleCardBlock entry={props} />,
+  example_card_block_2_column_: props => <TwoColumnExampleCard entry={props} />,
   expandable_card_block: props => (
     <ExpandableCard
       title={props.title}
