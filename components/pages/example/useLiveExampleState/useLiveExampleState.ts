@@ -107,7 +107,6 @@ export function useLiveExampleState(
 
       const storyKnobValues = getInitialKnobValues(knobsArray, meta, StoryFn);
       const loadedValues = getDefaultKnobValues();
-      const knobValues = defaults(loadedValues, storyKnobValues)
 
       // set to URL params and local storage
       localStorage.setItem(`${componentName}-live-example`, JSON.stringify(loadedValues))
@@ -124,7 +123,7 @@ export function useLiveExampleState(
         meta,
         StoryFn,
         knobsArray,
-        knobValues,
+        knobValues: defaults(loadedValues, storyKnobValues),
       });
     } else {
       setErrorState('Error parsing live example');
@@ -141,6 +140,8 @@ export function useLiveExampleState(
     {
       then: module => {
         if (module) {
+          console.log(module)
+          console.log(router)
           parse(module);
         } else {
           dispatch({

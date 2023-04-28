@@ -43,8 +43,6 @@ export const LiveExample = ({
   componentName: string;
   tsDoc: Array<CustomComponentDoc> | null;
 }) => {
-  const router = useRouter();
-  console.log(Object.keys(router.query).length)
   const prevComponentName = usePrevious(componentName);
   const [showCode, setShowCode] = useState(false);
   const storyContainerRef = useRef<HTMLDivElement>(null);
@@ -65,7 +63,7 @@ export const LiveExample = ({
         setErrorState('TSDoc not found');
       }
     }
-  }, [componentName, tsDoc, resetContext, setErrorState]);
+  }, [componentName, tsDoc, resetContext, setErrorState, prevComponentName]);
 
   const storyCode = useStoryCode(context, showCode);
 

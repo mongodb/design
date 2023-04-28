@@ -140,7 +140,6 @@ function ComponentLayout({
     setSelected(
       activeTab === 'example' ? 0 : activeTab === 'guidelines' ? 1 : 2,
     );
-    console.log({ router })
   }, [router]);
 
   return (
