@@ -181,7 +181,7 @@ export function getDefaultValueValue({ defaultValue, type }: PropItem): any {
 }
 
 /**
- * Replaces `@link` with a MD link if a URL is provided.
+ * Replaces external `@link` with a MD link if a URL is provided.
  * Temp solution: If there is no URL provided then the text after `@link` will be returned.
  */
 export const getReplacedTSLink = (str: string): string => {
