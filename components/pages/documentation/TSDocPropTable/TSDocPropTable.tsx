@@ -3,6 +3,7 @@ import {
   getComponentPropsArray,
   getDefaultValueString,
   getInheritedProps,
+  getReplacedTSLink,
   getTypeString,
   isRequired,
 } from 'utils/tsdoc.utils';
@@ -112,7 +113,7 @@ export const TSDocPropTable = ({
                   )}
                 </Cell>
                 <Cell className={cellStyles}>
-                  <Markdown>{propItem.description}</Markdown>
+                  <Markdown>{getReplacedTSLink(propItem.description)}</Markdown>
                 </Cell>
                 <Cell className={cellStyles}>
                   <InlineCode className={typeCellStyle}>
