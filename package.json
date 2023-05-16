@@ -2,6 +2,10 @@
   "name": "website",
   "version": "0.4.0",
   "private": true,
+  "engines" : { 
+    "npm" : ">=8.19.4",
+    "node" : ">=16.20.0"
+  },
   "scripts": {
     "dev": "rm -rf .next  && NEXT_TELEMETRY_DISABLED=1 next dev",
     "build": "NEXT_TELEMETRY_DISABLED=1 next build",
