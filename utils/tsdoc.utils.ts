@@ -179,3 +179,32 @@ export function getDefaultValueValue({ defaultValue, type }: PropItem): any {
       return value;
   }
 }
+
+/**
+ * Replaces external `@link` with a MD link if a URL is provided.
+ * Temp solution: If there is no URL provided then the text after `@link` will be returned.
+ */
+export const getReplacedTSLink = (str: string): string => {
+  return str.replace(/\{@link[^}]*\}/g, match => {
+    if (match.includes('http')) {
+      // look for index of name divider
+      const nameIndex = match.indexOf('|');
+      // check if there is a name;
+      const hasName = nameIndex > 0;
+      // extract the link, if there is a name use that as the ending index, else use the length of the match
+      const link = match.substring(
+        7,
+        hasName ? nameIndex - 1 : match.length - 1,
+      );
+      // extract the name if there is a name
+      const name = hasName
+        ? match.substring(nameIndex + 2, match.length - 1)
+        : link;
+      return `[${name}](${link})`; // Return the link HTML with the URL as text
+    }
+
+    // Return the link name with the @link extracted
+    const linkNameMatch = match.match(/\{@link\s+([^}]+)\}/);
+    return linkNameMatch ? linkNameMatch[1] : '';
+  });
+};
