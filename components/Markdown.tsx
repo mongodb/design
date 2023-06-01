@@ -16,7 +16,6 @@ export const Markdown = ({ children, darkMode }: any) => (
         code: ({ inline, children }) =>
           inline ? (
             <InlineCode
-              // @ts-expect-error - TODO: Fix this in `InlineCode`
               darkMode={darkMode}
               className={css`
                 display: inline;
