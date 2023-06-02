@@ -1531,6 +1531,19 @@
     "@leafygreen-ui/tokens" "^2.1.0"
     polished "^4.2.2"
 
+"@leafygreen-ui/button@^20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@leafygreen-ui/button/-/button-20.1.1.tgz#5c4e6705b74d02a3b1b2010417bec35fb608e847"
+  integrity sha512-TPhM7NlYP+1rvhUBKOhj4iGx5nEUgcu4OM8VIhyR84Gysbr0DVxzT1P17APRsnLX3VXI5pCj47xE/YuoGwozgg==
+  dependencies:
+    "@leafygreen-ui/box" "^3.1.4"
+    "@leafygreen-ui/emotion" "^4.0.4"
+    "@leafygreen-ui/lib" "^10.3.4"
+    "@leafygreen-ui/palette" "^4.0.4"
+    "@leafygreen-ui/ripple" "^1.1.9"
+    "@leafygreen-ui/tokens" "^2.1.0"
+    polished "^4.2.2"
+
 "@leafygreen-ui/callout@^9.0.9":
   version "9.0.9"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/callout/-/callout-9.0.9.tgz#ef0ee2a6905a7564192e03a8544747a846fdb3c2"
