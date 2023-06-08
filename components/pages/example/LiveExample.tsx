@@ -33,7 +33,10 @@ const useBlockWrapperFor = [
   'tokens',
   'typography',
 ];
-const disableCodeExampleFor = ['icon', 'palette', 'tokens'];
+
+// Currently disabling code examples for all components
+// TODO: Fix code examples: https://jira.mongodb.org/browse/LG-3310
+// const disableCodeExampleFor = ['icon', 'palette', 'tokens'];
 
 export const LiveExample = ({
   componentName,
