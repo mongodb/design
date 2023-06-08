@@ -85,7 +85,9 @@ export const LiveExample = ({
   // should match the total height of the story container
   const exampleCodeHeight = storyContainerHeight + 48;
 
-  const codeExampleEnabled = !disableCodeExampleFor.includes(componentName);
+  // Currently disabling code examples for all components
+  // TODO: Fix code examples: https://jira.mongodb.org/browse/LG-3310
+  const codeExampleEnabled = false; //!disableCodeExampleFor.includes(componentName);
 
   return (
     <LeafyGreenProvider darkMode={darkMode}>
