@@ -259,7 +259,7 @@ export function getKnobOptions({
   );
 
   const controlOptions: Array<KnobOptionType> | undefined = valuesArrayFrom(
-    SBInputType?.control.options,
+    SBInputType?.control?.options,
   );
 
   const options: Array<KnobOptionType> = (
