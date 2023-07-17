@@ -56,7 +56,7 @@ const HeaderContent = ({ node }: { node: CSNode }) => {
   const headerId = kebabCase(getCSNodeTextContent(node));
 
   return (
-    <Link href={`#${headerId}`} passHref>
+    <Link href={`#${headerId}`} passHref legacyBehavior>
       <StyledAnchor id={headerId}>
         <LinkContent>
           <ContentstackChildren nodeChildren={node.children} />
