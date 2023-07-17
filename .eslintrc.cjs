@@ -5,11 +5,10 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
     'prettier',
     'plugin:jsx-a11y/recommended',
     'plugin:@next/next/recommended',
-    'next'
+    'next',
   ],
   parserOptions: {
     sourceType: 'module',
@@ -74,7 +73,7 @@ module.exports = {
         allow: ['warn', 'error'],
       },
     ],
-    'quotes': [1, 'single', { 'avoidEscape': true }],
+    quotes: [1, 'single', { avoidEscape: true }],
     // increase the severity of rules so they are auto-fixable
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',

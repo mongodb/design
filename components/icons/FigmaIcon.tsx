@@ -6,6 +6,7 @@ function FigmaIcon(props: JSX.IntrinsicElements['svg']) {
       viewBox="0 0 288 432"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <rect
         width="95.0226"
