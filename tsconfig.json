@@ -1,5 +1,27 @@
 {
-  "extends": "@lg-tools/build/config/package.tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "jsxImportSource": "@emotion/react",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "emitDeclarationOnly": false,
+    "noEmit": true,
+    "isolatedModules": true,
+    "target": "es5",
+    "allowJs": true,
+    "strict": false,
+    "moduleResolution": "node",
+    "module": "esnext",
+    "pretty": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true,
+    "incremental": true
+  },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
@@ -8,5 +30,8 @@
     "utils/*.tsx",
     "pages/*.tsx"
   ],
-  "exclude": ["node_modules", "deprecated"]
+  "exclude": [
+    "node_modules",
+    "deprecated"
+  ]
 }
