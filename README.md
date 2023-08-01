@@ -17,3 +17,10 @@ The Contentstack tokens can be found under `Settings > Tokens > Delivery Tokens`
 4. Update `next.config.ts` to build linked files
    - Change line 76 to: `const LGModuleRegex = /(.+(node_modules\/@leafygreen-ui))|(.+(leafygreen-ui\/packages))/g;`
 5. Run the dev server: `yarn dev`
+6. If there are React mismatch errors you will need to link react and react-dom from the `leafygreen-ui` directory:
+   - cd into react node_module folder `cd node_modules/react`
+   - run `yarn link`
+   - cd into react-dom node_module folder `cd node_modules/react-dom`
+   - run `yarn link`
+   - inside this package run `yarn link "react"` and `yarn link "react-dom"`
+   - run `yarn dev`
