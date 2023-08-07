@@ -8,6 +8,7 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
+    "emitDeclarationOnly": false,
     "noEmit": true,
     "isolatedModules": true,
     "target": "es5",
@@ -29,5 +30,8 @@
     "utils/*.tsx",
     "pages/*.tsx"
   ],
-  "exclude": ["node_modules", "deprecated"]
+  "exclude": [
+    "node_modules",
+    "deprecated"
+  ]
 }
