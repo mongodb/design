@@ -19,7 +19,9 @@ const AnnotatedImageBlock = ({ entry }) => {
     >
       <ImageContainer>
         {/* https://stackoverflow.com/questions/75781160/next-image-component-gives-error-missing-required-width-property-when-runni */}
-        <Image fill src={entry.image?.url} alt={entry.title} />
+        <picture>
+        <img src={entry.image?.url} alt={entry.title} />
+        </picture>
       </ImageContainer>
       <StyledList>
         {entry.steps.map((obj, index) => (
