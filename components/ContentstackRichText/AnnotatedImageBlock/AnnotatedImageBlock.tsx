@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import Image from 'next/image';
 
 import { palette } from '@leafygreen-ui/palette';
 import { BaseFontSize, spacing } from '@leafygreen-ui/tokens';
@@ -19,7 +18,9 @@ const AnnotatedImageBlock = ({ entry }) => {
     >
       <ImageContainer>
         {/* https://stackoverflow.com/questions/75781160/next-image-component-gives-error-missing-required-width-property-when-runni */}
-        <Image fill src={entry.image?.url} alt={entry.title} />
+        <picture>
+          <img src={entry.image?.url} alt={entry.title} />
+        </picture>
       </ImageContainer>
       <StyledList>
         {entry.steps.map((obj, index) => (
