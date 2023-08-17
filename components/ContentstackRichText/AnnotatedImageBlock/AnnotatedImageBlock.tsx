@@ -17,7 +17,6 @@ const AnnotatedImageBlock = ({ entry }) => {
       `}
     >
       <ImageContainer>
-        {/* https://stackoverflow.com/questions/75781160/next-image-component-gives-error-missing-required-width-property-when-runni */}
         <picture>
           <img src={entry.image?.url} alt={entry.title} />
         </picture>
