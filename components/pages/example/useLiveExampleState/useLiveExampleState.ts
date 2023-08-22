@@ -109,6 +109,7 @@ export function useLiveExampleState(
         if (module) {
           parse(module);
         } else {
+          console.error('Error parsing module', module);
           dispatch({
             type: LiveExampleActionType.NOT_FOUND,
             componentName,
@@ -116,7 +117,8 @@ export function useLiveExampleState(
         }
       },
       catch: err => {
-        console.warn(err);
+        console.error('Error loading LiveExample');
+        console.error(err);
         dispatch({
           type: LiveExampleActionType.NOT_FOUND,
           componentName,

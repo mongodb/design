@@ -388,6 +388,7 @@ export function getDefaultStoryFn(
   stories: { [key: string]: Required<LiveExampleContext>['StoryFn'] },
 ) {
   const defaultStoryName = meta.parameters?.default ?? Object.keys(stories)[0];
+
   return defaultStoryName
     ? stories[defaultStoryName]
     : Object.values(stories)[0];
