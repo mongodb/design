@@ -110,10 +110,10 @@ export const LiveExample = ({
                 [blockContainerStyle]:
                   useBlockWrapperFor.includes(componentName),
               },
-              css`
-                // at least as big as the story, but no more than 100vh
-                min-height: ${storyContainerHeight}px;
-              `,
+              // css`
+              //   // at least as big as the story, but no more than 100vh
+              //   min-height: ${storyContainerHeight}px;
+              // `,
             )}
           >
             {isStateReady(context) && (

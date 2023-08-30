@@ -6,16 +6,17 @@ export const liveExampleWrapperStyle = css`
   position: relative;
   display: flex;
   margin-bottom: initial;
-  min-height: 33vh;
+  /* min-height: 33vh; */
   max-height: 80vh;
   overflow: hidden;
+  padding: 60px;
 `;
 
 export const storyContainerStyle = css`
   position: relative;
   flex: 2;
   display: inline-flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   max-height: 80vh;
   overflow: auto;
