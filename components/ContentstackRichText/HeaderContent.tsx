@@ -56,7 +56,8 @@ const HeaderContent = ({ node }: { node: CSNode }) => {
   const headerId = kebabCase(getCSNodeTextContent(node));
 
   return (
-    <Link href={`#${headerId}`} passHref>
+    // https://nextjs.org/docs/pages/api-reference/components/link#if-the-child-is-a-custom-component-that-wraps-an-a-tag
+    <Link href={`#${headerId}`} passHref legacyBehavior>
       <StyledAnchor id={headerId}>
         <LinkContent>
           <ContentstackChildren nodeChildren={node.children} />

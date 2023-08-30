@@ -15,7 +15,7 @@ import { css } from '@emotion/css';
 
 const sideNavStyles = css`
   z-index: 1;
-  div {
+  li > div {
     padding-top: 0;
   }
   ul {

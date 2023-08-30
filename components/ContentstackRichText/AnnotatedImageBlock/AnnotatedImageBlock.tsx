@@ -17,11 +17,13 @@ const AnnotatedImageBlock = ({ entry }) => {
       `}
     >
       <ImageContainer>
-        <img src={entry.image?.url} alt={entry.title} />
+        <picture>
+          <img src={entry.image?.url} alt={entry.title} />
+        </picture>
       </ImageContainer>
       <StyledList>
-        {entry.steps.map(obj => (
-          <StyledListItem>
+        {entry.steps.map((obj, index) => (
+          <StyledListItem key={`${index}-${obj.step.title}`}>
             <Body
               css={css`
                 display: inline;
