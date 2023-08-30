@@ -17,6 +17,7 @@ export const storyContainerStyle = css`
   flex: 2;
   display: inline-flex;
   /* align-items: center; */
+  padding: 16px;
   justify-content: center;
   max-height: 80vh;
   overflow: auto;
