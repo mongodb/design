@@ -8,13 +8,15 @@ export const liveExampleWrapperStyle = css`
   display: flex;
   margin-bottom: initial;
   overflow: hidden;
-  padding: 60px;
+  // additional padding is added in storyContainerStyle
+  padding: ${60 - spacing[3]}px;
 `;
 
 export const storyContainerStyle = css`
   position: relative;
   flex: 2;
   display: inline-flex;
+  // split padding between liveExampleWrapper and storyContainer to allow box-shadows and other overflowing styles to render correctly
   padding: ${spacing[3]}px;
   justify-content: center;
   overflow: auto;
