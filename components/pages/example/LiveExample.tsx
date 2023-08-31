@@ -104,17 +104,9 @@ export const LiveExample = ({
           <div
             id="story-container"
             ref={storyContainerRef}
-            className={cx(
-              storyContainerStyle,
-              {
-                [blockContainerStyle]:
-                  useBlockWrapperFor.includes(componentName),
-              },
-              // css`
-              //   // at least as big as the story, but no more than 100vh
-              //   min-height: ${storyContainerHeight}px;
-              // `,
-            )}
+            className={cx(storyContainerStyle, {
+              [blockContainerStyle]: useBlockWrapperFor.includes(componentName),
+            })}
           >
             {isStateReady(context) && (
               <div ref={storyWrapperRef} className={storyWrapperStyle}>
