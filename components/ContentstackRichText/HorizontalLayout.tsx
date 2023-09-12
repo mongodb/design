@@ -33,8 +33,8 @@ const HorizontalLayout = ({
     <FlexContainer>
       <Polymorph
         as={column_1 ? ContentstackRichText : 'div'}
-        // @ts-expect-error : content is not a valid attribute on `div`
         content={column_1}
+        // @ts-expect-error : isNested is not a valid attribute on `div`
         isNested={true}
         className={cx(
           flexColumnStyles,
@@ -47,8 +47,8 @@ const HorizontalLayout = ({
 
       <Polymorph
         as={column_2 ? ContentstackRichText : 'div'}
-        // @ts-expect-error : content is not a valid attribute on `div`
         content={column_2}
+        // @ts-expect-error : isNested is not a valid attribute on `div`
         isNested={true}
         className={cx(
           flexColumnStyles,

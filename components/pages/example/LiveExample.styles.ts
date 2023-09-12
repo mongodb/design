@@ -1,23 +1,24 @@
 import { TransitionStatus } from 'react-transition-group';
 
 import { css } from '@leafygreen-ui/emotion';
+import { spacing } from '@leafygreen-ui/tokens';
 
 export const liveExampleWrapperStyle = css`
   position: relative;
   display: flex;
   margin-bottom: initial;
-  min-height: 33vh;
-  max-height: 80vh;
   overflow: hidden;
+  // additional padding is added in storyContainerStyle
+  padding: ${60 - spacing[3]}px;
 `;
 
 export const storyContainerStyle = css`
   position: relative;
   flex: 2;
   display: inline-flex;
-  align-items: center;
+  // split padding between liveExampleWrapper and storyContainer to allow box-shadows and other overflowing styles to render correctly
+  padding: ${spacing[3]}px;
   justify-content: center;
-  max-height: 80vh;
   overflow: auto;
 `;
 

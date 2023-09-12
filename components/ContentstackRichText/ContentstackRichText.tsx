@@ -5,7 +5,7 @@ import ContentstackText from './ContentstackText';
 import { CSNode } from './types';
 import { getCSNodeTextContent, isTextNode, nodeHasAssets } from './utils';
 
-interface CSRichTextProps extends HTMLElementProps<'div'> {
+interface CSRichTextProps extends Omit<HTMLElementProps<'div'>, 'content'> {
   content?: CSNode;
   isNested?: boolean;
   [key: string]: any;
