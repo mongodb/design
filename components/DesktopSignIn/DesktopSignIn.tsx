@@ -12,6 +12,8 @@ import { palette } from '@leafygreen-ui/palette';
 import { spacing } from '@leafygreen-ui/tokens';
 import { Body, Description } from '@leafygreen-ui/typography';
 
+import Avatar from '../Avatar';
+
 const Container = styled('div')`
   width: 100%;
   display: flex;
@@ -36,18 +38,6 @@ const UserInfoContainer = styled('div')`
   align-items: center;
   gap: ${spacing[4]}px;
   padding: ${spacing[4]}px;
-`;
-
-const Avatar = styled('div')`
-  border-radius: 50%;
-  min-width: 36px;
-  min-height: 36px;
-  background-color: ${palette.gray.base};
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: capitalize;
 `;
 
 const LogOutMenuItem = styled(MenuItem)`
