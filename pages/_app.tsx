@@ -3,15 +3,14 @@ import { Global } from '@emotion/react';
 import { AppContextProvider } from 'contexts/AppContext';
 import BaseLayout from 'layouts/BaseLayout';
 import { NextPage } from 'next';
-import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { Provider as AuthProvider } from 'next-auth/client';
 import { globalStyles } from 'styles/globals';
 import {
   getComponents,
   getContentPageGroups,
 } from 'utils/ContentStack/getContentstackResources';
-import { ContentPageGroup } from 'utils/ContentStack/types';
 import getFullPageTitle from 'utils/getFullPageTitle';
 import * as ga from 'utils/googleAnalytics';
 
@@ -20,19 +19,7 @@ import ErrorBoundary from 'components/ErrorBoundary';
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
-
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-  components: any;
-  contentPageGroups: Array<ContentPageGroup>;
-};
-
-function MyApp({
-  Component,
-  pageProps,
-  components,
-  contentPageGroups,
-}: AppPropsWithLayout) {
+function MyApp({ Component, pageProps, components, contentPageGroups }) {
   const getLayout = Component.getLayout ?? (page => page);
   const router = useRouter();
 
@@ -52,22 +39,27 @@ function MyApp({
   }, [router.events]);
 
   return (
-    <AppContextProvider
-      components={components}
-      contentPageGroups={contentPageGroups}
-    >
-      <Head>
-        <title>{getFullPageTitle('Home')}</title>
-        <meta property="og:title" content={getFullPageTitle('Home')} />
+    <AuthProvider session={pageProps.session}>
+      <AppContextProvider
+        components={components}
+        contentPageGroups={contentPageGroups}
+      >
+        <Head>
+          <title>{getFullPageTitle('Home')}</title>
+          <meta property="og:title" content={getFullPageTitle('Home')} />
 
-        {/* Viewport meta tags should be in _app.tsx, not _document.tsx: https://nextjs.org/docs/messages/no-document-viewport-meta */}
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <ErrorBoundary>
-        <Global styles={globalStyles} />
-        <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
-      </ErrorBoundary>
-    </AppContextProvider>
+          {/* Viewport meta tags should be in _app.tsx, not _document.tsx: https://nextjs.org/docs/messages/no-document-viewport-meta */}
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+        </Head>
+        <ErrorBoundary>
+          <Global styles={globalStyles} />
+          <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
+        </ErrorBoundary>
+      </AppContextProvider>
+    </AuthProvider>
   );
 }
 

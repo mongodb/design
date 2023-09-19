@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { mq } from 'utils/mediaQuery';
 
+import SignIn from 'components/DesktopSignIn/DesktopSignIn';
 import { LayoutContext } from 'components/LayoutContext';
 import Navigation from 'components/navigation';
 
@@ -84,9 +85,11 @@ function BaseLayout({ children }: { children: React.ReactNode }) {
         <LayoutContext.Provider value={bodyContainerRef}>
           <div className={containerStyle}>
             <Navigation />
-
             <div className={layout} ref={setBodyContainerRef}>
-              <div className={childrenWrapper}>{children}</div>
+              <div className={childrenWrapper}>
+                <SignIn />
+                {children}
+              </div>
 
               <Footer />
             </div>
