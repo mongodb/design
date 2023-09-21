@@ -15,6 +15,7 @@ import Tooltip from '@leafygreen-ui/tooltip';
 import MobileNavigationGroup from './MobileNavigationGroup';
 import MobileNavigationItem from './MobileNavigationItem';
 import { Description } from '@leafygreen-ui/typography';
+import { signIn, useSession } from 'next-auth/client';
 
 const LockIconContainer = styled('div')`
   padding-left: ${spacing[1]}px;
@@ -31,6 +32,7 @@ function NavigationContent({
   isTouchDevice?: boolean;
 }) {
   const router = useRouter();
+  const [session, loading] = useSession();
   const activePage = router.asPath.split('/')[2];
   const { components, contentPageGroups } = useAppContext();
 
@@ -127,9 +129,10 @@ function NavigationContent({
                       trigger={
                         <SideNavItem
                           key={componentKebabCaseName}
-                          href={`/component/${componentKebabCaseName}/example`}
-                          as={NextLinkWrapper}
+                          onClick={session ?? signIn}
+                          as={session && NextLinkWrapper}
                           active={componentKebabCaseName === activePage}
+                          href={session && `/component/private/${componentKebabCaseName}`}
                         >
                           {component.title}
                           <LockIconContainer>

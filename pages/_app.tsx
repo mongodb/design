@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps, components, contentPageGroups }) {
   }, [router.events]);
 
   return (
-    <AuthProvider session={pageProps.session}>
+    // <AuthProvider session={pageProps.session}>
       <AppContextProvider
         components={components}
         contentPageGroups={contentPageGroups}
@@ -59,7 +59,7 @@ function MyApp({ Component, pageProps, components, contentPageGroups }) {
           <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
         </ErrorBoundary>
       </AppContextProvider>
-    </AuthProvider>
+    // </AuthProvider>
   );
 }
 
