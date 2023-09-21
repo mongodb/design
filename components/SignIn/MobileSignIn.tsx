@@ -9,6 +9,10 @@ import { spacing } from '@leafygreen-ui/tokens';
 
 const Container = styled('div')`
   background-color: ${palette.black};
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
 `;
 
 const ActionContainer = styled('div')`
@@ -32,26 +36,18 @@ export const MobileSignIn = () => {
     <Container>
       <UserInfo {...user} />
       <ActionContainer>
-        <Icon glyph="LogIn" />
-        Log in
-      </ActionContainer>
-      <ActionContainer>
         <Icon glyph="LogOut" />
         Log out
+      </ActionContainer>
+      <ActionContainer>
+        <Icon glyph="LogIn" />
+        Log in
       </ActionContainer>
       {/* TODO: replace the above with this logic */}
       {/* {session
       ? (
-        <ActionContainer>
-        <Icon glyph="LogOut" />
-        Log out
-      </ActionContainer>
       )
       : (
-        <ActionContainer>
-        <Icon glyph="LogIn" />
-        Log in
-      </ActionContainer>
       )
     } */}
     </Container>

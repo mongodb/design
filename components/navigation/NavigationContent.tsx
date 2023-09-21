@@ -14,10 +14,11 @@ import Tooltip from '@leafygreen-ui/tooltip';
 
 import MobileNavigationGroup from './MobileNavigationGroup';
 import MobileNavigationItem from './MobileNavigationItem';
+import { Description } from '@leafygreen-ui/typography';
 
 const LockIconContainer = styled('div')`
   padding-left: ${spacing[1]}px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   path {
     fill: ${palette.gray.base};
@@ -71,8 +72,17 @@ function NavigationContent({
                   }
                   active={componentKebabCaseName === activePage}
                 >
-                  {component.title}
-                  {component.private && 'Locked'}
+                  <div>
+                  <div style={{ display: 'flex' }}>
+                    {component.title}
+                    {component.private && (
+                      <LockIconContainer>
+                        <Icon glyph="Lock" />
+                      </LockIconContainer>
+                    )}
+                    </div>
+                    {component.private && <Description style={{ textTransform: 'none', color: palette.gray.base }}>Log in to view this component</Description>}
+                  </div>
                 </MobileNavigationItem>
               );
             })}
