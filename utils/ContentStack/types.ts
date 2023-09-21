@@ -39,6 +39,7 @@ export interface ComponentPageMeta {
  */
 export interface ComponentFields extends ComponentPageMeta {
   designguidelines?: unknown;
+  private?: boolean;
 }
 
 export interface BaseLayoutProps {

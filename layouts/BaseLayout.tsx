@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { mq } from 'utils/mediaQuery';
 
-import SignIn from 'components/DesktopSignIn/DesktopSignIn';
 import { LayoutContext } from 'components/LayoutContext';
 import Navigation from 'components/navigation';
+import SignIn from 'components/SignIn/DesktopSignIn';
 
 import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
 import { palette } from '@leafygreen-ui/palette';

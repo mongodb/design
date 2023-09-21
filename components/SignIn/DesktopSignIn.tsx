@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { signIn, useSession } from 'next-auth/client';
+import { mq } from 'utils/mediaQuery';
 
 import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
@@ -9,20 +10,21 @@ import {
   MenuItem,
 } from '@leafygreen-ui/menu';
 import { palette } from '@leafygreen-ui/palette';
-import { spacing } from '@leafygreen-ui/tokens';
-import { Body, Description } from '@leafygreen-ui/typography';
+import { fontWeights, spacing } from '@leafygreen-ui/tokens';
 
-import Avatar from '../Avatar';
+import { UserInfo } from '../UserInfo';
 
 const Container = styled('div')`
   width: 100%;
-  display: flex;
   align-items: center;
   justify-content: flex-end;
   padding-top: ${spacing[4]}px;
   z-index: 1;
   // todo: remove
   gap: 8px;
+  ${mq({
+    display: ['none', 'none', 'flex'],
+  })}
 `;
 
 const Menu = styled(LGMenu)`
@@ -31,13 +33,19 @@ const Menu = styled(LGMenu)`
   background-color: ${palette.gray.dark3};
 `;
 
-const UserMenuTrigger = styled(Button)``;
+const UserMenuTrigger = styled(Button)`
+  border-radius: 16px;
+  padding-left: ${spacing[2]}px;
+  max-height: 32px;
+  background-color: ${palette.white};
+  border-color: ${palette.gray.light2};
+  font-weight: ${fontWeights.regular};
 
-const UserInfoContainer = styled('div')`
-  display: flex;
-  align-items: center;
-  gap: ${spacing[4]}px;
-  padding: ${spacing[4]}px;
+  &[aria-expanded='true'] {
+    font-weight: ${fontWeights.bold};
+    border-color: ${palette.gray.light1};
+    background-color: ${palette.gray.light2};
+  }
 `;
 
 const LogOutMenuItem = styled(MenuItem)`
@@ -71,15 +79,7 @@ const DesktopSignIn = () => {
         }
       >
         <FocusableMenuItem>
-          <UserInfoContainer>
-            <Avatar>{user.firstName[0]}</Avatar>
-            <div>
-              <Body darkMode>
-                {user.firstName} {user.lastName}
-              </Body>
-              <Description darkMode>{user.email}</Description>
-            </div>
-          </UserInfoContainer>
+          <UserInfo {...user} />
         </FocusableMenuItem>
         <LogOutMenuItem glyph={<Icon glyph="LogOut" />}>Log out</LogOutMenuItem>
       </Menu>
