@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import ComponentLayout from 'layouts/ComponentLayout';
-import { unstable_getServerSession } from "next-auth/next"
+import { useSession } from 'next-auth/client';
 import { containerPadding } from 'styles/globals';
 import {
   getStaticComponentPaths,
@@ -10,10 +10,15 @@ import isEmptyRichText from 'utils/isEmptyRichText';
 
 import ComingSoon from 'components/ComingSoon';
 import ContentstackRichText from 'components/ContentstackRichText';
-
-import { authOptions } from "./api/auth/[...nextauth]"
+import Unauthorized from 'components/Unauthorized';
 
 const ComponentGuidelines = ({ component }) => {
+  const [session, loading] = useSession();
+
+  if(!session) {
+    return <Unauthorized />
+  }
+
   const guidelines = component.designguidelines;
   return !guidelines || isEmptyRichText(guidelines) ? (
     <ComingSoon />

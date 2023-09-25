@@ -5,7 +5,7 @@ import BaseLayout from 'layouts/BaseLayout';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { Provider as AuthProvider } from 'next-auth/client';
+import { Provider as SessionProvider } from 'next-auth/client'
 import { globalStyles } from 'styles/globals';
 import {
   getComponents,
@@ -19,7 +19,7 @@ import ErrorBoundary from 'components/ErrorBoundary';
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
-function MyApp({ Component, pageProps, components, contentPageGroups }) {
+function MyApp({ Component, pageProps: { session, ...pageProps }, components, contentPageGroups }) {
   const getLayout = Component.getLayout ?? (page => page);
   const router = useRouter();
 
@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps, components, contentPageGroups }) {
   }, [router.events]);
 
   return (
-    // <AuthProvider session={pageProps.session}>
+    <SessionProvider session={session}>
       <AppContextProvider
         components={components}
         contentPageGroups={contentPageGroups}
@@ -59,7 +59,7 @@ function MyApp({ Component, pageProps, components, contentPageGroups }) {
           <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
         </ErrorBoundary>
       </AppContextProvider>
-    // </AuthProvider>
+    </SessionProvider>
   );
 }
 

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { signIn, useSession } from 'next-auth/client';
+import { signIn, signOut, useSession } from 'next-auth/client'
 import { mq } from 'utils/mediaQuery';
 
 import Button from '@leafygreen-ui/button';
@@ -53,6 +53,7 @@ const LogOutMenuItem = styled(MenuItem)`
 `;
 
 const DesktopSignIn = () => {
+
   const [session, loading] = useSession();
 
   // todo: replace with real values
