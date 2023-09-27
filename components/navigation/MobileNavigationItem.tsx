@@ -51,7 +51,7 @@ function MobileNavigationItem({
         onClick?.(e);
       }}
       onKeyDown={e => {
-        if (e.key === keyMap.Space || e.key === keyMap.Enter) {
+        if (e.keyCode === keyMap.Space || e.keyCode === keyMap.Enter) {
           setOpen(curr => !curr);
           onClick?.(e as any); // onClick expecting React.MouseEvent
         }
