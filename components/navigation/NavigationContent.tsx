@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { useAppContext } from 'contexts/AppContext';
 import kebabCase from 'lodash/kebabCase';
 import { useRouter } from 'next/router';
+import { signIn, useSession } from 'next-auth/react';
 import { ComponentFields } from 'utils/ContentStack/types';
 
 import { NextLinkWrapper } from 'components/NextLinkWrapper';
@@ -11,11 +12,10 @@ import { palette } from '@leafygreen-ui/palette';
 import { SideNavGroup, SideNavItem } from '@leafygreen-ui/side-nav';
 import { spacing } from '@leafygreen-ui/tokens';
 import Tooltip from '@leafygreen-ui/tooltip';
+import { Description } from '@leafygreen-ui/typography';
 
 import MobileNavigationGroup from './MobileNavigationGroup';
 import MobileNavigationItem from './MobileNavigationItem';
-import { Description } from '@leafygreen-ui/typography';
-import { signIn, useSession } from 'next-auth/client';
 
 const LockIconContainer = styled('div')`
   padding-left: ${spacing[1]}px;
@@ -32,7 +32,7 @@ function NavigationContent({
   isTouchDevice?: boolean;
 }) {
   const router = useRouter();
-  const [session, loading] = useSession();
+  const { data: session } = useSession();
   const activePage = router.asPath.split('/')[2];
   const { components, contentPageGroups } = useAppContext();
 
@@ -75,15 +75,24 @@ function NavigationContent({
                   active={componentKebabCaseName === activePage}
                 >
                   <div>
-                  <div style={{ display: 'flex' }}>
-                    {component.title}
-                    {component.private && (
-                      <LockIconContainer>
-                        <Icon glyph="Lock" />
-                      </LockIconContainer>
-                    )}
+                    <div style={{ display: 'flex' }}>
+                      {component.title}
+                      {component.private && (
+                        <LockIconContainer>
+                          <Icon glyph="Lock" />
+                        </LockIconContainer>
+                      )}
                     </div>
-                    {component.private && <Description style={{ textTransform: 'none', color: palette.gray.base }}>Log in to view this component</Description>}
+                    {component.private && (
+                      <Description
+                        style={{
+                          textTransform: 'none',
+                          color: palette.gray.base,
+                        }}
+                      >
+                        Log in to view this component
+                      </Description>
+                    )}
                   </div>
                 </MobileNavigationItem>
               );
@@ -129,10 +138,9 @@ function NavigationContent({
                       trigger={
                         <SideNavItem
                           key={componentKebabCaseName}
-                          onClick={session ?? signIn}
-                          as={session && NextLinkWrapper}
+                          as={NextLinkWrapper}
                           active={componentKebabCaseName === activePage}
-                          href={session && `/component/private/${componentKebabCaseName}`}
+                          href={`/component/private/${componentKebabCaseName}/example`}
                         >
                           {component.title}
                           <LockIconContainer>

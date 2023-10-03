@@ -1,16 +1,23 @@
 import { ReactElement } from 'react';
 import ComponentLayout from 'layouts/ComponentLayout';
+import { unstable_getServerSession } from 'next-auth';
+import { useSession } from 'next-auth/react';
+import { authOptions } from 'pages/api/auth/[...nextauth]';
 import { containerPadding } from 'styles/globals';
-import {
-  getStaticComponentPaths,
-  getStaticComponentProps,
-} from 'utils/ContentStack/getStaticComponent';
+import { getComponent } from 'utils/ContentStack/getContentstackResources';
 import isEmptyRichText from 'utils/isEmptyRichText';
 
 import ComingSoon from 'components/ComingSoon';
 import ContentstackRichText from 'components/ContentstackRichText';
+import Unauthorized from 'components/Unauthorized';
 
 const ComponentGuidelines = ({ component }) => {
+  const { data: session } = useSession();
+
+  if (!session) {
+    return <Unauthorized />;
+  }
+
   const guidelines = component.designguidelines;
   return !guidelines || isEmptyRichText(guidelines) ? (
     <ComingSoon />
@@ -32,7 +39,24 @@ ComponentGuidelines.getLayout = function getLayout(page: ReactElement) {
   );
 };
 
-export const getStaticPaths = getStaticComponentPaths;
-export const getStaticProps = getStaticComponentProps;
+export async function getServerSideProps(context: any) {
+  const session = await unstable_getServerSession(
+    context.req,
+    context.res,
+    authOptions,
+  );
+  const { componentName } = context.params;
+
+  return {
+    props: {
+      componentName,
+      component: session
+        ? await getComponent(componentName, {
+            includeContent: true,
+          })
+        : undefined,
+    },
+  };
+}
 
 export default ComponentGuidelines;

@@ -12,14 +12,12 @@ const UserInfoContainer = styled('div')`
   padding: ${spacing[4]}px;
 `;
 
-export const UserInfo = ({ firstName, lastName, email }) => {
+export const UserInfo = ({ name = 'Unknown User', email }) => {
   return (
     <UserInfoContainer>
-      <Avatar>{firstName[0]}</Avatar>
+      <Avatar>{name[0]}</Avatar>
       <div>
-        <Body darkMode>
-          {firstName} {lastName}
-        </Body>
+        <Body darkMode>{name}</Body>
         <Description darkMode>{email}</Description>
       </div>
     </UserInfoContainer>

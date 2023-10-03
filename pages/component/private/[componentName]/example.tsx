@@ -1,8 +1,9 @@
 import { ReactElement } from 'react';
 import ComponentLayout from 'layouts/ComponentLayout';
-import { getTSDoc } from 'utils/_getComponentResources';
+import { unstable_getServerSession } from 'next-auth';
+import { authOptions } from 'pages/api/auth/[...nextauth]';
+import { getDependencyDocumentation } from 'utils/_getComponentResources';
 import { getComponent } from 'utils/ContentStack/getContentstackResources';
-import { getStaticComponentPaths } from 'utils/ContentStack/getStaticComponent';
 import { ComponentPageMeta } from 'utils/ContentStack/types';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
@@ -29,26 +30,28 @@ ComponentExample.getLayout = function getLayout(page: ReactElement) {
   );
 };
 
-export const getStaticPaths = getStaticComponentPaths;
-
-export const getStaticProps = async ({
-  params,
-}): Promise<{ props: ExamplePageProps }> => {
-  const { componentName } = params;
-  const component: ComponentPageMeta | null =
-    (await getComponent(componentName, {
-      includeContent: false,
-    })) ?? null;
-
-  const tsDoc = await getTSDoc(componentName);
+export async function getServerSideProps(context: any) {
+  const session = await unstable_getServerSession(
+    context.req,
+    context.res,
+    authOptions,
+  );
+  const { componentName } = context.params;
+  const {
+    props: { tsDoc },
+  } = await getDependencyDocumentation(componentName);
 
   return {
     props: {
       componentName,
-      component,
-      tsDoc,
+      component: session
+        ? await getComponent(componentName, {
+            includeContent: false,
+          })
+        : undefined,
+      tsDoc: session ? tsDoc : undefined,
     },
   };
-};
+}
 
 export default ComponentExample;

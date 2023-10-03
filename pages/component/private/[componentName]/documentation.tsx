@@ -1,9 +1,10 @@
 import { ReactElement } from 'react';
 import ComponentLayout from 'layouts/ComponentLayout';
+import { unstable_getServerSession } from 'next-auth';
+import { authOptions } from 'pages/api/auth/[...nextauth]';
 import { containerPadding } from 'styles/globals';
 import { getDependencyDocumentation } from 'utils/_getComponentResources';
 import { getComponent } from 'utils/ContentStack/getContentstackResources';
-import { getStaticComponentPaths } from 'utils/ContentStack/getStaticComponent';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import CodeDocs from 'components/pages/documentation/CodeDocs';
@@ -56,17 +57,30 @@ ComponentDocumentation.getLayout = function getLayout(page: ReactElement) {
   );
 };
 
-export const getStaticPaths = getStaticComponentPaths;
-
-export async function getStaticProps({ params: { componentName } }) {
+export async function getServerSideProps(context: any) {
+  const session = await unstable_getServerSession(
+    context.req,
+    context.res,
+    authOptions,
+  );
+  const { componentName } = context.params;
   const {
     props: { changelog, readme, tsDoc },
   } = await getDependencyDocumentation(componentName);
 
-  const component = await getComponent(componentName, {
-    includeContent: false,
-  });
-  return { props: { componentName, component, changelog, readme, tsDoc } };
+  return {
+    props: {
+      componentName,
+      component: session
+        ? await getComponent(componentName, {
+            includeContent: false,
+          })
+        : undefined,
+      changelog: session ? changelog : undefined,
+      readme: session ? readme : undefined,
+      tsDoc: session ? tsDoc : undefined,
+    },
+  };
 }
 
 export default ComponentDocumentation;

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { signIn, signOut, useSession } from 'next-auth/client'
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { mq } from 'utils/mediaQuery';
 
 import Button from '@leafygreen-ui/button';
@@ -53,42 +53,37 @@ const LogOutMenuItem = styled(MenuItem)`
 `;
 
 const DesktopSignIn = () => {
-
-  const [session, loading] = useSession();
-
-  // todo: replace with real values
-  const user = {
-    firstName: 'Sean',
-    lastName: 'Park',
-    email: 's.park@mongodb.com',
-  };
+  const { data: session } = useSession();
 
   return (
     <Container>
-      <Button
-        variant="primaryOutline"
-        leftGlyph={<Icon glyph="LogIn" />}
-        onClick={signIn}
-      >
-        Log in
-      </Button>
-      <Menu
-        trigger={
-          <UserMenuTrigger rightGlyph={<Icon glyph="CaretDown" />}>
-            {user.firstName}
-          </UserMenuTrigger>
-        }
-      >
-        <FocusableMenuItem>
-          <UserInfo {...user} />
-        </FocusableMenuItem>
-        <LogOutMenuItem glyph={<Icon glyph="LogOut" />}>Log out</LogOutMenuItem>
-      </Menu>
-      {/* TODO: replace the above with this logic */}
-      {/* {session
-      ? <Menu trigger={<UserMenuTrigger rightGlyph={<Icon glyph="CaretDown" />}>{userName} </UserMenuTrigger>} />
-      : <Button variant="primaryOutline" leftGlyph={<Icon glyph="LogIn" />} onClick={signIn}>Log in</Button>
-    } */}
+      {session ? (
+        <Menu
+          trigger={
+            <UserMenuTrigger rightGlyph={<Icon glyph="CaretDown" />}>
+              {session?.user?.name}
+            </UserMenuTrigger>
+          }
+        >
+          <FocusableMenuItem>
+            <UserInfo {...session?.user} />
+          </FocusableMenuItem>
+          <LogOutMenuItem
+            glyph={<Icon glyph="LogOut" />}
+            onClick={() => signOut({ callbackUrl: '/' })}
+          >
+            Log out
+          </LogOutMenuItem>
+        </Menu>
+      ) : (
+        <Button
+          variant="primaryOutline"
+          leftGlyph={<Icon glyph="LogIn" />}
+          onClick={() => signIn('okta')}
+        >
+          Log in
+        </Button>
+      )}
     </Container>
   );
 };

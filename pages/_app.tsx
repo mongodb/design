@@ -3,9 +3,11 @@ import { Global } from '@emotion/react';
 import { AppContextProvider } from 'contexts/AppContext';
 import BaseLayout from 'layouts/BaseLayout';
 import { NextPage } from 'next';
+import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { Provider as SessionProvider } from 'next-auth/client'
+import { Session, unstable_getServerSession } from 'next-auth';
+import { SessionProvider } from 'next-auth/react';
 import { globalStyles } from 'styles/globals';
 import {
   getComponents,
@@ -16,10 +18,25 @@ import * as ga from 'utils/googleAnalytics';
 
 import ErrorBoundary from 'components/ErrorBoundary';
 
+import { authOptions } from './api/auth/[...nextauth]';
+
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
-function MyApp({ Component, pageProps: { session, ...pageProps }, components, contentPageGroups }) {
+
+export type AppPropsWithLayout<T = {}> = AppProps<T> & {
+  Component: NextPageWithLayout;
+};
+
+function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+  components,
+  contentPageGroups,
+}: AppPropsWithLayout<{ session: Session }> & {
+  components: Array<any>;
+  contentPageGroups: Array<any>;
+}) {
   const getLayout = Component.getLayout ?? (page => page);
   const router = useRouter();
 
@@ -63,10 +80,15 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, components, co
   );
 }
 
-MyApp.getInitialProps = async () => {
+MyApp.getInitialProps = async ({ ctx }) => {
+  const session = await unstable_getServerSession(
+    ctx.req,
+    ctx.res,
+    authOptions,
+  );
   const components = await getComponents({ includeContent: false });
   const contentPageGroups = await getContentPageGroups();
-  return { components, contentPageGroups };
+  return { components, contentPageGroups, session };
 };
 
 export default MyApp;

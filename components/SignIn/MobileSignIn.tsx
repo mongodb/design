@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/react';
 
 import { UserInfo } from 'components/UserInfo';
 
@@ -23,33 +23,23 @@ const ActionContainer = styled('div')`
 `;
 
 export const MobileSignIn = () => {
-  const [session, loading] = useSession();
-
-  // todo: replace with real values
-  const user = {
-    firstName: 'Sean',
-    lastName: 'Park',
-    email: 's.park@mongodb.com',
-  };
-
+  const { data: session } = useSession();
   return (
     <Container>
-      <UserInfo {...user} />
-      <ActionContainer>
-        <Icon glyph="LogOut" />
-        Log out
-      </ActionContainer>
-      <ActionContainer>
-        <Icon glyph="LogIn" />
-        Log in
-      </ActionContainer>
-      {/* TODO: replace the above with this logic */}
-      {/* {session
-      ? (
-      )
-      : (
-      )
-    } */}
+      {session ? (
+        <>
+          <UserInfo {...session.user} />
+          <ActionContainer>
+            <Icon glyph="LogOut" />
+            Log out
+          </ActionContainer>
+        </>
+      ) : (
+        <ActionContainer>
+          <Icon glyph="LogIn" />
+          Log in
+        </ActionContainer>
+      )}
     </Container>
   );
 };
