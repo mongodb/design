@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { useAppContext } from 'contexts/AppContext';
 import kebabCase from 'lodash/kebabCase';
 import { useRouter } from 'next/router';
-import { signIn, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { ComponentFields } from 'utils/ContentStack/types';
 
 import { NextLinkWrapper } from 'components/NextLinkWrapper';
@@ -130,39 +130,55 @@ function NavigationContent({
             {components.map((component: ComponentFields) => {
               const componentKebabCaseName = kebabCase(component.title);
 
-              return (
-                <>
-                  {component.private ? (
-                    <Tooltip
-                      align="right"
-                      trigger={
-                        <SideNavItem
-                          key={componentKebabCaseName}
-                          as={NextLinkWrapper}
-                          active={componentKebabCaseName === activePage}
-                          href={`/component/private/${componentKebabCaseName}/example`}
-                        >
-                          {component.title}
-                          <LockIconContainer>
-                            <Icon glyph="Lock" />
-                          </LockIconContainer>
-                        </SideNavItem>
-                      }
-                    >
-                      Log in to view component
-                    </Tooltip>
-                  ) : (
-                    <SideNavItem
-                      key={componentKebabCaseName}
-                      href={`/component/${componentKebabCaseName}/example`}
-                      as={NextLinkWrapper}
-                      active={componentKebabCaseName === activePage}
-                    >
-                      {component.title}
-                    </SideNavItem>
-                  )}
-                </>
-              );
+              if (!component.private) {
+                return (
+                  <SideNavItem
+                    key={componentKebabCaseName}
+                    href={`/component/${componentKebabCaseName}/example`}
+                    as={NextLinkWrapper}
+                    active={componentKebabCaseName === activePage}
+                  >
+                    {component.title}
+                  </SideNavItem>
+                );
+              } else {
+                return (
+                  <>
+                    {session ? (
+                      <SideNavItem
+                        key={componentKebabCaseName}
+                        as={NextLinkWrapper}
+                        active={componentKebabCaseName === activePage}
+                        href={`/component/private/${componentKebabCaseName}/example`}
+                      >
+                        {component.title}
+                        <LockIconContainer>
+                          <Icon glyph="Lock" />
+                        </LockIconContainer>
+                      </SideNavItem>
+                    ) : (
+                      <Tooltip
+                        align="right"
+                        trigger={
+                          <SideNavItem
+                            key={componentKebabCaseName}
+                            as={NextLinkWrapper}
+                            active={componentKebabCaseName === activePage}
+                            href={`/component/private/${componentKebabCaseName}/example`}
+                          >
+                            {component.title}
+                            <LockIconContainer>
+                              <Icon glyph="Lock" />
+                            </LockIconContainer>
+                          </SideNavItem>
+                        }
+                      >
+                        Log in to view component
+                      </Tooltip>
+                    )}
+                  </>
+                );
+              }
             })}
           </SideNavGroup>
         </>

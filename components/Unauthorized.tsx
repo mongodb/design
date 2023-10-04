@@ -1,22 +1,34 @@
+import styled from '@emotion/styled';
 import { signIn } from 'next-auth/react';
+import SecurityGraphic from 'public/SecurityGraphic';
+
+import Button from '@leafygreen-ui/button';
+import { BasicEmptyState } from '@leafygreen-ui/empty-state';
+import Icon from '@leafygreen-ui/icon';
+
+const Wrapper = styled('div')`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default function Unauthorized() {
   return (
-    <div className="row">
-      <div className="col-lg-10 col-offset-1">
-        <p>
-          Hey There, looks like you reached an area you don&apos;t have access
-          to.
-        </p>
-
-        <p>Please sign in here.</p>
-
-        <p>
-          <button className="btn btn-secondary" onClick={() => signIn('okta')}>
-            Sign in
-          </button>
-        </p>
-      </div>
-    </div>
+    <Wrapper>
+      <BasicEmptyState
+        title="Log in to view private content"
+        description="This page is locked for security purposes and only accessible by MongoDB employees."
+        primaryButton={
+          <Button
+            variant="primary"
+            onClick={() => signIn('okta')}
+            leftGlyph={<Icon glyph="LogIn" />}
+          >
+            Log In
+          </Button>
+        }
+        graphic={<SecurityGraphic />}
+      />
+    </Wrapper>
   );
 }

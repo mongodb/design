@@ -100,9 +100,11 @@ const ComponentLinks = ({
       target="_blank"
       rel="noopener noreferrer"
       style={{ marginRight: '8px' }}
-      href={`https://github.com/mongodb/leafygreen-ui/tree/main/packages/${kebabCase(
-        component.title,
-      )}`}
+      href={`https://github.com/${
+        component.private ? '10gen' : 'mongodb'
+      }/leafygreen-ui${
+        component.private ? '-private' : ''
+      }/tree/main/packages/${kebabCase(component.title)}`}
     >
       <GithubIcon />
     </IconButton>
@@ -173,55 +175,54 @@ function ComponentLayout({
             />
           )}
         </div>
-        {component ? (
-          <div className={flexContainer}>
-            <Tabs
-              selected={selected}
-              setSelected={setSelected}
-              aria-label={`Information on LeafyGreen UI ${pageTitle} component`}
-              className={tabStyles}
-              inlineChildren={
-                !isMobile &&
-                component && (
-                  <ComponentLinks
-                    component={component}
-                    className={cx([flexContainer, desktopLinksContainer])}
-                  />
-                )
-              }
-              as={NextLinkWrapper}
+        <div className={flexContainer}>
+          <Tabs
+            selected={selected}
+            setSelected={setSelected}
+            aria-label={`Information on LeafyGreen UI ${pageTitle} component`}
+            className={tabStyles}
+            inlineChildren={
+              !isMobile &&
+              component && (
+                <ComponentLinks
+                  component={component}
+                  className={cx([flexContainer, desktopLinksContainer])}
+                />
+              )
+            }
+            as={NextLinkWrapper}
+          >
+            <Tab
+              disabled={!component}
+              name="Live Example"
+              href={`/component/${isPrivate ? 'private/' : ''}${kebabCase(
+                componentName,
+              )}/example`}
             >
-              <Tab
-                name="Live Example"
-                href={`/component/${isPrivate ? 'private/' : ''}${kebabCase(
-                  componentName,
-                )}/example`}
-              >
-                <div className={liveExamplePageStyles}>{children}</div>
-              </Tab>
-              <Tab
-                name="Design Guidelines"
-                href={`/component/${isPrivate ? 'private/' : ''}${kebabCase(
-                  componentName,
-                )}/guidelines`}
-              >
-                <LeafyGreenProvider baseFontSize={16}>
-                  <div className={componentGuidelinePageStyles}>{children}</div>
-                </LeafyGreenProvider>
-              </Tab>
-              <Tab
-                name="Code Docs"
-                href={`/component/${isPrivate ? 'private/' : ''}${kebabCase(
-                  componentName,
-                )}/documentation`}
-              >
-                <div className={codeDocsPageStyles}>{children}</div>
-              </Tab>
-            </Tabs>
-          </div>
-        ) : (
-          <>{children}</>
-        )}
+              <div className={liveExamplePageStyles}>{children}</div>
+            </Tab>
+            <Tab
+              disabled={!component}
+              name="Design Guidelines"
+              href={`/component/${isPrivate ? 'private/' : ''}${kebabCase(
+                componentName,
+              )}/guidelines`}
+            >
+              <LeafyGreenProvider baseFontSize={16}>
+                <div className={componentGuidelinePageStyles}>{children}</div>
+              </LeafyGreenProvider>
+            </Tab>
+            <Tab
+              disabled={!component}
+              name="Code Docs"
+              href={`/component/${isPrivate ? 'private/' : ''}${kebabCase(
+                componentName,
+              )}/documentation`}
+            >
+              <div className={codeDocsPageStyles}>{children}</div>
+            </Tab>
+          </Tabs>
+        </div>
       </div>
     </div>
   );

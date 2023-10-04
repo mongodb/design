@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 import ComponentLayout from 'layouts/ComponentLayout';
 import { unstable_getServerSession } from 'next-auth';
+import { useSession } from 'next-auth/react';
 import { authOptions } from 'pages/api/auth/[...nextauth]';
 import { containerPadding } from 'styles/globals';
 import { getDependencyDocumentation } from 'utils/_getComponentResources';
@@ -8,6 +9,7 @@ import { getComponent } from 'utils/ContentStack/getContentstackResources';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import CodeDocs from 'components/pages/documentation/CodeDocs';
+import Unauthorized from 'components/Unauthorized';
 
 import { spacing } from '@leafygreen-ui/tokens';
 
@@ -26,6 +28,12 @@ const ComponentDocumentation = ({
   readme,
   tsDoc,
 }: DocsPageProps) => {
+  const { data: session } = useSession();
+
+  if (!session) {
+    return <Unauthorized />;
+  }
+
   return (
     <div
       className={cx(
@@ -67,18 +75,19 @@ export async function getServerSideProps(context: any) {
   const {
     props: { changelog, readme, tsDoc },
   } = await getDependencyDocumentation(componentName);
+  const component = session
+    ? await getComponent(componentName, {
+        includeContent: false,
+      })
+    : null;
 
   return {
     props: {
       componentName,
-      component: session
-        ? await getComponent(componentName, {
-            includeContent: false,
-          })
-        : undefined,
-      changelog: session ? changelog : undefined,
-      readme: session ? readme : undefined,
-      tsDoc: session ? tsDoc : undefined,
+      component,
+      changelog: session ? changelog : null,
+      readme: session ? readme : null,
+      tsDoc: session ? tsDoc : null,
     },
   };
 }

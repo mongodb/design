@@ -60,6 +60,7 @@
     "@leafygreen-ui/marketing-modal": "^4.1.0",
     "@leafygreen-ui/menu": "^22.0.7",
     "@leafygreen-ui/modal": "^16.0.1",
+    "@leafygreen-ui/mongo-nav": "^12.2.0",
     "@leafygreen-ui/number-input": "^1.0.14",
     "@leafygreen-ui/pagination": "^1.0.15",
     "@leafygreen-ui/palette": "^4.0.7",

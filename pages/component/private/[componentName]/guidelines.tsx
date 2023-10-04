@@ -46,15 +46,16 @@ export async function getServerSideProps(context: any) {
     authOptions,
   );
   const { componentName } = context.params;
+  const component = session
+    ? await getComponent(componentName, {
+        includeContent: false,
+      })
+    : null;
 
   return {
     props: {
       componentName,
-      component: session
-        ? await getComponent(componentName, {
-            includeContent: true,
-          })
-        : undefined,
+      component,
     },
   };
 }
