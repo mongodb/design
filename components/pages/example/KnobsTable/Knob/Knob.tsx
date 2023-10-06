@@ -1,7 +1,7 @@
 import { css, cx } from '@leafygreen-ui/emotion';
 import { RadioBox, RadioBoxGroup } from '@leafygreen-ui/radio-box-group';
 import { Option, Select } from '@leafygreen-ui/select';
-import { SelectProps } from '@leafygreen-ui/select/dist/types';
+import { SelectProps } from '@leafygreen-ui/select';
 import TextInput, { TextInputProps } from '@leafygreen-ui/text-input';
 import Toggle from '@leafygreen-ui/toggle';
 
