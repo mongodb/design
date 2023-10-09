@@ -77,13 +77,7 @@ export const LiveExample = ({
 
   const storyWrapperStyle = context.meta?.parameters?.wrapperStyle;
 
-  const storyContainerHeight = Math.min(
-    Math.max(
-      storyWrapperRef.current?.clientHeight ?? 0,
-      window.innerHeight / 3,
-    ),
-    window.innerHeight * 0.8,
-  );
+  const storyContainerHeight = 500;
 
   // should match the total height of the story container
   const exampleCodeHeight = storyContainerHeight + 48;

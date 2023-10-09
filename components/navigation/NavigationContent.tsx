@@ -130,7 +130,7 @@ function NavigationContent({
             {components.map((component: ComponentFields) => {
               const componentKebabCaseName = kebabCase(component.title);
 
-              if (!component.private) {
+              if (!component.private || (component.private && session)) {
                 return (
                   <SideNavItem
                     key={componentKebabCaseName}
@@ -143,8 +143,10 @@ function NavigationContent({
                 );
               } else {
                 return (
-                  <>
-                    {session ? (
+                  <Tooltip
+                    key={`${componentKebabCaseName}-page-tooltip`}
+                    align="right"
+                    trigger={
                       <SideNavItem
                         key={componentKebabCaseName}
                         as={NextLinkWrapper}
@@ -156,27 +158,10 @@ function NavigationContent({
                           <Icon glyph="Lock" />
                         </LockIconContainer>
                       </SideNavItem>
-                    ) : (
-                      <Tooltip
-                        align="right"
-                        trigger={
-                          <SideNavItem
-                            key={componentKebabCaseName}
-                            as={NextLinkWrapper}
-                            active={componentKebabCaseName === activePage}
-                            href={`/component/private/${componentKebabCaseName}/example`}
-                          >
-                            {component.title}
-                            <LockIconContainer>
-                              <Icon glyph="Lock" />
-                            </LockIconContainer>
-                          </SideNavItem>
-                        }
-                      >
-                        Log in to view component
-                      </Tooltip>
-                    )}
-                  </>
+                    }
+                  >
+                    Log in to view component
+                  </Tooltip>
                 );
               }
             })}

@@ -66,7 +66,10 @@ const DesktopSignIn = () => {
           }
         >
           <FocusableMenuItem>
-            <UserInfo {...session?.user} />
+            <UserInfo
+              name={session?.user?.name ?? 'User'}
+              email={session?.user?.email ?? ''}
+            />
           </FocusableMenuItem>
           <LogOutMenuItem
             glyph={<Icon glyph="LogOut" />}

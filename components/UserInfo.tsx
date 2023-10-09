@@ -12,7 +12,13 @@ const UserInfoContainer = styled('div')`
   padding: ${spacing[4]}px;
 `;
 
-export const UserInfo = ({ name = 'Unknown User', email }) => {
+export const UserInfo = ({
+  name = 'Unknown User',
+  email,
+}: {
+  name: string;
+  email: string;
+}) => {
   return (
     <UserInfoContainer>
       <Avatar>{name[0]}</Avatar>
