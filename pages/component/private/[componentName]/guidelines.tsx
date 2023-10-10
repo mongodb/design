@@ -48,7 +48,7 @@ export async function getServerSideProps(context: any) {
   const { componentName } = context.params;
   const component = session
     ? await getComponent(componentName, {
-        includeContent: false,
+        includeContent: true,
       })
     : null;
 

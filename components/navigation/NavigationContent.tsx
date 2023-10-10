@@ -134,7 +134,9 @@ function NavigationContent({
                 return (
                   <SideNavItem
                     key={componentKebabCaseName}
-                    href={`/component/${componentKebabCaseName}/example`}
+                    href={`/component/${
+                      component.private ? 'private/' : ''
+                    }${componentKebabCaseName}/example`}
                     as={NextLinkWrapper}
                     active={componentKebabCaseName === activePage}
                   >
@@ -151,7 +153,9 @@ function NavigationContent({
                         key={componentKebabCaseName}
                         as={NextLinkWrapper}
                         active={componentKebabCaseName === activePage}
-                        href={`/component/private/${componentKebabCaseName}/example`}
+                        href={`/component/${
+                          component.private ? 'private/' : ''
+                        }${componentKebabCaseName}/example`}
                       >
                         {component.title}
                         <LockIconContainer>
