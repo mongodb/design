@@ -20,8 +20,6 @@ const Container = styled('div')`
   justify-content: flex-end;
   padding-top: ${spacing[4]}px;
   z-index: 1;
-  // todo: remove
-  gap: 8px;
   ${mq({
     display: ['none', 'none', 'flex'],
   })}

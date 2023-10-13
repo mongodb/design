@@ -177,7 +177,7 @@ function ComponentLayout({
             />
           )}
         </div>
-        {component && session ? (
+        {component && (!component.private || (component.private && session)) ? (
           <div className={flexContainer}>
             <Tabs
               selected={selected}
