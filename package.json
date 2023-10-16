@@ -30,7 +30,7 @@
     "@emotion/react": "^11.9.3",
     "@emotion/server": "^11.0.0",
     "@emotion/styled": "^11.9.3",
-    "@faker-js/faker": "^7.6.0",
+    "@faker-js/faker": "^8.0.0",
     "@leafygreen-ui/a11y": "^1.4.11",
     "@leafygreen-ui/badge": "^8.0.15",
     "@leafygreen-ui/banner": "^7.0.16",
