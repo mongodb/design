@@ -18,6 +18,10 @@ const UserInfoContainer = styled('div')`
   padding: ${spacing[4]}px;
 `;
 
+const TextContainer = styled('div')`
+  word-break: break-word;
+`;
+
 export const UserInfo = forwardRef(
   (
     { name = 'Unknown User', email }: UserInfoProps,
@@ -26,10 +30,10 @@ export const UserInfo = forwardRef(
     return (
       <UserInfoContainer ref={ref}>
         <Avatar>{name[0]}</Avatar>
-        <div>
+        <TextContainer>
           <Body darkMode>{name}</Body>
           <Description darkMode>{email}</Description>
-        </div>
+        </TextContainer>
       </UserInfoContainer>
     );
   },
