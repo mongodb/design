@@ -66,6 +66,7 @@ function NavigationContent({
           >
             {components.map((component: ComponentFields) => {
               const componentKebabCaseName = kebabCase(component.title);
+              const shouldRenderAsLocked = component.private && !session;
               return (
                 <MobileNavigationItem
                   key={componentKebabCaseName}
@@ -77,13 +78,13 @@ function NavigationContent({
                   <div>
                     <div style={{ display: 'flex' }}>
                       {component.title}
-                      {component.private && (
+                      {shouldRenderAsLocked && (
                         <LockIconContainer>
                           <Icon glyph="Lock" />
                         </LockIconContainer>
                       )}
                     </div>
-                    {component.private && (
+                    {shouldRenderAsLocked && (
                       <Description
                         style={{
                           textTransform: 'none',
@@ -129,21 +130,9 @@ function NavigationContent({
           <SideNavGroup header="Components" glyph={<Icon glyph="Apps" />}>
             {components.map((component: ComponentFields) => {
               const componentKebabCaseName = kebabCase(component.title);
+              const shouldRenderAsLocked = component.private && !session;
 
-              if (!component.private || (component.private && session)) {
-                return (
-                  <SideNavItem
-                    key={componentKebabCaseName}
-                    href={`/component/${
-                      component.private ? 'private/' : ''
-                    }${componentKebabCaseName}/example`}
-                    as={NextLinkWrapper}
-                    active={componentKebabCaseName === activePage}
-                  >
-                    {component.title}
-                  </SideNavItem>
-                );
-              } else {
+              if (shouldRenderAsLocked) {
                 return (
                   <Tooltip
                     key={`${componentKebabCaseName}-page-tooltip`}
@@ -164,8 +153,21 @@ function NavigationContent({
                       </SideNavItem>
                     }
                   >
-                    Log in to view component
+                    Log in to view this component
                   </Tooltip>
+                );
+              } else {
+                return (
+                  <SideNavItem
+                    key={componentKebabCaseName}
+                    href={`/component/${
+                      component.private ? 'private/' : ''
+                    }${componentKebabCaseName}/example`}
+                    as={NextLinkWrapper}
+                    active={componentKebabCaseName === activePage}
+                  >
+                    {component.title}
+                  </SideNavItem>
                 );
               }
             })}
