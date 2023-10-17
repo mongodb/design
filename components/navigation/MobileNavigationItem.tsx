@@ -10,7 +10,7 @@ import { css, cx } from '@emotion/css';
 
 const listItemStyle = css`
   ${leftRightPadding}
-  width: 50%;
+  width: 100%;
   height: 68px;
   background-color: ${palette.gray.light3};
   border-bottom: 1px solid ${borderColor};

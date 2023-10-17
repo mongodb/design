@@ -16,5 +16,4 @@ export const ulStyleOverrides = css`
   padding-inline-start: 0;
   padding: 0;
   list-style-type: none;
-  min-height: 100vh;
 `;
