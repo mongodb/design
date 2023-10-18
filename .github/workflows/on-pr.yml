@@ -7,6 +7,15 @@ env:
   CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
 
 jobs:
+  setup-node:
+    # Only setup & build if there was no build cache hit
+    - name: Use Node 16
+      uses: actions/setup-node@v3
+      if: ${{ steps.build-cache.outputs.cache-hit != 'true' }}
+      with:
+        node-version: '16'
+        cache: yarn
+        cache-dependency-path: 'yarn.lock'
   lint:
     runs-on: ubuntu-latest
     name: Lint
