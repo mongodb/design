@@ -7,7 +7,7 @@ const Avatar = styled('div')`
   min-width: 36px;
   min-height: 36px;
   background-color: ${palette.gray.base};
-  color: white;
+  color: ${palette.white};
   display: flex;
   align-items: center;
   justify-content: center;
