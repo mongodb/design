@@ -18,6 +18,8 @@ import * as ga from 'utils/googleAnalytics';
 
 import ErrorBoundary from 'components/ErrorBoundary';
 
+import { ComponentFields, ContentPageGroup } from '../utils/ContentStack/types';
+
 import { authOptions } from './api/auth/[...nextauth]';
 
 export type NextPageWithLayout = NextPage & {
@@ -34,8 +36,8 @@ function MyApp({
   components,
   contentPageGroups,
 }: AppPropsWithLayout<{ session: Session }> & {
-  components: Array<any>;
-  contentPageGroups: Array<any>;
+  components: Array<ComponentFields>;
+  contentPageGroups: Array<ContentPageGroup>;
 }) {
   const getLayout = Component.getLayout ?? (page => page);
   const router = useRouter();

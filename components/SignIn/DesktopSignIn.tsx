@@ -4,11 +4,7 @@ import { mq } from 'utils/mediaQuery';
 
 import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
-import {
-  FocusableMenuItem,
-  Menu as LGMenu,
-  MenuItem,
-} from '@leafygreen-ui/menu';
+import { FocusableMenuItem, Menu, MenuItem } from '@leafygreen-ui/menu';
 import { palette } from '@leafygreen-ui/palette';
 import { fontWeights, spacing } from '@leafygreen-ui/tokens';
 
@@ -25,7 +21,7 @@ const Container = styled('div')`
   })}
 `;
 
-const Menu = styled(LGMenu)`
+const StyledMenu = styled(Menu)`
   padding: 0;
   width: unset;
   background-color: ${palette.gray.dark3};
@@ -56,7 +52,7 @@ const DesktopSignIn = () => {
   return (
     <Container>
       {session ? (
-        <Menu
+        <StyledMenu
           trigger={
             <UserMenuTrigger rightGlyph={<Icon glyph="CaretDown" />}>
               {session?.user?.name}
@@ -75,7 +71,7 @@ const DesktopSignIn = () => {
           >
             Log out
           </LogOutMenuItem>
-        </Menu>
+        </StyledMenu>
       ) : (
         <Button
           variant="primaryOutline"
