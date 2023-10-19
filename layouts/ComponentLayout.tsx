@@ -8,6 +8,7 @@ import { pageContainerWidth } from 'styles/constants';
 import { containerPadding } from 'styles/globals';
 import { ComponentFields } from 'utils/ContentStack/types';
 import getFullPageTitle from 'utils/getFullPageTitle';
+import { getGithubLink } from 'utils/getGithubLink';
 import { mq } from 'utils/mediaQuery';
 
 import FigmaIcon from 'components/icons/FigmaIcon';
@@ -87,11 +88,6 @@ const tabStyles = css`
   }
 `;
 
-const GH_ORGS = {
-  private: '10gen',
-  public: 'mongodb',
-};
-
 const ComponentLinks = ({
   component,
   ...rest
@@ -106,11 +102,7 @@ const ComponentLinks = ({
       target="_blank"
       rel="noopener noreferrer"
       style={{ marginRight: '8px' }}
-      href={`https://github.com/${
-        component.private ? GH_ORGS.private : GH_ORGS.public
-      }/leafygreen-ui${
-        component.private ? '-private' : ''
-      }/tree/main/packages/${kebabCase(component.title)}`}
+      href={getGithubLink(component.private, component.title)}
     >
       <GithubIcon />
     </IconButton>
