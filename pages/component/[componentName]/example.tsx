@@ -8,7 +8,7 @@ import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import { LiveExample } from 'components/pages/example/LiveExample';
 
-interface ExamplePageProps {
+export interface ExamplePageProps {
   componentName: string;
   component: ComponentPageMeta | null;
   tsDoc: Array<CustomComponentDoc> | null;

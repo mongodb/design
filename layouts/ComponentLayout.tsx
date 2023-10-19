@@ -87,6 +87,11 @@ const tabStyles = css`
   }
 `;
 
+const GH_ORGS = {
+  private: '10gen',
+  public: 'mongodb',
+};
+
 const ComponentLinks = ({
   component,
   ...rest
@@ -102,7 +107,7 @@ const ComponentLinks = ({
       rel="noopener noreferrer"
       style={{ marginRight: '8px' }}
       href={`https://github.com/${
-        component.private ? '10gen' : 'mongodb'
+        component.private ? GH_ORGS.private : GH_ORGS.public
       }/leafygreen-ui${
         component.private ? '-private' : ''
       }/tree/main/packages/${kebabCase(component.title)}`}

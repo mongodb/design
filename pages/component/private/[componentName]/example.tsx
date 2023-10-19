@@ -5,17 +5,11 @@ import { useSession } from 'next-auth/react';
 import { authOptions } from 'pages/api/auth/[...nextauth]';
 import { getDependencyDocumentation } from 'utils/_getComponentResources';
 import { getComponent } from 'utils/ContentStack/getContentstackResources';
-import { ComponentPageMeta } from 'utils/ContentStack/types';
-import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import { LiveExample } from 'components/pages/example/LiveExample';
 import Unauthorized from 'components/Unauthorized';
 
-interface ExamplePageProps {
-  componentName: string;
-  component: ComponentPageMeta | null;
-  tsDoc: Array<CustomComponentDoc> | null;
-}
+import { ExamplePageProps } from '../../[componentName]/example';
 
 const ComponentExample = ({ componentName, tsDoc }: ExamplePageProps) => {
   const { data: session } = useSession();

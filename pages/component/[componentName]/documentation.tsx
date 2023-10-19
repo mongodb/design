@@ -12,7 +12,7 @@ import { spacing } from '@leafygreen-ui/tokens';
 
 import { css, cx } from '@emotion/css';
 
-interface DocsPageProps {
+export interface DocsPageProps {
   componentName: string;
   changelog: string;
   readme: string;

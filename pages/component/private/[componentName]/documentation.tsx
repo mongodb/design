@@ -6,21 +6,15 @@ import { authOptions } from 'pages/api/auth/[...nextauth]';
 import { containerPadding } from 'styles/globals';
 import { getDependencyDocumentation } from 'utils/_getComponentResources';
 import { getComponent } from 'utils/ContentStack/getContentstackResources';
-import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import CodeDocs from 'components/pages/documentation/CodeDocs';
 import Unauthorized from 'components/Unauthorized';
 
 import { spacing } from '@leafygreen-ui/tokens';
 
-import { css, cx } from '@emotion/css';
+import { DocsPageProps } from '../../[componentName]/documentation';
 
-interface DocsPageProps {
-  componentName: string;
-  changelog: string;
-  readme: string;
-  tsDoc: Array<CustomComponentDoc>;
-}
+import { css, cx } from '@emotion/css';
 
 const ComponentDocumentation = ({
   componentName,
