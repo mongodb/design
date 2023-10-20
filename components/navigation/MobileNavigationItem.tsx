@@ -10,7 +10,7 @@ import { css, cx } from '@emotion/css';
 
 const listItemStyle = css`
   ${leftRightPadding}
-  width: 50%;
+  width: 100%;
   height: 68px;
   background-color: ${palette.gray.light3};
   border-bottom: 1px solid ${borderColor};
@@ -51,7 +51,7 @@ function MobileNavigationItem({
         onClick?.(e);
       }}
       onKeyDown={e => {
-        if (e.keyCode === keyMap.Space || e.keyCode === keyMap.Enter) {
+        if (e.key === keyMap.Space || e.key === keyMap.Enter) {
           setOpen(curr => !curr);
           onClick?.(e as any); // onClick expecting React.MouseEvent
         }
