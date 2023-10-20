@@ -3420,7 +3420,7 @@
     "@leafygreen-ui/tooltip" "^10.1.0"
     "@leafygreen-ui/typography" "^18.0.0"
 
-"@leafygreen-ui/table@12.1.2":
+"@leafygreen-ui/table@^12.1.2":
   version "12.1.2"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/table/-/table-12.1.2.tgz#6872e4011f4cb1007c2b0587852526af4307d56c"
   integrity sha512-OgsxoLAwSHlNklQOiXIIebYU8oCzredBXU8uJvutk09BSvV1+WTeSo5+lLk640QBJtGiKoY1BH8heelW/3CoTg==
