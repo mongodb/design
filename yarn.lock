@@ -3407,7 +3407,7 @@
     "@leafygreen-ui/popover" "^11.1.1"
     "@leafygreen-ui/tokens" "^2.2.0"
 
-"@leafygreen-ui/stepper@^3.2.7":
+"@leafygreen-ui/stepper@^3.2.8":
   version "3.2.8"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/stepper/-/stepper-3.2.8.tgz#6ab19d26f9feebb18b0d9e53a994ee0445d069d4"
   integrity sha512-JDifZ6zfTvw3X/avN81az/6l8ZR2AChqoDD3fCD4MOOjUlJjrcB+HEOev63PZuc84JaJr2oqygOFdB3jrbR8yQ==
@@ -3470,7 +3470,7 @@
     "@leafygreen-ui/tokens" "^2.2.0"
     "@leafygreen-ui/typography" "^18.0.0"
 
-"@leafygreen-ui/text-input@^12.1.15", "@leafygreen-ui/text-input@^12.1.23":
+"@leafygreen-ui/text-input@^12.1.15", "@leafygreen-ui/text-input@^12.1.23", "@leafygreen-ui/text-input@^12.1.24":
   version "12.1.24"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/text-input/-/text-input-12.1.24.tgz#abb93148cc57aa151d918c37277ce92929bbe95f"
   integrity sha512-IE7Ukw3brzBkPqaSAQNsjaYrj5AHsZO4T1VMPME/06ESWk0YUukPlc3vRH9F72LkPkrOetf8TzmfRglGs3wShQ==
@@ -3484,7 +3484,7 @@
     "@leafygreen-ui/tokens" "^2.2.0"
     "@leafygreen-ui/typography" "^18.0.0"
 
-"@leafygreen-ui/toast@^6.1.17":
+"@leafygreen-ui/toast@^6.1.18":
   version "6.1.18"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/toast/-/toast-6.1.18.tgz#92d678ae6f0a5bb1c020f85a5b65e89194bba7c4"
   integrity sha512-VnGZx0/0gVedT+uAyfrkpsIa5J3xAXP6YblL8fG6DcH5EIxtLjEHDSc/+W1EP75aVYNGaJ8cW83vKTU9bNjaIA==
