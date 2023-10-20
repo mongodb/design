@@ -4,6 +4,7 @@ import { mq } from 'utils/mediaQuery';
 
 import { LayoutContext } from 'components/LayoutContext';
 import Navigation from 'components/navigation';
+import SignIn from 'components/SignIn/DesktopSignIn';
 
 import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
 import { palette } from '@leafygreen-ui/palette';
@@ -84,9 +85,11 @@ function BaseLayout({ children }: { children: React.ReactNode }) {
         <LayoutContext.Provider value={bodyContainerRef}>
           <div className={containerStyle}>
             <Navigation />
-
             <div className={layout} ref={setBodyContainerRef}>
-              <div className={childrenWrapper}>{children}</div>
+              <div className={childrenWrapper}>
+                <SignIn />
+                {children}
+              </div>
 
               <Footer />
             </div>

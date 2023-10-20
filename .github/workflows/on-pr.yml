@@ -5,6 +5,7 @@ on:
 
 env:
   CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+  NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
 
 jobs:
   lint:
@@ -12,6 +13,12 @@ jobs:
     name: Lint
     steps:
       - uses: actions/checkout@v2
+      - name: Use Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: yarn
+          cache-dependency-path: 'yarn.lock'
       - name: Install Dependencies
         run: yarn install
       - name: Lint
@@ -21,6 +28,12 @@ jobs:
     name: Types
     steps:
       - uses: actions/checkout@v2
+      - name: Use Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: yarn
+          cache-dependency-path: 'yarn.lock'
       - name: Install Dependencies
         run: yarn install
       - name: TypeCheck
@@ -30,6 +43,12 @@ jobs:
     name: Build
     steps:
       - uses: actions/checkout@v2
+      - name: Use Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: yarn
+          cache-dependency-path: 'yarn.lock'
       - name: Install Dependencies
         run: yarn install
       - name: Build NextJS

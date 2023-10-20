@@ -31,6 +31,7 @@ export async function getStaticComponentPaths(): Promise<StaticComponentPaths> {
 interface StaticComponentProps {
   props: {
     component?: ComponentFields;
+    componentName: string;
   };
   // revalidate: number;
 }
@@ -42,6 +43,7 @@ export async function getStaticComponentProps({
 }): Promise<StaticComponentProps> {
   return {
     props: {
+      componentName: params.componentName,
       component: await getComponent(params.componentName, {
         includeContent: true,
       }), // this is in kebabCase

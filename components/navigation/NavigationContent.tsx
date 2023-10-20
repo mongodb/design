@@ -1,15 +1,30 @@
+import styled from '@emotion/styled';
 import { useAppContext } from 'contexts/AppContext';
 import kebabCase from 'lodash/kebabCase';
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 import { ComponentFields } from 'utils/ContentStack/types';
 
 import { NextLinkWrapper } from 'components/NextLinkWrapper';
 
 import Icon from '@leafygreen-ui/icon';
+import { palette } from '@leafygreen-ui/palette';
 import { SideNavGroup, SideNavItem } from '@leafygreen-ui/side-nav';
+import { spacing } from '@leafygreen-ui/tokens';
+import Tooltip from '@leafygreen-ui/tooltip';
+import { Description } from '@leafygreen-ui/typography';
 
 import MobileNavigationGroup from './MobileNavigationGroup';
 import MobileNavigationItem from './MobileNavigationItem';
+
+const LockIconContainer = styled('div')`
+  padding-left: ${spacing[1]}px;
+  display: inline-flex;
+  align-items: center;
+  path {
+    fill: ${palette.gray.base};
+  }
+`;
 
 function NavigationContent({
   isTouchDevice = false,
@@ -17,6 +32,7 @@ function NavigationContent({
   isTouchDevice?: boolean;
 }) {
   const router = useRouter();
+  const { data: session } = useSession();
   const activePage = router.asPath.split('/')[2];
   const { components, contentPageGroups } = useAppContext();
 
@@ -50,6 +66,7 @@ function NavigationContent({
           >
             {components.map((component: ComponentFields) => {
               const componentKebabCaseName = kebabCase(component.title);
+              const shouldRenderAsLocked = component.private && !session;
               return (
                 <MobileNavigationItem
                   key={componentKebabCaseName}
@@ -58,7 +75,26 @@ function NavigationContent({
                   }
                   active={componentKebabCaseName === activePage}
                 >
-                  {component.title}
+                  <div>
+                    <div style={{ display: 'flex' }}>
+                      {component.title}
+                      {shouldRenderAsLocked && (
+                        <LockIconContainer>
+                          <Icon glyph="Lock" />
+                        </LockIconContainer>
+                      )}
+                    </div>
+                    {shouldRenderAsLocked && (
+                      <Description
+                        style={{
+                          textTransform: 'none',
+                          color: palette.gray.base,
+                        }}
+                      >
+                        Log in to view this component
+                      </Description>
+                    )}
+                  </div>
                 </MobileNavigationItem>
               );
             })}
@@ -94,17 +130,46 @@ function NavigationContent({
           <SideNavGroup header="Components" glyph={<Icon glyph="Apps" />}>
             {components.map((component: ComponentFields) => {
               const componentKebabCaseName = kebabCase(component.title);
+              const shouldRenderAsLocked = component.private && !session;
 
-              return (
-                <SideNavItem
-                  key={componentKebabCaseName}
-                  href={`/component/${componentKebabCaseName}/example`}
-                  as={NextLinkWrapper}
-                  active={componentKebabCaseName === activePage}
-                >
-                  {component.title}
-                </SideNavItem>
-              );
+              if (shouldRenderAsLocked) {
+                return (
+                  <Tooltip
+                    key={`${componentKebabCaseName}-page-tooltip`}
+                    align="right"
+                    trigger={
+                      <SideNavItem
+                        key={componentKebabCaseName}
+                        as={NextLinkWrapper}
+                        active={componentKebabCaseName === activePage}
+                        href={`/component/${
+                          component.private ? 'private/' : ''
+                        }${componentKebabCaseName}/example`}
+                      >
+                        {component.title}
+                        <LockIconContainer>
+                          <Icon glyph="Lock" />
+                        </LockIconContainer>
+                      </SideNavItem>
+                    }
+                  >
+                    Log in to view this component
+                  </Tooltip>
+                );
+              } else {
+                return (
+                  <SideNavItem
+                    key={componentKebabCaseName}
+                    href={`/component/${
+                      component.private ? 'private/' : ''
+                    }${componentKebabCaseName}/example`}
+                    as={NextLinkWrapper}
+                    active={componentKebabCaseName === activePage}
+                  >
+                    {component.title}
+                  </SideNavItem>
+                );
+              }
             })}
           </SideNavGroup>
         </>

@@ -6,6 +6,8 @@ import { useRouter } from 'next/router';
 import { containerPadding } from 'styles/globals';
 import { HOME_PAGE } from 'utils/routes';
 
+import { MobileSignIn } from 'components/SignIn/MobileSignIn';
+
 import MenuIcon from '@leafygreen-ui/icon/dist/Menu';
 import IconButton from '@leafygreen-ui/icon-button';
 import { MongoDBLogo } from '@leafygreen-ui/logo';
@@ -35,7 +37,6 @@ const iconMargin = css`
 `;
 
 const navStyle = css`
-  border-right: 1px solid ${borderColor};
   background-color: white;
   cursor: pointer;
   z-index: 10;
@@ -176,6 +177,7 @@ function MobileNavigation({ children }: { children: React.ReactNode }) {
                   </li>
                   {children}
                 </ol>
+                <MobileSignIn />
               </nav>
             </div>
           )}
