@@ -9,6 +9,7 @@ import isEmptyRichText from 'utils/isEmptyRichText';
 
 import ComingSoon from 'components/ComingSoon';
 import ContentstackRichText from 'components/ContentstackRichText';
+import NewComponentLayout from 'layouts/NewComponentLayout';
 
 const ComponentGuidelines = ({ component }) => {
   const guidelines = component.designguidelines;
@@ -23,12 +24,12 @@ const ComponentGuidelines = ({ component }) => {
 
 ComponentGuidelines.getLayout = function getLayout(page: ReactElement) {
   return (
-    <ComponentLayout
+    <NewComponentLayout
       componentName={page.props.componentName}
       component={page.props.component}
     >
       {page}
-    </ComponentLayout>
+    </NewComponentLayout>
   );
 };
 
