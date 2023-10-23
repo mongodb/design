@@ -2,6 +2,8 @@ import { ReactElement } from 'react';
 import ContentPageLayout from 'layouts/ContentPageLayout';
 import kebabCase from 'lodash/kebabCase';
 import startCase from 'lodash/startCase';
+import { unstable_getServerSession } from 'next-auth';
+import { authOptions } from 'pages/api/auth/[...nextauth]';
 import {
   getContentPage,
   getContentPageGroups,

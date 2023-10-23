@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useAppContext } from 'contexts/AppContext';
 import kebabCase from 'lodash/kebabCase';
@@ -49,15 +50,45 @@ function NavigationContent({
               key={contentPageGroup.uid}
               header={contentPageGroup.title}
             >
-              {contentPageGroup.content_pages.map(({ title }) => (
-                <MobileNavigationItem
-                  key={title}
-                  onClick={() => router.push(`/foundation/${title}`)}
-                  active={title === activePage}
-                >
-                  {title.split('-').join(' ')}
-                </MobileNavigationItem>
-              ))}
+              {contentPageGroup.content_pages.map(({ title, is_private }) => {
+                const shouldRenderAsLocked = is_private && !session;
+                return (
+                  <MobileNavigationItem
+                    key={title}
+                    onClick={() =>
+                      router.push(
+                        `/${contentPageGroup.title}/${
+                          is_private ? 'private/' : ''
+                        }${title}`,
+                      )
+                    }
+                    active={title === activePage}
+                  >
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center' }}>
+                        {title.split('-').join(' ')}
+                        {shouldRenderAsLocked && (
+                          <LockIconContainer>
+                            <Icon glyph="Lock" />
+                          </LockIconContainer>
+                        )}
+                      </div>
+                      <div style={{ display: 'block' }}>
+                        {shouldRenderAsLocked && (
+                          <Description
+                            style={{
+                              textTransform: 'none',
+                              color: palette.gray.base,
+                            }}
+                          >
+                            Log in to view this page
+                          </Description>
+                        )}
+                      </div>
+                    </div>
+                  </MobileNavigationItem>
+                );
+              })}
             </MobileNavigationGroup>
           ))}
           <MobileNavigationGroup
@@ -111,19 +142,47 @@ function NavigationContent({
               {contentPageGroup.content_pages &&
                 contentPageGroup.content_pages.map(contentPage => {
                   const contentPageKebabCaseName = kebabCase(contentPage.title);
+                  const shouldRenderAsLocked =
+                    contentPage.is_private && !session;
 
-                  return (
-                    <SideNavItem
-                      key={contentPage.title}
-                      as={NextLinkWrapper}
-                      href={`/${kebabCase(
-                        contentPageGroup.title,
-                      )}/${contentPageKebabCaseName}`}
-                      active={contentPageKebabCaseName === activePage}
-                    >
-                      {contentPage.title}
-                    </SideNavItem>
-                  );
+                  if (shouldRenderAsLocked) {
+                    return (
+                      <Tooltip
+                        key={`${contentPageKebabCaseName}-page-tooltip`}
+                        align="right"
+                        trigger={
+                          <SideNavItem
+                            key={contentPageKebabCaseName}
+                            as={NextLinkWrapper}
+                            active={contentPageKebabCaseName === activePage}
+                            href={`/${kebabCase(contentPageGroup.title)}/${
+                              contentPage.is_private ? 'private/' : ''
+                            }${contentPageKebabCaseName}`}
+                          >
+                            {contentPage.title}
+                            <LockIconContainer>
+                              <Icon glyph="Lock" />
+                            </LockIconContainer>
+                          </SideNavItem>
+                        }
+                      >
+                        Log in to view this page
+                      </Tooltip>
+                    );
+                  } else {
+                    return (
+                      <SideNavItem
+                        key={contentPageKebabCaseName}
+                        href={`/${kebabCase(contentPageGroup.title)}/${
+                          contentPage.is_private ? 'private/' : ''
+                        }${contentPageKebabCaseName}`}
+                        as={NextLinkWrapper}
+                        active={contentPageKebabCaseName === activePage}
+                      >
+                        {contentPage.title}
+                      </SideNavItem>
+                    );
+                  }
                 })}
             </SideNavGroup>
           ))}
