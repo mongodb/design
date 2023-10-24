@@ -1,4 +1,5 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, useState } from 'react';
+import { Transition } from 'react-transition-group';
 
 import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
@@ -31,6 +32,9 @@ export const KnobsTable = ({
   knobValues,
   updateKnobValue,
 }: KnobsTableProps) => {
+  const [showKnobs, setShowKnobs] = useState<boolean>(false);
+  const toggleKnobs = () => setShowKnobs(s => !s);
+
   return (
     <div id="knobs">
       {codeExampleEnabled && (
@@ -39,23 +43,29 @@ export const KnobsTable = ({
             className={exampleCodeButtonStyle}
             variant="default"
             size="xsmall"
-            onClick={handleShowCodeClick}
+            onClick={toggleKnobs}
             leftGlyph={
-              <Icon glyph={showCode ? 'VisibilityOff' : 'Visibility'} />
+              <Icon glyph={showKnobs ? 'VisibilityOff' : 'Visibility'} />
             }
           >
-            {showCode ? 'Hide' : 'Show'} Code
+            {showKnobs ? 'Hide' : 'Show'} Controls
           </Button>
         </div>
       )}
-      {knobsArray.map(knob => (
-        <KnobRow
-          key={knob.name}
-          knob={knob}
-          knobValue={knobValues?.[knob.name]}
-          setKnobValue={updateKnobValue}
-        />
-      ))}
+      {showKnobs && (
+        <Transition in={showKnobs} timeout={200}>
+          <>
+            {knobsArray.map(knob => (
+              <KnobRow
+                key={knob.name}
+                knob={knob}
+                knobValue={knobValues?.[knob.name]}
+                setKnobValue={updateKnobValue}
+              />
+            ))}
+          </>
+        </Transition>
+      )}
     </div>
   );
 };

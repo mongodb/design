@@ -4,7 +4,7 @@ import { BadgeProps } from '@leafygreen-ui/badge/dist/Badge/types';
 import { ButtonProps } from '@leafygreen-ui/button';
 import { CalloutProps } from '@leafygreen-ui/callout/dist/Callout/types';
 
-type AnyNode = CSNode | CSTextNode;
+export type AnyNode = CSNode | CSTextNode;
 
 /** Contentstack is missing props in their type definitions */
 export interface CSNode extends Node {
@@ -26,6 +26,7 @@ export enum CSNodeType {
   DOCUMENT = 'doc',
   FRAGMENT = 'fragment',
   PARAGRAPH = 'p',
+  CODE = 'code',
   ANCHOR = 'a',
   REFERENCE = 'reference',
   HEADING_1 = 'h1',

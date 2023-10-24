@@ -273,6 +273,7 @@ export const nodeTypeToElementMap: {
   [CSNodeType.REFERENCE]: (node, props) => (
     <ContentstackReference content={node} {...props} />
   ),
+  [CSNodeType.CODE]: (node, props) => <code content={node} {...props} />,
   [CSNodeType.FRAGMENT]: (node, props) => (
     <ContentstackChildren nodeChildren={node.children} {...props} />
   ),
