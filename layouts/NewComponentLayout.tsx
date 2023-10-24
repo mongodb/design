@@ -18,21 +18,26 @@ import { spacing } from '@leafygreen-ui/tokens';
 import { Body, H1, Overline } from '@leafygreen-ui/typography';
 
 const Container = styled('div')`
-  display: flex;
-  justify-content: center;
-  position: relative;
   ${mq({
     // 51px is a magic number for baseline alignment with the first SideNavGroup header
     marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
+    width: ['100%', '100%', '90%', '75%'],
+    paddingLeft: [`${spacing[2]}`, `${spacing[4]}px`, `120px`],
+    paddingRight: [`${spacing[2]}`, `${spacing[4]}px`, `120px`],
+  })}
+`;
+
+const FlexContainer = styled('div')`
+  display: flex;
+  gap: ${spacing[7]}px;
+  position: relative;
+  ${mq({
+    flexDirection: ['column-reverse', 'row']
   })}
 `;
 
 const ContentContainer = styled('div')`
-  ${mq({
-    paddingLeft: [`${spacing[2]}`, `${spacing[3]}px`, `${spacing[7]}px`],
-    paddingRight: [`${spacing[2]}`, `${spacing[3]}px`, `${spacing[7]}px`],
-    width: ['100%', '100%', '75%', '60%'],
-  })}
+  flex: 1;
 `;
 
 const BreadcrumbsContainer = styled('div')`
@@ -40,10 +45,6 @@ const BreadcrumbsContainer = styled('div')`
   max-width: 250px;
   position: sticky;
   height: fit-content;
-  ${mq({
-    // 51px is a magic number for baseline alignment with the first SideNavGroup header
-    paddingTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
-  })}
   top: ${spacing[6]}px;
 `;
 
@@ -82,8 +83,9 @@ const NewComponentLayout = ({
           {component &&
           (!component.private || (component.private && session)) ? (
             <Container>
+              <Header>{componentName}</Header>
+              <FlexContainer>
               <ContentContainer>
-                <Header>{componentName}</Header>
                 <Body style={{ marginBottom: spacing[3] }}>
                   {component.description}
                 </Body>
@@ -98,6 +100,7 @@ const NewComponentLayout = ({
               <BreadcrumbsContainer>
                 <GuidelineBreadcrumbs />
               </BreadcrumbsContainer>
+              </FlexContainer>
             </Container>
           ) : (
             children

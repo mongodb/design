@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { TextNode } from '@contentstack/utils';
 import styled from '@emotion/styled';
 import {
@@ -13,7 +14,6 @@ import { palette } from '@leafygreen-ui/palette';
 import ContentstackChildren from './ContentstackChildren';
 import { AnyNode, CSNode, CSTextNode } from './types';
 import { getCSNodeTextContent } from './utils';
-import { useEffect } from 'react';
 
 const StyledAnchor = styled('a')`
   color: inherit;
@@ -67,7 +67,7 @@ const HeaderContent = ({ node }: { node: CSNode }) => {
     if (node.type === 'h2' || node.type === 'h4') {
       pushHeader(node.type as BreadcrumbHeader, nodeText);
     }
-  }, [])
+  }, []);
 
   return (
     <Link href={`#${headerId}`} passHref>
