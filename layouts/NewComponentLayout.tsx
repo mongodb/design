@@ -12,16 +12,20 @@ import { CustomComponentDoc } from 'utils/tsdoc.utils';
 import GuidelineBreadcrumbs from 'components/GuidelineBreadcrumbs';
 import { LiveExample } from 'components/pages/example/LiveExample';
 
+import Button from '@leafygreen-ui/button';
 import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
 import { palette } from '@leafygreen-ui/palette';
 import { spacing } from '@leafygreen-ui/tokens';
 import { Body, H1, Overline } from '@leafygreen-ui/typography';
+import FigmaIcon from 'components/icons/FigmaIcon';
+import LinkIcon from '@leafygreen-ui/icon/dist/Link';
+import GithubIcon from 'components/icons/GithubIcon';
 
 const Container = styled('div')`
   ${mq({
     // 51px is a magic number for baseline alignment with the first SideNavGroup header
     marginTop: [`${spacing[4]}px`, `${spacing[4]}px`, '51px'],
-    width: ['100%', '100%', '90%', '75%'],
+    // width: ['100%', '100%', '90%', '75%'],
     paddingLeft: [`${spacing[2]}`, `${spacing[4]}px`, `120px`],
     paddingRight: [`${spacing[2]}`, `${spacing[4]}px`, `120px`],
   })}
@@ -37,20 +41,47 @@ const FlexContainer = styled('div')`
 `;
 
 const ContentContainer = styled('div')`
-  flex: 1;
+  flex: 2;
 `;
 
 const BreadcrumbsContainer = styled('div')`
-  min-width: 250px;
-  max-width: 250px;
   position: sticky;
   height: fit-content;
   top: ${spacing[6]}px;
+  flex: 1;
 `;
+
+const HeaderContainer = styled('div')`
+  background-color: ${palette.green.dark3};
+  ${mq({
+    padding: [`${spacing[2]}`, `${spacing[4]}px`, `${spacing[7]}px`],
+    paddingLeft: [`${spacing[2]}`, `${spacing[4]}px`, `120px`],
+    paddingRight: [`${spacing[2]}`, `${spacing[4]}px`, `120px`],
+  })}
+  background-image: url('/Blob.svg');
+  background-repeat: no-repeat;
+  background-position: 100% 0%;
+`
 
 const Header = styled(H1)`
   margin-bottom: ${spacing[3]}px;
   text-transform: capitalize;
+`;
+
+const getLinkIcon = (linkType) => {
+  switch (linkType) {
+    case 'Figma':
+      return <FigmaIcon />
+    case 'Github':
+      return <GithubIcon fill={palette.white} />
+    default:
+      return <LinkIcon />
+  }
+}
+
+const LinksContainer = styled('div')`
+  display: flex;
+  gap: ${spacing[2]}px;
 `;
 
 const NewComponentLayout = ({
@@ -77,19 +108,39 @@ const NewComponentLayout = ({
           {component?.description && (
             <meta property="og:description" content={component?.description} />
           )}
-          <meta name="keywords" content={component?.title} />
+          <meta name="keywords" content={startCase(component?.title)} />
         </Head>
         <LeafyGreenProvider baseFontSize={16}>
           {component &&
           (!component.private || (component.private && session)) ? (
+            <>
+              <LeafyGreenProvider darkMode>
+            <HeaderContainer>
+                {/* Add id for hard-coded breadcrumb */}
+              <Header id="overview">{startCase(componentName)}</Header>
+              <Body style={{ marginBottom: spacing[3] }}>
+                {component.description}
+              </Body>
+              <LinksContainer>
+              {component.links_data && component.links_data.map(linkObject => (
+                <Button
+                  as="a"
+                  target="_blank"
+                  href={linkObject.link_data.link.href}
+                  size="xsmall"
+                  key={linkObject.link_data._metadata.uid}
+                  leftGlyph={getLinkIcon(linkObject.link_data.type)}
+                >
+                  {linkObject.link_data.link.title}
+                </Button>
+              ))}
+              </LinksContainer>
+            </HeaderContainer>
+              </LeafyGreenProvider>
             <Container>
-              <Header>{componentName}</Header>
               <FlexContainer>
               <ContentContainer>
-                <Body style={{ marginBottom: spacing[3] }}>
-                  {component.description}
-                </Body>
-                <div>
+                <div style={{ paddingBottom: '16px' }}>
                   <Overline style={{ color: palette.gray.dark1 }}>
                     Playground
                   </Overline>
@@ -102,6 +153,7 @@ const NewComponentLayout = ({
               </BreadcrumbsContainer>
               </FlexContainer>
             </Container>
+            </>
           ) : (
             children
           )}

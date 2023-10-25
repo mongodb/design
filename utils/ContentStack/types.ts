@@ -1,3 +1,10 @@
+export interface ContentstackMetadata {
+  uid: string;
+}
+export interface ContentstackObject {
+  _metadata: ContentstackMetadata;
+}
+
 export interface ContentPageGroup extends Object {
   uid: string;
   title: string;
@@ -34,12 +41,18 @@ export interface ComponentPageMeta {
   private?: boolean;
 }
 
+export interface LinkData extends ContentstackObject {
+  link: { title: string, href: string };
+  type?: string;
+}
+
 /**
  * A {@link ComponentPageMeta} with additional data fields
  * including `figmaUrl` & `designguidelines` content
  */
 export interface ComponentFields extends ComponentPageMeta {
   designguidelines?: unknown;
+  links_data?: Array<{ link_data: LinkData }>;
 }
 
 export interface BaseLayoutProps {

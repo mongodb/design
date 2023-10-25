@@ -8,7 +8,18 @@ import { Overline } from '@leafygreen-ui/typography';
 
 const BreadCrumb = styled('a')<{ $indented?: boolean }>`
   display: block;
-  padding-left: ${props => props.$indented ? spacing[2] : 0}px;
+  width: fit-content;
+  padding: 6px 12px;
+  margin-left: ${props => props.$indented ? spacing[3] : 0}px;
+  color: ${palette.gray.dark1};
+  text-decoration: none;
+  border-radius: 24px;
+
+  &:hover {
+    background-color: ${palette.green.light3};
+    color: ${palette.green.dark2};
+    font-weight: bold;
+  }
 `;
 
 const GuidelineBreadcrumb = ({ header }) => {
@@ -21,7 +32,8 @@ const GuidelineBreadcrumbs = () => {
   const { headers } = useGuidelinesContext();
   return (
     <>
-      <Overline style={{ color: palette.gray.dark1 }}>Contents</Overline>
+      <Overline style={{ color: palette.gray.dark1, paddingBottom: '20px', paddingLeft: '12px' }}>Contents</Overline>
+      <GuidelineBreadcrumb header={{ text: 'Overview', type: 'h2' }} />
       {headers.map(header => (
         <GuidelineBreadcrumb header={header} />
       ))}

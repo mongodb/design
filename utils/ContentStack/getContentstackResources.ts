@@ -50,6 +50,7 @@ const componentProperties = [
   'url',
   'figmaurl',
   'private',
+  'links_data',
 ];
 const optionalComponentProperties = ['designguidelines'];
 

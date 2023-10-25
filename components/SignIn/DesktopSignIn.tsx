@@ -12,6 +12,8 @@ import { UserInfo } from '../UserInfo';
 
 const Container = styled('div')`
   width: 100%;
+  position: absolute;
+  right: 16px;
   align-items: center;
   justify-content: flex-end;
   padding-top: ${spacing[4]}px;

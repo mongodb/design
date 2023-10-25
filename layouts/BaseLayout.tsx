@@ -41,13 +41,13 @@ const padding = `${spacing[5]}px`;
 
 export const childrenWrapper = css`
   ${mq({
-    paddingLeft: [0, 0, padding, padding],
-    paddingRight: [0, 0, padding, padding],
-    width: [
-      '100%',
-      '100%',
-      `calc(100% - (${padding} * 2))', 'calc(1440px - 270px - (${padding} * 2))`,
-    ],
+    // paddingLeft: [0, 0, padding, padding],
+    // paddingRight: [0, 0, padding, padding],
+    // width: [
+    //   '100%',
+    //   '100%',
+    //   `calc(100% - (${padding} * 2))', 'calc(1440px - 270px - (${padding} * 2))`,
+    // ],
     minHeight: ['unset', 'unset', '100vh'],
   })}
 `;
