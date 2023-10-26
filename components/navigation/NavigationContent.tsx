@@ -71,7 +71,7 @@ function NavigationContent({
                 <MobileNavigationItem
                   key={componentKebabCaseName}
                   onClick={() =>
-                    router.push(`/component/${componentKebabCaseName}/example`)
+                    router.push(`/component/${componentKebabCaseName}`)
                   }
                   active={componentKebabCaseName === activePage}
                 >
@@ -144,7 +144,7 @@ function NavigationContent({
                         active={componentKebabCaseName === activePage}
                         href={`/component/${
                           component.private ? 'private/' : ''
-                        }${componentKebabCaseName}/example`}
+                        }${componentKebabCaseName}`}
                       >
                         {component.title}
                         <LockIconContainer>
@@ -162,7 +162,7 @@ function NavigationContent({
                     key={componentKebabCaseName}
                     href={`/component/${
                       component.private ? 'private/' : ''
-                    }${componentKebabCaseName}/example`}
+                    }${componentKebabCaseName}`}
                     as={NextLinkWrapper}
                     active={componentKebabCaseName === activePage}
                   >

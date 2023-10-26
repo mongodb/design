@@ -65,7 +65,7 @@ const LiveExampleBlock = ({ storyName }: { storyName: string }) => {
     <>
       {StoryFn ? (
         <div>
-          <Card style={{ padding: 0 }}>
+          <Card style={{ padding: 0, boxShadow: 'none' }}>
             <div
               style={{
                 display: 'flex',
@@ -96,7 +96,11 @@ const LiveExampleBlock = ({ storyName }: { storyName: string }) => {
                 </Button>
               </div>
             </div>
-            {showCode && sourceCode && <CodeWrapper><Code language="tsx">{sourceCode}</Code></CodeWrapper>}
+            {showCode && sourceCode && (
+              <CodeWrapper>
+                <Code language="js">{sourceCode}</Code>
+              </CodeWrapper>
+            )}
           </Card>
         </div>
       ) : (

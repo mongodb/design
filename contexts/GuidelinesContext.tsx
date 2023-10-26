@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
-import { useDynamicRefs } from '@leafygreen-ui/hooks';
+import { useDynamicRefs, usePrevious } from '@leafygreen-ui/hooks';
 
 export type BreadcrumbHeader = 'h2' | 'h4';
 
@@ -40,17 +41,18 @@ const nearestScrolledRefIndex = (
   startIndex,
   endIndex,
   getHeaderRef,
+  componentName,
 ) => {
   if (startIndex === endIndex) return startIndex;
   else if (startIndex === endIndex - 1) {
     if (
       Math.abs(
-        getHeaderRef(headers[startIndex].text)?.current.offsetTop -
-          currentPosition,
+        getHeaderRef(`${componentName}-${headers[startIndex].text}`)?.current
+          .offsetTop - currentPosition,
       ) <
       Math.abs(
-        getHeaderRef(headers[endIndex].text)?.current.offsetTop -
-          currentPosition,
+        getHeaderRef(`${componentName}-${headers[endIndex].text}`)?.current
+          .offsetTop - currentPosition,
       )
     )
       return startIndex;
@@ -58,12 +60,12 @@ const nearestScrolledRefIndex = (
   } else {
     const nextNearest = ~~((startIndex + endIndex) / 2);
     const a = Math.abs(
-      getHeaderRef(headers[nextNearest].text)?.current.offsetTop -
-        currentPosition,
+      getHeaderRef(`${componentName}-${headers[nextNearest].text}`)?.current
+        .offsetTop - currentPosition,
     );
     const b = Math.abs(
-      getHeaderRef(headers[nextNearest + 1].text)?.current.offsetTop -
-        currentPosition,
+      getHeaderRef(`${componentName}-${headers[nextNearest + 1].text}`)?.current
+        .offsetTop - currentPosition,
     );
 
     if (a < b) {
@@ -73,6 +75,7 @@ const nearestScrolledRefIndex = (
         startIndex,
         nextNearest,
         getHeaderRef,
+        componentName,
       );
     } else {
       return nearestScrolledRefIndex(
@@ -81,19 +84,23 @@ const nearestScrolledRefIndex = (
         nextNearest,
         endIndex,
         getHeaderRef,
+        componentName,
       );
     }
   }
 };
 
 export function GuidelinesContextProvider({ children, componentName }) {
+  const router = useRouter();
   const [headers, setHeaders] = useState<Array<GuidelineHeader>>([]);
   const pushHeader = (headerType: BreadcrumbHeader, headerText: string) =>
     setHeaders(oldHeaders => [
       ...oldHeaders,
       { text: headerText, type: headerType },
     ]);
-  const getHeaderRef = useDynamicRefs({ prefix: 'guideline-header' });
+  const getHeaderRef = useDynamicRefs({
+    prefix: `${componentName}-guideline-header`,
+  });
   const [activeHeaderIndex, setActiveHeaderIndex] = useState(0);
 
   useEffect(() => {
@@ -108,10 +115,10 @@ export function GuidelinesContextProvider({ children, componentName }) {
             0,
             headers.length - 1,
             getHeaderRef,
+            componentName,
           );
           setActiveHeaderIndex(index - 1);
         };
-        // console.log(document.querySelector(''))
         scrollContainer.addEventListener('scroll', handleScroll);
         return () => {
           scrollContainer.removeEventListener('scroll', handleScroll);
@@ -119,6 +126,16 @@ export function GuidelinesContextProvider({ children, componentName }) {
       }
     }
   }, [headers]);
+
+  useEffect(() => {
+    const startHandler = () => {
+      setHeaders([]);
+    };
+    router.events.on('routeChangeStart', startHandler);
+    return () => {
+      router.events.off('routeChangeStart', startHandler);
+    };
+  }, []);
 
   return (
     <GuidelinesContext.Provider

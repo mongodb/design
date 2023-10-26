@@ -3,6 +3,7 @@ import { Transition } from 'react-transition-group';
 
 import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
+import { palette } from '@leafygreen-ui/palette';
 
 import {
   LiveExampleContext,
@@ -54,7 +55,14 @@ export const KnobsTable = ({
       )}
       {showKnobs && (
         <Transition in={showKnobs} timeout={200}>
-          <>
+          <div
+            style={{
+              maxHeight: '300px',
+              overflowY: 'scroll',
+              borderTop: '1px solid',
+              borderColor: palette.gray.light2,
+            }}
+          >
             {knobsArray.map(knob => (
               <KnobRow
                 key={knob.name}
@@ -63,7 +71,7 @@ export const KnobsTable = ({
                 setKnobValue={updateKnobValue}
               />
             ))}
-          </>
+          </div>
         </Transition>
       )}
     </div>

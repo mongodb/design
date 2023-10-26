@@ -21,7 +21,9 @@ const knobRowWrapperStyle = (darkMode: boolean) => css`
   align-items: center;
   padding: ${spacing[4]}px;
   gap: ${spacing[2]}px;
-  border-top: 1px solid ${darkMode ? palette.gray.dark2 : palette.gray.light2};
+  &:not(:first-child) {
+    border-top: 1px solid ${darkMode ? palette.gray.dark2 : palette.gray.light2};
+  }
 
   & * p {
     margin: unset;

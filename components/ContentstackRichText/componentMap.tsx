@@ -52,9 +52,9 @@ export const nodeTypeToElementMap: {
     </H1>
   ),
   [CSNodeType.HEADING_2]: (node, props) => {
-    const { getHeaderRef } = useGuidelinesContext();
+    const { componentName, getHeaderRef } = useGuidelinesContext();
     const nodeText = getCSNodeTextContent(node);
-    const headerRef = getHeaderRef(nodeText);
+    const headerRef = getHeaderRef(`${componentName}-${nodeText}`);
     return (
       <H2
         css={
@@ -88,9 +88,9 @@ export const nodeTypeToElementMap: {
     </H3>
   ),
   [CSNodeType.HEADING_4]: (node, props) => {
-    const { getHeaderRef } = useGuidelinesContext();
+    const { getHeaderRef, componentName } = useGuidelinesContext();
     const nodeText = getCSNodeTextContent(node);
-    const headerRef = getHeaderRef(nodeText);
+    const headerRef = getHeaderRef(`${componentName}-${nodeText}`);
     // useEffect(() => { console.log(headerRef?.current)}, [headerRef])
     return (
       <Subtitle
@@ -124,6 +124,7 @@ export const nodeTypeToElementMap: {
         css`
           & {
             margin-top: ${spacing[2]}px;
+            margin-bottom: ${spacing[4]}px;
           }
         `
       }

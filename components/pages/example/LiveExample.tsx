@@ -7,6 +7,7 @@ import { usePrevious } from '@leafygreen-ui/hooks';
 import LeafyGreenProvider, {
   useDarkMode,
 } from '@leafygreen-ui/leafygreen-provider';
+import { palette } from '@leafygreen-ui/palette';
 
 import { KnobsTable } from './KnobsTable/KnobsTable';
 import { isStateReady } from './useLiveExampleState/utils';

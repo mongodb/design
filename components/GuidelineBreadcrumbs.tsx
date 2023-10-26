@@ -56,7 +56,7 @@ const GuidelineBreadcrumbs = () => {
           active={i === activeHeaderIndex}
         />
       ))}
-      <a href="#scroll-top">Scroll to top</a>
+      {/* <a href="#scroll-top">Scroll to top</a> */}
     </>
   );
 };
