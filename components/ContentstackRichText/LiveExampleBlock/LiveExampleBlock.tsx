@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import styled from '@emotion/styled';
 import { ComponentStoryFn } from '@storybook/react';
 import { useGuidelinesContext } from 'contexts/GuidelinesContext';
-import { getComponentStories, ModuleType } from 'utils/getComponentStories';
+import { getComponentStories } from 'utils/getComponentStories';
 
 import { useAsyncEffect } from 'components/pages/example/useAsyncEffect';
 
@@ -10,6 +11,22 @@ import Card from '@leafygreen-ui/card';
 import Code from '@leafygreen-ui/code';
 import Icon from '@leafygreen-ui/icon';
 import { spacing } from '@leafygreen-ui/tokens';
+
+const CodeWrapper = styled('div')`
+  > div {
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    overflow: hidden;
+
+    & > div:before,
+    & > div:after {
+      z-index: 0;
+    }
+  }
+`;
 
 const LiveExampleBlock = ({ storyName }: { storyName: string }) => {
   const [StoryFn, setStoryFn] = useState<
@@ -48,7 +65,7 @@ const LiveExampleBlock = ({ storyName }: { storyName: string }) => {
     <>
       {StoryFn ? (
         <div>
-          <Card>
+          <Card style={{ padding: 0 }}>
             <div
               style={{
                 display: 'flex',
@@ -65,6 +82,7 @@ const LiveExampleBlock = ({ storyName }: { storyName: string }) => {
                   width: '100%',
                   display: 'flex',
                   justifyContent: 'flex-end',
+                  padding: `${spacing[3]}px`,
                 }}
               >
                 <Button
@@ -78,8 +96,8 @@ const LiveExampleBlock = ({ storyName }: { storyName: string }) => {
                 </Button>
               </div>
             </div>
+            {showCode && sourceCode && <CodeWrapper><Code language="tsx">{sourceCode}</Code></CodeWrapper>}
           </Card>
-          {showCode && sourceCode && <Code language="tsx">{sourceCode}</Code>}
         </div>
       ) : (
         <>Loading...</>
