@@ -10,6 +10,7 @@ import ExpandableCard from '@leafygreen-ui/expandable-card';
 import ArrowRight from '@leafygreen-ui/icon/dist/ArrowRight';
 import { spacing } from '@leafygreen-ui/tokens';
 
+import LiveExampleBlock from './LiveExampleBlock/LiveExampleBlock';
 import AnnotatedImageBlock from './AnnotatedImageBlock';
 import BasicUsageBlock from './BasicUsageBlock';
 import ExampleCardBlock from './ExampleCardBlock';
@@ -82,6 +83,9 @@ const blockToElementMap: {
     </ExpandableCard>
   ),
   horizontal_layout: props => <HorizontalLayout {...props} />,
+  live_example_block: props => (
+    <LiveExampleBlock storyName={props.story_name} />
+  ),
 } as const;
 
 const ContentstackEntry = <T extends ContentTypeUID>({

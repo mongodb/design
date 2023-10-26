@@ -148,6 +148,10 @@ export interface TwoColumnExampleCardBlockProps {
   column_2_image: CSImage;
 }
 
+export interface LiveExampleBlockProps {
+  story_name: string;
+}
+
 export interface BlockPropsMap {
   annotated_image_block: AnnotatedImageBlockProps;
   badge_block: BadgeBlockProps;
@@ -159,6 +163,7 @@ export interface BlockPropsMap {
   expandable_card_block: ExpandableCardBlockProps;
   horizontal_layout: HorizontalLayoutBlockProps;
   example_card_block_2_column_: TwoColumnExampleCardBlockProps;
+  live_example_block: LiveExampleBlockProps;
 }
 
 export type ContentTypeUID = keyof BlockPropsMap;

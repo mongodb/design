@@ -42,7 +42,7 @@ export interface ComponentPageMeta {
 }
 
 export interface LinkData extends ContentstackObject {
-  link: { title: string, href: string };
+  link: { title: string; href: string };
   type?: string;
 }
 

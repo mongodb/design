@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { css } from '@emotion/react';
+import { useGuidelinesContext } from 'contexts/GuidelinesContext';
 
 import Card from '@leafygreen-ui/card';
 import { palette } from '@leafygreen-ui/palette';
@@ -17,6 +19,7 @@ import ContentstackChildren from './ContentstackChildren';
 import ContentstackReference from './ContentstackReference';
 import HeaderContent from './HeaderContent';
 import { CSNode, CSNodeType, CSTextNode } from './types';
+import { getCSNodeTextContent } from './utils';
 
 type CSNodeTypeMapFunction = (
   node: CSNode | CSTextNode,
@@ -48,23 +51,29 @@ export const nodeTypeToElementMap: {
       <HeaderContent node={node} />
     </H1>
   ),
-  [CSNodeType.HEADING_2]: (node, props) => (
-    <H2
-      css={
-        !props.isNested &&
-        css`
-          margin-bottom: ${spacing[2]}px;
+  [CSNodeType.HEADING_2]: (node, props) => {
+    const { getHeaderRef } = useGuidelinesContext();
+    const nodeText = getCSNodeTextContent(node);
+    const headerRef = getHeaderRef(nodeText);
+    return (
+      <H2
+        css={
+          !props.isNested &&
+          css`
+            margin-bottom: ${spacing[2]}px;
 
-          &:not(:first-child) {
-            margin-top: ${spacing[6]}px;
-          }
-        `
-      }
-      {...props}
-    >
-      <HeaderContent node={node} />
-    </H2>
-  ),
+            &:not(:first-child) {
+              margin-top: ${spacing[6]}px;
+            }
+          `
+        }
+        ref={headerRef}
+        {...props}
+      >
+        <HeaderContent node={node} />
+      </H2>
+    );
+  },
   [CSNodeType.HEADING_3]: (node, props) => (
     <H3
       css={
@@ -78,19 +87,26 @@ export const nodeTypeToElementMap: {
       <HeaderContent node={node} />
     </H3>
   ),
-  [CSNodeType.HEADING_4]: (node, props) => (
-    <Subtitle
-      css={
-        !props.isNested &&
-        css`
-          margin-top: ${spacing[4]}px;
-        `
-      }
-      {...props}
-    >
-      <HeaderContent node={node} />
-    </Subtitle>
-  ),
+  [CSNodeType.HEADING_4]: (node, props) => {
+    const { getHeaderRef } = useGuidelinesContext();
+    const nodeText = getCSNodeTextContent(node);
+    const headerRef = getHeaderRef(nodeText);
+    // useEffect(() => { console.log(headerRef?.current)}, [headerRef])
+    return (
+      <Subtitle
+        css={
+          !props.isNested &&
+          css`
+            margin-top: ${spacing[4]}px;
+          `
+        }
+        ref={headerRef}
+        {...props}
+      >
+        <HeaderContent node={node} />
+      </Subtitle>
+    );
+  },
   [CSNodeType.HEADING_5]: (node, props) => (
     <Overline {...props}>
       <ContentstackChildren nodeChildren={node.children} />

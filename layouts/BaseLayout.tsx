@@ -85,7 +85,11 @@ function BaseLayout({ children }: { children: React.ReactNode }) {
         <LayoutContext.Provider value={bodyContainerRef}>
           <div className={containerStyle}>
             <Navigation />
-            <div className={layout} ref={setBodyContainerRef}>
+            <div
+              id="scroll-container"
+              className={layout}
+              ref={setBodyContainerRef}
+            >
               <div className={childrenWrapper}>
                 <SignIn />
                 {children}
