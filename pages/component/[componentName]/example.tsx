@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import ComponentLayout from 'layouts/ComponentLayout';
+import dynamic from 'next/dynamic';
 import { getTSDoc } from 'utils/_getComponentResources';
 import { getComponent } from 'utils/ContentStack/getContentstackResources';
 import { getStaticComponentPaths } from 'utils/ContentStack/getStaticComponent';
@@ -12,17 +13,25 @@ export interface ExamplePageProps {
   componentName: string;
   component: ComponentPageMeta | null;
   tsDoc: Array<CustomComponentDoc> | null;
+  CustomComponentStory: any;
 }
 
 const ComponentExample = ({ componentName, tsDoc }: ExamplePageProps) => {
+  const CustomComponentStory = dynamic(() => import(`../../../live-examples/${componentName}/stories.tsx`));
+
+  if(CustomComponentStory) {
+    console.log(CustomComponentStory)
+
+    return <CustomComponentStory />
+  }
+
   return <LiveExample componentName={componentName} tsDoc={tsDoc} />;
 };
 
 ComponentExample.getLayout = function getLayout(page: ReactElement) {
   return (
     <ComponentLayout
-      componentName={page.props.componentName}
-      component={page.props.component}
+      {...page.props}
     >
       {page}
     </ComponentLayout>
