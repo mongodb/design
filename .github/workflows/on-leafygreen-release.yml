@@ -3,15 +3,27 @@ on:
   repository_dispatch:
     types: [release-leafygreen-ui]
 jobs:
-  myEvent:
+  update-packages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      # Only setup & build if there was no build cache hit
+      - name: Use Node 16
+        uses: actions/setup-node@v3
+        if: ${{ steps.build-cache.outputs.cache-hit != 'true' }}
+        with:
+          node-version: '16'
+          cache: yarn
+          cache-dependency-path: 'yarn.lock'
       - run: yarn install
-      - run: yarn update-packages
+      - uses: actions/github-script@v1
+        with:
+          script: |
+            yarn update-packages ${{github.event.client_payload}}
+      - run: echo ${{github.event.client_payload}}
       - name: pull-request
         uses: repo-sync/pull-request@v2
         with:
-          destination_branch: "staging"
-          pr_title: "Automated PR: update packages"
+          destination_branch: 'staging'
+          pr_title: 'Automated PR: update packages'
           github_token: ${{ secrets.GITHUB_TOKEN }}
