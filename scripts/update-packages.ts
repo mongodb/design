@@ -14,7 +14,7 @@ const isComponentUpdateObject = (obj: any): obj is ComponentUpdateObject =>
   typeof obj === 'object' &&
   Object.prototype.hasOwnProperty.call(obj, 'name') &&
   Object.prototype.hasOwnProperty.call(obj, 'version');
-const isValidUpdatesArray = (arr: any): arr is Array<ComponentUpdateObject> =>
+const isValidUpdatesArray = (arr: any): arr is { packages: Array<ComponentUpdateObject> } =>
   Array.isArray(arr) && arr.every(isComponentUpdateObject);
 
 function exists(arg?: string | Array<any>) {
@@ -29,7 +29,7 @@ const cli = new Command('upgrade-packages')
 
 const { commit, verbose } = cli.opts();
 
-const updatesArray = cli.args[0] ? JSON.parse(cli.args[0]) : [];
+const updatesArray: Array<ComponentUpdateObject> = cli.args[0] ? JSON.parse(cli.args[0]).packages : [];
 let updateCommands: Array<string>;
 
 if (exists(updatesArray) && isValidUpdatesArray(updatesArray)) {
