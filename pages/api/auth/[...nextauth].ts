@@ -10,7 +10,8 @@ export const authOptions = {
       issuer: process.env.OKTA_OAUTH2_ISSUER as string,
     }),
   ],
-  secret: process.env.SECRET as string,
+  // secret is read from process.env.NEXTAUTH_SECRET by default
+  // https://next-auth.js.org/configuration/options#secret
 };
 
 export default NextAuth(authOptions);
