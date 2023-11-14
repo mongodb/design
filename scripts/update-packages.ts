@@ -29,7 +29,9 @@ const cli = new Command('upgrade-packages')
 
 const { commit, verbose } = cli.opts();
 
-const updatesArray: Array<ComponentUpdateObject> = cli.args[0] ? JSON.parse(cli.args[0]).packages : [];
+const updatesArray: Array<ComponentUpdateObject> = cli.args[0]
+  ? JSON.parse(cli.args[0]).packages
+  : [];
 let updateCommands: Array<string>;
 
 if (exists(updatesArray) && isValidUpdatesArray(updatesArray)) {
