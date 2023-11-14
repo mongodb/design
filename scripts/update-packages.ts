@@ -14,7 +14,7 @@ const isComponentUpdateObject = (obj: any): obj is ComponentUpdateObject =>
   typeof obj === 'object' &&
   Object.prototype.hasOwnProperty.call(obj, 'name') &&
   Object.prototype.hasOwnProperty.call(obj, 'version');
-const isValidUpdatesArray = (arr: any): arr is { packages: Array<ComponentUpdateObject> } =>
+const isValidUpdatesArray = (arr: any): arr is Array<ComponentUpdateObject> =>
   Array.isArray(arr) && arr.every(isComponentUpdateObject);
 
 function exists(arg?: string | Array<any>) {
