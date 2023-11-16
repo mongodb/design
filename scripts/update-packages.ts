@@ -22,7 +22,7 @@ function exists(arg?: string | Array<any>) {
 }
 
 const cli = new Command('update-packages')
-  .arguments('{ "packages": [updatesArray]')
+  .arguments('{ "packages": [updatesArray] }')
   .option('-c, --commit', 'commit upgrades to git', false)
   .option('-v, --verbose', 'List all package updates', false)
   .parse(process.argv);
