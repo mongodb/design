@@ -22,7 +22,7 @@ function exists(arg?: string | Array<any>) {
 }
 
 const cli = new Command('update-packages')
-  .arguments('{ "packages": [updatesArray] }')
+  .arguments('[updatesArray]')
   .option('-c, --commit', 'commit upgrades to git', false)
   .option('-v, --verbose', 'List all package updates', false)
   .parse(process.argv);
@@ -30,7 +30,7 @@ const cli = new Command('update-packages')
 const { commit, verbose } = cli.opts();
 
 const updatesArray: Array<ComponentUpdateObject> = cli.args[0]
-  ? JSON.parse(cli.args[0]).packages
+  ? JSON.parse(cli.args[0])
   : [];
 let updateCommands: Array<string>;
 
