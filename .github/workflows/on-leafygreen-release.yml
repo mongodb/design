@@ -16,7 +16,7 @@ jobs:
           cache: yarn
           cache-dependency-path: 'yarn.lock'
       - run: yarn install
-      - run: yarn update-packages ${{ github.event.client_payload.packages }}
+      - run: yarn update-packages '${{ github.event.client_payload.packages }}'
       - name: pull-request
         uses: repo-sync/pull-request@v2
         with:
