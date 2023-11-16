@@ -6,6 +6,7 @@ jobs:
   update-packages:
     runs-on: ubuntu-latest
     steps:
+      # Only setup & build if there was no build cache hit
       - name: Use Node 16
         uses: actions/setup-node@v3
         if: ${{ steps.build-cache.outputs.cache-hit != 'true' }}
@@ -14,11 +15,8 @@ jobs:
           cache: yarn
           cache-dependency-path: 'yarn.lock'
       - uses: actions/checkout@v3
-        with:
-          packages: ${{ github.event.client_payload.packages }}
-      # Only setup & build if there was no build cache hit
       - run: yarn install
-      - run: yarn update-packages ${{ github.event.packages }}
+      - run: yarn update-packages ${{ github.event.client_payload.packages }}
       - name: pull-request
         uses: repo-sync/pull-request@v2
         with:
