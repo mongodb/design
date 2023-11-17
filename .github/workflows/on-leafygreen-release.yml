@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: checkout/update-packages
+          ref: post-release/update-packages
       # Only setup & build if there was no build cache hit
       - name: Use Node 16
         uses: actions/setup-node@v3
