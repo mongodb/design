@@ -17,6 +17,7 @@ jobs:
           cache: yarn
           cache-dependency-path: yarn.lock
       - run: yarn install
+      - run: yarn update-packages '${{ github.event.client_payload.packages }}'
       - name: add and commit
         env:
           MY_EMAIL: s.park@mongodb.com
@@ -25,7 +26,6 @@ jobs:
           git config --global user.email $MY_EMAIL
           git config --global user.name $MY_NAME
           git add . && git commit -m "update LGUI packages"
-      - run: yarn update-packages '${{ github.event.client_payload.packages }}'
       - name: pull-request
         run: gh pr create -B staging -H post-release/update-packages --title 'Automated PR - Update packages' --body 'Automated PR to update LGUI packages'
         env:
