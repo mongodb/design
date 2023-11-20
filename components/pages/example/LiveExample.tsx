@@ -10,7 +10,7 @@ import LeafyGreenProvider, {
 
 import { KnobsTable } from './KnobsTable/KnobsTable';
 import { isStateReady } from './useLiveExampleState/utils';
-import { CodeExample } from './CodeExample';
+// import { CodeExample } from './CodeExample';
 import {
   blockContainerStyle,
   liveExampleWrapperStyle,
@@ -23,7 +23,7 @@ import {
   LiveExampleNotFound,
 } from './LiveExampleStateComponents';
 import { useLiveExampleState } from './useLiveExampleState';
-import { useStoryCode } from './useStoryCode';
+// import { useStoryCode } from './useStoryCode';
 
 // Use standard block flow for these packages
 const useBlockWrapperFor = [
@@ -68,7 +68,7 @@ export const LiveExample = ({
     }
   }, [componentName, prevComponentName, tsDoc, resetContext, setErrorState]);
 
-  const storyCode = useStoryCode(context, showCode);
+  // const storyCode = useStoryCode(context, showCode);
 
   /** Triggered on button click */
   const toggleShowCode = () => {
@@ -77,16 +77,18 @@ export const LiveExample = ({
 
   const storyWrapperStyle = context.meta?.parameters?.wrapperStyle;
 
-  const storyContainerHeight = Math.min(
-    Math.max(
-      storyWrapperRef.current?.clientHeight ?? 0,
-      window.innerHeight / 3,
-    ),
-    window.innerHeight * 0.8,
-  );
+  // Commented out as this variable is not needed when code examples are not enabled.
+  // This line was causing issues as the page no longer has access to `window`.
+  // const storyContainerHeight = Math.min(
+  //   Math.max(
+  //     storyWrapperRef.current?.clientHeight ?? 0,
+  //     window.innerHeight / 3,
+  //   ),
+  //   window.innerHeight * 0.8,
+  // );
 
   // should match the total height of the story container
-  const exampleCodeHeight = storyContainerHeight + 48;
+  // const exampleCodeHeight = storyContainerHeight + 48;
 
   // Currently disabling code examples for all components
   // TODO: Fix code examples: https://jira.mongodb.org/browse/LG-3310
@@ -121,13 +123,13 @@ export const LiveExample = ({
               <LiveExampleError message={context.errorMessage} />
             )}
           </div>
-          {codeExampleEnabled && (
+          {/* {codeExampleEnabled && (
             <CodeExample
               showCode={showCode}
               code={storyCode}
               height={exampleCodeHeight}
             />
-          )}
+          )} */}
         </div>
         {isStateReady(context) && (
           <KnobsTable

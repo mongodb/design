@@ -44,7 +44,6 @@ const navItemStyle = css`
 const defaultStyle = css`
   transition: all 150ms ease-in-out;
   max-height: 0;
-  overflow: hidden;
   opacity: 1;
 `;
 

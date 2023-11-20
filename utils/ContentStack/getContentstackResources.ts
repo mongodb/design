@@ -38,7 +38,14 @@ interface QueryOptions {
   includeContent: boolean;
 }
 
-const componentProperties = ['uid', 'title', 'description', 'url', 'figmaurl'];
+const componentProperties = [
+  'uid',
+  'title',
+  'description',
+  'url',
+  'figmaurl',
+  'private',
+];
 const optionalComponentProperties = ['designguidelines'];
 
 /**

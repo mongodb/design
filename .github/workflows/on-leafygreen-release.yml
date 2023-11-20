@@ -3,15 +3,32 @@ on:
   repository_dispatch:
     types: [release-leafygreen-ui]
 jobs:
-  myEvent:
+  update-packages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: yarn install
-      - run: yarn update-packages
-      - name: pull-request
-        uses: repo-sync/pull-request@v2
         with:
-          destination_branch: "staging"
-          pr_title: "Automated PR: update packages"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          ref: post-release/update-packages
+      - name: Use Node 16
+        uses: actions/setup-node@v3
+        if: ${{ steps.build-cache.outputs.cache-hit != 'true' }}
+        with:
+          node-version: '16'
+          cache: yarn
+          cache-dependency-path: yarn.lock
+      - run: yarn install
+      - run: yarn update-packages '${{ github.event.client_payload.packages }}'
+      - name: add and commit
+        env:
+          MY_EMAIL: s.park@mongodb.com
+          MY_NAME: spark33
+        run: |
+          git config --global user.email $MY_EMAIL
+          git config --global user.name $MY_NAME
+          git add .
+          git commit -m "update LGUI packages"
+          git push origin post-release/update-packages
+      - name: pull-request
+        run: gh pr create -B staging -H post-release/update-packages --title 'Automated PR - Update packages' --body 'Automated PR to update LGUI packages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
