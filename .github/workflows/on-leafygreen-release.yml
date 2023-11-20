@@ -1,8 +1,7 @@
 name: Repository Dispatch
 on:
   repository_dispatch:
-    types:
-      - release-leafygreen-ui
+    types: [release-leafygreen-ui]
 jobs:
   update-packages:
     runs-on: ubuntu-latest
@@ -20,6 +19,6 @@ jobs:
       - run: yarn install
       - run: yarn update-packages '${{ github.event.client_payload.packages }}'
       - name: pull-request
-        run: gh pr create -B staging -H post-release/update-packages --title 'Automated PR - Update packages'
+        run: gh pr create -B staging -H post-release/update-packages -t 'Automated PR - Update packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
