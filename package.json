@@ -79,7 +79,7 @@
     "@leafygreen-ui/skeleton-loader": "^1.1.2",
     "@leafygreen-ui/split-button": "^1.0.10",
     "@leafygreen-ui/stepper": "^3.2.8",
-    "@leafygreen-ui/table": "^12.1.2",
+    "@leafygreen-ui/table": "^12.1.4",
     "@leafygreen-ui/tabs": "^11.1.12",
     "@leafygreen-ui/text-area": "^8.0.20",
     "@leafygreen-ui/text-input": "^12.1.24",
