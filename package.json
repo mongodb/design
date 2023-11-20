@@ -110,7 +110,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "gray-matter": "4.0.3",
     "next": "^12.3.0",
-    "next-auth": "4.13.0",
+    "next-auth": "4.24.5",
     "pascalcase": "^2.0.0",
     "polished": "^4.1.3",
     "prettier": "^2.7.1",
