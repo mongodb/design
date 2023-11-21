@@ -16,7 +16,10 @@
 
 # misc
 .DS_Store
+**/.DS_Store
 *.pem
+*.crt
+*.key
 
 # debug
 npm-debug.log*

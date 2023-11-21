@@ -1,11 +1,14 @@
 import React from 'react';
 import kebabCase from 'lodash/kebabCase';
+import startCase from 'lodash/startCase';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 import { pageContainerWidth } from 'styles/constants';
 import { containerPadding } from 'styles/globals';
 import { ComponentFields } from 'utils/ContentStack/types';
 import getFullPageTitle from 'utils/getFullPageTitle';
+import { getGithubLink } from 'utils/getGithubLink';
 import { mq } from 'utils/mediaQuery';
 
 import FigmaIcon from 'components/icons/FigmaIcon';
@@ -99,9 +102,7 @@ const ComponentLinks = ({
       target="_blank"
       rel="noopener noreferrer"
       style={{ marginRight: '8px' }}
-      href={`https://github.com/mongodb/leafygreen-ui/tree/main/packages/${kebabCase(
-        component.title,
-      )}`}
+      href={getGithubLink(component.private, component.title)}
     >
       <GithubIcon />
     </IconButton>
@@ -121,14 +122,19 @@ const ComponentLinks = ({
 
 function ComponentLayout({
   component,
+  componentName,
   children,
 }: {
-  component: ComponentFields;
+  component?: ComponentFields;
   children: React.ReactNode;
+  componentName: string;
 }) {
-  const pageTitle = getFullPageTitle(component.title);
-
   const router = useRouter();
+  const { data: session } = useSession();
+
+  const pageTitle = getFullPageTitle(startCase(componentName));
+  const isPrivate = !!component?.private;
+
   const viewport = useViewportSize();
   const isMobile =
     viewport !== null ? viewport.width < breakpoints.Tablet : false;
@@ -136,7 +142,9 @@ function ComponentLayout({
   const [selected, setSelected] = React.useState(0);
 
   React.useEffect(() => {
-    const activeTab = router.pathname.split('/').filter(subStr => !!subStr)[2];
+    const activeTab = router.pathname.split('/').filter(subStr => !!subStr)[
+      isPrivate ? 3 : 2
+    ];
     setSelected(
       activeTab === 'example' ? 0 : activeTab === 'guidelines' ? 1 : 2,
     );
@@ -148,62 +156,73 @@ function ComponentLayout({
         <title>{pageTitle}</title>
         <meta property="og:title" content={pageTitle} />
         {/* If the description field doesn't exist, it will default to a description of the site, defined in _document. */}
-        {component.description && (
-          <meta property="og:description" content={component.description} />
+        {component?.description && (
+          <meta property="og:description" content={component?.description} />
         )}
-        <meta name="keywords" content={component.title} />
+        <meta name="keywords" content={component?.title} />
       </Head>
 
       <div className={mainContentStyle}>
         <div className={cx([flexContainer, containerPadding])}>
           <H2 as="h1" className={pageHeaderStyle}>
-            {component.title}
+            {componentName}
           </H2>
-          {isMobile && (
+          {isMobile && component && session && (
             <ComponentLinks
               component={component}
               className={cx([flexContainer, mobileLinksContainer])}
             />
           )}
         </div>
-        <div className={flexContainer}>
-          <Tabs
-            selected={selected}
-            setSelected={setSelected}
-            aria-label={`Information on LeafyGreen UI ${component.title} component`}
-            className={tabStyles}
-            inlineChildren={
-              !isMobile && (
-                <ComponentLinks
-                  component={component}
-                  className={cx([flexContainer, desktopLinksContainer])}
-                />
-              )
-            }
-            as={NextLinkWrapper}
-          >
-            <Tab
-              name="Live Example"
-              href={`/component/${kebabCase(component.title)}/example`}
+        {component && (!component.private || (component.private && session)) ? (
+          <div className={flexContainer}>
+            <Tabs
+              selected={selected}
+              setSelected={setSelected}
+              aria-label={`Information on LeafyGreen UI ${pageTitle} component`}
+              className={tabStyles}
+              inlineChildren={
+                !isMobile &&
+                component && (
+                  <ComponentLinks
+                    component={component}
+                    className={cx([flexContainer, desktopLinksContainer])}
+                  />
+                )
+              }
+              as={NextLinkWrapper}
             >
-              <div className={liveExamplePageStyles}>{children}</div>
-            </Tab>
-            <Tab
-              name="Design Guidelines"
-              href={`/component/${kebabCase(component.title)}/guidelines`}
-            >
-              <LeafyGreenProvider baseFontSize={16}>
-                <div className={componentGuidelinePageStyles}>{children}</div>
-              </LeafyGreenProvider>
-            </Tab>
-            <Tab
-              name="Code Docs"
-              href={`/component/${kebabCase(component.title)}/documentation`}
-            >
-              <div className={codeDocsPageStyles}>{children}</div>
-            </Tab>
-          </Tabs>
-        </div>
+              <Tab
+                name="Live Example"
+                href={`/component/${isPrivate ? 'private/' : ''}${kebabCase(
+                  componentName,
+                )}/example`}
+              >
+                <div className={liveExamplePageStyles}>{children}</div>
+              </Tab>
+              <Tab
+                name="Design Guidelines"
+                href={`/component/${isPrivate ? 'private/' : ''}${kebabCase(
+                  componentName,
+                )}/guidelines`}
+              >
+                <LeafyGreenProvider baseFontSize={16}>
+                  <div className={componentGuidelinePageStyles}>{children}</div>
+                </LeafyGreenProvider>
+              </Tab>
+              <Tab
+                name="Code Docs"
+                href={`/component/${isPrivate ? 'private/' : ''}${kebabCase(
+                  componentName,
+                )}/documentation`}
+              >
+                <div className={codeDocsPageStyles}>{children}</div>
+              </Tab>
+            </Tabs>
+          </div>
+        ) : (
+          <div>{children}</div>
+        )}
       </div>
     </div>
   );
