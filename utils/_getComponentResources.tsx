@@ -4,6 +4,8 @@ import util from 'util';
 import markdownToHtml from 'utils/markdownToHtml';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
+import { PRIVATE_PACKAGES } from './constants';
+
 // eslint-disable-next-line import/no-anonymous-default-export, react/display-name
 export default function () {
   return null;
@@ -46,10 +48,16 @@ export async function getChangelog(
   componentName: string,
 ): Promise<string | null> {
   try {
+    let namespace = '@leafygreen-ui';
+
+    if(PRIVATE_PACKAGES.includes(componentName)) {
+      namespace = '@lg-private';
+    }
+
     const changelogMarkdown = await getFileContent(
       path.join(
         './node_modules',
-        `@leafygreen-ui/${componentName}`,
+        `${namespace}/${componentName}`,
         '/CHANGELOG.md',
       ),
     );
@@ -62,10 +70,16 @@ export async function getChangelog(
 
 export async function getReadme(componentName: string): Promise<string | null> {
   try {
+    let namespace = '@leafygreen-ui';
+
+    if(PRIVATE_PACKAGES.includes(componentName)) {
+      namespace = '@lg-private';
+    }
+
     const readmeMarkdown = await getFileContent(
       path.join(
         './node_modules',
-        `@leafygreen-ui/${componentName}`,
+        `${namespace}/${componentName}`,
         '/README.md',
       ),
       'utf-8',
@@ -81,14 +95,19 @@ export async function getReadme(componentName: string): Promise<string | null> {
 export async function getTSDoc(
   componentName: string,
 ): Promise<Array<CustomComponentDoc> | null> {
+  let namespace = '@leafygreen-ui';
   if (typeof componentName !== 'string') return null;
+
+  if(PRIVATE_PACKAGES.includes(componentName)) {
+    namespace = '@lg-private';
+  }
 
   try {
     return JSON.parse(
       await getFileContent(
         path.join(
           './node_modules',
-          `@leafygreen-ui/${componentName}`,
+          `${namespace}/${componentName}`,
           '/tsdoc.json',
         ),
         'utf-8',
