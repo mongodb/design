@@ -50,7 +50,7 @@ export async function getChangelog(
   try {
     let namespace = '@leafygreen-ui';
 
-    if(PRIVATE_PACKAGES.includes(componentName)) {
+    if (PRIVATE_PACKAGES.includes(componentName)) {
       namespace = '@lg-private';
     }
 
@@ -72,7 +72,7 @@ export async function getReadme(componentName: string): Promise<string | null> {
   try {
     let namespace = '@leafygreen-ui';
 
-    if(PRIVATE_PACKAGES.includes(componentName)) {
+    if (PRIVATE_PACKAGES.includes(componentName)) {
       namespace = '@lg-private';
     }
 
@@ -98,7 +98,7 @@ export async function getTSDoc(
   let namespace = '@leafygreen-ui';
   if (typeof componentName !== 'string') return null;
 
-  if(PRIVATE_PACKAGES.includes(componentName)) {
+  if (PRIVATE_PACKAGES.includes(componentName)) {
     namespace = '@lg-private';
   }
 

@@ -8,7 +8,7 @@ export const authOptions = {
       clientId: process.env.OKTA_OAUTH2_CLIENT_ID as string,
       clientSecret: process.env.OKTA_OAUTH2_CLIENT_SECRET as string,
       issuer: process.env.OKTA_OAUTH2_ISSUER as string,
-      checks: 'state'
+      checks: 'state',
     }),
   ],
   // secret is read from process.env.NEXTAUTH_SECRET by default

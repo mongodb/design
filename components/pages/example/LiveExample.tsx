@@ -75,7 +75,8 @@ export const LiveExample = ({
     setShowCode(sc => !sc);
   };
 
-  const storyWrapperStyle = context.meta?.parameters?.wrapperStyle;
+  const storyContainerOverrideStyles =
+    context.meta?.parameters?.containerStyles;
 
   // Commented out as this variable is not needed when code examples are not enabled.
   // This line was causing issues as the page no longer has access to `window`.
@@ -109,9 +110,10 @@ export const LiveExample = ({
             className={cx(storyContainerStyle, {
               [blockContainerStyle]: useBlockWrapperFor.includes(componentName),
             })}
+            style={storyContainerOverrideStyles}
           >
             {isStateReady(context) && (
-              <div ref={storyWrapperRef} className={storyWrapperStyle}>
+              <div ref={storyWrapperRef}>
                 <LiveExampleDecorator meta={context.meta}>
                   <context.StoryFn {...context.knobValues} />
                 </LiveExampleDecorator>

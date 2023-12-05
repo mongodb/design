@@ -165,7 +165,7 @@ function ComponentLayout({
       <div className={mainContentStyle}>
         <div className={cx([flexContainer, containerPadding])}>
           <H2 as="h1" className={pageHeaderStyle}>
-            {componentName}
+            {componentName.replaceAll('-', ' ')}
           </H2>
           {isMobile && component && session && (
             <ComponentLinks

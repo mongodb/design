@@ -16,11 +16,9 @@ export async function getComponentStories(
 ): Promise<ModuleType | undefined> {
   let namespace = '@leafygreen-ui';
 
-  if(PRIVATE_PACKAGES.includes(kebabName)) {
+  if (PRIVATE_PACKAGES.includes(kebabName)) {
     namespace = '@lg-private';
   }
-
-  console.log(`${namespace}/${kebabName}/stories.js`)
 
   try {
     return import(`node_modules/${namespace}/${kebabName}/stories.js`);

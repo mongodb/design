@@ -7,7 +7,8 @@ export const liveExampleWrapperStyle = css`
   position: relative;
   display: flex;
   margin-bottom: initial;
-  overflow: hidden;
+  // 'overflow: hidden' will stop MongoNav's Menu's from being hidden
+  /* overflow: hidden; */
   // additional padding is added in storyContainerStyle
   padding: ${60 - spacing[3]}px;
 `;
