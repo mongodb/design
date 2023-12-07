@@ -19,6 +19,13 @@ jobs:
           node-version: '16'
           cache: yarn
           cache-dependency-path: 'yarn.lock'
+      - name: Set .npmrc
+        run: |
+          echo "@lg-private:registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" > .npmrc
+          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:username=design-systems-team" > .npmrc
+          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:email=brooke.yalof@mongodb.com" > .npmrc
+          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:always-auth=true" > .npmrc
+          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:password=${{ secrets.JFROG_PASSWORD }}" > .npmrc
       - name: Install Dependencies
         run: yarn install
       - name: Lint
