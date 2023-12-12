@@ -21,7 +21,8 @@ jobs:
           cache-dependency-path: 'yarn.lock'
       - name: Set .npmrc
         run: |
-echo "\n@lg-private:registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> ~/.npmrc
+echo "\n" >> ~/.npmrc
+echo "@lg-private:registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> ~/.npmrc
 echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:username=${{ secrets.JFROG_USERNAME }}" >> ~/.npmrc
 echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:email=${{ secrets.JFROG_EMAIL }}" >> ~/.npmrc
 echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:always-auth=true" >> ~/.npmrc
