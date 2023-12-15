@@ -11,6 +11,7 @@ import getFullPageTitle from 'utils/getFullPageTitle';
 import { getGithubLink } from 'utils/getGithubLink';
 import { mq } from 'utils/mediaQuery';
 
+import CodeSandboxIcon from 'components/icons/CodeSandboxIcon';
 import FigmaIcon from 'components/icons/FigmaIcon';
 import GithubIcon from 'components/icons/GithubIcon';
 import { NextLinkWrapper } from 'components/NextLinkWrapper';
@@ -68,8 +69,6 @@ const mobileLinksContainer = css`
 `;
 
 const desktopLinksContainer = css`
-  border-bottom: 1px solid ${palette.gray.light2};
-  padding-bottom: 11px;
   align-self: flex-start;
   flex: 1;
   justify-content: flex-end;
@@ -78,10 +77,16 @@ const desktopLinksContainer = css`
 const tabStyles = css`
   width: 100%;
   max-width: 100%;
+
+  > div:first-child {
+    border-bottom: 1px solid ${palette.gray.light2};
+  }
+
   [role='tablist'] {
     width: 100%;
     max-width: 100%;
     overflow-x: scroll;
+    background: none;
     ${mq({
       padding: ['0px 8px', '0px'],
     })}
@@ -96,7 +101,21 @@ const ComponentLinks = ({
   [key: string]: any;
 }) => (
   <div {...rest}>
+    {component?.codesandbox_url?.href && (
+      <IconButton
+        key="codesandbox"
+        aria-label="View in CodeSandbox"
+        as="a"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ marginRight: '8px' }}
+        href={component?.codesandbox_url?.href}
+      >
+        <CodeSandboxIcon />
+      </IconButton>
+    )}
     <IconButton
+      key="github"
       aria-label="View in Github"
       as="a"
       target="_blank"
@@ -108,6 +127,7 @@ const ComponentLinks = ({
     </IconButton>
     {component.figmaurl && (
       <IconButton
+        key="figma"
         aria-label="View in Figma"
         as="a"
         href={component.figmaurl}
@@ -175,7 +195,7 @@ function ComponentLayout({
           )}
         </div>
         {component && (!component.private || (component.private && session)) ? (
-          <div className={flexContainer}>
+          <div className={cx(flexContainer)}>
             <Tabs
               selected={selected}
               setSelected={setSelected}
