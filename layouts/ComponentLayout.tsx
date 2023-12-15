@@ -69,24 +69,20 @@ const mobileLinksContainer = css`
 `;
 
 const desktopLinksContainer = css`
-  align-self: flex-start;
+  border-bottom: 1px solid ${palette.gray.light2};
   flex: 1;
   justify-content: flex-end;
+  height: 100%;
 `;
 
 const tabStyles = css`
   width: 100%;
   max-width: 100%;
 
-  > div:first-child {
-    border-bottom: 1px solid ${palette.gray.light2};
-  }
-
   [role='tablist'] {
     width: 100%;
     max-width: 100%;
     overflow-x: scroll;
-    background: none;
     ${mq({
       padding: ['0px 8px', '0px'],
     })}
