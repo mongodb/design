@@ -102,7 +102,7 @@ const getTooltipParams = (component: ComponentFields, type: LinkType) => {
   const tooltipMap = {
     [LinkType.CodeSandbox]: {
       icon: CodeSandboxIcon,
-      text: 'Edit in Code Sandbox',
+      text: 'Edit in CodeSandbox',
       href: component?.codesandbox_url?.href,
     },
     [LinkType.Github]: {
