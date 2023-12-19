@@ -142,7 +142,7 @@ const ComponentTooltip = ({
       trigger={
         <IconButton
           key={type}
-          aria-label="View in CodeSandbox"
+          aria-label={text}
           as="a"
           target="_blank"
           rel="noopener noreferrer"
