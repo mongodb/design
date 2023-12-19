@@ -23,6 +23,7 @@ import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
 import { palette } from '@leafygreen-ui/palette';
 import { Tab, Tabs } from '@leafygreen-ui/tabs';
 import { breakpoints, spacing } from '@leafygreen-ui/tokens';
+import Tooltip from '@leafygreen-ui/tooltip';
 import { H2 } from '@leafygreen-ui/typography';
 
 const layout = css`
@@ -89,6 +90,74 @@ const tabStyles = css`
   }
 `;
 
+const LinkType = {
+  CodeSandbox: 'codeSandbox',
+  Github: 'github',
+  Figma: 'figma',
+} as const;
+
+type LinkType = (typeof LinkType)[keyof typeof LinkType];
+
+const getTooltipParams = (component: ComponentFields, type: LinkType) => {
+  const tooltipMap = {
+    [LinkType.CodeSandbox]: {
+      icon: CodeSandboxIcon,
+      text: 'Edit in Code Sandbox',
+      href: component?.codesandbox_url?.href,
+    },
+    [LinkType.Github]: {
+      icon: GithubIcon,
+      text: 'View GitHub package',
+      href: getGithubLink(component.private, component.title),
+    },
+    [LinkType.Figma]: {
+      icon: FigmaIcon,
+      text: 'View Figma file',
+      href: component.figmaurl,
+    },
+  };
+
+  return tooltipMap[type];
+};
+
+const ComponentTooltip = ({
+  component,
+  type,
+}: {
+  component: ComponentFields;
+  type: LinkType;
+}) => {
+  if (!component) {
+    return null;
+  }
+
+  const { icon: Icon, text, href } = getTooltipParams(component, type);
+
+  if (!href) {
+    return null;
+  }
+
+  return (
+    <Tooltip
+      trigger={
+        <IconButton
+          key={type}
+          aria-label={text}
+          as="a"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ marginRight: '8px' }}
+          href={href}
+        >
+          <Icon />
+        </IconButton>
+      }
+    >
+      {text}
+    </Tooltip>
+  );
+};
+
 const ComponentLinks = ({
   component,
   ...rest
@@ -97,42 +166,9 @@ const ComponentLinks = ({
   [key: string]: any;
 }) => (
   <div {...rest}>
-    {component?.codesandbox_url?.href && (
-      <IconButton
-        key="codesandbox"
-        aria-label="View in CodeSandbox"
-        as="a"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ marginRight: '8px' }}
-        href={component?.codesandbox_url?.href}
-      >
-        <CodeSandboxIcon />
-      </IconButton>
-    )}
-    <IconButton
-      key="github"
-      aria-label="View in Github"
-      as="a"
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{ marginRight: '8px' }}
-      href={getGithubLink(component.private, component.title)}
-    >
-      <GithubIcon />
-    </IconButton>
-    {component.figmaurl && (
-      <IconButton
-        key="figma"
-        aria-label="View in Figma"
-        as="a"
-        href={component.figmaurl}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FigmaIcon />
-      </IconButton>
-    )}
+    {Object.values(LinkType).map(type => (
+      <ComponentTooltip key={type} type={type} component={component} />
+    ))}
   </div>
 );
 
@@ -156,6 +192,8 @@ function ComponentLayout({
     viewport !== null ? viewport.width < breakpoints.Tablet : false;
 
   const [selected, setSelected] = React.useState(0);
+
+  const displayName = componentName.split('-').join(' ');
 
   React.useEffect(() => {
     const activeTab = router.pathname.split('/').filter(subStr => !!subStr)[
@@ -181,7 +219,7 @@ function ComponentLayout({
       <div className={mainContentStyle}>
         <div className={cx([flexContainer, containerPadding])}>
           <H2 as="h1" className={pageHeaderStyle}>
-            {componentName}
+            {displayName}
           </H2>
           {isMobile && component && session && (
             <ComponentLinks
