@@ -70,24 +70,20 @@ const mobileLinksContainer = css`
 `;
 
 const desktopLinksContainer = css`
-  align-self: flex-start;
+  border-bottom: 1px solid ${palette.gray.light2};
   flex: 1;
   justify-content: flex-end;
+  height: 100%;
 `;
 
 const tabStyles = css`
   width: 100%;
   max-width: 100%;
 
-  > div:first-child {
-    border-bottom: 1px solid ${palette.gray.light2};
-  }
-
   [role='tablist'] {
     width: 100%;
     max-width: 100%;
     overflow-x: scroll;
-    background: none;
     ${mq({
       padding: ['0px 8px', '0px'],
     })}
@@ -197,6 +193,8 @@ function ComponentLayout({
 
   const [selected, setSelected] = React.useState(0);
 
+  const displayName = componentName.split('-').join(' ');
+
   React.useEffect(() => {
     const activeTab = router.pathname.split('/').filter(subStr => !!subStr)[
       isPrivate ? 3 : 2
@@ -221,7 +219,7 @@ function ComponentLayout({
       <div className={mainContentStyle}>
         <div className={cx([flexContainer, containerPadding])}>
           <H2 as="h1" className={pageHeaderStyle}>
-            {componentName}
+            {displayName}
           </H2>
           {isMobile && component && session && (
             <ComponentLinks
