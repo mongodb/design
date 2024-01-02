@@ -11,6 +11,7 @@ import getFullPageTitle from 'utils/getFullPageTitle';
 import { getGithubLink } from 'utils/getGithubLink';
 import { mq } from 'utils/mediaQuery';
 
+import CodeSandboxIcon from 'components/icons/CodeSandboxIcon';
 import FigmaIcon from 'components/icons/FigmaIcon';
 import GithubIcon from 'components/icons/GithubIcon';
 import { NextLinkWrapper } from 'components/NextLinkWrapper';
@@ -22,6 +23,7 @@ import LeafyGreenProvider from '@leafygreen-ui/leafygreen-provider';
 import { palette } from '@leafygreen-ui/palette';
 import { Tab, Tabs } from '@leafygreen-ui/tabs';
 import { breakpoints, spacing } from '@leafygreen-ui/tokens';
+import Tooltip from '@leafygreen-ui/tooltip';
 import { H2 } from '@leafygreen-ui/typography';
 
 const layout = css`
@@ -69,15 +71,15 @@ const mobileLinksContainer = css`
 
 const desktopLinksContainer = css`
   border-bottom: 1px solid ${palette.gray.light2};
-  padding-bottom: 11px;
-  align-self: flex-start;
   flex: 1;
   justify-content: flex-end;
+  height: 100%;
 `;
 
 const tabStyles = css`
   width: 100%;
   max-width: 100%;
+
   [role='tablist'] {
     width: 100%;
     max-width: 100%;
@@ -88,6 +90,74 @@ const tabStyles = css`
   }
 `;
 
+const LinkType = {
+  CodeSandbox: 'codeSandbox',
+  Github: 'github',
+  Figma: 'figma',
+} as const;
+
+type LinkType = (typeof LinkType)[keyof typeof LinkType];
+
+const getTooltipParams = (component: ComponentFields, type: LinkType) => {
+  const tooltipMap = {
+    [LinkType.CodeSandbox]: {
+      icon: CodeSandboxIcon,
+      text: 'Edit in CodeSandbox',
+      href: component?.codesandbox_url?.href,
+    },
+    [LinkType.Github]: {
+      icon: GithubIcon,
+      text: 'View GitHub package',
+      href: getGithubLink(component.private, component.title),
+    },
+    [LinkType.Figma]: {
+      icon: FigmaIcon,
+      text: 'View Figma file',
+      href: component.figmaurl,
+    },
+  };
+
+  return tooltipMap[type];
+};
+
+const ComponentTooltip = ({
+  component,
+  type,
+}: {
+  component: ComponentFields;
+  type: LinkType;
+}) => {
+  if (!component) {
+    return null;
+  }
+
+  const { icon: Icon, text, href } = getTooltipParams(component, type);
+
+  if (!href) {
+    return null;
+  }
+
+  return (
+    <Tooltip
+      trigger={
+        <IconButton
+          key={type}
+          aria-label={text}
+          as="a"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ marginRight: '8px' }}
+          href={href}
+        >
+          <Icon />
+        </IconButton>
+      }
+    >
+      {text}
+    </Tooltip>
+  );
+};
+
 const ComponentLinks = ({
   component,
   ...rest
@@ -96,27 +166,9 @@ const ComponentLinks = ({
   [key: string]: any;
 }) => (
   <div {...rest}>
-    <IconButton
-      aria-label="View in Github"
-      as="a"
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{ marginRight: '8px' }}
-      href={getGithubLink(component.private, component.title)}
-    >
-      <GithubIcon />
-    </IconButton>
-    {component.figmaurl && (
-      <IconButton
-        aria-label="View in Figma"
-        as="a"
-        href={component.figmaurl}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FigmaIcon />
-      </IconButton>
-    )}
+    {Object.values(LinkType).map(type => (
+      <ComponentTooltip key={type} type={type} component={component} />
+    ))}
   </div>
 );
 
@@ -140,6 +192,8 @@ function ComponentLayout({
     viewport !== null ? viewport.width < breakpoints.Tablet : false;
 
   const [selected, setSelected] = React.useState(0);
+
+  const displayName = componentName.split('-').join(' ');
 
   React.useEffect(() => {
     const activeTab = router.pathname.split('/').filter(subStr => !!subStr)[
@@ -165,7 +219,7 @@ function ComponentLayout({
       <div className={mainContentStyle}>
         <div className={cx([flexContainer, containerPadding])}>
           <H2 as="h1" className={pageHeaderStyle}>
-            {componentName.replaceAll('-', ' ')}
+            {displayName}
           </H2>
           {isMobile && component && session && (
             <ComponentLinks
@@ -175,7 +229,7 @@ function ComponentLayout({
           )}
         </div>
         {component && (!component.private || (component.private && session)) ? (
-          <div className={flexContainer}>
+          <div className={cx(flexContainer)}>
             <Tabs
               selected={selected}
               setSelected={setSelected}

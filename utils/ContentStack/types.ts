@@ -31,6 +31,7 @@ export interface ComponentPageMeta {
   url: string;
   description: string;
   figmaurl?: string;
+  codesandbox_url?: { title?: string; href?: string };
   private?: boolean;
 }
 
