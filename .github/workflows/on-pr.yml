@@ -20,12 +20,18 @@ jobs:
           cache: yarn
           cache-dependency-path: 'yarn.lock'
       - name: Set .npmrc
+        with:
+
         run: |
           echo "@lg-private:registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> .npmrc
-          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:username=${{ secrets.JFROG_USERNAME }}" >> .npmrc
-          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:email=${{ secrets.JFROG_EMAIL }}" >> .npmrc
+          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:username=$JFROG_USERNAME" >> .npmrc
+          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:email=$JFROG_EMAIL" >> .npmrc
           echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:always-auth=true" >> .npmrc
-          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:password=${{ secrets.JFROG_PASSWORD }}" >> .npmrc
+          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:password=$JFROG_PASSWORD" >> .npmrc
+        env:
+          JFROG_USERNAME: ${{ secrets.JFROG_USERNAME }}
+          JFROG_EMAIL: ${{ secrets.JFROG_EMAIL }}
+          JFROG_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
       - name: Install Dependencies
         run: yarn install
       - name: Lint
