@@ -26,10 +26,12 @@ jobs:
           echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:email=$JFROG_EMAIL" >> .npmrc
           echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:always-auth=true" >> .npmrc
           echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:password=$JFROG_PASSWORD" >> .npmrc
+          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:_auth=$JFROG_AUTH" >> .npmrc
         env:
           JFROG_USERNAME: ${{ secrets.JFROG_USERNAME }}
           JFROG_EMAIL: ${{ secrets.JFROG_EMAIL }}
           JFROG_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
+          JFROG_AUTH: ${{ secrets.JFROG_AUTH }}
       - name: Install Dependencies
         run: yarn install
       - name: Lint
