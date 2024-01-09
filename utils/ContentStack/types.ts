@@ -10,7 +10,7 @@ export interface ContentPageGroup extends Object {
   title: string;
   url: string;
   iconname: string;
-  content_pages: Array<ContentPageMeta>;
+  content_pages: Array<ContentPage>;
 }
 
 /**
@@ -27,6 +27,7 @@ export interface ContentPageMeta {
  */
 export interface ContentPage extends ContentPageMeta {
   content: unknown;
+  is_private?: boolean;
 }
 
 /**
