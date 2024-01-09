@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
-import { ComponentStoryFn } from '@storybook/react';
-import {
-  GuidelinesContextProvider,
-  useGuidelinesContext,
-} from 'contexts/GuidelinesContext';
+import { GuidelinesContextProvider } from 'contexts/GuidelinesContext';
 import startCase from 'lodash/startCase';
 import Head from 'next/head';
 import { useSession } from 'next-auth/react';

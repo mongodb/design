@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { useDynamicRefs, usePrevious } from '@leafygreen-ui/hooks';
+import { useDynamicRefs } from '@leafygreen-ui/hooks';
 
 export type BreadcrumbHeader = 'h2' | 'h4';
 

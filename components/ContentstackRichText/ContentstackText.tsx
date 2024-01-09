@@ -24,6 +24,7 @@ const ContentstackText = ({ node, ...rest }: CSRichTextProps) => {
   }
 
   return (
+    // @ts-ignore href not needed as no links will be rendered as a result of this component's logic
     <Polymorph as={renderAs} {...rest}>
       {node.text}
     </Polymorph>

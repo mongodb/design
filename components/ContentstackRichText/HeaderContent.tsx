@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { TextNode } from '@contentstack/utils';
 import styled from '@emotion/styled';
 import {
   BreadcrumbHeader,
@@ -11,8 +10,7 @@ import Link from 'next/link';
 import Icon from '@leafygreen-ui/icon';
 import { palette } from '@leafygreen-ui/palette';
 
-import ContentstackChildren from './ContentstackChildren';
-import { AnyNode, CSNode, CSTextNode } from './types';
+import { CSNode } from './types';
 import { getCSNodeTextContent } from './utils';
 
 const StyledAnchor = styled('a')`

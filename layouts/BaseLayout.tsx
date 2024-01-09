@@ -37,8 +37,6 @@ const layout = css`
   })}
 `;
 
-const padding = `${spacing[5]}px`;
-
 export const childrenWrapper = css`
   ${mq({
     // paddingLeft: [0, 0, padding, padding],
