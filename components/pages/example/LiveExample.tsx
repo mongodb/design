@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { ObjectFlags } from 'typescript';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import Card from '@leafygreen-ui/card';
@@ -75,6 +76,18 @@ export const LiveExample = ({
     setShowCode(sc => !sc);
   };
 
+  // FIXME:
+  // Turns `a.b.c` into `c`.
+  // This format is only used in MongoNav and this is in place on a temporary basis with the expectation that this nested pattern will be deprecated in the next major version of MongoNav.
+  const removeObjectKeysFromKnobValues = knobValues => {
+    const result = Object.keys(knobValues).reduce((obj, knobName) => {
+      const objKeys = knobName.split('.');
+      obj[objKeys[objKeys.length - 1]] = knobValues[knobName];
+      return obj;
+    }, {});
+    return result;
+  };
+
   const storyContainerOverrideStyles =
     context.meta?.parameters?.containerStyles;
 
@@ -115,7 +128,9 @@ export const LiveExample = ({
             {isStateReady(context) && (
               <div ref={storyWrapperRef}>
                 <LiveExampleDecorator meta={context.meta}>
-                  <context.StoryFn {...context.knobValues} />
+                  <context.StoryFn
+                    {...removeObjectKeysFromKnobValues(context.knobValues)}
+                  />
                 </LiveExampleDecorator>
               </div>
             )}

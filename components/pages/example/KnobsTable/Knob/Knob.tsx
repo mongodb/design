@@ -92,6 +92,7 @@ export const Knob = ({
             value={value}
             onChange={onChange}
             className={cx(inputStyle, rest.className)}
+            popoverZIndex={999}
           >
             {knobOptions.map((opt: string) => (
               <Option key={opt} value={opt}>
