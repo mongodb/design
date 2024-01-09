@@ -51,6 +51,7 @@ const componentProperties = [
   'figmaurl',
   'private',
   'links_data',
+  'codesandbox_url',
 ];
 const optionalComponentProperties = ['designguidelines'];
 

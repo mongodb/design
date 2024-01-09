@@ -21,7 +21,7 @@ function exists(arg?: string | Array<any>) {
   return arg !== undefined && arg.length > 0;
 }
 
-const cli = new Command('upgrade-packages')
+const cli = new Command('update-packages')
   .arguments('[updatesArray]')
   .option('-c, --commit', 'commit upgrades to git', false)
   .option('-v, --verbose', 'List all package updates', false)
@@ -29,7 +29,9 @@ const cli = new Command('upgrade-packages')
 
 const { commit, verbose } = cli.opts();
 
-const updatesArray = cli.args[0] ? JSON.parse(cli.args[0]) : [];
+const updatesArray: Array<ComponentUpdateObject> = cli.args[0]
+  ? JSON.parse(cli.args[0])
+  : [];
 let updateCommands: Array<string>;
 
 if (exists(updatesArray) && isValidUpdatesArray(updatesArray)) {
