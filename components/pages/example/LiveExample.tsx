@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { ObjectFlags } from 'typescript';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
 import Card from '@leafygreen-ui/card';
@@ -75,7 +76,20 @@ export const LiveExample = ({
     setShowCode(sc => !sc);
   };
 
-  const storyWrapperStyle = context.meta?.parameters?.wrapperStyle;
+  // FIXME:
+  // Turns `a.b.c` into `c`.
+  // This format is only used in MongoNav and this is in place on a temporary basis with the expectation that this nested pattern will be deprecated in the next major version of MongoNav.
+  const removeObjectKeysFromKnobValues = knobValues => {
+    const result = Object.keys(knobValues).reduce((obj, knobName) => {
+      const objKeys = knobName.split('.');
+      obj[objKeys[objKeys.length - 1]] = knobValues[knobName];
+      return obj;
+    }, {});
+    return result;
+  };
+
+  const storyContainerOverrideStyles =
+    context.meta?.parameters?.containerStyles;
 
   // Commented out as this variable is not needed when code examples are not enabled.
   // This line was causing issues as the page no longer has access to `window`.
@@ -109,11 +123,14 @@ export const LiveExample = ({
             className={cx(storyContainerStyle, {
               [blockContainerStyle]: useBlockWrapperFor.includes(componentName),
             })}
+            style={storyContainerOverrideStyles}
           >
             {isStateReady(context) && (
-              <div ref={storyWrapperRef} className={storyWrapperStyle}>
+              <div ref={storyWrapperRef}>
                 <LiveExampleDecorator meta={context.meta}>
-                  <context.StoryFn {...context.knobValues} />
+                  <context.StoryFn
+                    {...removeObjectKeysFromKnobValues(context.knobValues)}
+                  />
                 </LiveExampleDecorator>
               </div>
             )}
