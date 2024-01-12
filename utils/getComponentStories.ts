@@ -1,6 +1,6 @@
 import { ComponentStoryFn, Meta } from '@storybook/react';
 
-import { PRIVATE_PACKAGES } from './constants';
+import { getNamespaceFromPkgName } from './getNamespaceFromPkgName';
 
 export type ModuleType = {
   default: Meta<any>;
@@ -14,11 +14,7 @@ export type ModuleType = {
 export async function getComponentStories(
   kebabName: string,
 ): Promise<ModuleType | undefined> {
-  let namespace = '@leafygreen-ui';
-
-  if (PRIVATE_PACKAGES.includes(kebabName)) {
-    namespace = '@lg-private';
-  }
+  const namespace = getNamespaceFromPkgName(kebabName);
 
   try {
     return import(`node_modules/${namespace}/${kebabName}/stories.js`);

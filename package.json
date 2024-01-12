@@ -87,7 +87,7 @@
     "@leafygreen-ui/tokens": "^2.2.0",
     "@leafygreen-ui/tooltip": "^11.0.0",
     "@leafygreen-ui/typography": "^18.0.1",
-    "@lg-private/mongo-nav": "^13.1.2",
+    "@lg-private/mongo-nav": "^13.1.3",
     "@lg-tools/cli": "^0.4.2",
     "@lg-tools/storybook": "^0.3.1",
     "@mdx-js/loader": "^2.1.0",

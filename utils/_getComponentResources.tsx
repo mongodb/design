@@ -4,7 +4,7 @@ import util from 'util';
 import markdownToHtml from 'utils/markdownToHtml';
 import { CustomComponentDoc } from 'utils/tsdoc.utils';
 
-import { PRIVATE_PACKAGES } from './constants';
+import { getNamespaceFromPkgName } from './getNamespaceFromPkgName';
 
 // eslint-disable-next-line import/no-anonymous-default-export, react/display-name
 export default function () {
@@ -48,11 +48,7 @@ export async function getChangelog(
   componentName: string,
 ): Promise<string | null> {
   try {
-    let namespace = '@leafygreen-ui';
-
-    if (PRIVATE_PACKAGES.includes(componentName)) {
-      namespace = '@lg-private';
-    }
+    const namespace = getNamespaceFromPkgName(componentName);
 
     const changelogMarkdown = await getFileContent(
       path.join(
@@ -70,11 +66,7 @@ export async function getChangelog(
 
 export async function getReadme(componentName: string): Promise<string | null> {
   try {
-    let namespace = '@leafygreen-ui';
-
-    if (PRIVATE_PACKAGES.includes(componentName)) {
-      namespace = '@lg-private';
-    }
+    const namespace = getNamespaceFromPkgName(componentName);
 
     const readmeMarkdown = await getFileContent(
       path.join(
@@ -95,12 +87,9 @@ export async function getReadme(componentName: string): Promise<string | null> {
 export async function getTSDoc(
   componentName: string,
 ): Promise<Array<CustomComponentDoc> | null> {
-  let namespace = '@leafygreen-ui';
   if (typeof componentName !== 'string') return null;
 
-  if (PRIVATE_PACKAGES.includes(componentName)) {
-    namespace = '@lg-private';
-  }
+  const namespace = getNamespaceFromPkgName(componentName);
 
   try {
     return JSON.parse(
