@@ -45,6 +45,7 @@ const componentProperties = [
   'url',
   'figmaurl',
   'private',
+  'codesandbox_url',
 ];
 const optionalComponentProperties = ['designguidelines'];
 
