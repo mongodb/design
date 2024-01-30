@@ -24,7 +24,7 @@ import { palette } from '@leafygreen-ui/palette';
 import { Tab, Tabs } from '@leafygreen-ui/tabs';
 import { breakpoints, spacing } from '@leafygreen-ui/tokens';
 import Tooltip from '@leafygreen-ui/tooltip';
-import { H2 } from '@leafygreen-ui/typography';
+import { H1 } from '@leafygreen-ui/typography';
 
 const layout = css`
   ${mq({
@@ -218,9 +218,7 @@ function ComponentLayout({
 
       <div className={mainContentStyle}>
         <div className={cx([flexContainer, containerPadding])}>
-          <H2 as="h1" className={pageHeaderStyle}>
-            {displayName}
-          </H2>
+          <H1 className={pageHeaderStyle}>{displayName}</H1>
           {isMobile && component && session && (
             <ComponentLinks
               component={component}
