@@ -92,13 +92,12 @@ export const LiveExample = ({
 
   // Currently disabling code examples for all components
   // TODO: Fix code examples: https://jira.mongodb.org/browse/LG-3310
-  const codeExampleEnabled = false; //!disableCodeExampleFor.includes(componentName);
+  const codeExampleEnabled = true; //!disableCodeExampleFor.includes(componentName);
 
   return (
     <LeafyGreenProvider darkMode={darkMode}>
       <Card
         className={css`
-          margin-block: 2em;
           padding: 0;
         `}
       >

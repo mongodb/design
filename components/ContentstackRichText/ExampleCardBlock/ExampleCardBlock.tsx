@@ -19,6 +19,7 @@ import ImageContainer from './ImageContainer';
 
 const ExampleCardBlockWrapper = styled.div`
   margin-block: ${spacing[5] + spacing[2]}px;
+  width: 100%;
 `;
 
 const TextContainer = styled.div`

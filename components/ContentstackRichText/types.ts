@@ -4,7 +4,7 @@ import { BadgeProps } from '@leafygreen-ui/badge/dist/Badge/types';
 import { ButtonProps } from '@leafygreen-ui/button';
 import { CalloutProps } from '@leafygreen-ui/callout/dist/Callout/types';
 
-type AnyNode = CSNode | CSTextNode;
+export type AnyNode = CSNode | CSTextNode;
 
 /** Contentstack is missing props in their type definitions */
 export interface CSNode extends Node {
@@ -26,6 +26,7 @@ export enum CSNodeType {
   DOCUMENT = 'doc',
   FRAGMENT = 'fragment',
   PARAGRAPH = 'p',
+  CODE = 'code',
   ANCHOR = 'a',
   REFERENCE = 'reference',
   HEADING_1 = 'h1',
@@ -147,6 +148,10 @@ export interface TwoColumnExampleCardBlockProps {
   column_2_image: CSImage;
 }
 
+export interface LiveExampleBlockProps {
+  story_name: string;
+}
+
 export interface BlockPropsMap {
   annotated_image_block: AnnotatedImageBlockProps;
   badge_block: BadgeBlockProps;
@@ -158,6 +163,7 @@ export interface BlockPropsMap {
   expandable_card_block: ExpandableCardBlockProps;
   horizontal_layout: HorizontalLayoutBlockProps;
   example_card_block_2_column_: TwoColumnExampleCardBlockProps;
+  live_example_block: LiveExampleBlockProps;
 }
 
 export type ContentTypeUID = keyof BlockPropsMap;

@@ -1,11 +1,15 @@
+import { useEffect } from 'react';
 import styled from '@emotion/styled';
+import {
+  BreadcrumbHeader,
+  useGuidelinesContext,
+} from 'contexts/GuidelinesContext';
 import { kebabCase } from 'lodash';
 import Link from 'next/link';
 
 import Icon from '@leafygreen-ui/icon';
 import { palette } from '@leafygreen-ui/palette';
 
-import ContentstackChildren from './ContentstackChildren';
 import { CSNode } from './types';
 import { getCSNodeTextContent } from './utils';
 
@@ -53,14 +57,20 @@ const StyledIcon = styled(Icon)`
  * Content of headers in rich text markup need to be wrapped in links and anchors for hashed links.
  */
 const HeaderContent = ({ node }: { node: CSNode }) => {
+  const nodeText = getCSNodeTextContent(node);
   const headerId = kebabCase(getCSNodeTextContent(node));
+  const { pushHeader } = useGuidelinesContext();
+
+  useEffect(() => {
+    if (node.type === 'h2' || node.type === 'h4') {
+      pushHeader(node.type as BreadcrumbHeader, nodeText);
+    }
+  }, []);
 
   return (
     <Link href={`#${headerId}`} passHref>
       <StyledAnchor id={headerId}>
-        <LinkContent>
-          <ContentstackChildren nodeChildren={node.children} />
-        </LinkContent>
+        <LinkContent>{nodeText}</LinkContent>
         <StyledIcon glyph="Link" fill={palette.gray.light1} />
       </StyledAnchor>
     </Link>

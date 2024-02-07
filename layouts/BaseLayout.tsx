@@ -37,17 +37,15 @@ const layout = css`
   })}
 `;
 
-const padding = `${spacing[5]}px`;
-
 export const childrenWrapper = css`
   ${mq({
-    paddingLeft: [0, 0, padding, padding],
-    paddingRight: [0, 0, padding, padding],
-    width: [
-      '100%',
-      '100%',
-      `calc(100% - (${padding} * 2))', 'calc(1440px - 270px - (${padding} * 2))`,
-    ],
+    // paddingLeft: [0, 0, padding, padding],
+    // paddingRight: [0, 0, padding, padding],
+    // width: [
+    //   '100%',
+    //   '100%',
+    //   `calc(100% - (${padding} * 2))', 'calc(1440px - 270px - (${padding} * 2))`,
+    // ],
     minHeight: ['unset', 'unset', '100vh'],
   })}
 `;
@@ -85,7 +83,11 @@ function BaseLayout({ children }: { children: React.ReactNode }) {
         <LayoutContext.Provider value={bodyContainerRef}>
           <div className={containerStyle}>
             <Navigation />
-            <div className={layout} ref={setBodyContainerRef}>
+            <div
+              id="scroll-container"
+              className={layout}
+              ref={setBodyContainerRef}
+            >
               <div className={childrenWrapper}>
                 <SignIn />
                 {children}

@@ -42,7 +42,7 @@ const nextConfig = {
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
-      include: isPathInLeafygreen,
+      // include: [isPathInLeafygreen, '/public'],
     });
 
     return config;

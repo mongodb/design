@@ -14,6 +14,7 @@ const ENV_MAP = {
   production: 'main',
   staging: 'staging',
   dev: 'staging',
+  experimental: 'experimental',
 } as const;
 
 const environment = ((): string => {
@@ -32,6 +33,10 @@ const Stack = Contentstack.Stack({
   api_key: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string,
   delivery_token: process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN as string,
   environment,
+  branch:
+    process.env.NEXT_PUBLIC_ENVIRONMENT === 'experimental'
+      ? 'experimental'
+      : 'main',
 });
 
 interface QueryOptions {
@@ -45,6 +50,7 @@ const componentProperties = [
   'url',
   'figmaurl',
   'private',
+  'links_data',
   'codesandbox_url',
 ];
 const optionalComponentProperties = ['designguidelines'];
@@ -108,7 +114,16 @@ export async function getContentPageGroups(): Promise<Array<ContentPageGroup>> {
     const pageGroups: Array<ContentPageGroup> = (
       await query
         .includeReference('content_pages')
-        .only(['content_pages', 'uid', 'title', 'url', 'iconname'])
+        .only([
+          'content_pages',
+          'uid',
+          'title',
+          'url',
+          'iconname',
+          'private',
+          'rendering_order',
+        ])
+        .ascending('rendering_order')
         .toJSON()
         .find()
     )[0].map(({ content_pages, ...meta }: ContentPageGroup) => {
@@ -117,11 +132,15 @@ export async function getContentPageGroups(): Promise<Array<ContentPageGroup>> {
         content_pages: content_pages
           // TODO: strip fields in initial query
           // Strip any additional fields
-          .map(({ uid, title, url }) => ({ uid, title, url }))
+          .map(({ uid, title, url, is_private }: ContentPage) => ({
+            uid,
+            title,
+            url,
+            is_private,
+          }))
           .sort((a, b) => a.title.localeCompare(b.title)),
       };
     });
-
     return pageGroups;
   } catch (error) {
     console.error('No Content Page Groups found', error);

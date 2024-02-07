@@ -12,6 +12,8 @@ import { UserInfo } from '../UserInfo';
 
 const Container = styled('div')`
   width: 100%;
+  position: absolute;
+  padding-right: 16px;
   align-items: center;
   justify-content: flex-end;
   padding-top: ${spacing[4]}px;
@@ -74,7 +76,7 @@ const DesktopSignIn = () => {
         </StyledMenu>
       ) : (
         <Button
-          variant="primaryOutline"
+          // variant="primaryOutline"
           leftGlyph={<Icon glyph="LogIn" />}
           onClick={() => signIn('okta')}
         >

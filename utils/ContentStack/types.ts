@@ -1,9 +1,16 @@
+export interface ContentstackMetadata {
+  uid: string;
+}
+export interface ContentstackObject {
+  _metadata: ContentstackMetadata;
+}
+
 export interface ContentPageGroup extends Object {
   uid: string;
   title: string;
   url: string;
   iconname: string;
-  content_pages: Array<ContentPageMeta>;
+  content_pages: Array<ContentPage>;
 }
 
 /**
@@ -20,6 +27,7 @@ export interface ContentPageMeta {
  */
 export interface ContentPage extends ContentPageMeta {
   content: unknown;
+  is_private?: boolean;
 }
 
 /**
@@ -35,12 +43,18 @@ export interface ComponentPageMeta {
   private?: boolean;
 }
 
+export interface LinkData extends ContentstackObject {
+  link: { title: string; href: string };
+  type?: string;
+}
+
 /**
  * A {@link ComponentPageMeta} with additional data fields
  * including `figmaUrl` & `designguidelines` content
  */
 export interface ComponentFields extends ComponentPageMeta {
   designguidelines?: unknown;
+  links_data?: Array<{ link_data: LinkData }>;
 }
 
 export interface BaseLayoutProps {
