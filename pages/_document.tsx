@@ -14,17 +14,21 @@ import { renderStatic } from 'utils/renderer';
 export default class AppDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const page = await ctx.renderPage();
-    const { css, ids } = await renderStatic(() => page.html);
+    const { styles } = renderStatic(() => page.html);
     const initialProps = await Document.getInitialProps(ctx);
+
     return {
       ...initialProps,
       styles: (
         <>
           {initialProps.styles}
-          <style
-            data-emotion={`css ${ids.join(' ')}`}
-            dangerouslySetInnerHTML={{ __html: css }}
-          />
+          {styles.map(({ key, ids, css }) => (
+            <style
+              key={key}
+              data-emotion={`${key} ${ids.join(' ')}`}
+              dangerouslySetInnerHTML={{ __html: css }}
+            />
+          ))}
         </>
       ),
     };
