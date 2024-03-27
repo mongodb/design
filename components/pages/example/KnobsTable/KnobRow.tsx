@@ -49,6 +49,7 @@ interface KnobRowProps extends HTMLElementProps<'div'> {
 export const KnobRow = ({ knob, knobValue, setKnobValue }: KnobRowProps) => {
   const { controlType, name, options, args } = knob;
   const { darkMode } = useDarkMode();
+  const knobLabel = kebabCase(`knob-${name}`);
 
   const renderedKnob = (
     <Knob
@@ -61,7 +62,7 @@ export const KnobRow = ({ knob, knobValue, setKnobValue }: KnobRowProps) => {
         setKnobValue(name, value);
       }}
       className={knobControlStyle}
-      aria-labelledby={`knob-${name}`}
+      aria-labelledby={knobLabel}
       {...args}
     />
   );
@@ -72,7 +73,7 @@ export const KnobRow = ({ knob, knobValue, setKnobValue }: KnobRowProps) => {
         <Body
           baseFontSize={16}
           darkMode={darkMode}
-          id={`${kebabCase()}-knob-${name}`}
+          id={knobLabel}
         >
           <strong>{name}</strong>
           {isRequired(knob) && (
