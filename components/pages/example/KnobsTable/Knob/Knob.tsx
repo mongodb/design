@@ -92,6 +92,7 @@ export const Knob = ({
             value={value}
             onChange={onChange}
             className={cx(inputStyle, rest.className)}
+            role="combobox"
           >
             {knobOptions.map((opt: string) => (
               <Option key={opt} value={opt}>
