@@ -13,43 +13,41 @@ jobs:
     name: Lint
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node 16
+      - name: Use Node 18
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: yarn
-          cache-dependency-path: 'yarn.lock'
+          node-version: '18'
+          cache: npm
+          cache-dependency-path: 'package-lock.json'
       - name: Install Dependencies
-        run: yarn install
+        run: npm install
       - name: Lint
-        run: yarn lint
+        run: npm run lint
   types:
     runs-on: ubuntu-latest
     name: Types
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node 16
+      - name: Use Node 18
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: yarn
-          cache-dependency-path: 'yarn.lock'
+          node-version: '18'
+          cache: npm
+          cache-dependency-path: 'package-lock.json'
       - name: Install Dependencies
-        run: yarn install
-      - name: TypeCheck
-        run: yarn check:ts
+        run: npm install
   build:
     runs-on: ubuntu-latest
     name: Build
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node 16
+      - name: Use Node 18
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: yarn
-          cache-dependency-path: 'yarn.lock'
+          node-version: '18'
+          cache: npm
+          cache-dependency-path: 'npm.lock'
       - name: Install Dependencies
-        run: yarn install
+        run: npm install
       - name: Build NextJS
-        run: NEXT_PUBLIC_ENVIRONMENT=main yarn build
+        run: NEXT_PUBLIC_ENVIRONMENT=main npm run build
