@@ -1,33 +1,36 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "jsx": "preserve",
-    "jsxImportSource": "@emotion/react",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "noEmit": true,
-    "isolatedModules": true,
-    "target": "es5",
     "allowJs": true,
-    "strict": false,
-    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
     "module": "esnext",
-    "pretty": true,
-    "strictNullChecks": true,
-    "noUnusedLocals": true,
-    "allowSyntheticDefaultImports": true,
-    "incremental": true
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    ".next/types/**/*.ts",
+    "context/**/*.tsx",
+    "scripts/update.mjs",
     "components/**/*.tsx",
-    "utils/*.tsx",
-    "pages/*.tsx"
+    "hooks/**/*.tsx",
+    "utils/**/*.tsx",
   ],
-  "exclude": ["node_modules", "deprecated"]
+  "exclude": ["node_modules"]
 }
