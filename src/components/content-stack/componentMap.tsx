@@ -1,7 +1,7 @@
-import { css } from "@emotion/css";
-import Card from "@leafygreen-ui/card";
-import { palette } from "@leafygreen-ui/palette";
-import { spacing } from "@leafygreen-ui/tokens";
+import { css } from '@emotion/css';
+import Card from '@leafygreen-ui/card';
+import { palette } from '@leafygreen-ui/palette';
+import { spacing } from '@leafygreen-ui/tokens';
 import {
   Body,
   H1,
@@ -10,15 +10,15 @@ import {
   Link,
   Overline,
   Subtitle,
-} from "@leafygreen-ui/typography";
-import { ContentstackChildren } from "./ContentstackChildren";
-import { ContentstackReference } from "./ContentstackReference";
-import { HeaderContent } from "./HeaderContent";
-import { CSNode, CSNodeType, CSTextNode } from "./types";
+} from '@leafygreen-ui/typography';
+import { ContentstackChildren } from './ContentstackChildren';
+import { ContentstackReference } from './ContentstackReference';
+import { HeaderContent } from './HeaderContent';
+import { CSNode, CSNodeType, CSTextNode } from './types';
 
 type CSNodeTypeMapFunction = (
   node: CSNode | CSTextNode,
-  props?: any
+  props?: any,
 ) => JSX.Element;
 
 /**
@@ -37,7 +37,6 @@ export const nodeTypeToElementMap: {
       className={
         !props.isNested &&
         css`
-          margin-top: ${spacing[1600]}px;
           margin-bottom: ${spacing[400]}px;
         `
       }
@@ -196,7 +195,7 @@ export const nodeTypeToElementMap: {
             th:nth-of-type(${index + 1}) {
               width: ${colWidth}px;
             }
-          `
+          `,
             )}
           `}
         >
