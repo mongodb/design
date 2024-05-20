@@ -1,7 +1,7 @@
-import { css } from "@emotion/css";
-import { spacing } from "@leafygreen-ui/tokens";
-import { ExampleCardBlock } from "./ExampleCardBlock";
-import { TwoColumnExampleCardBlockProps } from "./types";
+import { css } from '@emotion/css';
+import { spacing } from '@leafygreen-ui/tokens';
+import { ExampleCardBlock } from './ExampleCardBlock';
+import { TwoColumnExampleCardBlockProps } from './types';
 
 export const TwoColumnExampleCard = ({
   entry,
@@ -35,7 +35,16 @@ export const TwoColumnExampleCard = ({
           }}
         />
       </div>
-      <div>
+      <div
+        className={css`
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          align-items: start;
+          justify-content: flex-start;
+          max-width: 100%;
+        `}
+      >
         <ExampleCardBlock
           entry={{
             title: entry.title,
