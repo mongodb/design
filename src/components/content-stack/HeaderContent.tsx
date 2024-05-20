@@ -1,13 +1,13 @@
-import { css } from "@emotion/css";
-import { kebabCase } from "lodash";
-import Link from "next/link";
+import { css } from '@emotion/css';
+import { kebabCase } from 'lodash';
+import Link from 'next/link';
 // @ts-expect-error
-import LinkIcon from "@leafygreen-ui/icon/dist/Link";
-import { color, spacing } from "@leafygreen-ui/tokens";
-import { ContentstackChildren } from "./ContentstackChildren";
-import { CSNode } from "./types";
-import { getCSNodeTextContent } from "./utils";
-import { useDarkMode } from "@leafygreen-ui/leafygreen-provider";
+import LinkIcon from '@leafygreen-ui/icon/dist/Link';
+import { color, spacing } from '@leafygreen-ui/tokens';
+import { ContentstackChildren } from './ContentstackChildren';
+import { CSNode } from './types';
+import { getCSNodeTextContent } from './utils';
+import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 
 /**
  * Content of headers in rich text markup need to be wrapped in links and anchors for hashed links.
@@ -31,9 +31,10 @@ export const HeaderContent = ({ node }: { node: CSNode }) => {
           position: relative;
           color: inherit;
           text-decoration: inherit;
+          display: inline;
 
           &:after {
-            content: "";
+            content: '';
             position: absolute;
             width: 100%;
             height: 2px;

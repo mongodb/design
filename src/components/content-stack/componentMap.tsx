@@ -119,6 +119,7 @@ export const nodeTypeToElementMap: {
       href={node.attrs?.url}
       className={css`
         line-height: 28px;
+
         & span:after {
           bottom: 2px;
         }

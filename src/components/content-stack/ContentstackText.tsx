@@ -1,9 +1,9 @@
-import { css, cx } from "@emotion/css";
-import { useDarkMode } from "@leafygreen-ui/leafygreen-provider";
-import { color } from "@leafygreen-ui/tokens";
-import { CSTextNode } from "./types";
+import { css, cx } from '@emotion/css';
+import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
+import { color } from '@leafygreen-ui/tokens';
+import { CSTextNode } from './types';
 
-type CSRichTextProps = JSX.IntrinsicElements["span"] & {
+type CSRichTextProps = JSX.IntrinsicElements['span'] & {
   node: CSTextNode;
 };
 
@@ -13,7 +13,8 @@ export const ContentstackText = ({
   ...rest
 }: CSRichTextProps) => {
   const { theme } = useDarkMode();
-  const Component = node.bold ? "b" : "span";
+  const Component = node.bold ? 'b' : 'span';
+  console.log({ node });
 
   return (
     <Component
@@ -21,7 +22,7 @@ export const ContentstackText = ({
         css`
           color: ${color[theme].text.primary.default};
         `,
-        className
+        className,
       )}
       {...rest}
     >

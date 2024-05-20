@@ -192,9 +192,7 @@ export function SideNavigation() {
           <MongoDBLogo
             key="logo"
             height={24}
-            color={
-              darkMode ? SupportedColors.White : SupportedColors.GreenDark2
-            }
+            color={darkMode ? SupportedColors.White : SupportedColors.Black}
           />
         </NavItem>
       </header>
