@@ -64,7 +64,7 @@ export function ComponentCard() {
           padding-bottom: ${spacing[1000]}px;
           border-bottom: 1px solid ${color[theme].border.secondary.default};
           position: relative;
-          min-height: 250px;
+          min-height: 200px;
         `}
       >
         <H3
