@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Link, { Url } from 'next/link';
+import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { css, cx } from '@emotion/css';
 
