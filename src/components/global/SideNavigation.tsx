@@ -81,6 +81,7 @@ function NavItem({
         css`
           text-decoration: none;
 
+          &:focus-visible,
           &:hover,
           &:focus,
           &:visited {
@@ -115,7 +116,7 @@ function NavItem({
             background-color: ${color[theme].background.secondary.hover};
           }
 
-          &:focus {
+          &:focus-visible {
             color: ${color[theme].text.primary.focus};
             background-color: ${color[theme].background.secondary.focus};
 
