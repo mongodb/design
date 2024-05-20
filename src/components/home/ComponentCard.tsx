@@ -129,7 +129,7 @@ export function ComponentCard() {
                   outline: none;
                 }
 
-                &:focus-within {
+                &:focus-visible {
                   outline: none;
                   background-color: ${color[theme].background.secondary.hover};
                   border-color: ${color[theme].border.primary.focus};
