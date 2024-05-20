@@ -1,24 +1,25 @@
-"use client";
+'use client';
 
-import React from "react";
-import { useRouter, usePathname } from "next/navigation";
-import { css, cx } from "@emotion/css";
+import React from 'react';
+import Link, { Url } from 'next/link';
+import { useRouter, usePathname } from 'next/navigation';
+import { css, cx } from '@emotion/css';
 
 // @ts-expect-error
-import GovernmentBuildingIcon from "@leafygreen-ui/icon/dist/GovernmentBuilding";
+import GovernmentBuildingIcon from '@leafygreen-ui/icon/dist/GovernmentBuilding';
 // @ts-expect-error
-import UniversityIcon from "@leafygreen-ui/icon/dist/University";
+import UniversityIcon from '@leafygreen-ui/icon/dist/University';
 // @ts-expect-error
-import AppsIcon from "@leafygreen-ui/icon/dist/Apps";
+import AppsIcon from '@leafygreen-ui/icon/dist/Apps';
 // @ts-expect-error
-import LockIcon from "@leafygreen-ui/icon/dist/Lock";
-import { useDarkMode } from "@leafygreen-ui/leafygreen-provider";
-import { MongoDBLogo, SupportedColors } from "@leafygreen-ui/logo";
-import { palette } from "@leafygreen-ui/palette";
-import { color, spacing } from "@leafygreen-ui/tokens";
+import LockIcon from '@leafygreen-ui/icon/dist/Lock';
+import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
+import { MongoDBLogo, SupportedColors } from '@leafygreen-ui/logo';
+import { palette } from '@leafygreen-ui/palette';
+import { color, spacing } from '@leafygreen-ui/tokens';
 
-import { SIDE_NAV_WIDTH } from "@/constants";
-import { ComponentMeta, Group, groupedComponents } from "@/utils/components";
+import { SIDE_NAV_WIDTH } from '@/constants';
+import { ComponentMeta, Group, groupedComponents } from '@/utils/components';
 
 function NavLabel({
   label,
@@ -43,7 +44,7 @@ function NavLabel({
       `}
     >
       {glyph}
-      {label.split("-").join(" ")}
+      {label.split('-').join(' ')}
     </h4>
   );
 }
@@ -66,25 +67,38 @@ function NavItem({
   children,
   className,
   active,
+  href,
   ...rest
-}: JSX.IntrinsicElements["li"] & { active?: boolean }) {
+}: JSX.IntrinsicElements['li'] & {
+  active?: boolean;
+  href: string;
+}) {
   const { theme } = useDarkMode();
   return (
-    <li
-      {...rest}
+    <Link
+      href={href}
       className={cx(
+        css`
+          text-decoration: none;
+
+          &:hover,
+          &:focus,
+          &:visited {
+            text-decoration: none;
+            outline: none;
+          }
+        `,
         css`
           position: relative;
           height: ${spacing[800]}px;
-          margin: 0;
-          padding: ${spacing[200]}px ${spacing[400]}px;
+
           display: flex;
           color: ${color[theme].text.primary.default};
           transition: background-color 150ms ease-in-out;
           cursor: pointer;
 
           &:before {
-            content: "";
+            content: '';
             position: absolute;
             background-color: transparent;
             left: 0px;
@@ -100,6 +114,17 @@ function NavItem({
             color: ${color[theme].text.primary.hover};
             background-color: ${color[theme].background.secondary.hover};
           }
+
+          &:focus {
+            color: ${color[theme].text.primary.focus};
+            background-color: ${color[theme].background.secondary.focus};
+
+            &:before {
+              background-color: ${color[theme].icon.info.default};
+              transform: scaleY(1);
+              left: 1px;
+            }
+          }
         `,
         {
           [css`
@@ -113,20 +138,27 @@ function NavItem({
             }
           `]: active,
         },
-        className
+        className,
       )}
     >
-      {children}
-    </li>
+      <li
+        {...rest}
+        className={css`
+          margin: 0;
+          padding: ${spacing[200]}px ${spacing[400]}px;
+        `}
+      >
+        {children}
+      </li>
+    </Link>
   );
 }
 
 export function SideNavigation() {
-  const router = useRouter();
   const pathname = usePathname();
-  const [_, topLevelPage, activeSubDirOrPage] = pathname.split("/");
+  const [_, topLevelPage, activeSubDirOrPage] = pathname.split('/');
   const currentComponent =
-    topLevelPage === "component" ? activeSubDirOrPage : "";
+    topLevelPage === 'component' ? activeSubDirOrPage : '';
   const { darkMode, theme } = useDarkMode();
 
   return (
@@ -152,10 +184,7 @@ export function SideNavigation() {
             padding-bottom: ${spacing[600]}px;
             height: unset;
           `}
-          onClick={(e) => {
-            e.preventDefault();
-            router.push("/");
-          }}
+          href={'/'}
         >
           <MongoDBLogo
             height={24}
@@ -178,36 +207,36 @@ export function SideNavigation() {
       <NavList>
         <NavItem
           key="grid"
-          active={pathname === "/foundations/grid"}
-          onClick={() => router.push("/foundations/grid")}
+          active={pathname === '/foundations/grid/'}
+          href={'/foundations/grid'}
         >
           Grid
         </NavItem>
         <NavItem
           key="icons"
-          active={pathname === "/foundations/icons"}
-          onClick={() => router.push("/foundations/icons")}
+          active={pathname === '/foundations/icons/'}
+          href={'/foundations/icons'}
         >
           Icons
         </NavItem>
         <NavItem
           key="palette"
-          active={pathname === "/foundations/palette"}
-          onClick={() => router.push("/foundations/palette")}
+          active={pathname === '/foundations/palette/'}
+          href={'/foundations/palette'}
         >
           Palette
         </NavItem>
         <NavItem
           key="tokens"
-          active={pathname === "/foundations/tokens"}
-          onClick={() => router.push("/foundations/tokens")}
+          active={pathname === '/foundations/tokens/'}
+          href={'/foundations/tokens'}
         >
           Tokens
         </NavItem>
         <NavItem
           key="typography"
-          active={pathname === "/foundations/typography"}
-          onClick={() => router.push("/foundations/typography")}
+          active={pathname === '/foundations/typography/'}
+          href={'/foundations/typography'}
         >
           Typography
         </NavItem>
@@ -228,22 +257,22 @@ export function SideNavigation() {
       <NavList key="resources-list">
         <NavItem
           key="a11y"
-          active={pathname === "/resources/accessibility"}
-          onClick={() => router.push("/resources/accessibility")}
+          active={pathname === '/resources/accessibility/'}
+          href={'/resources/accessibility'}
         >
           Accessibility
         </NavItem>
         <NavItem
           key="icon-creation"
-          active={pathname === "/resources/icon-creation"}
-          onClick={() => router.push("/resources/icon-creation")}
+          active={pathname === '/resources/icon-creation/'}
+          href={'/resources/icon-creation'}
         >
           Icon Creation
         </NavItem>
         <NavItem
           key="refresh-guide"
-          active={pathname === "/resources/refresh-guide"}
-          onClick={() => router.push("/resources/refresh-guide")}
+          active={pathname === '/resources/refresh-guide/'}
+          href={'/resources/refresh-guide'}
         >
           Refresh Guide
         </NavItem>
@@ -261,9 +290,9 @@ export function SideNavigation() {
         }
       />
 
-      {Object.keys(groupedComponents).map((groupName) => (
+      {Object.keys(groupedComponents).map(groupName => (
         <>
-          <NavLabel key={groupName} label={groupName.split("-").join(" ")} />
+          <NavLabel key={groupName} label={groupName.split('-').join(' ')} />
 
           <NavList>
             {groupedComponents[groupName as Group].map(
@@ -271,9 +300,10 @@ export function SideNavigation() {
                 return (
                   <NavItem
                     key={component.name}
-                    onClick={() => router.push(component.navPath)}
+                    // onClick={() => router.push(component.navPath)}
+                    href={component.navPath}
                     active={
-                      currentComponent.toLowerCase().split("-").join(" ") ===
+                      currentComponent.toLowerCase().split('-').join(' ') ===
                       component.name.toLowerCase()
                     }
                   >
@@ -287,7 +317,7 @@ export function SideNavigation() {
                     )}
                   </NavItem>
                 );
-              }
+              },
             )}
           </NavList>
         </>
