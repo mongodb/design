@@ -1,7 +1,6 @@
-import React from "react";
-import { css } from "@emotion/css";
-import { useDarkMode } from "@leafygreen-ui/leafygreen-provider";
-import { color } from "@leafygreen-ui/tokens";
+import React from 'react';
+import { css } from '@emotion/css';
+import { color } from '@leafygreen-ui/tokens';
 
 export const ImageContainer = ({
   children,
@@ -10,12 +9,10 @@ export const ImageContainer = ({
   children: React.ReactNode;
   gradient: string;
 }) => {
-  const { theme } = useDarkMode();
-
   return (
     <div
       className={css`
-        background: ${color[theme].background.secondary.default};
+        background: ${color.light.background.secondary.default};
         display: flex;
         justify-content: center;
         align-items: center;
@@ -28,7 +25,7 @@ export const ImageContainer = ({
           max-width: 100%;
         }
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           height: 32px;
           width: 100%;

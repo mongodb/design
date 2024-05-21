@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { css } from "@emotion/css";
-import startCase from "lodash/startCase";
-import { useEffect, useState } from "react";
+import { css } from '@emotion/css';
+import startCase from 'lodash/startCase';
+import { useEffect, useState } from 'react';
 
-import { ContentstackRichText } from "@/components/content-stack";
-import { getContentPage } from "@/utils/ContentStack/getContentstackResources";
-import { ContentPage as ContentPageType } from "@/utils/ContentStack/types";
+import { ContentstackRichText } from '@/components/content-stack';
+import { getContentPage } from '@/utils/ContentStack/getContentstackResources';
+import { ContentPage as ContentPageType } from '@/utils/ContentStack/types';
 
 export default function ContentPage({
   params: { contentPage: contentPageName },
@@ -25,10 +25,10 @@ export default function ContentPage({
   return (
     <div
       className={css`
-        max-width: 1000px; // TODO: Make this responsive
+        max-width: 700px; // TODO: Make this responsive
       `}
     >
       <ContentstackRichText content={contentPage?.content} />
     </div>
   );
-};
+}

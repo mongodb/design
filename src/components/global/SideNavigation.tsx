@@ -81,6 +81,7 @@ function NavItem({
         css`
           text-decoration: none;
 
+          &:focus-visible,
           &:hover,
           &:focus,
           &:visited {
@@ -115,7 +116,7 @@ function NavItem({
             background-color: ${color[theme].background.secondary.hover};
           }
 
-          &:focus {
+          &:focus-visible {
             color: ${color[theme].text.primary.focus};
             background-color: ${color[theme].background.secondary.focus};
 
@@ -163,6 +164,7 @@ export function SideNavigation() {
 
   return (
     <nav
+      key="navigation"
       className={css`
         position: fixed;
         top: 0;
@@ -177,8 +179,9 @@ export function SideNavigation() {
         border-right: 1px solid ${color[theme].border.secondary.default};
       `}
     >
-      <header>
+      <header key="header">
         <NavItem
+          key="logo-item"
           className={css`
             padding-top: ${spacing[600]}px;
             padding-bottom: ${spacing[600]}px;
@@ -187,6 +190,7 @@ export function SideNavigation() {
           href={'/'}
         >
           <MongoDBLogo
+            key="logo"
             height={24}
             color={darkMode ? SupportedColors.White : SupportedColors.Black}
           />
@@ -204,7 +208,7 @@ export function SideNavigation() {
           />
         }
       />
-      <NavList>
+      <NavList key="foundation-list">
         <NavItem
           key="grid"
           active={pathname === '/foundations/grid/'}
@@ -290,17 +294,16 @@ export function SideNavigation() {
         }
       />
 
-      {Object.keys(groupedComponents).map(groupName => (
+      {Object.keys(groupedComponents).map((groupName, index) => (
         <>
           <NavLabel key={groupName} label={groupName.split('-').join(' ')} />
 
-          <NavList>
+          <NavList key={`${groupName}-${index}`}>
             {groupedComponents[groupName as Group].map(
               (component: ComponentMeta) => {
                 return (
                   <NavItem
                     key={component.name}
-                    // onClick={() => router.push(component.navPath)}
                     href={component.navPath}
                     active={
                       currentComponent.toLowerCase().split('-').join(' ') ===

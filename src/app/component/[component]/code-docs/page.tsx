@@ -1,30 +1,23 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { css } from "@emotion/css";
-import { TableSkeleton } from "@leafygreen-ui/skeleton-loader";
-import { spacing } from "@leafygreen-ui/tokens";
-import { InstallCard, PropsTable, VersionCard } from "@/components/code-docs";
-import { components } from "@/utils";
+import { useEffect, useState } from 'react';
+import { css } from '@emotion/css';
+import { TableSkeleton } from '@leafygreen-ui/skeleton-loader';
+import { spacing } from '@leafygreen-ui/tokens';
+import { InstallCard, PropsTable, VersionCard } from '@/components/code-docs';
+import { components } from '@/utils';
 import {
   TSDocResponse,
   PropTableState,
   mergeProps,
-} from "@/components/code-docs";
+} from '@/components/code-docs';
 
-import { getTSDocFromServer, getChangelogFromServer } from "./server";
-
-/*
- * TODO:
- * Broken components:
- * SideNav: Item props don't render
- * Understand null defaults (and fix)
- */
+import { getTSDocFromServer, getChangelogFromServer } from './server';
 
 export default function Page({ params }: { params: { component: string } }) {
   const [isLoading, setIsLoading] = useState(true);
   const [componentProps, setComponentProps] = useState<Array<PropTableState>>(
-    []
+    [],
   );
 
   useEffect(() => {
@@ -34,17 +27,17 @@ export default function Page({ params }: { params: { component: string } }) {
 
     const component = params.component;
     const subComponents = components.find(
-      (componentMeta) =>
-        componentMeta.name.toLowerCase().replace(/\s/g, "") ===
-        component.split("-").join("")
+      componentMeta =>
+        componentMeta.name.toLowerCase().replace(/\s/g, '') ===
+        component.split('-').join(''),
     )?.subComponents;
 
     getTSDocFromServer(component)
       .then((response: Array<TSDocResponse>) => {
         if (response != null) {
           if (!!subComponents) {
-            const propTables = response.filter((response) =>
-              subComponents.includes(response.displayName)
+            const propTables = response.filter(response =>
+              subComponents.includes(response.displayName),
             );
 
             const reducedPropTables: Array<PropTableState> = propTables.reduce(
@@ -55,16 +48,16 @@ export default function Page({ params }: { params: { component: string } }) {
                   { name: value.displayName, props: mergedProps },
                 ];
               },
-              []
+              [],
             );
 
             setComponentProps(reducedPropTables);
           } else {
-            const centralProps = response.find((response) => {
+            const centralProps = response.find(response => {
               return response.displayName
                 .toLowerCase()
-                .replace(/\s/g, "")
-                .includes(component.toLowerCase().split("-").join(""));
+                .replace(/\s/g, '')
+                .includes(component.toLowerCase().split('-').join(''));
             });
             const mergedProps = mergeProps(centralProps?.props);
             setComponentProps([{ name: component, props: mergedProps }]);

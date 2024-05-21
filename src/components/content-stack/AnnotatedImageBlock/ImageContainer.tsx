@@ -1,17 +1,14 @@
-import React from "react";
-import { css } from "@emotion/css";
-import { borderRadius, color, spacing } from "@leafygreen-ui/tokens";
-import { useDarkMode } from "@leafygreen-ui/leafygreen-provider";
+import React from 'react';
+import { css } from '@emotion/css';
+import { borderRadius, color, spacing } from '@leafygreen-ui/tokens';
 
 const bottomBorderHeight = 6;
 
 export const ImageContainer = ({ children }: { children: React.ReactNode }) => {
-  const { theme } = useDarkMode();
-
   return (
     <div
       className={css`
-        background: ${color[theme].background.secondary.default};
+        background: ${color.light.background.secondary.default};
         display: flex;
         justify-content: center;
         align-items: center;
@@ -26,7 +23,7 @@ export const ImageContainer = ({ children }: { children: React.ReactNode }) => {
         }
 
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           height: ${spacing[800]}px;
           width: 100%;
@@ -36,7 +33,7 @@ export const ImageContainer = ({ children }: { children: React.ReactNode }) => {
           background: linear-gradient(
             to bottom,
             transparent ${spacing[800] - bottomBorderHeight}px,
-            ${color[theme].background.secondary.default} 8px
+            ${color.light.background.secondary.default} 8px
           );
         }
       `}

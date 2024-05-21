@@ -1,18 +1,18 @@
-import React from "react";
-import { css } from "@emotion/css";
-import Card from "@leafygreen-ui/card";
-import { Body, H3, Link } from "@leafygreen-ui/typography";
-import { Foundations, Resources } from "@/components/glyphs";
-import { spacing } from "@leafygreen-ui/tokens";
-import { useRouter } from "next/navigation";
+import React from 'react';
+import { css } from '@emotion/css';
+import Card from '@leafygreen-ui/card';
+import { Body, H3, Link } from '@leafygreen-ui/typography';
+import { Foundations, Resources } from '@/components/glyphs';
+import { spacing } from '@leafygreen-ui/tokens';
+import { useRouter } from 'next/navigation';
 
 const imageMap = {
   Foundations: Foundations,
   Resources: Resources,
 } as const;
 
-type HomeCardProps = JSX.IntrinsicElements["div"] & {
-  title: "Foundations" | "Resources";
+type HomeCardProps = JSX.IntrinsicElements['div'] & {
+  title: 'Foundations' | 'Resources';
   description: string;
   link?: string;
 };
@@ -40,6 +40,7 @@ export function HomeCard({ title, description, link, ...rest }: HomeCardProps) {
       {link && (
         <Link
           as="button"
+          baseFontSize={16}
           className={css`
             padding-top: ${24}px;
           `}

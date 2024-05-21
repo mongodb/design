@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { NotFound } from "@/components/global/NotFound";
-import { nodeTypeToElementMap } from "./componentMap";
-import { ContentstackText } from "./ContentstackText";
-import { CSNode } from "./types";
-import { getCSNodeTextContent, isTextNode, nodeHasAssets } from "./utils";
+import { NotFound } from '@/components/global/NotFound';
+import { nodeTypeToElementMap } from './componentMap';
+import { ContentstackText } from './ContentstackText';
+import { CSNode } from './types';
+import { getCSNodeTextContent, isTextNode, nodeHasAssets } from './utils';
 
 interface CSRichTextProps
-  extends Omit<JSX.IntrinsicElements["div"], "content"> {
+  extends Omit<JSX.IntrinsicElements['div'], 'content'> {
   content?: CSNode;
   isNested?: boolean;
   [key: string]: any;

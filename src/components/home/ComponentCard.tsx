@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import React from "react";
-import { useRouter } from "next/navigation";
-import { css } from "@emotion/css";
-import Card from "@leafygreen-ui/card";
-import { useDarkMode } from "@leafygreen-ui/leafygreen-provider";
-import { borderRadius, color, spacing } from "@leafygreen-ui/tokens";
-import { Body, H3 } from "@leafygreen-ui/typography";
+import React from 'react';
+import { useRouter } from 'next/navigation';
+import { css } from '@emotion/css';
+import Card from '@leafygreen-ui/card';
+import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
+import { borderRadius, color, spacing } from '@leafygreen-ui/tokens';
+import { Body, H3 } from '@leafygreen-ui/typography';
 import {
   Components,
   Display,
@@ -15,34 +15,34 @@ import {
   Navigation,
   Notifications,
   Patterns,
-} from "@/components/glyphs";
+} from '@/components/glyphs';
 
-const liveExamplePath = "live-example";
+const liveExamplePath = 'live-example';
 
 const categoryMap = {
   Navigation: {
     component: Navigation,
-    link: `/menu/${liveExamplePath}`,
+    link: `/component/menu/${liveExamplePath}`,
   },
   Notifications: {
     component: Notifications,
-    link: `/badge/${liveExamplePath}`,
+    link: `/component/badge/${liveExamplePath}`,
   },
   Modals: {
     component: Modals,
-    link: `/modal/code-docs`,
+    link: `/component/modal/code-docs`,
   },
   Display: {
     component: Display,
-    link: `/card/${liveExamplePath}`,
+    link: `/component/card/${liveExamplePath}`,
   },
   FormElements: {
     component: FormElements,
-    link: `/button/${liveExamplePath}`,
+    link: `/component/button/${liveExamplePath}`,
   },
   Patterns: {
     component: Patterns,
-    link: `/empty-state/${liveExamplePath}`,
+    link: `/component/empty-state/${liveExamplePath}`,
   },
 } as const;
 
@@ -64,7 +64,7 @@ export function ComponentCard() {
           padding-bottom: ${spacing[1000]}px;
           border-bottom: 1px solid ${color[theme].border.secondary.default};
           position: relative;
-          min-height: 250px;
+          min-height: 200px;
         `}
       >
         <H3
@@ -101,7 +101,7 @@ export function ComponentCard() {
           grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
         `}
       >
-        {Object.keys(categoryMap).map((type) => {
+        {Object.keys(categoryMap).map(type => {
           const Graphic = categoryMap[type as ImageKey].component;
 
           return (
@@ -129,7 +129,7 @@ export function ComponentCard() {
                   outline: none;
                 }
 
-                &:focus-within {
+                &:focus-visible {
                   outline: none;
                   background-color: ${color[theme].background.secondary.hover};
                   border-color: ${color[theme].border.primary.focus};
@@ -144,9 +144,9 @@ export function ComponentCard() {
               />
               <Body baseFontSize={16}>
                 {type
-                  .replace(/([A-Z])/g, " $1")
+                  .replace(/([A-Z])/g, ' $1')
                   .trim()
-                  .replace(/^\w/, (c) => c.toUpperCase())}
+                  .replace(/^\w/, c => c.toUpperCase())}
               </Body>
             </button>
           );
