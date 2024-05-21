@@ -16,6 +16,7 @@ import {
   Notifications,
   Patterns,
 } from '@/components/glyphs';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 const liveExamplePath = 'live-example';
 
@@ -51,12 +52,16 @@ type ImageKey = keyof typeof categoryMap;
 export function ComponentCard() {
   const { theme } = useDarkMode();
   const router = useRouter();
+  const [isTablet] = useMediaQuery(['(max-width: 768px)'], {
+    fallback: [false],
+  });
 
   return (
     <Card
       className={css`
         padding-left: 0px;
         padding-right: 0px;
+        z-index: 0;
       `}
     >
       <div
@@ -92,6 +97,8 @@ export function ComponentCard() {
             position: absolute;
             bottom: 0;
             right: 0;
+            z-index: 0;
+            opacity: ${isTablet ? 0.4 : 1};
           `}
         />
       </div>

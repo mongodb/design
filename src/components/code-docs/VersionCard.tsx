@@ -55,7 +55,7 @@ export const VersionCard = ({
             leftGlyph={<ActivityFeed />}
             onClick={() => setIsModalOpen(true)}
           >
-            View Changelog
+            View&nbsp;Changelog
           </Button>
           <Modal open={isModalOpen} setOpen={setIsModalOpen}>
             <div

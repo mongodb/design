@@ -27,7 +27,8 @@ export const InstallCard = ({ component }: { component: string }) => {
       <div
         className={css`
           display: flex;
-          gap: ${spacing[100]}px;
+          flex-wrap: wrap;
+          gap: 8px;
         `}
       >
         <SegmentedControl
@@ -43,6 +44,7 @@ export const InstallCard = ({ component }: { component: string }) => {
           id="install-instructions"
           className={css`
             margin: unset;
+            width: unset;
           `}
         >
           {packageManager === 'yarn'

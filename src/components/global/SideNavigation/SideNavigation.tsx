@@ -186,7 +186,7 @@ export function SideNavigation() {
               position: absolute;
               top: 0;
               left: 0;
-              z-index: 200;
+              z-index: 1;
               margin: ${spacing[400]}px;
             `}
           >
@@ -204,7 +204,14 @@ export function SideNavigation() {
               padding-left: ${spacing[400]}px;
             `}
           >
-            <MongoDBLogo height={spacing[800]} />
+            <MongoDBLogo
+              height={spacing[800]}
+              color={
+                theme === 'dark'
+                  ? SupportedColors.GreenBase
+                  : SupportedColors.Black
+              }
+            />
           </Link>
           {navContent}
         </Drawer>

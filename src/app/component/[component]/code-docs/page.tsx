@@ -83,9 +83,7 @@ export default function Page({ params }: { params: { component: string } }) {
         className={css`
           display: grid;
           gap: ${spacing[800]}px;
-          grid-template-columns: ${isTablet
-            ? 'repeat(auto-fill, minmax(200px, 1fr))'
-            : '2fr 1fr'};
+          grid-template-columns: ${isTablet ? '1fr' : '2fr 1fr'};
           max-width: 100%;
         `}
       >

@@ -69,6 +69,22 @@ export const Drawer = ({
   return (
     <>
       <div
+        onClick={onClose}
+        className={css`
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0, 0, 0, 0.75);
+          z-index: ${isOpen ? 1 : 0};
+          opacity: ${isOpen ? 1 : 0};
+          animation: ${isOpen ? fadeIn : fadeOut}
+            ${transitionDuration.slowest}ms backwards;
+        `}
+      />
+
+      <div
         className={css`
           position: fixed;
           top: 0;
@@ -78,11 +94,9 @@ export const Drawer = ({
           background-color: ${color[theme].background.secondary.default};
           color: white;
           overflow: hidden;
-          transform: translateX(${isOpen && !firstMount ? '0' : '-100%'});
           animation: ${isOpen ? slideIn : slideOut}
             ${transitionDuration.slowest}ms forwards;
-          transition: transform ${transitionDuration.slowest}ms ease-in-out;
-          z-index: ${isOpen ? 1000 : 0};
+          z-index: 2;
           padding-bottom: ${spacing[400]}px;
           overflow-y: scroll;
         `}
@@ -95,7 +109,7 @@ export const Drawer = ({
             position: absolute;
             right: 0;
             top: 0;
-            z-index: 5;
+            /* z-index: 5; */
             padding: ${spacing[600]}px;
           `}
         >
@@ -103,22 +117,6 @@ export const Drawer = ({
         </IconButton>
         {children}
       </div>
-
-      <div
-        onClick={onClose}
-        className={css`
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: rgba(0, 0, 0, 0.75);
-          z-index: ${isOpen ? 200 : 0};
-          opacity: ${isOpen ? 1 : 0};
-          animation: ${isOpen ? fadeIn : fadeOut}
-            ${transitionDuration.slowest}ms backwards;
-        `}
-      />
     </>
   );
 };
