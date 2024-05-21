@@ -14,7 +14,6 @@ export const ContentstackText = ({
 }: CSRichTextProps) => {
   const { theme } = useDarkMode();
   const Component = node.bold ? 'b' : 'span';
-  console.log({ node });
 
   return (
     <Component

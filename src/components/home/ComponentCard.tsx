@@ -80,6 +80,8 @@ export function ComponentCard() {
           className={css`
             padding-left: ${spacing[600]}px;
             max-width: 600px;
+            position: relative;
+            z-index: 1;
           `}
         >
           These components are the building blocks of MongoDB’s design system.
@@ -98,7 +100,7 @@ export function ComponentCard() {
           margin-top: ${spacing[600]}px;
           padding: 0px ${spacing[600]}px;
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         `}
       >
         {Object.keys(categoryMap).map(type => {

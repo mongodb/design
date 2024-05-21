@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import { css } from "@emotion/css";
-import Button from "@leafygreen-ui/button";
-import Card from "@leafygreen-ui/card";
+import React, { useEffect, useState } from 'react';
+import { css } from '@emotion/css';
+import Button from '@leafygreen-ui/button';
+import Card from '@leafygreen-ui/card';
 // @ts-expect-error
-import ActivityFeed from "@leafygreen-ui/icon/dist/ActivityFeed";
-import Modal from "@leafygreen-ui/modal";
-import { CardSkeleton } from "@leafygreen-ui/skeleton-loader";
-import { spacing } from "@leafygreen-ui/tokens";
-import { Subtitle } from "@leafygreen-ui/typography";
-import { color } from "@leafygreen-ui/tokens";
+import ActivityFeed from '@leafygreen-ui/icon/dist/ActivityFeed';
+import Modal from '@leafygreen-ui/modal';
+import { CardSkeleton } from '@leafygreen-ui/skeleton-loader';
+import { spacing } from '@leafygreen-ui/tokens';
+import { Subtitle } from '@leafygreen-ui/typography';
+import { color } from '@leafygreen-ui/tokens';
 
 export const VersionCard = ({
   component,
@@ -26,14 +26,14 @@ export const VersionCard = ({
 
   useEffect(() => {
     getChangelog(component)
-      .then((response) => {
+      .then(response => {
         setChangelog(response);
       })
       .finally(() => setIsLoading(false));
   }, [component, getChangelog]);
 
   useEffect(() => {
-    setVersion(changelog?.split("h2")[1]?.replace(/[>/<]+/g, "") ?? null);
+    setVersion(changelog?.split('h2')[1]?.replace(/[>/<]+/g, '') ?? null);
   }, [changelog]);
 
   if (isLoading) {

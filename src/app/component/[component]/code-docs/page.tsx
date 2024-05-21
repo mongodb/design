@@ -5,6 +5,7 @@ import { css } from '@emotion/css';
 import { TableSkeleton } from '@leafygreen-ui/skeleton-loader';
 import { spacing } from '@leafygreen-ui/tokens';
 import { InstallCard, PropsTable, VersionCard } from '@/components/code-docs';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { components } from '@/utils';
 import {
   TSDocResponse,
@@ -15,6 +16,9 @@ import {
 import { getTSDocFromServer, getChangelogFromServer } from './server';
 
 export default function Page({ params }: { params: { component: string } }) {
+  const [isTablet] = useMediaQuery(['(max-width: 768px)'], {
+    fallback: [true],
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [componentProps, setComponentProps] = useState<Array<PropTableState>>(
     [],
@@ -78,11 +82,15 @@ export default function Page({ params }: { params: { component: string } }) {
       <div
         className={css`
           display: grid;
-          grid-template-columns: 2fr 1fr;
           gap: ${spacing[800]}px;
+          grid-template-columns: ${isTablet
+            ? 'repeat(auto-fill, minmax(200px, 1fr))'
+            : '2fr 1fr'};
+          max-width: 100%;
         `}
       >
         <InstallCard component={params.component} />
+
         <VersionCard
           component={params.component}
           getChangelog={getChangelogFromServer}
