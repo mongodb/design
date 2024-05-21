@@ -1,18 +1,18 @@
-"use-client";
+'use-client';
 
-import React, { useState } from "react";
-import { css } from "@emotion/css";
-import Card from "@leafygreen-ui/card";
-import Copyable from "@leafygreen-ui/copyable";
+import React, { useState } from 'react';
+import { css } from '@emotion/css';
+import Card from '@leafygreen-ui/card';
+import Copyable from '@leafygreen-ui/copyable';
 import {
   SegmentedControl,
   SegmentedControlOption,
-} from "@leafygreen-ui/segmented-control";
-import { spacing } from "@leafygreen-ui/tokens";
-import { Subtitle } from "@leafygreen-ui/typography";
+} from '@leafygreen-ui/segmented-control';
+import { spacing } from '@leafygreen-ui/tokens';
+import { Subtitle } from '@leafygreen-ui/typography';
 
 export const InstallCard = ({ component }: { component: string }) => {
-  const [packageManager, setPackageManager] = useState("yarn");
+  const [packageManager, setPackageManager] = useState('yarn');
 
   return (
     <Card>
@@ -27,7 +27,8 @@ export const InstallCard = ({ component }: { component: string }) => {
       <div
         className={css`
           display: flex;
-          gap: ${spacing[100]}px;
+          flex-wrap: wrap;
+          gap: 8px;
         `}
       >
         <SegmentedControl
@@ -43,9 +44,10 @@ export const InstallCard = ({ component }: { component: string }) => {
           id="install-instructions"
           className={css`
             margin: unset;
+            width: unset;
           `}
         >
-          {packageManager === "yarn"
+          {packageManager === 'yarn'
             ? `yarn add @leafygreen-ui/${component}`
             : `npm i @leafygreen-ui/${component}`}
         </Copyable>
