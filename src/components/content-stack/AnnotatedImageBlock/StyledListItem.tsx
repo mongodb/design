@@ -1,6 +1,6 @@
-import { css } from "@emotion/css";
-import { useDarkMode } from "@leafygreen-ui/leafygreen-provider";
-import { color, spacing } from "@leafygreen-ui/tokens";
+import { css } from '@emotion/css';
+import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
+import { color, spacing } from '@leafygreen-ui/tokens';
 
 export const StyledListItem = ({ children }: { children: React.ReactNode }) => {
   const { theme } = useDarkMode();
@@ -31,6 +31,11 @@ export const StyledListItem = ({ children }: { children: React.ReactNode }) => {
           font-weight: 600;
           box-shadow: 1px 1px 0px ${color[theme].border.primary.default};
           margin-top: 3px;
+        }
+
+        & > p {
+          font-size: 16px;
+          line-height: 28px;
         }
       `}
     >

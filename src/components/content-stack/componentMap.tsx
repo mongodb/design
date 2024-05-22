@@ -206,7 +206,6 @@ export const nodeTypeToElementMap: {
         {...props}
       >
         <Table
-          baseFontSize={16}
           className={css`
             border-spacing: 0;
             ${colWidths.map(
@@ -278,7 +277,13 @@ export const nodeTypeToElementMap: {
       `}
       {...props}
     >
-      <ContentstackChildren nodeChildren={node.children} />
+      <ContentstackChildren
+        nodeChildren={node.children}
+        className={css`
+          font-size: 13px;
+          line-height: 20px;
+        `}
+      />
     </Cell>
   ),
   [CSNodeType.REFERENCE]: (node, props) => (
