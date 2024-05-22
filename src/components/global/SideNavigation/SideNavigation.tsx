@@ -249,6 +249,9 @@ export function SideNavigation() {
             key="logo"
             height={24}
             color={darkMode ? SupportedColors.White : SupportedColors.Black}
+            className={css`
+              z-index: 0;
+            `}
           />
         </SideNavItem>
       </header>
