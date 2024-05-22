@@ -10,6 +10,7 @@ import {
   Footer,
   UserMenu,
   SideNavigation,
+  Search,
 } from '@/components/global';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { SIDE_NAV_WIDTH } from '@/constants';
@@ -78,6 +79,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
           right: 0;
         `}
       >
+        <Search />
         <DarkModeToggle />
         <UserMenu />
       </div>
