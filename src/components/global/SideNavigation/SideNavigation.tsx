@@ -233,6 +233,7 @@ export function SideNavigation() {
         padding-bottom: 16px;
         font-size: 12px;
         border-right: 1px solid ${color[theme].border.secondary.default};
+        z-index: 1;
       `}
     >
       <header key="header">
