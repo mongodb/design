@@ -9,7 +9,7 @@ import {
   Cell,
   HeaderCell,
 } from '@leafygreen-ui/table';
-import { spacing } from '@leafygreen-ui/tokens';
+import { spacing, typeScales } from '@leafygreen-ui/tokens';
 import {
   Body,
   H1,
@@ -167,8 +167,8 @@ export const nodeTypeToElementMap: {
   [CSNodeType.LIST_ITEM]: (node, props) => (
     <li
       className={css`
-        font-size: 16px;
-        line-height: 28px;
+        font-size: ${typeScales.body2.fontSize}px;
+        line-height: ${typeScales.body2.lineHeight}px;
         padding-left: 5px;
         & > * {
           margin: 0;
@@ -186,7 +186,8 @@ export const nodeTypeToElementMap: {
   [CSNodeType.SPAN]: (node, props) => (
     <span
       className={css`
-        font-size: 16px;
+        font-size: ${typeScales.body2.fontSize}px;
+        line-height: ${typeScales.body2.lineHeight}px;
       `}
       {...node.attrs}
       {...props}
@@ -280,8 +281,8 @@ export const nodeTypeToElementMap: {
       <ContentstackChildren
         nodeChildren={node.children}
         className={css`
-          font-size: 13px;
-          line-height: 20px;
+          font-size: ${typeScales.body1.fontSize}px;
+          line-height: ${typeScales.body1.lineHeight}px;
         `}
       />
     </Cell>
