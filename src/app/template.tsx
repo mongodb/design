@@ -12,7 +12,7 @@ import {
   SideNavigation,
 } from '@/components/global';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
-import { BREAKPOINTS, SIDE_NAV_WIDTH } from '@/constants';
+import { SIDE_NAV_WIDTH } from '@/constants';
 import { ContentStackContextProvider } from '@/contexts/ContentStackContext';
 import { ComponentFields, ContentPageGroup } from '@/utils/ContentStack/types';
 import {

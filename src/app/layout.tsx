@@ -1,4 +1,5 @@
 'use client';
+
 import { css } from '@emotion/css';
 import { RootStyleRegistry } from '@/components/global';
 import { useMediaQuery } from '@/hooks/useMediaQuery';

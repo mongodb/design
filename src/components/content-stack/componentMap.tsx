@@ -1,6 +1,14 @@
 import { css } from '@emotion/css';
 import Card from '@leafygreen-ui/card';
 import { palette } from '@leafygreen-ui/palette';
+import {
+  Table,
+  TableHead,
+  TableBody,
+  Row,
+  Cell,
+  HeaderCell,
+} from '@leafygreen-ui/table';
 import { spacing } from '@leafygreen-ui/tokens';
 import {
   Body,
@@ -100,6 +108,7 @@ export const nodeTypeToElementMap: {
   ),
   [CSNodeType.PARAGRAPH]: (node, props) => (
     <Body
+      baseFontSize={16}
       className={
         !props.isNested &&
         css`
@@ -116,6 +125,7 @@ export const nodeTypeToElementMap: {
   ),
   [CSNodeType.ANCHOR]: (node, props) => (
     <Link
+      baseFontSize={16}
       href={node.attrs?.url}
       className={css`
         line-height: 28px;
@@ -157,6 +167,7 @@ export const nodeTypeToElementMap: {
   [CSNodeType.LIST_ITEM]: (node, props) => (
     <li
       className={css`
+        font-size: 16px;
         line-height: 28px;
         padding-left: 5px;
         & > * {
@@ -173,7 +184,13 @@ export const nodeTypeToElementMap: {
     </li>
   ),
   [CSNodeType.SPAN]: (node, props) => (
-    <span {...node.attrs} {...props}>
+    <span
+      className={css`
+        font-size: 16px;
+      `}
+      {...node.attrs}
+      {...props}
+    >
       <ContentstackChildren nodeChildren={node.children} {...props} />
     </span>
   ),
@@ -181,13 +198,15 @@ export const nodeTypeToElementMap: {
     const colWidths = node.attrs.colWidths ? node.attrs.colWidths : [];
     return (
       <Card
+        baseFontSize={16}
         className={css`
           margin-block: ${spacing[800] + spacing[200]}px;
           padding: ${spacing[400]}px 0;
         `}
         {...props}
       >
-        <table
+        <Table
+          baseFontSize={16}
           className={css`
             border-spacing: 0;
             ${colWidths.map(
@@ -201,28 +220,27 @@ export const nodeTypeToElementMap: {
           `}
         >
           <ContentstackChildren nodeChildren={node.children} />
-        </table>
+        </Table>
       </Card>
     );
   },
   [CSNodeType.TABLE_HEAD]: (node, props) => (
-    <thead
+    <TableHead
       className={css`
-        border-bottom: 3px solid ${palette.gray.light1};
         margin-top: ${spacing[400]}px;
       `}
       {...props}
     >
       <ContentstackChildren nodeChildren={node.children} />
-    </thead>
+    </TableHead>
   ),
   [CSNodeType.TABLE_BODY]: (node, props) => (
-    <tbody {...props}>
+    <TableBody {...props}>
       <ContentstackChildren nodeChildren={node.children} />
-    </tbody>
+    </TableBody>
   ),
   [CSNodeType.TABLE_ROW]: (node, props) => (
-    <tr
+    <Row
       className={css`
         > td:first-of-type,
         > th:first-of-type {
@@ -237,27 +255,22 @@ export const nodeTypeToElementMap: {
       {...props}
     >
       <ContentstackChildren nodeChildren={node.children} />
-    </tr>
+    </Row>
   ),
   [CSNodeType.TABLE_HEADER_CELL]: (node, props) => (
-    <th
+    <HeaderCell
+      align="left"
       className={css`
-        > * {
-          font-weight: 700;
-          margin: 0;
-        }
-        text-align: left;
+        font-weight: bold;
         padding: ${spacing[200]}px;
-        vertical-align: middle;
-        border-bottom: 3px solid ${palette.gray.light2};
       `}
       {...props}
     >
       <ContentstackChildren nodeChildren={node.children} />
-    </th>
+    </HeaderCell>
   ),
   [CSNodeType.TABLE_CELL]: (node, props) => (
-    <td
+    <Cell
       className={css`
         vertical-align: middle;
         padding: ${spacing[100]}px;
@@ -266,7 +279,7 @@ export const nodeTypeToElementMap: {
       {...props}
     >
       <ContentstackChildren nodeChildren={node.children} />
-    </td>
+    </Cell>
   ),
   [CSNodeType.REFERENCE]: (node, props) => (
     <ContentstackReference content={node} {...props} />
