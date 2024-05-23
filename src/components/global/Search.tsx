@@ -23,12 +23,9 @@ export function Search() {
 
   const search = useFuseSearch(components, fuseOptions);
 
-  const debouncedSearch = useCallback(
-    debounce((term: string) => {
-      setResults(search(term));
-    }, 300),
-    [search],
-  );
+  const debouncedSearch = debounce((term: string) => {
+    setResults(search(term));
+  }, 300);
 
   const handleSearchChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +34,7 @@ export function Search() {
 
       debouncedSearch(term);
     },
-    [search],
+    [debouncedSearch],
   );
 
   useEffect(() => {
@@ -69,6 +66,7 @@ export function Search() {
             </div>
           }
           href={item.navPath ?? '/'}
+          // @ts-expect-error polymorphic error
           as={Link}
         >
           {item.name}
