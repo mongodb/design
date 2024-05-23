@@ -55,7 +55,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
   return (
     <div
       className={css`
-        position: relative;
         min-height: 100vh;
         height: 100%;
         width: 100%;
@@ -79,9 +78,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
           right: 0;
         `}
       >
-        <Search />
-        <DarkModeToggle />
         <UserMenu />
+        <DarkModeToggle />
       </div>
 
       <div

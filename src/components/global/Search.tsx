@@ -1,12 +1,14 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
+import { css } from '@emotion/css';
 import Fuse, { IFuseOptions } from 'fuse.js';
+import debounce from 'lodash/debounce';
 import { SearchInput, SearchResult } from '@leafygreen-ui/search-input';
 import { components } from '@/utils/components';
 
 const fuseOptions = {
   includeScore: true,
-  keys: ['name', 'subComponents'],
+  keys: ['name', 'subComponents', 'group'],
 };
 
 const useFuseSearch = (data: any[], options: IFuseOptions<any>) => {
@@ -21,11 +23,19 @@ export function Search() {
 
   const search = useFuseSearch(components, fuseOptions);
 
+  const debouncedSearch = useCallback(
+    debounce((term: string) => {
+      setResults(search(term));
+    }, 300),
+    [search],
+  );
+
   const handleSearchChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const term = e.target.value;
       setSearchTerm(term);
-      setResults(search(term));
+
+      debouncedSearch(term);
     },
     [search],
   );
@@ -42,11 +52,22 @@ export function Search() {
       size="small"
       value={searchTerm}
       onChange={handleSearchChange}
+      className={css`
+        margin: 0 16px 24px 16px;
+      `}
     >
       {results.map(item => (
         <SearchResult
           key={item.name}
-          description={item.group.split('-').join(' ')}
+          description={
+            <div
+              className={css`
+                text-transform: capitalize;
+              `}
+            >
+              {item.group.split('-').join(' ')}
+            </div>
+          }
           href={item.navPath ?? '/'}
           as={Link}
         >
