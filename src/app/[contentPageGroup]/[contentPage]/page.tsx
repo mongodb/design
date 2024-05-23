@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import { ContentstackRichText } from '@/components/content-stack';
 import { getContentPage } from '@/utils/ContentStack/getContentstackResources';
 import { ContentPage as ContentPageType } from '@/utils/ContentStack/types';
-import { CardSkeleton } from '@leafygreen-ui/skeleton-loader';
 
 export default function ContentPage({
   params: { contentPage: contentPageName },
