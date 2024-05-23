@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-import { getComponent } from '@/utils/ContentStack/getContentstackResources';
+import { fetchComponent } from '@/utils/ContentStack/getContentstackResources';
 import { ComponentFields } from '@/utils/ContentStack/types';
 
 /** @deprecated */
@@ -17,7 +17,7 @@ export default function useComponentFields({
 
   useEffect(() => {
     (async function () {
-      const componentObj = await getComponent(componentName, {
+      const componentObj = await fetchComponent(componentName, {
         includeContent,
       });
       setComponent(componentObj);
