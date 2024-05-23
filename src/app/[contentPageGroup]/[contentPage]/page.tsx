@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { ContentstackRichText } from '@/components/content-stack';
 import { getContentPage } from '@/utils/ContentStack/getContentstackResources';
 import { ContentPage as ContentPageType } from '@/utils/ContentStack/types';
+import { CardSkeleton } from '@leafygreen-ui/skeleton-loader';
 
 export default function ContentPage({
   params: { contentPage: contentPageName },
@@ -14,13 +15,19 @@ export default function ContentPage({
   params: { contentPage: string };
 }) {
   const [contentPage, setContentPage] = useState<ContentPageType>();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async function () {
       const contentPageObj = await getContentPage(startCase(contentPageName));
+      setIsLoading(false);
       setContentPage(contentPageObj);
     })();
   }, [contentPageName]);
+
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <div
