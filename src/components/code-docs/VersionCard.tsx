@@ -12,33 +12,18 @@ import { spacing } from '@leafygreen-ui/tokens';
 import { Subtitle } from '@leafygreen-ui/typography';
 import { color } from '@leafygreen-ui/tokens';
 
-export const VersionCard = ({
-  component,
-  getChangelog,
-}: {
+interface VersionCardProps {
   component: string;
-  getChangelog: (arg0: string) => Promise<string | null>;
-}) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [changelog, setChangelog] = useState<string | null>(null);
-  const [version, setVersion] = useState<string | null>(null);
+  changelog: string | null;
+}
 
-  useEffect(() => {
-    getChangelog(component)
-      .then(response => {
-        setChangelog(response);
-      })
-      .finally(() => setIsLoading(false));
-  }, [component, getChangelog]);
+export const VersionCard = ({ component, changelog }: VersionCardProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [version, setVersion] = useState<string | null>(null);
 
   useEffect(() => {
     setVersion(changelog?.split('h2')[1]?.replace(/[>/<]+/g, '') ?? null);
   }, [changelog]);
-
-  if (isLoading) {
-    return <CardSkeleton />;
-  }
 
   return (
     <Card>
