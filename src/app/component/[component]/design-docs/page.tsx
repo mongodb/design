@@ -1,16 +1,14 @@
-'use client';
-
 import { css } from '@emotion/css';
 
 import { ContentstackRichText } from '@/components/content-stack';
-import useComponentFields from '@/hooks/useComponentFields';
+import { getComponent } from '@/utils/ContentStack/getContentstackResources';
 
-export default function Page({
+export default async function Page({
   params: { component: componentName },
 }: {
   params: { component: string };
 }) {
-  const component = useComponentFields({ componentName, includeContent: true });
+  const component = await getComponent(componentName, { includeContent: true });
 
   return (
     <div
