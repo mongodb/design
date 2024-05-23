@@ -1,14 +1,5 @@
-// import { useEffect, useState } from 'react';
-
-import { components } from '@/utils';
-import {
-  TSDocResponse,
-  PropTableState,
-  mergeProps,
-} from '@/components/code-docs';
-
 import { fetchTSDocs, fetchChangelog } from './server';
-import { CodeDocsContent } from './codeDocs.client';
+import { CodeDocsContent } from './client';
 import { parseComponentPropsFromTSDocs } from './utils';
 
 export default async function Page({
