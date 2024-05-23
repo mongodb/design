@@ -226,25 +226,9 @@ export function SideNavigation() {
   return (
     <PortalContextProvider
       popover={{
-        portalContainer: navRef.current,
-        scrollContainer: navRef.current,
+        scrollContainer: navRef?.current,
+        portalContainer: navRef?.current,
       }}
-    <nav
-      key="navigation"
-      className={css`
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: ${SIDE_NAV_WIDTH}px;
-        overflow-y: auto;
-        list-style-type: none;
-        overflow-x: hidden;
-        padding-bottom: 16px;
-        font-size: 12px;
-        border-right: 1px solid ${color[theme].border.secondary.default};
-        z-index: 1;
-      `}
     >
       <nav
         ref={navRef}
@@ -261,6 +245,7 @@ export function SideNavigation() {
           padding-bottom: 16px;
           font-size: 12px;
           border-right: 1px solid ${color[theme].border.secondary.default};
+          z-index: 1;
         `}
       >
         <header key="header">
