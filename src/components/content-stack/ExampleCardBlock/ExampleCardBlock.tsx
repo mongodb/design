@@ -1,16 +1,16 @@
-import { css } from "@emotion/css";
-import { useDarkMode } from "@leafygreen-ui/leafygreen-provider";
-import { color, spacing } from "@leafygreen-ui/tokens";
-import { Body } from "@leafygreen-ui/typography";
-import { ExampleCardBlockProps } from "../types";
+import { css } from '@emotion/css';
+import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
+import { color, spacing } from '@leafygreen-ui/tokens';
+import { Body } from '@leafygreen-ui/typography';
+import { ExampleCardBlockProps } from '../types';
 import {
   BorderColors,
   IconColors,
   Icons,
   TextColors,
   VariantHeaders,
-} from "./constants";
-import { ImageContainer } from "./ImageContainer";
+} from './constants';
+import { ImageContainer } from './ImageContainer';
 
 export const ExampleCardBlock = ({
   entry,
@@ -55,6 +55,7 @@ export const ExampleCardBlock = ({
         />
         <div>
           <Body
+            baseFontSize={16}
             className={css`
               color: ${TextColors(theme)[entry.variant]};
             `}
@@ -62,6 +63,7 @@ export const ExampleCardBlock = ({
             <b>{VariantHeaders[entry.variant]}</b>
           </Body>
           <Body
+            baseFontSize={16}
             className={css`
               color: ${color[theme].text.secondary.default};
             `}

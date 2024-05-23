@@ -1,13 +1,13 @@
-import { kebabCase } from "lodash";
+import { kebabCase } from 'lodash';
 
-import { css } from "@leafygreen-ui/emotion";
-import { useDarkMode } from "@leafygreen-ui/leafygreen-provider";
-import { HTMLElementProps, Theme } from "@leafygreen-ui/lib";
-import { spacing, color } from "@leafygreen-ui/tokens";
-import { Body } from "@leafygreen-ui/typography";
+import { css } from '@leafygreen-ui/emotion';
+import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
+import { HTMLElementProps, Theme } from '@leafygreen-ui/lib';
+import { spacing, color } from '@leafygreen-ui/tokens';
+import { Body } from '@leafygreen-ui/typography';
 
-import { Knob } from "./Knob/Knob";
-import { Knobs } from "./types";
+import { Knob } from './Knob/Knob';
+import { Knobs } from './types';
 
 const knobRowWrapperStyle = (theme: Theme) => css`
   display: flex;
@@ -29,7 +29,7 @@ const knobControlStyle = css`
   justify-content: end;
 `;
 
-interface KnobRowProps extends HTMLElementProps<"div"> {
+interface KnobRowProps extends HTMLElementProps<'div'> {
   knob: {
     control?: Knobs;
     name: string;
@@ -40,10 +40,11 @@ interface KnobRowProps extends HTMLElementProps<"div"> {
 }
 
 export const KnobRow = ({ knob, knobValue, setKnobValue }: KnobRowProps) => {
-  const { control = "text", name, options = [] } = knob;
+  const { control = 'text', name, options = [] } = knob;
   const { theme } = useDarkMode();
+  const knobLabel = kebabCase(`knob-${name}`);
 
-  if (control === "none") return null;
+  if (control === 'none') return null;
 
   const renderedKnob = (
     <Knob
@@ -51,19 +52,19 @@ export const KnobRow = ({ knob, knobValue, setKnobValue }: KnobRowProps) => {
       knobType={control}
       knobOptions={options}
       value={knobValue}
-      onChange={(eventOrVal) => {
+      onChange={eventOrVal => {
         const value = eventOrVal.target?.value ?? eventOrVal;
         setKnobValue(name, value);
       }}
       className={knobControlStyle}
-      aria-labelledby={`knob-${name}`}
+      aria-labelledby={knobLabel}
     />
   );
 
   return (
     <div className={knobRowWrapperStyle(theme)}>
       <div>
-        <Body baseFontSize={16} id={`${kebabCase()}-knob-${name}`}>
+        <Body baseFontSize={16} id={knobLabel}>
           <strong>{name}</strong>
         </Body>
       </div>
