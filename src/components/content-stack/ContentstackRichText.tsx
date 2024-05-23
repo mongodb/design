@@ -6,7 +6,6 @@ import { ContentstackText } from './ContentstackText';
 import { CSNode } from './types';
 import { getCSNodeTextContent, isTextNode, nodeHasAssets } from './utils';
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
-import Code from '@leafygreen-ui/code';
 
 interface CSRichTextProps
   extends Omit<JSX.IntrinsicElements['div'], 'content'> {

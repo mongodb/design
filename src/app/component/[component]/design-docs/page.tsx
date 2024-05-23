@@ -1,6 +1,5 @@
 import { css } from '@emotion/css';
 
-import { ContentstackRichText } from '@/components/content-stack';
 import { fetchComponent } from '@/utils/ContentStack/getContentstackResources';
 import { DesignDocsContent } from './client';
 
