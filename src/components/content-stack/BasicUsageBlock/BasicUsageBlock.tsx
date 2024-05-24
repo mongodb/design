@@ -8,7 +8,7 @@ import { palette } from "@leafygreen-ui/palette";
 import { spacing } from "@leafygreen-ui/tokens";
 import { Body } from "@leafygreen-ui/typography";
 
-import { ContentstackRichText } from "..";
+import { ContentStackRichText } from "..";
 
 export const BasicUsageBlock = ({ entry }: { entry: any }) => {
   const { darkMode } = useDarkMode();
@@ -41,7 +41,7 @@ export const BasicUsageBlock = ({ entry }: { entry: any }) => {
           <b>Do</b>
         </Body>
       </div>
-      <ContentstackRichText content={entry.do_s} />
+      <ContentStackRichText content={entry.do_s} />
       <div
         className={css`
           align-items: center;
@@ -62,7 +62,7 @@ export const BasicUsageBlock = ({ entry }: { entry: any }) => {
           <b>Don&apos;t</b>
         </Body>
       </div>
-      <ContentstackRichText content={entry.don_ts} />
+      <ContentStackRichText content={entry.don_ts} />
     </div>
   );
 };

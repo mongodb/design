@@ -4,8 +4,8 @@ import { css } from '@emotion/css';
 import startCase from 'lodash/startCase';
 import { useEffect, useState } from 'react';
 
-import { ContentstackRichText } from '@/components/content-stack';
-import { getContentPage } from '@/utils/ContentStack/getContentstackResources';
+import { ContentStackRichText } from '@/components/content-stack';
+import { getContentPage } from '@/utils/ContentStack/getContentStackResources';
 import { ContentPage as ContentPageType } from '@/utils/ContentStack/types';
 
 export default function ContentPage({
@@ -28,7 +28,7 @@ export default function ContentPage({
         max-width: 700px; // TODO: Make this responsive
       `}
     >
-      <ContentstackRichText content={contentPage?.content} />
+      <ContentStackRichText content={contentPage?.content} />
     </div>
   );
 }

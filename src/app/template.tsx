@@ -18,7 +18,7 @@ import { ComponentFields, ContentPageGroup } from '@/utils/ContentStack/types';
 import {
   getComponents,
   getContentPageGroups,
-} from '@/utils/ContentStack/getContentstackResources';
+} from '@/utils/ContentStack/getContentStackResources';
 
 const useGetInitialContentStackContext = () => {
   const [components, setComponents] = useState<ComponentFields[]>([]);

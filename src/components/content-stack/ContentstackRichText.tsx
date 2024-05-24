@@ -2,7 +2,7 @@
 
 import { NotFound } from '@/components/global/NotFound';
 import { nodeTypeToElementMap } from './componentMap';
-import { ContentstackText } from './ContentstackText';
+import { ContentStackText } from './ContentStackText';
 import { CSNode } from './types';
 import { getCSNodeTextContent, isTextNode, nodeHasAssets } from './utils';
 
@@ -16,14 +16,14 @@ interface CSRichTextProps
 /**
  * Renders a ContentStack Node
  */
-export const ContentstackRichText = ({
+export const ContentStackRichText = ({
   content,
   ...rest
 }: CSRichTextProps): JSX.Element => {
   if (!content) return <NotFound />;
 
   if (isTextNode(content) && getCSNodeTextContent(content)) {
-    return <ContentstackText node={content} {...rest} />;
+    return <ContentStackText node={content} {...rest} />;
   } else {
     const textContent = getCSNodeTextContent(content);
 

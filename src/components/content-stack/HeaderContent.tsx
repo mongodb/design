@@ -4,7 +4,7 @@ import Link from 'next/link';
 // @ts-expect-error
 import LinkIcon from '@leafygreen-ui/icon/dist/Link';
 import { color, spacing } from '@leafygreen-ui/tokens';
-import { ContentstackChildren } from './ContentstackChildren';
+import { ContentStackChildren } from './ContentStackChildren';
 import { CSNode } from './types';
 import { getCSNodeTextContent } from './utils';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
@@ -53,7 +53,7 @@ export const HeaderContent = ({ node }: { node: CSNode }) => {
           }
         `}
       >
-        <ContentstackChildren nodeChildren={node.children} />
+        <ContentStackChildren nodeChildren={node.children} />
       </div>
       <LinkIcon
         fill={color[theme].icon.primary.default}

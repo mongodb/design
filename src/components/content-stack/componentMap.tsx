@@ -19,8 +19,8 @@ import {
   Overline,
   Subtitle,
 } from '@leafygreen-ui/typography';
-import { ContentstackChildren } from './ContentstackChildren';
-import { ContentstackReference } from './ContentstackReference';
+import { ContentStackChildren } from './ContentStackChildren';
+import { ContentStackReference } from './ContentStackReference';
 import { HeaderContent } from './HeaderContent';
 import { CSNode, CSNodeType, CSTextNode } from './types';
 
@@ -37,7 +37,7 @@ export const nodeTypeToElementMap: {
 } = {
   [CSNodeType.DOCUMENT]: (node, props) => (
     <div {...props}>
-      <ContentstackChildren nodeChildren={node.children} {...props} />
+      <ContentStackChildren nodeChildren={node.children} {...props} />
     </div>
   ),
   [CSNodeType.HEADING_1]: (node, props) => (
@@ -98,12 +98,12 @@ export const nodeTypeToElementMap: {
   ),
   [CSNodeType.HEADING_5]: (node, props) => (
     <Overline {...props}>
-      <ContentstackChildren nodeChildren={node.children} />
+      <ContentStackChildren nodeChildren={node.children} />
     </Overline>
   ),
   [CSNodeType.HEADING_6]: (node, props) => (
     <Overline {...props}>
-      <ContentstackChildren nodeChildren={node.children} />
+      <ContentStackChildren nodeChildren={node.children} />
     </Overline>
   ),
   [CSNodeType.PARAGRAPH]: (node, props) => (
@@ -120,7 +120,7 @@ export const nodeTypeToElementMap: {
       {...node.attrs}
       {...props}
     >
-      <ContentstackChildren nodeChildren={node.children} {...props} />
+      <ContentStackChildren nodeChildren={node.children} {...props} />
     </Body>
   ),
   [CSNodeType.ANCHOR]: (node, props) => (
@@ -137,7 +137,7 @@ export const nodeTypeToElementMap: {
       {...node.attrs}
       {...props}
     >
-      <ContentstackChildren nodeChildren={node.children} />
+      <ContentStackChildren nodeChildren={node.children} />
     </Link>
   ),
   [CSNodeType.ORDERED_LIST]: (node, props) => (
@@ -148,7 +148,7 @@ export const nodeTypeToElementMap: {
       {...(node.attrs as any)}
       {...props}
     >
-      <ContentstackChildren nodeChildren={node.children} />
+      <ContentStackChildren nodeChildren={node.children} />
     </ol>
   ),
   [CSNodeType.UNORDERED_LIST]: (node, props) => (
@@ -161,7 +161,7 @@ export const nodeTypeToElementMap: {
       {...node.attrs}
       {...props}
     >
-      <ContentstackChildren nodeChildren={node.children} />
+      <ContentStackChildren nodeChildren={node.children} />
     </ul>
   ),
   [CSNodeType.LIST_ITEM]: (node, props) => (
@@ -180,7 +180,7 @@ export const nodeTypeToElementMap: {
       {...node.attrs}
       {...props}
     >
-      <ContentstackChildren nodeChildren={node.children} />
+      <ContentStackChildren nodeChildren={node.children} />
     </li>
   ),
   [CSNodeType.SPAN]: (node, props) => (
@@ -192,7 +192,7 @@ export const nodeTypeToElementMap: {
       {...node.attrs}
       {...props}
     >
-      <ContentstackChildren nodeChildren={node.children} {...props} />
+      <ContentStackChildren nodeChildren={node.children} {...props} />
     </span>
   ),
   [CSNodeType.TABLE]: (node, props) => {
@@ -219,7 +219,7 @@ export const nodeTypeToElementMap: {
             )}
           `}
         >
-          <ContentstackChildren nodeChildren={node.children} />
+          <ContentStackChildren nodeChildren={node.children} />
         </Table>
       </Card>
     );
@@ -231,12 +231,12 @@ export const nodeTypeToElementMap: {
       `}
       {...props}
     >
-      <ContentstackChildren nodeChildren={node.children} />
+      <ContentStackChildren nodeChildren={node.children} />
     </TableHead>
   ),
   [CSNodeType.TABLE_BODY]: (node, props) => (
     <TableBody {...props}>
-      <ContentstackChildren nodeChildren={node.children} />
+      <ContentStackChildren nodeChildren={node.children} />
     </TableBody>
   ),
   [CSNodeType.TABLE_ROW]: (node, props) => (
@@ -254,7 +254,7 @@ export const nodeTypeToElementMap: {
       `}
       {...props}
     >
-      <ContentstackChildren nodeChildren={node.children} />
+      <ContentStackChildren nodeChildren={node.children} />
     </Row>
   ),
   [CSNodeType.TABLE_HEADER_CELL]: (node, props) => (
@@ -266,7 +266,7 @@ export const nodeTypeToElementMap: {
       `}
       {...props}
     >
-      <ContentstackChildren nodeChildren={node.children} />
+      <ContentStackChildren nodeChildren={node.children} />
     </HeaderCell>
   ),
   [CSNodeType.TABLE_CELL]: (node, props) => (
@@ -278,7 +278,7 @@ export const nodeTypeToElementMap: {
       `}
       {...props}
     >
-      <ContentstackChildren
+      <ContentStackChildren
         nodeChildren={node.children}
         className={css`
           font-size: ${typeScales.body1.fontSize}px;
@@ -288,9 +288,9 @@ export const nodeTypeToElementMap: {
     </Cell>
   ),
   [CSNodeType.REFERENCE]: (node, props) => (
-    <ContentstackReference content={node} {...props} />
+    <ContentStackReference content={node} {...props} />
   ),
   [CSNodeType.FRAGMENT]: (node, props) => (
-    <ContentstackChildren nodeChildren={node.children} {...props} />
+    <ContentStackChildren nodeChildren={node.children} {...props} />
   ),
 };

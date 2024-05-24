@@ -1,4 +1,4 @@
-import Contentstack from "contentstack";
+import ContentStack from "contentstack";
 import defaults from "lodash/defaults";
 import startCase from "lodash/startCase";
 
@@ -24,7 +24,7 @@ const environment = ((): string => {
   throw new Error(`Could not find environment "${environmentVariable}"`);
 })();
 
-const Stack = Contentstack.Stack({
+const Stack = ContentStack.Stack({
   api_key: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY,
   delivery_token: process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN,
   environment,

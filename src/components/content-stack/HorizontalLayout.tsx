@@ -1,7 +1,7 @@
 import { css, cx } from "@emotion/css";
 import { Polymorph } from "@leafygreen-ui/polymorphic";
 import { spacing } from "@leafygreen-ui/tokens";
-import { ContentstackRichText } from "./ContentstackRichText";
+import { ContentStackRichText } from "./ContentStackRichText";
 import { HorizontalLayoutBlockProps } from "./types";
 
 /// Note: can't use `css` from `@emotion/react` with `cx`
@@ -29,7 +29,7 @@ export const HorizontalLayout = ({
       `}
     >
       <Polymorph
-        as={column_1 ? ContentstackRichText : "div"}
+        as={column_1 ? ContentStackRichText : "div"}
         content={column_1}
         // @ts-expect-error : isNested is not a valid attribute on `div`
         isNested={true}
@@ -43,7 +43,7 @@ export const HorizontalLayout = ({
       />
 
       <Polymorph
-        as={column_2 ? ContentstackRichText : "div"}
+        as={column_2 ? ContentStackRichText : "div"}
         content={column_2}
         // @ts-expect-error : isNested is not a valid attribute on `div`
         isNested={true}

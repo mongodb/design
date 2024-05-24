@@ -6,7 +6,7 @@ import { CalloutProps } from '@leafygreen-ui/callout/dist/Callout/types';
 
 type AnyNode = CSNode | CSTextNode;
 
-/** Contentstack is missing props in their type definitions */
+/** ContentStack is missing props in their type definitions */
 export interface CSNode extends Node {
   uid: string;
   children: Array<AnyNode>;
@@ -20,7 +20,7 @@ export interface CSEntry extends EntryEmbedable {}
 
 // TODO: consider extending `@contentstack/utils.NodeType`
 /**
- * Map of all Contentstack block types. Blocks contain inline or block nodes.
+ * Map of all ContentStack block types. Blocks contain inline or block nodes.
  */
 export enum CSNodeType {
   DOCUMENT = 'doc',
@@ -52,7 +52,7 @@ export enum CSNodeType {
 }
 
 /**
- * Define custom Contentstack block interfaces
+ * Define custom ContentStack block interfaces
  */
 
 interface CSImage {

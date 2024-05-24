@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { css, cx } from "@emotion/css";
-import { getEntryById } from "@/utils/ContentStack/getContentstackResources";
+import { getEntryById } from "@/utils/ContentStack/getContentStackResources";
 import Badge from "@leafygreen-ui/badge";
 import Button from "@leafygreen-ui/button";
 import Callout, { Variant } from "@leafygreen-ui/callout";
@@ -17,7 +17,7 @@ import { ExampleCardBlock } from "./ExampleCardBlock";
 import { HorizontalLayout } from "./HorizontalLayout";
 import { TwoColumnExampleCard } from "./TwoColumnExampleCard";
 import { BlockPropsMap, ContentTypeUID } from "./types";
-import { ContentstackRichText } from ".";
+import { ContentStackRichText } from ".";
 
 /**
  * An object that maps keys of each `contentTypeUid`
@@ -67,12 +67,12 @@ const blockToElementMap: {
         "nested-entry"
       )}
     >
-      <ContentstackRichText content={props.content} isNested={true} />
+      <ContentStackRichText content={props.content} isNested={true} />
     </Callout>
   ),
   card_block: (props) => (
     <Card className="nested-entry">
-      <ContentstackRichText content={props.content} isNested={true} />
+      <ContentStackRichText content={props.content} isNested={true} />
     </Card>
   ),
   example_card_block: (props) => <ExampleCardBlock entry={props} />,
@@ -85,13 +85,13 @@ const blockToElementMap: {
       description={props.description}
       className="nested-entry"
     >
-      <ContentstackRichText content={props.content} isNested={true} />
+      <ContentStackRichText content={props.content} isNested={true} />
     </ExpandableCard>
   ),
   horizontal_layout: (props) => <HorizontalLayout {...props} />,
 } as const;
 
-const ContentstackEntry = <T extends ContentTypeUID>({
+const ContentStackEntry = <T extends ContentTypeUID>({
   contentTypeUid,
   entryUid,
 }: {
@@ -113,4 +113,4 @@ const ContentstackEntry = <T extends ContentTypeUID>({
   return blockToElementMap[contentTypeUid](entry);
 };
 
-export { ContentstackEntry };
+export { ContentStackEntry };

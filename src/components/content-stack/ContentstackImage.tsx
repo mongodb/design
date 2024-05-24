@@ -5,7 +5,7 @@ import { spacing } from "@leafygreen-ui/tokens";
 import { CSNode } from "./types";
 
 // TODO: restrict the type of `content` more (should assert it has certain attrs)
-export const ContentstackImage = ({
+export const ContentStackImage = ({
   content,
   ...props
 }: {

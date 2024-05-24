@@ -1,8 +1,8 @@
-import { ContentstackEntry } from "./ContentstackEntry";
-import { ContentstackImage } from "./ContentstackImage";
+import { ContentStackEntry } from "./ContentStackEntry";
+import { ContentStackImage } from "./ContentStackImage";
 import { CSNode } from "./types";
 
-export const ContentstackReference = ({
+export const ContentStackReference = ({
   content,
   ...props
 }: {
@@ -16,10 +16,10 @@ export const ContentstackReference = ({
   } = content.attrs;
 
   if (type === "asset") {
-    return <ContentstackImage content={content} {...props} />;
+    return <ContentStackImage content={content} {...props} />;
   } else if (type === "entry") {
     return (
-      <ContentstackEntry
+      <ContentStackEntry
         contentTypeUid={contentTypeUid}
         entryUid={entryUid}
         {...props}

@@ -1,10 +1,10 @@
 import { CSNode } from './types';
-import { ContentstackRichText } from '.';
+import { ContentStackRichText } from '.';
 
 /**
  * Renders a node's children
  */
-export const ContentstackChildren = ({
+export const ContentStackChildren = ({
   nodeChildren,
 
   ...props
@@ -15,7 +15,7 @@ export const ContentstackChildren = ({
   return (
     <>
       {nodeChildren.map(childNode => (
-        <ContentstackRichText
+        <ContentStackRichText
           key={childNode.uid}
           content={childNode}
           {...props}

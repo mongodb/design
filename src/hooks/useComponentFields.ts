@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-import { getComponent } from "@/utils/ContentStack/getContentstackResources";
+import { getComponent } from "@/utils/ContentStack/getContentStackResources";
 import { ComponentFields } from "@/utils/ContentStack/types";
 
 export default function useComponentFields({

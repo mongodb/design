@@ -7,7 +7,7 @@ type CSRichTextProps = JSX.IntrinsicElements['span'] & {
   node: CSTextNode;
 };
 
-export const ContentstackText = ({
+export const ContentStackText = ({
   node,
   className,
   ...rest

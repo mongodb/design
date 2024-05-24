@@ -2,7 +2,7 @@
 
 import { css } from '@emotion/css';
 
-import { ContentstackRichText } from '@/components/content-stack';
+import { ContentStackRichText } from '@/components/content-stack';
 import useComponentFields from '@/hooks/useComponentFields';
 
 export default function Page({
@@ -18,7 +18,7 @@ export default function Page({
         max-width: 700px; // TODO: Make this responsive
       `}
     >
-      <ContentstackRichText content={component?.designguidelines} />
+      <ContentStackRichText content={component?.designguidelines} />
     </div>
   );
 }
