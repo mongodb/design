@@ -71,7 +71,7 @@ const titlecase = (component: Component) => {
 const generateComponentNavPath = (component: Component) =>
   `/component/${component}/live-example`;
 
-interface ComponentMeta {
+export interface ComponentMeta {
   name: string;
   navPath: string;
   group: Group;
