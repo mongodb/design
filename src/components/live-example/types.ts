@@ -1,10 +1,9 @@
-import React from "react";
+import React from 'react';
+import { Meta } from '@storybook/react';
 
-export interface Data {
+export interface StoryData {
   LiveExample: React.ReactElement;
-  allData: {
-    default: { args: Array<string>; argTypes: Array<string> };
-  };
+  meta: Meta;
 }
 
 export type KnobProps = {
@@ -14,14 +13,14 @@ export type KnobProps = {
 export type ComponentProps = { [key: string]: any };
 
 export type Knobs =
-  | "string"
-  | "text"
-  | "number"
-  | "range"
-  | "date"
-  | "boolean"
-  | "array"
-  | "enum"
-  | "select"
-  | "radio"
-  | "none";
+  | 'string'
+  | 'text'
+  | 'number'
+  | 'range'
+  | 'date'
+  | 'boolean'
+  | 'array'
+  | 'enum'
+  | 'select'
+  | 'radio'
+  | 'none';

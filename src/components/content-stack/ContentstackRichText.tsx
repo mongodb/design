@@ -5,6 +5,7 @@ import { nodeTypeToElementMap } from './componentMap';
 import { ContentstackText } from './ContentstackText';
 import { CSNode } from './types';
 import { getCSNodeTextContent, isTextNode, nodeHasAssets } from './utils';
+import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
 
 interface CSRichTextProps
   extends Omit<JSX.IntrinsicElements['div'], 'content'> {
@@ -16,7 +17,26 @@ interface CSRichTextProps
 /**
  * Renders a ContentStack Node
  */
-export const ContentstackRichText = ({
+export const ContentStackRichText = ({
+  content,
+  ...rest
+}: CSRichTextProps): JSX.Element => {
+  return (
+    <ErrorBoundary
+      errorComponent={err => {
+        console.error(
+          'The above error occurred mapping the following content to an element',
+          content,
+        );
+        return <></>;
+      }}
+    >
+      <ContentStackRichTextElement content={content} {...rest} />
+    </ErrorBoundary>
+  );
+};
+
+const ContentStackRichTextElement = ({
   content,
   ...rest
 }: CSRichTextProps): JSX.Element => {
@@ -28,7 +48,7 @@ export const ContentstackRichText = ({
     const textContent = getCSNodeTextContent(content);
 
     if (textContent || nodeHasAssets(content)) {
-      // @ts-expect-error
+      /* @ts-expect-error */
       return nodeTypeToElementMap[content.type]?.(content, rest);
     } else {
       return <></>;
