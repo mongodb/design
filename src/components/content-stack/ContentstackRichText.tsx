@@ -17,7 +17,26 @@ interface CSRichTextProps
 /**
  * Renders a ContentStack Node
  */
-export const ContentstackRichText = ({
+export const ContentStackRichText = ({
+  content,
+  ...rest
+}: CSRichTextProps): JSX.Element => {
+  return (
+    <ErrorBoundary
+      errorComponent={err => {
+        console.error(
+          'The above error occurred mapping the following content to an element',
+          content,
+        );
+        return <></>;
+      }}
+    >
+      <ContentStackRichTextElement content={content} {...rest} />
+    </ErrorBoundary>
+  );
+};
+
+const ContentStackRichTextElement = ({
   content,
   ...rest
 }: CSRichTextProps): JSX.Element => {
@@ -29,20 +48,8 @@ export const ContentstackRichText = ({
     const textContent = getCSNodeTextContent(content);
 
     if (textContent || nodeHasAssets(content)) {
-      return (
-        <ErrorBoundary
-          errorComponent={err => {
-            console.error(
-              'The above error occurred mapping the following content to an element',
-              content,
-            );
-            return <></>;
-          }}
-        >
-          {/* @ts-expect-error */}
-          {nodeTypeToElementMap[content.type]?.(content, rest)}
-        </ErrorBoundary>
-      );
+      /* @ts-expect-error */
+      return nodeTypeToElementMap[content.type]?.(content, rest);
     } else {
       return <></>;
     }
