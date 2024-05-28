@@ -1,12 +1,12 @@
-import { startCase, toLower } from "lodash";
+import { kebabCase, startCase, toLower } from 'lodash';
 
 const Group = {
-  Display: "display",
-  FormElements: "form-elements",
-  Dialogs: "dialogs",
-  Navigation: "navigation",
-  Notifications: "notifications",
-  Patterns: "patterns",
+  Display: 'display',
+  FormElements: 'form-elements',
+  Dialogs: 'dialogs',
+  Navigation: 'navigation',
+  Notifications: 'notifications',
+  Patterns: 'patterns',
 } as const;
 
 type Group = (typeof Group)[keyof typeof Group];
@@ -14,52 +14,52 @@ type Group = (typeof Group)[keyof typeof Group];
 export { Group };
 
 const Component = {
-  Badge: "badge",
-  Banner: "banner",
-  Button: "button",
-  Card: "card",
-  Callout: "callout",
-  Checkbox: "checkbox",
-  Chip: "chip",
-  Code: "code",
-  Combobox: "combobox",
-  ConfirmationModal: "confirmation-modal",
-  Copyable: "copyable",
-  DatePicker: "date-picker",
-  EmptyState: "empty-state",
-  ExpandableCard: "expandable-card",
-  FormFooter: "form-footer",
-  GuideCue: "guide-cue",
-  IconButton: "icon-button",
-  InfoSprinkle: "info-sprinkle",
-  InlineDefinition: "inline-definition",
-  LoadingIndicator: "loading-indicator",
-  Logo: "logo",
-  MarketingModal: "marketing-modal",
-  Menu: "menu",
-  Modal: "modal",
-  MongoNav: "mongo-nav",
-  NumberInput: "number-input",
-  Pagination: "pagination",
-  PasswordInput: "password-input",
-  Pipeline: "pipeline",
-  Popover: "popover",
-  RadioBoxGroup: "radio-box-group",
-  RadioGroup: "radio-group",
-  SearchInput: "search-input",
-  SegmentedControl: "segmented-control",
-  Select: "select",
-  SideNav: "side-nav",
-  SkeletonLoader: "skeleton-loader",
-  SplitButton: "split-button",
-  Stepper: "stepper",
-  Table: "table",
-  Tabs: "tabs",
-  TextArea: "text-area",
-  TextInput: "text-input",
-  Toast: "toast",
-  Toggle: "toggle",
-  Tooltip: "tooltip",
+  Badge: 'badge',
+  Banner: 'banner',
+  Button: 'button',
+  Card: 'card',
+  Callout: 'callout',
+  Checkbox: 'checkbox',
+  Chip: 'chip',
+  Code: 'code',
+  Combobox: 'combobox',
+  ConfirmationModal: 'confirmation-modal',
+  Copyable: 'copyable',
+  DatePicker: 'date-picker',
+  EmptyState: 'empty-state',
+  ExpandableCard: 'expandable-card',
+  FormFooter: 'form-footer',
+  GuideCue: 'guide-cue',
+  IconButton: 'icon-button',
+  InfoSprinkle: 'info-sprinkle',
+  InlineDefinition: 'inline-definition',
+  LoadingIndicator: 'loading-indicator',
+  Logo: 'logo',
+  MarketingModal: 'marketing-modal',
+  Menu: 'menu',
+  Modal: 'modal',
+  MongoNav: 'mongo-nav',
+  NumberInput: 'number-input',
+  Pagination: 'pagination',
+  PasswordInput: 'password-input',
+  Pipeline: 'pipeline',
+  Popover: 'popover',
+  RadioBoxGroup: 'radio-box-group',
+  RadioGroup: 'radio-group',
+  SearchInput: 'search-input',
+  SegmentedControl: 'segmented-control',
+  Select: 'select',
+  SideNav: 'side-nav',
+  SkeletonLoader: 'skeleton-loader',
+  SplitButton: 'split-button',
+  Stepper: 'stepper',
+  Table: 'table',
+  Tabs: 'tabs',
+  TextArea: 'text-area',
+  TextInput: 'text-input',
+  Toast: 'toast',
+  Toggle: 'toggle',
+  Tooltip: 'tooltip',
 } as const;
 
 type Component = (typeof Component)[keyof typeof Component];
@@ -71,13 +71,15 @@ const titlecase = (component: Component) => {
 const generateComponentNavPath = (component: Component) =>
   `/component/${component}/live-example`;
 
-export const components: Array<{
+export interface ComponentMeta {
   name: string;
   navPath: string;
   group: Group;
   subComponents?: Array<string>;
   isPrivate?: boolean;
-}> = [
+}
+
+export const components: Array<ComponentMeta> = [
   {
     name: titlecase(Component.Badge),
     navPath: generateComponentNavPath(Component.Badge),
@@ -122,7 +124,7 @@ export const components: Array<{
     name: titlecase(Component.Combobox),
     navPath: generateComponentNavPath(Component.Combobox),
     group: Group.FormElements,
-    subComponents: ["Combobox", "ComboboxOption", "ComboboxGroup"],
+    subComponents: ['Combobox', 'ComboboxOption', 'ComboboxGroup'],
   },
   {
     name: titlecase(Component.ConfirmationModal),
@@ -178,7 +180,7 @@ export const components: Array<{
     name: titlecase(Component.LoadingIndicator),
     navPath: generateComponentNavPath(Component.LoadingIndicator),
     group: Group.Display,
-    subComponents: ["Spinner", "PageLoader"],
+    subComponents: ['Spinner', 'PageLoader'],
   },
   {
     name: titlecase(Component.Logo),
@@ -194,7 +196,7 @@ export const components: Array<{
     name: titlecase(Component.Menu),
     navPath: generateComponentNavPath(Component.Menu),
     group: Group.Navigation,
-    subComponents: ["Menu", "MenuItem", "SubMenu"],
+    subComponents: ['Menu', 'MenuItem', 'SubMenu'],
   },
   {
     name: titlecase(Component.Modal),
@@ -220,7 +222,7 @@ export const components: Array<{
     name: titlecase(Component.Pipeline),
     navPath: generateComponentNavPath(Component.Pipeline),
     group: Group.Display,
-    subComponents: ["Pipeline", "Stage"],
+    subComponents: ['Pipeline', 'Stage'],
   },
   {
     name: titlecase(Component.Popover),
@@ -231,13 +233,13 @@ export const components: Array<{
     name: titlecase(Component.RadioBoxGroup),
     navPath: generateComponentNavPath(Component.RadioBoxGroup),
     group: Group.FormElements,
-    subComponents: ["RadioBoxGroup", "RadioBox"],
+    subComponents: ['RadioBoxGroup', 'RadioBox'],
   },
   {
     name: titlecase(Component.RadioGroup),
     navPath: generateComponentNavPath(Component.RadioGroup),
     group: Group.FormElements,
-    subComponents: ["RadioGroup", "Radio"],
+    subComponents: ['RadioGroup', 'Radio'],
   },
   {
     name: titlecase(Component.SearchInput),
@@ -248,29 +250,29 @@ export const components: Array<{
     name: titlecase(Component.SegmentedControl),
     navPath: generateComponentNavPath(Component.SegmentedControl),
     group: Group.Display,
-    subComponents: ["SegmentedControl", "SegmentedControlOption"],
+    subComponents: ['SegmentedControl', 'SegmentedControlOption'],
   },
   {
     name: titlecase(Component.Select),
     navPath: generateComponentNavPath(Component.Select),
     group: Group.FormElements,
-    subComponents: ["Select", "Option", "OptionGroup"],
+    subComponents: ['Select', 'Option', 'OptionGroup'],
   },
   {
     name: titlecase(Component.SideNav),
     navPath: generateComponentNavPath(Component.SideNav),
     group: Group.Navigation,
-    subComponents: ["SideNav", "SideNavItem", "SideNavGroup"],
+    subComponents: ['SideNav', 'SideNavItem', 'SideNavGroup'],
   },
   {
     name: titlecase(Component.SkeletonLoader),
     navPath: generateComponentNavPath(Component.SkeletonLoader),
     group: Group.Display,
     subComponents: [
-      "ParagraphSkeleton",
-      "FormSkeleton",
-      "TableSkeleton",
-      "CardSkeleton",
+      'ParagraphSkeleton',
+      'FormSkeleton',
+      'TableSkeleton',
+      'CardSkeleton',
     ],
   },
   {
@@ -282,26 +284,26 @@ export const components: Array<{
     name: titlecase(Component.Stepper),
     navPath: generateComponentNavPath(Component.Stepper),
     group: Group.Navigation,
-    subComponents: ["Stepper", "Step"],
+    subComponents: ['Stepper', 'Step'],
   },
   {
     name: titlecase(Component.Table),
     navPath: generateComponentNavPath(Component.Table),
     group: Group.Display,
     subComponents: [
-      "Table",
-      "TableHead",
-      "HeaderRow",
-      "TableBody",
-      "Row",
-      "Cell",
+      'Table',
+      'TableHead',
+      'HeaderRow',
+      'TableBody',
+      'Row',
+      'Cell',
     ],
   },
   {
     name: titlecase(Component.Tabs),
     navPath: generateComponentNavPath(Component.Tabs),
     group: Group.Navigation,
-    subComponents: ["Tabs", "Tab"],
+    subComponents: ['Tabs', 'Tab'],
   },
   {
     name: titlecase(Component.TextArea),
@@ -330,25 +332,26 @@ export const components: Array<{
   },
   {
     name: titlecase(Component.MongoNav),
-    navPath: "/private",
+    navPath: '/private',
     group: Group.Navigation,
     isPrivate: true,
   },
 ];
-
-export type ComponentMeta = {
-  name: string;
-  navPath: string;
-  isPrivate?: boolean;
-};
 
 export const groupedComponents = components.reduce((acc, obj) => {
   const { group, name, navPath, isPrivate } = obj;
   if (!acc[group]) {
     acc[group] = [];
   }
-  acc[group].push({ name, navPath, isPrivate });
+  acc[group].push({ name, navPath, isPrivate, group });
   // Sort the array by component value
   acc[group].sort((a, b) => a.name.localeCompare(b.name));
   return acc;
-}, {} as Record<Group, ComponentMeta[]>);
+}, {} as Record<Group, Array<ComponentMeta>>);
+
+/**
+ * Returns the component object matching a given name
+ */
+export const findComponent = (componentName: string) => {
+  return components.find(c => kebabCase(c.name) === kebabCase(componentName));
+};

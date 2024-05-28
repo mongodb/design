@@ -1,1 +1,1 @@
-export { ContentstackRichText } from "./ContentstackRichText";
+export { ContentStackRichText as ContentstackRichText } from './ContentstackRichText';

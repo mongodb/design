@@ -1,16 +1,16 @@
-'use client';
-
 import { css } from '@emotion/css';
 
-import { ContentstackRichText } from '@/components/content-stack';
-import useComponentFields from '@/hooks/useComponentFields';
+import { fetchComponent } from '@/utils/ContentStack/getContentstackResources';
+import { DesignDocsContent } from './client';
 
-export default function Page({
+export default async function Page({
   params: { component: componentName },
 }: {
   params: { component: string };
 }) {
-  const component = useComponentFields({ componentName, includeContent: true });
+  const component = await fetchComponent(componentName, {
+    includeContent: true,
+  });
 
   return (
     <div
@@ -18,7 +18,7 @@ export default function Page({
         max-width: 700px; // TODO: Make this responsive
       `}
     >
-      <ContentstackRichText content={component?.designguidelines} />
+      <DesignDocsContent content={component?.designguidelines} />
     </div>
   );
 }
