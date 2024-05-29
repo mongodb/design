@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { css } from '@emotion/css';
@@ -15,18 +15,23 @@ import LockIcon from '@leafygreen-ui/icon/dist/Lock';
 // @ts-expect-error
 import MenuIcon from '@leafygreen-ui/icon/dist/Menu';
 import IconButton from '@leafygreen-ui/icon-button';
-import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
+import {
+  PortalContextProvider,
+  useDarkMode,
+} from '@leafygreen-ui/leafygreen-provider';
 import { MongoDBLogo, SupportedColors } from '@leafygreen-ui/logo';
 import { color, spacing } from '@leafygreen-ui/tokens';
 import { SIDE_NAV_WIDTH } from '@/constants';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { ComponentMeta, Group, groupedComponents } from '@/utils/components';
+import { Search } from '../Search';
 import { Drawer } from './Drawer';
 import { SideNavItem } from './SideNavItem';
 import { SideNavLabel } from './SideNavLabel';
 import { SideNavList } from './SideNavList';
 
 export function SideNavigation() {
+  const navRef = useRef<HTMLElement>(null);
   const [open, setOpen] = React.useState(false);
   const [isMobile] = useMediaQuery(['(max-width: 640px)'], {
     fallback: [false],
@@ -219,45 +224,55 @@ export function SideNavigation() {
   }
 
   return (
-    <nav
-      key="navigation"
-      className={css`
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: ${SIDE_NAV_WIDTH}px;
-        overflow-y: auto;
-        list-style-type: none;
-        overflow-x: hidden;
-        padding-bottom: 16px;
-        font-size: 12px;
-        border-right: 1px solid ${color[theme].border.secondary.default};
-        z-index: 1;
-      `}
+    <PortalContextProvider
+      popover={{
+        scrollContainer: navRef?.current,
+        portalContainer: navRef?.current,
+      }}
     >
-      <header key="header">
-        <SideNavItem
-          key="logo-item"
-          className={css`
-            padding-top: ${spacing[600]}px;
-            padding-bottom: ${spacing[600]}px;
-            height: unset;
-          `}
-          href={'/'}
-        >
-          <MongoDBLogo
-            key="logo"
-            height={24}
-            color={darkMode ? SupportedColors.White : SupportedColors.Black}
+      <nav
+        ref={navRef}
+        key="navigation"
+        className={css`
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 100vh;
+          width: ${SIDE_NAV_WIDTH}px;
+          overflow-y: auto;
+          list-style-type: none;
+          overflow-x: hidden;
+          padding-bottom: 16px;
+          font-size: 12px;
+          border-right: 1px solid ${color[theme].border.secondary.default};
+          z-index: 1;
+        `}
+      >
+        <header key="header">
+          <SideNavItem
+            key="logo-item"
             className={css`
-              z-index: 0;
+              padding-top: ${spacing[600]}px;
+              padding-bottom: ${spacing[600]}px;
+              height: unset;
             `}
-          />
-        </SideNavItem>
-      </header>
+            href={'/'}
+          >
+            <MongoDBLogo
+              key="logo"
+              height={24}
+              color={darkMode ? SupportedColors.White : SupportedColors.Black}
+              className={css`
+                z-index: 0;
+              `}
+            />
+          </SideNavItem>
+        </header>
 
-      {navContent}
-    </nav>
+        <Search />
+
+        {navContent}
+      </nav>
+    </PortalContextProvider>
   );
 }
