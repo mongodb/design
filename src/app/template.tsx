@@ -12,7 +12,7 @@ import {
   SideNavigation,
   Search,
 } from '@/components/global';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useMediaQuery } from '@/hooks';
 import { SIDE_NAV_WIDTH } from '@/constants';
 import { ContentStackContextProvider } from '@/contexts/ContentStackContext';
 import { ComponentFields, ContentPageGroup } from '@/utils/ContentStack/types';

@@ -16,7 +16,7 @@ import {
   Notifications,
   Patterns,
 } from '@/components/glyphs';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useMediaQuery } from '@/hooks';
 
 const liveExamplePath = 'live-example';
 
