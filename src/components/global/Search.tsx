@@ -7,7 +7,7 @@ import debounce from 'lodash/debounce';
 import LockIcon from '@leafygreen-ui/icon/dist/Lock';
 import { SearchInput, SearchResult } from '@leafygreen-ui/search-input';
 import { spacing } from '@leafygreen-ui/tokens';
-import { getSession, Session } from '@/auth';
+import { useSession } from '@/hooks';
 import { components } from '@/utils/components';
 
 const fuseOptions = {
@@ -22,7 +22,7 @@ const useFuseSearch = (data: any[], options: IFuseOptions<any>) => {
 };
 
 export function Search() {
-  const [session, setSession] = useState<Session | undefined>();
+  const session = useSession();
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState(components);
 
@@ -47,14 +47,6 @@ export function Search() {
       setResults(components);
     }
   }, [searchTerm]);
-
-  useEffect(() => {
-    getSession().then(response => {
-      if (response !== null) {
-        setSession(response);
-      }
-    });
-  }, []);
 
   return (
     <SearchInput
