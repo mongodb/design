@@ -3,7 +3,11 @@ import Link from 'next/link';
 import { css } from '@emotion/css';
 import Fuse, { IFuseOptions } from 'fuse.js';
 import debounce from 'lodash/debounce';
+// @ts-expect-error
+import LockIcon from '@leafygreen-ui/icon/dist/Lock';
 import { SearchInput, SearchResult } from '@leafygreen-ui/search-input';
+import { spacing } from '@leafygreen-ui/tokens';
+import { getSession, Session } from '@/auth';
 import { components } from '@/utils/components';
 
 const fuseOptions = {
@@ -18,6 +22,7 @@ const useFuseSearch = (data: any[], options: IFuseOptions<any>) => {
 };
 
 export function Search() {
+  const [session, setSession] = useState<Session | undefined>();
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState(components);
 
@@ -43,6 +48,14 @@ export function Search() {
     }
   }, [searchTerm]);
 
+  useEffect(() => {
+    getSession().then(response => {
+      if (response !== null) {
+        setSession(response);
+      }
+    });
+  }, []);
+
   return (
     <SearchInput
       aria-label="Search Components"
@@ -50,7 +63,7 @@ export function Search() {
       value={searchTerm}
       onChange={handleSearchChange}
       className={css`
-        margin: 0 16px 24px 16px;
+        margin: ${spacing[400]}px ${spacing[600]}px;
       `}
     >
       {results.map(item => (
@@ -66,10 +79,20 @@ export function Search() {
             </div>
           }
           href={item.navPath ?? '/'}
-          // @ts-expect-error polymorphic error
+          // @ts-expect-error Polymorphic
           as={Link}
         >
-          {item.name}
+          <div
+            className={css`
+              display: flex;
+              align-items: center;
+
+              gap: ${spacing[200]}px;
+            `}
+          >
+            {item.name}
+            {item.isPrivate && !session?.user && <LockIcon size="small" />}
+          </div>
         </SearchResult>
       ))}
     </SearchInput>
