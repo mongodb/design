@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { css } from '@emotion/css';
 import Button from '@leafygreen-ui/button';
 // @ts-expect-error
