@@ -1,27 +1,19 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { css } from "@emotion/css";
-import Button from "@leafygreen-ui/button";
+import { css } from '@emotion/css';
+import Button from '@leafygreen-ui/button';
 // @ts-expect-error
-import CaretDownIcon from "@leafygreen-ui/icon/dist/CaretDown";
+import CaretDownIcon from '@leafygreen-ui/icon/dist/CaretDown';
 // @ts-expect-error
-import LogOutIcon from "@leafygreen-ui/icon/dist/LogOut";
-import { Menu, MenuItem } from "@leafygreen-ui/menu";
-import { Body, Description } from "@leafygreen-ui/typography";
-import { getSession, logout, Session } from "@/auth";
-import { LogIn } from "./LogIn";
+import LogOutIcon from '@leafygreen-ui/icon/dist/LogOut';
+import { Menu, MenuItem } from '@leafygreen-ui/menu';
+import { Body, Description } from '@leafygreen-ui/typography';
+import { logout } from '@/auth';
+import { useSession } from '@/hooks';
+import { LogIn } from './LogIn';
 
 export function UserMenu() {
-  const [session, setSession] = useState<Session | undefined>();
-
-  useEffect(() => {
-    getSession().then((response) => {
-      if (response !== null) {
-        setSession(response);
-      }
-    });
-  }, []);
+  const session = useSession();
 
   return session?.user ? (
     <div

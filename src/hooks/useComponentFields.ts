@@ -6,7 +6,7 @@ import { fetchComponent } from '@/utils/ContentStack/getContentstackResources';
 import { ComponentFields } from '@/utils/ContentStack/types';
 
 /** @deprecated */
-export default function useComponentFields({
+export function useComponentFields({
   componentName,
   includeContent = false,
 }: {
