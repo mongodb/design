@@ -15,6 +15,7 @@ export type ComponentProps = { [key: string]: any };
 export type Knobs =
   | 'string'
   | 'text'
+  | 'color'
   | 'number'
   | 'range'
   | 'date'
