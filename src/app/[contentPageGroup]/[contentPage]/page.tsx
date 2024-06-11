@@ -12,11 +12,7 @@ export default async function ContentPage({
   const contentPage = await getContentPage(startCase(contentPageName));
 
   return (
-    <div
-      className={css`
-        max-width: 700px; // TODO: Make this responsive
-      `}
-    >
+    <div>
       <ContentstackRichText content={contentPage?.content} />
     </div>
   );

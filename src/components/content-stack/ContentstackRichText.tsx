@@ -23,7 +23,7 @@ export const ContentStackRichText = ({
 }: CSRichTextProps): JSX.Element => {
   return (
     <ErrorBoundary
-      errorComponent={err => {
+      errorComponent={() => {
         console.error(
           'The above error occurred mapping the following content to an element',
           content,
