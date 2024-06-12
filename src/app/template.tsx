@@ -10,8 +10,9 @@ import {
   Footer,
   UserMenu,
   SideNavigation,
+  Search,
 } from '@/components/global';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useMediaQuery } from '@/hooks';
 import { SIDE_NAV_WIDTH } from '@/constants';
 import { ContentStackContextProvider } from '@/contexts/ContentStackContext';
 import { ComponentFields, ContentPageGroup } from '@/utils/ContentStack/types';
@@ -54,7 +55,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
   return (
     <div
       className={css`
-        position: relative;
         min-height: 100vh;
         height: 100%;
         width: 100%;
@@ -78,8 +78,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
           right: 0;
         `}
       >
-        <DarkModeToggle />
         <UserMenu />
+        <DarkModeToggle />
       </div>
 
       <div

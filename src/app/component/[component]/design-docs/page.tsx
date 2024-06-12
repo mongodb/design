@@ -1,5 +1,3 @@
-import { css } from '@emotion/css';
-
 import { fetchComponent } from '@/utils/ContentStack/getContentstackResources';
 import { DesignDocsContent } from './client';
 
@@ -13,11 +11,7 @@ export default async function Page({
   });
 
   return (
-    <div
-      className={css`
-        max-width: 700px; // TODO: Make this responsive
-      `}
-    >
+    <div>
       <DesignDocsContent content={component?.designguidelines} />
     </div>
   );
