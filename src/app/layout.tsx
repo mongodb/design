@@ -2,7 +2,7 @@
 
 import { css } from '@emotion/css';
 import { RootStyleRegistry } from '@/components/global';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useMediaQuery } from '@/hooks';
 import LeafyGreenProvider, {
   useDarkMode,
 } from '@leafygreen-ui/leafygreen-provider';
