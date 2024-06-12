@@ -14,7 +14,6 @@ import { loadStories } from './server';
 import { Knobs } from '@/components/live-example/Knobs';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { createDefaultProps } from './utils';
-import { CardSkeleton } from '@leafygreen-ui/skeleton-loader';
 
 export default function Page({ params }: { params: { component: string } }) {
   const { darkMode } = useDarkMode();

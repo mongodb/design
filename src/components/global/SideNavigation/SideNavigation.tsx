@@ -58,6 +58,13 @@ export function SideNavigation() {
       <SideNavList key="foundation-list">
         <SideNavItem
           key="grid"
+          active={pathname === '/foundations/forms/'}
+          href={'/foundations/forms'}
+        >
+          Form Guidelines
+        </SideNavItem>
+        <SideNavItem
+          key="grid"
           active={pathname === '/foundations/grid/'}
           href={'/foundations/grid'}
         >

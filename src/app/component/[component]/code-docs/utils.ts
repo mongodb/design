@@ -31,12 +31,6 @@ export function parseComponentPropsFromTSDocs(
     return reducedPropTables;
   } else {
     const centralProps = tsDocs.find(tsdoc => {
-      console.log({
-        displayName: tsdoc.displayName,
-        kebabCaseDisplay: kebabCase(tsdoc.displayName),
-        componentName,
-        kebabCaseName: kebabCase(componentName),
-      });
       return kebabCase(tsdoc.displayName).includes(kebabCase(componentName));
     });
     const mergedProps = mergeProps(centralProps?.props);
