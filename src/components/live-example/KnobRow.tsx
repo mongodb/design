@@ -49,7 +49,7 @@ export const KnobRow = ({ knob, knobValue, setKnobValue }: KnobRowProps) => {
   const renderedKnob = (
     <Knob
       propName={name}
-      knobType={control}
+      knobType={control === 'color' ? 'text' : control}
       knobOptions={options}
       value={knobValue}
       onChange={eventOrVal => {

@@ -1,4 +1,3 @@
-import { StoryData } from '@/components/live-example';
 import { mergeObjects } from '@/utils';
 import { Meta } from '@storybook/react';
 
