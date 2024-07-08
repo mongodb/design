@@ -1,14 +1,18 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import Link from 'next/link';
-import { css } from '@emotion/css';
+import { useRouter } from 'next/navigation';
 import Fuse, { IFuseOptions } from 'fuse.js';
 import debounce from 'lodash/debounce';
 // @ts-expect-error
 import LockIcon from '@leafygreen-ui/icon/dist/Lock';
 import { SearchInput, SearchResult } from '@leafygreen-ui/search-input';
-import { spacing } from '@leafygreen-ui/tokens';
 import { useSession } from '@/hooks';
 import { components } from '@/utils/components';
+
+import {
+  descriptionStyle,
+  searchInputStyle,
+  searchResultStyle,
+} from './Search.styles';
 
 const fuseOptions = {
   includeScore: true,
@@ -22,6 +26,7 @@ const useFuseSearch = (data: any[], options: IFuseOptions<any>) => {
 };
 
 export function Search() {
+  const router = useRouter();
   const session = useSession();
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState(components);
@@ -54,34 +59,19 @@ export function Search() {
       size="small"
       value={searchTerm}
       onChange={handleSearchChange}
-      className={css`
-        margin: ${spacing[400]}px ${spacing[600]}px;
-      `}
+      className={searchInputStyle}
     >
       {results.map(item => (
         <SearchResult
           key={item.name}
+          onClick={() => router.push(item.navPath ?? '/')}
           description={
-            <div
-              className={css`
-                text-transform: capitalize;
-              `}
-            >
+            <div className={descriptionStyle}>
               {item.group.split('-').join(' ')}
             </div>
           }
-          href={item.navPath ?? '/'}
-          // @ts-expect-error Polymorphic
-          as={Link}
         >
-          <div
-            className={css`
-              display: flex;
-              align-items: center;
-
-              gap: ${spacing[200]}px;
-            `}
-          >
+          <div className={searchResultStyle}>
             {item.name}
             {item.isPrivate && !session?.user && <LockIcon size="small" />}
           </div>

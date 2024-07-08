@@ -24,7 +24,7 @@ import { color, spacing } from '@leafygreen-ui/tokens';
 import { SIDE_NAV_WIDTH } from '@/constants';
 import { useMediaQuery } from '@/hooks';
 import { ComponentMeta, Group, groupedComponents } from '@/utils/components';
-import { Search } from '../Search';
+import { Search } from '../Search/Search';
 import { Drawer } from './Drawer';
 import { SideNavItem } from './SideNavItem';
 import { SideNavLabel } from './SideNavLabel';
