@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import Fuse, { IFuseOptions } from 'fuse.js';
 import debounce from 'lodash/debounce';
 // @ts-expect-error
@@ -26,7 +26,6 @@ const useFuseSearch = (data: any[], options: IFuseOptions<any>) => {
 };
 
 export function Search() {
-  const router = useRouter();
   const session = useSession();
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState(components);
@@ -64,7 +63,8 @@ export function Search() {
       {results.map(item => (
         <SearchResult
           key={item.name}
-          onClick={() => router.push(item.navPath ?? '/')}
+          href={item.navPath ?? '/'}
+          as={Link}
           description={
             <div className={descriptionStyle}>
               {item.group.split('-').join(' ')}
