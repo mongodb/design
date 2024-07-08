@@ -22,6 +22,7 @@ export function HomeCard({ title, description, link, ...rest }: HomeCardProps) {
   const router = useRouter();
 
   return (
+    // @ts-expect-error properties ref incompatible
     <Card
       className={css`
         height: 350px;
