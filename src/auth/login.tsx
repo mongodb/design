@@ -1,8 +1,8 @@
-"use server";
+'use server';
 
-import { signIn } from "@/auth/auth";
+import { signIn } from '@/auth/auth';
 
 export async function login() {
-  "use server";
-  await signIn("okta");
+  'use server';
+  await signIn('okta', { redirectTo: '/', redirect: true });
 }
