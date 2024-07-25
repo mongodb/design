@@ -4,9 +4,9 @@ import Okta from '@auth/core/providers/okta';
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Okta({
-      clientId: process.env.secrets.OKTA_CLIENT_ID,
-      clientSecret: process.env.secrets.OKTA_CLIENT_SECRET,
-      issuer: process.env.secrets.OKTA_ISSUER,
+      clientId: process.env.NEXT_PUBLIC_OKTA_CLIENT_ID,
+      clientSecret: process.env.NEXT_PUBLIC_OKTA_CLIENT_SECRET,
+      issuer: process.env.NEXT_PUBLIC_OKTA_ISSUER,
     }),
   ],
 });
