@@ -4,5 +4,6 @@ import { signIn } from '@/auth/auth';
 
 export async function login() {
   'use server';
-  await signIn('okta', { redirectTo: '/', redirect: true });
+  console.log(process.env.NEXT_PUBLIC_OKTA_ISSUER);
+  await signIn('okta');
 }
