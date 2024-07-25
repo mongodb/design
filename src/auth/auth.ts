@@ -6,7 +6,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Okta({
       clientId: process.env.secrets.OKTA_CLIENT_ID,
       clientSecret: process.env.secrets.OKTA_CLIENT_SECRET,
-      issuer: process.secrets.env.OKTA_ISSUER,
+      issuer: process.env.secrets.OKTA_ISSUER,
     }),
   ],
 });
