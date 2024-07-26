@@ -9,4 +9,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       issuer: process.env.NEXT_PUBLIC_OKTA_ISSUER,
     }),
   ],
+  trustHost: true,
 });
