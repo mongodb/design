@@ -4,5 +4,5 @@ import { signIn } from '@/auth/auth';
 
 export async function login() {
   'use server';
-  await signIn('okta', { redirectTo: '/', redirect: true });
+  await signIn('okta');
 }
