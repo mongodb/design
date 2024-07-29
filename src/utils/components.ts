@@ -14,6 +14,7 @@ type Group = (typeof Group)[keyof typeof Group];
 export { Group };
 
 const Component = {
+  Avatar: 'avatar',
   Badge: 'badge',
   Banner: 'banner',
   Button: 'button',
@@ -81,6 +82,11 @@ export interface ComponentMeta {
 }
 
 export const components: Array<ComponentMeta> = [
+  {
+    name: titlecase(Component.Avatar),
+    navPath: generateComponentNavPath(Component.Avatar),
+    group: Group.Display,
+  },
   {
     name: titlecase(Component.Badge),
     navPath: generateComponentNavPath(Component.Badge),
