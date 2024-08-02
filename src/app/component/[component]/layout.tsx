@@ -84,16 +84,7 @@ export default function ComponentLayout({
           margin-bottom: ${spacing[800]}px;
         `}
         inlineChildren={
-          <div
-            className={css`
-              display: flex;
-              gap: ${spacing[200]}px;
-              border-bottom: 1px solid ${color[theme].border.secondary.default};
-              flex: 1;
-              justify-content: flex-end;
-              height: 100%;
-            `}
-          >
+          <>
             {externalLinks.map(
               ({ 'aria-label': ariaLabel, href, icon }, index) => (
                 <IconButton
@@ -108,7 +99,7 @@ export default function ComponentLayout({
                 </IconButton>
               ),
             )}
-          </div>
+          </>
         }
       >
         <Tab
