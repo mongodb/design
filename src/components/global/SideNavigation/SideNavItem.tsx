@@ -87,6 +87,8 @@ export function SideNavItem({
         className={css`
           margin: 0;
           padding: ${spacing[200]}px ${spacing[400]}px;
+          display: flex;
+          align-items: center;
         `}
       >
         {children}
