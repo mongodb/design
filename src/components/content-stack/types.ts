@@ -2,7 +2,7 @@ import { EntryEmbedable, Node, TextNode } from '@contentstack/utils';
 
 import { BadgeProps } from '@leafygreen-ui/badge/dist/Badge/types';
 import { ButtonProps } from '@leafygreen-ui/button';
-import { CalloutProps } from '@leafygreen-ui/callout/dist/Callout/types';
+import { CalloutProps } from '@leafygreen-ui/callout';
 
 type AnyNode = CSNode | CSTextNode;
 
