@@ -4,6 +4,8 @@ import Fuse, { IFuseOptions } from 'fuse.js';
 import debounce from 'lodash/debounce';
 // @ts-expect-error
 import LockIcon from '@leafygreen-ui/icon/dist/Lock';
+// @ts-expect-error
+import UnlockIcon from '@leafygreen-ui/icon/dist/Unlock';
 import { SearchInput, SearchResult } from '@leafygreen-ui/search-input';
 import { useSession } from '@/hooks';
 import { components } from '@/utils/components';
@@ -52,6 +54,8 @@ export function Search() {
     }
   }, [searchTerm]);
 
+  const PrivateIcon = session?.user ? UnlockIcon : LockIcon;
+
   return (
     <SearchInput
       aria-label="Search Components"
@@ -73,7 +77,7 @@ export function Search() {
         >
           <div className={searchResultStyle}>
             {item.name}
-            {item.isPrivate && !session?.user && <LockIcon size="small" />}
+            {item.isPrivate && <PrivateIcon size="small" />}
           </div>
         </SearchResult>
       ))}

@@ -14,6 +14,8 @@ import AppsIcon from '@leafygreen-ui/icon/dist/Apps';
 import LockIcon from '@leafygreen-ui/icon/dist/Lock';
 // @ts-expect-error
 import MenuIcon from '@leafygreen-ui/icon/dist/Menu';
+// @ts-expect-error
+import UnlockIcon from '@leafygreen-ui/icon/dist/Unlock';
 import IconButton from '@leafygreen-ui/icon-button';
 import {
   PortalContextProvider,
@@ -22,7 +24,7 @@ import {
 import { MongoDBLogo, SupportedColors } from '@leafygreen-ui/logo';
 import { color, spacing } from '@leafygreen-ui/tokens';
 import { SIDE_NAV_WIDTH } from '@/constants';
-import { useMediaQuery } from '@/hooks';
+import { useMediaQuery, useSession } from '@/hooks';
 import { ComponentMeta, Group, groupedComponents } from '@/utils/components';
 import { Search } from '../Search/Search';
 import { Drawer } from './Drawer';
@@ -31,6 +33,7 @@ import { SideNavLabel } from './SideNavLabel';
 import { SideNavList } from './SideNavList';
 
 export function SideNavigation() {
+  const session = useSession();
   const navRef = useRef<HTMLElement>(null);
   const [open, setOpen] = React.useState(false);
   const [isMobile] = useMediaQuery(['(max-width: 640px)'], {
@@ -41,6 +44,8 @@ export function SideNavigation() {
   const currentComponent =
     topLevelPage === 'component' ? activeSubDirOrPage : '';
   const { darkMode, theme } = useDarkMode();
+
+  const PrivateIcon = session?.user ? UnlockIcon : LockIcon;
 
   const navContent = (
     <>
@@ -176,7 +181,7 @@ export function SideNavigation() {
                   >
                     {component.name}
                     {component.isPrivate && (
-                      <LockIcon
+                      <PrivateIcon
                         className={css`
                           margin-left: ${spacing[400]}px;
                         `}

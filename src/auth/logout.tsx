@@ -1,8 +1,8 @@
-"use server";
+'use server';
 
-import { signOut } from "@/auth/auth";
+import { signOut } from '@/auth/auth';
 
 export async function logout() {
-  "use server";
-  await signOut({ redirectTo: "/" });
+  'use server';
+  await signOut({ redirect: true, redirectTo: '/' });
 }
