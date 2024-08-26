@@ -1,6 +1,7 @@
 'use client';
-
+import { useEffect, useState } from 'react';
 import { css } from '@emotion/css';
+import { Session } from 'next-auth';
 import Button from '@leafygreen-ui/button';
 // @ts-expect-error
 import CaretDownIcon from '@leafygreen-ui/icon/dist/CaretDown';
@@ -14,8 +15,24 @@ import { LogIn } from './LogIn';
 
 export function UserMenu() {
   const session = useSession();
+  // TODO: use next-auth session when available
+  // Session does not clear reliably without forcing a state change or a hard refresh
+  // https://github.com/nextauthjs/next-auth/discussions/4687
+  const [manualSession, setManualSession] = useState<Session | undefined>(
+    undefined,
+  );
 
-  return session?.user ? (
+  useEffect(() => {
+    if (session?.user) {
+      setManualSession(session);
+    }
+
+    if (!session?.user) {
+      setManualSession(undefined);
+    }
+  }, [session]);
+
+  return manualSession?.user ? (
     <div
       className={css`
         z-index: 1;
@@ -30,15 +47,21 @@ export function UserMenu() {
             `}
             rightGlyph={<CaretDownIcon />}
           >
-            {session.user.name}
+            {manualSession.user.name}
           </Button>
         }
       >
         <MenuItem>
-          <Body darkMode>{session.user.name}</Body>
-          <Description darkMode>{session.user.email}</Description>
+          <Body darkMode>{manualSession.user.name}</Body>
+          <Description darkMode>{manualSession.user.email}</Description>
         </MenuItem>
-        <MenuItem glyph={<LogOutIcon />} onClick={() => logout()}>
+        <MenuItem
+          glyph={<LogOutIcon />}
+          onClick={() => {
+            logout();
+            setManualSession(undefined);
+          }}
+        >
           Log out
         </MenuItem>
       </Menu>
