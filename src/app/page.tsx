@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { css } from "@emotion/css";
-import { Body, H1 } from "@leafygreen-ui/typography";
-import { spacing } from "@leafygreen-ui/tokens";
-import { ComponentCard, HomeCard } from "@/components/home";
+import { css } from '@emotion/css';
+import { Body, H1 } from '@leafygreen-ui/typography';
+import { spacing } from '@leafygreen-ui/tokens';
+import { ComponentCard, HomeCard } from '@/components/home';
 
 export default function Home() {
   return (
@@ -36,6 +36,7 @@ export default function Home() {
 
         <HomeCard
           key="Foundations"
+          id="Foundations"
           title="Foundations"
           description="These define broader guidance on typography, iconography, and our
             color palette."
@@ -44,9 +45,26 @@ export default function Home() {
 
         <HomeCard
           key="Resources"
+          id="Resources"
           title="Resources"
-          description=" Resources include guidelines on accessibility, and icon creation."
+          description="Resources include guidelines on accessibility, and icon creation."
           link="/resources/accessibility"
+        />
+
+        <HomeCard
+          key="Design"
+          id="Blog"
+          title="Design Blog"
+          description="Read about our recent projects and featured articles from across UX & Design, including Product UX, and Brand Creative."
+          link="https://medium.com/"
+        />
+
+        <HomeCard
+          key="Careers"
+          id="Careers"
+          title="Careers at MongoDB"
+          description="Check out our open jobs. Let us know which interests you the most."
+          link="https://www.mongodb.com/company/careers/teams/product-management-and-design"
         />
       </div>
     </div>
