@@ -139,13 +139,6 @@ export function SideNavigation() {
         >
           Icon Creation
         </SideNavItem>
-        <SideNavItem
-          key="refresh-guide"
-          active={pathname === '/resources/refresh-guide/'}
-          href={'/resources/refresh-guide'}
-        >
-          Refresh Guide
-        </SideNavItem>
       </SideNavList>
 
       <SideNavLabel
