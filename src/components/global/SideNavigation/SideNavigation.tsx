@@ -50,7 +50,7 @@ export function SideNavigation() {
   const navContent = (
     <>
       <SideNavLabel
-        key="Foundations"
+        key="foundations-label"
         label="Foundations"
         glyph={
           <UniversityIcon
@@ -62,14 +62,14 @@ export function SideNavigation() {
       />
       <SideNavList key="foundation-list">
         <SideNavItem
-          key="grid"
+          key="chat"
           active={pathname === '/foundations/chat/'}
           href={'/foundations/chat'}
         >
           Chat
         </SideNavItem>
         <SideNavItem
-          key="grid"
+          key="form-guidelines"
           active={pathname === '/foundations/forms/'}
           href={'/foundations/forms'}
         >
@@ -113,7 +113,7 @@ export function SideNavigation() {
       </SideNavList>
 
       <SideNavLabel
-        key="resources"
+        key="resources-label"
         label="Resources"
         glyph={
           <GovernmentBuildingIcon

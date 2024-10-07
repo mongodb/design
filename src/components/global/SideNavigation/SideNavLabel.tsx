@@ -14,7 +14,6 @@ export function SideNavLabel({
 
   return (
     <h4
-      key={label}
       className={css`
         color: ${darkMode ? palette.green.light1 : palette.green.dark2};
         text-transform: uppercase;
