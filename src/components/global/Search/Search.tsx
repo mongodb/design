@@ -63,7 +63,6 @@ export function Search() {
       value={searchTerm}
       onChange={handleSearchChange}
       className={searchInputStyle}
-      id="hello"
     >
       {results.map(item => (
         <SearchResult
