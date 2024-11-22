@@ -2,23 +2,32 @@ import React from 'react';
 import { css } from '@emotion/css';
 import Card from '@leafygreen-ui/card';
 import { Body, H3, Link } from '@leafygreen-ui/typography';
-import { Foundations, Resources } from '@/components/glyphs';
+import { Blog, Careers, Foundations, Resources } from '@/components/glyphs';
 import { spacing } from '@leafygreen-ui/tokens';
 import { useRouter } from 'next/navigation';
 
 const imageMap = {
   Foundations: Foundations,
   Resources: Resources,
+  Blog: Blog,
+  Careers: Careers,
 } as const;
 
 type HomeCardProps = JSX.IntrinsicElements['div'] & {
-  title: 'Foundations' | 'Resources';
+  id: 'Foundations' | 'Resources' | 'Blog' | 'Careers';
+  title?: string;
   description: string;
   link?: string;
 };
 
-export function HomeCard({ title, description, link, ...rest }: HomeCardProps) {
-  const Graphic = imageMap[title];
+export function HomeCard({
+  id,
+  description,
+  link,
+  title,
+  ...rest
+}: HomeCardProps) {
+  const Graphic = imageMap[id];
   const router = useRouter();
 
   return (
