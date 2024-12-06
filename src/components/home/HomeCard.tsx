@@ -23,7 +23,7 @@ export function HomeCard({ title, description, link, ...rest }: HomeCardProps) {
 
   return (
     // @ts-expect-error properties ref incompatible
-    <Card
+    (<Card
       className={css`
         height: 350px;
       `}
@@ -59,6 +59,6 @@ export function HomeCard({ title, description, link, ...rest }: HomeCardProps) {
           right: 0;
         `}
       />
-    </Card>
+    </Card>)
   );
 }

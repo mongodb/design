@@ -57,7 +57,7 @@ export function ComponentCard() {
   });
 
   return (
-    <Card
+    (<Card
       className={css`
         padding-left: 0px;
         padding-right: 0px;
@@ -114,7 +114,7 @@ export function ComponentCard() {
           const Graphic = categoryMap[type as ImageKey].component;
 
           return (
-            <button
+            (<button
               key={type}
               onClick={() => router.push(categoryMap[type as ImageKey].link)}
               className={css`
@@ -157,10 +157,10 @@ export function ComponentCard() {
                   .trim()
                   .replace(/^\w/, c => c.toUpperCase())}
               </Body>
-            </button>
+            </button>)
           );
         })}
       </div>
-    </Card>
+    </Card>)
   );
 }

@@ -50,7 +50,7 @@ export function UserMenu() {
             {manualSession.user.name}
           </Button>
         }
-      >
+        renderMode="portal">
         <MenuItem>
           <Body darkMode>{manualSession.user.name}</Body>
           <Description darkMode>{manualSession.user.email}</Description>
