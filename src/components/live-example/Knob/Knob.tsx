@@ -69,7 +69,29 @@ export const Knob = ({
 
     case "array":
     case "enum":
-    case "select":
+    case "select": {
+      if (knobOptions && knobOptions.length) {
+        return (
+          (<Select
+            value={value}
+            onChange={onChange}
+            className={cx(inputStyle)}
+            aria-label={propName}
+            renderMode="portal"
+            allowDeselect={true}
+          >
+            {knobOptions.map((opt: KnobOptionType) => (
+              <Option key={opt} value={opt}>
+                {opt}
+              </Option>
+            ))}
+          </Select>)
+        );
+      }
+
+      return <>{`${value}`}</>;
+    }
+
     case "radio": {
       if (knobOptions && knobOptions.length) {
         return (
@@ -78,7 +100,9 @@ export const Knob = ({
             onChange={onChange}
             className={cx(inputStyle)}
             aria-label={propName}
-            renderMode="portal">
+            renderMode="portal"
+            allowDeselect={false}
+          >
             {knobOptions.map((opt: KnobOptionType) => (
               <Option key={opt} value={opt}>
                 {opt}
