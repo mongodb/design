@@ -42,6 +42,7 @@ const Component = {
   Modal: 'modal',
   MongoNav: 'mongo-nav',
   NumberInput: 'number-input',
+  OrderedList: 'ordered-list',
   Pagination: 'pagination',
   PasswordInput: 'password-input',
   Pipeline: 'pipeline',
@@ -219,6 +220,11 @@ export const components: Array<ComponentMeta> = [
     name: titlecase(Component.NumberInput),
     navPath: generateComponentNavPath(Component.NumberInput),
     group: Group.FormElements,
+  },
+  {
+    name: titlecase(Component.OrderedList),
+    navPath: generateComponentNavPath(Component.OrderedList),
+    group: Group.Display,
   },
   {
     name: titlecase(Component.Pagination),
