@@ -65,16 +65,7 @@ export function Search() {
       className={searchInputStyle}
     >
       {results.map(item => (
-        <SearchResult
-          key={item.name}
-          href={item.navPath ?? '/'}
-          as={Link}
-          description={
-            <div className={descriptionStyle}>
-              {item.group.split('-').join(' ')}
-            </div>
-          }
-        >
+        <SearchResult key={item.name} href={item.navPath ?? '/'} as={Link}>
           <div className={searchResultStyle}>
             {item.name}
             {item.isPrivate && <PrivateIcon size="small" />}
