@@ -6,7 +6,7 @@ const Pattern = {
   Forms: 'forms',
 } as const;
 
-type Pattern = (typeof Pattern)[keyof typeof Pattern];
+export type Pattern = (typeof Pattern)[keyof typeof Pattern];
 
 const titleCase = (component: Pattern) => {
   return startCase(toLower(component));
@@ -16,7 +16,7 @@ const generateComponentNavPath = (component: Pattern) =>
   `/component/${component}/live-example`;
 
 const generatePatternPath = (foundation: Pattern) =>
-  `/foundation/${foundation}/`;
+  `/foundation/${foundation}`;
 
 export interface PatternMeta {
   name: string;

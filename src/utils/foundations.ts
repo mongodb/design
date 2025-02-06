@@ -11,7 +11,7 @@ const Foundation = {
   Typography: 'typography',
 } as const;
 
-type Foundation = (typeof Foundation)[keyof typeof Foundation];
+export type Foundation = (typeof Foundation)[keyof typeof Foundation];
 
 const titleCase = (component: Foundation) => {
   return startCase(toLower(component));
@@ -21,7 +21,7 @@ const generateComponentNavPath = (component: Foundation) =>
   `/component/${component}/live-example`;
 
 const generateFoundationNavPath = (foundation: Foundation) =>
-  `/foundation/${foundation}/`;
+  `/foundation/${foundation}`;
 
 export interface FoundationMeta {
   name: string;

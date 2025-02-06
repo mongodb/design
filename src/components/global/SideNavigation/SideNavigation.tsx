@@ -27,7 +27,9 @@ import { SIDE_NAV_WIDTH } from '@/constants';
 import { useMediaQuery, useSession } from '@/hooks';
 import { components } from '@/utils/components';
 import { foundations } from '@/utils/foundations';
+import type { FoundationMeta } from '@/utils/foundations';
 import { patterns } from '@/utils/patterns';
+import type { PatternMeta } from '@/utils/patterns';
 import { Search } from '../Search/Search';
 import { Drawer } from './Drawer';
 import { SideNavItem } from './SideNavItem';
@@ -49,6 +51,13 @@ export function SideNavigation() {
 
   const PrivateIcon = session?.user ? UnlockIcon : LockIcon;
 
+  const isActiveResource = (resource: FoundationMeta | PatternMeta) => {
+    return resource.isComponent
+      ? currentComponent.toLowerCase().split('-').join(' ') ===
+          resource.name.toLowerCase()
+      : pathname === resource.navPath;
+  };
+
   const navContent = (
     <>
       <SideNavLabel
@@ -67,12 +76,7 @@ export function SideNavigation() {
           <SideNavItem
             key={foundation.name}
             href={foundation.navPath}
-            active={
-              foundation.isComponent
-                ? currentComponent.toLowerCase().split('-').join(' ') ===
-                  foundation.name.toLowerCase()
-                : pathname === foundation.navPath
-            }
+            active={isActiveResource(foundation)}
           >
             {foundation.name}
             {foundation.isPrivate && (
@@ -103,12 +107,7 @@ export function SideNavigation() {
           <SideNavItem
             key={pattern.name}
             href={pattern.navPath}
-            active={
-              pattern.isComponent
-                ? currentComponent.toLowerCase().split('-').join(' ') ===
-                  pattern.name.toLowerCase()
-                : pathname === pattern.navPath
-            }
+            active={isActiveResource(pattern)}
           >
             {pattern.name}
             {pattern.isPrivate && (
