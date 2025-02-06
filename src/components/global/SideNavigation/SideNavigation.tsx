@@ -67,7 +67,12 @@ export function SideNavigation() {
           <SideNavItem
             key={foundation.name}
             href={foundation.navPath}
-            active={pathname === foundation.navPath}
+            active={
+              foundation.isComponent
+                ? currentComponent.toLowerCase().split('-').join(' ') ===
+                  foundation.name.toLowerCase()
+                : pathname === foundation.navPath
+            }
           >
             {foundation.name}
             {foundation.isPrivate && (
@@ -98,7 +103,12 @@ export function SideNavigation() {
           <SideNavItem
             key={pattern.name}
             href={pattern.navPath}
-            active={pathname === pattern.navPath}
+            active={
+              pattern.isComponent
+                ? currentComponent.toLowerCase().split('-').join(' ') ===
+                  pattern.name.toLowerCase()
+                : pathname === pattern.navPath
+            }
           >
             {pattern.name}
             {pattern.isPrivate && (

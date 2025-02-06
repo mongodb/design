@@ -27,6 +27,7 @@ export interface FoundationMeta {
   name: string;
   navPath: string;
   isPrivate?: boolean;
+  isComponent?: boolean;
 }
 
 export const foundations: Array<FoundationMeta> = [
@@ -45,6 +46,7 @@ export const foundations: Array<FoundationMeta> = [
   {
     name: titleCase(Foundation.Icons),
     navPath: generateComponentNavPath(Foundation.Icons),
+    isComponent: true,
   },
   {
     name: titleCase(Foundation.IconCreation),
@@ -53,13 +55,16 @@ export const foundations: Array<FoundationMeta> = [
   {
     name: titleCase(Foundation.Palette),
     navPath: generateComponentNavPath(Foundation.Palette),
+    isComponent: true,
   },
   {
     name: titleCase(Foundation.Tokens),
     navPath: generateComponentNavPath(Foundation.Tokens),
+    isComponent: true,
   },
   {
     name: titleCase(Foundation.Typography),
     navPath: generateComponentNavPath(Foundation.Typography),
+    isComponent: true,
   },
 ];

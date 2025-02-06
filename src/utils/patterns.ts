@@ -22,6 +22,7 @@ export interface PatternMeta {
   name: string;
   navPath: string;
   isPrivate?: boolean;
+  isComponent?: boolean;
 }
 
 export const patterns: Array<PatternMeta> = [
@@ -32,6 +33,7 @@ export const patterns: Array<PatternMeta> = [
   {
     name: titleCase(Pattern.EmptyState),
     navPath: generateComponentNavPath(Pattern.EmptyState),
+    isComponent: true,
   },
   {
     name: titleCase(Pattern.Forms),
