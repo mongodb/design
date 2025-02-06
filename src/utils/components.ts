@@ -18,7 +18,6 @@ const Component = {
   ExpandableCard: 'expandable-card',
   FormFooter: 'form-footer',
   GuideCue: 'guide-cue',
-  Icon: 'icon',
   IconButton: 'icon-button',
   InfoSprinkle: 'info-sprinkle',
   InlineDefinition: 'inline-definition',
@@ -134,10 +133,6 @@ export const components: Array<ComponentMeta> = [
   {
     name: titlecase(Component.GuideCue),
     navPath: generateComponentNavPath(Component.GuideCue),
-  },
-  {
-    name: titlecase(Component.Icon),
-    navPath: generateComponentNavPath(Component.Icon),
   },
   {
     name: titlecase(Component.IconButton),

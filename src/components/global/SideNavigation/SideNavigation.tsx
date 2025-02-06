@@ -26,6 +26,8 @@ import { color, spacing } from '@leafygreen-ui/tokens';
 import { SIDE_NAV_WIDTH } from '@/constants';
 import { useMediaQuery, useSession } from '@/hooks';
 import { components } from '@/utils/components';
+import { foundations } from '@/utils/foundations';
+import { patterns } from '@/utils/patterns';
 import { Search } from '../Search/Search';
 import { Drawer } from './Drawer';
 import { SideNavItem } from './SideNavItem';
@@ -61,61 +63,22 @@ export function SideNavigation() {
         }
       />
       <SideNavList key="foundation-list">
-        <SideNavItem
-          key="a11y"
-          active={pathname === '/foundation/accessibility/'}
-          href={'/foundation/accessibility/'}
-        >
-          Accessibility
-        </SideNavItem>
-
-        <SideNavItem
-          key="grid"
-          active={pathname === '/foundation/grid/'}
-          href={'/foundation/grid'}
-        >
-          Grid
-        </SideNavItem>
-
-        <SideNavItem
-          key="icons"
-          active={pathname === '/foundation/icons/'}
-          href={'/foundation/icons'}
-        >
-          Icons
-        </SideNavItem>
-
-        <SideNavItem
-          key="icon-creation"
-          active={pathname === '/foundation/icon-creation/'}
-          href={'/foundation/icon-creation'}
-        >
-          Icon Creation
-        </SideNavItem>
-
-        <SideNavItem
-          key="palette"
-          active={pathname === '/foundation/palette/'}
-          href={'/foundation/palette'}
-        >
-          Palette
-        </SideNavItem>
-
-        <SideNavItem
-          key="tokens"
-          active={pathname === '/foundation/tokens/'}
-          href={'/foundation/tokens'}
-        >
-          Tokens
-        </SideNavItem>
-
-        <SideNavItem
-          key="typography"
-          active={pathname === '/foundation/typography/'}
-          href={'/foundation/typography'}
-        >
-          Typography
-        </SideNavItem>
+        {foundations.map(foundation => (
+          <SideNavItem
+            key={foundation.name}
+            href={foundation.navPath}
+            active={pathname === foundation.navPath}
+          >
+            {foundation.name}
+            {foundation.isPrivate && (
+              <PrivateIcon
+                className={css`
+                  margin-left: ${spacing[400]}px;
+                `}
+              />
+            )}
+          </SideNavItem>
+        ))}
       </SideNavList>
 
       <SideNavLabel
@@ -131,57 +94,22 @@ export function SideNavigation() {
       />
 
       <SideNavList key="pattern-list">
-        <SideNavItem
-          key="chat"
-          active={pathname === '/pattern/chat/'}
-          href={'/pattern/chat'}
-        >
-          Chat
-        </SideNavItem>
-        <SideNavItem
-          key="empty-state"
-          active={
-            currentComponent.toLowerCase().split('-').join(' ') ===
-            'empty state'
-          }
-          href={'/component/empty-state/live-example'}
-        >
-          Empty State
-        </SideNavItem>
-        <SideNavItem
-          key="forms"
-          active={pathname === '/pattern/forms/'}
-          href={'/pattern/forms'}
-        >
-          Forms
-        </SideNavItem>
-
-        {/* <SideNavItem
-          key="mongo-nav"
-          active={
-            currentComponent.toLowerCase().split('-').join(' ') === 'mongo nav'
-          }
-          href={'/component/mongo-nav/live-example'}
-        >
-          Mongo Nav
-          <PrivateIcon />
-        </SideNavItem> */}
-
-        {/* <SideNavItem
-          key="product-feature-walls"
-          active={
-            currentComponent.toLowerCase().split('-').join(' ') ===
-            'product feature walls'
-          }
-          href={'/component/product-feature-walls/live-example'}
-        >
-          Product Feature Walls
-          <PrivateIcon
-            className={css`
-              margin-left: ${spacing[400]}px;
-            `}
-          />
-        </SideNavItem> */}
+        {patterns.map(pattern => (
+          <SideNavItem
+            key={pattern.name}
+            href={pattern.navPath}
+            active={pathname === pattern.navPath}
+          >
+            {pattern.name}
+            {pattern.isPrivate && (
+              <PrivateIcon
+                className={css`
+                  margin-left: ${spacing[400]}px;
+                `}
+              />
+            )}
+          </SideNavItem>
+        ))}
       </SideNavList>
 
       <SideNavLabel
