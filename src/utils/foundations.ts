@@ -59,8 +59,7 @@ export const foundations: Array<FoundationMeta> = [
   },
   {
     name: titleCase(Foundation.Tokens),
-    navPath: generateComponentNavPath(Foundation.Tokens),
-    isComponent: true,
+    navPath: generateFoundationNavPath(Foundation.Tokens),
   },
   {
     name: titleCase(Foundation.Typography),
