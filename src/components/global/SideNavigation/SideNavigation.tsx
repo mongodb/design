@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { css } from '@emotion/css';
 // @ts-expect-error
-import GovernmentBuildingIcon from '@leafygreen-ui/icon/dist/GovernmentBuilding';
+import DiagramIcon from '@leafygreen-ui/icon/dist/Diagram';
 // @ts-expect-error
 import UniversityIcon from '@leafygreen-ui/icon/dist/University';
 // @ts-expect-error
@@ -25,7 +25,11 @@ import { MongoDBLogo, SupportedColors } from '@leafygreen-ui/logo';
 import { color, spacing } from '@leafygreen-ui/tokens';
 import { SIDE_NAV_WIDTH } from '@/constants';
 import { useMediaQuery, useSession } from '@/hooks';
-import { ComponentMeta, Group, groupedComponents } from '@/utils/components';
+import { components } from '@/utils/components';
+import { foundations } from '@/utils/foundations';
+import type { FoundationMeta } from '@/utils/foundations';
+import { patterns } from '@/utils/patterns';
+import type { PatternMeta } from '@/utils/patterns';
 import { Search } from '../Search/Search';
 import { Drawer } from './Drawer';
 import { SideNavItem } from './SideNavItem';
@@ -47,6 +51,13 @@ export function SideNavigation() {
 
   const PrivateIcon = session?.user ? UnlockIcon : LockIcon;
 
+  const isActiveResource = (resource: FoundationMeta | PatternMeta) => {
+    return resource.isComponent
+      ? currentComponent.toLowerCase().split('-').join(' ') ===
+          resource.name.toLowerCase()
+      : pathname === resource.navPath;
+  };
+
   const navContent = (
     <>
       <SideNavLabel
@@ -61,62 +72,29 @@ export function SideNavigation() {
         }
       />
       <SideNavList key="foundation-list">
-        <SideNavItem
-          key="grid"
-          active={pathname === '/foundations/chat/'}
-          href={'/foundations/chat'}
-        >
-          Chat
-        </SideNavItem>
-        <SideNavItem
-          key="grid"
-          active={pathname === '/foundations/forms/'}
-          href={'/foundations/forms'}
-        >
-          Form Guidelines
-        </SideNavItem>
-        <SideNavItem
-          key="grid"
-          active={pathname === '/foundations/grid/'}
-          href={'/foundations/grid'}
-        >
-          Grid
-        </SideNavItem>
-        <SideNavItem
-          key="icons"
-          active={pathname === '/foundations/icons/'}
-          href={'/foundations/icons'}
-        >
-          Icons
-        </SideNavItem>
-        <SideNavItem
-          key="palette"
-          active={pathname === '/foundations/palette/'}
-          href={'/foundations/palette'}
-        >
-          Palette
-        </SideNavItem>
-        <SideNavItem
-          key="tokens"
-          active={pathname === '/foundations/tokens/'}
-          href={'/foundations/tokens'}
-        >
-          Tokens
-        </SideNavItem>
-        <SideNavItem
-          key="typography"
-          active={pathname === '/foundations/typography/'}
-          href={'/foundations/typography'}
-        >
-          Typography
-        </SideNavItem>
+        {foundations.map(foundation => (
+          <SideNavItem
+            key={foundation.name}
+            href={foundation.navPath}
+            active={isActiveResource(foundation)}
+          >
+            {foundation.name}
+            {foundation.isPrivate && (
+              <PrivateIcon
+                className={css`
+                  margin-left: ${spacing[400]}px;
+                `}
+              />
+            )}
+          </SideNavItem>
+        ))}
       </SideNavList>
 
       <SideNavLabel
-        key="resources"
-        label="Resources"
+        key="patterns"
+        label="Patterns"
         glyph={
-          <GovernmentBuildingIcon
+          <DiagramIcon
             className={css`
               margin-right: ${spacing[200]}px;
             `}
@@ -124,21 +102,23 @@ export function SideNavigation() {
         }
       />
 
-      <SideNavList key="resources-list">
-        <SideNavItem
-          key="a11y"
-          active={pathname === '/resources/accessibility/'}
-          href={'/resources/accessibility'}
-        >
-          Accessibility
-        </SideNavItem>
-        <SideNavItem
-          key="icon-creation"
-          active={pathname === '/resources/icon-creation/'}
-          href={'/resources/icon-creation'}
-        >
-          Icon Creation
-        </SideNavItem>
+      <SideNavList key="pattern-list">
+        {patterns.map(pattern => (
+          <SideNavItem
+            key={pattern.name}
+            href={pattern.navPath}
+            active={isActiveResource(pattern)}
+          >
+            {pattern.name}
+            {pattern.isPrivate && (
+              <PrivateIcon
+                className={css`
+                  margin-left: ${spacing[400]}px;
+                `}
+              />
+            )}
+          </SideNavItem>
+        ))}
       </SideNavList>
 
       <SideNavLabel
@@ -153,40 +133,27 @@ export function SideNavigation() {
         }
       />
 
-      {Object.keys(groupedComponents).map((groupName, index) => (
-        <>
-          <SideNavLabel
-            key={groupName}
-            label={groupName.split('-').join(' ')}
-          />
-
-          <SideNavList key={`${groupName}-${index}`}>
-            {groupedComponents[groupName as Group].map(
-              (component: ComponentMeta) => {
-                return (
-                  <SideNavItem
-                    key={component.name}
-                    href={component.navPath}
-                    active={
-                      currentComponent.toLowerCase().split('-').join(' ') ===
-                      component.name.toLowerCase()
-                    }
-                  >
-                    {component.name}
-                    {component.isPrivate && (
-                      <PrivateIcon
-                        className={css`
-                          margin-left: ${spacing[400]}px;
-                        `}
-                      />
-                    )}
-                  </SideNavItem>
-                );
-              },
+      <SideNavList key="components-list">
+        {components.map(component => (
+          <SideNavItem
+            key={component.name}
+            href={component.navPath}
+            active={
+              currentComponent.toLowerCase().split('-').join(' ') ===
+              component.name.toLowerCase()
+            }
+          >
+            {component.name}
+            {component.isPrivate && (
+              <PrivateIcon
+                className={css`
+                  margin-left: ${spacing[400]}px;
+                `}
+              />
             )}
-          </SideNavList>
-        </>
-      ))}
+          </SideNavItem>
+        ))}
+      </SideNavList>
     </>
   );
 
