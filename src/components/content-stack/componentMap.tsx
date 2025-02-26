@@ -218,6 +218,7 @@ export const nodeTypeToElementMap: {
           `,
             )}
           `}
+          shouldTruncate={false}
         >
           <ContentstackChildren nodeChildren={node.children} />
         </Table>
