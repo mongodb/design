@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { css } from "@emotion/css";
+import { css, cx } from "@emotion/css";
 import ExpandableCard from "@leafygreen-ui/expandable-card";
 import {
   Table,
@@ -12,7 +12,7 @@ import {
   Row,
   Cell,
 } from "@leafygreen-ui/table";
-import { InlineCode, Link } from "@leafygreen-ui/typography";
+import { Body, InlineCode, Link } from "@leafygreen-ui/typography";
 import { getHTMLAttributesLink, formatType } from "./utils";
 import { PropTableState } from "./types";
 
@@ -38,15 +38,23 @@ export const PropsTable = ({ props, name }: PropTableState) => {
         padding-right: 0;
       `}
     >
-      <Table shouldAlternateRowColor>
+      <Table
+        shouldAlternateRowColor
+        shouldTruncate={false}
+      >
         <TableHead>
           <HeaderRow>
             {COLUMNS.map((columnName: string) => (
               <HeaderCell
                 key={columnName}
-                className={css`
-                  text-transform: capitalize;
-                `}
+                className={cx(
+                  css`
+                    text-transform: capitalize;
+                  `,
+                  {
+                    [css`min-width: 175px;`]: columnName === "description",
+                  }
+                )}
               >
                 {columnName}
               </HeaderCell>
@@ -82,7 +90,9 @@ export const PropsTable = ({ props, name }: PropTableState) => {
                     <Cell>
                       <InlineCode>{defaultValue?.value ?? `'-'`}</InlineCode>
                     </Cell>
-                    <Cell>{description}</Cell>
+                    <Cell>
+                      <Body className={css`padding: 10px 0;`}>{description}</Body>
+                    </Cell>
                     <Cell>
                       <InlineCode>{formatType(type)}</InlineCode>
                     </Cell>
