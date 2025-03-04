@@ -73,18 +73,18 @@ export const Knob = ({
     case "radio": {
       if (knobOptions && knobOptions.length) {
         return (
-          <Select
+          (<Select
             value={value}
             onChange={onChange}
             className={cx(inputStyle)}
             aria-label={propName}
-          >
+            renderMode="portal">
             {knobOptions.map((opt: KnobOptionType) => (
               <Option key={opt} value={opt}>
                 {opt}
               </Option>
             ))}
-          </Select>
+          </Select>)
         );
       }
 
