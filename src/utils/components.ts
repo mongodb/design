@@ -17,6 +17,7 @@ const Component = {
   EmptyState: 'empty-state',
   ExpandableCard: 'expandable-card',
   FormFooter: 'form-footer',
+  GalleryIndicator: 'gallery-indicator',
   GuideCue: 'guide-cue',
   IconButton: 'icon-button',
   InfoSprinkle: 'info-sprinkle',
@@ -129,6 +130,10 @@ export const components: Array<ComponentMeta> = [
   {
     name: titlecase(Component.FormFooter),
     navPath: generateComponentNavPath(Component.FormFooter),
+  },
+  {
+    name: titlecase(Component.GalleryIndicator),
+    navPath: generateComponentNavPath(Component.GalleryIndicator),
   },
   {
     name: titlecase(Component.GuideCue),
