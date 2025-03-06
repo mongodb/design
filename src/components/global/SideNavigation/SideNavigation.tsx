@@ -37,7 +37,7 @@ import { SideNavLabel } from './SideNavLabel';
 import { SideNavList } from './SideNavList';
 
 export function SideNavigation() {
-  const session = useSession();
+  const { isLoggedIn } = useSession();
   const navRef = useRef<HTMLElement>(null);
   const [open, setOpen] = React.useState(false);
   const [isMobile] = useMediaQuery(['(max-width: 640px)'], {
@@ -49,7 +49,7 @@ export function SideNavigation() {
     topLevelPage === 'component' ? activeSubDirOrPage : '';
   const { darkMode, theme } = useDarkMode();
 
-  const PrivateIcon = session?.user ? UnlockIcon : LockIcon;
+  const PrivateIcon = isLoggedIn ? UnlockIcon : LockIcon;
 
   const isActiveResource = (resource: FoundationMeta | PatternMeta) => {
     return resource.isComponent

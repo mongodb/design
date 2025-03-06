@@ -13,9 +13,9 @@ import { useSession } from '@/hooks';
 
 export default function Private() {
   const router = useRouter();
-  const session = useSession();
+  const { isLoggedIn } = useSession();
 
-  return session?.user ? (
+  return isLoggedIn ? (
     <BasicEmptyState
       title="Coming Soon"
       description="Check back for updates soon"

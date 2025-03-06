@@ -22,14 +22,12 @@ export default function ComponentLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = useSession();
+  const { isLoggedIn } = useSession();
   const router = useRouter();
   const pathname = usePathname();
   const currentComponent = pathname.split('/')[2];
 
   const component = useComponentFields({ componentName: currentComponent });
-
-  const isSession = session?.user;
 
   const getSelected = () => {
     const suffix = pathname.split('/')[3];
@@ -89,7 +87,7 @@ export default function ComponentLayout({
           <>
             {externalLinks.map(
               ({ 'aria-label': ariaLabel, href, icon, isPrivate }, index) => {
-                if (isPrivate && !isSession) {
+                if (isPrivate && !isLoggedIn) {
                   return null;
                 }
                 return (

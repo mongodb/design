@@ -28,7 +28,7 @@ const useFuseSearch = (data: any[], options: IFuseOptions<any>) => {
 };
 
 export function Search() {
-  const session = useSession();
+  const { isLoggedIn } = useSession();
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState(components);
 
@@ -54,7 +54,7 @@ export function Search() {
     }
   }, [searchTerm]);
 
-  const PrivateIcon = session?.user ? UnlockIcon : LockIcon;
+  const PrivateIcon = isLoggedIn ? UnlockIcon : LockIcon;
 
   return (
     <SearchInput
