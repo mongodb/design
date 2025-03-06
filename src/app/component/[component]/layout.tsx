@@ -6,9 +6,8 @@ import React from 'react';
 
 import IconButton from '@leafygreen-ui/icon-button';
 import { CodeSandbox, Figma, Github } from '@/components/glyphs';
-import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { Tabs, Tab } from '@leafygreen-ui/tabs';
-import { color, spacing } from '@leafygreen-ui/tokens';
+import { spacing } from '@leafygreen-ui/tokens';
 import { H2 } from '@leafygreen-ui/typography';
 
 import { useComponentFields, useSession } from '@/hooks';
@@ -27,7 +26,6 @@ export default function ComponentLayout({
   const router = useRouter();
   const pathname = usePathname();
   const currentComponent = pathname.split('/')[2];
-  const { theme } = useDarkMode();
 
   const component = useComponentFields({ componentName: currentComponent });
 
