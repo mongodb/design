@@ -22,12 +22,12 @@ export function UserMenu() {
   );
 
   useEffect(() => {
-    if (session!.user) {
+    if (session?.user) {
       setManualSession(session);
     }
 
-    if (!session!.user) {
-      setManualSession(session);
+    if (!session?.user) {
+      setManualSession(undefined);
     }
   }, [session]);
 
