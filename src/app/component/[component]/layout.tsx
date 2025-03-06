@@ -91,9 +91,9 @@ export default function ComponentLayout({
           <>
             {externalLinks.map(
               ({ 'aria-label': ariaLabel, href, icon, isPrivate }, index) => {
-                // if (isPrivate && !isSession) {
-                //   return null;
-                // }
+                if (isPrivate && !isSession) {
+                  return null;
+                }
                 return (
                   <IconButton
                     key={ariaLabel + index}
