@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Button from '@leafygreen-ui/button';
 import { BasicEmptyState } from '@leafygreen-ui/empty-state';
@@ -8,15 +7,15 @@ import { BasicEmptyState } from '@leafygreen-ui/empty-state';
 import ArrowLeftIcon from '@leafygreen-ui/icon/dist/ArrowLeft';
 // @ts-expect-error
 import LogInIcon from '@leafygreen-ui/icon/dist/LogIn';
-import { getSession, login, Session } from '@/auth';
+import { login } from '@/auth';
 import { ComingSoon, Security } from '@/components/glyphs';
 import { useSession } from '@/hooks';
 
 export default function Private() {
   const router = useRouter();
-  const session = useSession();
+  const { isLoggedIn } = useSession();
 
-  return session?.user ? (
+  return isLoggedIn ? (
     <BasicEmptyState
       title="Coming Soon"
       description="Check back for updates soon"
