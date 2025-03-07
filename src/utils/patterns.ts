@@ -4,6 +4,7 @@ const Pattern = {
   Chat: 'chat',
   EmptyState: 'empty-state',
   Forms: 'forms',
+  EndOfLife: 'end-of-life',
 } as const;
 
 export type Pattern = (typeof Pattern)[keyof typeof Pattern];
@@ -38,5 +39,9 @@ export const patterns: Array<PatternMeta> = [
   {
     name: titleCase(Pattern.Forms),
     navPath: generatePatternPath(Pattern.Forms),
+  },
+  {
+    name: titleCase(Pattern.EndOfLife),
+    navPath: generatePatternPath(Pattern.EndOfLife),
   },
 ];

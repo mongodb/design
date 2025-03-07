@@ -9,6 +9,20 @@ import {
 
 import { ComponentFields, ContentPage, ContentPageGroup } from './types';
 
+const startCaseWithPrepositions = (str: string) => {
+  const lowerCaseExceptions = ['of'];
+
+  return str
+    .split(' ')
+    .map((word, index) => {
+      if (lowerCaseExceptions.includes(word.toLowerCase()) && index !== 0) {
+        return word.toLowerCase();
+      }
+      return word;
+    })
+    .join(' ');
+};
+
 const ENV_MAP = {
   main: 'main',
   production: 'main',
@@ -132,10 +146,11 @@ export async function getContentPage(
   try {
     const query = Stack.ContentType('content_page').Query();
     const result = await query
-      .where('title', startCase(contentPageName))
+      .where('title', startCaseWithPrepositions(contentPageName))
       .includeEmbeddedItems()
       .toJSON()
       .find();
+
     return result[0][0];
   } catch (error) {
     console.error('Content page not found', error);
