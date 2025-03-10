@@ -3,8 +3,8 @@ import { titleCase } from './titleCase';
 const Pattern = {
   Chat: 'chat',
   EmptyState: 'empty-state',
-  Forms: 'forms',
   EndOfLife: 'end-of-life',
+  Forms: 'forms',
 } as const;
 
 export type Pattern = (typeof Pattern)[keyof typeof Pattern];
@@ -33,11 +33,11 @@ export const patterns: Array<PatternMeta> = [
     isComponent: true,
   },
   {
-    name: titleCase(Pattern.Forms),
-    navPath: generatePatternPath(Pattern.Forms),
-  },
-  {
     name: titleCase(Pattern.EndOfLife),
     navPath: generatePatternPath(Pattern.EndOfLife),
+  },
+  {
+    name: titleCase(Pattern.Forms),
+    navPath: generatePatternPath(Pattern.Forms),
   },
 ];

@@ -1,4 +1,4 @@
-import { kebabCase } from 'lodash';
+import kebabCase from 'lodash/kebabCase';
 import { titleCase } from './titleCase';
 
 const Component = {
