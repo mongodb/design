@@ -136,7 +136,6 @@ export async function getContentPage(
       .includeEmbeddedItems()
       .toJSON()
       .find();
-
     return result[0][0];
   } catch (error) {
     console.error('Content page not found', error);
