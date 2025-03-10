@@ -12,8 +12,8 @@ import toLower from 'lodash/toLower';
   'the quick brown fox of the forest' -> 'The Quick Brown Fox of the Forest' 
  * ```
  *
- * @param {string} str - The string to convert to title case.
- * @returns {string} The string in title case.
+ * @param str - The string to convert to title case.
+ * @returns The string in title case.
  */
 const titleWithPrepositions = (str: string): string => {
   const lowerCaseExceptions = ['of'];
@@ -32,8 +32,8 @@ const titleWithPrepositions = (str: string): string => {
 
 /**
  * This function is used to convert a string to title case.
- * @param {string} component - The string to convert to title case.
- * @returns {string} The string in title case.
+ * @param component - The string to convert to title case.
+ * @returns The string in title case.
  */
 export const titleCase = (component: string): string => {
   return titleWithPrepositions(component);
