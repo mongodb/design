@@ -1,1 +1,0 @@
-export { TSDocPropTable } from './TSDocPropTable';

@@ -9,15 +9,15 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: post-release/update-packages
-      - name: Use Node 16
+      - name: Use Node 18
         uses: actions/setup-node@v3
         if: ${{ steps.build-cache.outputs.cache-hit != 'true' }}
         with:
-          node-version: '16'
-          cache: yarn
-          cache-dependency-path: yarn.lock
-      - run: yarn install
-      - run: yarn update-packages '${{ github.event.client_payload.packages }}'
+          node-version: '18'
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - run: npm install
+      - run: npm run update-lg '${{ github.event.client_payload.packages }}'
       - name: add and commit
         env:
           MY_EMAIL: s.park@mongodb.com
