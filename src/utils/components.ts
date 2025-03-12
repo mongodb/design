@@ -170,6 +170,7 @@ export const components: Array<ComponentMeta> = [
   {
     name: titleCase(Component.MongoNav),
     navPath: generateComponentNavPath(Component.MongoNav),
+    isPrivate: true,
   },
   {
     name: titleCase(Component.NumberInput),

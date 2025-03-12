@@ -27,6 +27,8 @@ export default function ComponentLayout({
   const pathname = usePathname();
   const currentComponent = pathname.split('/')[2];
 
+  console.log('❌', { pathname, currentComponent });
+
   const component = useComponentFields({ componentName: currentComponent });
 
   const getSelected = () => {
@@ -62,6 +64,10 @@ export default function ComponentLayout({
       icon: <CodeSandbox />,
     },
   ];
+
+  const isPrivate = Boolean(component?.private && !isLoggedIn);
+
+  console.log({ isPrivate });
 
   return (
     <div
