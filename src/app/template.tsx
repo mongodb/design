@@ -10,7 +10,6 @@ import {
   Footer,
   UserMenu,
   SideNavigation,
-  Search,
 } from '@/components/global';
 import { useMediaQuery } from '@/hooks';
 import { SIDE_NAV_WIDTH } from '@/constants';
@@ -21,6 +20,7 @@ import {
   getContentPageGroups,
 } from '@/utils/ContentStack/getContentstackResources';
 
+// TODO: can this be fetched on the server?
 const useGetInitialContentStackContext = () => {
   const [components, setComponents] = useState<ComponentFields[]>([]);
   const [contentPageGroups, setContentPageGroups] = useState<

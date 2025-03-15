@@ -3,15 +3,25 @@
 import { css } from '@emotion/css';
 import { useRouter, usePathname } from 'next/navigation';
 import React from 'react';
+import startCase from 'lodash/startCase';
 
 import IconButton from '@leafygreen-ui/icon-button';
-import { CodeSandbox, Figma, Github } from '@/components/glyphs';
+import { CodeSandbox, Figma, Github, Security } from '@/components/glyphs';
 import { Tabs, Tab } from '@leafygreen-ui/tabs';
 import { spacing } from '@leafygreen-ui/tokens';
 import { H2 } from '@leafygreen-ui/typography';
 
-import { useComponentFields, useSession } from '@/hooks';
+import { useSession } from '@/hooks';
 import { getGithubLink } from '@/utils';
+import { useContentStackContext } from '@/contexts/ContentStackContext';
+
+import { components as staticComponents } from '@/utils/components';
+import { titleCase } from '@/utils/titleCase';
+import { login } from '@/auth';
+import Button from '@leafygreen-ui/button';
+import { BasicEmptyState } from '@leafygreen-ui/empty-state';
+// @ts-expect-error
+import LogInIcon from '@leafygreen-ui/icon/dist/LogIn';
 
 const liveExamplePath = 'live-example';
 const designDocsPath = 'design-docs';
@@ -26,10 +36,19 @@ export default function ComponentLayout({
   const router = useRouter();
   const pathname = usePathname();
   const currentComponent = pathname.split('/')[2];
+  const { components } = useContentStackContext();
 
-  console.log('❌', { pathname, currentComponent });
+  const isComponentPrivate = staticComponents.find(
+    component => component.name === titleCase(currentComponent),
+  )?.isPrivate;
 
-  const component = useComponentFields({ componentName: currentComponent });
+  const componentTitle = startCase(currentComponent.split('-').join(' '));
+
+  const component = components.find(
+    component => component.title === componentTitle,
+  );
+
+  console.log('🎃', { isComponentPrivate });
 
   const getSelected = () => {
     const suffix = pathname.split('/')[3];
@@ -65,9 +84,7 @@ export default function ComponentLayout({
     },
   ];
 
-  const isPrivate = Boolean(component?.private && !isLoggedIn);
-
-  console.log({ isPrivate });
+  const isPrivate = Boolean(isComponentPrivate && !isLoggedIn);
 
   return (
     <div
@@ -83,63 +100,86 @@ export default function ComponentLayout({
       >
         {currentComponent.split('-').join(' ')}
       </H2>
-      <Tabs
-        selected={getSelected()}
-        aria-label="main tabs"
-        className={css`
-          margin-bottom: ${spacing[800]}px;
-        `}
-        inlineChildren={
-          <>
-            {externalLinks.map(
-              ({ 'aria-label': ariaLabel, href, icon, isPrivate }, index) => {
-                if (isPrivate && !isLoggedIn) {
-                  return null;
-                }
-                return (
-                  <IconButton
-                    key={ariaLabel + index}
-                    aria-label={ariaLabel}
-                    size="large"
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {icon}
-                  </IconButton>
-                );
-              },
-            )}
-          </>
-        }
-      >
-        <Tab
-          onClick={() =>
-            router.push(`/component/${currentComponent}/${liveExamplePath}`)
-          }
-          name="Live Example"
-        >
-          <></>
-        </Tab>
-        <Tab
-          onClick={() =>
-            router.push(`/component/${currentComponent}/${designDocsPath}`)
-          }
-          name="Design Documentation"
-        >
-          <></>
-        </Tab>
-        <Tab
-          onClick={() =>
-            router.push(`/component/${currentComponent}/${codeDocsPath}`)
-          }
-          name="Code Documentation"
-        >
-          <></>
-        </Tab>
-      </Tabs>
 
-      <div>{children}</div>
+      {isPrivate ? (
+        <BasicEmptyState
+          title="Log in to view private content"
+          description="This page is locked for security purposes and only accessible by MongoDB employees."
+          primaryButton={
+            <Button
+              variant="primary"
+              onClick={() => login()}
+              leftGlyph={<LogInIcon />}
+            >
+              Log In
+            </Button>
+          }
+          graphic={<Security />}
+        />
+      ) : (
+        <>
+          <Tabs
+            selected={getSelected()}
+            aria-label="main tabs"
+            className={css`
+              margin-bottom: ${spacing[800]}px;
+            `}
+            inlineChildren={
+              <>
+                {externalLinks.map(
+                  (
+                    { 'aria-label': ariaLabel, href, icon, isPrivate },
+                    index,
+                  ) => {
+                    if (isPrivate && !isLoggedIn) {
+                      return null;
+                    }
+                    return (
+                      <IconButton
+                        key={ariaLabel + index}
+                        aria-label={ariaLabel}
+                        size="large"
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {icon}
+                      </IconButton>
+                    );
+                  },
+                )}
+              </>
+            }
+          >
+            <Tab
+              onClick={() =>
+                router.push(`/component/${currentComponent}/${liveExamplePath}`)
+              }
+              name="Live Example"
+            >
+              <></>
+            </Tab>
+            <Tab
+              onClick={() =>
+                router.push(`/component/${currentComponent}/${designDocsPath}`)
+              }
+              name="Design Documentation"
+            >
+              <></>
+            </Tab>
+            <Tab
+              onClick={() =>
+                router.push(`/component/${currentComponent}/${codeDocsPath}`)
+              }
+              name="Code Documentation"
+            >
+              <></>
+            </Tab>
+          </Tabs>
+
+          <div>{children}</div>
+        </>
+      )}
     </div>
   );
 }

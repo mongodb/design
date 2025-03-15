@@ -1,5 +1,4 @@
 'use client';
-import { useEffect, useState } from 'react';
 import { css } from '@emotion/css';
 import Button from '@leafygreen-ui/button';
 // @ts-expect-error
@@ -8,30 +7,18 @@ import CaretDownIcon from '@leafygreen-ui/icon/dist/CaretDown';
 import LogOutIcon from '@leafygreen-ui/icon/dist/LogOut';
 import { Menu, MenuItem } from '@leafygreen-ui/menu';
 import { Body, Description } from '@leafygreen-ui/typography';
-import { logout } from '@/auth';
-import { useSession, type LGSession } from '@/hooks';
+
 import { LogIn } from './LogIn';
+
+import { signOut } from 'next-auth/react';
+import { useSession } from '@/hooks';
 
 export function UserMenu() {
   const session = useSession();
-  // TODO: use next-auth session when available
-  // Session does not clear reliably without forcing a state change or a hard refresh
-  // https://github.com/nextauthjs/next-auth/discussions/4687
-  const [manualSession, setManualSession] = useState<LGSession | undefined>(
-    undefined,
-  );
 
-  useEffect(() => {
-    if (session?.user) {
-      setManualSession(session);
-    }
+  console.log('🥶', { session });
 
-    if (!session?.user) {
-      setManualSession(undefined);
-    }
-  }, [session]);
-
-  return manualSession?.user ? (
+  return session?.user ? (
     <div
       className={css`
         z-index: 1;
@@ -46,20 +33,23 @@ export function UserMenu() {
             `}
             rightGlyph={<CaretDownIcon />}
           >
-            {manualSession.user.name}
+            {session.user.name}
           </Button>
         }
         renderMode="portal"
       >
         <MenuItem>
-          <Body darkMode>{manualSession.user.name}</Body>
-          <Description darkMode>{manualSession.user.email}</Description>
+          <Body darkMode>{session.user.name}</Body>
+          <Description darkMode>{session.user.email}</Description>
         </MenuItem>
         <MenuItem
           glyph={<LogOutIcon />}
-          onClick={() => {
-            logout();
-            setManualSession(undefined);
+          onClick={async () => {
+            // logout();
+            // https://github.com/nextauthjs/next-auth/discussions/11271#discussioncomment-12272576
+            // Session does not clear reliably without forcing a hard refresh
+            // only use signOut from next-auth/react whenever signing out
+            await signOut({ redirectTo: '/' });
           }}
         >
           Log out

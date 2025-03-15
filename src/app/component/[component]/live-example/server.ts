@@ -5,6 +5,7 @@ import { getNamespaceFromPkgName } from '../../../../utils/getNamespaceFromPkgNa
 
 export async function loadStories(componentName: string) {
   try {
+    // We have to use node_modules because it is static and can be analyzed at build time
     const stories = await import(
       `/node_modules/${getNamespaceFromPkgName(
         componentName,

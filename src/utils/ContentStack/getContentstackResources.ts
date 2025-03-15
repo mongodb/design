@@ -9,8 +9,6 @@ import {
 
 import { ComponentFields, ContentPage, ContentPageGroup } from './types';
 
-// import { getNamespaceFromPkgName } from './getNamespaceFromPkgName';
-
 const ENV_MAP = {
   main: 'main',
   production: 'main',

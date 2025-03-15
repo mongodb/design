@@ -1,10 +1,9 @@
 'use client';
 
-import { ReactElement, ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { css } from '@emotion/css';
 import Card from '@leafygreen-ui/card';
 import { borderRadius, color, spacing } from '@leafygreen-ui/tokens';
-import { mergeObjects } from '@/utils/mergeObjects';
 import {
   StoryData,
   KnobProps,
