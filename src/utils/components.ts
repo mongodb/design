@@ -15,6 +15,7 @@ const Component = {
   ConfirmationModal: 'confirmation-modal',
   Copyable: 'copyable',
   DatePicker: 'date-picker',
+  Drawer: 'drawer',
   EmptyState: 'empty-state',
   ExpandableCard: 'expandable-card',
   FormFooter: 'form-footer',
@@ -118,6 +119,10 @@ export const components: Array<ComponentMeta> = [
   {
     name: titleCase(Component.DatePicker),
     navPath: generateComponentNavPath(Component.DatePicker),
+  },
+  {
+    name: titleCase(Component.Drawer),
+    navPath: generateComponentNavPath(Component.Drawer),
   },
   {
     name: titleCase(Component.ExpandableCard),
