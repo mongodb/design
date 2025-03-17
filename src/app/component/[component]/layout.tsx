@@ -6,7 +6,7 @@ import React from 'react';
 import startCase from 'lodash/startCase';
 
 import IconButton from '@leafygreen-ui/icon-button';
-import { CodeSandbox, Figma, Github, Security } from '@/components/glyphs';
+import { CodeSandbox, Figma, Github } from '@/components/glyphs';
 import { Tabs, Tab } from '@leafygreen-ui/tabs';
 import { spacing } from '@leafygreen-ui/tokens';
 import { H2 } from '@leafygreen-ui/typography';
@@ -17,11 +17,7 @@ import { useContentStackContext } from '@/contexts/ContentStackContext';
 
 import { components as staticComponents } from '@/utils/components';
 import { titleCase } from '@/utils/titleCase';
-import { login } from '@/auth';
-import Button from '@leafygreen-ui/button';
-import { BasicEmptyState } from '@leafygreen-ui/empty-state';
-// @ts-expect-error
-import LogInIcon from '@leafygreen-ui/icon/dist/LogIn';
+import { PrivateContent } from '@/components/global/PrivateContent';
 
 const liveExamplePath = 'live-example';
 const designDocsPath = 'design-docs';
@@ -47,8 +43,6 @@ export default function ComponentLayout({
   const component = components.find(
     component => component.title === componentTitle,
   );
-
-  console.log('🎃', { isComponentPrivate });
 
   const getSelected = () => {
     const suffix = pathname.split('/')[3];
@@ -102,20 +96,7 @@ export default function ComponentLayout({
       </H2>
 
       {isPrivate ? (
-        <BasicEmptyState
-          title="Log in to view private content"
-          description="This page is locked for security purposes and only accessible by MongoDB employees."
-          primaryButton={
-            <Button
-              variant="primary"
-              onClick={() => login()}
-              leftGlyph={<LogInIcon />}
-            >
-              Log In
-            </Button>
-          }
-          graphic={<Security />}
-        />
+        <PrivateContent />
       ) : (
         <>
           <Tabs
