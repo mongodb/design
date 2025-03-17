@@ -88,21 +88,17 @@ export default function Page({ params }: { params: { component: string } }) {
           border-radius: ${borderRadius[600]}px ${borderRadius[600]}px 0 0;
           background-color: ${color[componentProps?.darkMode ? 'dark' : 'light']
             .background.primary.default};
+          padding: ${spacing[600]}px ${spacing[600]}px 0;
         `}
       >
-        <div
-          className={css`
-            padding-left: ${spacing[600]}px;
-            padding-right: ${spacing[600]}px;
-          `}
-        >
+        <div>
           {/* @ts-expect-error */}
           <LiveExample {...componentProps} />
         </div>
       </div>
       <div
         className={css`
-          padding: 0 ${spacing[600]}px ${spacing[600]}px ${spacing[600]}px;
+          padding: ${spacing[600]}px;
         `}
       >
         <Knobs props={knobProps} updateKnobValue={updateKnobValue} />
