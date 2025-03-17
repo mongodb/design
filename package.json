@@ -60,6 +60,8 @@
     "@leafygreen-ui/tokens": "^2.11.3",
     "@leafygreen-ui/tooltip": "^13.0.4",
     "@leafygreen-ui/typography": "^20.1.1",
+    "@lg-private/canvas-header": "^3.0.0",
+    "@lg-private/cloud-nav": "^0.0.49",
     "@lg-private/mongo-nav": "^16.2.0",
     "@lg-tools/cli": "^0.7.7",
     "@lg-tools/codemods": "^0.1.2",

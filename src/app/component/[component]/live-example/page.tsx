@@ -93,6 +93,12 @@ export default function Page({ params }: { params: { component: string } }) {
           className={css`
             padding-left: ${spacing[600]}px;
             padding-right: ${spacing[600]}px;
+            width: 100%;
+
+            > div {
+              width: auto;
+              margin: 0 auto;
+            }
           `}
         >
           {/* @ts-expect-error */}

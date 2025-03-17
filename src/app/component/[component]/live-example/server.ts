@@ -14,6 +14,12 @@ export async function loadStories(componentName: string) {
     const { LiveExample, default: extractMeta } = composeStories(stories);
     const meta = extractMeta ?? stories.default;
 
+    console.log({
+      componentName,
+      LiveExample,
+      allStories: composeStories(stories),
+    });
+
     return { LiveExample, meta } as StoryData;
   } catch (error) {
     console.log('ERROR LOADING STORIES');
