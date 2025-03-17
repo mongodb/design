@@ -1,4 +1,4 @@
-import { startCase, toLower } from 'lodash';
+import { titleCase } from './titleCase';
 
 const Foundation = {
   Accessibility: 'accessibility',
@@ -12,10 +12,6 @@ const Foundation = {
 } as const;
 
 export type Foundation = (typeof Foundation)[keyof typeof Foundation];
-
-const titleCase = (component: Foundation) => {
-  return startCase(toLower(component));
-};
 
 const generateComponentNavPath = (component: Foundation) =>
   `/component/${component}/live-example`;
