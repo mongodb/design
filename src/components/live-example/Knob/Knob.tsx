@@ -1,13 +1,24 @@
-import { css, cx } from "@leafygreen-ui/emotion";
-import { Option, Select } from "@leafygreen-ui/select";
-import TextInput from "@leafygreen-ui/text-input";
-import Toggle from "@leafygreen-ui/toggle";
-import { DatePicker } from "@leafygreen-ui/date-picker";
+import { css, cx } from '@leafygreen-ui/emotion';
+import { Option, Select } from '@leafygreen-ui/select';
+import TextInput from '@leafygreen-ui/text-input';
+import Toggle from '@leafygreen-ui/toggle';
+import { DatePicker } from '@leafygreen-ui/date-picker';
 
-import { KnobOptionType, KnobProps, KnobTypeObj } from "./types";
+import { KnobOptionType, KnobProps, KnobTypeObj } from './types';
 
 const inputStyle = css`
   min-width: 256px;
+`;
+
+const visuallyhidden = css`
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 `;
 
 export const Knob = ({
@@ -16,16 +27,17 @@ export const Knob = ({
   value,
   onChange,
   knobOptions,
+  'aria-labelledby': ariaLabelledBy,
 }: KnobProps) => {
   const knobType =
-    typeof knobTypeProp !== "string" ? knobTypeProp.type : knobTypeProp;
+    typeof knobTypeProp !== 'string' ? knobTypeProp.type : knobTypeProp;
 
   switch (knobType) {
-    case "string":
-    case "text":
+    case 'string':
+    case 'text':
       return (
         <TextInput
-          aria-label={propName}
+          aria-labelledby={ariaLabelledBy}
           placeholder={propName}
           value={value}
           onChange={onChange}
@@ -33,11 +45,11 @@ export const Knob = ({
         />
       );
 
-    case "number":
-    case "range":
+    case 'number':
+    case 'range':
       return (
         <TextInput
-          aria-label={propName}
+          aria-labelledby={propName}
           type="number"
           placeholder={propName}
           value={value?.toString() ?? value}
@@ -48,7 +60,7 @@ export const Knob = ({
         />
       );
 
-    case "date":
+    case 'date':
       return (
         <DatePicker
           value={value}
@@ -57,7 +69,7 @@ export const Knob = ({
         />
       );
 
-    case "boolean":
+    case 'boolean':
       return (
         <Toggle
           checked={!!value as boolean}
@@ -67,9 +79,9 @@ export const Knob = ({
         />
       );
 
-    case "array":
-    case "enum":
-    case "select": {
+    case 'array':
+    case 'enum':
+    case 'select': {
       if (knobOptions && knobOptions.length) {
         return (
           <Select
@@ -91,7 +103,7 @@ export const Knob = ({
       return <>{`${value}`}</>;
     }
 
-    case "radio": {
+    case 'radio': {
       if (knobOptions && knobOptions.length) {
         return (
           <Select
