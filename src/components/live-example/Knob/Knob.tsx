@@ -49,7 +49,7 @@ export const Knob = ({
     case 'range':
       return (
         <TextInput
-          aria-labelledby={propName}
+          aria-labelledby={ariaLabelledBy}
           type="number"
           placeholder={propName}
           value={value?.toString() ?? value}
