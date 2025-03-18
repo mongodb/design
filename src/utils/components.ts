@@ -30,7 +30,6 @@ const Component = {
   MarketingModal: 'marketing-modal',
   Menu: 'menu',
   Modal: 'modal',
-  MongoNav: 'mongo-nav',
   NumberInput: 'number-input',
   OrderedList: 'ordered-list',
   Pagination: 'pagination',
@@ -183,11 +182,6 @@ export const components: Array<ComponentMeta> = [
   {
     name: titleCase(Component.Modal),
     navPath: generateComponentNavPath(Component.Modal),
-  },
-  {
-    name: titleCase(Component.MongoNav),
-    navPath: generateComponentNavPath(Component.MongoNav),
-    isPrivate: true,
   },
   {
     name: titleCase(Component.NumberInput),

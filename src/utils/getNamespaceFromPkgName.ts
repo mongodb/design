@@ -1,8 +1,4 @@
-export const PRIVATE_PACKAGES: Array<string> = [
-  'mongo-nav',
-  'canvas-header',
-  'cloud-nav',
-];
+export const PRIVATE_PACKAGES: Array<string> = ['canvas-header', 'cloud-nav'];
 
 export const getNamespaceFromPkgName = (pkgName: string) => {
   let namespace = '@leafygreen-ui';
