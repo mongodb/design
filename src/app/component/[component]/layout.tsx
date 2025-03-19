@@ -15,7 +15,7 @@ import { useSession } from '@/hooks';
 import { getGithubLink } from '@/utils';
 import { useContentStackContext } from '@/contexts/ContentStackContext';
 
-import { components as staticComponents } from '@/utils/components';
+import { components, patterns, foundations } from '@/utils';
 import { titleCase } from '@/utils/titleCase';
 import { PrivateContent } from '@/components/global/PrivateContent';
 
@@ -32,15 +32,17 @@ export default function ComponentLayout({
   const router = useRouter();
   const pathname = usePathname();
   const currentComponent = pathname.split('/')[2];
-  const { components } = useContentStackContext();
+  const { components: componentsFromContext } = useContentStackContext();
 
-  const isComponentPrivate = staticComponents.find(
+  const allComponents = [...components, ...patterns, ...foundations];
+
+  const isComponentPrivate = allComponents.find(
     component => component.name === titleCase(currentComponent),
   )?.isPrivate;
 
   const componentTitle = startCase(currentComponent.split('-').join(' '));
 
-  const component = components.find(
+  const component = componentsFromContext.find(
     component => component.title === componentTitle,
   );
 
@@ -79,6 +81,8 @@ export default function ComponentLayout({
   ];
 
   const isPrivate = Boolean(isComponentPrivate && !isLoggedIn);
+
+  console.log('🫵🏼', { isPrivate, isLoggedIn, isComponentPrivate });
 
   return (
     <div

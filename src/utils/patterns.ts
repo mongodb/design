@@ -41,6 +41,7 @@ export const patterns: Array<PatternMeta> = [
   {
     name: titleCase(Pattern.EndOfLife),
     navPath: generatePatternPath(Pattern.EndOfLife),
+    isPrivate: true,
   },
   {
     name: titleCase(Pattern.Forms),
