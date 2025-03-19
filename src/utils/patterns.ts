@@ -33,10 +33,6 @@ export const patterns: Array<PatternMeta> = [
     isComponent: true,
   },
   {
-    name: titleCase(Pattern.EndOfLife),
-    navPath: generatePatternPath(Pattern.EndOfLife),
-  },
-  {
     name: titleCase(Pattern.Forms),
     navPath: generatePatternPath(Pattern.Forms),
   },
