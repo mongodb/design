@@ -6,6 +6,8 @@ export default async function Page({
 }: {
   params: { component: string };
 }) {
+  console.log('🎃', { componentName });
+
   const component = await fetchComponent(componentName, {
     includeContent: true,
   });

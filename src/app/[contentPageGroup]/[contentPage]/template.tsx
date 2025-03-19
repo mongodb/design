@@ -3,7 +3,6 @@
 import { css } from '@emotion/css';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  console.log('🚗🚗🚗🚗');
   return (
     <div
       id="layout"

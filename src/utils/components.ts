@@ -1,7 +1,7 @@
 import kebabCase from 'lodash/kebabCase';
 import { titleCase } from './titleCase';
 
-const Component = {
+export const Component = {
   Avatar: 'avatar',
   Badge: 'badge',
   Banner: 'banner',
@@ -11,7 +11,6 @@ const Component = {
   CanvasHeader: 'canvas-header',
   Checkbox: 'checkbox',
   Chip: 'chip',
-  CloudNav: 'cloud-nav',
   Code: 'code',
   Combobox: 'combobox',
   ConfirmationModal: 'confirmation-modal',
@@ -55,7 +54,7 @@ const Component = {
   Tooltip: 'tooltip',
 } as const;
 
-type Component = (typeof Component)[keyof typeof Component];
+export type Component = (typeof Component)[keyof typeof Component];
 
 const generateComponentNavPath = (component: Component) =>
   `/component/${component}/live-example`;
@@ -104,11 +103,6 @@ export const components: Array<ComponentMeta> = [
   {
     name: titleCase(Component.Chip),
     navPath: generateComponentNavPath(Component.Chip),
-  },
-  {
-    name: titleCase(Component.CloudNav),
-    navPath: generateComponentNavPath(Component.CloudNav),
-    isPrivate: true,
   },
   {
     name: titleCase(Component.Code),

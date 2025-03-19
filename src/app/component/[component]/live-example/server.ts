@@ -2,14 +2,21 @@ import { StoryData } from '@/components/live-example/types';
 import { composeStories } from '@storybook/react';
 
 import { getNamespaceFromPkgName } from '../../../../utils/getNamespaceFromPkgName';
+import { Component, Pattern } from '@/utils';
 
-export async function loadStories(componentName: string) {
+const mappedComponents: Partial<Record<Component | Pattern, string>> = {
+  [Pattern.CloudNavLayout]: 'cloud-nav',
+};
+
+export async function loadStories(componentName: Component | Pattern) {
+  const mappedComponentName = mappedComponents[componentName] ?? componentName;
+
   try {
     // We have to use node_modules because it is static and can be analyzed at build time
     const stories = await import(
       `/node_modules/${getNamespaceFromPkgName(
-        componentName,
-      )}/${componentName}/stories`
+        mappedComponentName,
+      )}/${mappedComponentName}/stories`
     );
     const { LiveExample, default: extractMeta } = composeStories(stories);
     const meta = extractMeta ?? stories.default;

@@ -17,8 +17,6 @@ import { useSession } from '@/hooks';
 export function UserMenu() {
   const session = useSession();
 
-  console.log('🥶', { session });
-
   return session?.user ? (
     <div
       className={css`

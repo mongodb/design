@@ -11,6 +11,8 @@ export default async function ContentPage({
 }) {
   const contentPage = await getContentPage(startCase(contentPageName));
 
+  console.log('👁️👁️👁️👁️', { contentPage });
+
   return (
     <div>
       <ContentstackRichText content={contentPage?.content} />

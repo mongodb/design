@@ -1,10 +1,11 @@
 import { titleCase } from './titleCase';
 
-const Pattern = {
+export const Pattern = {
   Chat: 'chat',
   EmptyState: 'empty-state',
   EndOfLife: 'end-of-life',
   Forms: 'forms',
+  CloudNavLayout: 'cloud-nav-layout',
 } as const;
 
 export type Pattern = (typeof Pattern)[keyof typeof Pattern];
@@ -26,6 +27,11 @@ export const patterns: Array<PatternMeta> = [
   {
     name: titleCase(Pattern.Chat),
     navPath: generatePatternPath(Pattern.Chat),
+  },
+  {
+    name: titleCase(Pattern.CloudNavLayout),
+    navPath: generateComponentNavPath(Pattern.CloudNavLayout),
+    isPrivate: true,
   },
   {
     name: titleCase(Pattern.EmptyState),

@@ -1,5 +1,5 @@
-export { components } from './components';
+export { components, Component } from './components';
 export { foundations } from './foundations';
-export { patterns } from './patterns';
+export { patterns, Pattern } from './patterns';
 export { getGithubLink } from './getGithubLink';
 export { mergeObjects } from './mergeObjects';

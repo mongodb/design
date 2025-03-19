@@ -9,6 +9,8 @@ interface DesignDocsContentProps {
 }
 
 export const DesignDocsContent = ({ content }: DesignDocsContentProps) => {
+  console.log('👻', { content });
+
   return (
     <div
       className={css`

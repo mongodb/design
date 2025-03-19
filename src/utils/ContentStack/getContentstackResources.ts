@@ -81,14 +81,17 @@ export async function fetchComponent(
 ): Promise<ComponentFields | undefined> {
   try {
     const query = Stack.ContentType('component').Query();
+    const startCaseName = startCase(componentName);
     const result = await query
-      .where('title', startCase(componentName))
+      .where('title', startCaseName)
       .only([
         ...componentProperties,
         ...(options?.includeContent ? optionalComponentProperties : []),
       ])
       .toJSON()
       .find();
+
+    console.log('👹', { componentName, result, startCaseName });
     return result[0][0];
   } catch (error) {
     console.error('Component page not found', error);
