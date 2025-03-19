@@ -1,6 +1,7 @@
 'use server';
 
 import { TSDocResponse } from '@/components/code-docs';
+import { getNamespaceFromPkgName } from '@/utils/getNamespaceFromPkgName';
 import { marked } from 'marked';
 
 export async function fetchTSDocs(
@@ -9,17 +10,20 @@ export async function fetchTSDocs(
   if (typeof componentName !== 'string') return null;
 
   try {
-    return await import(`@leafygreen-ui/${componentName}/tsdoc.json`).then(
-      response => {
-        return response.default;
-      },
-    );
+    return await import(
+      `/node_modules/${getNamespaceFromPkgName(
+        componentName,
+      )}/${componentName}/tsdoc.json`
+    ).then(response => {
+      return response.default;
+    });
   } catch (error) {
     console.warn(error);
     return null;
   }
 }
 
+// TODO: firgure out correct changelog for private packages
 export async function fetchChangelog(
   componentName: string,
 ): Promise<string | null> {

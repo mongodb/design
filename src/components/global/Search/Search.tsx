@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import Fuse, { IFuseOptions } from 'fuse.js';
@@ -29,6 +31,7 @@ const useFuseSearch = (data: any[], options: IFuseOptions<any>) => {
 
 export function Search() {
   const { isLoggedIn } = useSession();
+
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState(components);
 

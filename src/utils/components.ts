@@ -8,8 +8,10 @@ const Component = {
   Button: 'button',
   Card: 'card',
   Callout: 'callout',
+  CanvasHeader: 'canvas-header',
   Checkbox: 'checkbox',
   Chip: 'chip',
+  CloudNav: 'cloud-nav',
   Code: 'code',
   Combobox: 'combobox',
   ConfirmationModal: 'confirmation-modal',
@@ -18,6 +20,7 @@ const Component = {
   Drawer: 'drawer',
   EmptyState: 'empty-state',
   ExpandableCard: 'expandable-card',
+  FeatureWalls: 'feature-walls',
   FormFooter: 'form-footer',
   GuideCue: 'guide-cue',
   IconButton: 'icon-button',
@@ -28,7 +31,6 @@ const Component = {
   MarketingModal: 'marketing-modal',
   Menu: 'menu',
   Modal: 'modal',
-  MongoNav: 'mongo-nav',
   NumberInput: 'number-input',
   OrderedList: 'ordered-list',
   Pagination: 'pagination',
@@ -91,12 +93,22 @@ export const components: Array<ComponentMeta> = [
     navPath: generateComponentNavPath(Component.Callout),
   },
   {
+    name: titleCase(Component.CanvasHeader),
+    navPath: generateComponentNavPath(Component.CanvasHeader),
+    isPrivate: true,
+  },
+  {
     name: titleCase(Component.Checkbox),
     navPath: generateComponentNavPath(Component.Checkbox),
   },
   {
     name: titleCase(Component.Chip),
     navPath: generateComponentNavPath(Component.Chip),
+  },
+  {
+    name: titleCase(Component.CloudNav),
+    navPath: generateComponentNavPath(Component.CloudNav),
+    isPrivate: true,
   },
   {
     name: titleCase(Component.Code),
@@ -127,6 +139,11 @@ export const components: Array<ComponentMeta> = [
   {
     name: titleCase(Component.ExpandableCard),
     navPath: generateComponentNavPath(Component.ExpandableCard),
+  },
+  {
+    name: titleCase(Component.FeatureWalls),
+    navPath: generateComponentNavPath(Component.FeatureWalls),
+    isPrivate: true,
   },
   {
     name: titleCase(Component.FormFooter),

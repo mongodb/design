@@ -1,10 +1,9 @@
 'use client';
 
-import { ReactElement, ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { css } from '@emotion/css';
 import Card from '@leafygreen-ui/card';
 import { borderRadius, color, spacing } from '@leafygreen-ui/tokens';
-import { mergeObjects } from '@/utils/mergeObjects';
 import {
   StoryData,
   KnobProps,
@@ -91,7 +90,18 @@ export default function Page({ params }: { params: { component: string } }) {
           padding: ${spacing[600]}px ${spacing[600]}px 0;
         `}
       >
-        <div>
+        <div
+          className={css`
+            padding-left: ${spacing[600]}px;
+            padding-right: ${spacing[600]}px;
+            width: 100%;
+
+            > div {
+              width: auto;
+              margin: 0 auto;
+            }
+          `}
+        >
           {/* @ts-expect-error */}
           <LiveExample {...componentProps} />
         </div>

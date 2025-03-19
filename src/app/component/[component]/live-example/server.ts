@@ -1,11 +1,24 @@
 import { StoryData } from '@/components/live-example/types';
 import { composeStories } from '@storybook/react';
 
+import { getNamespaceFromPkgName } from '../../../../utils/getNamespaceFromPkgName';
+
 export async function loadStories(componentName: string) {
   try {
-    const stories = await import(`@leafygreen-ui/${componentName}/stories`);
+    // We have to use node_modules because it is static and can be analyzed at build time
+    const stories = await import(
+      `/node_modules/${getNamespaceFromPkgName(
+        componentName,
+      )}/${componentName}/stories`
+    );
     const { LiveExample, default: extractMeta } = composeStories(stories);
     const meta = extractMeta ?? stories.default;
+
+    console.log({
+      componentName,
+      LiveExample,
+      allStories: composeStories(stories),
+    });
 
     return { LiveExample, meta } as StoryData;
   } catch (error) {
