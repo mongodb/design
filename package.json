@@ -63,6 +63,7 @@
     "@leafygreen-ui/typography": "^20.1.4",
     "@lg-private/canvas-header": "^3.0.0",
     "@lg-private/cloud-nav": "^0.0.49",
+    "@lg-private/feature-walls": "^4.1.0",
     "@lg-tools/cli": "^0.7.7",
     "@lg-tools/codemods": "^0.1.2",
     "@lg-tools/storybook-utils": "^0.1.3",

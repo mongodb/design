@@ -20,6 +20,7 @@ const Component = {
   Drawer: 'drawer',
   EmptyState: 'empty-state',
   ExpandableCard: 'expandable-card',
+  FeatureWalls: 'feature-walls',
   FormFooter: 'form-footer',
   GuideCue: 'guide-cue',
   IconButton: 'icon-button',
@@ -138,6 +139,11 @@ export const components: Array<ComponentMeta> = [
   {
     name: titleCase(Component.ExpandableCard),
     navPath: generateComponentNavPath(Component.ExpandableCard),
+  },
+  {
+    name: titleCase(Component.FeatureWalls),
+    navPath: generateComponentNavPath(Component.FeatureWalls),
+    isPrivate: true,
   },
   {
     name: titleCase(Component.FormFooter),
