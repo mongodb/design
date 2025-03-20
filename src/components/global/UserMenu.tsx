@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/css';
-import { Session } from 'next-auth';
 import Button from '@leafygreen-ui/button';
 // @ts-expect-error
 import CaretDownIcon from '@leafygreen-ui/icon/dist/CaretDown';
@@ -10,7 +9,7 @@ import LogOutIcon from '@leafygreen-ui/icon/dist/LogOut';
 import { Menu, MenuItem } from '@leafygreen-ui/menu';
 import { Body, Description } from '@leafygreen-ui/typography';
 import { logout } from '@/auth';
-import { useSession } from '@/hooks';
+import { useSession, type LGSession } from '@/hooks';
 import { LogIn } from './LogIn';
 
 export function UserMenu() {
@@ -18,7 +17,7 @@ export function UserMenu() {
   // TODO: use next-auth session when available
   // Session does not clear reliably without forcing a state change or a hard refresh
   // https://github.com/nextauthjs/next-auth/discussions/4687
-  const [manualSession, setManualSession] = useState<Session | undefined>(
+  const [manualSession, setManualSession] = useState<LGSession | undefined>(
     undefined,
   );
 
@@ -50,7 +49,8 @@ export function UserMenu() {
             {manualSession.user.name}
           </Button>
         }
-        renderMode="portal">
+        renderMode="portal"
+      >
         <MenuItem>
           <Body darkMode>{manualSession.user.name}</Body>
           <Description darkMode>{manualSession.user.email}</Description>

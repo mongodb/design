@@ -1,9 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { getSession, Session } from '@/auth';
 
-export const useSession = () => {
+export type LGSession = Partial<Session> & { isLoggedIn?: boolean };
+
+export const useSession = (): LGSession => {
   const [session, setSession] = useState<Session | undefined>();
 
   useEffect(() => {
@@ -14,5 +16,8 @@ export const useSession = () => {
     });
   }, []);
 
-  return session;
+  // This prevents a new object from being created on every render
+  return useMemo(() => {
+    return { ...session, isLoggedIn: !!session?.user };
+  }, [session]);
 };

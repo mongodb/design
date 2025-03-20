@@ -1,4 +1,5 @@
-import { kebabCase, startCase, toLower } from 'lodash';
+import kebabCase from 'lodash/kebabCase';
+import { titleCase } from './titleCase';
 
 const Component = {
   Avatar: 'avatar',
@@ -14,6 +15,7 @@ const Component = {
   ConfirmationModal: 'confirmation-modal',
   Copyable: 'copyable',
   DatePicker: 'date-picker',
+  Drawer: 'drawer',
   EmptyState: 'empty-state',
   ExpandableCard: 'expandable-card',
   FormFooter: 'form-footer',
@@ -53,10 +55,6 @@ const Component = {
 
 type Component = (typeof Component)[keyof typeof Component];
 
-const titlecase = (component: Component) => {
-  return startCase(toLower(component));
-};
-
 const generateComponentNavPath = (component: Component) =>
   `/component/${component}/live-example`;
 
@@ -69,169 +67,173 @@ export interface ComponentMeta {
 
 export const components: Array<ComponentMeta> = [
   {
-    name: titlecase(Component.Avatar),
+    name: titleCase(Component.Avatar),
     navPath: generateComponentNavPath(Component.Avatar),
   },
   {
-    name: titlecase(Component.Badge),
+    name: titleCase(Component.Badge),
     navPath: generateComponentNavPath(Component.Badge),
   },
   {
-    name: titlecase(Component.Banner),
+    name: titleCase(Component.Banner),
     navPath: generateComponentNavPath(Component.Banner),
   },
   {
-    name: titlecase(Component.Button),
+    name: titleCase(Component.Button),
     navPath: generateComponentNavPath(Component.Button),
   },
   {
-    name: titlecase(Component.Card),
+    name: titleCase(Component.Card),
     navPath: generateComponentNavPath(Component.Card),
   },
   {
-    name: titlecase(Component.Callout),
+    name: titleCase(Component.Callout),
     navPath: generateComponentNavPath(Component.Callout),
   },
   {
-    name: titlecase(Component.Checkbox),
+    name: titleCase(Component.Checkbox),
     navPath: generateComponentNavPath(Component.Checkbox),
   },
   {
-    name: titlecase(Component.Chip),
+    name: titleCase(Component.Chip),
     navPath: generateComponentNavPath(Component.Chip),
   },
   {
-    name: titlecase(Component.Code),
+    name: titleCase(Component.Code),
     navPath: generateComponentNavPath(Component.Code),
   },
   {
-    name: titlecase(Component.Combobox),
+    name: titleCase(Component.Combobox),
     navPath: generateComponentNavPath(Component.Combobox),
 
     subComponents: ['Combobox', 'ComboboxOption', 'ComboboxGroup'],
   },
   {
-    name: titlecase(Component.ConfirmationModal),
+    name: titleCase(Component.ConfirmationModal),
     navPath: generateComponentNavPath(Component.ConfirmationModal),
   },
   {
-    name: titlecase(Component.Copyable),
+    name: titleCase(Component.Copyable),
     navPath: generateComponentNavPath(Component.Copyable),
   },
   {
-    name: titlecase(Component.DatePicker),
+    name: titleCase(Component.DatePicker),
     navPath: generateComponentNavPath(Component.DatePicker),
   },
   {
-    name: titlecase(Component.ExpandableCard),
+    name: titleCase(Component.Drawer),
+    navPath: generateComponentNavPath(Component.Drawer),
+  },
+  {
+    name: titleCase(Component.ExpandableCard),
     navPath: generateComponentNavPath(Component.ExpandableCard),
   },
   {
-    name: titlecase(Component.FormFooter),
+    name: titleCase(Component.FormFooter),
     navPath: generateComponentNavPath(Component.FormFooter),
   },
   {
-    name: titlecase(Component.GuideCue),
+    name: titleCase(Component.GuideCue),
     navPath: generateComponentNavPath(Component.GuideCue),
   },
   {
-    name: titlecase(Component.IconButton),
+    name: titleCase(Component.IconButton),
     navPath: generateComponentNavPath(Component.IconButton),
   },
   {
-    name: titlecase(Component.InfoSprinkle),
+    name: titleCase(Component.InfoSprinkle),
     navPath: generateComponentNavPath(Component.InfoSprinkle),
   },
   {
-    name: titlecase(Component.InlineDefinition),
+    name: titleCase(Component.InlineDefinition),
     navPath: generateComponentNavPath(Component.InlineDefinition),
   },
   {
-    name: titlecase(Component.LoadingIndicator),
+    name: titleCase(Component.LoadingIndicator),
     navPath: generateComponentNavPath(Component.LoadingIndicator),
 
     subComponents: ['Spinner', 'PageLoader'],
   },
   {
-    name: titlecase(Component.Logo),
+    name: titleCase(Component.Logo),
     navPath: generateComponentNavPath(Component.Logo),
   },
   {
-    name: titlecase(Component.MarketingModal),
+    name: titleCase(Component.MarketingModal),
     navPath: generateComponentNavPath(Component.MarketingModal),
   },
   {
-    name: titlecase(Component.Menu),
+    name: titleCase(Component.Menu),
     navPath: generateComponentNavPath(Component.Menu),
 
     subComponents: ['Menu', 'MenuItem', 'SubMenu'],
   },
   {
-    name: titlecase(Component.Modal),
+    name: titleCase(Component.Modal),
     navPath: generateComponentNavPath(Component.Modal),
   },
   {
-    name: titlecase(Component.NumberInput),
+    name: titleCase(Component.NumberInput),
     navPath: generateComponentNavPath(Component.NumberInput),
   },
   {
-    name: titlecase(Component.OrderedList),
+    name: titleCase(Component.OrderedList),
     navPath: generateComponentNavPath(Component.OrderedList),
   },
   {
-    name: titlecase(Component.Pagination),
+    name: titleCase(Component.Pagination),
     navPath: generateComponentNavPath(Component.Pagination),
   },
   {
-    name: titlecase(Component.PasswordInput),
+    name: titleCase(Component.PasswordInput),
     navPath: generateComponentNavPath(Component.PasswordInput),
   },
   {
-    name: titlecase(Component.Pipeline),
+    name: titleCase(Component.Pipeline),
     navPath: generateComponentNavPath(Component.Pipeline),
 
     subComponents: ['Pipeline', 'Stage'],
   },
   {
-    name: titlecase(Component.Popover),
+    name: titleCase(Component.Popover),
     navPath: generateComponentNavPath(Component.Popover),
   },
   {
-    name: titlecase(Component.RadioBoxGroup),
+    name: titleCase(Component.RadioBoxGroup),
     navPath: generateComponentNavPath(Component.RadioBoxGroup),
 
     subComponents: ['RadioBoxGroup', 'RadioBox'],
   },
   {
-    name: titlecase(Component.RadioGroup),
+    name: titleCase(Component.RadioGroup),
     navPath: generateComponentNavPath(Component.RadioGroup),
 
     subComponents: ['RadioGroup', 'Radio'],
   },
   {
-    name: titlecase(Component.SearchInput),
+    name: titleCase(Component.SearchInput),
     navPath: generateComponentNavPath(Component.SearchInput),
   },
   {
-    name: titlecase(Component.SegmentedControl),
+    name: titleCase(Component.SegmentedControl),
     navPath: generateComponentNavPath(Component.SegmentedControl),
 
     subComponents: ['SegmentedControl', 'SegmentedControlOption'],
   },
   {
-    name: titlecase(Component.Select),
+    name: titleCase(Component.Select),
     navPath: generateComponentNavPath(Component.Select),
 
     subComponents: ['Select', 'Option', 'OptionGroup'],
   },
   {
-    name: titlecase(Component.SideNav),
+    name: titleCase(Component.SideNav),
     navPath: generateComponentNavPath(Component.SideNav),
 
     subComponents: ['SideNav', 'SideNavItem', 'SideNavGroup'],
   },
   {
-    name: titlecase(Component.SkeletonLoader),
+    name: titleCase(Component.SkeletonLoader),
     navPath: generateComponentNavPath(Component.SkeletonLoader),
 
     subComponents: [
@@ -242,17 +244,17 @@ export const components: Array<ComponentMeta> = [
     ],
   },
   {
-    name: titlecase(Component.SplitButton),
+    name: titleCase(Component.SplitButton),
     navPath: generateComponentNavPath(Component.SplitButton),
   },
   {
-    name: titlecase(Component.Stepper),
+    name: titleCase(Component.Stepper),
     navPath: generateComponentNavPath(Component.Stepper),
 
     subComponents: ['Stepper', 'Step'],
   },
   {
-    name: titlecase(Component.Table),
+    name: titleCase(Component.Table),
     navPath: generateComponentNavPath(Component.Table),
 
     subComponents: [
@@ -265,29 +267,29 @@ export const components: Array<ComponentMeta> = [
     ],
   },
   {
-    name: titlecase(Component.Tabs),
+    name: titleCase(Component.Tabs),
     navPath: generateComponentNavPath(Component.Tabs),
 
     subComponents: ['Tabs', 'Tab'],
   },
   {
-    name: titlecase(Component.TextArea),
+    name: titleCase(Component.TextArea),
     navPath: generateComponentNavPath(Component.TextArea),
   },
   {
-    name: titlecase(Component.TextInput),
+    name: titleCase(Component.TextInput),
     navPath: generateComponentNavPath(Component.TextInput),
   },
   {
-    name: titlecase(Component.Toast),
+    name: titleCase(Component.Toast),
     navPath: generateComponentNavPath(Component.Toast),
   },
   {
-    name: titlecase(Component.Toggle),
+    name: titleCase(Component.Toggle),
     navPath: generateComponentNavPath(Component.Toggle),
   },
   {
-    name: titlecase(Component.Tooltip),
+    name: titleCase(Component.Tooltip),
     navPath: generateComponentNavPath(Component.Tooltip),
   },
 ];

@@ -1,16 +1,13 @@
-import { startCase, toLower } from 'lodash';
+import { titleCase } from './titleCase';
 
 const Pattern = {
   Chat: 'chat',
   EmptyState: 'empty-state',
+  EndOfLife: 'end-of-life',
   Forms: 'forms',
 } as const;
 
 export type Pattern = (typeof Pattern)[keyof typeof Pattern];
-
-const titleCase = (component: Pattern) => {
-  return startCase(toLower(component));
-};
 
 const generateComponentNavPath = (component: Pattern) =>
   `/component/${component}/live-example`;

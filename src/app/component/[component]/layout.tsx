@@ -6,12 +6,11 @@ import React from 'react';
 
 import IconButton from '@leafygreen-ui/icon-button';
 import { CodeSandbox, Figma, Github } from '@/components/glyphs';
-import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { Tabs, Tab } from '@leafygreen-ui/tabs';
-import { color, spacing } from '@leafygreen-ui/tokens';
+import { spacing } from '@leafygreen-ui/tokens';
 import { H2 } from '@leafygreen-ui/typography';
 
-import { useComponentFields } from '@/hooks';
+import { useComponentFields, useSession } from '@/hooks';
 import { getGithubLink } from '@/utils';
 
 const liveExamplePath = 'live-example';
@@ -23,10 +22,10 @@ export default function ComponentLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const { isLoggedIn } = useSession();
   const router = useRouter();
   const pathname = usePathname();
   const currentComponent = pathname.split('/')[2];
-  const { theme } = useDarkMode();
 
   const component = useComponentFields({ componentName: currentComponent });
 
@@ -50,6 +49,7 @@ export default function ComponentLayout({
       'aria-label': 'View Figma file',
       href: component?.figmaurl,
       icon: <Figma />,
+      isPrivate: true,
     },
     {
       'aria-label': 'View GitHub package',
@@ -86,18 +86,23 @@ export default function ComponentLayout({
         inlineChildren={
           <>
             {externalLinks.map(
-              ({ 'aria-label': ariaLabel, href, icon }, index) => (
-                <IconButton
-                  key={ariaLabel + index}
-                  aria-label={ariaLabel}
-                  size="large"
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {icon}
-                </IconButton>
-              ),
+              ({ 'aria-label': ariaLabel, href, icon, isPrivate }, index) => {
+                if (isPrivate && !isLoggedIn) {
+                  return null;
+                }
+                return (
+                  <IconButton
+                    key={ariaLabel + index}
+                    aria-label={ariaLabel}
+                    size="large"
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {icon}
+                  </IconButton>
+                );
+              },
             )}
           </>
         }
