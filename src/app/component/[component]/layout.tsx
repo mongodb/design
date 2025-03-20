@@ -82,7 +82,7 @@ export default function ComponentLayout({
 
   const isPrivate = Boolean(isComponentPrivate && !isLoggedIn);
 
-  console.log('🫵🏼', { isPrivate, isLoggedIn, isComponentPrivate });
+  // console.log('🫵🏼', { isPrivate, isLoggedIn, isComponentPrivate });
 
   return (
     <div

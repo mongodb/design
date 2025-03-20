@@ -22,6 +22,7 @@ export interface PatternMeta {
   navPath: string;
   isPrivate?: boolean;
   isComponent?: boolean;
+  subComponents?: Array<string>;
 }
 
 export const patterns: Array<PatternMeta> = [
@@ -33,6 +34,7 @@ export const patterns: Array<PatternMeta> = [
     name: titleCase(Pattern.CloudNavLayout),
     navPath: generateComponentNavPath(Pattern.CloudNavLayout),
     isPrivate: true,
+    subComponents: ['CloudNavLayout'],
   },
   {
     name: titleCase(Pattern.EmptyState),

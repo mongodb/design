@@ -3,7 +3,7 @@ import {
   TSDocResponse,
   mergeProps,
 } from '@/components/code-docs';
-import { findComponent } from '@/utils/components';
+import { findComponent } from '@/utils';
 import { kebabCase } from 'lodash';
 
 export function parseComponentPropsFromTSDocs(
@@ -12,10 +12,13 @@ export function parseComponentPropsFromTSDocs(
 ): Array<PropTableState> | undefined {
   if (!tsDocs) return;
 
-  const componentMeta = findComponent(componentName);
+  const componentMeta = findComponent(componentName); //TODO: needs to look through pattern components
   const subComponents = componentMeta?.subComponents;
 
+  console.log('🔍', { componentName, componentMeta });
+
   if (!!subComponents) {
+    console.log('🏈', { subComponents });
     const propTables = tsDocs.filter(tsdoc =>
       subComponents.includes(tsdoc.displayName),
     );
@@ -34,6 +37,7 @@ export function parseComponentPropsFromTSDocs(
       return kebabCase(tsdoc.displayName).includes(kebabCase(componentName));
     });
     const mergedProps = mergeProps(centralProps?.props);
+
     return [{ name: componentName, props: mergedProps }];
   }
 }

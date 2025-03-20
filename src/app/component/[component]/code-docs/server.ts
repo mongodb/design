@@ -1,19 +1,23 @@
 'use server';
 
 import { TSDocResponse } from '@/components/code-docs';
+import { mappedComponents, Component, Pattern } from '@/utils';
 import { getNamespaceFromPkgName } from '@/utils/getNamespaceFromPkgName';
 import { marked } from 'marked';
 
 export async function fetchTSDocs(
-  componentName: string,
+  componentName: Component | Pattern,
 ): Promise<Array<TSDocResponse> | null> {
   if (typeof componentName !== 'string') return null;
+
+  const mappedComponentName = mappedComponents[componentName] ?? componentName;
+  console.log('🥎', { componentName, mappedComponentName });
 
   try {
     return await import(
       `/node_modules/${getNamespaceFromPkgName(
-        componentName,
-      )}/${componentName}/tsdoc.json`
+        mappedComponentName,
+      )}/${mappedComponentName}/tsdoc.json`
     ).then(response => {
       return response.default;
     });
