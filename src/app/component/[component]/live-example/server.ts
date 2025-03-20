@@ -6,6 +6,7 @@ import { Component, Pattern } from '@/utils';
 
 const mappedComponents: Partial<Record<Component | Pattern, string>> = {
   [Pattern.CloudNavLayout]: 'cloud-nav',
+  [Component.ProductFeatureWall]: 'feature-walls',
 };
 
 export async function loadStories(componentName: Component | Pattern) {

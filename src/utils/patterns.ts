@@ -6,6 +6,7 @@ export const Pattern = {
   EndOfLife: 'end-of-life',
   Forms: 'forms',
   CloudNavLayout: 'cloud-nav-layout',
+  ProductFeatureWall: 'product-feature-wall',
 } as const;
 
 export type Pattern = (typeof Pattern)[keyof typeof Pattern];
@@ -46,5 +47,10 @@ export const patterns: Array<PatternMeta> = [
   {
     name: titleCase(Pattern.Forms),
     navPath: generatePatternPath(Pattern.Forms),
+  },
+  {
+    name: titleCase(Pattern.ProductFeatureWall),
+    navPath: generatePatternPath(Pattern.ProductFeatureWall),
+    isPrivate: true,
   },
 ];
