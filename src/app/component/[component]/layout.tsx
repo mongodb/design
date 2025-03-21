@@ -33,13 +33,6 @@ export default function ComponentLayout({
   const pathname = usePathname();
   const currentComponent = pathname.split('/')[2];
   const { components: componentsFromContext } = useContentStackContext();
-
-  // const allComponents = [...components, ...patterns, ...foundations];
-
-  // const isComponentPrivate = allComponents.find(
-  //   component => component.name === titleCase(currentComponent),
-  // )?.isPrivate;
-
   const isComponentPrivate = findComponent(currentComponent)?.isPrivate;
 
   const componentTitle = startCase(currentComponent.split('-').join(' '));
