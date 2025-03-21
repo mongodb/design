@@ -21,7 +21,7 @@ export interface PatternMeta {
   navPath: string;
   isPrivate?: boolean;
   isComponent?: boolean;
-  subComponents?: Array<string>;
+  subComponents?: Array<string>; // determines what component props to display in the code documentation tab
 }
 
 export const patterns: Array<PatternMeta> = [
