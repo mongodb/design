@@ -6,8 +6,6 @@ import { spacing } from '@leafygreen-ui/tokens';
 import { ComponentCard, HomeCard } from '@/components/home';
 
 export default function Home() {
-  console.log('HOME PAGE🌈');
-
   return (
     <div
       className={css`

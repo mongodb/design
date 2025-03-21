@@ -1,7 +1,7 @@
 'use server';
 
 import { TSDocResponse } from '@/components/code-docs';
-import { mappedComponents, Component, Pattern } from '@/utils';
+import { Component, Pattern } from '@/utils';
 import { getNamespaceFromPkgName } from '@/utils/getNamespaceFromPkgName';
 import { marked } from 'marked';
 
@@ -10,14 +10,11 @@ export async function fetchTSDocs(
 ): Promise<Array<TSDocResponse> | null> {
   if (typeof componentName !== 'string') return null;
 
-  const mappedComponentName = mappedComponents[componentName] ?? componentName;
-  console.log('🥎', { componentName, mappedComponentName });
-
   try {
     return await import(
       `/node_modules/${getNamespaceFromPkgName(
-        mappedComponentName,
-      )}/${mappedComponentName}/tsdoc.json`
+        componentName,
+      )}/${componentName}/tsdoc.json`
     ).then(response => {
       return response.default;
     });
@@ -27,7 +24,7 @@ export async function fetchTSDocs(
   }
 }
 
-// TODO: firgure out correct changelog for private packages
+// TODO: Don't show changelog for private packages. How do i get the version?
 export async function fetchChangelog(
   componentName: string,
 ): Promise<string | null> {

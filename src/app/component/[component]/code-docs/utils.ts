@@ -12,13 +12,10 @@ export function parseComponentPropsFromTSDocs(
 ): Array<PropTableState> | undefined {
   if (!tsDocs) return;
 
-  const componentMeta = findComponent(componentName); //TODO: needs to look through pattern components
+  const componentMeta = findComponent(componentName);
   const subComponents = componentMeta?.subComponents;
 
-  console.log('🔍', { componentName, componentMeta });
-
   if (!!subComponents) {
-    console.log('🏈', { subComponents });
     const propTables = tsDocs.filter(tsdoc =>
       subComponents.includes(tsdoc.displayName),
     );

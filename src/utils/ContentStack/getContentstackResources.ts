@@ -90,8 +90,6 @@ export async function fetchComponent(
       ])
       .toJSON()
       .find();
-
-    console.log('👹', { componentName, result, startCaseName });
     return result[0][0];
   } catch (error) {
     console.error('Component page not found', error);

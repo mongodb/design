@@ -19,14 +19,6 @@ export default async function ContentPage({
   const isContentPrivate = contentPage?.is_private;
   const isPrivate = Boolean(isContentPrivate && !isLoggedIn);
 
-  console.log('👁️👁️👁️👁️', {
-    isContentPrivate,
-    url: contentPage?.url,
-    currentContent,
-    isLoggedIn,
-    isPrivate,
-  });
-
   return (
     <div>
       {isPrivate ? (
