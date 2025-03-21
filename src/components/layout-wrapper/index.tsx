@@ -8,11 +8,15 @@ import LeafyGreenProvider, {
 import { RootStyleRegistry } from '@/components/global';
 import { useMediaQuery } from '@/hooks';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { ContentStackContextProvider } from '@/contexts/ContentStackContext';
+import { ComponentFields } from '@/utils/ContentStack/types';
 
 export default function LayoutWrapper({
   children,
+  components,
 }: Readonly<{
   children: React.ReactNode;
+  components: Array<ComponentFields>;
 }>) {
   const [prefersDarkMode] = useMediaQuery(['(prefers-color-scheme: dark)'], {
     fallback: [true],
@@ -33,7 +37,9 @@ export default function LayoutWrapper({
               `}
             >
               <LeafyGreenProvider darkMode={darkMode}>
-                {children}
+                <ContentStackContextProvider components={components}>
+                  {children}
+                </ContentStackContextProvider>
               </LeafyGreenProvider>
 
               <GoogleAnalytics gaId="G-VFTH2BJVVK" />

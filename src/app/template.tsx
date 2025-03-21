@@ -1,7 +1,7 @@
 'use client';
 
 import { css, cx } from '@emotion/css';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { color, spacing } from '@leafygreen-ui/tokens';
 
@@ -13,44 +13,12 @@ import {
 } from '@/components/global';
 import { useMediaQuery } from '@/hooks';
 import { SIDE_NAV_WIDTH } from '@/constants';
-import { ContentStackContextProvider } from '@/contexts/ContentStackContext';
-import { ComponentFields, ContentPageGroup } from '@/utils/ContentStack/types';
-import {
-  getComponents,
-  getContentPageGroups,
-} from '@/utils/ContentStack/getContentstackResources';
-
-// TODO: can this be fetched on the server?
-const useGetInitialContentStackContext = () => {
-  const [components, setComponents] = useState<ComponentFields[]>([]);
-  const [contentPageGroups, setContentPageGroups] = useState<
-    ContentPageGroup[]
-  >([]);
-
-  useEffect(() => {
-    async function getContentStackContextValuesAsync() {
-      const [components, contentPageGroups] = await Promise.all([
-        getComponents({ includeContent: false }),
-        getContentPageGroups(),
-      ]);
-      setComponents(components);
-      setContentPageGroups(contentPageGroups);
-    }
-    getContentStackContextValuesAsync();
-  }, []);
-
-  return {
-    components,
-    contentPageGroups,
-  };
-};
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const { darkMode } = useDarkMode();
   const [isMobile] = useMediaQuery(['(max-width: 640px)'], {
     fallback: [false],
   });
-  const { components, contentPageGroups } = useGetInitialContentStackContext();
 
   return (
     <div
@@ -95,12 +63,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
           `,
         )}
       >
-        <ContentStackContextProvider
-          components={components}
-          contentPageGroups={contentPageGroups}
-        >
-          {children}
-        </ContentStackContextProvider>
+        {children}
         <Footer />
       </div>
     </div>

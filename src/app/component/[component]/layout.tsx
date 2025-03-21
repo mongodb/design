@@ -3,7 +3,6 @@
 import { css } from '@emotion/css';
 import { useRouter, usePathname } from 'next/navigation';
 import React from 'react';
-import startCase from 'lodash/startCase';
 
 import IconButton from '@leafygreen-ui/icon-button';
 import { CodeSandbox, Figma, Github } from '@/components/glyphs';
@@ -15,7 +14,6 @@ import { useSession } from '@/hooks';
 import { getGithubLink } from '@/utils';
 import { useContentStackContext } from '@/contexts/ContentStackContext';
 
-import { components, patterns, foundations, findComponent } from '@/utils';
 import { titleCase } from '@/utils/titleCase';
 import { PrivateContent } from '@/components/global/PrivateContent';
 
@@ -33,13 +31,22 @@ export default function ComponentLayout({
   const pathname = usePathname();
   const currentComponent = pathname.split('/')[2];
   const { components: componentsFromContext } = useContentStackContext();
-  const isComponentPrivate = findComponent(currentComponent)?.isPrivate;
-
-  const componentTitle = startCase(currentComponent.split('-').join(' '));
-
+  // canvas-header => Canvas Header
+  const componentTitle = titleCase(currentComponent.split('-').join(' '));
+  // Find component in context. This will include the data from Contentstack
   const component = componentsFromContext.find(
     component => component.title === componentTitle,
   );
+  const isComponentPrivate = component?.private;
+  const shouldRenderEmptyState = Boolean(isComponentPrivate && !isLoggedIn);
+
+  console.log('🥊', {
+    shouldRenderEmptyState,
+    componentsFromContext,
+    currentComponent,
+    componentTitle,
+    component,
+  });
 
   const getSelected = () => {
     const suffix = pathname.split('/')[3];
@@ -75,8 +82,6 @@ export default function ComponentLayout({
     },
   ];
 
-  const isPrivate = Boolean(isComponentPrivate && !isLoggedIn);
-
   return (
     <div
       className={css`
@@ -92,7 +97,7 @@ export default function ComponentLayout({
         {currentComponent.split('-').join(' ')}
       </H2>
 
-      {isPrivate ? (
+      {shouldRenderEmptyState ? (
         <PrivateContent />
       ) : (
         <>
