@@ -2,12 +2,7 @@ import { StoryData } from '@/components/live-example/types';
 import { composeStories } from '@storybook/react';
 
 import { getNamespaceFromPkgName } from '../../../../utils/getNamespaceFromPkgName';
-import { Component, Pattern } from '@/utils';
-
-const mappedComponents: Partial<Record<Component | Pattern, string>> = {
-  [Pattern.CloudNavLayout]: 'cloud-nav',
-  [Component.ProductFeatureWall]: 'feature-walls',
-};
+import { Component, Pattern, mappedComponents } from '@/utils';
 
 export async function loadStories(componentName: Component | Pattern) {
   const mappedComponentName = mappedComponents[componentName] ?? componentName;
@@ -21,12 +16,6 @@ export async function loadStories(componentName: Component | Pattern) {
     );
     const { LiveExample, default: extractMeta } = composeStories(stories);
     const meta = extractMeta ?? stories.default;
-
-    console.log({
-      componentName,
-      LiveExample,
-      allStories: composeStories(stories),
-    });
 
     return { LiveExample, meta } as StoryData;
   } catch (error) {
