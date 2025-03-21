@@ -15,7 +15,7 @@ import { useSession } from '@/hooks';
 import { getGithubLink } from '@/utils';
 import { useContentStackContext } from '@/contexts/ContentStackContext';
 
-import { components, patterns, foundations } from '@/utils';
+import { components, patterns, foundations, findComponent } from '@/utils';
 import { titleCase } from '@/utils/titleCase';
 import { PrivateContent } from '@/components/global/PrivateContent';
 
@@ -34,11 +34,13 @@ export default function ComponentLayout({
   const currentComponent = pathname.split('/')[2];
   const { components: componentsFromContext } = useContentStackContext();
 
-  const allComponents = [...components, ...patterns, ...foundations];
+  // const allComponents = [...components, ...patterns, ...foundations];
 
-  const isComponentPrivate = allComponents.find(
-    component => component.name === titleCase(currentComponent),
-  )?.isPrivate;
+  // const isComponentPrivate = allComponents.find(
+  //   component => component.name === titleCase(currentComponent),
+  // )?.isPrivate;
+
+  const isComponentPrivate = findComponent(currentComponent)?.isPrivate;
 
   const componentTitle = startCase(currentComponent.split('-').join(' '));
 

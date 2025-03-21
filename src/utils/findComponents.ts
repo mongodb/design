@@ -1,8 +1,10 @@
 import kebabCase from 'lodash/kebabCase';
 import { components } from './components';
 import { patterns } from './patterns';
+import { foundations } from './foundations';
 
-const allComponents = [...components, ...patterns];
+const allComponents = [...components, ...patterns, ...foundations];
+
 /**
  * Returns the component object matching a given name
  */
