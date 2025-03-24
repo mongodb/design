@@ -5,7 +5,10 @@ import {
   PropsTable,
   VersionCard,
 } from '@/components/code-docs';
-import { codeDocsMetaCardsStyles, codeDocsPageStyles } from './codeDocs.styles';
+import {
+  getCodeDocsMetaCardsStyles,
+  codeDocsPageStyles,
+} from './codeDocs.styles';
 
 interface CodeDocsContentProps {
   componentName: string;
@@ -20,9 +23,11 @@ export const CodeDocsContent = ({
 }: CodeDocsContentProps) => {
   return (
     <div className={codeDocsPageStyles}>
-      <div className={codeDocsMetaCardsStyles}>
+      <div className={getCodeDocsMetaCardsStyles(!!changelog)}>
         <InstallCard component={componentName} />
-        <VersionCard component={componentName} changelog={changelog} />
+        {changelog && (
+          <VersionCard component={componentName} changelog={changelog} />
+        )}
       </div>
 
       {componentProps?.map(({ name, props }) => {
