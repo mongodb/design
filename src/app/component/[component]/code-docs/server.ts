@@ -24,7 +24,6 @@ export async function fetchTSDocs(
   }
 }
 
-// TODO: Don't show changelog for private packages. How do i get the version?
 export async function fetchChangelog(
   componentName: string,
 ): Promise<string | null> {
