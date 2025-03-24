@@ -1,11 +1,14 @@
 'use client';
 import { CardSkeleton } from '@leafygreen-ui/skeleton-loader';
-import { codeDocsMetaCardsStyles, codeDocsPageStyles } from './codeDocs.styles';
+import {
+  getCodeDocsMetaCardsStyles,
+  codeDocsPageStyles,
+} from './codeDocs.styles';
 
 export default function Loading() {
   return (
     <div className={codeDocsPageStyles}>
-      <div className={codeDocsMetaCardsStyles}>
+      <div className={getCodeDocsMetaCardsStyles()}>
         <CardSkeleton />
         <CardSkeleton />
       </div>
