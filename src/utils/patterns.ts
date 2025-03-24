@@ -14,7 +14,7 @@ export type Pattern = (typeof Pattern)[keyof typeof Pattern];
 const generateComponentNavPath = (component: Pattern) =>
   `/component/${component}/live-example`;
 
-const generatePatternPath = (foundation: Pattern) => `/pattern/${foundation}`;
+const generatePatternPath = (pattern: Pattern) => `/pattern/${pattern}`;
 
 export interface PatternMeta {
   name: string;

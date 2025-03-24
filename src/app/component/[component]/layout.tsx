@@ -11,7 +11,7 @@ import { spacing } from '@leafygreen-ui/tokens';
 import { H2 } from '@leafygreen-ui/typography';
 
 import { useSession } from '@/hooks';
-import { getGithubLink } from '@/utils';
+import { AllComponents, getGithubLink } from '@/utils';
 import { useContentStackContext } from '@/contexts/ContentStackContext';
 
 import { titleCase } from '@/utils/titleCase';
@@ -40,14 +40,6 @@ export default function ComponentLayout({
   const isComponentPrivate = component?.private;
   const shouldRenderEmptyState = Boolean(isComponentPrivate && !isLoggedIn);
 
-  console.log('🥊', {
-    shouldRenderEmptyState,
-    componentsFromContext,
-    currentComponent,
-    componentTitle,
-    component,
-  });
-
   const getSelected = () => {
     const suffix = pathname.split('/')[3];
     if (suffix === liveExamplePath) {
@@ -72,7 +64,10 @@ export default function ComponentLayout({
     },
     {
       'aria-label': 'View GitHub package',
-      href: getGithubLink(component?.private ?? false, component?.title),
+      href: getGithubLink(
+        component?.private ?? false,
+        currentComponent as AllComponents,
+      ),
       icon: <Github />,
     },
     {
@@ -117,6 +112,11 @@ export default function ComponentLayout({
                     if (isPrivate && !isLoggedIn) {
                       return null;
                     }
+
+                    if (!href) {
+                      return null;
+                    }
+
                     return (
                       <IconButton
                         key={ariaLabel + index}

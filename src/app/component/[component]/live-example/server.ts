@@ -2,10 +2,10 @@ import { StoryData } from '@/components/live-example/types';
 import { composeStories } from '@storybook/react';
 
 import { getNamespaceFromPkgName } from '../../../../utils/getNamespaceFromPkgName';
-import { Component, Pattern, mappedComponents } from '@/utils';
+import { Component, Pattern, mappedTitles } from '@/utils';
 
 export async function loadStories(componentName: Component | Pattern) {
-  const mappedComponentName = mappedComponents[componentName] ?? componentName;
+  const mappedComponentName = mappedTitles[componentName] ?? componentName;
 
   try {
     // We have to use node_modules because it is static and can be analyzed at build time

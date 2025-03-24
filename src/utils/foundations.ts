@@ -1,6 +1,6 @@
 import { titleCase } from './titleCase';
 
-const Foundation = {
+export const Foundation = {
   Accessibility: 'accessibility',
   FigmaLibrary101: 'figma-library-101',
   Grid: 'grid',
@@ -24,6 +24,7 @@ export interface FoundationMeta {
   navPath: string;
   isPrivate?: boolean;
   isComponent?: boolean;
+  subComponents?: Array<string>;
 }
 
 export const foundations: Array<FoundationMeta> = [
