@@ -95,11 +95,13 @@ export default function Page({ params }: { params: { component: Component } }) {
           className={css`
             padding-left: ${spacing[600]}px;
             padding-right: ${spacing[600]}px;
-            width: 100%;
 
             > div {
-              width: auto;
-              margin: 0 auto;
+              // temp workaround for cloudNav because the width of cloudNav is set to 100vw
+              &[data-lgid='lg-cloud_nav'] {
+                width: auto;
+                margin: 0 auto;
+              }
             }
           `}
         >
