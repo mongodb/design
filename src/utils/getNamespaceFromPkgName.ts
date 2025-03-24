@@ -1,5 +1,15 @@
-export const PRIVATE_PACKAGES: Array<string> = ['canvas-header', 'cloud-nav'];
+export const PRIVATE_PACKAGES: Array<string> = [
+  'canvas-header',
+  'cloud-nav',
+  'feature-walls',
+];
 
 export const getNamespaceFromPkgName = (pkgName: string) => {
-  return PRIVATE_PACKAGES.includes(pkgName) ? '@lg-private' : '@leafygreen-ui';
+  let namespace = '@leafygreen-ui';
+
+  if (PRIVATE_PACKAGES.includes(pkgName)) {
+    namespace = '@lg-private';
+  }
+
+  return namespace;
 };
