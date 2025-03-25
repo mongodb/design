@@ -17,12 +17,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: npm
-          cache-dependency-path: 'package-lock.json'
+          cache: pnpm
+          cache-dependency-path: 'pnpm-lock.yaml'
       - name: Install Dependencies
-        run: npm install
+        run: pnpm install
       - name: Lint
-        run: npm run lint
+        run: pnpm lint
   types:
     runs-on: ubuntu-latest
     name: Types
@@ -32,10 +32,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: npm
-          cache-dependency-path: 'package-lock.json'
+          cache: pnpm
+          cache-dependency-path: 'pnpm-lock.yaml'
       - name: Install Dependencies
-        run: npm install
+        run: pnpm install
   build:
     runs-on: ubuntu-latest
     name: Build
@@ -45,9 +45,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: npm
-          cache-dependency-path: 'package-lock.json'
+          cache: pnpm
+          cache-dependency-path: 'pnpm-lock.yaml'
       - name: Install Dependencies
-        run: npm install
+        run: pnpm install
       - name: Build NextJS
-        run: NEXT_PUBLIC_ENVIRONMENT=main npm run build
+        run: NEXT_PUBLIC_ENVIRONMENT=main pnpm build
