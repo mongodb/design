@@ -34,6 +34,7 @@ export const patterns: Array<PatternMeta> = [
     navPath: generateComponentNavPath(Pattern.CloudNavLayout),
     isPrivate: true,
     subComponents: ['CloudNavLayout'],
+    isComponent: true,
   },
   {
     name: titleCase(Pattern.EmptyState),
