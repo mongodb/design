@@ -37,6 +37,7 @@ export default function ComponentLayout({
   const component = componentsFromContext.find(
     component => component.title === componentTitle,
   );
+
   const isComponentPrivate = component?.private;
   const shouldRenderEmptyState = Boolean(isComponentPrivate && !isLoggedIn);
 

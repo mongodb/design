@@ -6,7 +6,7 @@ import { foundations } from './foundations';
 const allComponents = [...components, ...patterns, ...foundations];
 
 /**
- * Returns the component object matching a given name
+ * Returns the static component object matching a given name
  */
 export const findComponent = (componentName: string) => {
   return allComponents.find(
