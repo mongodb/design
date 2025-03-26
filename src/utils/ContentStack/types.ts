@@ -22,6 +22,8 @@ export interface ContentPageMeta {
  */
 export interface ContentPage extends ContentPageMeta {
   content: CSNode;
+  is_private: boolean;
+  url: string;
 }
 
 /**
