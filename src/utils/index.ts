@@ -5,4 +5,4 @@ export { getGithubLink } from './getGithubLink';
 export { mergeObjects } from './mergeObjects';
 export { titleCase } from './titleCase';
 export { mappedTitles, type AllComponents } from './mappedTitles';
-export { findComponent } from './findComponents';
+export { findComponent } from './findComponent';
