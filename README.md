@@ -1,5 +1,5 @@
 # LeafyDocs
 
-```js
+```bash
 pnpm install && pnpm dev
 ```
