@@ -84,19 +84,19 @@ export default function ComponentLayout({
         min-height: 100vh;
       `}
     >
-      <H2
-        className={css`
-          text-transform: capitalize;
-          margin-bottom: ${spacing[600]}px;
-        `}
-      >
-        {currentComponent.split('-').join(' ')}
-      </H2>
-
       {shouldRenderEmptyState ? (
         <PrivateContent />
       ) : (
         <>
+          <H2
+            className={css`
+              text-transform: capitalize;
+              margin-bottom: ${spacing[600]}px;
+            `}
+          >
+            {currentComponent.split('-').join(' ')}
+          </H2>
+
           <Tabs
             selected={getSelected()}
             aria-label="main tabs"

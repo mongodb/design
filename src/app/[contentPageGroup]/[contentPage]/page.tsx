@@ -1,11 +1,11 @@
-import { ContentstackRichText } from '@/components/content-stack';
 import { getContentPage } from '@/utils/ContentStack/getContentstackResources';
 
 import startCase from 'lodash/startCase';
 import { auth } from '@/auth';
 import { PrivateContent } from '@/components/global/PrivateContent';
+import { ContentPage } from '@/components/content-page';
 
-export default async function ContentPage({
+export default async function Page({
   params: { contentPage: contentPageName },
 }: {
   params: { contentPage: string };
@@ -21,7 +21,7 @@ export default async function ContentPage({
       {isPrivate ? (
         <PrivateContent />
       ) : (
-        <ContentstackRichText content={contentPage?.content} />
+        <ContentPage contentPage={contentPage} />
       )}
     </div>
   );
