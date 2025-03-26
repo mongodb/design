@@ -2,9 +2,9 @@ import { StoryData } from '@/components/live-example/types';
 import { composeStories } from '@storybook/react';
 
 import { getNamespaceFromPkgName } from '../../../../utils/getNamespaceFromPkgName';
-import { Component, Pattern, mappedTitles } from '@/utils';
+import { Components, mappedTitles } from '@/utils';
 
-export async function loadStories(componentName: Component | Pattern) {
+export async function loadStories(componentName: Components) {
   const mappedComponentName = mappedTitles[componentName] ?? componentName;
 
   try {
