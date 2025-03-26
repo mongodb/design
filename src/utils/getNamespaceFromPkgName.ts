@@ -4,6 +4,7 @@ export const PRIVATE_PACKAGES: Array<string> = [
   'feature-walls',
 ];
 
+// Note: this implementation will need to be tweaked for charts because charts namespace is `lg-charts` and the package name is `core`, `lg-charts/core`. There will need to be some kind of mapping set up for charts when the page on contentstack is created.
 export const getNamespaceFromPkgName = (pkgName: string) => {
   let namespace = '@leafygreen-ui';
 
