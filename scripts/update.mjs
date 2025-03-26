@@ -14,7 +14,10 @@ fs.readFile('package.json', 'utf8', (err, data) => {
     const devDependencies = packageJson.devDependencies || {};
     const leafyGreenPackages = Object.keys(dependencies)
       .concat(Object.keys(devDependencies))
-      .filter(pkg => pkg.startsWith('@leafygreen-ui'));
+      .filter(
+        pkg =>
+          pkg.startsWith('@leafygreen-ui') || pkg.startsWith('@lg-private'),
+      );
 
     leafyGreenPackages.forEach(pkg => {
       console.log(`Updating ${pkg}...`);
