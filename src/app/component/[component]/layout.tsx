@@ -11,7 +11,7 @@ import { spacing } from '@leafygreen-ui/tokens';
 import { H2 } from '@leafygreen-ui/typography';
 
 import { useSession } from '@/hooks';
-import { AllComponents, getGithubLink } from '@/utils';
+import { Components, getGithubLink } from '@/utils';
 import { useContentStackContext } from '@/contexts/ContentStackContext';
 
 import { titleCase } from '@/utils/titleCase';
@@ -67,7 +67,7 @@ export default function ComponentLayout({
       'aria-label': 'View GitHub package',
       href: getGithubLink(
         component?.private ?? false,
-        currentComponent as AllComponents,
+        currentComponent as Components,
       ),
       icon: <Github />,
     },

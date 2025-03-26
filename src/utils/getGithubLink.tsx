@@ -1,5 +1,5 @@
 import kebabCase from 'lodash/kebabCase';
-import { mappedTitles, type AllComponents } from '@/utils';
+import { mappedTitles, type Components } from '@/utils';
 
 const GITHUB_URL = 'https://github.com';
 
@@ -10,7 +10,7 @@ const GITHUB_ORGS = {
 
 export const getGithubLink = (
   isPrivate?: boolean,
-  componentTitle?: AllComponents,
+  componentTitle?: Components,
 ) => {
   const rootRepoUrl = `${GITHUB_URL}/${
     isPrivate ? GITHUB_ORGS.private : GITHUB_ORGS.public

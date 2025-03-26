@@ -1,12 +1,12 @@
 'use server';
 
 import { TSDocResponse } from '@/components/code-docs';
-import { AllComponents } from '@/utils';
+import { Components } from '@/utils';
 import { getNamespaceFromPkgName } from '@/utils/getNamespaceFromPkgName';
 import { marked } from 'marked';
 
 export async function fetchTSDocs(
-  componentName: AllComponents,
+  componentName: Components,
 ): Promise<Array<TSDocResponse> | null> {
   if (typeof componentName !== 'string') return null;
 
