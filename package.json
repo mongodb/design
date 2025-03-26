@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
+    "preinstall": "only-allow pnpm",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -100,6 +100,7 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
     "globals": "^15.14.0",
+    "only-allow": "^1.2.1",
     "typescript": "^5",
     "typescript-eslint": "^8.23.0"
   },
