@@ -6,7 +6,7 @@ export const Pattern = {
   EndOfLife: 'end-of-life',
   Forms: 'forms',
   CloudNavLayout: 'cloud-nav-layout',
-  FeatureWall: 'feature-wall',
+  FeatureWalls: 'feature-walls',
 } as const;
 
 export type Pattern = (typeof Pattern)[keyof typeof Pattern];
@@ -51,8 +51,17 @@ export const patterns: Array<PatternMeta> = [
     navPath: generatePatternPath(Pattern.Forms),
   },
   {
-    name: titleCase(Pattern.FeatureWall),
-    navPath: generatePatternPath(Pattern.FeatureWall),
+    name: titleCase(Pattern.FeatureWalls),
+    navPath: generateComponentNavPath(Pattern.FeatureWalls),
     isPrivate: true,
+    isComponent: true,
+    subComponents: [
+      'ActivationSteps',
+      'FeatureOverview',
+      'Header',
+      'InfoBlock',
+      'Templates',
+      'UseCases',
+    ],
   },
 ];
