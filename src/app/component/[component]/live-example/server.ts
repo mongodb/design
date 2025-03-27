@@ -1,17 +1,17 @@
 import { StoryData } from '@/components/live-example/types';
 import { composeStories } from '@storybook/react';
 
-import { getNamespaceFromPkgName } from '../../../../utils/getNamespaceFromPkgName';
-import { Components, getMappedComponentName } from '@/utils';
+import { getScopeFromPkgName } from '../../../../utils/getScopeFromPkgName';
+import { PageTitle, getMappedComponentName } from '@/utils';
 
-export async function loadStories(componentName: Components) {
+export async function loadStories(componentName: PageTitle) {
   const mappedComponentName =
     getMappedComponentName[componentName] ?? componentName;
 
   try {
     // We have to use node_modules because it is static and can be analyzed at build time
     const stories = await import(
-      `/node_modules/${getNamespaceFromPkgName(
+      `/node_modules/${getScopeFromPkgName(
         mappedComponentName,
       )}/${mappedComponentName}/stories`
     );

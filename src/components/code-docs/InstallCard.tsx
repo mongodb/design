@@ -11,7 +11,7 @@ import {
 import { spacing } from '@leafygreen-ui/tokens';
 import { Subtitle } from '@leafygreen-ui/typography';
 
-import { getNamespaceFromPkgName } from '@/utils/getNamespaceFromPkgName';
+import { getScopeFromPkgName } from '@/utils/getScopeFromPkgName';
 
 export const InstallCard = ({ component }: { component: string }) => {
   const [packageManager, setPackageManager] = useState('yarn');
@@ -50,8 +50,8 @@ export const InstallCard = ({ component }: { component: string }) => {
           `}
         >
           {packageManager === 'yarn'
-            ? `yarn add ${getNamespaceFromPkgName(component)}/${component}`
-            : `npm i ${getNamespaceFromPkgName(component)}/${component}`}
+            ? `yarn add ${getScopeFromPkgName(component)}/${component}`
+            : `npm i ${getScopeFromPkgName(component)}/${component}`}
         </Copyable>
       </div>
     </Card>

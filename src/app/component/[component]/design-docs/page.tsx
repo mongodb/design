@@ -10,6 +10,8 @@ export default async function Page({
     includeContent: true,
   });
 
+  console.log('🏈', { component });
+
   return (
     <div>
       <DesignDocsContent content={component?.designguidelines} />

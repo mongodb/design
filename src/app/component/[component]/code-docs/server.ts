@@ -2,7 +2,7 @@
 
 import { TSDocResponse } from '@/components/code-docs';
 import { PageTitle } from '@/utils';
-import { getNamespaceFromPkgName } from '@/utils/getNamespaceFromPkgName';
+import { getScopeFromPkgName } from '@/utils/getScopeFromPkgName';
 import { marked } from 'marked';
 
 export async function fetchTSDocs(
@@ -12,7 +12,7 @@ export async function fetchTSDocs(
 
   try {
     return await import(
-      `/node_modules/${getNamespaceFromPkgName(
+      `/node_modules/${getScopeFromPkgName(
         componentName,
       )}/${componentName}/tsdoc.json`
     ).then(response => {
