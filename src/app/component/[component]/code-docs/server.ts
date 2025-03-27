@@ -6,7 +6,7 @@ import { getScopeFromPkgName } from '@/utils/getScopeFromPkgName';
 import { marked } from 'marked';
 
 export async function fetchTSDocs(
-  componentName: PageTitle,
+  componentName: PageTitle | string,
 ): Promise<Array<TSDocResponse> | null> {
   if (typeof componentName !== 'string') return null;
 

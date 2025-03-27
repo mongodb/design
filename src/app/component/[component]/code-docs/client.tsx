@@ -5,13 +5,11 @@ import {
   PropsTable,
   VersionCard,
 } from '@/components/code-docs';
-import {
-  getCodeDocsMetaCardsStyles,
-  codeDocsPageStyles,
-} from './codeDocs.styles';
+import { codeDocsMetaCardsStyles, codeDocsPageStyles } from './codeDocs.styles';
+import { PageTitle } from '@/utils';
 
 interface CodeDocsContentProps {
-  componentName: string;
+  componentName: PageTitle;
   componentProps?: Array<PropTableState>;
   changelog: string | null;
 }
@@ -23,11 +21,9 @@ export const CodeDocsContent = ({
 }: CodeDocsContentProps) => {
   return (
     <div className={codeDocsPageStyles}>
-      <div className={getCodeDocsMetaCardsStyles(!!changelog)}>
+      <div className={codeDocsMetaCardsStyles}>
         <InstallCard component={componentName} />
-        {changelog && (
-          <VersionCard component={componentName} changelog={changelog} />
-        )}
+        <VersionCard changelog={changelog} component={componentName} />
       </div>
 
       {componentProps?.map(({ name, props }) => {

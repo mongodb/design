@@ -7,12 +7,10 @@ export const codeDocsPageStyles = css`
   gap: ${spacing[800]}px;
 `;
 
-export const getCodeDocsMetaCardsStyles = (hasVersionCards = true) => css`
-  ${hasVersionCards &&
-  `display: grid;
+export const codeDocsMetaCardsStyles = css`
+  display: grid;
   gap: ${spacing[800]}px;
-  grid-template-columns: 2fr 1fr;`}
-
+  grid-template-columns: 2fr 1fr;
   max-width: 100%;
 
   @media (max-width: ${breakpoints.Tablet}px) {
