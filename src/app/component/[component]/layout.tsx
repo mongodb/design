@@ -11,11 +11,11 @@ import { spacing } from '@leafygreen-ui/tokens';
 import { H2 } from '@leafygreen-ui/typography';
 
 import { useSession } from '@/hooks';
-import { Components, getGithubLink } from '@/utils';
+import { PageTitle, getGithubLink } from '@/utils';
 import { useContentStackContext } from '@/contexts/ContentStackContext';
 
 import { titleCase } from '@/utils/titleCase';
-import { PrivateContent } from '@/components/global/PrivateContent';
+import { PrivateContentWall } from '@/components/global';
 
 const liveExamplePath = 'live-example';
 const designDocsPath = 'design-docs';
@@ -39,7 +39,9 @@ export default function ComponentLayout({
   );
 
   const isComponentPrivate = component?.private;
-  const shouldRenderEmptyState = Boolean(isComponentPrivate && !isLoggedIn);
+  const shouldRenderPrivateContentWall = Boolean(
+    isComponentPrivate && !isLoggedIn,
+  );
 
   const getSelected = () => {
     const suffix = pathname.split('/')[3];
@@ -67,7 +69,7 @@ export default function ComponentLayout({
       'aria-label': 'View GitHub package',
       href: getGithubLink(
         component?.private ?? false,
-        currentComponent as Components,
+        currentComponent as PageTitle,
       ),
       icon: <Github />,
     },
@@ -84,8 +86,8 @@ export default function ComponentLayout({
         min-height: 100vh;
       `}
     >
-      {shouldRenderEmptyState ? (
-        <PrivateContent />
+      {shouldRenderPrivateContentWall ? (
+        <PrivateContentWall />
       ) : (
         <>
           <H2

@@ -2,7 +2,7 @@ import kebabCase from 'lodash/kebabCase';
 import { components } from './components';
 import { patterns } from './patterns';
 import { foundations } from './foundations';
-import { Components } from './mappedTitles';
+import { Components } from './getMappedComponentName';
 
 const allComponents = [...components, ...patterns, ...foundations];
 

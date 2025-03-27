@@ -4,5 +4,8 @@ export { patterns, Pattern } from './patterns';
 export { getGithubLink } from './getGithubLink';
 export { mergeObjects } from './mergeObjects';
 export { titleCase } from './titleCase';
-export { mappedTitles, type Components } from './mappedTitles';
+export {
+  getMappedComponentName,
+  type PageTitle,
+} from './getMappedComponentName';
 export { findComponent } from './findComponent';

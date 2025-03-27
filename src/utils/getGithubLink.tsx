@@ -1,5 +1,5 @@
 import kebabCase from 'lodash/kebabCase';
-import { mappedTitles, type Components } from '@/utils';
+import { getMappedComponentName, type PageTitle } from '@/utils';
 
 const GITHUB_URL = 'https://github.com';
 
@@ -8,19 +8,16 @@ const GITHUB_ORGS = {
   public: 'mongodb',
 } as const;
 
-export const getGithubLink = (
-  isPrivate?: boolean,
-  componentTitle?: Components,
-) => {
+export const getGithubLink = (isPrivate?: boolean, component?: PageTitle) => {
   const rootRepoUrl = `${GITHUB_URL}/${
     isPrivate ? GITHUB_ORGS.private : GITHUB_ORGS.public
   }/leafygreen-ui${isPrivate ? '-private' : ''}`;
 
-  if (!componentTitle) {
+  if (!component) {
     return rootRepoUrl;
   }
 
-  const mappedComponentTitle = mappedTitles[componentTitle] || componentTitle;
+  const mappedComponent = getMappedComponentName[component] || component;
 
-  return `${rootRepoUrl}/tree/main/packages/${kebabCase(mappedComponentTitle)}`;
+  return `${rootRepoUrl}/tree/main/packages/${kebabCase(mappedComponent)}`;
 };

@@ -11,7 +11,7 @@ import { login } from '@/auth';
 
 import { Security } from '@/components/glyphs';
 
-export function PrivateContent() {
+export function PrivateContentWall() {
   return (
     <BasicEmptyState
       title="Log in to view private content"

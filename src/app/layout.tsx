@@ -11,8 +11,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
-  const components = await getComponents({ includeContent: false });
+  const [session, components] = await Promise.all([
+    auth(),
+    getComponents({ includeContent: false }),
+  ]);
 
   return (
     // Provide the session to the entire app

@@ -1,18 +1,23 @@
 import { fetchTSDocs, fetchChangelog } from './server';
 import { CodeDocsContent } from './client';
 import { parseComponentPropsFromTSDocs } from './utils';
-import { mappedTitles, type Components } from '@/utils';
+import { getMappedComponentName, type PageTitle } from '@/utils';
 
 export default async function Page({
   params,
 }: {
-  params: { component: Components };
+  params: { component: PageTitle };
 }) {
   const componentName = params.component;
-  const mappedComponentName = mappedTitles[componentName] ?? componentName;
-  const tsDocs = await fetchTSDocs(mappedComponentName as Components);
+  const mappedComponentName =
+    getMappedComponentName[componentName] ?? componentName;
+
+  const [tsDocs, changelog] = await Promise.all([
+    fetchTSDocs(mappedComponentName as PageTitle),
+    fetchChangelog(componentName),
+  ]);
+
   const componentProps = parseComponentPropsFromTSDocs(tsDocs, componentName);
-  const changelog = await fetchChangelog(componentName);
 
   return (
     <CodeDocsContent
