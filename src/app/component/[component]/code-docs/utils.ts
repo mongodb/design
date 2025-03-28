@@ -3,12 +3,12 @@ import {
   TSDocResponse,
   mergeProps,
 } from '@/components/code-docs';
-import { Components, findComponent } from '@/utils';
+import { PageTitle, findComponent } from '@/utils';
 import { kebabCase } from 'lodash';
 
 export function parseComponentPropsFromTSDocs(
   tsDocs: Array<TSDocResponse> | null,
-  componentName: Components,
+  componentName: PageTitle,
 ): Array<PropTableState> | undefined {
   if (!tsDocs) return;
 
