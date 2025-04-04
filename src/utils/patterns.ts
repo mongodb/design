@@ -2,11 +2,11 @@ import { titleCase } from './titleCase';
 
 export const Pattern = {
   Chat: 'chat',
+  CloudNavLayout: 'cloud-nav-layout',
   EmptyState: 'empty-state',
   EndOfLife: 'end-of-life',
-  Forms: 'forms',
-  CloudNavLayout: 'cloud-nav-layout',
   FeatureWalls: 'feature-walls',
+  Forms: 'forms',
 } as const;
 
 export type Pattern = (typeof Pattern)[keyof typeof Pattern];
