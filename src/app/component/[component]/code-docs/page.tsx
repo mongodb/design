@@ -15,8 +15,10 @@ export default async function Page({
   const mappedComponentName =
     getMappedComponentName[componentName] ?? componentName;
 
-  const tsDocs = await fetchTSDocs(mappedComponentName);
-  const changelog = isLoggedIn ? await fetchChangelog(componentName) : null;
+  const [tsDocs, changelog] = await Promise.all([
+    fetchTSDocs(mappedComponentName),
+    isLoggedIn ? fetchChangelog(componentName) : Promise.resolve(null),
+  ]);
 
   const componentProps = parseComponentPropsFromTSDocs(tsDocs, componentName);
 
