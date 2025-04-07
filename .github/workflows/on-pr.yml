@@ -27,16 +27,11 @@ jobs:
           cache-dependency-path: 'pnpm-lock.yaml'
       - name: Set .npmrc
         run: |
+          echo "registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> .npmrc
           echo "@lg-private:registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> .npmrc
-          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:username=$JFROG_USERNAME" >> .npmrc
-          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:email=$JFROG_EMAIL" >> .npmrc
-          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:always-auth=true" >> .npmrc
-          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:password=$JFROG_PASSWORD" >> .npmrc
-          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:_auth=$JFROG_AUTH" >> .npmrc
+          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:_auth=${JFROG_AUTH}" >> .npmrc
+          echo "always-auth=true" >> .npmrc
         env:
-          JFROG_USERNAME: ${{ secrets.JFROG_USERNAME }}
-          JFROG_EMAIL: ${{ secrets.JFROG_EMAIL }}
-          JFROG_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
           JFROG_AUTH: ${{ secrets.JFROG_AUTH }}
 
       - name: Install Dependencies
