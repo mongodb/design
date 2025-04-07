@@ -16,8 +16,8 @@ jobs:
           node-version: '18'
           cache: npm
           cache-dependency-path: package-lock.json
-      - run: npm install
-      - run: npm run update-lg '${{ github.event.client_payload.packages }}'
+      - run: pnpm install
+      - run: pnpm run update-lg '${{ github.event.client_payload.packages }}'
       - name: add and commit
         env:
           MY_EMAIL: s.park@mongodb.com

@@ -13,41 +13,59 @@ jobs:
     name: Lint
     steps:
       - uses: actions/checkout@v2
+
+      - name: pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.0
+
       - name: Use Node 18
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: npm
-          cache-dependency-path: 'package-lock.json'
+          cache: pnpm
+          cache-dependency-path: 'pnpm-lock.yaml'
       - name: Install Dependencies
-        run: npm install
+        run: pnpm install
       - name: Lint
-        run: npm run lint
+        run: pnpm lint
   types:
     runs-on: ubuntu-latest
     name: Types
     steps:
       - uses: actions/checkout@v2
+
+      - name: pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.0
+
       - name: Use Node 18
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: npm
-          cache-dependency-path: 'package-lock.json'
+          cache: pnpm
+          cache-dependency-path: 'pnpm-lock.yaml'
       - name: Install Dependencies
-        run: npm install
+        run: pnpm install
   build:
     runs-on: ubuntu-latest
     name: Build
     steps:
       - uses: actions/checkout@v2
+
+      - name: pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.0
+
       - name: Use Node 18
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: npm
-          cache-dependency-path: 'package-lock.json'
+          cache: pnpm
+          cache-dependency-path: 'pnpm-lock.yaml'
       - name: Install Dependencies
-        run: npm install
+        run: pnpm install
       - name: Build NextJS
-        run: NEXT_PUBLIC_ENVIRONMENT=main npm run build
+        run: NEXT_PUBLIC_ENVIRONMENT=main pnpm build
