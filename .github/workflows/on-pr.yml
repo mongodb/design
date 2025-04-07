@@ -29,7 +29,7 @@ jobs:
         run: |
           echo "registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> .npmrc
           echo "@lg-private:registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> .npmrc
-          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:_auth=${JFROG_AUTH}" >> .npmrc
+          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:_authToken=${JFROG_AUTH}" >> .npmrc
           echo "always-auth=true" >> .npmrc
         env:
           JFROG_AUTH: ${{ secrets.JFROG_AUTH }}
