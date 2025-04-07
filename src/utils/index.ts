@@ -1,11 +1,8 @@
-export { components, Component } from './components';
-export { foundations, Foundation } from './foundations';
-export { patterns, Pattern } from './patterns';
+export { components, ComponentSubPath } from './components';
+export { foundations, FoundationSubPath } from './foundations';
+export { patterns, PatternSubPath } from './patterns';
 export { getGithubLink } from './getGithubLink';
 export { mergeObjects } from './mergeObjects';
 export { titleCase } from './titleCase';
-export {
-  getMappedComponentName,
-  type PageTitle,
-} from './getMappedComponentName';
+export { getMappedComponentName, type SubPath } from './getMappedComponentName';
 export { findComponent } from './findComponent';

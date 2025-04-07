@@ -2,9 +2,9 @@ import { StoryData } from '@/components/live-example/types';
 import { composeStories } from '@storybook/react';
 
 import { getScopeFromPkgName } from '../../../../utils/getScopeFromPkgName';
-import { PageTitle, getMappedComponentName } from '@/utils';
+import { SubPath, getMappedComponentName } from '@/utils';
 
-export async function loadStories(componentName: PageTitle) {
+export async function loadStories(componentName: SubPath) {
   const mappedComponentName =
     getMappedComponentName[componentName] ?? componentName;
 

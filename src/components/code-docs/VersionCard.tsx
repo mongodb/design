@@ -10,11 +10,11 @@ import Modal from '@leafygreen-ui/modal';
 import { spacing } from '@leafygreen-ui/tokens';
 import { Subtitle } from '@leafygreen-ui/typography';
 import { color } from '@leafygreen-ui/tokens';
-import { findComponent, PageTitle, getMappedComponentName } from '@/utils';
+import { findComponent, SubPath, getMappedComponentName } from '@/utils';
 
 interface VersionCardProps {
   changelog: string | null;
-  component: PageTitle;
+  component: SubPath;
 }
 
 export const VersionCard = ({ changelog, component }: VersionCardProps) => {

@@ -1,13 +1,13 @@
 import { fetchTSDocs, fetchChangelog } from './server';
 import { CodeDocsContent } from './client';
 import { parseComponentPropsFromTSDocs } from './utils';
-import { getMappedComponentName, type PageTitle } from '@/utils';
+import { getMappedComponentName, type SubPath } from '@/utils';
 import { auth } from '@/auth';
 
 export default async function Page({
   params,
 }: {
-  params: { component: PageTitle };
+  params: { component: SubPath };
 }) {
   const session = await auth();
   const isLoggedIn = !!session?.user;

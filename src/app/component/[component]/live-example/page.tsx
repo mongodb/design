@@ -13,9 +13,9 @@ import { loadStories } from './server';
 import { Knobs } from '@/components/live-example/Knobs';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { createDefaultProps } from './utils';
-import { Component } from '@/utils';
+import { SubPath } from '@/utils';
 
-export default function Page({ params }: { params: { component: Component } }) {
+export default function Page({ params }: { params: { component: SubPath } }) {
   const { darkMode } = useDarkMode();
   const [data, setData] = useState<StoryData>();
   const [knobProps, setKnobProps] = useState<KnobProps>({});

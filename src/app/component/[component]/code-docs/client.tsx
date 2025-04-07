@@ -6,10 +6,10 @@ import {
   VersionCard,
 } from '@/components/code-docs';
 import { codeDocsMetaCardsStyles, codeDocsPageStyles } from './codeDocs.styles';
-import { PageTitle } from '@/utils';
+import { SubPath } from '@/utils';
 
 interface CodeDocsContentProps {
-  componentName: PageTitle;
+  componentName: SubPath;
   componentProps?: Array<PropTableState>;
   changelog: string | null;
 }

@@ -1,12 +1,12 @@
 'use server';
 
 import { TSDocResponse } from '@/components/code-docs';
-import { PageTitle } from '@/utils';
+import { SubPath } from '@/utils';
 import { getScopeFromPkgName } from '@/utils/getScopeFromPkgName';
 import { marked } from 'marked';
 
 export async function fetchTSDocs(
-  componentName: PageTitle | string,
+  componentName: SubPath | string,
 ): Promise<Array<TSDocResponse> | null> {
   if (typeof componentName !== 'string') return null;
 

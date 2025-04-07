@@ -1,6 +1,7 @@
 import { titleCase } from './titleCase';
+import { SubPathMeta } from './types';
 
-export const Pattern = {
+export const PatternSubPath = {
   Chat: 'chat',
   CloudNavLayout: 'cloud-nav-layout',
   EmptyState: 'empty-state',
@@ -9,50 +10,43 @@ export const Pattern = {
   Forms: 'forms',
 } as const;
 
-export type Pattern = (typeof Pattern)[keyof typeof Pattern];
+export type PatternSubPath =
+  (typeof PatternSubPath)[keyof typeof PatternSubPath];
 
-const generateComponentNavPath = (component: Pattern) =>
+const generateComponentNavPath = (component: PatternSubPath) =>
   `/component/${component}/live-example`;
 
-const generatePatternPath = (pattern: Pattern) => `/pattern/${pattern}`;
+const generatePatternPath = (pattern: PatternSubPath) => `/pattern/${pattern}`;
 
-export interface PatternMeta {
-  name: string;
-  navPath: string;
-  isPrivate?: boolean;
-  isComponent?: boolean;
-  subComponents?: Array<string>; // determines what component props to display in the code documentation tab
-}
-
-export const patterns: Array<PatternMeta> = [
+export const patterns: Array<SubPathMeta> = [
   {
-    name: titleCase(Pattern.Chat),
-    navPath: generatePatternPath(Pattern.Chat),
+    name: titleCase(PatternSubPath.Chat),
+    navPath: generatePatternPath(PatternSubPath.Chat),
   },
   {
-    name: titleCase(Pattern.CloudNavLayout),
-    navPath: generateComponentNavPath(Pattern.CloudNavLayout),
+    name: titleCase(PatternSubPath.CloudNavLayout),
+    navPath: generateComponentNavPath(PatternSubPath.CloudNavLayout),
     isPrivate: true,
     subComponents: ['CloudNavLayout'],
     isComponent: true,
   },
   {
-    name: titleCase(Pattern.EmptyState),
-    navPath: generateComponentNavPath(Pattern.EmptyState),
+    name: titleCase(PatternSubPath.EmptyState),
+    navPath: generateComponentNavPath(PatternSubPath.EmptyState),
     isComponent: true,
   },
   {
-    name: titleCase(Pattern.EndOfLife),
-    navPath: generatePatternPath(Pattern.EndOfLife),
+    name: titleCase(PatternSubPath.EndOfLife),
+    navPath: generatePatternPath(PatternSubPath.EndOfLife),
     isPrivate: true,
   },
   {
-    name: titleCase(Pattern.Forms),
-    navPath: generatePatternPath(Pattern.Forms),
+    name: titleCase(PatternSubPath.Forms),
+    navPath: generatePatternPath(PatternSubPath.Forms),
   },
   {
-    name: titleCase(Pattern.FeatureWalls),
-    navPath: generateComponentNavPath(Pattern.FeatureWalls),
+    name: titleCase(PatternSubPath.FeatureWalls),
+    navPath: generateComponentNavPath(PatternSubPath.FeatureWalls),
     isPrivate: true,
     isComponent: true,
     subComponents: [
