@@ -27,9 +27,8 @@ import { SIDE_NAV_WIDTH } from '@/constants';
 import { useMediaQuery, useSession } from '@/hooks';
 import { components } from '@/utils/components';
 import { foundations } from '@/utils/foundations';
-import type { FoundationMeta } from '@/utils/foundations';
+import type { SubPathMeta } from '@/utils/types';
 import { patterns } from '@/utils/patterns';
-import type { PatternMeta } from '@/utils/patterns';
 import { Search } from '../Search/Search';
 import { Drawer } from './Drawer';
 import { SideNavItem } from './SideNavItem';
@@ -51,7 +50,7 @@ export function SideNavigation() {
 
   const PrivateIcon = isLoggedIn ? UnlockIcon : LockIcon;
 
-  const isActiveResource = (resource: FoundationMeta | PatternMeta) => {
+  const isActiveResource = (resource: SubPathMeta) => {
     return resource.isComponent
       ? currentComponent.toLowerCase().split('-').join(' ') ===
           resource.name.toLowerCase()

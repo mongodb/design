@@ -10,8 +10,12 @@ import { Tabs, Tab } from '@leafygreen-ui/tabs';
 import { spacing } from '@leafygreen-ui/tokens';
 import { H2 } from '@leafygreen-ui/typography';
 
-import { useComponentFields, useSession } from '@/hooks';
-import { getGithubLink } from '@/utils';
+import { useSession } from '@/hooks';
+import { SubPath, getGithubLink } from '@/utils';
+import { useContentStackContext } from '@/contexts/ContentStackContext';
+
+import { titleCase } from '@/utils/titleCase';
+import { PrivateContentWall } from '@/components/global';
 
 const liveExamplePath = 'live-example';
 const designDocsPath = 'design-docs';
@@ -26,8 +30,18 @@ export default function ComponentLayout({
   const router = useRouter();
   const pathname = usePathname();
   const currentComponent = pathname.split('/')[2];
+  const { components: componentsFromContext } = useContentStackContext();
+  // canvas-header => Canvas Header
+  const componentTitle = titleCase(currentComponent.split('-').join(' '));
+  // Find component in context. This will include the data from Contentstack
+  const component = componentsFromContext.find(
+    component => component.title === componentTitle,
+  );
 
-  const component = useComponentFields({ componentName: currentComponent });
+  const isComponentPrivate = component?.private;
+  const shouldRenderPrivateContentWall = Boolean(
+    isComponentPrivate && !isLoggedIn,
+  );
 
   const getSelected = () => {
     const suffix = pathname.split('/')[3];
@@ -53,7 +67,10 @@ export default function ComponentLayout({
     },
     {
       'aria-label': 'View GitHub package',
-      href: getGithubLink(component?.private ?? false, component?.title),
+      href: getGithubLink(
+        component?.private ?? false,
+        currentComponent as SubPath,
+      ),
       icon: <Github />,
     },
     {
@@ -69,71 +86,86 @@ export default function ComponentLayout({
         min-height: 100vh;
       `}
     >
-      <H2
-        className={css`
-          text-transform: capitalize;
-          margin-bottom: ${spacing[600]}px;
-        `}
-      >
-        {currentComponent.split('-').join(' ')}
-      </H2>
-      <Tabs
-        selected={getSelected()}
-        aria-label="main tabs"
-        className={css`
-          margin-bottom: ${spacing[800]}px;
-        `}
-        inlineChildren={
-          <>
-            {externalLinks.map(
-              ({ 'aria-label': ariaLabel, href, icon, isPrivate }, index) => {
-                if (isPrivate && !isLoggedIn) {
-                  return null;
-                }
-                return (
-                  <IconButton
-                    key={ariaLabel + index}
-                    aria-label={ariaLabel}
-                    size="large"
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {icon}
-                  </IconButton>
-                );
-              },
-            )}
-          </>
-        }
-      >
-        <Tab
-          onClick={() =>
-            router.push(`/component/${currentComponent}/${liveExamplePath}`)
-          }
-          name="Live Example"
-        >
-          <></>
-        </Tab>
-        <Tab
-          onClick={() =>
-            router.push(`/component/${currentComponent}/${designDocsPath}`)
-          }
-          name="Design Documentation"
-        >
-          <></>
-        </Tab>
-        <Tab
-          onClick={() =>
-            router.push(`/component/${currentComponent}/${codeDocsPath}`)
-          }
-          name="Code Documentation"
-        >
-          <></>
-        </Tab>
-      </Tabs>
+      {shouldRenderPrivateContentWall ? (
+        <PrivateContentWall />
+      ) : (
+        <>
+          <H2
+            className={css`
+              text-transform: capitalize;
+              margin-bottom: ${spacing[600]}px;
+            `}
+          >
+            {currentComponent.split('-').join(' ')}
+          </H2>
 
-      <div>{children}</div>
+          <Tabs
+            selected={getSelected()}
+            aria-label="main tabs"
+            className={css`
+              margin-bottom: ${spacing[800]}px;
+            `}
+            inlineChildren={
+              <>
+                {externalLinks.map(
+                  (
+                    { 'aria-label': ariaLabel, href, icon, isPrivate },
+                    index,
+                  ) => {
+                    if (isPrivate && !isLoggedIn) {
+                      return null;
+                    }
+
+                    if (!href) {
+                      return null;
+                    }
+
+                    return (
+                      <IconButton
+                        key={ariaLabel + index}
+                        aria-label={ariaLabel}
+                        size="large"
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {icon}
+                      </IconButton>
+                    );
+                  },
+                )}
+              </>
+            }
+          >
+            <Tab
+              onClick={() =>
+                router.push(`/component/${currentComponent}/${liveExamplePath}`)
+              }
+              name="Live Example"
+            >
+              <></>
+            </Tab>
+            <Tab
+              onClick={() =>
+                router.push(`/component/${currentComponent}/${designDocsPath}`)
+              }
+              name="Design Documentation"
+            >
+              <></>
+            </Tab>
+            <Tab
+              onClick={() =>
+                router.push(`/component/${currentComponent}/${codeDocsPath}`)
+              }
+              name="Code Documentation"
+            >
+              <></>
+            </Tab>
+          </Tabs>
+
+          <div>{children}</div>
+        </>
+      )}
     </div>
   );
 }

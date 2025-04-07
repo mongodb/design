@@ -1,10 +1,12 @@
-import React from "react";
+'use client';
 
-import Icon from "@leafygreen-ui/icon";
-import IconButton from "@leafygreen-ui/icon-button/";
-import { useDarkMode } from "@leafygreen-ui/leafygreen-provider";
+import React from 'react';
 
-export function DarkModeToggle({ }: {}) {
+import Icon from '@leafygreen-ui/icon';
+import IconButton from '@leafygreen-ui/icon-button/';
+import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
+
+export function DarkModeToggle({}: {}) {
   const { darkMode, setDarkMode } = useDarkMode();
   return (
     <IconButton

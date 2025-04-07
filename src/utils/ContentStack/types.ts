@@ -1,4 +1,4 @@
-import { CSNode } from "@/components/content-stack/types";
+import { CSNode } from '@/components/content-stack/types';
 
 export interface ContentPageGroup extends Object {
   uid: string;
@@ -22,6 +22,8 @@ export interface ContentPageMeta {
  */
 export interface ContentPage extends ContentPageMeta {
   content: CSNode;
+  is_private: boolean;
+  url: string;
 }
 
 /**

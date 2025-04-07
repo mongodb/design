@@ -1,42 +1,25 @@
-'use client';
+'use server';
 
-import { css } from '@emotion/css';
-import { RootStyleRegistry } from '@/components/global';
-import { useMediaQuery } from '@/hooks';
-import LeafyGreenProvider, {
-  useDarkMode,
-} from '@leafygreen-ui/leafygreen-provider';
-import { color } from '@leafygreen-ui/tokens';
-import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
+import { auth } from '@/auth';
+import { SessionProvider } from 'next-auth/react';
+import LayoutWrapper from '@/components/layout-wrapper';
+import { getComponents } from '@/utils/ContentStack/getContentstackResources';
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [prefersDarkMode] = useMediaQuery(['(prefers-color-scheme: dark)'], {
-    fallback: [true],
-  });
-
-  const { darkMode } = useDarkMode(prefersDarkMode);
+  const [session, components] = await Promise.all([
+    auth(),
+    getComponents({ includeContent: false }),
+  ]);
 
   return (
-    <html lang="en">
-      <RootStyleRegistry>
-        <body
-          className={css`
-            background-color: ${darkMode
-              ? color.dark.background.primary.default
-              : color.light.background.primary.default};
-          `}
-        >
-          <LeafyGreenProvider darkMode={darkMode}>
-            {children}
-          </LeafyGreenProvider>
-          <GoogleAnalytics gaId="G-VFTH2BJVVK" />
-        </body>
-      </RootStyleRegistry>
-    </html>
+    // Provide the session to the entire app
+    <SessionProvider session={session}>
+      <LayoutWrapper components={components}>{children}</LayoutWrapper>
+    </SessionProvider>
   );
 }

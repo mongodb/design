@@ -1,5 +1,5 @@
-import { HTMLElementProps } from "@leafygreen-ui/lib";
-import { Knobs } from "../types";
+import { HTMLElementProps } from '@leafygreen-ui/lib';
+import { Knobs } from '../types';
 
 export type KnobOptionType = string;
 export type KnobTypeObj = {
@@ -10,12 +10,13 @@ export type KnobTypeObj = {
 };
 export type KnobType = Knobs | KnobTypeObj;
 
-export interface KnobProps extends HTMLElementProps<"input"> {
+export interface KnobProps extends HTMLElementProps<'input'> {
   propName: string;
   knobType: KnobType;
   knobOptions: Array<KnobOptionType>;
   value: any;
   onChange: (val: any) => void;
   darkMode?: boolean;
+  'aria-labelledby': string;
   [key: string]: any;
 }
