@@ -27,7 +27,6 @@ jobs:
           cache-dependency-path: 'pnpm-lock.yaml'
       - name: Set .npmrc
         run: |
-          echo "registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> .npmrc
           echo "@lg-private:registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> .npmrc
           echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:_auth=${JFROG_AUTH}" >> .npmrc
           echo "always-auth=true" >> .npmrc
@@ -58,7 +57,6 @@ jobs:
 
       - name: Set .npmrc
         run: |
-          echo "registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> .npmrc
           echo "@lg-private:registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> .npmrc
           echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:_auth=${JFROG_AUTH}" >> .npmrc
           echo "always-auth=true" >> .npmrc
@@ -87,7 +85,6 @@ jobs:
 
       - name: Set .npmrc
         run: |
-          echo "registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> .npmrc
           echo "@lg-private:registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> .npmrc
           echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:_auth=${JFROG_AUTH}" >> .npmrc
           echo "always-auth=true" >> .npmrc
