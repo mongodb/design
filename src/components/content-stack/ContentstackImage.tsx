@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { cx, css } from "@emotion/css";
-import Image from "next/image";
-import { spacing } from "@leafygreen-ui/tokens";
-import { CSNode } from "./types";
+import { useState } from 'react';
+import { cx, css } from '@emotion/css';
+import Image from 'next/image';
+import { spacing } from '@leafygreen-ui/tokens';
+import { CSNode } from './types';
 
 // TODO: restrict the type of `content` more (should assert it has certain attrs)
 export const ContentstackImage = ({
@@ -26,9 +26,9 @@ export const ContentstackImage = ({
       {...props}
     >
       <Image
-        src={attrs["asset-link"]}
+        src={attrs['asset-link']}
         layout="intrinsic"
-        alt={attrs["asset-name"]}
+        alt={attrs['asset-name']}
         width={700}
         height={700}
       />

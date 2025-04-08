@@ -1,6 +1,8 @@
-import { css } from "@emotion/css";
-import Button from "@leafygreen-ui/button";
-import { login } from "@/auth/login";
+'use client';
+
+import { css } from '@emotion/css';
+import Button from '@leafygreen-ui/button';
+import { login } from '@/auth/login';
 
 export function LogIn() {
   return (

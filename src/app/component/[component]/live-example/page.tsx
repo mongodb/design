@@ -1,10 +1,9 @@
 'use client';
 
-import { ReactElement, ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { css } from '@emotion/css';
 import Card from '@leafygreen-ui/card';
 import { borderRadius, color, spacing } from '@leafygreen-ui/tokens';
-import { mergeObjects } from '@/utils/mergeObjects';
 import {
   StoryData,
   KnobProps,
@@ -14,8 +13,9 @@ import { loadStories } from './server';
 import { Knobs } from '@/components/live-example/Knobs';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import { createDefaultProps } from './utils';
+import { SubPath } from '@/utils';
 
-export default function Page({ params }: { params: { component: string } }) {
+export default function Page({ params }: { params: { component: SubPath } }) {
   const { darkMode } = useDarkMode();
   const [data, setData] = useState<StoryData>();
   const [knobProps, setKnobProps] = useState<KnobProps>({});
@@ -91,7 +91,20 @@ export default function Page({ params }: { params: { component: string } }) {
           padding: ${spacing[600]}px ${spacing[600]}px 0;
         `}
       >
-        <div>
+        <div
+          className={css`
+            padding-left: ${spacing[600]}px;
+            padding-right: ${spacing[600]}px;
+
+            > div {
+              // temp workaround for cloudNav because the width of cloudNav is set to 100vw
+              &[data-lgid='lg-cloud_nav'] {
+                width: auto;
+                margin: 0 auto;
+              }
+            }
+          `}
+        >
           {/* @ts-expect-error */}
           <LiveExample {...componentProps} />
         </div>

@@ -11,6 +11,10 @@ const flexColumnStyles = css`
   align-items: start;
   justify-content: flex-start;
   max-width: 100%;
+
+  p + p {
+    margin-top: ${spacing[200]}px;
+  }
 `;
 
 export const HorizontalLayout = ({
@@ -24,7 +28,7 @@ export const HorizontalLayout = ({
     <div
       className={css`
         display: flex;
-        gap: ${spacing[800]}px;
+        gap: ${spacing[400]}px;
         align-items: stretch;
       `}
     >
@@ -34,10 +38,13 @@ export const HorizontalLayout = ({
         // @ts-expect-error : isNested is not a valid attribute on `div`
         isNested={true}
         className={cx(
-          flexColumnStyles,
           css`
-            justify-content: ${vertical_align};
-            flex: ${flex1};
+            // Only add styles to divs
+            &:where(div) {
+              ${flexColumnStyles};
+              justify-content: ${vertical_align};
+              flex: ${flex1};
+            }
           `,
         )}
       />
@@ -48,10 +55,12 @@ export const HorizontalLayout = ({
         // @ts-expect-error : isNested is not a valid attribute on `div`
         isNested={true}
         className={cx(
-          flexColumnStyles,
           css`
-            justify-content: ${vertical_align};
-            flex: ${flex2};
+            &:where(div) {
+              ${flexColumnStyles};
+              justify-content: ${vertical_align};
+              flex: ${flex2};
+            }
           `,
         )}
       />

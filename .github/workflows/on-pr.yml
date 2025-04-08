@@ -25,6 +25,14 @@ jobs:
           node-version: '18'
           cache: pnpm
           cache-dependency-path: 'pnpm-lock.yaml'
+      - name: Set .npmrc
+        run: |
+          echo "@lg-private:registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> .npmrc
+          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:_auth=${JFROG_AUTH}" >> .npmrc
+          echo "always-auth=true" >> .npmrc
+        env:
+          JFROG_AUTH: ${{ secrets.JFROG_AUTH }}
+
       - name: Install Dependencies
         run: pnpm install
       - name: Lint
@@ -46,6 +54,15 @@ jobs:
           node-version: '18'
           cache: pnpm
           cache-dependency-path: 'pnpm-lock.yaml'
+
+      - name: Set .npmrc
+        run: |
+          echo "@lg-private:registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> .npmrc
+          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:_auth=${JFROG_AUTH}" >> .npmrc
+          echo "always-auth=true" >> .npmrc
+        env:
+          JFROG_AUTH: ${{ secrets.JFROG_AUTH }}
+
       - name: Install Dependencies
         run: pnpm install
   build:
@@ -65,6 +82,14 @@ jobs:
           node-version: '18'
           cache: pnpm
           cache-dependency-path: 'pnpm-lock.yaml'
+
+      - name: Set .npmrc
+        run: |
+          echo "@lg-private:registry=https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/" >> .npmrc
+          echo "//artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/:_auth=${JFROG_AUTH}" >> .npmrc
+          echo "always-auth=true" >> .npmrc
+        env:
+          JFROG_AUTH: ${{ secrets.JFROG_AUTH }}
       - name: Install Dependencies
         run: pnpm install
       - name: Build NextJS

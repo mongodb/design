@@ -1,19 +1,32 @@
-import { css } from '@emotion/css';
-import startCase from 'lodash/startCase';
-
-import { ContentstackRichText } from '@/components/content-stack';
 import { getContentPage } from '@/utils/ContentStack/getContentstackResources';
 
-export default async function ContentPage({
-  params: { contentPage: contentPageName },
+import startCase from 'lodash/startCase';
+import { auth } from '@/auth';
+import { PrivateContentWall } from '@/components/global';
+import { ContentPage } from '@/components/content-page';
+
+export default async function Page({
+  params: { contentPage: contentPageTitle },
 }: {
   params: { contentPage: string };
 }) {
-  const contentPage = await getContentPage(startCase(contentPageName));
+  const [session, contentPage] = await Promise.all([
+    auth(),
+    getContentPage(startCase(contentPageTitle)),
+  ]);
+  const isLoggedIn = !!session?.user;
+  const isContentPrivate = contentPage?.is_private;
+  const shouldRenderPrivateContentWall = Boolean(
+    isContentPrivate && !isLoggedIn,
+  );
 
   return (
     <div>
-      <ContentstackRichText content={contentPage?.content} />
+      {shouldRenderPrivateContentWall ? (
+        <PrivateContentWall />
+      ) : (
+        <ContentPage contentPage={contentPage} />
+      )}
     </div>
   );
 }

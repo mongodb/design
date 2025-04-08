@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth';
 import Okta from '@auth/core/providers/okta';
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
+const AUTH_OPTIONS = {
   providers: [
     Okta({
       clientId: process.env.NEXT_PUBLIC_OKTA_CLIENT_ID,
@@ -11,4 +11,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   trustHost: true,
   secret: process.env.NEXT_PUBLIC_AUTH_SECRET,
-});
+};
+
+export const { handlers, signIn, signOut, auth } = NextAuth(AUTH_OPTIONS);
