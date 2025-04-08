@@ -6,3 +6,4 @@ export { RootStyleRegistry } from './RootStyleRegistry';
 export { Search } from './Search/Search';
 export { SideNavigation } from './SideNavigation';
 export { UserMenu } from './UserMenu';
+export { PrivateContentWall } from './PrivateContentWall';

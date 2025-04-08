@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { css } from "@emotion/css";
-import { Body, H1 } from "@leafygreen-ui/typography";
-import { spacing } from "@leafygreen-ui/tokens";
-import { ComponentCard, HomeCard } from "@/components/home";
+import { css } from '@emotion/css';
+import { Body, H1 } from '@leafygreen-ui/typography';
+import { spacing } from '@leafygreen-ui/tokens';
+import { ComponentCard, HomeCard } from '@/components/home';
 
 export default function Home() {
   return (

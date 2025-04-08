@@ -81,8 +81,9 @@ export async function fetchComponent(
 ): Promise<ComponentFields | undefined> {
   try {
     const query = Stack.ContentType('component').Query();
+    const startCaseName = startCase(componentName);
     const result = await query
-      .where('title', startCase(componentName))
+      .where('title', startCaseName)
       .only([
         ...componentProperties,
         ...(options?.includeContent ? optionalComponentProperties : []),
@@ -127,12 +128,12 @@ export async function getContentPageGroups(): Promise<Array<ContentPageGroup>> {
 }
 
 export async function getContentPage(
-  contentPageName: string,
+  contentPageTitle: string,
 ): Promise<ContentPage | undefined> {
   try {
     const query = Stack.ContentType('content_page').Query();
     const result = await query
-      .where('title', startCase(contentPageName))
+      .where('title', startCase(contentPageTitle))
       .includeEmbeddedItems()
       .toJSON()
       .find();

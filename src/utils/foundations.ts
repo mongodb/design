@@ -1,6 +1,7 @@
 import { titleCase } from './titleCase';
+import { SubPathMeta } from './types';
 
-const Foundation = {
+export const FoundationSubPath = {
   Accessibility: 'accessibility',
   FigmaLibrary101: 'figma-library-101',
   Grid: 'grid',
@@ -11,55 +12,49 @@ const Foundation = {
   Typography: 'typography',
 } as const;
 
-export type Foundation = (typeof Foundation)[keyof typeof Foundation];
+export type FoundationSubPath =
+  (typeof FoundationSubPath)[keyof typeof FoundationSubPath];
 
-const generateComponentNavPath = (component: Foundation) =>
+const generateComponentNavPath = (component: FoundationSubPath) =>
   `/component/${component}/live-example`;
 
-const generateFoundationNavPath = (foundation: Foundation) =>
+const generateFoundationNavPath = (foundation: FoundationSubPath) =>
   `/foundation/${foundation}`;
 
-export interface FoundationMeta {
-  name: string;
-  navPath: string;
-  isPrivate?: boolean;
-  isComponent?: boolean;
-}
-
-export const foundations: Array<FoundationMeta> = [
+export const foundations: Array<SubPathMeta> = [
   {
-    name: titleCase(Foundation.Accessibility),
-    navPath: generateFoundationNavPath(Foundation.Accessibility),
+    name: titleCase(FoundationSubPath.Accessibility),
+    navPath: generateFoundationNavPath(FoundationSubPath.Accessibility),
   },
   {
-    name: titleCase(Foundation.FigmaLibrary101),
-    navPath: generateFoundationNavPath(Foundation.FigmaLibrary101),
+    name: titleCase(FoundationSubPath.FigmaLibrary101),
+    navPath: generateFoundationNavPath(FoundationSubPath.FigmaLibrary101),
   },
   {
-    name: titleCase(Foundation.Grid),
-    navPath: generateFoundationNavPath(Foundation.Grid),
+    name: titleCase(FoundationSubPath.Grid),
+    navPath: generateFoundationNavPath(FoundationSubPath.Grid),
   },
   {
-    name: titleCase(Foundation.Icons),
-    navPath: generateComponentNavPath(Foundation.Icons),
+    name: titleCase(FoundationSubPath.Icons),
+    navPath: generateComponentNavPath(FoundationSubPath.Icons),
     isComponent: true,
   },
   {
-    name: titleCase(Foundation.IconCreation),
-    navPath: generateFoundationNavPath(Foundation.IconCreation),
+    name: titleCase(FoundationSubPath.IconCreation),
+    navPath: generateFoundationNavPath(FoundationSubPath.IconCreation),
   },
   {
-    name: titleCase(Foundation.Palette),
-    navPath: generateComponentNavPath(Foundation.Palette),
+    name: titleCase(FoundationSubPath.Palette),
+    navPath: generateComponentNavPath(FoundationSubPath.Palette),
     isComponent: true,
   },
   {
-    name: titleCase(Foundation.Tokens),
-    navPath: generateFoundationNavPath(Foundation.Tokens),
+    name: titleCase(FoundationSubPath.Tokens),
+    navPath: generateFoundationNavPath(FoundationSubPath.Tokens),
   },
   {
-    name: titleCase(Foundation.Typography),
-    navPath: generateComponentNavPath(Foundation.Typography),
+    name: titleCase(FoundationSubPath.Typography),
+    navPath: generateComponentNavPath(FoundationSubPath.Typography),
     isComponent: true,
   },
 ];

@@ -1,19 +1,23 @@
 'use server';
 
 import { TSDocResponse } from '@/components/code-docs';
+import { SubPath } from '@/utils';
+import { getScopeFromPkgName } from '@/utils/getScopeFromPkgName';
 import { marked } from 'marked';
 
 export async function fetchTSDocs(
-  componentName: string,
+  componentName: SubPath | string,
 ): Promise<Array<TSDocResponse> | null> {
   if (typeof componentName !== 'string') return null;
 
   try {
-    return await import(`@leafygreen-ui/${componentName}/tsdoc.json`).then(
-      response => {
-        return response.default;
-      },
-    );
+    return await import(
+      `/node_modules/${getScopeFromPkgName(
+        componentName,
+      )}/${componentName}/tsdoc.json`
+    ).then(response => {
+      return response.default;
+    });
   } catch (error) {
     console.warn(error);
     return null;

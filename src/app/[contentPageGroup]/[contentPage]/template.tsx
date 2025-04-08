@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div
       id="layout"
       className={css`
-        max-width: 700px;
+        min-height: 100vh;
       `}
     >
       {children}
