@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "preinstall": "only-allow pnpm",
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "NODE_ENV=development next dev",
+    "build": "NODE_ENV=production next build",
     "start": "next start",
     "lint": "eslint .",
     "lg": "lg",
