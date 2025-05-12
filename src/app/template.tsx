@@ -28,9 +28,10 @@ import IconButton from '@leafygreen-ui/icon-button';
 import Icon from '@leafygreen-ui/icon';
 import { ChatbotComponent } from '@/components/chatbot';
 
+const DRAWER_WIDTH = 432;
+
 export default function Template({ children }: { children: React.ReactNode }) {
   const { darkMode } = useDarkMode();
-  const [isDrawerOpen, setDrawerOpen] = useState(true);
 
   const [isMobile] = useMediaQuery(['(max-width: 640px)'], {
     fallback: [false],
@@ -47,43 +48,39 @@ export default function Template({ children }: { children: React.ReactNode }) {
           : color.light.background.primary.default};
       `}
     >
-      <TempDrawerLayout open={isDrawerOpen} setOpen={setDrawerOpen}>
-        <SideNavigation />
+      <SideNavigation />
 
-        <div
-          className={css`
-            width: 100%;
-            padding-top: ${spacing[400]}px;
-            padding-right: ${spacing[400]}px;
-            display: flex;
-            justify-content: flex-end;
-            gap: ${spacing[150]}px;
-          `}
-        >
-          <UserMenu />
-          <IconButton onClick={() => setDrawerOpen(!isDrawerOpen)}>
-            <Icon glyph="Sparkle" />
-          </IconButton>
-          <DarkModeToggle />
-        </div>
+      <div
+        className={css`
+          width: 100%;
+          padding-top: ${spacing[400]}px;
+          padding-right: ${spacing[400]}px;
+          display: flex;
+          justify-content: flex-end;
+          gap: ${spacing[150]}px;
+        `}
+      >
+        <UserMenu />
+        <DarkModeToggle />
+      </div>
 
-        <div
-          className={cx(
-            css`
-              height: 100%;
-              margin-left: ${isMobile
-                ? 0
-                : `${SIDE_NAV_WIDTH}px`}; // SideNav override}))}
-              padding-left: ${spacing[1000]}px;
-              padding-right: ${spacing[1000]}px;
-              padding-top: ${spacing[1600]}px;
-            `,
-          )}
-        >
-          {children}
-          <Footer />
-        </div>
-      </TempDrawerLayout>
+      <div
+        className={cx(
+          css`
+            height: 100%;
+            margin-left: ${isMobile
+              ? 0
+              : `${SIDE_NAV_WIDTH}px`}; // SideNav override}))}
+            padding-left: ${spacing[1000]}px;
+            padding-right: ${spacing[1000]}px;
+            padding-top: ${spacing[1600]}px;
+          `,
+        )}
+      >
+        {children}
+        <ChatbotComponent />
+        <Footer />
+      </div>
     </div>
   );
 }
@@ -111,7 +108,7 @@ const TempDrawerLayout = ({
         `,
         {
           [css`
-            grid-template-columns: auto 384px;
+            grid-template-columns: auto ${DRAWER_WIDTH}px;
           `]: open,
         },
       )}
