@@ -4,6 +4,7 @@ import { SubPathMeta } from './types';
 export const FoundationSubPath = {
   Accessibility: 'accessibility',
   FigmaLibrary101: 'figma-library-101',
+  GrammarAndMechanics: 'grammar-and-mechanics',
   Grid: 'grid',
   Icons: 'icon',
   IconCreation: 'icon-creation',
@@ -11,7 +12,6 @@ export const FoundationSubPath = {
   Tokens: 'tokens',
   Typography: 'typography',
   VoiceAndTone: 'voice-and-tone',
-  GrammarAndMechanics: 'grammar-and-mechanics',
 } as const;
 
 export type FoundationSubPath =
