@@ -10,6 +10,8 @@ export const FoundationSubPath = {
   Palette: 'palette',
   Tokens: 'tokens',
   Typography: 'typography',
+  VoiceAndTone: 'voice-and-tone',
+  GrammarAndMechanics: 'grammar-and-mechanics',
 } as const;
 
 export type FoundationSubPath =
@@ -29,6 +31,11 @@ export const foundations: Array<SubPathMeta> = [
   {
     name: titleCase(FoundationSubPath.FigmaLibrary101),
     navPath: generateFoundationNavPath(FoundationSubPath.FigmaLibrary101),
+  },
+  {
+    name: titleCase(FoundationSubPath.GrammarAndMechanics),
+    navPath: generateFoundationNavPath(FoundationSubPath.GrammarAndMechanics),
+    isPrivate: true,
   },
   {
     name: titleCase(FoundationSubPath.Grid),
@@ -56,5 +63,10 @@ export const foundations: Array<SubPathMeta> = [
     name: titleCase(FoundationSubPath.Typography),
     navPath: generateComponentNavPath(FoundationSubPath.Typography),
     isComponent: true,
+  },
+  {
+    name: titleCase(FoundationSubPath.VoiceAndTone),
+    navPath: generateFoundationNavPath(FoundationSubPath.VoiceAndTone),
+    isPrivate: true,
   },
 ];

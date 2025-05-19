@@ -1,7 +1,7 @@
 import startCase from 'lodash/startCase';
 import toLower from 'lodash/toLower';
 
-const lowerCaseExceptions = ['of'];
+const lowerCaseExceptions = ['of', 'and'];
 
 /**
  * Converts a string to title case while preserving the lowercase format for specific prepositions,
