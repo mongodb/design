@@ -3,15 +3,15 @@ import { SubPathMeta } from './types';
 
 export const FoundationSubPath = {
   Accessibility: 'accessibility',
+  CopyGrammarAndMechanics: 'copy-grammar-and-mechanics',
+  CopyVoiceAndTone: 'copy-voice-and-tone',
   FigmaLibrary101: 'figma-library-101',
-  GrammarAndMechanics: 'grammar-and-mechanics',
   Grid: 'grid',
   Icons: 'icon',
   IconCreation: 'icon-creation',
   Palette: 'palette',
   Tokens: 'tokens',
   Typography: 'typography',
-  VoiceAndTone: 'voice-and-tone',
 } as const;
 
 export type FoundationSubPath =
@@ -29,12 +29,15 @@ export const foundations: Array<SubPathMeta> = [
     navPath: generateFoundationNavPath(FoundationSubPath.Accessibility),
   },
   {
-    name: titleCase(FoundationSubPath.FigmaLibrary101),
-    navPath: generateFoundationNavPath(FoundationSubPath.FigmaLibrary101),
+    name: titleCase(FoundationSubPath.CopyGrammarAndMechanics),
+    navPath: generateFoundationNavPath(
+      FoundationSubPath.CopyGrammarAndMechanics,
+    ),
+    isPrivate: true,
   },
   {
-    name: titleCase(FoundationSubPath.GrammarAndMechanics),
-    navPath: generateFoundationNavPath(FoundationSubPath.GrammarAndMechanics),
+    name: titleCase(FoundationSubPath.CopyVoiceAndTone),
+    navPath: generateFoundationNavPath(FoundationSubPath.CopyVoiceAndTone),
     isPrivate: true,
   },
   {
@@ -63,10 +66,5 @@ export const foundations: Array<SubPathMeta> = [
     name: titleCase(FoundationSubPath.Typography),
     navPath: generateComponentNavPath(FoundationSubPath.Typography),
     isComponent: true,
-  },
-  {
-    name: titleCase(FoundationSubPath.VoiceAndTone),
-    navPath: generateFoundationNavPath(FoundationSubPath.VoiceAndTone),
-    isPrivate: true,
   },
 ];

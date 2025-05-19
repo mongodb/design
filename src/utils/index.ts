@@ -6,3 +6,4 @@ export { mergeObjects } from './mergeObjects';
 export { titleCase } from './titleCase';
 export { getMappedComponentName, type SubPath } from './getMappedComponentName';
 export { findComponent } from './findComponent';
+export { shouldAddColonToTitle } from './shouldAddColonToTitle';
