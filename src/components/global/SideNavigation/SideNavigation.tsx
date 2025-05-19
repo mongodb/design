@@ -34,6 +34,7 @@ import { Drawer } from './Drawer';
 import { SideNavItem } from './SideNavItem';
 import { SideNavLabel } from './SideNavLabel';
 import { SideNavList } from './SideNavList';
+import { shouldAddColonToTitle } from '@/utils';
 
 export function SideNavigation() {
   const { isLoggedIn } = useSession();
@@ -77,7 +78,7 @@ export function SideNavigation() {
             href={foundation.navPath}
             active={isActiveResource(foundation)}
           >
-            {foundation.name}
+            {shouldAddColonToTitle(foundation.name)}
             {foundation.isPrivate && (
               <PrivateIcon
                 className={css`
@@ -108,7 +109,7 @@ export function SideNavigation() {
             href={pattern.navPath}
             active={isActiveResource(pattern)}
           >
-            {pattern.name}
+            {shouldAddColonToTitle(pattern.name)}
             {pattern.isPrivate && (
               <PrivateIcon
                 className={css`

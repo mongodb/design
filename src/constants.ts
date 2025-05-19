@@ -1,4 +1,4 @@
-export const SIDE_NAV_WIDTH = 240;
+export const SIDE_NAV_WIDTH = 250;
 
 export const BREAKPOINTS = {
   sm: 640,
