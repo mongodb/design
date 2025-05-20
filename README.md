@@ -6,9 +6,9 @@ pnpm install && pnpm dev
 
 ## 401 Errors
 
-If you encounter 401 errors when running `pnpm install` ensure:
+If you encounter 401 errors during `pnpm install`, check the following:
 
-- You are logged into Artifactory locally.
-- That your `~/.npmrc` file contains the appropriate permissions.
+- Ensure you are logged into Artifactory on your local machine.
+- Verify that your `~/.npmrc` file includes the correct credentials and permissions.
 
-If stuck, [follow these directions](https://github.com/10gen/leafygreen-ui-private/blob/main/README.md#permissions).
+For detailed guidance, refer to the [permissions setup instructions](https://github.com/10gen/leafygreen-ui-private/blob/main/README.md#permissions).
