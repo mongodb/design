@@ -3,6 +3,8 @@ import { SubPathMeta } from './types';
 
 export const FoundationSubPath = {
   Accessibility: 'accessibility',
+  CopyGrammarAndMechanics: 'copy-grammar-and-mechanics',
+  CopyVoiceAndTone: 'copy-voice-and-tone',
   FigmaLibrary101: 'figma-library-101',
   Grid: 'grid',
   Icons: 'icon',
@@ -27,8 +29,16 @@ export const foundations: Array<SubPathMeta> = [
     navPath: generateFoundationNavPath(FoundationSubPath.Accessibility),
   },
   {
-    name: titleCase(FoundationSubPath.FigmaLibrary101),
-    navPath: generateFoundationNavPath(FoundationSubPath.FigmaLibrary101),
+    name: titleCase(FoundationSubPath.CopyGrammarAndMechanics),
+    navPath: generateFoundationNavPath(
+      FoundationSubPath.CopyGrammarAndMechanics,
+    ),
+    isPrivate: true,
+  },
+  {
+    name: titleCase(FoundationSubPath.CopyVoiceAndTone),
+    navPath: generateFoundationNavPath(FoundationSubPath.CopyVoiceAndTone),
+    isPrivate: true,
   },
   {
     name: titleCase(FoundationSubPath.Grid),
