@@ -2,6 +2,11 @@
   "name": "leafygreen-docs",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.20.0",
+    "pnpm": ">=9.15.0"
+  },
+  "packageManager": "pnpm@9.15.6",
   "scripts": {
     "preinstall": "only-allow pnpm",
     "dev": "next dev",
@@ -111,6 +116,5 @@
   },
   "overrides": {
     "eslint": "$eslint"
-  },
-  "packageManager": "pnpm@9.15.6"
+  }
 }
