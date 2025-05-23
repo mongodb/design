@@ -11,9 +11,9 @@
   "scripts": {
     "preinstall": "only-allow pnpm",
     "dev": "next dev",
-    "dev:amplify": "ampx sandbox",
     "build": "next build",
     "start": "next start",
+    "serve": "ampx sandbox",
     "lint": "eslint .",
     "lg": "lg",
     "update-lg": "node scripts/update.mjs"
@@ -87,6 +87,7 @@
     "@storybook/react": "^8.5.3",
     "@storybook/test": "^8.5.3",
     "@storybook/testing-library": "^0.2.2",
+    "aws-amplify": "^6.14.4",
     "aws-lambda": "^1.0.7",
     "commander": "^12.0.0",
     "contentstack": "^3.19.2",

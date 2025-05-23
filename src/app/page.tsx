@@ -1,11 +1,35 @@
 'use client';
 
+import { Amplify } from 'aws-amplify';
+import { generateClient } from 'aws-amplify/data';
+
 import { css } from '@emotion/css';
 import { Body, H1 } from '@leafygreen-ui/typography';
 import { spacing } from '@leafygreen-ui/tokens';
 import { ComponentCard, HomeCard } from '@/components/home';
 
+import type { Schema } from '../../amplify/data/resource';
+import outputs from '../../amplify_outputs.json';
+import Button from '@leafygreen-ui/button';
+
+Amplify.configure(outputs);
+
 export default function Home() {
+  const amplifyClient = generateClient<Schema>();
+  console.log('outputs', outputs);
+  console.log('amplifyClient', amplifyClient);
+
+  const CLICK = () => {
+    amplifyClient.queries
+      .chatbot({ name: 'MongoDB' })
+      .then(response => {
+        console.log('Response from Amplify:', response);
+      })
+      .catch(error => {
+        console.error('Error from Amplify:', error);
+      });
+  };
+
   return (
     <div
       className={css`
@@ -23,6 +47,8 @@ export default function Home() {
           beautiful experiences
         </Body>
       </div>
+
+      <Button onClick={CLICK}>CLICK ME</Button>
 
       <div
         className={css`
