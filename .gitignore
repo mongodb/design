@@ -35,3 +35,6 @@ pnpm-debug.log*
 .vercel
 
 tsconfig.tsbuildinfo
+.amplify
+amplify_outputs*
+amplifyconfiguration*
