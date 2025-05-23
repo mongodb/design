@@ -111,5 +111,6 @@
   },
   "overrides": {
     "eslint": "$eslint"
-  }
+  },
+  "packageManager": "pnpm@9.15.6"
 }
