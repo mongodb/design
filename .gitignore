@@ -36,7 +36,6 @@ pnpm-debug.log*
 
 tsconfig.tsbuildinfo
 .amplify
-amplify_outputs*
 amplifyconfiguration*
 
 # amplify

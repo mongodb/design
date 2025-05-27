@@ -1,0 +1,59 @@
+{
+  "auth": {
+    "user_pool_id": "us-east-1_kTJncAx7e",
+    "aws_region": "us-east-1",
+    "user_pool_client_id": "4e8oldvc1oto3lh6vfpuvcl9d1",
+    "identity_pool_id": "us-east-1:761bc8f5-4101-4d49-8527-ce6cd33ef9b7",
+    "mfa_methods": [],
+    "standard_required_attributes": [
+      "email"
+    ],
+    "username_attributes": [
+      "email"
+    ],
+    "user_verification_types": [
+      "email"
+    ],
+    "groups": [],
+    "mfa_configuration": "NONE",
+    "password_policy": {
+      "min_length": 8,
+      "require_lowercase": true,
+      "require_numbers": true,
+      "require_symbols": true,
+      "require_uppercase": true
+    },
+    "unauthenticated_identities_enabled": true
+  },
+  "data": {
+    "url": "https://dhbewo4vhbdergfjnqvoxehcpm.appsync-api.us-east-1.amazonaws.com/graphql",
+    "aws_region": "us-east-1",
+    "default_authorization_type": "AWS_IAM",
+    "authorization_types": [
+      "AMAZON_COGNITO_USER_POOLS"
+    ],
+    "model_introspection": {
+      "version": 1,
+      "models": {},
+      "enums": {},
+      "nonModels": {},
+      "queries": {
+        "chatbot": {
+          "name": "chatbot",
+          "isArray": false,
+          "type": "String",
+          "isRequired": false,
+          "arguments": {
+            "name": {
+              "name": "name",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            }
+          }
+        }
+      }
+    }
+  },
+  "version": "1.4"
+}
