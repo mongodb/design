@@ -38,3 +38,5 @@ tsconfig.tsbuildinfo
 .amplify
 amplify_outputs*
 amplifyconfiguration*
+
+# amplify
