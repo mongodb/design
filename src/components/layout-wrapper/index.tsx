@@ -41,7 +41,6 @@ export default function LayoutWrapper({
                   {children}
                 </ContentStackContextProvider>
               </LeafyGreenProvider>
-
               <GoogleAnalytics gaId="G-VFTH2BJVVK" />
             </body>
           </>
