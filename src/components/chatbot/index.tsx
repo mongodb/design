@@ -22,7 +22,17 @@ export const ChatbotComponent = () => {
   };
 
   return endpoint ? (
-    <Chatbot darkMode={darkMode} serverBaseUrl={endpoint}>
+    <Chatbot
+      darkMode={darkMode}
+      serverBaseUrl={endpoint}
+      fetchOptions={{
+        headers: {
+          'access-control-allow-credentials': 'true',
+          'access-control-allow-methods': 'GET, POST, HEAD',
+          'access-control-allow-origin': '*',
+        },
+      }}
+    >
       <Button
         ref={fabRef}
         onClick={handleFABClick}
