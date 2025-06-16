@@ -5,10 +5,9 @@ import Icon from '@leafygreen-ui/icon';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 import Chatbot, {
   ChatWindow,
-  FloatingActionButtonTrigger,
+  ConversationFetchOptions,
 } from 'mongodb-chatbot-ui';
 import { useRef, useState } from 'react';
-import Card from '@leafygreen-ui/card';
 import { spacing } from '@leafygreen-ui/tokens';
 
 export const ChatbotComponent = () => {
@@ -21,17 +20,14 @@ export const ChatbotComponent = () => {
     setIsOpen(prev => !prev);
   };
 
+  // Define fetch options
+  const fetchOptions: ConversationFetchOptions = {};
+
   return endpoint ? (
     <Chatbot
       darkMode={darkMode}
       serverBaseUrl={endpoint}
-      fetchOptions={{
-        headers: {
-          'access-control-allow-credentials': 'true',
-          'access-control-allow-methods': 'GET, POST, HEAD',
-          'access-control-allow-origin': '*',
-        },
-      }}
+      fetchOptions={fetchOptions}
     >
       <Button
         ref={fabRef}
