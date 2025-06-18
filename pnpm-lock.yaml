@@ -182,6 +182,9 @@ importers:
       '@leafygreen-ui/typography':
         specifier: ^20.1.9
         version: 20.1.9(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      '@lg-charts/core':
+        specifier: ^1.3.0
+        version: 1.3.0(@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@lg-private/canvas-header':
         specifier: ^3.0.1
         version: 3.0.1(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1037,6 +1040,28 @@ packages:
   '@contentstack/utils@1.3.20':
     resolution: {integrity: sha512-WXkFv5uKrAMs21NPCWe3+7KHYfagenS8rv1/yCDsZ+uV1FvKkzst+MiU1+hcaWHi0E6QaPpYDcxpiltUHo5TSA==}
 
+  '@dnd-kit/accessibility@3.1.1':
+    resolution: {integrity: sha512-2P+YgaXF+gRsIihwwY1gCsQSYnu9Zyj2py8kY5fFvUM1qm2WA2u639R6YNVfU4GWr+ZM5mqEsfHZZLoRONbemw==}
+    peerDependencies:
+      react: '>=16.8.0'
+
+  '@dnd-kit/core@6.3.1':
+    resolution: {integrity: sha512-xkGBRQQab4RLwgXxoqETICr6S5JlogafbhNsidmrkVv2YRs5MLwpjoF2qpiGjQt8S9AoxtIV603s0GIUpY5eYQ==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+
+  '@dnd-kit/sortable@10.0.0':
+    resolution: {integrity: sha512-+xqhmIIzvAYMGfBYYnbKuNicfSsk4RksY2XdmJhT+HAC01nix6fHCztU68jooFiMUB01Ky3F0FyOvhG/BZrWkg==}
+    peerDependencies:
+      '@dnd-kit/core': ^6.3.0
+      react: '>=16.8.0'
+
+  '@dnd-kit/utilities@3.2.2':
+    resolution: {integrity: sha512-+MKAJEOfaBe5SmV6t34p80MMKhjvUz0vRrvVJbPT0WElzaOJ/1xs+D+KDv+tD/NE5ujfrChEcshd4fLn0wpiqg==}
+    peerDependencies:
+      react: '>=16.8.0'
+
   '@emotion/babel-plugin@11.11.0':
     resolution: {integrity: sha512-m4HEDZleaaCH+XgDDsPF15Ht6wTLsgDTeR3WYj9Q/k76JtWhrJjcP4+/XlG8LGT/Rol9qUfOIztXeA84ATpqPQ==}
 
@@ -1635,6 +1660,9 @@ packages:
   '@leafygreen-ui/a11y@2.0.7':
     resolution: {integrity: sha512-eIKWOs75WfmobMv1W7tk7nyZzD/NXgC/EnG0PnOYr2PBwtf4MDRyOQnctq/cVy7o6lg6SK0n/P4SbdftWqIDng==}
 
+  '@leafygreen-ui/a11y@3.0.0':
+    resolution: {integrity: sha512-mqfW+gphL704OMVeOOZolXVE2vCJYuLqtg8SvW7Ia2wkE8/feWBG+D7064Y6cLWnCh8qo4sgdkuwLqeTt9tyUw==}
+
   '@leafygreen-ui/avatar@2.0.10':
     resolution: {integrity: sha512-I3ggm4ejcFSMWbStdXFWfGoWE9iEFMHNwFA71Lh6XCG3jwo1zTkbb6UltrIqNvyaAj9lO8Jah8q7cURF5dMZhA==}
     peerDependencies:
@@ -1724,6 +1752,9 @@ packages:
   '@leafygreen-ui/emotion@4.1.1':
     resolution: {integrity: sha512-h9eVJTt5WXnDyKUPiJ6Qn8lhhagPd1biaUbPrCWJb4UF5VnIUf2eJwXPkDgRzc8fIKX26Qw9k+YJiFjmnqSOyQ==}
 
+  '@leafygreen-ui/emotion@5.0.0':
+    resolution: {integrity: sha512-MOfouBCmHuFa6UObhUl03CUFqXvD2PP+nI7CLk0ny8/UKOLgAX4N+JuuSX606u+Efxk4lI2m3FZiyCrfi6oeFQ==}
+
   '@leafygreen-ui/empty-state@2.0.15':
     resolution: {integrity: sha512-YEznhc50O5TYMM3VVL9NEL/KQoM+fL5pXcsI3sL0EWSTFyL0vM9BxwZ+0xxc6xerXXhhjciNdA710AGV0XgIGg==}
     peerDependencies:
@@ -1752,13 +1783,24 @@ packages:
   '@leafygreen-ui/hooks@8.4.1':
     resolution: {integrity: sha512-WZ1p+HeYqqbWVDGTffkRLDE83K/GbjRDYW8jcSYgznba0NAkOkWT9n/+MJp83rd55iyPhBopOKx7270s/sIH4A==}
 
+  '@leafygreen-ui/hooks@9.0.0':
+    resolution: {integrity: sha512-IdnrYIg/5BW/zGIiDjT4fEHtfsoadzP8J8IUKC1FytX7b03fVCtY0zwAcfZh0B/+CkYcXFkSiBvTUpP7LLHLFg==}
+
   '@leafygreen-ui/icon-button@16.0.12':
     resolution: {integrity: sha512-EkuAfWe4J14/VEx0BDRNRXbN6QwaLqAnAYPtf/RUOwEqHzgkQQYkVStpEkAqp50k2OSR1FzopznmWxyPnrW55w==}
     peerDependencies:
       '@leafygreen-ui/leafygreen-provider': ^4.0.7
 
+  '@leafygreen-ui/icon-button@17.0.1':
+    resolution: {integrity: sha512-SVky1pdJHEMODxtIG3wBxlwJlG4uezEK+cspPW8hK+nxUR+8Fx/n6VOgnlg8ypX+Pue24kaeIFKusEqr6NzSjw==}
+    peerDependencies:
+      '@leafygreen-ui/leafygreen-provider': ^5.0.0
+
   '@leafygreen-ui/icon@13.4.0':
     resolution: {integrity: sha512-GtvdkjPPERf8g0+uXGqBRw7Zgzhj1PH4moGQxNqyOc3IHeVkurAxjF1Oq64pKMLeMwuqFGhVGEVfXi3pixTPFg==}
+
+  '@leafygreen-ui/icon@14.0.0':
+    resolution: {integrity: sha512-naE8fMAM4S1S7Ob8tvmixW9WVi46LCp7tdyNQyQHMhChaGkTCY6dkX4VtcogTyiczSGazFo0QvmJDb0UJX8v7A==}
 
   '@leafygreen-ui/info-sprinkle@4.0.14':
     resolution: {integrity: sha512-JrmgpAynJ91A6wHhJ/gri77k+PiS6ttfqP1RbMljOPCP8gBVfqeeonX6J/Cyj6/K2KlzaV3aiS4SY+B0aWljTw==}
@@ -1785,6 +1827,11 @@ packages:
 
   '@leafygreen-ui/lib@14.2.0':
     resolution: {integrity: sha512-JWHFwtWXY52YL1uNFpHWvRUWVl5tkXQzyq2uEMFHyZQKYUG0of9o5V+Zc6vAXdMvvAhE3DeYvDjTpaQbUk1PrQ==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
+
+  '@leafygreen-ui/lib@15.0.0':
+    resolution: {integrity: sha512-FTUwi67diYnVJsUY9+mcJE9HlPEGTXq5eu6y6daOS1n/qY51sVOhVh8ZNfWuGO0Ztgn6mJJWK/a8I/MwHfoQ7Q==}
     peerDependencies:
       react: ^17.0.0 || ^18.0.0
 
@@ -1829,6 +1876,9 @@ packages:
   '@leafygreen-ui/palette@4.1.4':
     resolution: {integrity: sha512-pkNeNzlstEM7ceoLG1mG7PUGunEdUYemKjzVOcaCbNEoyZvX3Lf0KWb8tDmAEloSPdXxMOlO8hoef9JGNdEIcw==}
 
+  '@leafygreen-ui/palette@5.0.0':
+    resolution: {integrity: sha512-RHQy165X7lKMlNU+2BkvGCNuo8fP3bS5NVOJ6thSKingoksYrz1a6SNAzuHDIkww+njf0GaKiXYT64og2Xm4Fw==}
+
   '@leafygreen-ui/password-input@3.0.13':
     resolution: {integrity: sha512-RE5OyhfLG6apMmmV68h3S3xW7AYaqD7nhZJAKQbBvZMbe1Y3uaBoVjbqArP9/p5tsfStMPt3zBubeMPLs7EdDg==}
     peerDependencies:
@@ -1841,6 +1891,9 @@ packages:
 
   '@leafygreen-ui/polymorphic@2.0.9':
     resolution: {integrity: sha512-oeAzARBPXZkZeStTuPdXDKdfyBlmkK5AiJUeehwbI5p6uTidH1GPGti+y1sDtxUPkavwEmGlPL304QoXXeHB6Q==}
+
+  '@leafygreen-ui/polymorphic@3.0.1':
+    resolution: {integrity: sha512-BJBXcdwImu0q5IZNzY9d/J1w1mItpk493oAuy/ZagTTBeMdTv7de2Gi1xx4EAPHyRosrG930cBnD5EuqU0ZR5g==}
 
   '@leafygreen-ui/popover@13.0.11':
     resolution: {integrity: sha512-A9LbihqeYlGmdvfj6KDAtVc89yvNqd/B1WeXyZBbxErQ4mm17NKqA8x4M1RstTazz9MP45HV6gsnz/fZ3Wml+g==}
@@ -1941,6 +1994,9 @@ packages:
   '@leafygreen-ui/tokens@2.12.2':
     resolution: {integrity: sha512-eVHQOk7lExNjGPVpLv2sGMUmAH0ZIpmu86NHe4n3RzHNQ2ziJUnw1CN94N6Y09qv00LvrZ2I05kbxLfX+kktvw==}
 
+  '@leafygreen-ui/tokens@3.1.0':
+    resolution: {integrity: sha512-FctYPmcFYoeLi8zOv7o7MiCCkNxeT7KQ7U4ZT150rYKdIIls8k68vzkePsPtFSTufJ++dSlm7Xbgegl1yAsKfQ==}
+
   '@leafygreen-ui/tooltip@13.0.13':
     resolution: {integrity: sha512-h9+/XGbzgy94lxREd/54cB9ryu6SVB7kcdUjjrR8klqRapfqrdrFEfJFOfltr7K3vfMoYo7F8XMOu7ctpJ8ylw==}
     peerDependencies:
@@ -1950,6 +2006,31 @@ packages:
     resolution: {integrity: sha512-TPnzIRSgu8X/sZY4ASt4a03vVUKrGxLhpBAs//N+kDaf080Z/sMJqfWGaq/zjt3WQx4pVf+ThssHI+ZMOYdHvg==}
     peerDependencies:
       '@leafygreen-ui/leafygreen-provider': ^4.0.7
+
+  '@leafygreen-ui/typography@21.0.1':
+    resolution: {integrity: sha512-959f4A6SLLj56QzsMGF+PWM5igjez9BXpFWW2+pFsd7G+xkaFEuc1D8+AFrMljkKdcBXM/AwN85lzTh90+jzWQ==}
+    peerDependencies:
+      '@leafygreen-ui/leafygreen-provider': ^5.0.0
+
+  '@lg-charts/chart-card@1.0.1':
+    resolution: {integrity: sha512-sCPX5RQUs6qAghvYgMuR1LFRBbimqWeErjJsoarb0SdBtbsNpnWk4hkzvBxrq9MiaJRUO7FxqWxOcclMRMIxtg==}
+    peerDependencies:
+      '@leafygreen-ui/leafygreen-provider': ^5.0.0
+
+  '@lg-charts/colors@1.0.0':
+    resolution: {integrity: sha512-Plabf77YlElvNfPnA+MJ/w/qToUwo1ml1kyQm5ybhjfauwKQEXnNyZNMa/dkoOiVGbr6tkHzpr2QfEtl3+5pIg==}
+    peerDependencies:
+      '@leafygreen-ui/leafygreen-provider': ^5.0.0
+
+  '@lg-charts/core@1.3.0':
+    resolution: {integrity: sha512-1wDQYMwXJNXX8uLjXUfYqXpCt16V6dTwu7j12CceIS1doptwr4tL8YjOtZXTdhltuua7n2aAaF0C5jsOkqpJSw==}
+    peerDependencies:
+      '@leafygreen-ui/leafygreen-provider': ^5.0.0
+
+  '@lg-charts/series-provider@1.0.0':
+    resolution: {integrity: sha512-7ucmwDo9RhcVo+YPwEN+u3FPhB/9vs5hfuDDWMtqaS9zU+ywJUdIuS84cdL/7WvFYYN1PqRkbxdz3idNhB3oMQ==}
+    peerDependencies:
+      '@leafygreen-ui/leafygreen-provider': ^5.0.0
 
   '@lg-private/canvas-header@3.0.1':
     resolution: {integrity: sha512-lDU/4iYT+Ms7qFnQBSP6MzJ1IdkGsS0C3uj1AdEnW1j8Dfv7ptM9ofufbdGhv32bi78mJZa2HpmInyKw/FphGA==, tarball: https://artifactory.corp.mongodb.com/artifactory/api/npm/leafygreen-ui/@lg-private/canvas-header/-/@lg-private/canvas-header-3.0.1.tgz}
@@ -3771,6 +3852,9 @@ packages:
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
+
+  echarts@5.6.0:
+    resolution: {integrity: sha512-oTbVTsXfKuEhxftHqL5xprgLoc0k7uScAwtryCgWF6hPYFLRwOUHiFmHGCBKP5NPFNkDVopOieyUqYGH8Fa3kA==}
 
   electron-to-chromium@1.5.91:
     resolution: {integrity: sha512-sNSHHyq048PFmZY4S90ax61q+gLCs0X0YmcOII9wG9S2XwbVr+h4VW2wWhnbp/Eys3cCwTxVF292W3qPaxIapQ==}
@@ -5689,10 +5773,6 @@ packages:
     resolution: {integrity: sha512-YTUo+Flmw4ZXiWfQKGcwwc11KnoRAYgzAE2E7mXKCjSviTKShtxBsN6YUUBB2gtaBzKzeKunxhUwNHQuRryhWA==}
     engines: {node: '>= 4'}
 
-  recast@0.23.9:
-    resolution: {integrity: sha512-Hx/BGIbwj+Des3+xy5uAtAbdCyqK9y9wbBcDFDYanLS9JnMqf7OeF87HQwUimE87OEc72mr6tkKUKMBBL+hF9Q==}
-    engines: {node: '>= 4'}
-
   redent@3.0.0:
     resolution: {integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==}
     engines: {node: '>=8'}
@@ -6232,6 +6312,9 @@ packages:
   tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
 
+  tslib@2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
+
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
@@ -6568,6 +6651,9 @@ packages:
   yoctocolors-cjs@2.1.2:
     resolution: {integrity: sha512-cYVsTjKl8b+FrnidjibDWskAv7UKOfcwaVZdp/it9n1s9fU3IkgDbhdIRKCW4JDsAlECJY0ytoVPT3sK6kideA==}
     engines: {node: '>=18'}
+
+  zrender@5.6.1:
+    resolution: {integrity: sha512-OFXkDJKcrlx5su2XbzJvj/34Q3m6PvyCZkVPHGYpcCJ52ek4U/ymZyfuV1nKE23AyBJ51E/6Yr0mhZ7xGTO4ag==}
 
 snapshots:
 
@@ -8184,6 +8270,31 @@ snapshots:
 
   '@contentstack/utils@1.3.20': {}
 
+  '@dnd-kit/accessibility@3.1.1(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
+      tslib: 2.8.1
+
+  '@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@dnd-kit/accessibility': 3.1.1(react@18.3.1)
+      '@dnd-kit/utilities': 3.2.2(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      tslib: 2.8.1
+
+  '@dnd-kit/sortable@10.0.0(@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@dnd-kit/core': 6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@dnd-kit/utilities': 3.2.2(react@18.3.1)
+      react: 18.3.1
+      tslib: 2.8.1
+
+  '@dnd-kit/utilities@3.2.2(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
+      tslib: 2.8.1
+
   '@emotion/babel-plugin@11.11.0':
     dependencies:
       '@babel/helper-module-imports': 7.25.9
@@ -8820,6 +8931,15 @@ snapshots:
       - react
       - supports-color
 
+  '@leafygreen-ui/a11y@3.0.0(react@18.3.1)':
+    dependencies:
+      '@leafygreen-ui/emotion': 5.0.0
+      '@leafygreen-ui/hooks': 9.0.0(react@18.3.1)
+      '@leafygreen-ui/lib': 15.0.0(react@18.3.1)
+    transitivePeerDependencies:
+      - react
+      - supports-color
+
   '@leafygreen-ui/avatar@2.0.10(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@leafygreen-ui/emotion': 4.1.1
@@ -9117,6 +9237,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@leafygreen-ui/emotion@5.0.0':
+    dependencies:
+      '@emotion/css': 11.13.5
+      '@emotion/server': 11.11.0(@emotion/css@11.13.5)
+    transitivePeerDependencies:
+      - supports-color
+
   '@leafygreen-ui/empty-state@2.0.15(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@leafygreen-ui/badge': 9.0.10(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
@@ -9208,6 +9335,13 @@ snapshots:
     transitivePeerDependencies:
       - react
 
+  '@leafygreen-ui/hooks@9.0.0(react@18.3.1)':
+    dependencies:
+      '@leafygreen-ui/lib': 15.0.0(react@18.3.1)
+      lodash: 4.17.21
+    transitivePeerDependencies:
+      - react
+
   '@leafygreen-ui/icon-button@16.0.12(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@leafygreen-ui/a11y': 2.0.7(react@18.3.1)
@@ -9223,9 +9357,31 @@ snapshots:
       - react
       - supports-color
 
+  '@leafygreen-ui/icon-button@17.0.1(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@leafygreen-ui/a11y': 3.0.0(react@18.3.1)
+      '@leafygreen-ui/emotion': 5.0.0
+      '@leafygreen-ui/icon': 14.0.0
+      '@leafygreen-ui/leafygreen-provider': 4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@leafygreen-ui/lib': 15.0.0(react@18.3.1)
+      '@leafygreen-ui/palette': 5.0.0
+      '@leafygreen-ui/polymorphic': 3.0.1(react@18.3.1)
+      '@leafygreen-ui/tokens': 3.1.0(react@18.3.1)
+      polished: 4.3.1
+    transitivePeerDependencies:
+      - react
+      - supports-color
+
   '@leafygreen-ui/icon@13.4.0':
     dependencies:
       '@leafygreen-ui/emotion': 4.1.1
+      lodash: 4.17.21
+    transitivePeerDependencies:
+      - supports-color
+
+  '@leafygreen-ui/icon@14.0.0':
+    dependencies:
+      '@leafygreen-ui/emotion': 5.0.0
       lodash: 4.17.21
     transitivePeerDependencies:
       - supports-color
@@ -9297,6 +9453,11 @@ snapshots:
       - react-dom
 
   '@leafygreen-ui/lib@14.2.0(react@18.3.1)':
+    dependencies:
+      lodash: 4.17.21
+      react: 18.3.1
+
+  '@leafygreen-ui/lib@15.0.0(react@18.3.1)':
     dependencies:
       lodash: 4.17.21
       react: 18.3.1
@@ -9439,6 +9600,8 @@ snapshots:
 
   '@leafygreen-ui/palette@4.1.4': {}
 
+  '@leafygreen-ui/palette@5.0.0': {}
+
   '@leafygreen-ui/password-input@3.0.13(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@leafygreen-ui/a11y': 2.0.7(react@18.3.1)
@@ -9476,6 +9639,13 @@ snapshots:
   '@leafygreen-ui/polymorphic@2.0.9(react@18.3.1)':
     dependencies:
       '@leafygreen-ui/lib': 14.2.0(react@18.3.1)
+      lodash: 4.17.21
+    transitivePeerDependencies:
+      - react
+
+  '@leafygreen-ui/polymorphic@3.0.1(react@18.3.1)':
+    dependencies:
+      '@leafygreen-ui/lib': 15.0.0(react@18.3.1)
       lodash: 4.17.21
     transitivePeerDependencies:
       - react
@@ -9819,6 +9989,16 @@ snapshots:
       - react
       - supports-color
 
+  '@leafygreen-ui/tokens@3.1.0(react@18.3.1)':
+    dependencies:
+      '@leafygreen-ui/emotion': 5.0.0
+      '@leafygreen-ui/lib': 15.0.0(react@18.3.1)
+      '@leafygreen-ui/palette': 5.0.0
+      polished: 4.3.1
+    transitivePeerDependencies:
+      - react
+      - supports-color
+
   '@leafygreen-ui/tooltip@13.0.13(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@leafygreen-ui/emotion': 4.1.1
@@ -9850,6 +10030,75 @@ snapshots:
     transitivePeerDependencies:
       - react
       - supports-color
+
+  '@leafygreen-ui/typography@21.0.1(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@leafygreen-ui/emotion': 5.0.0
+      '@leafygreen-ui/icon': 14.0.0
+      '@leafygreen-ui/leafygreen-provider': 4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@leafygreen-ui/lib': 15.0.0(react@18.3.1)
+      '@leafygreen-ui/palette': 5.0.0
+      '@leafygreen-ui/polymorphic': 3.0.1(react@18.3.1)
+      '@leafygreen-ui/tokens': 3.1.0(react@18.3.1)
+    transitivePeerDependencies:
+      - react
+      - supports-color
+
+  '@lg-charts/chart-card@1.0.1(@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@dnd-kit/sortable': 10.0.0(@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      '@dnd-kit/utilities': 3.2.2(react@18.3.1)
+      '@leafygreen-ui/emotion': 5.0.0
+      '@leafygreen-ui/hooks': 9.0.0(react@18.3.1)
+      '@leafygreen-ui/icon': 14.0.0
+      '@leafygreen-ui/icon-button': 17.0.1(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      '@leafygreen-ui/leafygreen-provider': 4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@leafygreen-ui/lib': 15.0.0(react@18.3.1)
+      '@leafygreen-ui/tokens': 3.1.0(react@18.3.1)
+      '@leafygreen-ui/typography': 21.0.1(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+    transitivePeerDependencies:
+      - '@dnd-kit/core'
+      - react
+      - supports-color
+
+  '@lg-charts/colors@1.0.0(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@leafygreen-ui/leafygreen-provider': 4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@leafygreen-ui/lib': 15.0.0(react@18.3.1)
+      '@leafygreen-ui/palette': 5.0.0
+    transitivePeerDependencies:
+      - react
+
+  '@lg-charts/core@1.3.0(@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@dnd-kit/sortable': 10.0.0(@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      '@dnd-kit/utilities': 3.2.2(react@18.3.1)
+      '@leafygreen-ui/emotion': 5.0.0
+      '@leafygreen-ui/hooks': 9.0.0(react@18.3.1)
+      '@leafygreen-ui/icon': 14.0.0
+      '@leafygreen-ui/icon-button': 17.0.1(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      '@leafygreen-ui/leafygreen-provider': 4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@leafygreen-ui/lib': 15.0.0(react@18.3.1)
+      '@leafygreen-ui/palette': 5.0.0
+      '@leafygreen-ui/tokens': 3.1.0(react@18.3.1)
+      '@leafygreen-ui/typography': 21.0.1(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      '@lg-charts/chart-card': 1.0.1(@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      '@lg-charts/colors': 1.0.0(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      '@lg-charts/series-provider': 1.0.0(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      echarts: 5.6.0
+      lodash: 4.17.21
+    transitivePeerDependencies:
+      - '@dnd-kit/core'
+      - react
+      - supports-color
+
+  '@lg-charts/series-provider@1.0.0(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@leafygreen-ui/leafygreen-provider': 4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@leafygreen-ui/lib': 15.0.0(react@18.3.1)
+      '@lg-charts/colors': 1.0.0(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+    transitivePeerDependencies:
+      - react
 
   '@lg-private/canvas-header@3.0.1(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -10681,7 +10930,7 @@ snapshots:
       esbuild-register: 3.6.0(esbuild@0.24.2)
       jsdoc-type-pratt-parser: 4.1.0
       process: 0.11.10
-      recast: 0.23.9
+      recast: 0.23.11
       semver: 7.7.1
       util: 0.12.5
       ws: 8.18.0
@@ -12378,6 +12627,11 @@ snapshots:
       readable-stream: 2.3.8
 
   eastasianwidth@0.2.0: {}
+
+  echarts@5.6.0:
+    dependencies:
+      tslib: 2.3.0
+      zrender: 5.6.1
 
   electron-to-chromium@1.5.91: {}
 
@@ -14862,14 +15116,6 @@ snapshots:
       tiny-invariant: 1.3.3
       tslib: 2.8.1
 
-  recast@0.23.9:
-    dependencies:
-      ast-types: 0.16.1
-      esprima: 4.0.1
-      source-map: 0.6.1
-      tiny-invariant: 1.3.3
-      tslib: 2.8.1
-
   redent@3.0.0:
     dependencies:
       indent-string: 4.0.0
@@ -15436,6 +15682,8 @@ snapshots:
 
   tslib@1.14.1: {}
 
+  tslib@2.3.0: {}
+
   tslib@2.8.1: {}
 
   tsutils@3.21.0(typescript@5.7.3):
@@ -15767,3 +16015,7 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yoctocolors-cjs@2.1.2: {}
+
+  zrender@5.6.1:
+    dependencies:
+      tslib: 2.3.0
