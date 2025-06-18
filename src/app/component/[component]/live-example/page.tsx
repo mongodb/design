@@ -93,6 +93,10 @@ export default function Page({ params }: { params: { component: SubPath } }) {
       >
         <div
           className={css`
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding-left: ${spacing[600]}px;
             padding-right: ${spacing[600]}px;
 

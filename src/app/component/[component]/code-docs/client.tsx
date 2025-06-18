@@ -9,7 +9,7 @@ import { codeDocsMetaCardsStyles, codeDocsPageStyles } from './codeDocs.styles';
 import { SubPath } from '@/utils';
 
 interface CodeDocsContentProps {
-  componentName: SubPath;
+  componentName: string;
   componentProps?: Array<PropTableState>;
   changelog: string | null;
 }

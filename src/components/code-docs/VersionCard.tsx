@@ -14,7 +14,7 @@ import { findComponent, SubPath, getMappedComponentName } from '@/utils';
 
 interface VersionCardProps {
   changelog: string | null;
-  component: SubPath;
+  component: string;
 }
 
 export const VersionCard = ({ changelog, component }: VersionCardProps) => {
@@ -26,8 +26,7 @@ export const VersionCard = ({ changelog, component }: VersionCardProps) => {
   }, [changelog]);
 
   const isPrivate = findComponent(component)?.isPrivate;
-  const mappedComponentName = getMappedComponentName[component] ?? component;
-  const privateChangelog = `https://github.com/10gen/leafygreen-ui-private/blob/main/packages/${mappedComponentName}/CHANGELOG.md`;
+  const privateChangelog = `https://github.com/10gen/leafygreen-ui-private/blob/main/packages/${component}/CHANGELOG.md`;
 
   return (
     <Card>

@@ -1,16 +1,27 @@
-export const PRIVATE_PACKAGES: Array<string> = [
+const scopes = {
+  charts: '@lg-charts',
+  private: '@lg-private',
+  ui: '@leafygreen-ui',
+} as const;
+
+const CHARTS_PACKAGES: Array<string> = [
+  'core',
+];
+
+const PRIVATE_PACKAGES: Array<string> = [
   'canvas-header',
   'cloud-nav',
   'feature-walls',
 ];
 
-// Note: this implementation will need to be tweaked for charts because charts scope is `lg-charts` and the package name is `core`, `lg-charts/core`. There will need to be some kind of mapping set up for charts when the page on contentstack is created.
 export const getScopeFromPkgName = (pkgName: string) => {
-  let scope = '@leafygreen-ui';
-
-  if (PRIVATE_PACKAGES.includes(pkgName)) {
-    scope = '@lg-private';
+  if (CHARTS_PACKAGES.includes(pkgName)) {
+    return scopes.charts
   }
 
-  return scope;
+  if (PRIVATE_PACKAGES.includes(pkgName)) {
+    return scopes.private
+  }
+
+  return scopes.ui;
 };

@@ -24,7 +24,7 @@ export default async function Page({
 
   return (
     <CodeDocsContent
-      componentName={componentName}
+      componentName={mappedComponentName}
       componentProps={componentProps}
       changelog={changelog}
     />
