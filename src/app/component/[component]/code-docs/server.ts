@@ -29,7 +29,7 @@ export async function fetchChangelog(
 ): Promise<string | null> {
   try {
     const response = await fetch(
-      `https://cdn.jsdelivr.net/npm/@leafygreen-ui/${componentName}/CHANGELOG.md`,
+      `https://cdn.jsdelivr.net/npm/${getScopeFromPkgName(componentName)}/${componentName}/CHANGELOG.md`,
     );
     if (!response.ok) {
       throw new Error('Failed to fetch Markdown file');

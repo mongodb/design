@@ -133,7 +133,7 @@ export async function getContentPage(
   try {
     const query = Stack.ContentType('content_page').Query();
     const result = await query
-      .where('title', startCase(contentPageTitle))
+      .where('title', contentPageTitle)
       .includeEmbeddedItems()
       .toJSON()
       .find();
