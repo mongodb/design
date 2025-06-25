@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/css';
 import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
@@ -10,11 +10,11 @@ import Modal from '@leafygreen-ui/modal';
 import { spacing } from '@leafygreen-ui/tokens';
 import { Subtitle } from '@leafygreen-ui/typography';
 import { color } from '@leafygreen-ui/tokens';
-import { findComponent, SubPath, getMappedComponentName } from '@/utils';
+import { findComponent, getMappedComponentName, type SubPath } from '@/utils';
 
 interface VersionCardProps {
   changelog: string | null;
-  component: string;
+  component: SubPath;
 }
 
 export const VersionCard = ({ changelog, component }: VersionCardProps) => {
@@ -25,21 +25,23 @@ export const VersionCard = ({ changelog, component }: VersionCardProps) => {
     setVersion(changelog?.split('h2')[1]?.replace(/[>/<]+/g, '') ?? null);
   }, [changelog]);
 
+  const mappedComponentName = getMappedComponentName[component] ?? component;
   const isPrivate = findComponent(component)?.isPrivate;
-  const privateChangelog = `https://github.com/10gen/leafygreen-ui-private/blob/main/packages/${component}/CHANGELOG.md`;
+  const privateChangelog = `https://github.com/10gen/leafygreen-ui-private/blob/main/packages/${mappedComponentName}/CHANGELOG.md`;
 
   return (
-    <Card>
+    <Card className={css`
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: ${spacing[400]}px;
+    `}>
       {version && (
-        <Subtitle
-          className={css`
-            margin-bottom: ${spacing[400]}px;
-          `}
-        >
+        <Subtitle>
           Version {version}
         </Subtitle>
       )}
-      {changelog && (
+      {changelog ? (
         <>
           <Button
             leftGlyph={<ActivityFeed />}
@@ -58,17 +60,18 @@ export const VersionCard = ({ changelog, component }: VersionCardProps) => {
             />
           </Modal>
         </>
-      )}
-      {isPrivate && (
-        <>
-          <Button
-            leftGlyph={<ActivityFeed />}
-            href={privateChangelog}
-            target="_blank"
-          >
-            View&nbsp;Changelog
-          </Button>
-        </>
+      ) : (
+        isPrivate && (
+          <>
+            <Button
+              leftGlyph={<ActivityFeed />}
+              href={privateChangelog}
+              target="_blank"
+            >
+              View&nbsp;Changelog
+            </Button>
+          </>
+        )
       )}
     </Card>
   );
