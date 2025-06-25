@@ -1,7 +1,7 @@
 import { fetchTSDocs, fetchChangelog } from './server';
 import { CodeDocsContent } from './client';
 import { parseComponentPropsFromTSDocs } from './utils';
-import { getMappedComponentName, type SubPath } from '@/utils';
+import { findComponent, getMappedComponentName, type SubPath } from '@/utils';
 import { auth } from '@/auth';
 
 export default async function Page({
@@ -14,10 +14,11 @@ export default async function Page({
   const componentName = params.component;
   const mappedComponentName =
     getMappedComponentName[componentName] ?? componentName;
+  const isPrivate = findComponent(componentName)?.isPrivate;
 
   const [tsDocs, changelog] = await Promise.all([
     fetchTSDocs(mappedComponentName),
-    isLoggedIn ? fetchChangelog(componentName) : Promise.resolve(null),
+    isPrivate ? Promise.resolve(null) : fetchChangelog(mappedComponentName),
   ]);
 
   const componentProps = parseComponentPropsFromTSDocs(tsDocs, componentName);

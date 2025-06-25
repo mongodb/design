@@ -6,13 +6,13 @@ import { PrivateContentWall } from '@/components/global';
 import { ContentPage } from '@/components/content-page';
 
 export default async function Page({
-  params: { contentPage: contentPageTitle },
+  params: { contentPage: contentPageTitleParam },
 }: {
   params: { contentPage: string };
 }) {
   const [session, contentPage] = await Promise.all([
     auth(),
-    getContentPage(startCase(contentPageTitle)),
+    getContentPage(startCase(contentPageTitleParam)),
   ]);
   const isLoggedIn = !!session?.user;
   const isContentPrivate = contentPage?.is_private;

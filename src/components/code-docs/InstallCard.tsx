@@ -12,9 +12,12 @@ import { spacing } from '@leafygreen-ui/tokens';
 import { Subtitle } from '@leafygreen-ui/typography';
 
 import { getScopeFromPkgName } from '@/utils/getScopeFromPkgName';
+import { getMappedComponentName, type SubPath } from '@/utils';
 
-export const InstallCard = ({ component }: { component: string }) => {
+export const InstallCard = ({ component }: { component: SubPath }) => {
   const [packageManager, setPackageManager] = useState('yarn');
+
+  const mappedComponentName = getMappedComponentName[component] ?? component;
 
   return (
     <Card>
@@ -50,8 +53,8 @@ export const InstallCard = ({ component }: { component: string }) => {
           `}
         >
           {packageManager === 'yarn'
-            ? `yarn add ${getScopeFromPkgName(component)}/${component}`
-            : `npm i ${getScopeFromPkgName(component)}/${component}`}
+            ? `yarn add ${getScopeFromPkgName(mappedComponentName)}/${mappedComponentName}`
+            : `npm i ${getScopeFromPkgName(mappedComponentName)}/${mappedComponentName}`}
         </Copyable>
       </div>
     </Card>
