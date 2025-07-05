@@ -6,7 +6,7 @@ import {
   VersionCard,
 } from '@/components/code-docs';
 import { codeDocsMetaCardsStyles, codeDocsPageStyles } from './codeDocs.styles';
-import { SubPath } from '@/utils';
+import { type SubPath } from '@/utils';
 
 interface CodeDocsContentProps {
   componentName: SubPath;
