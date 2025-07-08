@@ -15,6 +15,7 @@ export const ComponentSubPath = {
   Code: 'code',
   Combobox: 'combobox',
   ConfirmationModal: 'confirmation-modal',
+  ContextDrawer: 'context-drawer',
   Copyable: 'copyable',
   DatePicker: 'date-picker',
   Drawer: 'drawer',
@@ -36,6 +37,7 @@ export const ComponentSubPath = {
   PasswordInput: 'password-input',
   Pipeline: 'pipeline',
   Popover: 'popover',
+  PreviewCard: 'preview-card',
   RadioBoxGroup: 'radio-box-group',
   RadioGroup: 'radio-group',
   SearchInput: 'search-input',
@@ -111,6 +113,10 @@ export const components: Array<SubPathMeta> = [
   {
     name: titleCase(ComponentSubPath.ConfirmationModal),
     navPath: generateComponentNavPath(ComponentSubPath.ConfirmationModal),
+  },
+  {
+    name: titleCase(ComponentSubPath.ContextDrawer),
+    navPath: generateComponentNavPath(ComponentSubPath.ContextDrawer),
   },
   {
     name: titleCase(ComponentSubPath.Copyable),
@@ -197,6 +203,10 @@ export const components: Array<SubPathMeta> = [
   {
     name: titleCase(ComponentSubPath.Popover),
     navPath: generateComponentNavPath(ComponentSubPath.Popover),
+  },
+  {
+    name: titleCase(ComponentSubPath.PreviewCard),
+    navPath: generateComponentNavPath(ComponentSubPath.PreviewCard),
   },
   {
     name: titleCase(ComponentSubPath.RadioBoxGroup),
