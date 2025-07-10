@@ -54,8 +54,8 @@ importers:
         specifier: ^7.0.11
         version: 7.0.11(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@leafygreen-ui/context-drawer':
-        specifier: ^0.1.1
-        version: 0.1.1(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        specifier: ^0.2.1
+        version: 0.2.1(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@leafygreen-ui/copyable':
         specifier: ^10.0.14
         version: 10.0.14(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -132,8 +132,8 @@ importers:
         specifier: ^2.0.9
         version: 2.0.9(react@18.3.1)
       '@leafygreen-ui/preview-card':
-        specifier: ^0.1.1
-        version: 0.1.1(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        specifier: ^0.2.0
+        version: 0.2.0(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@leafygreen-ui/radio-box-group':
         specifier: ^14.0.10
         version: 14.0.10(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
@@ -1697,8 +1697,8 @@ packages:
     peerDependencies:
       '@leafygreen-ui/leafygreen-provider': ^4.0.7
 
-  '@leafygreen-ui/button@24.0.3':
-    resolution: {integrity: sha512-aGxew8N7DhaZGhDM1gsHz8fsn8tvS4B46qz/sKvs5s9w5Ba7yP92YKRmyDxpWgjr3PL4h0p6CEzZ2Ik1aW0Osw==}
+  '@leafygreen-ui/button@25.0.0':
+    resolution: {integrity: sha512-lhY1X4Jv8S1cRm0BXBR7ZvleSxPFhd2sRXUf42WOqW6oerKTCoe0u0or/b5h+gkDprQl/R+xCMa/U4/7zQo6pw==}
     peerDependencies:
       '@leafygreen-ui/leafygreen-provider': ^5.0.2
 
@@ -1737,8 +1737,8 @@ packages:
     peerDependencies:
       '@leafygreen-ui/leafygreen-provider': ^4.0.7
 
-  '@leafygreen-ui/context-drawer@0.1.1':
-    resolution: {integrity: sha512-YbKcFZD9NY6kf+9oYVQhQ/sKbsjjMh+k70f9GclvBijJVRynNFjYWn4k3YNRkg2YZbXDuif40RxsZFK9JUad7Q==}
+  '@leafygreen-ui/context-drawer@0.2.1':
+    resolution: {integrity: sha512-Ke+B8M2RWN4kb6QuOEcG5lnyE0n7qT7NOZq7fBIUB5RRStHv9u+L63u9UeUNsDu3Hl2g0tgd4FKLH+yOE8ZLkw==}
     peerDependencies:
       '@leafygreen-ui/leafygreen-provider': ^5.0.2
 
@@ -1940,8 +1940,8 @@ packages:
     peerDependencies:
       react-dom: ^17.0.0 || ^18.0.0
 
-  '@leafygreen-ui/preview-card@0.1.1':
-    resolution: {integrity: sha512-MLANpy5zrDsoX5qbDIqKXy9cwuThI4szyez23gIIaeFA+YgHGNkuxvJ2k339V2gQPtXwVblVet8vSPqy/U7NHQ==}
+  '@leafygreen-ui/preview-card@0.2.0':
+    resolution: {integrity: sha512-VKrUQMFMXO5rJ7Ju2PfjgwtWnWImNjhlxwoKtVeIyKckxiOFbxr5fsRGdz95KrgObFwi9WjzcSebHq+Qy1AAhw==}
     peerDependencies:
       '@leafygreen-ui/leafygreen-provider': ^5.0.2
 
@@ -9060,7 +9060,7 @@ snapshots:
       - react
       - supports-color
 
-  '@leafygreen-ui/button@24.0.3(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+  '@leafygreen-ui/button@25.0.0(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@leafygreen-ui/emotion': 5.0.0
       '@leafygreen-ui/leafygreen-provider': 4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -9207,9 +9207,9 @@ snapshots:
       - react-dom
       - supports-color
 
-  '@leafygreen-ui/context-drawer@0.1.1(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+  '@leafygreen-ui/context-drawer@0.2.1(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@leafygreen-ui/button': 24.0.3(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      '@leafygreen-ui/button': 25.0.0(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@leafygreen-ui/emotion': 5.0.0
       '@leafygreen-ui/hooks': 9.1.1(react@18.3.1)
       '@leafygreen-ui/icon': 14.1.0
@@ -9217,6 +9217,7 @@ snapshots:
       '@leafygreen-ui/lib': 15.2.0(react@18.3.1)
       '@leafygreen-ui/palette': 5.0.0
       '@leafygreen-ui/tokens': 3.1.2(react@18.3.1)
+      '@lg-tools/test-harnesses': 0.3.2
       react-intersection-observer: 8.34.0(react@18.3.1)
     transitivePeerDependencies:
       - react
@@ -9788,15 +9789,16 @@ snapshots:
     transitivePeerDependencies:
       - react
 
-  '@leafygreen-ui/preview-card@0.1.1(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+  '@leafygreen-ui/preview-card@0.2.0(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@leafygreen-ui/button': 24.0.3(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      '@leafygreen-ui/button': 25.0.0(@leafygreen-ui/leafygreen-provider@4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@leafygreen-ui/emotion': 5.0.0
       '@leafygreen-ui/hooks': 9.1.1(react@18.3.1)
       '@leafygreen-ui/icon': 14.1.0
       '@leafygreen-ui/leafygreen-provider': 4.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@leafygreen-ui/lib': 15.2.0(react@18.3.1)
       '@leafygreen-ui/tokens': 3.1.2(react@18.3.1)
+      '@lg-tools/test-harnesses': 0.3.2
       polished: 4.3.1
     transitivePeerDependencies:
       - react
