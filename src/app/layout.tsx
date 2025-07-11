@@ -18,7 +18,8 @@ export default async function RootLayout({
 
   return (
     // Provide the session to the entire app
-    <SessionProvider session={session}>
+    // https://next-auth.js.org/getting-started/client#custom-base-path
+    <SessionProvider session={session} basePath="/api/auth/callback/okta">
       <LayoutWrapper components={components}>{children}</LayoutWrapper>
     </SessionProvider>
   );

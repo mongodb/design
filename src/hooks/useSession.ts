@@ -1,6 +1,5 @@
 'use client';
 
-import { useMemo } from 'react';
 import { Session } from '@/auth';
 import { useSession as useAuthSession } from 'next-auth/react';
 
@@ -10,8 +9,5 @@ export const useSession = (): LGSession => {
   // Get the session from SessionProvider in layout.tsx
   const { data: session } = useAuthSession();
 
-  // This prevents a new object from being created on every render
-  return useMemo(() => {
-    return { ...session, isLoggedIn: !!session?.user };
-  }, [session]);
+  return { ...session, isLoggedIn: !!session?.user };
 };
