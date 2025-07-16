@@ -1,0 +1,21 @@
+- Punctuation: Do not include punctuation such as exclamation marks or periods.
+- Clarity and Precision: Ensure labels accurately describe content or actions in clear terms. 
+   - When a page is not specific to a single action, such as our product entry walls, include the subject of the action that will be taken when a button is clicked. 
+      - For example, “Create search index,” rather than “Create.”
+   - Conversely, if the page is specific to performing a particular action, such as a full-page form, use the verb without including its subject. Usually these pages will include the subject of the action in the page's header.
+   - Be consistent between call to actions, headers, etc with how terms are used to describe an action.
+      - For example, if a button to enter a creation flow says "Create Cluster," don't refer to the subject being created as a "deployment" in a header or a CTA later in the flow.
+- Action Names: Use the following simpler terminology when possible over alternatives. Note that this is a guideline and not a rule. Always opt for terminology that can be more easily understood if using simpler terminology is more confusing to users.
+   - "Save," rather than "commit," "write," "apply," or similar.
+   - "Confirm," rather than "accept," or similar.
+   - "Create," rather than "deploy," "provision," "make," or similar.
+   - "Cancel," rather than "exit," "escape," "nevermind," or similar.
+   - "Delete," rather than "destroy," "deprovision," "erase," or similar.
+   - "Next," rather than "forward," "continue," or similar.
+      - Note: If it can be determined, tell the user where they are going, rather than using "Next" generically.
+      - When using the stepper use the number of the step and the step title for the button. 
+         - For example, “2. Configure” 
+   - "Back," rather than "previous" or similar.
+      - Note: If it can be determined, tell the user where they are going, rather than using "Back" generically.
+      - When using the stepper use the number of the step and the step title for the button. 
+         - For example, “1. Set Up”

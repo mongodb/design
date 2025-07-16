@@ -1,0 +1,2 @@
+- Guidance Focus: Offer concise help and explanations where users might need clarification or direction.
+- Brevity: Provide instructions in brief, straightforward language without extraneous detail.

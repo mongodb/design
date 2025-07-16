@@ -1,0 +1,144 @@
+Grammar and Mechanics Guidelines
+By adhering to these guidelines, we ensure that our language across MongoDB products is clear, consistent, and engaging, which helps provide a seamless and intuitive user experience.
+
+General Principles
+- Keep It Simple: It's easier for an expert to understand beginner terminology, than for a beginner to understand expert terms. Use plain, everyday language that’s inclusive of individuals and their skill levels whenever possible.
+- Be Concise: It’s better to be clear than comprehensive. Opt for brevity, and limit in-product copy to just the essential information needed for the most common use-cases.
+- Consistency Is Key: Use consistent terminology for features and actions throughout the product. This helps users feel comfortable and lowers the learning curve. Use the following resources for specific terminology
+   - MongoDB Word and Acronym List
+   - MongoDB Product List
+   - MongoDB Technical Glossary (Docs)
+   - MongoDB Atlas Glossary (Docs)
+- Action-Oriented Language: Encourage users, and help them imagine how they can use MongoDB's products by using active voice. Focus on their journey and what they can do next using our products, rather than focusing on general functionality.
+
+Capitalization
+- Titles: Use title case. Capitalize prepositions of four or more letters, including From, With, Through, etc.
+- Subheadings: Use sentence case (capitalize only the first word and proper nouns) without end punctuation. If the subheading is a full sentence, add punctuation. Use sentence case without end punctuation. If the subheading is a full sentence, add punctuation.
+- Buttons: Use sentence case. 
+- Links: Use sentence case. 
+- Lists: Capitalize the first word of each item in a list. 
+- Product names: Always capitalize proper nouns including the names of our products.
+
+Active Voice
+- Use an active voice for clarity and engagement.
+   - For example, “You can add…” rather than “It can be added…”.
+- Lead on strong action verbs. For example: 
+   - Instead of: You can use native, full-featured vector database capabilities to build intelligent applications powered by semantic search and generative AI.
+   - Try this: Build intelligent applications powered by semantic search and generative AI using native, full-featured vector database capabilities.
+
+Adverbs
+Don’t hyphenate adverb compounds where the adverb ends in “-ly” (e.g., fully managed, not fully-managed).
+
+Abbreviations and Acronyms (See MongoDB Word and Acronym List)
+- Do not abbreviate "MongoDB," such as by using "MDB."
+- In most cases, when using an acronym for the first time on a page, use the full term followed by the acronym in parentheses. All subsequent mentions on the same page can use the acronym directly.
+   - For example, “I did not choose Amazon Web Services (AWS) as my cloud platform, although AWS could have handled the load.” 
+- If an acronym is commonplace enough that it could be considered a "household name," you may use it directly without including the full term.
+   - For example, acronyms like "USA," "HTML," "PhD," or "FBI" are commonplace enough that you can consider omitting the full term when using them.
+   - Note that some acronyms may be commonly known by certain locales or audiences, but not by others. 
+
+Contractions
+Use common contractions (e.g., can’t, don’t, they’re, you’re, it’s) to avoid sounding stiff.
+
+Dates and Times
+- Dates: Write dates in the "month day, year" format (e.g., Jan 1, 2021).
+- Date Picker: See guidelines for the Date Picker component if using that.
+- Times: Use the 12-hour clock notation with uppercase AM/PM (e.g., 3:30 PM.).
+   - See Time in Atlas Guide (Coming Soon) for more detailed information about how to show time in Atlas
+Lists[g]
+- Usage: Use bullet points for breaking down content into digestible chunks. A bulleted list should have a minimum of three elements. A list of two items can probably be handled differently (e.g., in a compound sentence).
+- Capitalization: Capitalize the first word of each item in a list.
+- Consistency: Ensure lists are parallel in structure for consistency and readability. If the first item starts with a verb, so should the rest of the items; if the first item is a complete sentence, the rest should be as well.
+- Punctuate list items as follows:
+   - In a list of only sentences, including imperative statements, use punctuation at the end of each item.
+   - In a list of only fragments, use no punctuation at the end of each item.
+   - In a list of fragments, some or all of which are followed by sentences, use punctuation at the end of every fragment and sentence in the list.
+
+Numbers
+- Use numerals for all numbers in technical contexts and when presenting data or measurements.
+- Spell out numbers one through nine in all other contexts. 
+
+Pronouns
+- Use “we” when referring to MongoDB, the company. Use “you” when referring to prospects or customers. 
+- Use “it” when referring to a company, organization, government, or other entity. When talking about MongoDB Atlas and its capabilities, use the product name (e.g., MongoDB Atlas makes it easy for you to…). 
+- When writing about a person, use that person’s preferred personal pronouns. If the person’s gender identity is unknown, use “they” with singular verbs.
+
+Punctuation
+- Ampersands: Don’t use amersands in UI copy.
+- Apostrophes: Add ’s to singular nouns (e.g., Atlas’s capabilities; the system’s design). Only add ‘ to the end of plural nouns (e.g. The businesses’ preference) 
+- Colons: Use colons to introduce lists or elaborate on a preceding statement.
+- Commas: Utilize commas to clarify and separate ideas, but avoid overuse that complicates understanding. Use the oxford commas in a list. Place punctuation inside quotation marks. 
+   - For example, "MongoDB provides scalability, flexibility, and performance."
+- Periods: Use periods to complete full sentences. Refrain from using excessive punctuation marks.
+- Parentheses: Use sparingly for non-essential, ancillary comments or explanations.
+- Quotation Marks: Use for quotes or thoughts.
+   - When introducing a new term, use italics instead of quotation marks.
+   - When referring to an exact value that may appear in code such as an aggregation pipeline stage or query operator, use the Inline Code component instead of quotation marks.
+
+Verb Tense
+- Use present tense for timeless statements and software descriptions. 
+   - For example, "MongoDB supports horizontal scaling."
+- Use future tense sparingly for upcoming features or releases. 
+   - For example, "The new features will improve performance."
+Localization
+- Unless localizing on a per-country basis, default to using US English spellings of words.
+   - For example, use "gray" instead of "grey," "color" instead of "colour," and "realize" instead of "realise."
+
+UI Elements 
+Calls to Action (CTA)
+- Clarity and Precision: Ensure labels accurately describe content or actions in clear terms. 
+   - When a page is not specific to a single action, such as our product entry walls, include the subject of the action that will be taken when a button is clicked. 
+      - For example, “Create search index,” rather than “Create.”
+   - Conversely, if the page is specific to performing a particular action, such as a full-page form, use the verb without including its subject. Usually these pages will include the subject of the action in the page's header.
+   - Be consistent between call to actions, headers, etc with how terms are used to describe an action.
+      - For example, if a button to enter a creation flow says "Create Cluster," don't refer to the subject being created as a "deployment" in a header or a CTA later in the flow.
+- Action Names: Use the following simpler terminology when possible over alternatives. Note that this is a guideline and not a rule – always opt for terminology that can be more easily understood if using simpler terminology is more confusing to users.
+   - "Save," rather than "commit," "write," "apply," or similar.
+   - "Confirm," rather than "accept," or similar.
+   - "Create," rather than "deploy," "provision," "make," or similar.
+   - "Cancel," rather than "exit," "escape," "nevermind," or similar.
+   - "Delete," rather than "destroy," "deprovision," "erase," or similar.
+   - "Next," rather than "forward," "continue," or similar.
+      - Note: If it can be determined, tell the user where they are going, rather than using "Next" generically.
+      - When using the stepper use the number of the step and the step title for the button. 
+         - For example, “2. Configure” 
+   - "Back," rather than "previous" or similar.
+      - Note: If it can be determined, tell the user where they are going, rather than using "Back" generically.
+      - When using the stepper use the number of the step and the step title for the button. 
+         - For example, “1. Set Up” 
+- Inline Links: When linking to web pages in copy, use descriptive copy for the link, not a generic “this article” or similar. Do not include “Learn more” as part of the link if it is followed by a more descriptive title. 
+   - Example: “For information on how to back up and restore cluster data in MongoDB, read the Backup and Restore Cluster Data documentation.”
+   - OR Learn more about restoring cluster data in MongoDB. 
+   - Don’t use “click here or read more.” Use  “Learn more” sparingly. For example, in a page header or other place where we are limited in the number of characters we can use.  etc.) 
+- Standalone Links: 
+   - Do not include punctuation at the end of standalone links.
+   - Standalone links should be included for a clickable title, instances where there are 3 CTAs  that need to be shown next to each other, or links within a table.
+   - Include no more than 1 standalone link outside of a list or table. 
+   - Be careful about text that would usually indicate a user is taking an action, such as links that start with the words “create” or “use.” Consider including the words “Learn how to” if directing the user to a tutorial and “Learn more about” if directing to reference information. 
+
+Forms and Inputs
+- Labels (dropdown, checkbox, select, text input): Use sentence case capitalization. Labels should be concise, but more importantly accurate to the desired content. They should not be longer than a single line.
+- Descriptions: Use sentence case capitalization. Limit to 2 lines max. 
+- Placeholder Text: Use sentence case capitalization. Placeholder text should be an example of what a user might write in that input. Placeholder text is not a necessity for all form fields, and should be omitted for most. Placeholder text can be beneficial when used to show an example of a complex input, like IP Address, or CIDR block. 
+
+Error Messages
+- Constructive Feedback: Clearly explain the issue and offer an actionable solution.
+- Empathy and Understanding: Acknowledge any inconvenience caused.
+
+Success Messages
+- Clear: Be clear about what was successfully completed. 
+- Supportive: Acknowledge the users success and the benefits of the task they just completed. 
+
+Notifications
+- Timely Delivery: Ensure messages reach users in a timely manner. 
+- Relevance: Content should relate directly to the user's current actions or context.
+- Refer to the following table when considering the component you use: 
+
+Tabs
+- Tab labels should be sentence case and limited to 25 characters. 
+- Tab labels should always be static and use the same text regardless of system status. 
+
+
+Tooltips and Help
+- Guidance Focus: Offer concise help and explanations where users might need clarification or direction.
+- Brevity: Provide instructions in brief, straightforward language without extraneous detail.

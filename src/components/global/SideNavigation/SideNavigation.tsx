@@ -69,6 +69,7 @@ export function SideNavigation() {
 
   const navContent = (
     <>
+
       <SideNavLabel
         key="Foundations"
         label="Foundations"
@@ -144,6 +145,36 @@ export function SideNavigation() {
             {component.isPrivate && <PrivateIcon />}
           </SideNavItem>
         ))}
+      </SideNavList>
+      
+      <SideNavLabel
+        key="Tools"
+        label="Tools"
+        glyph={
+          <UniversityIcon
+            className={css`
+              margin-right: ${spacing[200]}px;
+            `}
+          />
+        }
+      />
+      <SideNavList key="tools-list">
+        <SideNavItem
+          href='/tools/writer'
+          active={isActiveResource({
+            name: 'Writer',
+            navPath: '/tools/writer',
+            isPrivate: true,
+            isComponent: false,
+          })}
+        >
+          Writer
+          <PrivateIcon
+            className={css`
+              margin-left: ${spacing[400]}px;
+            `}
+          />
+        </SideNavItem>
       </SideNavList>
     </>
   );

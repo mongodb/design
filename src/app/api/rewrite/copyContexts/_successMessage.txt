@@ -1,0 +1,2 @@
+- Clear: Be clear about what was successfully completed.
+- Supportive: Acknowledge the users success and the benefits of the task they just completed.
