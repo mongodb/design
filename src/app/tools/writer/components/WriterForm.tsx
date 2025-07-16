@@ -127,8 +127,6 @@ const formStyles = css`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  position: relative;
-  z-index: 1;
 `;
 
 const inputGroupStyles = css`

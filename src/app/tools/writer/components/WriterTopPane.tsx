@@ -15,18 +15,18 @@ const notchStyles = css`
 	pointer-events: none;
 `;
 
-interface LeftPaneProps {
+interface TopPaneProps {
   className?: string;
   children?: React.ReactNode;
 }
 
-export default function LeftPane({ children }: LeftPaneProps) {
+export default function topPane({ children }: TopPaneProps) {
   const { theme } = useDarkMode();
   const borderColor = theme === "dark" ? palette.gray.dark2 : palette.gray.light2;
 
   const fullBleedSpacing = spacing[1000]; // 40px
 
-  const leftPaneStyles = css`
+  const topPaneStyles = css`
     min-width: 66vw;
     height: 100%;
     position: relative;
@@ -41,7 +41,7 @@ export default function LeftPane({ children }: LeftPaneProps) {
   `;
 
   return (
-    <section className={leftPaneStyles}>
+    <section className={topPaneStyles}>
       <Notch className={notchStyles} />
       {children}
     </section>

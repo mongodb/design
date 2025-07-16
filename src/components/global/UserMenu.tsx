@@ -23,6 +23,9 @@ export function UserMenu() {
       `}
     >
       <Menu
+      className={css`
+        min-width: 200px;
+      `}
         trigger={
           <Button
             size="small"
