@@ -23,9 +23,9 @@ export function UserMenu() {
       `}
     >
       <Menu
-      className={css`
-        min-width: 200px;
-      `}
+        className={css`
+          width: auto;
+        `}
         trigger={
           <Button
             size="small"
@@ -43,6 +43,7 @@ export function UserMenu() {
           <Body darkMode>{session.user.name}</Body>
           <Description darkMode>{session.user.email}</Description>
         </MenuItem>
+        
         <MenuItem
           glyph={<LogOutIcon />}
           onClick={async () => {
