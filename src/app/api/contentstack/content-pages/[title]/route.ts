@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getContentPageService } from '../../../../../utils/ContentStack/contentstackService';
+import { getContentPage } from '../../../../../lib/contentStackService';
 
 /**
  * API Route to get a content page by title
@@ -22,7 +22,7 @@ export async function GET(
       url: request.url,
     });
 
-    const contentPage = await getContentPageService(title);
+    const contentPage = await getContentPage(title);
 
     if (!contentPage) {
       return NextResponse.json(

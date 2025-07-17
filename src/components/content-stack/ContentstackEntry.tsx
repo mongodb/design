@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { css, cx } from '@emotion/css';
-import { getEntryById } from '@/utils/ContentStack/contentstackClient';
+import { getEntryById } from '@/lib/contentStackClient'; // client-safe version
 import Badge from '@leafygreen-ui/badge';
 import Button from '@leafygreen-ui/button';
 import Callout, { Variant } from '@leafygreen-ui/callout';
@@ -104,7 +104,6 @@ const ContentstackEntry = <T extends ContentTypeUID>({
   contentTypeUid: T;
   entryUid: string;
 }) => {
-  console.log('🥵🥵🥵🥵🥵🥵🥵🥵🥵🥵');
   // Note: not using `useMemo` here, since `getEntryById` is async
   const [entry, setEntry] = useState<BlockPropsMap[T]>();
   useEffect(() => {

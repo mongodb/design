@@ -1,5 +1,3 @@
-'use client';
-
 import { css } from '@emotion/css';
 import { ContentstackRichText } from '@/components/content-stack';
 import { CSNode } from '@/components/content-stack/types';

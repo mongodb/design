@@ -1,7 +1,4 @@
-import {
-  fetchComponent,
-  getComponents,
-} from '@/utils/ContentStack/contentstackClient';
+import { fetchComponent, getComponents } from '@/lib/contentStackService';
 import { DesignDocsContent } from './client';
 
 export default async function Page({

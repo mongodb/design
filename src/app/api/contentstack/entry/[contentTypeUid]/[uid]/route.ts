@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getEntryByIdService } from '../../../../../../utils/ContentStack/contentstackService';
+import { getEntryById } from '../../../../../../lib/contentStackService';
 import { BlockPropsMap } from '@/components/content-stack/types';
 
 /**
@@ -13,8 +13,6 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { contentTypeUid: string; uid: string } },
 ) {
-  console.log('💚💚💚💚💚💚');
-
   try {
     const { contentTypeUid, uid } = params;
     if (!contentTypeUid) {
@@ -66,7 +64,7 @@ export async function GET(
     );
 
     // Type assertion is needed here because we've already validated that id is one of the valid content types
-    const entry = await getEntryByIdService(
+    const entry = await getEntryById(
       contentTypeUid as keyof BlockPropsMap,
       uid,
     );

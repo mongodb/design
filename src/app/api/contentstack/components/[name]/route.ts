@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { fetchComponentService } from '../../../../../utils/ContentStack/contentstackService';
+import { fetchComponent } from '../../../../../lib/contentStackService';
 
 /**
  * API Route to get a component by name
@@ -27,7 +27,7 @@ export async function GET(
       url: request.url,
     });
 
-    const component = await fetchComponentService(name, { includeContent });
+    const component = await fetchComponent(name, { includeContent });
 
     if (!component) {
       return NextResponse.json(

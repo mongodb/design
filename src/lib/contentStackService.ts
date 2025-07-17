@@ -1,13 +1,12 @@
 import Contentstack from 'contentstack';
-import defaults from 'lodash/defaults';
 import startCase from 'lodash/startCase';
+import defaults from 'lodash/defaults';
 
+import { ComponentFields, ContentPage, ContentPageGroup } from './types';
 import {
   BlockPropsMap,
   ContentTypeUID,
 } from '@/components/content-stack/types';
-
-import { ComponentFields, ContentPage, ContentPageGroup } from './types';
 
 const ENV_MAP = {
   main: 'main',
@@ -16,24 +15,31 @@ const ENV_MAP = {
   dev: 'staging',
 } as const;
 
+type EnvMapKey = keyof typeof ENV_MAP;
+
+const isValidEnv = (env: string | undefined): env is EnvMapKey => {
+  return !!env && Object.keys(ENV_MAP).includes(env);
+};
+
 const environment = ((): string => {
-  const environmentVariable = process.env.NEXT_PUBLIC_ENVIRONMENT;
-  if (environmentVariable && ENV_MAP[environmentVariable]) {
+  const environmentVariable = process.env.CONTENTSTACK_ENVIRONMENT;
+  if (isValidEnv(environmentVariable)) {
     return ENV_MAP[environmentVariable];
   }
+  // Log the error more verbosely for debugging on the server
+  console.error(`Error: Could not find Contentstack environment for "${environmentVariable}".
+    Please ensure CONTENTSTACK_ENVIRONMENT is set in your .env.local or deployment environment.`);
   throw new Error(`Could not find environment "${environmentVariable}"`);
 })();
 
+// Initialize Contentstack Stack only once on the server
 const Stack = Contentstack.Stack({
-  api_key: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY,
-  delivery_token: process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN,
+  api_key: process.env.CONTENTSTACK_API_KEY as string,
+  delivery_token: process.env.CONTENTSTACK_DELIVERY_TOKEN as string,
   environment,
 });
 
-interface QueryOptions {
-  includeContent: boolean;
-}
-
+// Define common properties to avoid repetition
 const componentProperties = [
   'uid',
   'title',
@@ -44,6 +50,10 @@ const componentProperties = [
   'codesandbox_url',
 ];
 const optionalComponentProperties = ['designguidelines'];
+
+interface QueryOptions {
+  includeContent?: boolean; // Made optional as it has a default
+}
 
 /**
  * @returns All component objects, optionally with all associated content (i.e. guidelines)
@@ -66,9 +76,8 @@ export async function getComponents(
     )[0];
     return results.sort((a, b) => a.title.localeCompare(b.title));
   } catch (error) {
-    console.error('No Component pages found', error);
-    // Return no component pages
-    return [];
+    console.error('Server Error: No Component pages found', error);
+    throw new Error('Failed to fetch components.'); // Throw error to be caught by API route
   }
 }
 
@@ -92,7 +101,8 @@ export async function fetchComponent(
       .find();
     return result[0][0];
   } catch (error) {
-    console.error('Component page not found', error);
+    console.error('Server Error: Component page not found', error);
+    throw new Error(`Failed to fetch component: ${componentName}.`);
   }
 }
 
@@ -121,9 +131,8 @@ export async function getContentPageGroups(): Promise<Array<ContentPageGroup>> {
 
     return pageGroups;
   } catch (error) {
-    console.error('No Content Page Groups found', error);
-    // Return no component pages
-    return [];
+    console.error('Server Error: No Content Page Groups found', error);
+    throw new Error('Failed to fetch content page groups.');
   }
 }
 
@@ -139,7 +148,8 @@ export async function getContentPage(
       .find();
     return result[0][0];
   } catch (error) {
-    console.error('Content page not found', error);
+    console.error('Server Error: Content page not found', error);
+    throw new Error(`Failed to fetch content page: ${contentPageTitle}.`);
   }
 }
 
@@ -152,7 +162,9 @@ export async function getEntryById<T extends ContentTypeUID>(
     const result = await query.includeEmbeddedItems().toJSON().fetch();
     return result as BlockPropsMap[T];
   } catch (error) {
-    console.error('Entry not found', error);
-    return {} as BlockPropsMap[T];
+    console.error('Server Error: Entry not found', error);
+    throw new Error(
+      `Failed to fetch entry by ID: ${uid} for type ${content_type_uid}.`,
+    );
   }
 }

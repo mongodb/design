@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getComponentsService } from '../../../../utils/ContentStack/contentstackService';
+import { getComponents } from '../../../../lib/contentStackService';
 
 /**
  * API Route to get all components
@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
       url: request.url,
     });
 
-    const components = await getComponentsService({ includeContent });
+    const components = await getComponents({ includeContent });
 
     // Return JSON response
     return NextResponse.json(components, { status: 200 });
