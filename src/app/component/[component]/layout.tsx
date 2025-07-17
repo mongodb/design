@@ -97,10 +97,6 @@ export default function ComponentLayout({
           <>
             {externalLinks.map(
               ({ 'aria-label': ariaLabel, href, icon, isPrivate }, index) => {
-                // if (isPrivate && !isLoggedIn) {
-                //   return null;
-                // }
-
                 if (isPrivate) {
                   return null;
                 }
