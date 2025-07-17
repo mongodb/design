@@ -1,4 +1,4 @@
-import { getContentPage } from '@/utils/ContentStack/getContentstackResources';
+import { getContentPage } from '@/utils/ContentStack/contentstackClient';
 
 import startCase from 'lodash/startCase';
 // import { auth } from '@/auth';

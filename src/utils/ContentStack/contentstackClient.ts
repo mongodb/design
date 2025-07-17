@@ -1,5 +1,9 @@
 import defaults from 'lodash/defaults';
 import { ComponentFields, ContentPage } from './types';
+import {
+  BlockPropsMap,
+  ContentTypeUID,
+} from '@/components/content-stack/types';
 
 interface QueryOptions {
   includeContent: boolean;
@@ -207,6 +211,73 @@ export async function getContentPage(
     return result;
   } catch (error) {
     console.error('Client Error: Failed to fetch content page', error);
+    return undefined;
+  }
+}
+
+/**
+ * @returns a single content page by its title.
+ * Fetches data from Next.js API route
+ */
+export async function getEntryById<T extends ContentTypeUID>(
+  content_type_uid: T,
+  uid: string,
+): Promise<BlockPropsMap[T] | undefined> {
+  try {
+    // Get base URL that works in both client and server contexts
+    const baseUrl =
+      typeof window !== 'undefined'
+        ? window.location.origin
+        : process.env.NEXTAUTH_URL || 'http://localhost:3000';
+
+    // Use absolute URL with proper encoding
+    const url = new URL(
+      `/api/contentstack/entry/${encodeURIComponent(
+        content_type_uid,
+      )}/${encodeURIComponent(uid)}`,
+      baseUrl,
+    );
+
+    const response = await fetch(url.toString(), {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+
+    // Check content type before attempting to parse JSON
+    const contentType = response.headers.get('content-type');
+    if (!response.ok) {
+      if (response.status === 404) return undefined;
+
+      if (contentType?.includes('application/json')) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to fetch content page');
+      } else {
+        // Handle HTML error responses
+        const text = await response.text();
+        console.error('Non-JSON error response:', text.substring(0, 200));
+        throw new Error(
+          `Server returned ${response.status} ${response.statusText}`,
+        );
+      }
+    }
+
+    // Verify we received JSON before parsing
+    if (!contentType?.includes('application/json')) {
+      const text = await response.text();
+      console.error(
+        'Expected JSON but received:',
+        contentType,
+        text.substring(0, 200),
+      );
+      throw new Error('Server returned non-JSON response');
+    }
+
+    const result: BlockPropsMap[T] = await response.json();
+    return result;
+  } catch (error) {
+    console.error('Client Error: Failed to fetch entry', error);
     return undefined;
   }
 }
