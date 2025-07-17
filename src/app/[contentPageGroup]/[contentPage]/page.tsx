@@ -8,7 +8,7 @@ export default async function Page({
 }: {
   params: { contentPage: string };
 }) {
-  // This can directly call the service to fetch the content page since this is a server component
+  // This can directly call the ContentStack SDK to fetch the content page since this is a server component
   const contentPage = await getContentPageService(
     startCase(contentPageTitleParam),
   );

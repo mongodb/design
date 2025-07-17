@@ -39,7 +39,6 @@ const Stack = Contentstack.Stack({
   environment,
 });
 
-// Define common properties to avoid repetition
 const componentProperties = [
   'uid',
   'title',
