@@ -8,7 +8,6 @@ import { BlockPropsMap } from '@/components/content-stack/types';
  * @param id - The content type UID (e.g. 'badge_block', 'callout_block')
  * @param uid - The unique identifier for the specific entry
  *
- * This is an App Router API route (NextJS 13+)
  */
 export async function GET(
   request: NextRequest,
