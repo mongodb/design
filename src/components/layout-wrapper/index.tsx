@@ -9,7 +9,7 @@ import { RootStyleRegistry } from '@/components/global';
 import { useMediaQuery } from '@/hooks';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { ContentStackContextProvider } from '@/contexts/ContentStackContext';
-import { ComponentFields } from '@/utils/ContentStack/types';
+import { ComponentFields } from '@/lib/contentStack/types';
 
 export default function LayoutWrapper({
   children,
