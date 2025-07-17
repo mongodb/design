@@ -3,7 +3,6 @@ import { fetchComponentService } from '../../../../../utils/ContentStack/content
 
 /**
  * API Route to get a component by name
- * This is an App Router API route (NextJS 13+)
  */
 export async function GET(
   request: NextRequest,

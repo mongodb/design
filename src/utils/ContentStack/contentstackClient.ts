@@ -10,29 +10,39 @@ interface QueryOptions {
 }
 
 /**
- * @returns All component objects, optionally with all associated content (i.e. guidelines)
- * Fetches data from Next.js API route
+ * Fetches component data from the ContentStack API.
+ *
+ * This function makes a request to the ContentStack API endpoint to retrieve component data.
+ *
+ * @param {QueryOptions} [options] - Optional query parameters
+ *
+ * @returns {Promise<Array<ComponentFields>>} A promise that resolves to an array of component fields
+ *
+ * @example
+ * const components = await getComponents();
+ * const componentsWithContent = await getComponents({ includeContent: true });
  */
 export async function getComponents(
   options?: QueryOptions,
 ): Promise<Array<ComponentFields>> {
   try {
-    options = defaults(options, { includeContent: false });
-    const params = new URLSearchParams();
-    if (options.includeContent) {
-      params.append('includeContent', 'true');
-    }
+    const mergedOptions = defaults(options, { includeContent: false });
 
-    // Get base URL that works in both client and server contexts
+    // Get base URL
     const baseUrl =
       typeof window !== 'undefined'
         ? window.location.origin
-        : process.env.NEXTAUTH_URL || 'http://localhost:3000';
+        : process.env.NEXTAUTH_URL;
 
-    // Use absolute URL to avoid URL parsing errors
+    if (!baseUrl) {
+      throw new Error('Base URL is not defined. Cannot fetch components.');
+    }
+
     const url = new URL('/api/contentstack/components', baseUrl);
-    if (params.toString()) {
-      url.search = params.toString();
+
+    if (mergedOptions.includeContent) {
+      // appends a new key-value pair directly to the URL's query string.
+      url.searchParams.append('includeContent', 'true');
     }
 
     const response = await fetch(url.toString(), {
@@ -44,22 +54,27 @@ export async function getComponents(
 
     // Check content type before attempting to parse JSON
     const contentType = response.headers.get('content-type');
+    const isJson = contentType?.includes('application/json');
+
     if (!response.ok) {
-      if (contentType?.includes('application/json')) {
+      if (isJson) {
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to fetch components');
+        throw new Error(
+          errorData.message ||
+            `API error: ${response.status} ${response.statusText}`,
+        );
       } else {
         // Handle HTML error responses
         const text = await response.text();
         console.error('Non-JSON error response:', text.substring(0, 200));
         throw new Error(
-          `Server returned ${response.status} ${response.statusText}`,
+          `Server returned non-JSON error: ${response.status} ${response.statusText}`,
         );
       }
     }
 
     // Verify we received JSON before parsing
-    if (!contentType?.includes('application/json')) {
+    if (!isJson) {
       const text = await response.text();
       console.error(
         'Expected JSON but received:',
@@ -86,25 +101,26 @@ export async function fetchComponent(
   options?: QueryOptions,
 ): Promise<ComponentFields | undefined> {
   try {
-    options = defaults(options, { includeContent: false });
-    const params = new URLSearchParams();
-    if (options.includeContent) {
-      params.append('includeContent', 'true');
-    }
+    const mergedOptions = defaults(options, { includeContent: false });
 
-    // Get base URL that works in both client and server contexts
+    // Get base URL
     const baseUrl =
       typeof window !== 'undefined'
         ? window.location.origin
-        : process.env.NEXTAUTH_URL || 'http://localhost:3000';
+        : process.env.NEXTAUTH_URL;
+
+    if (!baseUrl) {
+      throw new Error('Base URL is not defined. Cannot fetch components.');
+    }
 
     // Use absolute URL with proper encoding
     const url = new URL(
       `/api/contentstack/components/${encodeURIComponent(componentName)}`,
       baseUrl,
     );
-    if (params.toString()) {
-      url.search = params.toString();
+    if (mergedOptions.includeContent) {
+      // appends a new key-value pair directly to the URL's query string.
+      url.searchParams.append('includeContent', 'true');
     }
 
     const response = await fetch(url.toString(), {
@@ -116,24 +132,27 @@ export async function fetchComponent(
 
     // Check content type before attempting to parse JSON
     const contentType = response.headers.get('content-type');
-    if (!response.ok) {
-      if (response.status === 404) return undefined; // Component not found
+    const isJson = contentType?.includes('application/json');
 
-      if (contentType?.includes('application/json')) {
+    if (!response.ok) {
+      if (isJson) {
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to fetch component');
+        throw new Error(
+          errorData.message ||
+            `API error: ${response.status} ${response.statusText}`,
+        );
       } else {
         // Handle HTML error responses
         const text = await response.text();
         console.error('Non-JSON error response:', text.substring(0, 200));
         throw new Error(
-          `Server returned ${response.status} ${response.statusText}`,
+          `Server returned non-JSON error: ${response.status} ${response.statusText}`,
         );
       }
     }
 
     // Verify we received JSON before parsing
-    if (!contentType?.includes('application/json')) {
+    if (!isJson) {
       const text = await response.text();
       console.error(
         'Expected JSON but received:',
@@ -163,7 +182,7 @@ export async function getContentPage(
     const baseUrl =
       typeof window !== 'undefined'
         ? window.location.origin
-        : process.env.NEXTAUTH_URL || 'http://localhost:3000';
+        : process.env.NEXTAUTH_URL;
 
     // Use absolute URL with proper encoding
     const url = new URL(
@@ -180,24 +199,27 @@ export async function getContentPage(
 
     // Check content type before attempting to parse JSON
     const contentType = response.headers.get('content-type');
-    if (!response.ok) {
-      if (response.status === 404) return undefined;
+    const isJson = contentType?.includes('application/json');
 
-      if (contentType?.includes('application/json')) {
+    if (!response.ok) {
+      if (isJson) {
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to fetch content page');
+        throw new Error(
+          errorData.message ||
+            `API error: ${response.status} ${response.statusText}`,
+        );
       } else {
         // Handle HTML error responses
         const text = await response.text();
         console.error('Non-JSON error response:', text.substring(0, 200));
         throw new Error(
-          `Server returned ${response.status} ${response.statusText}`,
+          `Server returned non-JSON error: ${response.status} ${response.statusText}`,
         );
       }
     }
 
     // Verify we received JSON before parsing
-    if (!contentType?.includes('application/json')) {
+    if (!isJson) {
       const text = await response.text();
       console.error(
         'Expected JSON but received:',
@@ -228,7 +250,7 @@ export async function getEntryById<T extends ContentTypeUID>(
     const baseUrl =
       typeof window !== 'undefined'
         ? window.location.origin
-        : process.env.NEXTAUTH_URL || 'http://localhost:3000';
+        : process.env.NEXTAUTH_URL;
 
     // Use absolute URL with proper encoding
     const url = new URL(
@@ -247,24 +269,27 @@ export async function getEntryById<T extends ContentTypeUID>(
 
     // Check content type before attempting to parse JSON
     const contentType = response.headers.get('content-type');
-    if (!response.ok) {
-      if (response.status === 404) return undefined;
+    const isJson = contentType?.includes('application/json');
 
-      if (contentType?.includes('application/json')) {
+    if (!response.ok) {
+      if (isJson) {
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to fetch content page');
+        throw new Error(
+          errorData.message ||
+            `API error: ${response.status} ${response.statusText}`,
+        );
       } else {
         // Handle HTML error responses
         const text = await response.text();
         console.error('Non-JSON error response:', text.substring(0, 200));
         throw new Error(
-          `Server returned ${response.status} ${response.statusText}`,
+          `Server returned non-JSON error: ${response.status} ${response.statusText}`,
         );
       }
     }
 
     // Verify we received JSON before parsing
-    if (!contentType?.includes('application/json')) {
+    if (!isJson) {
       const text = await response.text();
       console.error(
         'Expected JSON but received:',

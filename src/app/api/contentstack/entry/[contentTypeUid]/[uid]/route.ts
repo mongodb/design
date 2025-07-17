@@ -12,11 +12,11 @@ import { BlockPropsMap } from '@/components/content-stack/types';
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string; uid: string } },
+  { params }: { params: { contentTypeUid: string; uid: string } },
 ) {
   try {
-    const { id, uid } = params;
-    if (!id) {
+    const { contentTypeUid, uid } = params;
+    if (!contentTypeUid) {
       return NextResponse.json(
         { message: 'Content type UID is required' },
         { status: 400 },
@@ -44,10 +44,10 @@ export async function GET(
       'example_card_block_2_column_',
     ];
 
-    if (!validContentTypes.includes(id)) {
+    if (!validContentTypes.includes(contentTypeUid)) {
       return NextResponse.json(
         {
-          message: `Invalid content type: ${id}. Must be one of: ${validContentTypes.join(
+          message: `Invalid content type: ${contentTypeUid}. Must be one of: ${validContentTypes.join(
             ', ',
           )}`,
         },
@@ -55,19 +55,25 @@ export async function GET(
       );
     }
 
-    console.log('App Router API: GET /api/contentstack/entry/[id]/[uid]', {
-      id, // This is the content type UID (e.g., 'badge_block')
-      uid, // This is the entry UID
-      url: request.url,
-    });
+    console.log(
+      'App Router API: GET /api/contentstack/entry/[contentTypeUid]/[uid]',
+      {
+        contentTypeUid, // This is the content type UID (e.g., 'badge_block')
+        uid, // This is the entry UID
+        url: request.url,
+      },
+    );
 
     // Type assertion is needed here because we've already validated that id is one of the valid content types
-    const entry = await getEntryByIdService(id as keyof BlockPropsMap, uid);
+    const entry = await getEntryByIdService(
+      contentTypeUid as keyof BlockPropsMap,
+      uid,
+    );
 
     if (!entry) {
       return NextResponse.json(
         {
-          message: `Entry with UID '${uid}' not found for content type '${id}'`,
+          message: `Entry with UID '${uid}' not found for content type '${contentTypeUid}'`,
         },
         { status: 404 },
       );

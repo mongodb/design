@@ -40,7 +40,7 @@ export default function ComponentLayout({
 
   console.log({ componentsFromContext });
 
-  const isComponentPrivate = component?.private;
+  // const isComponentPrivate = component?.private;
   // const shouldRenderPrivateContentWall = Boolean(
   //   isComponentPrivate && !isLoggedIn,
   // );
@@ -61,12 +61,12 @@ export default function ComponentLayout({
   };
 
   const externalLinks = [
-    {
-      'aria-label': 'View Figma file',
-      href: component?.figmaurl,
-      icon: <Figma />,
-      isPrivate: true,
-    },
+    // {
+    //   'aria-label': 'View Figma file',
+    //   href: component?.figmaurl,
+    //   icon: <Figma />,
+    //   isPrivate: true,
+    // },
     // {
     //   'aria-label': 'View GitHub package',
     //   href: getGithubLink(
@@ -111,7 +111,7 @@ export default function ComponentLayout({
         inlineChildren={
           <>
             {externalLinks.map(
-              ({ 'aria-label': ariaLabel, href, icon, isPrivate }, index) => {
+              ({ 'aria-label': ariaLabel, href, icon }, index) => {
                 // if (isPrivate && !isLoggedIn) {
                 //   return null;
                 // }

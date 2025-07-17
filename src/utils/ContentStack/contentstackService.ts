@@ -1,12 +1,12 @@
 import Contentstack from 'contentstack';
-import startCase from 'lodash/startCase'; // Keep startCase if used in server logic
+import startCase from 'lodash/startCase';
 import defaults from 'lodash/defaults';
 
-import { ComponentFields, ContentPage, ContentPageGroup } from './types'; // Adjust path as needed
+import { ComponentFields, ContentPage, ContentPageGroup } from './types';
 import {
   BlockPropsMap,
   ContentTypeUID,
-} from '@/components/content-stack/types'; // Adjust path as needed
+} from '@/components/content-stack/types';
 
 const ENV_MAP = {
   main: 'main',

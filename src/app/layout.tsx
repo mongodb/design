@@ -18,17 +18,10 @@ export default async function RootLayout({
     console.error('Error fetching components in RootLayout:', error);
   }
 
-  // console.log({ components });
-
   return (
     // Provide the session to the entire app
     // <SessionProvider session={session}>
     <LayoutWrapper components={components}>{children}</LayoutWrapper>
     // </SessionProvider>
-    // <html>
-    //   <body>
-    //     <div>hi</div>
-    //   </body>
-    // </html>
   );
 }
