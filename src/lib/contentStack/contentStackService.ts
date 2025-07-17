@@ -22,13 +22,13 @@ const isValidEnv = (env: string | undefined): env is EnvMapKey => {
 };
 
 const environment = ((): string => {
-  const environmentVariable = process.env.CONTENTSTACK_ENVIRONMENT;
+  const environmentVariable = process.env.ENVIRONMENT;
   if (isValidEnv(environmentVariable)) {
     return ENV_MAP[environmentVariable];
   }
   // Log the error more verbosely for debugging on the server
   console.error(`Error: Could not find Contentstack environment for "${environmentVariable}".
-    Please ensure CONTENTSTACK_ENVIRONMENT is set in your .env.local or deployment environment.`);
+    Please ensure ENVIRONMENT is set in your .env.local or deployment environment.`);
   throw new Error(`Could not find environment "${environmentVariable}"`);
 })();
 
