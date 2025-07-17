@@ -40,7 +40,7 @@ export default function ComponentLayout({
 
   console.log({ componentsFromContext });
 
-  // const isComponentPrivate = component?.private;
+  const isComponentPrivate = component?.private;
   // const shouldRenderPrivateContentWall = Boolean(
   //   isComponentPrivate && !isLoggedIn,
   // );
@@ -61,23 +61,18 @@ export default function ComponentLayout({
   };
 
   const externalLinks = [
-    // {
-    //   'aria-label': 'View Figma file',
-    //   href: component?.figmaurl,
-    //   icon: <Figma />,
-    //   isPrivate: true,
-    // },
-    // {
-    //   'aria-label': 'View GitHub package',
-    //   href: getGithubLink(
-    //     component?.private ?? false,
-    //     currentComponent as SubPath,
-    //   ),
-    //   icon: <Github />,
-    // },
+    {
+      'aria-label': 'View Figma file',
+      href: component?.figmaurl,
+      icon: <Figma />,
+      isPrivate: true,
+    },
     {
       'aria-label': 'View GitHub package',
-      href: getGithubLink(false, currentComponent as SubPath),
+      href: getGithubLink(
+        component?.private ?? false,
+        currentComponent as SubPath,
+      ),
       icon: <Github />,
     },
     {
@@ -93,7 +88,7 @@ export default function ComponentLayout({
         min-height: 100vh;
       `}
     >
-      <H2
+      {/* <H2
         className={css`
           text-transform: capitalize;
           margin-bottom: ${spacing[600]}px;
@@ -163,9 +158,9 @@ export default function ComponentLayout({
         </Tab>
       </Tabs>
 
-      <div>{children}</div>
+      <div>{children}</div> */}
 
-      {/* {shouldRenderPrivateContentWall ? (
+      {isComponentPrivate ? (
         <PrivateContentWall />
       ) : (
         <>
@@ -191,7 +186,11 @@ export default function ComponentLayout({
                     { 'aria-label': ariaLabel, href, icon, isPrivate },
                     index,
                   ) => {
-                    if (isPrivate && !isLoggedIn) {
+                    // if (isPrivate && !isLoggedIn) {
+                    //   return null;
+                    // }
+
+                    if (isPrivate) {
                       return null;
                     }
 
@@ -244,7 +243,7 @@ export default function ComponentLayout({
 
           <div>{children}</div>
         </>
-      )} */}
+      )}
     </div>
   );
 }

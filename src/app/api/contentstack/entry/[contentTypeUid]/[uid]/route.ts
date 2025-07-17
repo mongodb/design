@@ -13,6 +13,8 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { contentTypeUid: string; uid: string } },
 ) {
+  console.log('💚💚💚💚💚💚');
+
   try {
     const { contentTypeUid, uid } = params;
     if (!contentTypeUid) {

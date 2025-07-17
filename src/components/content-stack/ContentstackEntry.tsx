@@ -104,6 +104,7 @@ const ContentstackEntry = <T extends ContentTypeUID>({
   contentTypeUid: T;
   entryUid: string;
 }) => {
+  console.log('🥵🥵🥵🥵🥵🥵🥵🥵🥵🥵');
   // Note: not using `useMemo` here, since `getEntryById` is async
   const [entry, setEntry] = useState<BlockPropsMap[T]>();
   useEffect(() => {
