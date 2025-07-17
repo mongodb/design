@@ -13,12 +13,6 @@ export default async function Page({
     startCase(contentPageTitleParam),
   );
 
-  // const isLoggedIn = !!session?.user;
-  // const isContentPrivate = contentPage?.is_private;
-  // const shouldRenderPrivateContentWall = Boolean(
-  //   isContentPrivate && !isLoggedIn,
-  // );
-
   return (
     <div>
       <ContentPage contentPage={contentPage} />

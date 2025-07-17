@@ -37,7 +37,6 @@ import { SideNavList } from './SideNavList';
 import { shouldAddColonToTitle } from '@/utils';
 
 export function SideNavigation() {
-  // const { isLoggedIn } = useSession();
   const navRef = useRef<HTMLElement>(null);
   const [open, setOpen] = React.useState(false);
   const [isMobile] = useMediaQuery(['(max-width: 640px)'], {
@@ -48,8 +47,6 @@ export function SideNavigation() {
   const currentComponent =
     topLevelPage === 'component' ? activeSubDirOrPage : '';
   const { darkMode, theme } = useDarkMode();
-
-  // const PrivateIcon = isLoggedIn ? UnlockIcon : LockIcon;
 
   const isActiveResource = (resource: SubPathMeta) => {
     return resource.isComponent
@@ -79,13 +76,6 @@ export function SideNavigation() {
             active={isActiveResource(foundation)}
           >
             {shouldAddColonToTitle(foundation.name)}
-            {/* {foundation.isPrivate && (
-              <PrivateIcon
-                className={css`
-                  margin-left: ${spacing[400]}px;
-                `}
-              />
-            )} */}
           </SideNavItem>
         ))}
       </SideNavList>
@@ -110,13 +100,6 @@ export function SideNavigation() {
             active={isActiveResource(pattern)}
           >
             {shouldAddColonToTitle(pattern.name)}
-            {/* {pattern.isPrivate && (
-              <PrivateIcon
-                className={css`
-                  margin-left: ${spacing[400]}px;
-                `}
-              />
-            )} */}
           </SideNavItem>
         ))}
       </SideNavList>
@@ -144,13 +127,6 @@ export function SideNavigation() {
             }
           >
             {component.name}
-            {/* {component.isPrivate && (
-              <PrivateIcon
-                className={css`
-                  margin-left: ${spacing[400]}px;
-                `}
-              />
-            )} */}
           </SideNavItem>
         ))}
       </SideNavList>
