@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { css, cx } from '@emotion/css';
-import { getEntryById } from '@/lib/contentStackClient'; // client-safe version
+import { getEntryById } from '@/lib/contentStack/contentStackClient'; // client-safe version
 import Badge from '@leafygreen-ui/badge';
 import Button from '@leafygreen-ui/button';
 import Callout, { Variant } from '@leafygreen-ui/callout';
@@ -107,6 +107,7 @@ const ContentstackEntry = <T extends ContentTypeUID>({
   // Note: not using `useMemo` here, since `getEntryById` is async
   const [entry, setEntry] = useState<BlockPropsMap[T]>();
   useEffect(() => {
+    // This calls the client safe version of `getEntryById` since it is called within a client component
     getEntryById(contentTypeUid, entryUid).then(res => {
       if (res) setEntry(res);
     });

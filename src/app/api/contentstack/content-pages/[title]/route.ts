@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getContentPage } from '../../../../../lib/contentStackService';
+import { getContentPageService } from '../../../../../lib/contentStack/contentStackService';
 
 /**
  * API Route to get a content page by title
@@ -22,7 +22,7 @@ export async function GET(
       url: request.url,
     });
 
-    const contentPage = await getContentPage(title);
+    const contentPage = await getContentPageService(title);
 
     if (!contentPage) {
       return NextResponse.json(
@@ -34,7 +34,7 @@ export async function GET(
     // Return JSON response
     return NextResponse.json(contentPage, { status: 200 });
   } catch (error: any) {
-    console.error('API Error: getContentPageByTitle', error);
+    console.error('API Error: getContentPageServiceByTitle', error);
     return NextResponse.json(
       { message: error.message || 'Failed to fetch content page' },
       { status: 500 },

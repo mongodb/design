@@ -1,4 +1,4 @@
-import { getContentPage } from '@/lib/contentStackService';
+import { getContentPageService } from '@/lib/contentStack/contentStackService';
 
 import startCase from 'lodash/startCase';
 import { ContentPage } from '@/components/content-page';
@@ -8,7 +8,10 @@ export default async function Page({
 }: {
   params: { contentPage: string };
 }) {
-  const contentPage = await getContentPage(startCase(contentPageTitleParam));
+  // This can directly call the service to fetch the content page since this is a server component
+  const contentPage = await getContentPageService(
+    startCase(contentPageTitleParam),
+  );
 
   // const isLoggedIn = !!session?.user;
   // const isContentPrivate = contentPage?.is_private;

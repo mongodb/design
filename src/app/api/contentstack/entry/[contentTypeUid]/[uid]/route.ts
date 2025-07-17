@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getEntryById } from '../../../../../../lib/contentStackService';
+import { getEntryByIdService } from '../../../../../../lib/contentStack/contentStackService';
 import { BlockPropsMap } from '@/components/content-stack/types';
 
 /**
@@ -29,31 +29,6 @@ export async function GET(
       );
     }
 
-    // Validate that id is one of the valid content types
-    const validContentTypes = [
-      'annotated_image_block',
-      'badge_block',
-      'basic_usage_block',
-      'button_block',
-      'callout_block',
-      'card_block',
-      'example_card_block',
-      'expandable_card_block',
-      'horizontal_layout',
-      'example_card_block_2_column_',
-    ];
-
-    if (!validContentTypes.includes(contentTypeUid)) {
-      return NextResponse.json(
-        {
-          message: `Invalid content type: ${contentTypeUid}. Must be one of: ${validContentTypes.join(
-            ', ',
-          )}`,
-        },
-        { status: 400 },
-      );
-    }
-
     console.log(
       'App Router API: GET /api/contentstack/entry/[contentTypeUid]/[uid]',
       {
@@ -64,7 +39,7 @@ export async function GET(
     );
 
     // Type assertion is needed here because we've already validated that id is one of the valid content types
-    const entry = await getEntryById(
+    const entry = await getEntryByIdService(
       contentTypeUid as keyof BlockPropsMap,
       uid,
     );
@@ -81,7 +56,7 @@ export async function GET(
     // Return JSON response
     return NextResponse.json(entry, { status: 200 });
   } catch (error: any) {
-    console.error('API Error: getEntryById', error);
+    console.error('API Error: getEntryByIdService', error);
     return NextResponse.json(
       { message: error.message || 'Failed to fetch entry' },
       { status: 500 },

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getComponents } from '../../../../lib/contentStackService';
+import { getComponentsService } from '../../../../lib/contentStack/contentStackService';
 
 /**
  * API Route to get all components
@@ -15,12 +15,12 @@ export async function GET(request: NextRequest) {
       url: request.url,
     });
 
-    const components = await getComponents({ includeContent });
+    const components = await getComponentsService({ includeContent });
 
     // Return JSON response
     return NextResponse.json(components, { status: 200 });
   } catch (error: any) {
-    console.error('API Error: getComponents', error);
+    console.error('API Error: getComponentsService', error);
     return NextResponse.json(
       { message: error.message || 'Failed to fetch components' },
       { status: 500 },

@@ -58,7 +58,7 @@ interface QueryOptions {
 /**
  * @returns All component objects, optionally with all associated content (i.e. guidelines)
  */
-export async function getComponents(
+export async function getComponentsService(
   options?: QueryOptions,
 ): Promise<Array<ComponentFields>> {
   try {
@@ -84,7 +84,7 @@ export async function getComponents(
 /**
  * @returns the component meta & optionally content for a given componentName
  */
-export async function fetchComponent(
+export async function fetchComponentService(
   componentName: string,
   options?: QueryOptions,
 ): Promise<ComponentFields | undefined> {
@@ -109,7 +109,9 @@ export async function fetchComponent(
 /**
  * @returns All content page groups with
  */
-export async function getContentPageGroups(): Promise<Array<ContentPageGroup>> {
+export async function getContentPageGroupsService(): Promise<
+  Array<ContentPageGroup>
+> {
   try {
     const query = Stack.ContentType('content_page_group').Query();
     const pageGroups: Array<ContentPageGroup> = (
@@ -136,7 +138,7 @@ export async function getContentPageGroups(): Promise<Array<ContentPageGroup>> {
   }
 }
 
-export async function getContentPage(
+export async function getContentPageService(
   contentPageTitle: string,
 ): Promise<ContentPage | undefined> {
   try {
@@ -153,7 +155,7 @@ export async function getContentPage(
   }
 }
 
-export async function getEntryById<T extends ContentTypeUID>(
+export async function getEntryByIdService<T extends ContentTypeUID>(
   content_type_uid: T,
   uid: string,
 ): Promise<BlockPropsMap[T]> {
