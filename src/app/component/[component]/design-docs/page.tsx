@@ -6,24 +6,13 @@ export default async function Page({
 }: {
   params: { component: string };
 }) {
-  const components = await getComponents({ includeContent: false });
-
-  const component = components.find(
-    component => component.title === componentName,
-  );
-
-  // check if the component is private
-  const isComponentPrivate = component?.private;
-
-  if (isComponentPrivate) return;
-
-  const componentEntry = await fetchComponent(componentName, {
+  const component = await fetchComponent(componentName, {
     includeContent: true,
   });
 
   return (
     <div>
-      <DesignDocsContent content={componentEntry?.designguidelines} />
+      <DesignDocsContent content={component?.designguidelines} />
     </div>
   );
 }
