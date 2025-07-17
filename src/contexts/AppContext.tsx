@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
 import { PropsWithChildren, createContext, useContext } from 'react';
-import { ComponentFields, ContentPageGroup } from '@/utils/ContentStack/types';
+import { ComponentFields, ContentPageGroup } from '@/lib/contentStack/types';
 
 interface AppContextValue {
   components: Array<ComponentFields>;
   contentPageGroups: Array<ContentPageGroup>;
-};
+}
 
 const AppContext = createContext<AppContextValue>({
   components: [],
@@ -28,8 +28,8 @@ export function AppContextProvider({
       {children}
     </AppContext.Provider>
   );
-};
+}
 
 export function useAppContext() {
   return useContext(AppContext);
-};
+}

@@ -5,7 +5,7 @@ import { ContentstackRichText } from '@/components/content-stack';
 
 import { css } from '@emotion/css';
 
-import { ContentPage as ContentPageType } from '@/utils/ContentStack/types';
+import { ContentPage as ContentPageType } from '@/lib/contentStack/types';
 
 export function ContentPage({
   contentPage,
