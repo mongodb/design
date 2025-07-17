@@ -10,7 +10,7 @@ import { Tabs, Tab } from '@leafygreen-ui/tabs';
 import { spacing } from '@leafygreen-ui/tokens';
 import { H2 } from '@leafygreen-ui/typography';
 
-import { useSession } from '@/hooks';
+// import { useSession } from '@/hooks';
 import { SubPath, getGithubLink } from '@/utils';
 import { useContentStackContext } from '@/contexts/ContentStackContext';
 
@@ -26,7 +26,7 @@ export default function ComponentLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { isLoggedIn } = useSession();
+  // const { isLoggedIn } = useSession();
   const router = useRouter();
   const pathname = usePathname();
   const currentComponent = pathname.split('/')[2];
@@ -38,10 +38,12 @@ export default function ComponentLayout({
     component => component.title === componentTitle,
   );
 
+  console.log({ componentsFromContext });
+
   const isComponentPrivate = component?.private;
-  const shouldRenderPrivateContentWall = Boolean(
-    isComponentPrivate && !isLoggedIn,
-  );
+  // const shouldRenderPrivateContentWall = Boolean(
+  //   isComponentPrivate && !isLoggedIn,
+  // );
 
   const getSelected = () => {
     const suffix = pathname.split('/')[3];
@@ -65,12 +67,17 @@ export default function ComponentLayout({
       icon: <Figma />,
       isPrivate: true,
     },
+    // {
+    //   'aria-label': 'View GitHub package',
+    //   href: getGithubLink(
+    //     component?.private ?? false,
+    //     currentComponent as SubPath,
+    //   ),
+    //   icon: <Github />,
+    // },
     {
       'aria-label': 'View GitHub package',
-      href: getGithubLink(
-        component?.private ?? false,
-        currentComponent as SubPath,
-      ),
+      href: getGithubLink(false, currentComponent as SubPath),
       icon: <Github />,
     },
     {
@@ -86,7 +93,79 @@ export default function ComponentLayout({
         min-height: 100vh;
       `}
     >
-      {shouldRenderPrivateContentWall ? (
+      <H2
+        className={css`
+          text-transform: capitalize;
+          margin-bottom: ${spacing[600]}px;
+        `}
+      >
+        {currentComponent.split('-').join(' ')}
+      </H2>
+
+      <Tabs
+        selected={getSelected()}
+        aria-label="main tabs"
+        className={css`
+          margin-bottom: ${spacing[800]}px;
+        `}
+        inlineChildren={
+          <>
+            {externalLinks.map(
+              ({ 'aria-label': ariaLabel, href, icon, isPrivate }, index) => {
+                // if (isPrivate && !isLoggedIn) {
+                //   return null;
+                // }
+
+                if (!href) {
+                  return null;
+                }
+
+                return (
+                  <IconButton
+                    key={ariaLabel + index}
+                    aria-label={ariaLabel}
+                    size="large"
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {icon}
+                  </IconButton>
+                );
+              },
+            )}
+          </>
+        }
+      >
+        <Tab
+          onClick={() =>
+            router.push(`/component/${currentComponent}/${liveExamplePath}`)
+          }
+          name="Live Example"
+        >
+          <></>
+        </Tab>
+        <Tab
+          onClick={() =>
+            router.push(`/component/${currentComponent}/${designDocsPath}`)
+          }
+          name="Design Documentation"
+        >
+          <></>
+        </Tab>
+        <Tab
+          onClick={() =>
+            router.push(`/component/${currentComponent}/${codeDocsPath}`)
+          }
+          name="Code Documentation"
+        >
+          <></>
+        </Tab>
+      </Tabs>
+
+      <div>{children}</div>
+
+      {/* {shouldRenderPrivateContentWall ? (
         <PrivateContentWall />
       ) : (
         <>
@@ -165,7 +244,7 @@ export default function ComponentLayout({
 
           <div>{children}</div>
         </>
-      )}
+      )} */}
     </div>
   );
 }
