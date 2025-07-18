@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { cx, css } from '@emotion/css';
 import Image from 'next/image';
 import { spacing } from '@leafygreen-ui/tokens';
