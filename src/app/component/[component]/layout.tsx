@@ -17,6 +17,8 @@ import { useContentStackContext } from '@/contexts/ContentStackContext';
 import { titleCase } from '@/utils/titleCase';
 import { PrivateContentWall } from '@/components/global';
 
+import { NotFound } from '@/components/global/NotFound';
+
 const liveExamplePath = 'live-example';
 const designDocsPath = 'design-docs';
 const codeDocsPath = 'code-docs';
@@ -37,6 +39,8 @@ export default function ComponentLayout({
   const component = componentsFromContext.find(
     component => component.title === componentTitle,
   );
+
+  if (!component) return <NotFound />;
 
   const isComponentPrivate = component?.private;
   const shouldRenderPrivateContentWall = Boolean(

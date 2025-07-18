@@ -18,9 +18,9 @@ export default async function Page({
     auth(),
   ]);
 
-  const isAuthenticated = !!session?.user;
+  const isLoggedIn = !!session?.user;
 
-  if (isPrivate && !isAuthenticated) {
+  if (isPrivate && !isLoggedIn) {
     return <PrivateContentWall />;
   }
 
