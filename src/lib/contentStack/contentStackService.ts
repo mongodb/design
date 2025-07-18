@@ -81,6 +81,46 @@ export async function getComponentsService(
 }
 
 /**
+ * Check if a component is marked as private
+ * @param componentName Name of the component to check
+ * @returns The component with just the private
+ */
+export async function fetchIsComponentPrivateService(
+  componentName: string,
+): Promise<boolean | undefined> {
+  try {
+    if (!Stack) {
+      console.warn(
+        `ContentStack not initialized. Cannot check if ${componentName} is private.`,
+      );
+      return false; // Default to not private in builds/when ContentStack isn't available
+    }
+
+    const query = Stack.ContentType('component').Query();
+    const startCaseName = startCase(componentName);
+    const result = await query
+      .where('title', startCaseName)
+      .only(['private'])
+      .toJSON()
+      .find();
+
+    // Handle empty results gracefully
+    if (!result?.[0]?.[0]) {
+      return undefined; // Component not found
+    }
+
+    return !!result[0][0].private; // Ensure boolean valu;
+  } catch (error) {
+    console.error(
+      `Server Error: Failed to check if ${componentName} is private`,
+      error,
+    );
+    // Return non-private as default in case of error
+    return false;
+  }
+}
+
+/**
  * @returns the component meta & optionally content for a given componentName
  */
 export async function fetchComponentService(
@@ -100,7 +140,7 @@ export async function fetchComponentService(
       .find();
     return result[0][0];
   } catch (error) {
-    console.error('Server Error: Component page not found', error);
+    console.error('Server Error: Component not found', error);
     throw new Error(`Failed to fetch component: ${componentName}.`);
   }
 }
@@ -137,6 +177,39 @@ export async function getContentPageGroupsService(): Promise<
   }
 }
 
+/**
+ * Returns if a content page is private.
+ * @param contentPageTitle Name of the content page to fetch
+ * @returns The content page
+ */
+export async function getIsContentPagePrivateService(
+  contentPageTitle: string,
+): Promise<boolean | undefined> {
+  try {
+    const query = Stack.ContentType('content_page').Query();
+    const result = await query
+      .where('title', contentPageTitle)
+      .only(['is_private'])
+      .toJSON()
+      .find();
+
+    // Handle empty results gracefully
+    if (!result?.[0]?.[0]) {
+      return undefined; // Component not found
+    }
+
+    return result[0][0].is_private || false;
+  } catch (error) {
+    console.error('Server Error: Content page not found', error);
+    throw new Error(`Failed to fetch content page: ${contentPageTitle}.`);
+  }
+}
+
+/**
+ * Returns a single content page by its title.
+ * @param contentPageTitle Name of the content page to fetch
+ * @returns The content page
+ */
 export async function getContentPageService(
   contentPageTitle: string,
 ): Promise<ContentPage | undefined> {

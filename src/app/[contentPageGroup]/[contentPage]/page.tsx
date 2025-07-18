@@ -1,13 +1,29 @@
-import { getContentPageService } from '@/lib/contentStack/contentStackService';
+import {
+  getContentPageService,
+  getIsContentPagePrivateService,
+} from '@/lib/contentStack/contentStackService';
 
 import startCase from 'lodash/startCase';
 import { ContentPage } from '@/components/content-page';
+import { auth } from '@/auth';
+import { PrivateContentWall } from '@/components/global';
 
 export default async function Page({
   params: { contentPage: contentPageTitleParam },
 }: {
   params: { contentPage: string };
 }) {
+  const [isPrivate, session] = await Promise.all([
+    getIsContentPagePrivateService(startCase(contentPageTitleParam)),
+    auth(),
+  ]);
+
+  const isAuthenticated = !!session?.user;
+
+  if (isPrivate && !isAuthenticated) {
+    return <PrivateContentWall />;
+  }
+
   // This can directly call the ContentStack SDK to fetch the content page since this is a server component
   const contentPage = await getContentPageService(
     startCase(contentPageTitleParam),

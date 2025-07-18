@@ -1,6 +1,8 @@
 'use server';
 
 import './globals.css';
+import { auth } from '@/auth';
+import { SessionProvider } from 'next-auth/react';
 
 import LayoutWrapper from '@/components/layout-wrapper';
 import { getComponentsService } from '@/lib/contentStack/contentStackService';
@@ -11,7 +13,15 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   // This can directly call the ContentStack SDK to fetch the content page since this is a server component
-  const components = await getComponentsService({ includeContent: false });
 
-  return <LayoutWrapper components={components}>{children}</LayoutWrapper>;
+  const [session, components] = await Promise.all([
+    auth(),
+    getComponentsService({ includeContent: false }),
+  ]);
+
+  return (
+    <SessionProvider session={session}>
+      <LayoutWrapper components={components}>{children}</LayoutWrapper>
+    </SessionProvider>
+  );
 }
