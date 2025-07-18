@@ -201,7 +201,7 @@ export async function getIsContentPagePrivateService(
     return result[0][0].is_private || false;
   } catch (error) {
     console.error('Server Error: Content page not found', error);
-    throw new Error(`Failed to fetch content page: ${contentPageTitle}.`);
+    throw new Error(`Failed to check if {contentPageTitle} is private.`);
   }
 }
 

@@ -7,6 +7,7 @@ import { useSession } from '@/hooks';
 import { useContentStackContext } from '@/contexts/ContentStackContext';
 
 import { LiveExampleContent } from './content';
+import { NotFound } from '@/components/global/NotFound';
 
 export default function Page({ params }: { params: { component: SubPath } }) {
   const { isLoggedIn } = useSession();
@@ -17,6 +18,8 @@ export default function Page({ params }: { params: { component: SubPath } }) {
   const component = componentsFromContext.find(
     component => component.title === componentTitle,
   );
+
+  if (!component) return <NotFound />;
 
   const isComponentPrivate = component?.private;
   const shouldReturnNull = Boolean(isComponentPrivate && !isLoggedIn);
