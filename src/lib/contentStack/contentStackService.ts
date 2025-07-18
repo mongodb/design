@@ -22,6 +22,14 @@ const isValidEnv = (env: string | undefined): env is EnvMapKey => {
 };
 
 const environment = ((): string => {
+  // Only log the last four characters of the keys for security
+  const apiKey = process.env.CONTENTSTACK_API_KEY || '';
+  const publicEnvKey = process.env.NEXT_PUBLIC_ENVIRONMENT || '';
+  const deliverykey = process.env.CONTENTSTACK_DELIVERY_TOKEN || '';
+  console.log('1️⃣ CONTENTSTACK_API_KEY:', `...${apiKey.slice(-4)}`);
+  console.log('2️⃣ NEXT_PUBLIC_ENVIRONMENT:', `...${publicEnvKey.slice(-4)}`);
+  console.log('3️⃣ CONTENTSTACK_DELIVERY_TOKEN:', `...${deliverykey.slice(-4)}`);
+
   const environmentVariable = process.env.NEXT_PUBLIC_ENVIRONMENT;
   if (isValidEnv(environmentVariable)) {
     return ENV_MAP[environmentVariable];
