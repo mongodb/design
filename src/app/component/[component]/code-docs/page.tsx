@@ -14,8 +14,8 @@ export default async function Page({
   const componentName = params.component;
   const mappedComponentName =
     getMappedComponentName[componentName] ?? componentName;
-  const isComponentPrivate = findComponent(componentName)?.isPrivate;
 
+  const isComponentPrivate = findComponent(componentName)?.isPrivate;
   const shouldReturnNull = Boolean(isComponentPrivate && !isLoggedIn);
 
   if (shouldReturnNull) return null;
