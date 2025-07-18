@@ -32,9 +32,21 @@ const environment = ((): string => {
   throw new Error(`Could not find environment "${environmentVariable}"`);
 })();
 
+const getApiKey = () => {
+  // Only log the last four characters of the keys for security
+  const apiKey = process.env.CONTENTSTACK_API_KEY || '';
+  const publicEnvKey = process.env.NEXT_PUBLIC_ENVIRONMENT || '';
+  const deliverykey = process.env.CONTENTSTACK_DELIVERY_TOKEN || '';
+  console.log('1️⃣ CONTENTSTACK_API_KEY:', `...${apiKey.slice(-4)}`);
+  console.log('2️⃣ NEXT_PUBLIC_ENVIRONMENT:', `...${publicEnvKey.slice(-4)}`);
+  console.log('3️⃣ CONTENTSTACK_DELIVERY_TOKEN:', `...${deliverykey.slice(-4)}`);
+
+  return process.env.CONTENTSTACK_API_KEY;
+};
+
 // Initialize Contentstack Stack only once on the server
 const Stack = Contentstack.Stack({
-  api_key: process.env.CONTENTSTACK_API_KEY as string,
+  api_key: getApiKey() as string,
   delivery_token: process.env.CONTENTSTACK_DELIVERY_TOKEN as string,
   environment,
 });
