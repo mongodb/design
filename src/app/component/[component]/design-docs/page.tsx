@@ -1,4 +1,4 @@
-import { fetchComponent } from '@/utils/ContentStack/getContentstackResources';
+import { fetchComponentService } from '@/lib/contentStack/contentStackService';
 import { DesignDocsContent } from './client';
 
 export default async function Page({
@@ -6,7 +6,8 @@ export default async function Page({
 }: {
   params: { component: string };
 }) {
-  const component = await fetchComponent(componentName, {
+  // This can directly call the ContentStack SDK to fetch the content page since this is a server component
+  const component = await fetchComponentService(componentName, {
     includeContent: true,
   });
 

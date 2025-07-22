@@ -1,7 +1,7 @@
 'use client';
 
 import { PropsWithChildren, createContext, useContext } from 'react';
-import { ComponentFields } from '@/utils/ContentStack/types';
+import { ComponentFields } from '@/lib/contentStack/types';
 
 interface ContentStackContextValue {
   components: Array<ComponentFields>;
