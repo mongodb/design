@@ -41,6 +41,7 @@ export const ComponentSubPath = {
   RadioBoxGroup: 'radio-box-group',
   RadioGroup: 'radio-group',
   SearchInput: 'search-input',
+  SectionNav: 'section-nav',
   SegmentedControl: 'segmented-control',
   Select: 'select',
   SideNav: 'side-nav',
@@ -214,6 +215,11 @@ export const components: Array<SubPathMeta> = [
     navPath: generateComponentNavPath(ComponentSubPath.RadioGroup),
 
     subComponents: ['RadioGroup', 'Radio'],
+  },
+  {
+    name: titleCase(ComponentSubPath.SectionNav),
+    navPath: generateComponentNavPath(ComponentSubPath.SectionNav),
+    subComponents: ['SectionNav', 'SectionNavItem'],
   },
   {
     name: titleCase(ComponentSubPath.SearchInput),

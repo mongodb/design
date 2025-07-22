@@ -61,6 +61,7 @@
     "@leafygreen-ui/preview-card": "^0.2.0",
     "@leafygreen-ui/radio-box-group": "^14.0.10",
     "@leafygreen-ui/radio-group": "^12.0.12",
+    "@leafygreen-ui/section-nav": "^1.0.0",
     "@leafygreen-ui/search-input": "^5.0.14",
     "@leafygreen-ui/segmented-control": "^10.0.13",
     "@leafygreen-ui/select": "^14.1.8",
