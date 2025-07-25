@@ -4,13 +4,11 @@ import React, { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import Fuse, { IFuseOptions } from 'fuse.js';
 import debounce from 'lodash/debounce';
-// @ts-expect-error
-import LockIcon from '@leafygreen-ui/icon/dist/Lock';
-// @ts-expect-error
-import UnlockIcon from '@leafygreen-ui/icon/dist/Unlock';
 import { SearchInput, SearchResult } from '@leafygreen-ui/search-input';
 import { useSession } from '@/hooks';
 import { components } from '@/utils/components';
+
+import { PrivateIcon } from '@/components/global/PrivateIcon';
 
 import {
   descriptionStyle,
@@ -56,8 +54,6 @@ export function Search() {
     }
   }, [searchTerm]);
 
-  const PrivateIcon = isLoggedIn ? UnlockIcon : LockIcon;
-
   return (
     <SearchInput
       aria-label="Search Components"
@@ -70,7 +66,7 @@ export function Search() {
         <SearchResult key={item.name} href={item.navPath ?? '/'} as={Link}>
           <div className={searchResultStyle}>
             {item.name}
-            {item.isPrivate && <PrivateIcon size="small" />}
+            {item.isPrivate && <PrivateIcon isPrivate={!isLoggedIn} />}
           </div>
         </SearchResult>
       ))}

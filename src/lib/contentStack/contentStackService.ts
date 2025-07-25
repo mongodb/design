@@ -54,10 +54,27 @@ interface QueryOptions {
   includeContent?: boolean; // Made optional as it has a default
 }
 
+const queryContentType = ({
+  contentTitle,
+  contentFilter,
+  contentType,
+}: {
+  contentTitle: string;
+  contentFilter: string[];
+  contentType: string;
+}) => {
+  const query = Stack.ContentType(contentType).Query();
+  return query
+    .where('title', startCase(contentTitle))
+    .only([...contentFilter])
+    .toJSON()
+    .find();
+};
+
 /**
  * @returns All component objects, optionally with all associated content (i.e. guidelines)
  */
-export async function getComponentsService(
+export async function fetchComponentsService(
   options?: QueryOptions,
 ): Promise<Array<ComponentFields>> {
   try {
@@ -96,20 +113,18 @@ export async function fetchIsComponentPrivateService(
       return false; // Default to not private in builds/when ContentStack isn't available
     }
 
-    const query = Stack.ContentType('component').Query();
-    const startCaseName = startCase(componentName);
-    const result = await query
-      .where('title', startCaseName)
-      .only(['private'])
-      .toJSON()
-      .find();
+    const result = await queryContentType({
+      contentTitle: componentName,
+      contentFilter: ['private'],
+      contentType: 'component',
+    });
 
-    // Handle empty results gracefully
-    if (!result?.[0]?.[0]) {
-      return undefined; // Component not found
-    }
+    const responseObject = result?.[0];
+    const contentMetaData = responseObject?.[0];
 
-    return !!result[0][0].private; // Ensure boolean valu;
+    if (!contentMetaData) return undefined;
+
+    return !!contentMetaData.private;
   } catch (error) {
     console.error(
       `Server Error: Failed to check if ${componentName} is private`,
@@ -128,17 +143,20 @@ export async function fetchComponentService(
   options?: QueryOptions,
 ): Promise<ComponentFields | undefined> {
   try {
-    const query = Stack.ContentType('component').Query();
-    const startCaseName = startCase(componentName);
-    const result = await query
-      .where('title', startCaseName)
-      .only([
+    const result = await queryContentType({
+      contentTitle: componentName,
+      contentFilter: [
         ...componentProperties,
         ...(options?.includeContent ? optionalComponentProperties : []),
-      ])
-      .toJSON()
-      .find();
-    return result[0][0];
+      ],
+      contentType: 'component',
+    });
+
+    const responseObject = result?.[0];
+    const contentMetaData = responseObject?.[0];
+    if (!contentMetaData) return undefined;
+
+    return contentMetaData;
   } catch (error) {
     console.error('Server Error: Component not found', error);
     throw new Error(`Failed to fetch component: ${componentName}.`);
@@ -148,7 +166,7 @@ export async function fetchComponentService(
 /**
  * @returns All content page groups with
  */
-export async function getContentPageGroupsService(): Promise<
+export async function fetchContentPageGroupsService(): Promise<
   Array<ContentPageGroup>
 > {
   try {
@@ -182,26 +200,26 @@ export async function getContentPageGroupsService(): Promise<
  * @param contentPageTitle Name of the content page to fetch
  * @returns The content page
  */
-export async function getIsContentPagePrivateService(
+export async function fetchIsContentPagePrivateService(
   contentPageTitle: string,
 ): Promise<boolean | undefined> {
   try {
-    const query = Stack.ContentType('content_page').Query();
-    const result = await query
-      .where('title', contentPageTitle)
-      .only(['is_private'])
-      .toJSON()
-      .find();
+    const result = await queryContentType({
+      contentTitle: contentPageTitle,
+      contentFilter: ['is_private'],
+      contentType: 'content_page',
+    });
+
+    const responseObject = result?.[0];
+    const contentMetaData = responseObject?.[0];
 
     // Handle empty results gracefully
-    if (!result?.[0]?.[0]) {
-      return undefined; // Component not found
-    }
+    if (!contentMetaData) return undefined; // Component not found
 
-    return result[0][0].is_private || false;
+    return contentMetaData.is_private || false;
   } catch (error) {
     console.error('Server Error: Content page not found', error);
-    throw new Error(`Failed to check if {contentPageTitle} is private.`);
+    throw new Error(`Failed to check if ${contentPageTitle} is private.`);
   }
 }
 
@@ -210,7 +228,7 @@ export async function getIsContentPagePrivateService(
  * @param contentPageTitle Name of the content page to fetch
  * @returns The content page
  */
-export async function getContentPageService(
+export async function fetchContentPageService(
   contentPageTitle: string,
 ): Promise<ContentPage | undefined> {
   try {
@@ -227,7 +245,7 @@ export async function getContentPageService(
   }
 }
 
-export async function getEntryByIdService<T extends ContentTypeUID>(
+export async function fetchEntryByIdService<T extends ContentTypeUID>(
   content_type_uid: T,
   uid: string,
 ): Promise<BlockPropsMap[T]> {

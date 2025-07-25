@@ -5,7 +5,7 @@ import { auth } from '@/auth';
 import { SessionProvider } from 'next-auth/react';
 
 import LayoutWrapper from '@/components/layout-wrapper';
-import { getComponentsService } from '@/lib/contentStack/contentStackService';
+import { fetchComponentsService } from '@/lib/contentStack/contentStackService';
 
 export default async function RootLayout({
   children,
@@ -16,7 +16,7 @@ export default async function RootLayout({
 
   const [session, components] = await Promise.all([
     auth(),
-    getComponentsService({ includeContent: false }),
+    fetchComponentsService({ includeContent: false }),
   ]);
 
   return (

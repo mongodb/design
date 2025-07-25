@@ -22,9 +22,8 @@ export default function Page({ params }: { params: { component: SubPath } }) {
   if (!component) return <NotFound />;
 
   const isComponentPrivate = component?.private;
-  const shouldReturnNull = Boolean(isComponentPrivate && !isLoggedIn);
 
-  if (shouldReturnNull) return null;
+  if (isComponentPrivate && !isLoggedIn) return null;
 
   return <LiveExampleContent component={params.component} />;
 }
