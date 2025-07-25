@@ -2,7 +2,7 @@
 
 import './globals.css';
 import { auth } from '@/auth';
-import { SessionProvider } from 'next-auth/react';
+import { SessionProvider } from '@/auth/client';
 
 import LayoutWrapper from '@/components/layout-wrapper';
 import { fetchComponentsService } from '@/lib/contentStack/contentStackService';

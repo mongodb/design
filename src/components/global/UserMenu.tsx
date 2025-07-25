@@ -9,9 +9,8 @@ import { Menu, MenuItem } from '@leafygreen-ui/menu';
 import { Body, Description } from '@leafygreen-ui/typography';
 
 import { LogIn } from './LogIn';
-import { logout } from '@/auth';
 
-import { signOut } from 'next-auth/react';
+import { signOut } from '@/auth/client';
 import { useSession } from '@/hooks';
 
 export function UserMenu() {
@@ -44,7 +43,6 @@ export function UserMenu() {
         <MenuItem
           glyph={<LogOutIcon />}
           onClick={async () => {
-            logout();
             // https://github.com/nextauthjs/next-auth/discussions/11271#discussioncomment-12272576
             // Session does not clear reliably without forcing a hard refresh
             // client-side signOut; use signOut from next-auth/react whenever signing out
