@@ -58,6 +58,4 @@ export function UserMenu() {
   ) : (
     <LogIn />
   );
-
-  return null;
 }

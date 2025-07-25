@@ -5,9 +5,16 @@ import Link from 'next/link';
 import Fuse, { IFuseOptions } from 'fuse.js';
 import debounce from 'lodash/debounce';
 import { SearchInput, SearchResult } from '@leafygreen-ui/search-input';
+import { useSession } from '@/hooks';
 import { components } from '@/utils/components';
 
-import { searchInputStyle, searchResultStyle } from './Search.styles';
+import { PrivateIcon } from '@/components/global/PrivateIcon';
+
+import {
+  descriptionStyle,
+  searchInputStyle,
+  searchResultStyle,
+} from './Search.styles';
 
 const fuseOptions = {
   includeScore: true,
@@ -21,6 +28,7 @@ const useFuseSearch = (data: any[], options: IFuseOptions<any>) => {
 };
 
 export function Search() {
+  const { isLoggedIn } = useSession();
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState(components);
 
@@ -56,7 +64,10 @@ export function Search() {
     >
       {results.map(item => (
         <SearchResult key={item.name} href={item.navPath ?? '/'} as={Link}>
-          <div className={searchResultStyle}>{item.name}</div>
+          <div className={searchResultStyle}>
+            {item.name}
+            {item.isPrivate && <PrivateIcon isPrivate={!isLoggedIn} />}
+          </div>
         </SearchResult>
       ))}
     </SearchInput>
