@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { fetchEntryByIdService } from '../../../../../../lib/contentStack/contentStackService';
+import { getEntryByIdService } from '../../../../../../lib/contentStack/contentStackService';
 import { BlockPropsMap } from '@/components/content-stack/types';
 
 /**
@@ -39,7 +39,7 @@ export async function GET(
     );
 
     // Type assertion is needed here because we've already validated that id is one of the valid content types
-    const entry = await fetchEntryByIdService(
+    const entry = await getEntryByIdService(
       contentTypeUid as keyof BlockPropsMap,
       uid,
     );
@@ -56,7 +56,7 @@ export async function GET(
     // Return JSON response
     return NextResponse.json(entry, { status: 200 });
   } catch (error: any) {
-    console.error('API Error: fetchEntryByIdService', error);
+    console.error('API Error: getEntryByIdService', error);
     return NextResponse.json(
       { message: error.message || 'Failed to fetch entry' },
       { status: 500 },
