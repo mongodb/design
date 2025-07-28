@@ -5,13 +5,17 @@ import Button from '@leafygreen-ui/button';
 import { BasicEmptyState } from '@leafygreen-ui/empty-state';
 // @ts-expect-error
 import ArrowLeftIcon from '@leafygreen-ui/icon/dist/ArrowLeft';
-
-import { ComingSoon } from '@/components/glyphs';
+// @ts-expect-error
+import LogInIcon from '@leafygreen-ui/icon/dist/LogIn';
+import { login } from '@/auth';
+import { ComingSoon, Security } from '@/components/glyphs';
+import { useSession } from '@/hooks';
 
 export default function Private() {
   const router = useRouter();
+  const { isLoggedIn } = useSession();
 
-  return (
+  return isLoggedIn ? (
     <BasicEmptyState
       title="Coming Soon"
       description="Check back for updates soon"
@@ -21,6 +25,21 @@ export default function Private() {
         </Button>
       }
       graphic={<ComingSoon />}
+    />
+  ) : (
+    <BasicEmptyState
+      title="Log in to view private content"
+      description="This page is locked for security purposes and only accessible by MongoDB employees."
+      primaryButton={
+        <Button
+          variant="primary"
+          onClick={() => login()}
+          leftGlyph={<LogInIcon />}
+        >
+          Log In
+        </Button>
+      }
+      graphic={<Security />}
     />
   );
 }
