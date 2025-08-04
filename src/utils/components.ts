@@ -38,6 +38,7 @@ export const ComponentSubPath = {
   Pipeline: 'pipeline',
   Popover: 'popover',
   PreviewCard: 'preview-card',
+  ProgressBar: 'progress-bar',
   RadioBoxGroup: 'radio-box-group',
   RadioGroup: 'radio-group',
   SearchInput: 'search-input',
@@ -87,11 +88,6 @@ export const components: Array<SubPathMeta> = [
   {
     name: titleCase(ComponentSubPath.Callout),
     navPath: generateComponentNavPath(ComponentSubPath.Callout),
-  },
-  {
-    name: titleCase(ComponentSubPath.CanvasHeader),
-    navPath: generateComponentNavPath(ComponentSubPath.CanvasHeader),
-    isPrivate: true,
   },
   {
     name: titleCase(ComponentSubPath.Checkbox),
@@ -208,6 +204,10 @@ export const components: Array<SubPathMeta> = [
   {
     name: titleCase(ComponentSubPath.PreviewCard),
     navPath: generateComponentNavPath(ComponentSubPath.PreviewCard),
+  },
+  {
+    name: titleCase(ComponentSubPath.ProgressBar),
+    navPath: generateComponentNavPath(ComponentSubPath.ProgressBar),
   },
   {
     name: titleCase(ComponentSubPath.RadioBoxGroup),
