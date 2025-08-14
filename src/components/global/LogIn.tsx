@@ -8,7 +8,6 @@ export function LogIn() {
   return (
     <Button
       size="small"
-      // client-side log in
       onClick={() => signIn('okta')}
       className={css`
         border-radius: 50px;
