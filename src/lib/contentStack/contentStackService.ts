@@ -33,11 +33,37 @@ const environment = ((): string => {
 })();
 
 // Initialize Contentstack Stack only once on the server
-const Stack = Contentstack.Stack({
-  api_key: process.env.CONTENTSTACK_API_KEY as string,
-  delivery_token: process.env.CONTENTSTACK_DELIVERY_TOKEN as string,
-  environment,
-});
+const initializeStack = () => {
+  try {
+    const apiKey = process.env.CONTENTSTACK_API_KEY;
+    const deliveryToken = process.env.CONTENTSTACK_DELIVERY_TOKEN;
+
+    if (!apiKey) {
+      throw new Error('CONTENTSTACK_API_KEY environment variable is required');
+    }
+
+    if (!deliveryToken) {
+      throw new Error(
+        'CONTENTSTACK_DELIVERY_TOKEN environment variable is required',
+      );
+    }
+
+    return Contentstack.Stack({
+      api_key: apiKey,
+      delivery_token: deliveryToken,
+      environment,
+    });
+  } catch (error) {
+    console.error('Failed to initialize Contentstack Stack:', error);
+    throw new Error(
+      `Contentstack Stack initialization failed: ${
+        error instanceof Error ? error.message : 'Unknown error'
+      }`,
+    );
+  }
+};
+
+const Stack = initializeStack();
 
 const componentProperties = [
   'uid',
@@ -106,13 +132,6 @@ export async function fetchIsComponentPrivateService(
   componentName: string,
 ): Promise<boolean | undefined> {
   try {
-    if (!Stack) {
-      console.warn(
-        `ContentStack not initialized. Cannot check if ${componentName} is private.`,
-      );
-      return false; // Default to not private in builds/when ContentStack isn't available
-    }
-
     const result = await queryContentType({
       contentTitle: componentName,
       contentFilter: ['private'],
@@ -130,8 +149,6 @@ export async function fetchIsComponentPrivateService(
       `Server Error: Failed to check if ${componentName} is private`,
       error,
     );
-    // Return non-private as default in case of error
-    return false;
   }
 }
 
