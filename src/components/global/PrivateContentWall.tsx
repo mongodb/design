@@ -7,7 +7,7 @@ import { BasicEmptyState } from '@leafygreen-ui/empty-state';
 // @ts-expect-error
 import LogInIcon from '@leafygreen-ui/icon/dist/LogIn';
 
-import { login } from '@/auth';
+import { signIn } from '@/auth/client';
 
 import { Security } from '@/components/glyphs';
 
@@ -19,7 +19,7 @@ export function PrivateContentWall() {
       primaryButton={
         <Button
           variant="primary"
-          onClick={() => login()}
+          onClick={() => signIn('okta')}
           leftGlyph={<LogInIcon />}
         >
           Log In
