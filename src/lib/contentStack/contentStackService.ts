@@ -119,7 +119,7 @@ export async function fetchComponentsService(
     return results.sort((a, b) => a.title.localeCompare(b.title));
   } catch (error) {
     console.error('Server Error: No Component pages found', error);
-    throw new Error('Failed to fetch components.'); // Throw error to be caught by API route
+    throw new Error('Failed to fetch components.');
   }
 }
 
@@ -149,6 +149,7 @@ export async function fetchIsComponentPrivateService(
       `Server Error: Failed to check if ${componentName} is private`,
       error,
     );
+    throw new Error(`Failed to check if ${componentName} is private.`);
   }
 }
 
@@ -175,7 +176,7 @@ export async function fetchComponentService(
 
     return contentMetaData;
   } catch (error) {
-    console.error('Server Error: Component not found', error);
+    console.error(`Server Error: ${componentName} not found`, error);
     throw new Error(`Failed to fetch component: ${componentName}.`);
   }
 }
@@ -230,10 +231,7 @@ export async function fetchIsContentPagePrivateService(
     const responseObject = result?.[0];
     const contentMetaData = responseObject?.[0];
 
-    // Handle empty results gracefully
-    if (!contentMetaData) return undefined; // Component not found
-
-    return contentMetaData.is_private || false;
+    return contentMetaData.is_private;
   } catch (error) {
     console.error('Server Error: Content page not found', error);
     throw new Error(`Failed to check if ${contentPageTitle} is private.`);
@@ -257,7 +255,7 @@ export async function fetchContentPageService(
       .find();
     return result[0][0];
   } catch (error) {
-    console.error('Server Error: Content page not found', error);
+    console.error('Server Error: Content page not found ', error);
     throw new Error(`Failed to fetch content page: ${contentPageTitle}.`);
   }
 }
