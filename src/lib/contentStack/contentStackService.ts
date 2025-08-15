@@ -143,7 +143,7 @@ export async function fetchIsComponentPrivateService(
 
     if (!contentMetaData) return undefined;
 
-    return !!contentMetaData.private;
+    return contentMetaData.private;
   } catch (error) {
     console.error(
       `Server Error: Failed to check if ${componentName} is private`,
@@ -172,7 +172,6 @@ export async function fetchComponentService(
 
     const responseObject = result?.[0];
     const contentMetaData = responseObject?.[0];
-    if (!contentMetaData) return undefined;
 
     return contentMetaData;
   } catch (error) {
@@ -231,7 +230,9 @@ export async function fetchIsContentPagePrivateService(
     const responseObject = result?.[0];
     const contentMetaData = responseObject?.[0];
 
-    return contentMetaData.is_private;
+    if (!contentMetaData) return undefined;
+
+    return !!contentMetaData.is_private;
   } catch (error) {
     console.error('Server Error: Content page not found', error);
     throw new Error(`Failed to check if ${contentPageTitle} is private.`);

@@ -2,7 +2,6 @@
 
 import { SubPath } from '@/utils';
 import { titleCase } from '@/utils/titleCase';
-import { useSession } from '@/hooks';
 
 import { useContentStackContext } from '@/contexts/ContentStackContext';
 
@@ -10,7 +9,6 @@ import { LiveExampleContent } from './content';
 import { NotFound } from '@/components/global/NotFound';
 
 export default function Page({ params }: { params: { component: SubPath } }) {
-  const { isLoggedIn } = useSession();
   const { components: componentsFromContext } = useContentStackContext();
   // canvas-header => Canvas Header
   const componentTitle = titleCase(params.component.split('-').join(' '));
@@ -20,10 +18,6 @@ export default function Page({ params }: { params: { component: SubPath } }) {
   );
 
   if (!component) return <NotFound />;
-
-  const isComponentPrivate = component?.private;
-
-  if (isComponentPrivate && !isLoggedIn) return null;
 
   return <LiveExampleContent component={params.component} />;
 }

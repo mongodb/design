@@ -6,7 +6,7 @@ import {
 import startCase from 'lodash/startCase';
 import { ContentPage } from '@/components/content-page';
 import { auth } from '@/auth';
-import { PrivateContentWall } from '@/components/global';
+import { NotFound, PrivateContentWall } from '@/components/global';
 
 export default async function Page({
   params: { contentPage: contentPageTitleParam },
@@ -17,6 +17,10 @@ export default async function Page({
     fetchIsContentPagePrivateService(startCase(contentPageTitleParam)),
     auth(),
   ]);
+
+  if (isPrivate === undefined) {
+    return <NotFound />;
+  }
 
   const isLoggedIn = !!session?.user;
 
