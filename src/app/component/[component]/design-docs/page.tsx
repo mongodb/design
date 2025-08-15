@@ -4,7 +4,6 @@ import {
 } from '@/lib/contentStack/contentStackService';
 import { DesignDocsContent } from './client';
 import { auth } from '@/auth';
-import { NotFound } from '@/components/global';
 
 export default async function Page({
   params: { component: componentName },
@@ -17,7 +16,7 @@ export default async function Page({
   ]);
 
   if (isPrivate === undefined) {
-    return <NotFound />;
+    return null;
   }
 
   const isLoggedIn = !!session?.user;
