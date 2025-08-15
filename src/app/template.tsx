@@ -46,7 +46,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
           right: 0;
         `}
       >
-        {/* <UserMenu /> */}
+        <UserMenu />
         <DarkModeToggle />
       </div>
 
