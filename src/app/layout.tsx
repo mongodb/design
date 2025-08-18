@@ -1,8 +1,6 @@
-'use server';
-
 import './globals.css';
 import { auth } from '@/auth';
-import { SessionProvider } from '@/auth/client';
+import { SessionWrapper } from '@/components/providers/SessionWrapper';
 
 import LayoutWrapper from '@/components/layout-wrapper';
 import { fetchComponentsService } from '@/lib/contentStack/contentStackService';
@@ -20,8 +18,8 @@ export default async function RootLayout({
   ]);
 
   return (
-    <SessionProvider session={session}>
+    <SessionWrapper session={session}>
       <LayoutWrapper components={components}>{children}</LayoutWrapper>
-    </SessionProvider>
+    </SessionWrapper>
   );
 }
