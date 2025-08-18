@@ -42,7 +42,7 @@ export default function ComponentLayout({
 
   if (!component) return <NotFound />;
 
-  const isComponentPrivate = component?.private;
+  const isComponentPrivate = component.private;
   const shouldRenderPrivateContentWall = Boolean(
     isComponentPrivate && !isLoggedIn,
   );
