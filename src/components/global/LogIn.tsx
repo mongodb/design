@@ -2,13 +2,13 @@
 
 import { css } from '@emotion/css';
 import Button from '@leafygreen-ui/button';
-import { signIn } from '@/auth/client';
+import { login } from '@/auth/login';
 
 export function LogIn() {
   return (
     <Button
       size="small"
-      onClick={() => signIn('okta')}
+      onClick={() => login()}
       className={css`
         border-radius: 50px;
       `}

@@ -14,16 +14,11 @@ export default async function Page({
   const componentName = params.component;
   const mappedComponentName =
     getMappedComponentName[componentName] ?? componentName;
-
-  const isComponentPrivate = findComponent(componentName)?.isPrivate;
-
-  if (isComponentPrivate && !isLoggedIn) return null;
+  const isPrivate = findComponent(componentName)?.isPrivate;
 
   const [tsDocs, changelog] = await Promise.all([
     fetchTSDocs(mappedComponentName),
-    isComponentPrivate
-      ? Promise.resolve(null)
-      : fetchChangelog(mappedComponentName),
+    isPrivate ? Promise.resolve(null) : fetchChangelog(mappedComponentName),
   ]);
 
   const componentProps = parseComponentPropsFromTSDocs(tsDocs, componentName);
