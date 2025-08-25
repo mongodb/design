@@ -29,6 +29,18 @@ export const foundations: Array<SubPathMeta> = [
     navPath: generateFoundationNavPath(FoundationSubPath.Accessibility),
   },
   {
+    name: titleCase(FoundationSubPath.CopyGrammarAndMechanics),
+    navPath: generateFoundationNavPath(
+      FoundationSubPath.CopyGrammarAndMechanics,
+    ),
+    isPrivate: true,
+  },
+  {
+    name: titleCase(FoundationSubPath.CopyVoiceAndTone),
+    navPath: generateFoundationNavPath(FoundationSubPath.CopyVoiceAndTone),
+    isPrivate: true,
+  },
+  {
     name: titleCase(FoundationSubPath.Grid),
     navPath: generateFoundationNavPath(FoundationSubPath.Grid),
   },
