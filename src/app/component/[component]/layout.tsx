@@ -10,10 +10,14 @@ import { Tabs, Tab } from '@leafygreen-ui/tabs';
 import { spacing } from '@leafygreen-ui/tokens';
 import { H2 } from '@leafygreen-ui/typography';
 
+import { useSession } from '@/hooks';
 import { SubPath, getGithubLink } from '@/utils';
 import { useContentStackContext } from '@/contexts/ContentStackContext';
 
 import { titleCase } from '@/utils/titleCase';
+import { PrivateContentWall } from '@/components/global';
+
+import { NotFound } from '@/components/global/NotFound';
 
 const liveExamplePath = 'live-example';
 const designDocsPath = 'design-docs';
@@ -24,6 +28,7 @@ export default function ComponentLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const { isLoggedIn } = useSession();
   const router = useRouter();
   const pathname = usePathname();
   const currentComponent = pathname.split('/')[2];
@@ -34,6 +39,17 @@ export default function ComponentLayout({
   const component = componentsFromContext.find(
     component => component.title === componentTitle,
   );
+
+  if (!component) return <NotFound />;
+
+  const isComponentPrivate = component.private;
+  const shouldRenderPrivateContentWall = Boolean(
+    isComponentPrivate && !isLoggedIn,
+  );
+
+  if (shouldRenderPrivateContentWall) {
+    return <PrivateContentWall />;
+  }
 
   const getSelected = () => {
     const suffix = pathname.split('/')[3];
@@ -97,7 +113,7 @@ export default function ComponentLayout({
           <>
             {externalLinks.map(
               ({ 'aria-label': ariaLabel, href, icon, isPrivate }, index) => {
-                if (isPrivate) {
+                if (isPrivate && !isLoggedIn) {
                   return null;
                 }
 

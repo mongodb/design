@@ -47,7 +47,13 @@ export const patterns: Array<SubPathMeta> = [
     name: titleCase(PatternSubPath.Chat),
     navPath: generatePatternPath(PatternSubPath.Chat),
   },
-
+  // {
+  //   name: titleCase(PatternSubPath.CloudNavLayout),
+  //   navPath: generateComponentNavPath(PatternSubPath.CloudNavLayout),
+  //   isPrivate: true,
+  //   subComponents: ['CloudNavLayout'],
+  //   isComponent: true,
+  // },
   {
     name: titleCase(PatternSubPath.DateTime),
     navPath: generatePatternPath(PatternSubPath.DateTime),
@@ -57,7 +63,25 @@ export const patterns: Array<SubPathMeta> = [
     navPath: generateComponentNavPath(PatternSubPath.EmptyState),
     isComponent: true,
   },
-
+  // {
+  //   name: titleCase(PatternSubPath.EndOfLife),
+  //   navPath: generatePatternPath(PatternSubPath.EndOfLife),
+  //   isPrivate: true,
+  // },
+  // {
+  //   name: titleCase(PatternSubPath.FeatureWalls),
+  //   navPath: generateComponentNavPath(PatternSubPath.FeatureWalls),
+  //   isPrivate: true,
+  //   isComponent: true,
+  //   subComponents: [
+  //     'ActivationSteps',
+  //     'FeatureOverview',
+  //     'Header',
+  //     'InfoBlock',
+  //     'Templates',
+  //     'UseCases',
+  //   ],
+  // },
   {
     name: titleCase(PatternSubPath.Forms),
     navPath: generatePatternPath(PatternSubPath.Forms),
