@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 import { Session } from '@/auth';
-import { useSession as useAuthSession } from 'next-auth/react';
+import { useSession as useAuthSession } from '@/auth/client';
 
 export type LGSession = Partial<Session> & { isLoggedIn?: boolean };
 
