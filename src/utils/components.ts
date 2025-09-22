@@ -89,11 +89,11 @@ export const components: Array<SubPathMeta> = [
     name: titleCase(ComponentSubPath.Callout),
     navPath: generateComponentNavPath(ComponentSubPath.Callout),
   },
-  // {
-  //   name: titleCase(ComponentSubPath.CanvasHeader),
-  //   navPath: generateComponentNavPath(ComponentSubPath.CanvasHeader),
-  //   isPrivate: true,
-  // },
+  {
+    name: titleCase(ComponentSubPath.CanvasHeader),
+    navPath: generateComponentNavPath(ComponentSubPath.CanvasHeader),
+    isPrivate: true,
+  },
   {
     name: titleCase(ComponentSubPath.Checkbox),
     navPath: generateComponentNavPath(ComponentSubPath.Checkbox),
