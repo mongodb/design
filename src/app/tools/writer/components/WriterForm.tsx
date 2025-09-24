@@ -2,9 +2,9 @@
 
 import { useState, useContext } from 'react';
 
-import { css } from '@emotion/css';
-import { spacing, BaseFontSize } from '@leafygreen-ui/tokens';
-import { Label, H2 } from '@leafygreen-ui/typography';
+import { css, cx } from '@emotion/css';
+import { spacing, BaseFontSize, breakpoints } from '@leafygreen-ui/tokens';
+import { Label, H2, Description } from '@leafygreen-ui/typography';
 import { Select, Option, OptionGroup } from '@leafygreen-ui/select';
 import TextArea from '@leafygreen-ui/text-area';
 import { NumberInput } from '@leafygreen-ui/number-input';
@@ -16,7 +16,7 @@ import Banner from '@leafygreen-ui/banner';
 
 import SettingRow from './WriterSettingRow';
 import { WriterContext } from './WriterProvider';
-
+import { useMediaQuery } from '@/hooks';
 import { CopyContextGuidelinesKeys } from '../../../api/rewrite/copyContextGuidelinesMap';
 
 function createErrorMessage(statusCode?: number, defaultMessage?: string) {
@@ -113,7 +113,7 @@ const headerRowStyles = css`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: ${spacing[400]}px;
+  margin-bottom: ${spacing[600]}px;
 `;
 
 const textAreaStyles = css`
@@ -147,8 +147,34 @@ const buttonRowStyles = css`
 
 const settingsLabelStyles = css`
   display: inline-flex;
-  gap: 4px;
   align-items: center;
+  gap: 4px;
+`;
+
+const infoSprinkleStyles = css`
+  @media (max-width: ${breakpoints.Tablet}px) {
+    display: none;
+  }
+`;
+
+const inputDescriptionStyles = css`
+  display: none;
+
+  @media (max-width: ${breakpoints.Tablet}px) {
+    display: block;
+  }
+`;
+
+const submitButtonStyles = css`
+  @media (max-width: ${breakpoints.Tablet}px) {
+    width: 100%;
+  }
+`;
+
+const inputStyles = css`
+  @media (max-width: ${breakpoints.Tablet}px) {
+    width: 100%;
+  }
 `;
 
 export default function SplitLayout() {
@@ -160,6 +186,7 @@ export default function SplitLayout() {
     createFormError,
     clearFormError,
   } = useContext(WriterContext);
+  const isSmallScreen = useMediaQuery([`(max-width: ${breakpoints.Tablet}px)`], {fallback: [false]})[0];
   const [copy, setCopy] = useState<string>('');
   const [copyContext, setCopyContext] = useState<
     CopyContextGuidelinesKeys | 'other' | null
@@ -222,6 +249,9 @@ export default function SplitLayout() {
     clearFormError();
   }
 
+  const minLengthDescription = "Due to the nature of the model, results may not meet the minimum character count you set. If you need to ensure a specific length, please check the output and adjust as necessary."
+  const maxLengthDescription = "Due to the nature of the model, results may not meet the maximum character count you set. If you need to ensure a specific length, please check the output and adjust as necessary."
+
   return (
     <form className={formStyles} onSubmit={handleSubmit}>
       <div className={inputGroupStyles}>
@@ -254,7 +284,7 @@ export default function SplitLayout() {
           <Select
             id="writing-context-select"
             aria-labelledby="writing-context-select-label"
-            className={selectStyles}
+            className={cx(inputStyles, selectStyles)}
             value={copyContext || ''}
             onChange={value => {
               setCopyContext(value as CopyContextGuidelinesKeys | 'other');
@@ -284,16 +314,22 @@ export default function SplitLayout() {
             className={settingsLabelStyles}
           >
             Minimum Number of Characters
-            <InfoSprinkle>
-              Due to the nature of the model, results may not meet the minimum
-              character count you set. If you need to ensure a specific length,
-              please check the output and adjust as necessary.
-            </InfoSprinkle>
+
+            {!isSmallScreen && (
+              <InfoSprinkle>
+                {minLengthDescription}
+              </InfoSprinkle>
+            )}
           </Label>
+
+          <Description className={inputDescriptionStyles}>
+            {minLengthDescription}
+          </Description>
 
           <NumberInput
             id="minimum-length-input"
             aria-labelledby="minimum-length-label"
+            className={inputStyles}
             onChange={e => setMinLength(e.target.value)}
             value={minLength ?? ''}
           />
@@ -307,16 +343,22 @@ export default function SplitLayout() {
             className={settingsLabelStyles}
           >
             Maximum Number of Characters
-            <InfoSprinkle>
-              Due to the nature of the model, results may not meet the maximum
-              character count you set. If you need to ensure a specific length,
-              please check the output and adjust as necessary.
-            </InfoSprinkle>
+
+            {!isSmallScreen && (
+              <InfoSprinkle>
+                {maxLengthDescription}
+              </InfoSprinkle>
+            )}
           </Label>
+
+          <Description className={inputDescriptionStyles}>
+            {maxLengthDescription}
+          </Description>
 
           <NumberInput
             id="maximum-length-input"
             aria-labelledby="maximum-length-label"
+            className={inputStyles}
             onChange={e => setMaxLength(e.target.value)}
             value={maxLength ?? ''}
           />
@@ -343,6 +385,8 @@ export default function SplitLayout() {
         <Button
           type="submit"
           variant="primary"
+          className={submitButtonStyles}
+          size={isSmallScreen ? 'large' : 'default'}
           isLoading={isLoading}
           loadingText="Generating..."
           loadingIndicator={<Spinner />}

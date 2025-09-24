@@ -1,3 +1,5 @@
+'use client';
+
 import { css } from "@emotion/css";
 import { palette } from "@leafygreen-ui/palette";
 import { useDarkMode } from "@leafygreen-ui/leafygreen-provider";

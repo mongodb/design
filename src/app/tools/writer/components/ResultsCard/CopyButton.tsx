@@ -1,3 +1,5 @@
+'use client';
+
 import { useDarkMode } from "@leafygreen-ui/leafygreen-provider";
 import { useState } from "react";
 import { css, cx } from "@leafygreen-ui/emotion";

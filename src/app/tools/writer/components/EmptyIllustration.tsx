@@ -1,3 +1,5 @@
+'use client';
+
 interface EmptyIllustrationProps {
 	className?: string;
 }
