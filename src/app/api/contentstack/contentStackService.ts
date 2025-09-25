@@ -2,8 +2,12 @@ import Contentstack from 'contentstack';
 import startCase from 'lodash/startCase';
 import defaults from 'lodash/defaults';
 
-import { ComponentFields, ContentPage, ContentPageGroup } from './types';
-import {
+import type {
+  ComponentFields,
+  ContentPage,
+  ContentPageGroup,
+} from '@/lib/contentStack/types';
+import type {
   BlockPropsMap,
   ContentTypeUID,
 } from '@/components/content-stack/types';
