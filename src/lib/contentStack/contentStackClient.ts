@@ -5,7 +5,7 @@ import {
 
 /**
  * Client-safe function to fetch an entry by ID and content type
- * Uses the API route instead of directly using Contentstack SDK  d
+ * Uses the API route instead of directly using Contentstack SDK
  */
 export async function getEntryById<T extends ContentTypeUID>(
   contentTypeUid: T,

@@ -1,6 +1,6 @@
 'use server';
 
-import { signIn } from './auth';
+import { signIn } from '@/auth/auth';
 
 export async function login() {
   'use server';
