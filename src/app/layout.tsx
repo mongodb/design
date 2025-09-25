@@ -1,9 +1,9 @@
 import './globals.css';
-import { auth } from '@/app/api/auth/auth/auth';
+import { auth } from '@/auth';
 import { SessionWrapper } from '@/components/providers/SessionWrapper';
 
 import LayoutWrapper from '@/components/layout-wrapper';
-import { fetchComponentsService } from '@/app/api/contentstack/contentStackService';
+import { fetchComponentsService } from '@/lib/contentStack/contentStackService';
 
 export default async function RootLayout({
   children,

@@ -36,7 +36,7 @@ const environment = ((): string => {
   throw new Error(`Could not find environment "${environmentVariable}"`);
 })();
 
-// Initialize Contentstack Stack only once on the server
+// Initialize Contentstack Stack only once on the server s
 const initializeStack = () => {
   try {
     const apiKey = process.env.CONTENTSTACK_API_KEY;

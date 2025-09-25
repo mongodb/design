@@ -1,9 +1,9 @@
 import {
   fetchComponentService,
   fetchIsComponentPrivateService,
-} from '@/app/api/contentstack/contentStackService';
+} from '@/lib/contentStack/contentStackService';
 import { DesignDocsContent } from './client';
-import { auth } from '@/app/api/auth/auth/auth';
+import { auth } from '@/auth';
 
 export default async function Page({
   params: { component: componentName },

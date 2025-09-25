@@ -1,11 +1,11 @@
 import {
   fetchContentPageService,
   fetchIsContentPagePrivateService,
-} from '@/app/api/contentstack/contentStackService';
+} from '@/lib/contentStack/contentStackService';
 
 import startCase from 'lodash/startCase';
 import { ContentPage } from '@/components/content-page';
-import { auth } from '@/app/api/auth/auth/auth';
+import { auth } from '@/auth';
 import { NotFound, PrivateContentWall } from '@/components/global';
 
 export default async function Page({
