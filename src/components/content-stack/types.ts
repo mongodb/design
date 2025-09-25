@@ -52,7 +52,7 @@ export enum CSNodeType {
 }
 
 type Private = {
-  private: boolean;
+  private?: boolean;
 };
 
 /**
