@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { fetchEntryByIdService } from '../../../../../../lib/contentStack/contentStackService';
+import { fetchEntryByIdService } from '@/app/api/contentstack/contentStackService';
 import { ContentTypeUID } from '@/components/content-stack/types';
-import { auth } from '@/auth';
+import { auth } from '@/app/api/auth/auth/auth';
 
 /**
  * API Route to get an entry by content type UID and entry UID

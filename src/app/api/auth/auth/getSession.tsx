@@ -1,6 +1,6 @@
 'use server';
 
-import { auth } from '@/auth/auth';
+import { auth } from './auth';
 
 export async function getSession() {
   'use server';
