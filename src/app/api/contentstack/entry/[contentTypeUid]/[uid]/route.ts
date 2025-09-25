@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { fetchEntryByIdService } from '@/lib/contentStack/contentStackService';
-import { ContentTypeUID } from '@/components/content-stack/types';
 import { auth } from '@/auth';
+import { Session } from 'next-auth';
+
+interface NextAuthRequest extends NextRequest {
+  auth: Session | null;
+}
 
 /**
  * API Route to get an entry by content type UID and entry UID
@@ -10,10 +14,20 @@ import { auth } from '@/auth';
  * @param uid - The unique identifier for the specific entry
  *
  */
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { contentTypeUid: ContentTypeUID; uid: string } },
+
+export const GET = auth(async function GET(
+  request: NextAuthRequest,
+  context: any,
 ) {
+  const { params } = context;
+
+  if (!params) {
+    return NextResponse.json(
+      { message: 'Invalid request parameters' },
+      { status: 400 },
+    );
+  }
+
   try {
     const { contentTypeUid, uid } = params;
     if (!contentTypeUid) {
@@ -32,16 +46,20 @@ export async function GET(
 
     const entry = await fetchEntryByIdService(contentTypeUid, uid);
 
-    if (entry.private) {
-      const session = await auth();
+    if (!entry) {
+      return NextResponse.json({ message: 'Entry not found' }, { status: 404 });
+    }
 
-      if (!session?.user) {
+    if (entry.private) {
+      if (!request.auth) {
         return NextResponse.json(
           {
             message:
-              'Unauthorized - This entry is private and requires authentication',
+              'Unauthorized: You must be logged in to access this endpoint.',
           },
-          { status: 401 },
+          {
+            status: 401,
+          },
         );
       }
     }
@@ -65,4 +83,4 @@ export async function GET(
       { status: 500 },
     );
   }
-}
+});
