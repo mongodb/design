@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { fetchEntryByIdService } from '../../../../../../lib/contentStack/contentStackService';
-import { BlockPropsMap } from '@/components/content-stack/types';
+import { ContentTypeUID } from '@/components/content-stack/types';
+import { auth } from '@/auth';
 
 /**
  * API Route to get an entry by content type UID and entry UID
@@ -11,7 +12,7 @@ import { BlockPropsMap } from '@/components/content-stack/types';
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: { contentTypeUid: string; uid: string } },
+  { params }: { params: { contentTypeUid: ContentTypeUID; uid: string } },
 ) {
   try {
     const { contentTypeUid, uid } = params;
@@ -29,29 +30,31 @@ export async function GET(
       );
     }
 
+    const entry = await fetchEntryByIdService(contentTypeUid, uid);
+
+    if (entry.private) {
+      const session = await auth();
+
+      if (!session?.user) {
+        return NextResponse.json(
+          {
+            message:
+              'Unauthorized - This entry is private and requires authentication',
+          },
+          { status: 401 },
+        );
+      }
+    }
+
     console.log(
-      'App Router API: GET /api/contentstack/entry/[contentTypeUid]/[uid]',
+      '➡️ App Router API: GET /api/contentstack/entry/[contentTypeUid]/[uid]',
       {
         contentTypeUid, // This is the content type UID (e.g., 'badge_block')
         uid, // This is the entry UID
         url: request.url,
+        isPrivate: entry.private,
       },
     );
-
-    // Type assertion is needed here because we've already validated that id is one of the valid content types
-    const entry = await fetchEntryByIdService(
-      contentTypeUid as keyof BlockPropsMap,
-      uid,
-    );
-
-    if (!entry) {
-      return NextResponse.json(
-        {
-          message: `Entry with UID '${uid}' not found for content type '${contentTypeUid}'`,
-        },
-        { status: 404 },
-      );
-    }
 
     // Return JSON response
     return NextResponse.json(entry, { status: 200 });

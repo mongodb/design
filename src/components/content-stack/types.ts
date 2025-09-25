@@ -51,11 +51,15 @@ export enum CSNodeType {
   TABLE_HEADER_CELL = 'th',
 }
 
+type Private = {
+  private: boolean;
+};
+
 /**
  * Define custom Contentstack block interfaces
  */
 
-interface CSImage {
+interface CSImage extends Private {
   uid: string;
   content_type: string;
   url: string;
@@ -64,31 +68,31 @@ interface CSImage {
 }
 
 /** https://app.contentstack.com/#!/stack/bltee845ee8bbd3fe1a/content-type/annotated_image_block/content-type-builder?branch=main */
-export interface AnnotatedImageBlockProps {
+export interface AnnotatedImageBlockProps extends Private {
   title: string;
   image: CSImage;
   steps: Array<AnnotatedImageBlockStep>;
 }
-interface AnnotatedImageBlockStep {
+interface AnnotatedImageBlockStep extends Private {
   title: string;
   description?: string;
 }
 
 /** https://app.contentstack.com/#/stack/bltee845ee8bbd3fe1a/content-type/badge_block/content-type-builder?branch=main */
-export interface BadgeBlockProps {
+export interface BadgeBlockProps extends Private {
   title: string;
   variant?: BadgeProps['variant'];
 }
 
 /** */
-export interface BasicUsageBlockProps {
+export interface BasicUsageBlockProps extends Private {
   title: string;
   dos?: CSNode;
   donts?: CSNode;
 }
 
 /** */
-export interface ButtonBlockProps {
+export interface ButtonBlockProps extends Private {
   button_block: string;
   url: string;
   content?: string;
@@ -97,7 +101,7 @@ export interface ButtonBlockProps {
 }
 
 /** */
-export interface CalloutBock {
+export interface CalloutBock extends Private {
   url: string;
   title?: string;
   content?: CSNode;
@@ -105,14 +109,14 @@ export interface CalloutBock {
 }
 
 /** */
-export interface CardBlockProps {
+export interface CardBlockProps extends Private {
   url: string;
   title?: string;
   content?: CSNode;
 }
 
 /** */
-export interface ExampleCardBlockProps {
+export interface ExampleCardBlockProps extends Private {
   title: string;
   subtext?: string;
   variant: 'info' | 'caution' | 'do' | 'dont';
@@ -120,7 +124,7 @@ export interface ExampleCardBlockProps {
 }
 
 /** */
-export interface ExpandableCardBlockProps {
+export interface ExpandableCardBlockProps extends Private {
   url: string;
   title: string;
   description?: string;
@@ -128,7 +132,7 @@ export interface ExpandableCardBlockProps {
 }
 
 /** https://app.contentstack.com/#!/stack/bltee845ee8bbd3fe1a/content-type/horizontal_layout/content-type-builder?branch=main */
-export interface HorizontalLayoutBlockProps {
+export interface HorizontalLayoutBlockProps extends Private {
   url: string;
   title: string;
   column_1: CSNode; // richText
@@ -137,7 +141,7 @@ export interface HorizontalLayoutBlockProps {
   flex_ratio: `${number}:${number}`;
 }
 
-export interface TwoColumnExampleCardBlockProps {
+export interface TwoColumnExampleCardBlockProps extends Private {
   title: string;
   column_1_subtext: string;
   column_1_variant: 'info' | 'caution' | 'do' | 'dont';
