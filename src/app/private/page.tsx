@@ -7,7 +7,7 @@ import { BasicEmptyState } from '@leafygreen-ui/empty-state';
 import ArrowLeftIcon from '@leafygreen-ui/icon/dist/ArrowLeft';
 // @ts-expect-error
 import LogInIcon from '@leafygreen-ui/icon/dist/LogIn';
-import { signIn } from '@/auth/client';
+import { signIn } from '@/client/auth';
 
 import { ComingSoon, Security } from '@/components/glyphs';
 import { useSession } from '@/hooks';

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { fetchEntryByIdService } from '@/lib/contentStack/contentStackService';
-import { auth } from '@/auth';
+import { auth } from '@/lib/auth';
 import { Session } from 'next-auth';
 
 interface NextAuthRequest extends NextRequest {

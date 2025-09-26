@@ -2,7 +2,7 @@
 
 import { css } from '@emotion/css';
 import Button from '@leafygreen-ui/button';
-import { signIn } from '@/auth/client';
+import { signIn } from '@/client/auth';
 
 export function LogIn() {
   return (

@@ -10,7 +10,7 @@ import { Body, Description } from '@leafygreen-ui/typography';
 
 import { LogIn } from './LogIn';
 
-import { signOut } from '@/auth/client';
+import { signOut } from '@/client/auth';
 import { useSession } from '@/hooks';
 
 export function UserMenu() {
