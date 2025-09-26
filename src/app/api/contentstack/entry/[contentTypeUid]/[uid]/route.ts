@@ -2,9 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { fetchEntryByIdService } from '@/lib/contentStack/contentStackService';
 import { auth } from '@/auth';
 import { Session } from 'next-auth';
+import { ContentTypeUID } from '@/components/content-stack/types';
 
 interface NextAuthRequest extends NextRequest {
   auth: Session | null;
+}
+
+// Define an interface for your expected params structure
+interface ContentStackParams {
+  contentTypeUid: ContentTypeUID;
+  uid: string;
 }
 
 /**
@@ -19,7 +26,7 @@ export const GET = auth(async function GET(
   request: NextAuthRequest,
   context: any,
 ) {
-  const { params } = context;
+  const { params } = context as { params: ContentStackParams | undefined };
 
   if (!params) {
     return NextResponse.json(

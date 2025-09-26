@@ -101,7 +101,7 @@ export interface ButtonBlockProps extends Private {
 }
 
 /** */
-export interface CalloutBock extends Private {
+export interface CalloutBlock extends Private {
   url: string;
   title?: string;
   content?: CSNode;
@@ -156,7 +156,7 @@ export interface BlockPropsMap {
   badge_block: BadgeBlockProps;
   basic_usage_block: BasicUsageBlockProps;
   button_block: ButtonBlockProps;
-  callout_block: CalloutBock;
+  callout_block: CalloutBlock;
   card_block: CardBlockProps;
   example_card_block: ExampleCardBlockProps;
   expandable_card_block: ExpandableCardBlockProps;
