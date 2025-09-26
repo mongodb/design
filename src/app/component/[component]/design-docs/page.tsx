@@ -3,7 +3,7 @@ import {
   fetchIsComponentPrivateService,
 } from '@/lib/contentStack/contentStackService';
 import { DesignDocsContent } from './client';
-import { auth } from '@/auth';
+import { auth } from '@/lib/auth';
 
 export default async function Page({
   params: { component: componentName },

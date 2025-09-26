@@ -1,8 +1,8 @@
 'use client';
 
 import { useMemo } from 'react';
-import { Session } from '@/auth';
-import { useSession as useAuthSession } from '@/auth/client';
+import { Session } from '@/client/auth/types';
+import { useSession as useAuthSession } from '@/client/auth';
 
 export type LGSession = Partial<Session> & { isLoggedIn?: boolean };
 

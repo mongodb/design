@@ -6,7 +6,7 @@ import type {
   ComponentFields,
   ContentPage,
   ContentPageGroup,
-} from '@/lib/contentStack/types';
+} from '@/client/contentStack/types';
 import type {
   BlockPropsMap,
   ContentTypeUID,
