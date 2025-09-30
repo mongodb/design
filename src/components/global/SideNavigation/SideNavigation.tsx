@@ -69,7 +69,6 @@ export function SideNavigation() {
 
   const navContent = (
     <>
-
       <SideNavLabel
         key="Foundations"
         label="Foundations"
@@ -169,11 +168,7 @@ export function SideNavigation() {
           })}
         >
           Writer
-          <PrivateIcon
-            className={css`
-              margin-left: ${spacing[400]}px;
-            `}
-          />
+          <PrivateIcon />
         </SideNavItem>
       </SideNavList>
     </>
