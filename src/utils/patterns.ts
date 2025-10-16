@@ -7,6 +7,7 @@ import { SubPathMeta } from './types';
  * in what documentation can be provided until additional models are created.
  */
 export const PatternSubPath = {
+  AccessRestrictionMessages: 'access-restriction-messages',
   Charts: 'charts',
   Chat: 'chat',
   CloudNavLayout: 'cloud-nav-layout',
@@ -26,6 +27,11 @@ const generateComponentNavPath = (component: PatternSubPath) =>
 const generatePatternPath = (pattern: PatternSubPath) => `/pattern/${pattern}`;
 
 export const patterns: Array<SubPathMeta> = [
+  {
+    name: titleCase(PatternSubPath.AccessRestrictionMessages),
+    navPath: generatePatternPath(PatternSubPath.AccessRestrictionMessages),
+    isPrivate: true,
+  },
   {
     name: titleCase(PatternSubPath.Charts),
     navPath: generateComponentNavPath(PatternSubPath.Charts),
