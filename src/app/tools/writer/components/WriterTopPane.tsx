@@ -22,7 +22,7 @@ interface TopPaneProps {
   children?: React.ReactNode;
 }
 
-export default function topPane({ children }: TopPaneProps) {
+export default function TopPane({ children }: TopPaneProps) {
   const { theme } = useDarkMode();
   const borderColor = theme === "dark" ? palette.gray.dark2 : palette.gray.light2;
 
