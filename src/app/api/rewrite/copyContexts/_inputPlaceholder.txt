@@ -1,0 +1,4 @@
+- Use sentence case capitalization.
+- Placeholder text should be an example of what a user might write in that input.
+- Placeholder text is not a necessity for all form fields, and should be omitted for most.
+- Placeholder text can be beneficial when used to show an example of a complex input, like IP Address, or CIDR block.

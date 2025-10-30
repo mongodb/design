@@ -17,6 +17,8 @@
     "update-lg": "node scripts/update.mjs"
   },
   "dependencies": {
+    "@azure/identity": "^4.9.1",
+    "@azure/openai": "^2.0.0",
     "@auth/core": "^0.38.0",
     "@contentstack/utils": "^1.3.20",
     "@emotion/cache": "^11.14.0",
@@ -89,15 +91,19 @@
     "@storybook/test": "^8.5.3",
     "@storybook/testing-library": "^0.2.2",
     "commander": "^12.0.0",
+    "common-tags": "^1.8.2",
     "contentstack": "^3.19.2",
+    "dotenv": "^17.2.3",
     "fuse.js": "^7.0.0",
+    "openai": "^4.96.0",
     "lodash": "^4.17.21",
     "marked": "^12.0.2",
     "next": "14.2.25",
     "next-auth": "^5.0.0-beta.18",
     "polished": "^4.3.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.6",
@@ -110,6 +116,8 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/common-tags": "^1.8.4",
+    "@types/react-transition-group": "^4.4.5",
     "eslint": "^9.19.0",
     "eslint-config-next": "15.1.6",
     "eslint-plugin-react": "^7.37.4",

@@ -1,0 +1,44 @@
+Voice and Tone Guidelines
+The MongoDB voice and tone ensures a consistent experience across our product landscape. 
+
+
+Human: approachable, empathetic, accessible, and inclusive 
+Use a conversational and human tone. Avoid overly formal language. Every interaction should feel like it’s coming from a helpful companion. 
+We speak to the user’s needs before speaking about ourselves and our technical capabilities.
+We're inclusive of individuals and their skill levels. Use inclusive language when referring to personal characteristics and use accessible terminology that the widest range of our user base can understand without sacrificing accuracy.
+
+Examples 
+Don't: "Authentication to the MongoDB Atlas cluster has been successfully established. You may now proceed to execute queries and perform data manipulation operations as desired."
+Do: "You're connected! Start exploring your data or run some queries."
+
+Don't: "MongoDB Atlas offers advanced clustering configurations that can optimize the performance of your applications with our state-of-the-art technology."
+Do: "Speed up your applications effortlessly. MongoDB Atlas automatically optimizes cluster performance, so you can focus on building great experiences for your users."
+
+Don't: “This process reduces the performance impact of the index build by building it on non-primary nodes. Each replica set node is rotated out while the index is being built, then rotated back in afterwards. Please note that failover will occur when using this process.”
+Do: “This process reduces the performance impact of creating your index, but your cluster might become unavailable for brief periods of time.”
+
+===
+
+Straightforward: confident, knowledgeable, clear, and concise
+We get straight to the point, communicating with clarity and precision about even the most complex of subjects. Use short, concise sentence structures to increase readability.
+
+
+Prioritize clarity over comprehensive explanation. It's best to provide information that’s most likely to help the user at that moment, and refer to documentation for comprehensive information and edge cases. 
+Examples 
+Don't: Including all options (ascending, descending, 2d, 2d sphere) in examples for an index definition in the create index flow 
+Do: Only include examples that cover the most common use-cases (ascending and descending) and provide a link to documentation with a comprehensive list of options. 
+
+Don't: To get started with creating a cluster, which will be useful for storing your data, you should consider the various options for different cloud service providers and regions that are available.
+Do: Create a new cluster to store your data. Choose a cloud provider and region, and then set your configurations.
+
+Positive: encouraging, supportive, and motivating
+Focus on the user’s end goals. Celebrate their successes and reinforce their efforts. 
+Provide ways to proactively address issues in error messaging. Show empathy for their challenges. 
+Direct users towards positive patterns and away from anti-patterns at the point when the user needs to make a choice. 
+
+Examples
+Don't: Error loading sample data.
+Do: You’re uploading a sample data set that already exists in this cluster. Remove the existing data or continue uploading. 
+
+Don't: Choose either the 'Shard Cluster' or 'Standalone' configuration.
+Do: To optimize performance, select the 'Shard Cluster' option. This scales your data efficiently and ensures robust query capabilities. Avoid the 'Standalone' option for large-scale applications.

@@ -1,0 +1,5 @@
+- Use sentence case.
+- When linking to web pages in copy, use descriptive copy for the link, not a generic “this article” or similar. Do not include “Learn more” as part of the link if it is followed by a more descriptive title. 
+  - Example: “For information on how to back up and restore cluster data in MongoDB, read the Backup and Restore Cluster Data documentation.”
+  - OR Learn more about restoring cluster data in MongoDB. 
+- Don’t use “click here" or "read more.” Use  “Learn more” sparingly. For example, in a page header or other place where we are limited in the number of characters we can use.  etc.) 

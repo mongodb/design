@@ -1,0 +1,2 @@
+- Use sentence case.
+- Do not include a period at the end of the text unless it is a complete sentence.
