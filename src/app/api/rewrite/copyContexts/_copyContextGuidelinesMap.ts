@@ -18,6 +18,9 @@ const copyContexts = [
 	"successMessage",
 	"notifications",
 	"tooltipsAndHelp",
+	"tabs",
+	"titles",
+	"subtitles",
 ] as const;
 
 type CopyContextGuidelinesMap = Record<

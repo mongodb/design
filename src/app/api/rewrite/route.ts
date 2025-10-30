@@ -2,7 +2,7 @@ import { AzureOpenAI } from "openai";
 import { DefaultAzureCredential, getBearerTokenProvider } from "@azure/identity";
 import dotenv from "dotenv";
 import getSystemPrompt from "./_getSystemPrompt";
-import { CopyContextGuidelinesKeys } from "./copyContextGuidelinesMap";
+import { CopyContextGuidelinesKeys } from "./copyContexts/_copyContextGuidelinesMap";
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
  

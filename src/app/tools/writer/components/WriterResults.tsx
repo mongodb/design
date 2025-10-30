@@ -3,9 +3,7 @@
 import { useContext } from 'react';
 import {css, cx} from '@emotion/css';
 import { palette } from '@leafygreen-ui/palette';
-import {spacing, BaseFontSize} from '@leafygreen-ui/tokens';
-import Card from '@leafygreen-ui/card';
-import { Skeleton, Size } from '@leafygreen-ui/skeleton-loader';
+import {spacing, BaseFontSize, breakpoints} from '@leafygreen-ui/tokens';
 import { Body } from '@leafygreen-ui/typography';
 import { useDarkMode } from '@leafygreen-ui/leafygreen-provider';
 
@@ -14,63 +12,18 @@ import EmptyIllustration from './EmptyIllustration';
 import ResultsCard from './ResultsCard';
 import {Transition, TransitionStatus} from 'react-transition-group';
 
-// const loadingSkeletonLine = css`
-// 	& + & {
-// 		margin-top: ${spacing[100]}px;
-// 	}
-
-// 	&:last-of-type {
-// 		width: 80%;
-// 	}
-// `;
-
-// const skeletonCardStyles = css`
-// 	flex-grow: 1;
-// 	flex-shrink: 0;
-// 	width: calc(33% - (${spacing[300]}px * 2 / 3));
-// 	transform: translate3d(0, -20px, 0);
-// 	transition: transform 0.3s ease-in-out;
-
-// 	& + & {
-// 		margin-left: ${spacing[300]}px;
-// 	}
-
-// 	&:not(:first-child):not(:last-child) {
-// 		transition-delay: 0.1s;
-// 	}
-
-// 	&:last-child {
-// 		transition-delay: 0.2s;
-// 	}
-// `;
-
-// function SkeletonCard({className}: {className?: string}) {
-// 	return (
-// 		<Card className={cx(skeletonCardStyles, className)}>
-// 			<Skeleton
-// 				className={loadingSkeletonLine}
-// 				enableAnimations={true}
-// 				size={Size.Small} />
-
-// 			<Skeleton
-// 				className={loadingSkeletonLine}
-// 				enableAnimations={true}
-// 				size={Size.Small} />
-				
-// 			<Skeleton
-// 				className={loadingSkeletonLine}
-// 				enableAnimations={true}
-// 				size={Size.Small} />
-// 		</Card>
-// 	)
-// }
-
 const resultsContainerStyles = css`
   display: flex;
 	justify-content: center;
 	align-items: stretch;
+	gap: ${spacing[300]}px;
 	padding: ${spacing[600]}px 0;
 	position: relative;
+
+	
+  @media (max-width: ${breakpoints.Desktop}px) {
+    flex-direction: column;
+  }
 `;
 
 const emptyIllustrationStyles = css`
@@ -164,7 +117,7 @@ export default function WriterResults() {
 				})}>
 					Revise your in-product copy!
 					<br/>
-					Start by adding some text on the left.
+					Start by adding some text above.
 				</Body>
 			</div>
 

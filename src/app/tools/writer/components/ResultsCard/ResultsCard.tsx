@@ -35,14 +35,12 @@ const resultsCardStyles = css`
   position: relative;
   overflow: hidden;
   flex-grow: 1;
-  flex-shrink: 0;
-  width: calc(33% - (${spacing[300]}px * 2 / 3));
+  width: 100%;
 	transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   transform: translate3d(0, 30px, 0);
   opacity: 0;
 
   & + & {
-    margin-left: ${spacing[300]}px;
     transition-delay: 0.15s;
 
     &:last-of-type {
@@ -65,28 +63,6 @@ const loadingSkeletonLine = css`
     width: 80%;
   }
 `;
-
-// function SkeletonCard({className}: {className?: string}) {
-//   return (
-//     <Card className={cx(skeletonCardStyles, className)}>
-//       <Skeleton
-//         className={loadingSkeletonLine}
-//         enableAnimations={true}
-//         size={Size.Small} />
-
-//       <Skeleton
-//         className={loadingSkeletonLine}
-//         enableAnimations={true}
-//         size={Size.Small} />
-        
-//       <Skeleton
-//         className={loadingSkeletonLine}
-//         enableAnimations={true}
-//         size={Size.Small} />
-//     </Card>
-//   )
-// }
-
 
 interface ResultsCardProps {
   resultText?: string;

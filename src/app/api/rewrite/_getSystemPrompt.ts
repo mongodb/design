@@ -14,16 +14,16 @@ let voiceAndToneGuidelines: string = "";
 let grammarAndMechanicsGuidelines: string = "";
 
 export default async function getSystemPrompt({copyContext, minLength, maxLength}: SystemPromptParameters) {
-
   const calculatedMaxLength = (() => {
-		if (!maxLength) {
-			if (copyContext === "button") {
-				return "25";
-			}
-
-			return undefined;
+		// Tool enforces max lengths for specific contexts
+		if (copyContext === "button") {
+			return "25";
 		}
 
+		if (copyContext === 'tabs') {
+			return "25";
+		}
+		
 		return maxLength;
 	})()
 

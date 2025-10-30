@@ -3,7 +3,7 @@
 import { useState, useContext } from 'react';
 
 import { css, cx } from '@emotion/css';
-import { spacing, BaseFontSize, breakpoints } from '@leafygreen-ui/tokens';
+import { spacing, BaseFontSize, breakpoints, color } from '@leafygreen-ui/tokens';
 import { Label, H2, Description } from '@leafygreen-ui/typography';
 import { Select, Option, OptionGroup } from '@leafygreen-ui/select';
 import TextArea from '@leafygreen-ui/text-area';
@@ -17,7 +17,7 @@ import Banner from '@leafygreen-ui/banner';
 import SettingRow from './WriterSettingRow';
 import { WriterContext } from './WriterProvider';
 import { useMediaQuery } from '@/hooks';
-import { CopyContextGuidelinesKeys } from '../../../api/rewrite/copyContextGuidelinesMap';
+import { CopyContextGuidelinesKeys } from '../../../api/rewrite/copyContexts/_copyContextGuidelinesMap';
 
 function createErrorMessage(statusCode?: number, defaultMessage?: string) {
   if (!statusCode) {
@@ -60,6 +60,7 @@ const groupsMap = {
   buttonsAndLinks: 'Buttons and Links',
   forms: 'Forms',
   hintsTipsAndAlerts: 'Hints, Tips, and Alerts',
+  pageHeaders: 'Page Headers and Tabs',
   everythingElse: 'Everything Else',
 } as const;
 
@@ -106,6 +107,21 @@ const options: Array<{
     label: 'Tooltips and Help',
     group: 'hintsTipsAndAlerts',
   } as const,
+  {
+    value: 'titles',
+    label: 'Titles',
+    group: 'pageHeaders',
+  } as const,
+  {
+    value: 'subtitles',
+    label: 'Subtitles',
+    group: 'pageHeaders',
+  } as const,
+  {
+    value: 'tabs',
+    label: 'Tabs',
+    group: 'pageHeaders',
+  } as const,
   { value: 'other', label: 'Other', group: 'everythingElse' } as const,
 ] as const;
 
@@ -151,12 +167,6 @@ const settingsLabelStyles = css`
   gap: 4px;
 `;
 
-const infoSprinkleStyles = css`
-  @media (max-width: ${breakpoints.Tablet}px) {
-    display: none;
-  }
-`;
-
 const inputDescriptionStyles = css`
   display: none;
 
@@ -172,6 +182,16 @@ const submitButtonStyles = css`
 `;
 
 const inputStyles = css`
+  @media (max-width: ${breakpoints.Tablet}px) {
+    width: 100%;
+  }
+`;
+
+const maxLengthWrapperStyles = css`
+  display: flex;
+  align-items: center;
+  gap: ${spacing[200]}px;
+
   @media (max-width: ${breakpoints.Tablet}px) {
     width: 100%;
   }
@@ -193,6 +213,9 @@ export default function SplitLayout() {
   >(null);
   const [minLength, setMinLength] = useState<string | null>(null);
   const [maxLength, setMaxLength] = useState<string | null>(null);
+
+  const maxLengthContextOverride = copyContext != null && ['tabs', 'button'].includes(copyContext);
+  const maxLengthValue = maxLengthContextOverride ? "25" : (maxLength ? maxLength : "");
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -251,6 +274,7 @@ export default function SplitLayout() {
 
   const minLengthDescription = "Due to the nature of the model, results may not meet the minimum character count you set. If you need to ensure a specific length, please check the output and adjust as necessary."
   const maxLengthDescription = "Due to the nature of the model, results may not meet the maximum character count you set. If you need to ensure a specific length, please check the output and adjust as necessary."
+  const maxLengthOverrideDescription = `The maximum length for the chosen copy context is set to ${maxLengthValue} for the following context: ${copyContext}.`
 
   return (
     <form className={formStyles} onSubmit={handleSubmit}>
@@ -344,7 +368,7 @@ export default function SplitLayout() {
           >
             Maximum Number of Characters
 
-            {!isSmallScreen && (
+            {!isSmallScreen && !maxLengthContextOverride && (
               <InfoSprinkle>
                 {maxLengthDescription}
               </InfoSprinkle>
@@ -352,16 +376,26 @@ export default function SplitLayout() {
           </Label>
 
           <Description className={inputDescriptionStyles}>
-            {maxLengthDescription}
+            {maxLengthContextOverride ? maxLengthOverrideDescription : maxLengthDescription}
           </Description>
 
-          <NumberInput
-            id="maximum-length-input"
-            aria-labelledby="maximum-length-label"
-            className={inputStyles}
-            onChange={e => setMaxLength(e.target.value)}
-            value={maxLength ?? ''}
-          />
+          <div className={maxLengthWrapperStyles}>
+            {!isSmallScreen && maxLengthContextOverride && (
+              <InfoSprinkle>
+                {maxLengthOverrideDescription}
+              </InfoSprinkle>
+            )}
+
+            <NumberInput
+              id="maximum-length-input"
+              aria-labelledby="maximum-length-label"
+              className={inputStyles}
+              onChange={e => setMaxLength(e.target.value)}
+              value={maxLengthValue}
+              disabled={maxLengthContextOverride}
+            />
+          </div>
+
         </SettingRow>
       </div>
 
