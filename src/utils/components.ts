@@ -13,6 +13,7 @@ export const ComponentSubPath = {
   Checkbox: 'checkbox',
   Chip: 'chip',
   Code: 'code',
+  CodeEditor: 'code-editor',
   Combobox: 'combobox',
   ConfirmationModal: 'confirmation-modal',
   ContextDrawer: 'context-drawer',
@@ -105,6 +106,10 @@ export const components: Array<SubPathMeta> = [
   {
     name: titleCase(ComponentSubPath.Code),
     navPath: generateComponentNavPath(ComponentSubPath.Code),
+  },
+  {
+    name: titleCase(ComponentSubPath.CodeEditor),
+    navPath: generateComponentNavPath(ComponentSubPath.CodeEditor),
   },
   {
     name: titleCase(ComponentSubPath.Combobox),
