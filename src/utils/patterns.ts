@@ -8,6 +8,7 @@ import { SubPathMeta } from './types';
  */
 export const PatternSubPath = {
   AccessRestrictionMessages: 'access-restriction-messages',
+  AIBranding: 'ai-branding',
   Charts: 'charts',
   Chat: 'chat',
   CloudNavLayout: 'cloud-nav-layout',
@@ -30,6 +31,11 @@ export const patterns: Array<SubPathMeta> = [
   {
     name: titleCase(PatternSubPath.AccessRestrictionMessages),
     navPath: generatePatternPath(PatternSubPath.AccessRestrictionMessages),
+    isPrivate: true,
+  },
+  {
+    name: titleCase(PatternSubPath.AIBranding),
+    navPath: generatePatternPath(PatternSubPath.AIBranding),
     isPrivate: true,
   },
   {
