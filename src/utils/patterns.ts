@@ -12,6 +12,7 @@ export const PatternSubPath = {
   Charts: 'charts',
   Chat: 'chat',
   CloudNavLayout: 'cloud-nav-layout',
+  ControlList: 'control-list',
   DateTime: 'date-and-time',
   EmptyState: 'empty-state',
   EndOfLife: 'end-of-life',
@@ -65,6 +66,10 @@ export const patterns: Array<SubPathMeta> = [
     isPrivate: true,
     subComponents: ['CloudNavLayout'],
     isComponent: true,
+  },
+  {
+    name: titleCase(PatternSubPath.ControlList),
+    navPath: generatePatternPath(PatternSubPath.ControlList),
   },
   {
     name: titleCase(PatternSubPath.DateTime),
