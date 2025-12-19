@@ -1,0 +1,14 @@
+- Use sentence case.
+- Do not include punctuation such as exclamation marks or periods.
+- Ensure text accurately describes content or actions in clear terms. 
+   - When a page is not specific to a single action, such as our product entry walls, include the subject of the action that will be taken when a button is clicked. 
+      - For example, “Create search index,” rather than “Create.”
+   - If the page is specific to performing a particular action, such as a full-page form, use the verb without including its subject. Usually these pages will include the subject of the action in the page's header.
+- Use the following simpler terminology when possible over alternatives, but always opt for terminology that can be more easily understood if using this terminology would be misleading or confusing.
+   - Use "Save" instead of "commit," "write," "apply," or similar words.
+   - Use "Confirm" instead of "accept" or similar words.
+   - Use "Create" instead of "deploy," "provision," "make," or similar words.
+   - Use "Cancel" instead of "exit," "escape," "nevermind," or similar words.
+   - Use "Delete" instead of "destroy," "deprovision," "erase," or similar words.
+   - Use "Next" instead of "forward," "continue," or similar words.
+   - Use "Back" instead of "previous" or similar words.

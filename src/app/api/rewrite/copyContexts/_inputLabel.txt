@@ -1,0 +1,3 @@
+- Use sentence case capitalization.
+- Labels should be concise, but more importantly accurate to the desired content.
+- They should not be longer than a single line.
