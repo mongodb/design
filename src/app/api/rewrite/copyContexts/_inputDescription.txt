@@ -1,0 +1,2 @@
+- Use sentence case capitalization.
+- Limit to 2 lines max.

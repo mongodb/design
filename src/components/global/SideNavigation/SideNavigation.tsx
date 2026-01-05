@@ -145,6 +145,32 @@ export function SideNavigation() {
           </SideNavItem>
         ))}
       </SideNavList>
+      
+      <SideNavLabel
+        key="Tools"
+        label="Tools"
+        glyph={
+          <UniversityIcon
+            className={css`
+              margin-right: ${spacing[200]}px;
+            `}
+          />
+        }
+      />
+      <SideNavList key="tools-list">
+        <SideNavItem
+          href='/tools/writer'
+          active={isActiveResource({
+            name: 'Writer',
+            navPath: '/tools/writer',
+            isPrivate: true,
+            isComponent: false,
+          })}
+        >
+          Writer
+          <PrivateIcon />
+        </SideNavItem>
+      </SideNavList>
     </>
   );
 

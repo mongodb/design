@@ -1,6 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { fetchEntryByIdService } from '../../../../../../lib/contentStack/contentStackService';
-import { BlockPropsMap } from '@/components/content-stack/types';
+import { fetchEntryByIdService } from '@/lib/contentStack/contentStackService';
+import { auth } from '@/auth';
+import { Session } from 'next-auth';
+import { ContentTypeUID } from '@/components/content-stack/types';
+
+interface NextAuthRequest extends NextRequest {
+  auth: Session | null;
+}
+
+// Define an interface for your expected params structure
+interface ContentStackParams {
+  contentTypeUid: ContentTypeUID;
+  uid: string;
+}
 
 /**
  * API Route to get an entry by content type UID and entry UID
@@ -9,10 +21,20 @@ import { BlockPropsMap } from '@/components/content-stack/types';
  * @param uid - The unique identifier for the specific entry
  *
  */
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { contentTypeUid: string; uid: string } },
+
+export const GET = auth(async function GET(
+  request: NextAuthRequest,
+  context: any,
 ) {
+  const { params } = context as { params: ContentStackParams | undefined };
+
+  if (!params) {
+    return NextResponse.json(
+      { message: 'Invalid request parameters' },
+      { status: 400 },
+    );
+  }
+
   try {
     const { contentTypeUid, uid } = params;
     if (!contentTypeUid) {
@@ -29,29 +51,35 @@ export async function GET(
       );
     }
 
+    const entry = await fetchEntryByIdService(contentTypeUid, uid);
+
+    if (!entry) {
+      return NextResponse.json({ message: 'Entry not found' }, { status: 404 });
+    }
+
+    if (entry.private) {
+      if (!request.auth) {
+        return NextResponse.json(
+          {
+            message:
+              'Unauthorized: You must be logged in to access this endpoint.',
+          },
+          {
+            status: 401,
+          },
+        );
+      }
+    }
+
     console.log(
-      'App Router API: GET /api/contentstack/entry/[contentTypeUid]/[uid]',
+      '➡️ App Router API: GET /api/contentstack/entry/[contentTypeUid]/[uid]',
       {
         contentTypeUid, // This is the content type UID (e.g., 'badge_block')
         uid, // This is the entry UID
         url: request.url,
+        isPrivate: entry.private,
       },
     );
-
-    // Type assertion is needed here because we've already validated that id is one of the valid content types
-    const entry = await fetchEntryByIdService(
-      contentTypeUid as keyof BlockPropsMap,
-      uid,
-    );
-
-    if (!entry) {
-      return NextResponse.json(
-        {
-          message: `Entry with UID '${uid}' not found for content type '${contentTypeUid}'`,
-        },
-        { status: 404 },
-      );
-    }
 
     // Return JSON response
     return NextResponse.json(entry, { status: 200 });
@@ -62,4 +90,4 @@ export async function GET(
       { status: 500 },
     );
   }
-}
+});
