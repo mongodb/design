@@ -23,6 +23,7 @@ export const ComponentSubPath = {
   EmptyState: 'empty-state',
   ExpandableCard: 'expandable-card',
   FormFooter: 'form-footer',
+  GalleryIndicator: 'gallery-indicator',
   GuideCue: 'guide-cue',
   IconButton: 'icon-button',
   InfoSprinkle: 'info-sprinkle',
@@ -144,6 +145,10 @@ export const components: Array<SubPathMeta> = [
   {
     name: titleCase(ComponentSubPath.FormFooter),
     navPath: generateComponentNavPath(ComponentSubPath.FormFooter),
+  },
+  {
+    name: titleCase(ComponentSubPath.GalleryIndicator),
+    navPath: generateComponentNavPath(ComponentSubPath.GalleryIndicator),
   },
   {
     name: titleCase(ComponentSubPath.GuideCue),
