@@ -44,17 +44,20 @@ export const KnobRow = ({ knob, knobValue, setKnobValue }: KnobRowProps) => {
   const { theme } = useDarkMode();
   const knobLabel = kebabCase(`knob-${name}`);
 
-  if (control === 'none') return null;
+  const knobType = typeof control === 'string' ? control : control.type;
+
+  if (knobType === 'none') return null;
 
   const renderedKnob = (
     <Knob
       propName={name}
-      knobType={control === 'color' ? 'text' : control}
+      knobType={knobType === 'color' ? 'text' : control}
       knobOptions={options}
       value={knobValue}
       onChange={eventOrVal => {
         const value = eventOrVal.target?.value ?? eventOrVal;
-        setKnobValue(name, value);
+        const isNumber = knobType === 'range' || knobType === 'number';
+        setKnobValue(name, isNumber ? Number(value) : value);
       }}
       className={knobControlStyle}
       aria-labelledby={knobLabel}

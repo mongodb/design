@@ -43,6 +43,7 @@
     "@leafygreen-ui/empty-state": "^2.0.15",
     "@leafygreen-ui/expandable-card": "^4.0.13",
     "@leafygreen-ui/form-footer": "^6.0.9",
+    "@leafygreen-ui/gallery-indicator": "^3.1.2",
     "@leafygreen-ui/guide-cue": "^7.0.15",
     "@leafygreen-ui/icon": "^13.4.0",
     "@leafygreen-ui/icon-button": "^16.0.12",

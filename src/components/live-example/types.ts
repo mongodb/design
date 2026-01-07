@@ -12,7 +12,7 @@ export type KnobProps = {
 
 export type ComponentProps = { [key: string]: any };
 
-export type Knobs =
+export type KnobType =
   | 'string'
   | 'text'
   | 'color'
@@ -25,3 +25,5 @@ export type Knobs =
   | 'select'
   | 'radio'
   | 'none';
+
+export type Knobs = KnobType | { type: KnobType };
