@@ -1,0 +1,62 @@
+General Principles:
+- Use plain, everyday language that’s inclusive of individuals and their skill levels whenever possible.
+- It’s better to be clear than comprehensive. Opt for brevity, and limit in-product copy to just the essential information needed for the most common use-cases.
+- Encourage users, and help them imagine how they can use MongoDB's products by using active voice. Focus on their journey and what they can do next using our products, rather than focusing on general functionality.
+
+Capitalization:
+- Always capitalize proper nouns, including the names of MongoDB products.
+
+Active Voice:
+- Use an active voice for clarity and engagement. For example, say “You can add…” instead of “It can be added…”.
+- Lead on strong action verbs. For example, instead of saying "You can use native, full-featured vector database capabilities to build intelligent applications powered by semantic search and generative AI," say "Build intelligent applications powered by semantic search and generative AI using native, full-featured vector database capabilities."
+
+Adverbs:
+Don’t hyphenate adverb compounds where the adverb ends in “-ly” (e.g., fully managed, not fully-managed).
+
+Abbreviations and Acronyms:
+- Do not abbreviate "MongoDB," such as by using "MDB."
+- Do not shorten words to fit within character limits. For example, do not shorten "minute to "min" or "mins," or "second" to "sec" or "secs."
+- When using an acronym for the first time, use the full term followed by the acronym in parentheses. All subsequent mentions can use the acronym directly. For example, “I did not choose Amazon Web Services (AWS) as my cloud platform, although AWS could have handled the load.” 
+- If an acronym is commonplace enough that it could be considered a household name, you may use it directly without including the full term. For example, acronyms like "AI," "USA," "HTML," "PhD," or "FBI" are commonplace enough that you can consider omitting the full term when using them.
+
+Contractions:
+Use common contractions (e.g., can’t, don’t, they’re, you’re, it’s) to avoid sounding stiff.
+
+Dates and Times:
+- Write dates in the "month day, year" format (e.g., Jan 1, 2021).
+- Use the 12-hour clock notation with uppercase AM/PM (e.g., 3:30 PM.).
+
+Lists:
+- Capitalize the first word of each item in a list.
+- Use bullet points for breaking down content into digestible chunks. A bulleted list should have a minimum of three elements. If a list only has two items, try to list it in a compound sentence instead.
+- Ensure lists are parallel in structure for consistency and readability. If the first item starts with a verb, so should the rest of the items; if the first item is a complete sentence, the rest should be as well.
+- In a list of only sentences, including imperative statements, use punctuation at the end of each item.
+- In a list of only fragments, use no punctuation at the end of each item.
+- In a list of fragments, some or all of which are followed by sentences, use punctuation at the end of every fragment and sentence in the list.
+
+Numbers:
+- Use numerals for all numbers in technical contexts and when presenting data or measurements.
+- Spell out numbers one through nine in all other contexts. 
+
+Pronouns:
+- Use “we” when referring to MongoDB, the company. Use “you” when referring to prospects or customers.
+- Use “it” when referring to another company, organization, government, or other entity. When talking about MongoDB Atlas and its capabilities, use the product name (e.g., "MongoDB Atlas makes it easy for you to…"). 
+- When writing about a person, use that person’s preferred personal pronouns. If the person’s gender identity is unknown, use “they” with singular verbs.
+
+Punctuation:
+- Don’t use ampersands in UI copy.
+- Add apostrophes to singular nouns (e.g., Atlas’s capabilities; the system’s design). Only add an apostrophe to the end of plural nouns (e.g. The businesses’ preference) 
+- Use colons to introduce lists or elaborate on a preceding statement.
+- Utilize commas to clarify and separate ideas, but avoid overuse that complicates understanding. 
+- Use oxford commas for lists.
+- Place punctuation inside quotation marks. For example, "MongoDB provides scalability, flexibility, and performance."
+- Use periods to complete full sentences. Refrain from using excessive punctuation marks.
+- Use parentheses sparingly for non-essential, ancillary comments or explanations.
+- Use quotation marks for quotes or thoughts. Do not use quotation marks when introducing new terms, or referring to exact values that may appear directly in code.
+
+Verb Tense:
+- Use present tense for timeless statements and software descriptions. For example, "MongoDB supports horizontal scaling."
+- Use future tense sparingly for upcoming features or releases. For example, "The new features will improve performance."
+
+Localization:
+- Default to using US English spellings of words. For example, use "gray" instead of "grey," "color" instead of "colour," and "realize" instead of "realise."

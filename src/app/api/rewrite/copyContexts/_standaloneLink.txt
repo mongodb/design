@@ -1,0 +1,5 @@
+- Use sentence case.
+- Do not include punctuation at the end of standalone links.
+- Standalone links should be included for a clickable title, instances where there are 3 CTAs  that need to be shown next to each other, or links within a table.
+- Include no more than 1 standalone link outside of a list or table. 
+- Be careful about text that would usually indicate a user is taking an action, such as links that start with the words “create” or “use.” Consider including the words “Learn how to” if directing the user to a tutorial and “Learn more about” if directing to reference information.
