@@ -1,5 +1,5 @@
 import './globals.css';
-import { auth } from '@/auth';
+import { auth } from '@/lib/auth';
 import { SessionWrapper } from '@/components/providers/SessionWrapper';
 
 import LayoutWrapper from '@/components/layout-wrapper';

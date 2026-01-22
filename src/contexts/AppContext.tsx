@@ -1,7 +1,7 @@
 'use client';
 
 import { PropsWithChildren, createContext, useContext } from 'react';
-import { ComponentFields, ContentPageGroup } from '@/lib/contentStack/types';
+import { ComponentFields, ContentPageGroup } from '@/client/contentStack/types';
 
 interface AppContextValue {
   components: Array<ComponentFields>;

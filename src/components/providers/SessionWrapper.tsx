@@ -1,7 +1,7 @@
 'use client';
 
-import { SessionProvider } from '@/auth/client';
-import { Session } from '@/auth';
+import { SessionProvider } from '@/client/auth';
+import { Session } from '@/client/auth/types';
 
 interface SessionWrapperProps {
   children: React.ReactNode;

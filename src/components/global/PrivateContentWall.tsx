@@ -7,7 +7,7 @@ import { BasicEmptyState } from '@leafygreen-ui/empty-state';
 // @ts-expect-error
 import LogInIcon from '@leafygreen-ui/icon/dist/LogIn';
 
-import { signIn } from '@/auth/client';
+import { signIn } from '@/client/auth';
 
 import { Security } from '@/components/glyphs';
 

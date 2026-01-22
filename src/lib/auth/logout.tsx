@@ -1,6 +1,6 @@
 'use server';
 
-import { signOut } from '@/auth/auth';
+import { signOut } from '@/lib/auth';
 
 export async function logout() {
   'use server';

@@ -2,7 +2,7 @@ import { fetchTSDocs, fetchChangelog } from './server';
 import { CodeDocsContent } from './client';
 import { parseComponentPropsFromTSDocs } from './utils';
 import { findComponent, getMappedComponentName, type SubPath } from '@/utils';
-import { auth } from '@/auth';
+import { auth } from '@/lib/auth';
 
 export default async function Page({
   params,

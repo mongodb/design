@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { css, cx } from '@emotion/css';
-import { getEntryById } from '@/lib/contentStack/contentStackClient'; // client-safe version
+import { getEntryById } from '@/client/contentStack'; // client-safe version
 import Badge from '@leafygreen-ui/badge';
 import Button from '@leafygreen-ui/button';
 import Callout, { Variant } from '@leafygreen-ui/callout';

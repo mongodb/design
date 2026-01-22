@@ -5,7 +5,7 @@ import {
 
 import startCase from 'lodash/startCase';
 import { ContentPage } from '@/components/content-page';
-import { auth } from '@/auth';
+import { auth } from '@/lib/auth';
 import { NotFound, PrivateContentWall } from '@/components/global';
 
 export default async function Page({
