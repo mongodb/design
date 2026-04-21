@@ -1,3 +1,10 @@
+<<<<<<< staging
+import { redirect } from 'next/navigation';
+
+export default function Page() {
+	redirect('/');
+}
+=======
 import { auth } from '@/auth';
 import { PrivateContentWall } from '@/components/global';
 
@@ -54,3 +61,4 @@ export default async function Page() {
 // 		</div>
 // 	);
 // }
+>>>>>>> main
