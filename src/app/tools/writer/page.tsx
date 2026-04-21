@@ -1,12 +1,13 @@
 import { auth } from '@/auth';
 import { PrivateContentWall } from '@/components/global';
+import { redirect } from 'next/navigation';
 
 import WriterTopPane from './components/WriterTopPane';
 import WriterResults from './components/WriterResults';
 import WriterForm from './components/WriterForm';
 import { WriterProvider } from './components/WriterProvider';
 
-export default async function Page() {
+export async function WriterPage() {
 	const session = await auth();
 	const isLoggedIn = !!session?.user;
 
@@ -27,6 +28,10 @@ export default async function Page() {
 			<WriterResults />
 		</WriterProvider>
 	);
+}
+
+export default function Page() {
+	redirect('/');
 }
 
 // export default async function Page({
