@@ -1,5 +1,4 @@
-import { auth } from '@/auth';
-import { PrivateContentWall } from '@/components/global';
+import { redirect } from 'next/navigation';
 
 export default function Page() {
 	redirect('/');
